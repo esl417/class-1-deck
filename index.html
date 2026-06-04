@@ -9,8 +9,8 @@
   html, body {
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    background: #0a0a0a;
-    color: #f5f5f5;
+    background: #fafaf7;
+    color: #1a1a1a;
     overflow: hidden;
   }
   .deck {
@@ -28,7 +28,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
+    background: linear-gradient(135deg, #fafaf7 0%, #f0ede5 100%);
     overflow-y: auto;
   }
   .slide.active { display: flex; }
@@ -37,7 +37,7 @@
     top: 30px;
     right: 40px;
     font-size: 14px;
-    color: #555;
+    color: #999;
     letter-spacing: 1px;
   }
   .eyebrow {
@@ -53,7 +53,7 @@
     line-height: 1.05;
     letter-spacing: -2px;
     margin-bottom: 30px;
-    background: linear-gradient(90deg, #fff 0%, #aaa 100%);
+    background: linear-gradient(90deg, #1a1a1a 0%, #555 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -64,18 +64,18 @@
     line-height: 1.1;
     letter-spacing: -1px;
     margin-bottom: 30px;
-    color: #fff;
+    color: #1a1a1a;
   }
   h3 {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 16px;
-    color: #fff;
+    color: #1a1a1a;
   }
   p {
     font-size: 22px;
     line-height: 1.5;
-    color: #d0d0d0;
+    color: #333;
     margin-bottom: 16px;
     max-width: 1100px;
   }
@@ -87,7 +87,7 @@
   li {
     font-size: 22px;
     line-height: 1.5;
-    color: #d0d0d0;
+    color: #333;
     margin-bottom: 14px;
     padding-left: 28px;
     position: relative;
@@ -96,19 +96,19 @@
     content: "→";
     position: absolute;
     left: 0;
-    color: #ff6b35;
+    color: #d94e1f;
     font-weight: bold;
   }
-  li.check::before { content: "☐"; color: #4ade80; }
+  li.check::before { content: "☐"; color: #16a34a; }
   li.sub {
     padding-left: 50px;
     font-size: 18px;
-    color: #aaa;
+    color: #666;
   }
   li.sub::before {
     left: 28px;
     content: "·";
-    color: #666;
+    color: #aaa;
   }
   .grid-2 {
     display: grid;
@@ -117,25 +117,26 @@
     max-width: 1200px;
   }
   .card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 12px;
     padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
-  .card h3 { color: #ff6b35; margin-bottom: 12px; }
-  .card p { font-size: 18px; margin-bottom: 0; }
+  .card h3 { color: #d94e1f; margin-bottom: 12px; }
+  .card p { font-size: 18px; margin-bottom: 0; color: #333; }
   code, .mono {
     font-family: "SF Mono", Menlo, Monaco, monospace;
-    background: rgba(255,107,53,0.12);
-    color: #ff9b6b;
+    background: rgba(217,78,31,0.10);
+    color: #b8401a;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.9em;
   }
   .pill {
     display: inline-block;
-    background: rgba(255,107,53,0.15);
-    color: #ff9b6b;
+    background: rgba(217,78,31,0.12);
+    color: #b8401a;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 14px;
@@ -147,8 +148,8 @@
     font-size: 38px;
     font-weight: 700;
     line-height: 1.2;
-    color: #ff6b35;
-    border-left: 4px solid #ff6b35;
+    color: #d94e1f;
+    border-left: 4px solid #d94e1f;
     padding-left: 30px;
     margin: 30px 0;
     max-width: 1100px;
@@ -160,30 +161,31 @@
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(255,255,255,0.85);
     padding: 10px 20px;
     border-radius: 30px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     z-index: 100;
   }
   .nav button {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #1a1a1a;
     padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 13px;
     transition: all 0.15s;
   }
-  .nav button:hover { background: rgba(255,255,255,0.1); }
+  .nav button:hover { background: rgba(0,0,0,0.05); }
   .progress {
     position: fixed;
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #ff6b35, #ff9b6b);
+    background: linear-gradient(90deg, #d94e1f, #f97316);
     z-index: 200;
     transition: width 0.3s ease;
   }
@@ -197,7 +199,7 @@
   }
   .title-slide p {
     font-size: 28px;
-    color: #888;
+    color: #555;
   }
   .arrow-flow {
     display: flex;
@@ -208,22 +210,22 @@
     flex-wrap: wrap;
   }
   .flow-step {
-    background: rgba(255,107,53,0.12);
-    border: 1px solid rgba(255,107,53,0.3);
+    background: rgba(217,78,31,0.10);
+    border: 1px solid rgba(217,78,31,0.3);
     padding: 16px 24px;
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
   }
   .flow-arrow {
-    color: #ff6b35;
+    color: #d94e1f;
     font-size: 32px;
     font-weight: bold;
   }
   .small-note {
     font-size: 16px;
-    color: #888;
+    color: #666;
     margin-top: 20px;
     font-style: italic;
   }
@@ -234,21 +236,22 @@
   }
   .two-col-list li { break-inside: avoid; }
   .prompt-box {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-left: 4px solid #ff6b35;
+    background: #fff;
+    border: 1px solid #e5e0d5;
+    border-left: 4px solid #d94e1f;
     padding: 16px 20px;
     border-radius: 6px;
     font-family: "SF Mono", Menlo, Monaco, monospace;
     font-size: 16px;
-    color: #ff9b6b;
+    color: #b8401a;
     margin: 10px 0;
     max-width: 1000px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .label {
     display: inline-block;
-    background: #ff6b35;
-    color: #000;
+    background: #d94e1f;
+    color: #fff;
     padding: 2px 10px;
     border-radius: 4px;
     font-size: 13px;
@@ -267,10 +270,14 @@
 <div class="deck" id="deck">
 
 <!-- TITLE -->
-<section class="slide active title-slide">
-  <div class="eyebrow">Class 1</div>
-  <h1>How to Build a Website</h1>
-  <p>From zero to live on the internet — using AI to do the hard parts.</p>
+<section class="slide active" style="padding: 50px 60px 110px; justify-content: center;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 1100px; margin: 0 auto 32px; width: 100%;">
+    <img src="example-1.png" alt="" style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.12);">
+    <img src="example-2.png" alt="" style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.12);">
+    <img src="example-3.png" alt="" style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.12);">
+    <img src="example-4.png" alt="" style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.12);">
+  </div>
+  <h1 style="font-size: 52px; max-width: 1100px; margin: 0 auto; text-align: center; line-height: 1.1;">What I'm about to teach you will give you the skills to build whatever you want.</h1>
 </section>
 
 <!-- 1. OVERVIEW -->
@@ -278,7 +285,7 @@
   <div class="slide-num">1 / Overview</div>
   <div class="eyebrow">What we're doing today</div>
   <h2>Building a real, live website on a real URL — by the end of class.</h2>
-  <h3 style="margin-top: 30px; color: #ff9b6b;">The four tools</h3>
+  <h3 style="margin-top: 30px; color: #b8401a;">The four tools</h3>
   <ul>
     <li><strong>VS Code</strong> — where the files for your website live on your computer.</li>
     <li><strong>Claude Code</strong> — the AI that edits those files for you.</li>
@@ -300,7 +307,7 @@
 <section class="slide">
   <div class="slide-num">1.5 / Scope</div>
   <div class="eyebrow">Setting expectations</div>
-  <h2>What this class is <em style="color:#ff6b35;">not</em>.</h2>
+  <h2>What this class is <em style="color:#d94e1f;">not</em>.</h2>
   <ul>
     <li>Not a coding class. You will never type code. You will type English.</li>
     <li>Not a design class. The AI handles the visual craft.</li>
@@ -351,8 +358,8 @@
   <div class="eyebrow">Specialist Claudes</div>
   <h2>Creating agents inside Claude Code.</h2>
   <p>An agent is just a specialist Claude calls when needed. Today we'll install two: <span class="pill">code-reviewer</span> <span class="pill">security-reviewer</span></p>
-  <p style="margin-top: 8px;"><a href="agents.html" target="_blank" style="color:#ff9b6b; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
-  <h3 style="margin-top: 24px; color: #ff9b6b;">Steps (we'll do this live)</h3>
+  <p style="margin-top: 8px;"><a href="agents.html" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
+  <h3 style="margin-top: 24px; color: #b8401a;">Steps (we'll do this live)</h3>
   <ul>
     <li>In VS Code, open the Claude Code terminal panel.</li>
     <li>Type <code>/agents</code> and hit enter.</li>
@@ -381,7 +388,7 @@
   <div class="eyebrow">Permanent instructions</div>
   <h2>What CLAUDE.md is and how it works.</h2>
   <p>A plain markdown file Claude reads automatically every time it starts. Permanent instructions you don't have to repeat.</p>
-  <p style="margin-top: 18px; color:#ff9b6b; font-weight: 600;">When making a decision, you need to decide where the direction belongs: global or project.</p>
+  <p style="margin-top: 18px; color:#b8401a; font-weight: 600;">When making a decision, you need to decide where the direction belongs: global or project.</p>
   <div class="grid-2" style="margin-top: 20px;">
     <div class="card">
       <h3>Global</h3>
@@ -466,7 +473,7 @@
   <h2>Get Claude, GitHub, and Vercel talking.</h2>
   <p>Ask Claude in the VS Code terminal:</p>
   <div class="prompt-box">"Connect this project to my GitHub and Vercel. Make sure they're synced and a push will deploy."</div>
-  <h3 style="margin-top: 30px; color: #ff9b6b;">Verification checklist</h3>
+  <h3 style="margin-top: 30px; color: #b8401a;">Verification checklist</h3>
   <ul>
     <li class="check"><code>git status</code> works in the VS Code terminal</li>
     <li class="check">Your project shows up at <span class="mono">github.com/yourname</span></li>
@@ -499,7 +506,7 @@
   <ul>
     <li>Without Impeccable: generic AI-looking pages.</li>
     <li>With Impeccable: distinctive, polished, professional craft.</li>
-    <li><a href="https://impeccable.style/#downloads" target="_blank" style="color:#ff9b6b; text-decoration:underline; font-weight:600;">Install it →</a> (impeccable.style/#downloads)</li>
+    <li><a href="https://impeccable.style/#downloads" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">Install it →</a> (impeccable.style/#downloads)</li>
     <li><strong>Restart VS Code</strong> so the skill loads before you use it.</li>
   </ul>
 </section>
@@ -510,7 +517,7 @@
   <div class="eyebrow">Give it the context it needs</div>
   <h2>The single most important slide of the day.</h2>
   <p>Run <code>/impeccable init</code> to start. <strong>In the same message</strong>, paste in as much context as you can — these are blank repos with zero info about your business.</p>
-  <h3 style="margin-top: 24px; color: #ff9b6b;">Include in your first message</h3>
+  <h3 style="margin-top: 24px; color: #b8401a;">Include in your first message</h3>
   <ul>
     <li>What the business does, who it's for</li>
     <li>Who you are, your story, your why</li>
@@ -521,21 +528,15 @@
   <p style="margin-top: 24px;"><strong>Logo tip:</strong> drop your logo file into the root of the project tree <em>before</em> running — it gets picked up automatically.</p>
 </section>
 
-<!-- 8. LIVE BUILD -->
+<!-- 8a. LIVE BUILD — INIT -->
 <section class="slide">
-  <div class="slide-num">8 / Live build</div>
-  <div class="eyebrow">/craft and the iteration loop</div>
-  <h2>Craft it, then push it further.</h2>
+  <div class="slide-num">8 / Live build — kickoff</div>
+  <div class="eyebrow">The starting command</div>
+  <h2>Kick off your design with <code>/impeccable init</code>.</h2>
   <p style="margin-bottom: 14px;">Every Impeccable command follows the same formula:</p>
-  <div class="prompt-box" style="text-align:center; font-size:18px;"><code style="background:none; color:#ff9b6b; padding:0;">/impeccable</code> + <code style="background:none; color:#ff9b6b; padding:0;">&lt;command&gt;</code> + <code style="background:none; color:#ff9b6b; padding:0;">whatever you want to work on</code></div>
-  <p style="margin-top: 16px;">Start with <code>/impeccable craft</code>. Look at the result. Then iterate with:</p>
-  <ul>
-    <li><code>/impeccable bolder</code> · <code>/impeccable overdrive</code> — when the design feels safe, push it louder. <span style="color:#888;">Overdrive really pushes it, but can be heavy on performance — use carefully.</span></li>
-    <li><code>/impeccable animate</code> — add motion and micro-interactions that bring the page to life.</li>
-    <li><code>/impeccable delight</code> — add small surprising details that make people screenshot and share.</li>
-  </ul>
-  <p style="margin-top: 16px; color: #aaa;"><em>Inverse if needed: ask for "quieter" or "calmer" if it goes too far.</em></p>
-  <p style="margin-top: 16px;"><strong>The loop:</strong> craft → look → bolder / animate / delight → look → repeat until you love it.</p>
+  <div class="prompt-box" style="text-align:center; font-size:18px;"><code style="background:none; color:#d94e1f; padding:0;">/impeccable</code> + <code style="background:none; color:#d94e1f; padding:0;">&lt;command&gt;</code> + <code style="background:none; color:#d94e1f; padding:0;">whatever you want to work on</code></div>
+  <p style="margin-top: 18px;"><code>/impeccable init</code> sets up the design system, picks fonts, lays out the foundation. <strong>This is the one you start with.</strong></p>
+  <p style="margin-top: 18px;">Then look at what you got. The next slide is how to look at it the right way — then we'll cover the commands you use to keep iterating.</p>
 </section>
 
 <!-- 8c. REVIEW FRAMEWORK -->
@@ -547,27 +548,43 @@
   <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 1100px; margin: 0 auto; position: relative;">
     <div style="position: absolute; left: -30px; top: 10px; bottom: 10px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
       <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; writing-mode: vertical-rl; transform: rotate(180deg);">Top of funnel</div>
-      <div style="color: #ff6b35; font-size: 24px;">↓</div>
+      <div style="color: #d94e1f; font-size: 24px;">↓</div>
       <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; writing-mode: vertical-rl; transform: rotate(180deg);">Detail</div>
     </div>
-    <div style="width: 100%; background: rgba(255,107,53,0.14); border: 1px solid rgba(255,107,53,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#ff9b6b;">1. Aesthetic / vibe</strong> <span style="color:#bbb;">— Does it <em>feel</em> like the brand? Don't read words. Squint.</span> <span style="color:#888; font-size:13px;">(Whole site.)</span>
+    <div style="width: 100%; background: rgba(217,78,31,0.14); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
+      <strong style="color:#b8401a;">1. Aesthetic / vibe</strong> <span style="color:#555;">— Does it <em>feel</em> like the brand? Don't read words. Squint.</span> <span style="color:#777; font-size:13px;">(Whole site.)</span>
     </div>
-    <div style="width: 88%; background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#ff9b6b;">2. Sections / Information Architecture</strong> <span style="color:#bbb;">— Right sections in the right order?</span> <span style="color:#888; font-size:13px;">(Whole site.)</span>
+    <div style="width: 88%; background: rgba(217,78,31,0.12); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
+      <strong style="color:#b8401a;">2. Sections / Information Architecture</strong> <span style="color:#555;">— Right sections in the right order?</span> <span style="color:#777; font-size:13px;">(Whole site.)</span>
     </div>
-    <div style="width: 74%; background: rgba(255,107,53,0.10); border: 1px solid rgba(255,107,53,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#ff9b6b;">3. Layout within each section</strong> <span style="color:#bbb;">— Hierarchy and balance.</span> <span style="color:#888; font-size:13px;">(One section at a time.)</span>
+    <div style="width: 74%; background: rgba(217,78,31,0.10); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
+      <strong style="color:#b8401a;">3. Layout within each section</strong> <span style="color:#555;">— Hierarchy and balance.</span> <span style="color:#777; font-size:13px;">(One section at a time.)</span>
     </div>
-    <div style="width: 58%; background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#ff9b6b;">4. Copy</strong> <span style="color:#bbb;">— Does it sound like you? Is it clear?</span> <span style="color:#888; font-size:13px;">(Section by section.)</span>
+    <div style="width: 58%; background: rgba(217,78,31,0.08); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
+      <strong style="color:#b8401a;">4. Copy</strong> <span style="color:#555;">— Does it sound like you? Is it clear?</span> <span style="color:#777; font-size:13px;">(Section by section.)</span>
     </div>
-    <div style="width: 42%; background: rgba(255,107,53,0.06); border: 1px solid rgba(255,107,53,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#ff9b6b;">5. Details / craft</strong> <span style="color:#bbb;">— Micro-interactions, spacing, polish.</span>
+    <div style="width: 42%; background: rgba(217,78,31,0.06); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
+      <strong style="color:#b8401a;">5. Details / craft</strong> <span style="color:#555;">— Micro-interactions, spacing, polish.</span>
     </div>
   </div>
-  <p class="small-note" style="margin-top: 18px;"><strong>You can use the iteration commands at every layer</strong> — <code>/impeccable bolder</code>, <code>animate</code>, <code>delight</code>, etc. all work whether you're fixing the whole-site aesthetic or just one section's layout.</p>
+  <p class="small-note" style="margin-top: 18px;"><strong>You can use the iteration commands at every layer</strong> — <code>/impeccable bolder</code>, <code>animate</code>, <code>delight</code>, etc. all work whether you're fixing the whole-site aesthetic or just one section's layout. <strong>Full list on the next slide.</strong></p>
   <p class="small-note"><strong>And:</strong> <em>describe what's wrong</em> — don't try to micro-direct the fix. "The CTA feels lost" beats "move the button 4px left."</p>
+</section>
+
+<!-- 8d. ITERATION COMMANDS -->
+<section class="slide">
+  <div class="slide-num">8 / Iteration commands</div>
+  <div class="eyebrow">Push it further</div>
+  <h2>The commands you'll use at every layer of the funnel.</h2>
+  <div class="prompt-box" style="text-align:center; font-size:18px; margin-bottom: 22px;"><code style="background:none; color:#d94e1f; padding:0;">/impeccable</code> + <code style="background:none; color:#d94e1f; padding:0;">&lt;command&gt;</code> + <code style="background:none; color:#d94e1f; padding:0;">whatever you want to work on</code></div>
+  <ul>
+    <li><code>/impeccable craft</code> — the main iteration command. Use this to keep shaping any section after the initial init.</li>
+    <li><code>/impeccable bolder</code> · <code>/impeccable overdrive</code> — when the design feels safe, push it louder. <span style="color:#777;">Overdrive really pushes it, but can be heavy on performance — use carefully.</span></li>
+    <li><code>/impeccable animate</code> — add motion and micro-interactions that bring the page to life.</li>
+    <li><code>/impeccable delight</code> — add small surprising details that make people screenshot and share.</li>
+  </ul>
+  <p style="margin-top: 16px; color: #666;"><em>Inverse if needed: ask for "quieter" or "calmer" if it goes too far.</em></p>
+  <p class="small-note"><strong>The loop:</strong> review (previous slide) → run an iteration command → review again → repeat until you love it.</p>
 </section>
 
 <!-- 8b. WHEN THINGS GO WRONG -->
@@ -584,12 +601,27 @@
   <p class="small-note">When in doubt, describe what you see and what you expected. Claude will figure it out.</p>
 </section>
 
+<!-- 8e. TROUBLESHOOTING CHEAT SHEET (paired with "when things go wrong") -->
+<section class="slide">
+  <div class="slide-num">8 / Troubleshooting cheat sheet</div>
+  <div class="eyebrow">Save this</div>
+  <h2>When stuck, paste one of these.</h2>
+  <p><span class="label">PREVIEW</span> Preview won't load:</p>
+  <div class="prompt-box">"My local preview won't load. Launch a local server and tell me what URL to open."</div>
+  <p><span class="label">DEPLOY</span> Vercel build failed:</p>
+  <div class="prompt-box">"My Vercel deploy failed. Check the latest deployment logs and fix whatever broke."</div>
+  <p><span class="label">UNDO</span> I broke something:</p>
+  <div class="prompt-box">"Revert to the last commit."</div>
+  <p><span class="label">STALE</span> Claude keeps giving you outdated instructions or APIs that don't exist anymore:</p>
+  <div class="prompt-box">"Base your answer on current information — search the internet for the latest docs before responding."</div>
+</section>
+
 <!-- 9. COMMAND SEQUENCE -->
 <section class="slide">
   <div class="slide-num">9 / Command sequence</div>
   <div class="eyebrow">The right order matters</div>
   <h2>Once layout + aesthetic are locked, here's the order.</h2>
-  <p style="margin-bottom: 20px;"><a href="https://impeccable.style/docs/" target="_blank" style="color:#ff9b6b; text-decoration:underline; font-weight:600;">→ Full Impeccable docs (impeccable.style/docs)</a></p>
+  <p style="margin-bottom: 20px;"><a href="https://impeccable.style/docs/" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Full Impeccable docs (impeccable.style/docs)</a></p>
   <ul>
     <li><strong>1. Craft</strong> the layout and visual feel with <code>/craft</code>.</li>
     <li><strong>2. Push further</strong> with <code>/bolder</code>, <code>/overdrive</code>, <code>/animate</code>, <code>/delight</code> until you love it.</li>
@@ -608,7 +640,7 @@
   <h2>The pages almost every website needs.</h2>
   <div class="grid-2">
     <div>
-      <h3 style="color:#ff9b6b;">Standard pages</h3>
+      <h3 style="color:#b8401a;">Standard pages</h3>
       <ul style="font-size: 18px;">
         <li>Home</li>
         <li>About — your story, your why</li>
@@ -620,7 +652,7 @@
       </ul>
     </div>
     <div>
-      <h3 style="color:#ff9b6b;">Specialized — depends on your business</h3>
+      <h3 style="color:#b8401a;">Specialized — depends on your business</h3>
       <ul style="font-size: 18px;">
         <li>Restaurant → Menu, Reservations, Hours</li>
         <li>Photographer → Portfolio, Pricing, Booking</li>
@@ -661,33 +693,42 @@
   </ul>
 </section>
 
-<!-- 12. TROUBLESHOOTING -->
-<section class="slide">
-  <div class="slide-num">12 / Troubleshooting cheat sheet</div>
-  <div class="eyebrow">Save this</div>
-  <h2>When stuck, paste one of these.</h2>
-  <p><span class="label">PREVIEW</span> Preview won't load:</p>
-  <div class="prompt-box">"My local preview won't load. Launch a local server and tell me what URL to open."</div>
-  <p><span class="label">DEPLOY</span> Vercel build failed:</p>
-  <div class="prompt-box">"My Vercel deploy failed. Check the latest deployment logs and fix whatever broke."</div>
-  <p><span class="label">UNDO</span> I broke something:</p>
-  <div class="prompt-box">"Revert to the last commit."</div>
-  <p><span class="label">STALE</span> Claude keeps giving you outdated instructions or APIs that don't exist anymore:</p>
-  <div class="prompt-box">"Base your answer on current information — search the internet for the latest docs before responding."</div>
-</section>
+<!-- END / CTA -->
+<section class="slide" style="padding: 50px 60px 110px; justify-content: center;">
+  <div class="eyebrow" style="text-align: center;">End of Class 1</div>
+  <h1 style="font-size: 56px; text-align: center; max-width: 1100px; margin: 0 auto 18px;">Now go build something.</h1>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: #555;">Then come back when you're ready to think about what's <em>next</em> for your business.</p>
 
-<!-- END -->
-<section class="slide title-slide">
-  <div class="eyebrow">End of Class 1</div>
-  <h1>Now go build something.</h1>
-  <p>Questions?</p>
+  <div class="grid-2" style="max-width: 1100px; margin: 0 auto; gap: 30px;">
+
+    <div class="card" style="background: rgba(217,78,31,0.06); border: 1px solid rgba(217,78,31,0.25);">
+      <div class="eyebrow" style="margin-bottom: 12px;">Stay in touch</div>
+      <h3 style="color:#1a1a1a; margin-bottom: 14px;">Let's connect on LinkedIn.</h3>
+      <p style="font-size: 16px; margin-bottom: 18px; color: #444;">Send a connect request — happy to keep helping as you build.</p>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="linkedin-qr.png" alt="LinkedIn QR" style="width: 130px; height: 130px; border-radius: 8px; background: #fff; padding: 6px; border: 1px solid #e5e0d5;">
+        <div>
+          <a href="https://www.linkedin.com/in/ericslevine" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600; font-size: 15px; word-break: break-all;">linkedin.com/in/<br>ericslevine</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background: rgba(217,78,31,0.06); border: 1px solid rgba(217,78,31,0.25);">
+      <div class="eyebrow" style="margin-bottom: 12px;">What's next for you?</div>
+      <h3 style="color:#1a1a1a; margin-bottom: 14px;">You just shipped a website. Now what?</h3>
+      <p style="font-size: 16px; margin-bottom: 14px; color: #444;">Building it was step one. Growing it — knowing what to do next, where to focus, how to find customers — is the harder part.</p>
+      <p style="font-size: 16px; margin-bottom: 18px; color: #444;"><strong>I built StratEngine to help with exactly that:</strong> a tool that thinks through business and growth strategy with you, the way a co-founder would.</p>
+      <p style="font-size: 15px; color: #b8401a; font-weight: 600;">→ Ask me about it. Today.</p>
+    </div>
+
+  </div>
 </section>
 
 </div>
 
 <div class="nav">
   <button onclick="prev()">← Prev</button>
-  <span id="counter" style="color:#888; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <span id="counter" style="color:#777; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
   <button onclick="next()">Next →</button>
 </div>
 
