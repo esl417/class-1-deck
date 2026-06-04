@@ -1,0 +1,6 @@
+{
+  "files": ["index.html", "agents.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

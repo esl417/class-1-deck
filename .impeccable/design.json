@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-03T00:00:00Z",
+  "title": "Design System: Class Decks",
+  "extensions": {
+    "colorMeta": {
+      "terracotta": { "role": "primary", "displayName": "Terracotta", "canonical": "#d94e1f", "tonalRamp": ["#3a1408", "#5e210d", "#822e12", "#a63b17", "#d94e1f", "#e87a4e", "#f2a888", "#fbd9c8"] },
+      "terracotta-deep": { "role": "primary", "displayName": "Terracotta Deep", "canonical": "#b8401a", "tonalRamp": ["#311009", "#4f1a0d", "#6e2511", "#8d3015", "#b8401a", "#d76c43", "#e89e80", "#f7d4c4"] },
+      "green-check": { "role": "secondary", "displayName": "Check Green", "canonical": "#16a34a", "tonalRamp": ["#062813", "#0a3d1d", "#0e5228", "#126733", "#16a34a", "#3fc46c", "#7ad99b", "#c2efd2"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1a1a1a", "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#666666", "#808080", "#999999", "#cccccc", "#f0f0f0"] },
+      "paper-top": { "role": "neutral", "displayName": "Paper", "canonical": "#fafaf7", "tonalRamp": ["#3a3933", "#54534b", "#6f6d63", "#8a887c", "#a6a496", "#cfcdbf", "#f0ede5", "#fafaf7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Title and closing hero statements only. One per deck." },
+      "headline": { "displayName": "Headline", "purpose": "The single big idea on each content slide." },
+      "body": { "displayName": "Body", "purpose": "Reading copy and list items, sized for projection (22px)." },
+      "label": { "displayName": "Eyebrow", "purpose": "One short uppercase kicker naming the slide's theme." },
+      "mono": { "displayName": "Mono", "purpose": "Inline code, file paths, URLs, and prompt boxes." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 1px 3px rgba(0,0,0,0.04)", "purpose": "Default barely-there lift for cards and prompt boxes." },
+      { "name": "image-lift", "value": "0 6px 24px rgba(0,0,0,0.12)", "purpose": "Lifts example screenshots so they read as physical objects." },
+      { "name": "nav-float", "value": "0 4px 12px rgba(0,0,0,0.08)", "purpose": "Floating bottom nav bar, paired with backdrop-filter blur(10px)." },
+      { "name": "cta-glow", "value": "0 8px 24px rgba(217,78,31,0.35)", "purpose": "Colored glow under the terracotta Ship-it badge and CTA button." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "all 0.15s", "purpose": "Nav button hover and small interactive feedback." },
+      { "name": "progress-ease", "value": "width 0.3s ease", "purpose": "Top progress strip growing as the deck advances." }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Prompt Box",
+      "kind": "custom",
+      "refersTo": "prompt-box",
+      "description": "White panel for copy-pasteable Claude prompts; the deck's 'type this' signal.",
+      "html": "<div class=\"ds-prompt-box\">\"Connect this project to my GitHub and Vercel. Make sure they're synced and a push will deploy.\"</div>",
+      "css": ".ds-prompt-box { background: #fff; border: 1px solid #e5e0d5; border-left: 4px solid #d94e1f; padding: 16px 20px; border-radius: 6px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 16px; color: #b8401a; box-shadow: 0 1px 3px rgba(0,0,0,0.04); max-width: 1000px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Translucent white panel that lifts content a half-step off the warm paper.",
+      "html": "<div class=\"ds-card\"><h3>Global</h3><p>Applies to <strong>every</strong> project on your computer.</p></div>",
+      "css": ".ds-card { background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); color: #333; } .ds-card h3 { color: #b8401a; font-size: 24px; font-weight: 600; margin-bottom: 12px; } .ds-card p { font-size: 18px; line-height: 1.5; margin: 0; }"
+    },
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Inline tint chip for tagging agent names and short keywords.",
+      "html": "<span class=\"ds-pill\">code-reviewer</span>",
+      "css": ".ds-pill { display: inline-block; background: rgba(217,78,31,0.12); color: #b8401a; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }"
+    },
+    {
+      "name": "CTA Button",
+      "kind": "button",
+      "refersTo": "cta-button",
+      "description": "The one 'press me' affordance, on the closing slide.",
+      "html": "<a class=\"ds-cta\" href=\"#\">Ask me about it &rarr;</a>",
+      "css": ".ds-cta { display: inline-block; background: #d94e1f; color: #fafaf7; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: 0.3px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; box-shadow: 0 4px 12px rgba(217,78,31,0.25); transition: transform 0.15s; } .ds-cta:hover { transform: translateY(-1px); } .ds-cta:focus-visible { outline: 2px solid #b8401a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Button",
+      "kind": "nav",
+      "refersTo": "button-nav",
+      "description": "Prev/Next control inside the floating bottom nav bar.",
+      "html": "<button class=\"ds-nav-btn\">Next &rarr;</button>",
+      "css": ".ds-nav-btn { background: transparent; border: 1px solid rgba(0,0,0,0.15); color: #1a1a1a; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; transition: all 0.15s; } .ds-nav-btn:hover { background: rgba(0,0,0,0.05); } .ds-nav-btn:focus-visible { outline: 2px solid #b8401a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Flow Step",
+      "kind": "custom",
+      "refersTo": "flow-step",
+      "description": "Pipeline chip used in the 'You talk -> Claude edits -> GitHub saves -> Vercel publishes' flow.",
+      "html": "<span class=\"ds-flow-step\">Claude edits</span>",
+      "css": ".ds-flow-step { display: inline-block; background: rgba(217,78,31,0.10); border: 1px solid rgba(217,78,31,0.3); padding: 16px 24px; border-radius: 10px; font-size: 18px; font-weight: 600; color: #1a1a1a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Patient Teacher's Whiteboard",
+    "overview": "These decks exist to dissolve fear. The audience is non-technical people who find VS Code, GitHub, and the terminal intimidating, so the visual system does the opposite of what a developer tool would: it's warm, soft-edged, and roomy. A warm off-white canvas, a single terracotta accent carrying all the energy, and oversized type readable from the back of a room. Each deck is one self-contained HTML file that works two ways at once: a written guide read alone on a laptop, and presenter scaffolding on a projector during a live build-along. That dual duty is why every slide holds one idea, generously spaced.",
+    "keyCharacteristics": [
+      "Warm off-white canvas, never white, never dark.",
+      "One terracotta accent doing all the emphasis work.",
+      "Oversized type built for projectors and across-the-room reading.",
+      "One idea per slide; generous breathing room.",
+      "System font stack only — zero web-font load, instant render anywhere.",
+      "Copy-pasteable prompt boxes are first-class content, not decoration."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Terracotta is the only brand color. A second 'color' is almost always a deeper/lighter terracotta, a neutral, or a transparency of terracotta — never a new hue. The only exception is success-green, allowed solely for 'done / new / untracked' meaning.", "section": "colors" },
+      { "name": "The Paper-Not-White Rule", "body": "The background is always the warm #fafaf7->#f0ede5 paper, never pure white and never dark. Pure white reads clinical; dark reads like the terminal we're making un-scary.", "section": "colors" },
+      { "name": "The Read-From-The-Back Rule", "body": "Body copy never drops below 18px and the main idea is 44px+. If a slide needs smaller text to fit, cut content, don't shrink type.", "section": "typography" },
+      { "name": "The One-Idea Rule", "body": "Each slide carries exactly one h2-level idea; lists, cards, and prompts support it.", "section": "typography" },
+      { "name": "The Half-Step Rule", "body": "Shadows lift a surface at most a half-step off the paper. The default card shadow is 0 1px 3px rgba(0,0,0,0.04); anything darker or larger than image-lift is too heavy.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the warm paper background (#fafaf7->#f0ede5) on every slide.",
+      "Do hold to one terracotta accent; reach for a deeper/lighter terracotta or transparency before any new hue.",
+      "Do set body copy at 22px and the main idea at 44px+, assuming a projector at the back of a room.",
+      "Do keep one h2-level idea per slide.",
+      "Do use the prompt-box component for anything the reader should copy and paste into Claude.",
+      "Do reserve green strictly for 'done / new / untracked', always paired with a letter or label, never color alone.",
+      "Do keep everything in one self-contained HTML file with the system font stack.",
+      "Do keep keyboard navigation and the prefers-reduced-motion path working."
+    ],
+    "donts": [
+      "Don't ship corporate slideware — no bullet soup, clip art, or stock gradients.",
+      "Don't use dev-tool dark mode for the decks — no black terminal backgrounds or neon syntax colors.",
+      "Don't make slides dense or textbook-like — nothing that can't be read from a projector.",
+      "Don't over-design — no glassmorphism beyond the single nav bar, no gradient text on new slides, no motion for its own sake.",
+      "Don't push body or note text lighter than muted ink #666666 on the paper.",
+      "Don't add the terracotta left-stripe to anything other than the prompt box.",
+      "Don't pull StratEngine brand elements into the deck."
+    ]
+  }
+}
