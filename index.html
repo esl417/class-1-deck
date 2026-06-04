@@ -612,15 +612,25 @@
   <div class="eyebrow">The right order matters</div>
   <h2>Once layout + aesthetic are locked, here's the order.</h2>
   <p style="margin-bottom: 20px;"><a href="https://impeccable.style/docs/" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Full Impeccable docs (impeccable.style/docs)</a></p>
-  <ul>
-    <li><strong>1. Craft</strong> the layout and visual feel with <code>/craft</code>.</li>
-    <li><strong>2. Push further</strong> with <code>/bolder</code>, <code>/overdrive</code>, <code>/animate</code>, <code>/delight</code> until you love it.</li>
-    <li><strong>3. Copy last</strong> — once layout + aesthetic are locked, talk Claude through the copy directly (no special command — just describe what each section should say). Don't waste good copy on a layout you're going to throw away.</li>
-    <li><strong>4. Technical pass</strong> — <code>/impeccable optimize</code> for accessibility, performance, and code quality, then <code>/impeccable harden</code> to lock down security and resilience.</li>
-    <li><strong>5. Audit + critique</strong> — run <code>/audit</code> for implementation quality, then <code>/critique</code> for design quality (optional if you're happy). Only after passing do you move to polish.</li>
-    <li><strong>6. Polish — always last</strong>, right before launch.</li>
-    <li><strong>7. Commit + push</strong> → live.</li>
-  </ul>
+  <div class="grid-2" style="gap: 24px; align-items: stretch;">
+    <div class="card" style="background: rgba(217,78,31,0.05);">
+      <div class="eyebrow" style="margin-bottom: 10px;">Creative pass</div>
+      <ul style="font-size: 18px;">
+        <li><strong>1. Craft</strong> the layout and visual feel with <code>/craft</code>.</li>
+        <li><strong>2. Push further</strong> with <code>/bolder</code>, <code>/overdrive</code>, <code>/animate</code>, <code>/delight</code> until you love it.</li>
+        <li><strong>3. Copy last</strong> — talk Claude through the copy directly (no special command). Don't waste good copy on a layout you're going to throw away.</li>
+      </ul>
+    </div>
+    <div class="card" style="background: rgba(22,163,74,0.05); border-color: rgba(22,163,74,0.25);">
+      <div class="eyebrow" style="margin-bottom: 10px; color: #16a34a;">Technical pass</div>
+      <ul style="font-size: 18px;">
+        <li><strong>4. Optimize + harden</strong> — <code>/impeccable optimize</code> for accessibility, performance, and code quality, then <code>/impeccable harden</code> to lock down security and resilience.</li>
+        <li><strong>5. Audit + critique</strong> — <code>/audit</code> for implementation quality, then <code>/critique</code> for design quality (optional if you're happy). Only after passing do you move to polish.</li>
+        <li><strong>6. Polish — always last</strong>, right before launch.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top: 20px; text-align: center; font-size: 20px;"><strong>7. Commit + push</strong> → live.</p>
 </section>
 
 <!-- 10. NEXT WEEK -->
