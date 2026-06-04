@@ -685,9 +685,39 @@
   <div class="prompt-box">"Add a [page name] page. Here's what should be on it: [your notes]."</div>
 </section>
 
+<!-- 10c. WHEN YOU'RE DONE -->
+<section class="slide">
+  <div class="slide-num">11 / When you're done</div>
+  <div class="eyebrow">Treat it like a real launched site</div>
+  <h2>Two things to do once your site is good enough to share.</h2>
+
+  <div class="grid-2" style="margin-top: 24px; gap: 30px;">
+
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom: 10px;">Step 1</div>
+      <h3>Get a real domain.</h3>
+      <p style="font-size: 17px; margin-top: 8px;"><span class="mono">yoursite.com</span> instead of <span class="mono">yoursite.vercel.app</span>. ~$12/year.</p>
+      <p style="font-size: 15px; margin-top: 14px; color: #555;">Buy it inside Vercel: Project → Settings → Domains → "Buy a domain." Vercel handles the DNS setup automatically.</p>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom: 10px;">Step 2</div>
+      <h3>Set up a backup branch.</h3>
+      <p style="font-size: 17px; margin-top: 8px;">So you can save work-in-progress to GitHub without it going live.</p>
+      <p style="font-size: 15px; margin-top: 14px; color: #555;">Right now every push deploys. That was fine while you were building — nobody was looking. Once your site is live and shared, you need a way to back up changes without publishing them.</p>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 22px;"><strong>What's a branch?</strong> Think of it as a parallel copy of your project. Vercel only watches the <code>main</code> branch — push to <code>main</code>, it deploys. Push to any other branch, it just sits safely on GitHub. A <code>backup</code> branch is your "saved but not published" lane.</p>
+
+  <p style="margin-top: 18px;"><strong>You don't need to memorize git commands</strong> — Claude does all the branch switching. Just say:</p>
+  <div class="prompt-box">"Set up a backup branch so I can save work-in-progress without deploying. From now on, when I say 'back this up', push to the backup branch. When I say 'ship it', push to main."</div>
+</section>
+
 <!-- 11. NEXT STEPS -->
 <section class="slide">
-  <div class="slide-num">11 / Where to go next</div>
+  <div class="slide-num">12 / Where to go next</div>
   <div class="eyebrow">After you ship</div>
   <h2>The next class, if you want it.</h2>
   <ul>
