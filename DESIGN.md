@@ -1,211 +1,92 @@
 ---
 name: Class Decks
-description: Warm, projector-friendly teaching slides that make developer tools feel approachable for absolute beginners.
-colors:
-  ink: "#1a1a1a"
-  body-ink: "#333333"
-  muted-ink: "#666666"
-  terracotta: "#d94e1f"
-  terracotta-deep: "#b8401a"
-  terracotta-bright: "#f97316"
-  green-check: "#16a34a"
-  paper-top: "#fafaf7"
-  paper-bottom: "#f0ede5"
-  card-surface: "rgba(255,255,255,0.7)"
-  hairline: "rgba(0,0,0,0.08)"
-typography:
-  display:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-    fontSize: "96px"
-    fontWeight: 800
-    lineHeight: 1.05
-    letterSpacing: "-2px"
-  headline:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-    fontSize: "44px"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-1px"
-  title:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-    fontSize: "24px"
-    fontWeight: 600
-    lineHeight: 1.2
-  body:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-    fontSize: "22px"
-    fontWeight: 400
-    lineHeight: 1.5
-  label:
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-    fontSize: "14px"
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: "3px"
-  mono:
-    fontFamily: "'SF Mono', Menlo, Monaco, monospace"
-    fontSize: "16px"
-    fontWeight: 400
-    lineHeight: 1.5
-rounded:
-  sm: "4px"
-  md: "10px"
-  lg: "12px"
-  pill: "30px"
-spacing:
-  sm: "8px"
-  md: "16px"
-  lg: "30px"
-  xl: "60px"
-components:
-  button-nav:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.pill}"
-    padding: "6px 14px"
-  card:
-    backgroundColor: "{colors.card-surface}"
-    textColor: "{colors.body-ink}"
-    rounded: "{rounded.lg}"
-    padding: "28px"
-  pill:
-    backgroundColor: "rgba(217,78,31,0.12)"
-    textColor: "{colors.terracotta-deep}"
-    rounded: "{rounded.pill}"
-    padding: "4px 12px"
-  cta-button:
-    backgroundColor: "{colors.terracotta}"
-    textColor: "{colors.paper-top}"
-    rounded: "8px"
-    padding: "12px 22px"
+description: The feel we're going for and why — a warm, calm teaching surface that makes people who are intimidated by developer tools think "oh, I can do this."
+status: Design intent (north star). Derived from PRODUCT.md and audience, NOT from any existing deck. The deck is checked against this document; it is never the source of it.
 ---
 
-# Design System: Class Decks
+# Design Intent: Class Decks
 
-## 1. Overview
+## How to read this document
 
-**Creative North Star: "The Patient Teacher's Whiteboard"**
+This is a statement of **the feeling we're going for and the reasoning behind it** — not an inventory of the current code. It was written from the audience and the product's purpose, on purpose, so that it can tell us when a deck is *wrong*. A document copied out of the CSS can only ever say "this is what we built"; it can never say "this is too cold" or "this slide overwhelms." This one can.
 
-These decks exist to dissolve fear. The audience is non-technical people who find VS Code, GitHub, and the terminal intimidating, so the visual system does the opposite of what a developer tool would: it's warm, soft-edged, and roomy. The body is a warm off-white that shades gently from `#fafaf7` to `#f0ede5`, a single terracotta accent (`#d94e1f`) carries all the energy, and type is large enough to read from the back of a room. Nothing here looks like a terminal, and nothing looks like a corporate slide template either.
+So the order matters. **The feeling comes first.** Color, type, layout, and motion are *derived from* the feeling — each one earns its place by making an intimidated beginner calmer and more capable. Where concrete values help a future build stay consistent, they're noted as *the how*, never as the point. If a future choice serves the feeling better than a value written here, the feeling wins and the value gets updated.
 
-Each deck is a single self-contained HTML file: one full-viewport slide visible at a time, driven by arrow keys and an on-screen Prev/Next bar, with a thin terracotta progress strip along the top. The same file has to work two ways — as a written guide someone reads alone on a laptop, and as presenter scaffolding on a projector during a live build-along. That dual duty is why every slide holds one idea, generously spaced, never a wall of text.
+---
 
-This system explicitly rejects four things, all named in PRODUCT.md: corporate slideware (bullet soup, clip art, stock gradients), dev-tool dark mode (the black-terminal look reinforces the exact fear the class removes), dense textbook layouts (small type, too much per slide), and over-designed trendiness (glassmorphism, gradient text everywhere, motion for its own sake). Readability beats style every time.
+## 1. The feeling
 
-**Key Characteristics:**
-- Warm off-white canvas, never white, never dark.
-- One terracotta accent doing all the emphasis work.
-- Oversized type built for projectors and across-the-room reading.
-- One idea per slide; generous breathing room.
-- System font stack only — zero web-font load, instant render anywhere.
-- Copy-pasteable prompt boxes are first-class content, not decoration.
+**One sentence: when a nervous beginner lands on a slide, the first thing they should feel is "oh — I can do this."**
 
-## 2. Colors
+The people reading these decks are smart and motivated but stand *outside* the software world. VS Code, GitHub, the terminal — these things have made them feel stupid before, and they're braced to feel stupid again. The single job of the visual design is to **drain that fear** in the first second of looking, before they've read a word. Calm, roomy, warm, unmistakably approachable. The design should feel like a patient person who has their hand on your shoulder saying "you've got this," not like the intimidating tools the class exists to demystify.
 
-A warm-neutral canvas with a single terracotta accent and one green reserved strictly for "done."
+Three words, from the product: **warm, plain-spoken, reassuring.**
 
-### Primary
-- **Terracotta** (`#d94e1f`): The one accent. Carries bullet markers, the progress bar, the quote rule, the CTA button, links (in its deeper shade), and flow-step borders. Energetic without being loud against the warm paper.
-- **Terracotta Deep** (`#b8401a`): The text-safe shade of the accent. Used for links, inline `code`, prompt-box text, and accent headings where the brighter terracotta wouldn't clear contrast on the light paper.
-- **Terracotta Bright** (`#f97316`): A lighter partner used only in two gradients — the top progress strip and the "Ship it" CTA badge. Never used for text.
+**The feeling is not "impressive."** We are not trying to make other designers nod. A beginner who thinks "wow, that's slick" is, a half-second later, thinking "...and I could never make that." Polish that draws attention to itself raises the bar in the reader's mind and pushes them further from "I can do this." When craft and reassurance ever pull in different directions, **reassurance wins.** Every time.
 
-### Secondary
-- **Check Green** (`#16a34a` / sidebar `#4ade80`): Reserved exclusively for the "done / new file / untracked" semantic — checklist boxes, the VS Code "U / green = new" callout. Green never appears decoratively; its only job is signalling success or newness.
+## 2. The one thing that breaks it: overwhelm
 
-### Neutral
-- **Ink** (`#1a1a1a`): Headings and primary emphasis.
-- **Body Ink** (`#333333`): Body copy and list items. The workhorse reading color.
-- **Muted Ink** (`#666666`): Sub-list items, small notes, secondary captions. Do not push lighter than this on the paper background, or it drops below AA.
-- **Paper** (`#fafaf7` → `#f0ede5`): The 135° body gradient. Warm, low-glare, easy on a projector.
-- **Card Surface** (`rgba(255,255,255,0.7)`): Semi-translucent white panels that lift content a half-step off the paper without hard edges.
-- **Hairline** (`rgba(0,0,0,0.08)`): Card borders and the nav bar outline. Whisper-thin separation only.
+If the feeling is "I can do this," the fastest way to destroy it is to make a slide feel like **too much**. Density is the cardinal sin of this design system. A wall of text, a slide with five competing ideas, type that forces a squint, a layout the eye can't find the start of — each one lands on an already-nervous person as *"I'm behind, everyone else gets this, I'm not smart enough."* That is the exact feeling we exist to prevent, recreated by layout.
 
-### Named Rules
-**The One Accent Rule.** Terracotta is the only brand color. If a slide needs a second "color," it's almost always a deeper or lighter terracotta, a neutral, or a transparency of terracotta itself — not a new hue. The single exception is the success-green, which is allowed *only* for "done / new / untracked" meaning.
+So the discipline that matters most is **subtraction**. One idea per slide. Generous empty space treated as a feature, not wasted room. Few enough words that the slide can be taken in at a glance, from across a room, by someone who is a little scared. When in doubt, cut — never shrink the type to fit more, never add a second idea because there's space. **Empty space is reassurance made visible.** A calm slide says "this is manageable" before the reader has parsed a single sentence.
 
-**The Paper-Not-White Rule.** The background is always the warm `#fafaf7→#f0ede5` paper, never pure white and never dark. Pure white reads clinical; dark reads like the terminal we're trying to make un-scary.
+This is the test to hold every slide against: *would a nervous beginner glance at this and feel calmer, or feel behind?* If there's any chance it's "behind," the slide has too much on it.
 
-## 3. Typography
+## 3. What that means for the design
 
-**Display / Body / Label Font:** The native system stack — `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif`.
-**Mono Font:** `"SF Mono", Menlo, Monaco, monospace`, used only for `code`, file paths, URLs, and prompt boxes.
+The feeling above and the overwhelm-fear below it generate everything that follows. Each derived choice answers one question: **does this make an intimidated beginner feel calmer and more capable?** And each is checked against the four things that would betray the vibe — anything that feels **techy** (like the scary tools), **corporate / generic** (soulless, "AI made this"), **dense** (the cardinal sin), or **show-offy** (raises the bar, pushes them away).
 
-**Character:** One humanist system sans, working entirely through scale and weight, plus a mono for anything the reader might type or copy. The choice is deliberate: no web fonts means the deck renders instantly and identically on any machine or projector, and the familiar system face feels approachable rather than "designed at" the reader. Hierarchy comes from a strong size jump and heavy display weights, not from font variety.
+### Color — warmth that lowers the temperature
 
-### Hierarchy
-- **Display** (800, 96px on title/closing slides, `-2px` tracking, line-height 1.05): Title-slide and end-slide hero statements only. Currently rendered with a subtle dark `#1a1a1a→#555` clip gradient on the title — see the Don'ts; new slides should prefer solid ink.
-- **Headline / h2** (700, 44px, `-1px`, line-height 1.1): The single big idea on each content slide. One per slide.
-- **Title / h3** (600, 24px): Sub-section headers within a slide; often set in terracotta-deep.
-- **Body / p, li** (400, 22px, line-height 1.5, max ~1100px wide): The reading size. Large on purpose so it survives projection. Sub-list items step down to 18px and muted ink.
-- **Label / eyebrow** (400, 14px, uppercase, `3px` tracking, muted): One short kicker per slide naming the section's theme.
-- **Mono** (16px): Inline `code`, file paths, URLs, and the larger prompt boxes.
+The reasoning, not the swatches:
 
-### Named Rules
-**The Read-From-The-Back Rule.** Body copy never drops below 18px, and the main idea is 44px+. If a slide needs smaller text to fit, the slide has too much on it — cut content, don't shrink type.
+- **Warm, never clinical, never dark.** A warm off-white "paper" canvas, because the alternatives both betray the feeling: pure white reads cold and institutional (a form to fill out, a system that judges you), and dark reads like the terminal — the precise aesthetic that has intimidated this audience their whole lives. Warmth says *human, gentle, safe to touch.* This is the most important color decision in the system and it is non-negotiable.
+- **One friendly accent, doing all the work.** A single warm accent color (a soft terracotta-orange family) carries emphasis, energy, and "this is the important bit." One accent, not a palette, because **a rainbow is overwhelm** — every additional color is one more thing for a nervous eye to decode. One warm color is a calm, confident voice; six colors is a crowded room. The accent should feel encouraging, not loud.
+- **Color never the only signal.** Where color carries meaning (e.g. file-status indicators), it's always paired with a word or letter — both because a beginner shouldn't have to memorize a color key (that's load), and for anyone who can't distinguish the hues.
+- **High, comfortable contrast.** Text sits clearly against the paper, comfortably above WCAG AA — not as a compliance checkbox but because this gets read on projectors in bright rooms and on laptops in cafés, and a beginner straining to read is a beginner feeling stupid. The likeliest failure is muted gray text going too light on the warm background; err darker. Faint, low-contrast "elegant" gray is banned here — it's the opposite of reassuring.
 
-**The One-Idea Rule.** Each slide carries exactly one h2-level idea. Supporting lists, cards, and prompts elaborate it; they never introduce a competing headline.
+*The how (current, derivable, replaceable):* warm paper around `#fafaf7`→`#ece8de`; one terracotta accent in the `#d94e1f` family with deeper shades for text-on-paper; a single reserved green used only for "done / new," never decoratively; warm near-black ink for reading. These values serve the warmth; if a warmer or calmer set serves it better, change them.
 
-## 4. Elevation
+### Typography — friendly, large, unmistakably readable
 
-Mostly flat, with feather-light shadows used only to lift translucent surfaces a half-step off the paper. There is no deep, dramatic elevation anywhere; depth is suggested, never asserted. The warm paper plus translucent white cards already create gentle layering, so shadows stay soft and diffuse.
+- **Friendly, not corporate, not techy.** Headings in a warm, humanist, approachable typeface — rounded and human rather than sharp, geometric, or "designed-at-you." The wrong heading font can make the whole deck feel like a tech startup or a bank; the right one feels like a person who likes you wrote it. Body in a clean, familiar, highly legible face. **Mono only where it's literally a thing the reader will type or copy** (a command, a filename, a prompt) — never as decoration, because monospace *is* the visual language of the scary developer tools, and using it for flavor reinforces the exact fear we're removing.
+- **Big on purpose.** Type is sized for the back of a room and for a beginner who shouldn't have to lean in. Generous, confident sizes; clear jumps between the headline and the supporting text so the eye instantly knows where to start. Small, dense type is the texture of the textbook that made them feel dumb — we are the opposite of that.
+- **One idea, one clear headline per slide.** The hierarchy should make "what is this slide about?" answerable in under a second. Supporting text elaborates; it never competes with a second headline.
 
-### Shadow Vocabulary
-- **Card lift** (`box-shadow: 0 1px 3px rgba(0,0,0,0.04)`): The default for cards and prompt boxes. Barely-there separation.
-- **Image lift** (`box-shadow: 0 6px 24px rgba(0,0,0,0.12)`): For the example screenshots on the title slide, which need to read as physical objects.
-- **Nav float** (`box-shadow: 0 4px 12px rgba(0,0,0,0.08)` + `backdrop-filter: blur(10px)`): The one intentional glass moment — the floating bottom nav bar, which sits over slide content and needs to detach from it.
-- **CTA glow** (`box-shadow: 0 8px 24px rgba(217,78,31,0.35)`): A colored shadow under the terracotta "Ship it" badge, the single place the deck lets the accent throw light.
+*The how (current, derivable, replaceable):* Hanken Grotesk (warm humanist sans, self-hosted for instant offline render) on headings; the native system sans on body; a mono only for code/paths/prompts. Headline roughly twice the body size with a real weight jump.
 
-### Named Rules
-**The Half-Step Rule.** Shadows lift a surface at most a half-step off the paper. The default card shadow is `0 1px 3px rgba(0,0,0,0.04)` — if a shadow is darker or larger than the image-lift value, it's too heavy for this deck.
+### Layout — roomy, calm, one clear path for the eye
 
-## 5. Components
+- **Space is the feature.** Every slide breathes. Generous margins and a single, calm column the eye can follow top to bottom. The reader should never hunt for where to begin. Roominess *is* the reassurance — it's how "this is manageable" gets communicated before any reading happens.
+- **One idea, framed simply.** A slide holds one concept. Supporting points sit *under* it in a clear, scannable shape — a short list, two side-by-side cards, a simple left-to-right flow. Never a grid of competing boxes, never a dense collage. If a slide needs more than one organizing structure, it's two slides.
+- **A consistent, predictable frame.** Every slide is built on the same skeleton — same margins, same place the eye lands, content always clear of the navigation — so that moving through the deck feels steady and safe rather than like a new puzzle each time. Predictability is calming; surprise layouts are load. Consistency here is itself a feature, not a constraint.
+- **Copy-pasteable prompts are first-class.** The "type this to Claude" boxes are real content, given a clear, consistent, recognizable treatment so a self-serve reader knows on sight: *this is a thing I copy and paste.* Learnable signals reduce anxiety.
 
-### Buttons
-- **Shape:** Pill (`30px` radius) for nav controls; soft rectangle (`8px`) for the CTA.
-- **Nav buttons:** Transparent with a `1px rgba(0,0,0,0.15)` border, ink text, `6px 14px` padding. Hover fills with `rgba(0,0,0,0.05)`. Live inside the floating bottom nav bar.
-- **CTA button** (closing slide): Solid terracotta (`#d94e1f`), paper-white text, `12px 22px`, 700 weight, soft terracotta shadow. The one "press me" affordance in the deck.
-- **"Ship it" badge:** A non-interactive emphasis block — terracotta→bright gradient, white uppercase text, heavy CTA glow. Used once, as the payoff at the end of the command-sequence slide.
+### Motion — gentle, or none
 
-### Chips / Pills
-- **Style:** `rgba(217,78,31,0.12)` background, terracotta-deep text, fully rounded, `4px 12px`, 500 weight. Used inline to tag agent names and short keywords (`code-reviewer`, `security-reviewer`).
-- **Label badge:** The solid-terracotta inline `.label` ("PREVIEW", "DEPLOY", "UNDO") — white text on terracotta, `4px` radius, 700 weight — flags categories in the troubleshooting cheat sheet.
+- **Motion reassures or it doesn't appear.** Any movement is soft, quick, and calming — a gentle settle, never a bounce, a flash, or anything attention-grabbing. Showy motion is show-off energy; it raises the bar and breaks the calm. Most of the time, stillness is the right answer. When motion is used, it should make the deck feel *more* relaxed, never more impressive.
+- **Reduced-motion is honored** — both as basic accessibility and because some readers are genuinely soothed by stillness. No one should be subjected to movement they didn't want.
 
-### Cards / Containers
-- **Corner Style:** `12px` radius (lg).
-- **Background:** Translucent white `rgba(255,255,255,0.7)`; accent cards tint with `rgba(217,78,31,0.05–0.06)` and a faint terracotta border.
-- **Shadow Strategy:** Card-lift only (`0 1px 3px rgba(0,0,0,0.04)`). See Elevation.
-- **Border:** `1px rgba(0,0,0,0.08)` hairline.
-- **Internal Padding:** `28px`.
-- **Card headings** are set in terracotta-deep.
+## 4. What would betray the vibe (anti-goals)
 
-### Prompt Box (signature component)
-The most important custom component: a white panel for copy-pasteable Claude prompts. White background, `1px #e5e0d5` border with a `4px` terracotta left edge, `6px` radius, mono type in terracotta-deep, `16px 20px` padding, card-lift shadow. This is the one deliberate exception to the side-stripe ban: the colored left edge marks "this is a thing you copy and paste" and is a recurring, learnable signal across the deck. (New non-prompt callouts should NOT borrow the left-stripe; it belongs to prompt boxes.)
+These are the failure modes to actively design against. Each is the inverse of the feeling.
 
-### Navigation
-- **Style:** A floating pill bar fixed bottom-center — translucent white, `blur(10px)` backdrop, hairline border, nav-float shadow. Holds Prev / counter / Next.
-- **Progress:** A `3px` terracotta→bright gradient strip fixed to the top edge, width tracking deck position.
-- **Keyboard:** Arrow keys / space / PageUp-Down advance; Home / End jump to first / last. Keyboard nav is core and must keep working.
+- **Techy / dev-tool aesthetics.** Dark "terminal" backgrounds, neon, monospace as decoration, syntax-highlight vibes. This reinforces the exact fear the class removes. The cardinal *aesthetic* sin. (Even the code-handout page stays warm and light — code lives in light tinted panels with the terracotta "copy this" edge, never a dark terminal. Mono is still reserved for things you actually type or copy.)
+- **Dense / overwhelming.** Walls of text, tiny type, many ideas per slide, busy collages. The cardinal *experiential* sin — it makes a beginner feel behind. Watch this one hardest.
+- **Corporate / generic slideware.** Template PowerPoint, stock gradients, clip art, soulless "AI made this" uniformity. Cold and impersonal — the opposite of a human teacher who cares.
+- **Show-offy / over-designed.** Glassmorphism for flavor, gradient text, motion for its own sake, effects that impress designers and intimidate beginners. Readability and reassurance beat style, always.
+- **No borrowed brand.** These decks build no brand of their own and don't adopt StratEngine's identity (its logo appears once at the very end as the instructor's day-job, nothing more). The vibe is the teacher's, not a product's.
 
-### Flow Steps
-Horizontal "You talk → Claude edits → GitHub saves → Vercel publishes" chips: `rgba(217,78,31,0.10)` fill, terracotta border, `10px` radius, separated by large terracotta `→` arrows. Used to show pipelines.
+## 5. The rulings (when choices conflict)
 
-## 6. Do's and Don'ts
+A standard has to say what wins when two good things collide. These are the tie-breakers:
 
-### Do:
-- **Do** keep the warm paper background (`#fafaf7→#f0ede5`) on every slide. Warm, low-glare, projector-safe.
-- **Do** hold to one terracotta accent. Reach for a deeper/lighter terracotta or a transparency before introducing any new hue.
-- **Do** set body copy at 22px and the main idea at 44px+. Assume a projector at the back of a room.
-- **Do** keep one h2-level idea per slide; let lists, cards, and prompts support it.
-- **Do** use the prompt-box component for anything the reader should copy and paste into Claude — it's the deck's "type this" signal.
-- **Do** reserve green strictly for "done / new / untracked" meaning, and always pair it with a letter or label, never color alone.
-- **Do** keep everything in one self-contained HTML file with the system font stack — instant render, works offline, identical on any machine.
-- **Do** keep keyboard navigation and the `prefers-reduced-motion` path working; the deck is driven by arrow keys.
+- **Reassurance beats craft.** A more impressive option that risks making a beginner feel small loses to a plainer one that makes them feel capable.
+- **Subtraction beats completeness.** Cutting a slide down to one calm idea beats fitting in everything that's true. Make a second slide, or cut it.
+- **Readability beats style.** If a stylish treatment costs legibility from across a room, the style goes.
+- **Warmth beats neutrality.** When unsure, choose the option that feels more human and gentle, not the safer "professional" one. Safe-professional reads as cold here.
+- **Consistency beats cleverness.** A predictable frame the reader can trust beats a clever per-slide layout that makes them re-orient.
 
-### Don't:
-- **Don't** ship corporate slideware — no bullet soup, clip art, or stock gradients. (PRODUCT.md anti-reference.)
-- **Don't** use dev-tool dark mode for the decks — no black terminal backgrounds or neon syntax colors. It reinforces the exact fear the class removes. (`agents.html`'s dark theme is a deliberate code-handout exception, not the deck direction.) (PRODUCT.md anti-reference.)
-- **Don't** make slides dense or textbook-like — no walls of small text, nothing that can't be read from a projector. (PRODUCT.md anti-reference.)
-- **Don't** over-design — no glassmorphism beyond the single nav bar, no gradient text on new slides, no motion for its own sake. (PRODUCT.md anti-reference.)
-- **Don't** push body or note text lighter than muted ink `#666666` on the paper; lighter gray drops below AA contrast, and this content gets read on projectors in variable light.
-- **Don't** add the terracotta left-stripe to anything other than the prompt box — that stripe is the prompt box's identity.
-- **Don't** pull StratEngine brand elements into the deck. The logo appears once at the end as the instructor's day-job product, not as a brand the decks adopt.
+## 6. The feeling, restated
+
+If a slide makes a person who has been intimidated by software feel — for one second, before they read a word — that **this is calm, this is warm, this is for me, and I can do this**, the design is working. If it makes them feel behind, talked-down-to, or like they've wandered back into the scary tools, it has failed, no matter how polished it is. Everything in this document is downstream of that one test.

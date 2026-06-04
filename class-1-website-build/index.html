@@ -5,263 +5,371 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Class 1: How to Build a Website</title>
 <style>
+  /* ============================================================
+     Class 1 deck — warm "patient teacher's whiteboard" system
+     Headings: Hanken Grotesk (self-hosted). Body: system sans.
+     ============================================================ */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;            /* variable axis */
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+
+  :root {
+    /* palette */
+    --paper-top: #fafaf7;
+    --paper-bot: #ece8de;            /* a hair deeper than before for more presence */
+    --ink:        #15140f;           /* near-black warm ink, slightly warmer than #1a1a1a */
+    --body:       #2c2a24;           /* workhorse reading color, clears AA on paper */
+    --muted:      #6a665c;           /* secondary; do not go lighter on paper */
+    --faint:      #7c776c;           /* captions / slide marker only (AA-large on paper) */
+    --terra:      #d94e1f;
+    --terra-deep: #b8401a;
+    --terra-ink:  #9a3614;           /* text-safe deepest terracotta for fine print on tint */
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;           /* warm near-white card, opaque (no timid translucency) */
+    /* type */
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    /* layout */
+    --pad-x: clamp(48px, 7vw, 104px);
+    --pad-top: clamp(48px, 7vh, 76px);
+    --nav-safe: 116px;               /* bottom safe-area so content never hits the nav */
+    --col: 1180px;                   /* content measure */
+    /* z-index scale */
+    --z-progress: 200;
+    --z-nav: 100;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html, body {
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    background: #fafaf7;
-    color: #1a1a1a;
+    font-family: var(--sans);
+    background: var(--paper-bot);
+    color: var(--body);
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  .deck {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  /* ---- Shared slide skeleton -------------------------------------------
+     Every slide is the same frame: a centered max-width content column,
+     consistent padding, and a guaranteed bottom safe-area above the nav.
+     Vertical centering is the default; the column never collides w/ nav. */
   .slide {
     width: 100vw;
     height: 100vh;
-    padding: 60px 80px 110px;
     display: none;
-    flex-direction: column;
-    justify-content: center;
     position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, #fafaf7 0%, #f0ede5 100%);
+    top: 0; left: 0;
+    padding: var(--pad-top) var(--pad-x) var(--nav-safe);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(217,78,31,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
     overflow-y: auto;
   }
-  .slide.active { display: flex; }
+  .slide.active { display: flex; flex-direction: column; }
+  /* center the content column vertically + cap its width consistently */
+  .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
+  .slide.active { justify-content: center; }
+  /* dense slides: pin to top + tighten the type ramp so nothing overflows */
+  .slide.dense { justify-content: flex-start; }
+  .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
+  .slide.dense p,
+  .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
+  .slide.dense li { line-height: 1.42; }
+  .slide.dense .small-note { margin-top: 12px; }
+  .slide.dense .card .eyebrow { margin-bottom: 8px; }
+  /* dense cards: tighten internal list rhythm so an at-a-glance summary clears the nav */
+  .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
+  .slide.dense .card ul li:last-child { margin-bottom: 0; }
+
+  /* ---- Slide marker (top-right): the deck's single deliberate kicker ---- */
   .slide-num {
     position: absolute;
-    top: 30px;
-    right: 40px;
-    font-size: 14px;
-    color: #999;
-    letter-spacing: 1px;
+    top: clamp(26px, 4vh, 40px);
+    right: clamp(28px, 4vw, 52px);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    z-index: 3;
   }
+
+  /* ---- Eyebrow: tied to the accent with a tick, not a floating reflex --- */
   .eyebrow {
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #888;
-    margin-bottom: 20px;
+    letter-spacing: 0.16em;
+    color: var(--terra-deep);
+    margin-bottom: 22px;
   }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--terra);
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  /* nested eyebrows inside cards are sub-labels, not the slide kicker: no tick */
+  .card .eyebrow { margin-bottom: 10px; }
+  .card .eyebrow::before { display: none; }
+
+  /* ---- Headings: Hanken, real modular scale -------------------------- */
   h1 {
-    font-size: 64px;
+    font-family: var(--display);
+    font-size: clamp(46px, 6vw, 68px);
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
     margin-bottom: 30px;
-    background: linear-gradient(90deg, #1a1a1a 0%, #555 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--ink);
+    text-wrap: balance;
   }
   h2 {
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    color: #1a1a1a;
+    font-family: var(--display);
+    font-size: clamp(36px, 4.4vw, 50px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    text-wrap: balance;
   }
+  h2 em { font-style: normal; color: var(--terra); }
   h3 {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
     margin-bottom: 16px;
-    color: #1a1a1a;
+    color: var(--ink);
   }
+
   p {
-    font-size: 22px;
-    line-height: 1.5;
-    color: #333;
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--body);
     margin-bottom: 16px;
-    max-width: 1100px;
+    max-width: 68ch;
+    text-wrap: pretty;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-    max-width: 1100px;
-  }
+
+  ul { list-style: none; padding: 0; max-width: var(--col); }
   li {
-    font-size: 22px;
+    font-size: clamp(19px, 1.7vw, 22px);
     line-height: 1.5;
-    color: #333;
+    color: var(--body);
     margin-bottom: 14px;
-    padding-left: 28px;
+    padding-left: 30px;
     position: relative;
   }
   li::before {
     content: "→";
+    font-family: var(--sans);
     position: absolute;
     left: 0;
-    color: #d94e1f;
-    font-weight: bold;
+    top: 0.02em;
+    color: var(--terra);
+    font-weight: 700;
   }
-  li.check::before { content: "☐"; color: #16a34a; }
-  li.sub {
-    padding-left: 50px;
-    font-size: 18px;
-    color: #666;
-  }
-  li.sub::before {
-    left: 28px;
-    content: "·";
-    color: #aaa;
-  }
+  li.check::before { content: "☐"; color: var(--green); }
+  li strong { color: var(--ink); font-weight: 700; }
+
   .grid-2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(20px, 2.4vw, 36px);
+    max-width: var(--col);
   }
+
+  /* ---- Cards: opaque warm surface, intentional, not timid glass ------- */
   .card {
-    background: rgba(255,255,255,0.7);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 12px;
-    padding: 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
   }
-  .card h3 { color: #d94e1f; margin-bottom: 12px; }
-  .card p { font-size: 18px; margin-bottom: 0; color: #333; }
+  .card h3 { color: var(--terra-deep); margin-bottom: 12px; }
+  .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
+  .card p + p { margin-top: 10px; }
+
   code, .mono {
-    font-family: "SF Mono", Menlo, Monaco, monospace;
+    font-family: var(--mono);
     background: rgba(217,78,31,0.10);
-    color: #b8401a;
+    color: var(--terra-ink);
     padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.9em;
+    border-radius: 5px;
+    font-size: 0.88em;
+    font-weight: 500;
   }
+
   .pill {
     display: inline-block;
     background: rgba(217,78,31,0.12);
-    color: #b8401a;
-    padding: 4px 12px;
-    border-radius: 20px;
+    color: var(--terra-ink);
+    padding: 5px 13px;
+    border-radius: 30px;
     font-size: 14px;
+    font-weight: 600;
     margin-right: 8px;
     margin-bottom: 8px;
-    font-weight: 500;
   }
+
+  /* ---- Quote: framed block, no thin side-stripe reflex --------------- */
   .quote {
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #d94e1f;
-    border-left: 4px solid #d94e1f;
-    padding-left: 30px;
-    margin: 30px 0;
-    max-width: 1100px;
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--terra-deep);
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--terra);
+    margin: 28px 0;
+    max-width: var(--col);
+    text-wrap: balance;
   }
+
+  /* ---- Floating nav (the one intentional glass moment) --------------- */
   .nav {
     position: fixed;
-    bottom: 20px;
+    bottom: 22px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    background: rgba(255,255,255,0.85);
-    padding: 10px 20px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    z-index: 100;
+    align-items: center;
+    background: rgba(255,253,249,0.82);
+    padding: 9px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--hair);
+    box-shadow: 0 6px 20px -6px rgba(20,18,12,0.18);
+    z-index: var(--z-nav);
   }
   .nav button {
     background: transparent;
-    border: 1px solid rgba(0,0,0,0.15);
-    color: #1a1a1a;
-    padding: 6px 14px;
-    border-radius: 20px;
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 7px 16px;
+    border-radius: 30px;
     cursor: pointer;
+    font-family: var(--sans);
     font-size: 13px;
-    transition: all 0.15s;
+    font-weight: 600;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .nav button:hover { background: rgba(0,0,0,0.05); }
+  .nav button:hover { background: rgba(217,78,31,0.08); border-color: rgba(217,78,31,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+
   .progress {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #d94e1f, #f97316);
-    z-index: 200;
-    transition: width 0.3s ease;
+    top: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terra), #f97316);
+    z-index: var(--z-progress);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .title-slide {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-  .title-slide h1 {
-    font-size: 96px;
-  }
-  .title-slide p {
-    font-size: 28px;
-    color: #555;
-  }
+
+  /* ---- Flow chips ---------------------------------------------------- */
   .arrow-flow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    margin-top: clamp(28px, 4vh, 48px);
     flex-wrap: wrap;
   }
   .flow-step {
-    background: rgba(217,78,31,0.10);
-    border: 1px solid rgba(217,78,31,0.3);
-    padding: 16px 24px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #1a1a1a;
+    background: var(--surface);
+    border: 1px solid rgba(217,78,31,0.35);
+    padding: 15px 24px;
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
   }
-  .flow-arrow {
-    color: #d94e1f;
-    font-size: 32px;
-    font-weight: bold;
-  }
+  .flow-arrow { color: var(--terra); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+
   .small-note {
-    font-size: 16px;
-    color: #666;
+    font-size: clamp(15px, 1.35vw, 16px);
+    color: var(--muted);
     margin-top: 20px;
     font-style: italic;
+    max-width: 72ch;
   }
-  .two-col-list {
-    columns: 2;
-    column-gap: 60px;
-    max-width: 1100px;
-  }
-  .two-col-list li { break-inside: avoid; }
+
+  /* ---- Prompt box (signature "type this" component) ------------------ */
   .prompt-box {
-    background: #fff;
-    border: 1px solid #e5e0d5;
-    border-left: 4px solid #d94e1f;
-    padding: 16px 20px;
-    border-radius: 6px;
-    font-family: "SF Mono", Menlo, Monaco, monospace;
-    font-size: 16px;
-    color: #b8401a;
-    margin: 10px 0;
+    background: var(--surface);
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--terra);
+    padding: 16px 22px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--terra-ink);
+    margin: 12px 0;
     max-width: 1000px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(217,78,31,0.4);
   }
+
+  /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2vw, 30px) clamp(24px, 3vw, 44px);
+    max-width: var(--col);
+    margin-top: 6px;
+  }
+  .cheat p { font-size: clamp(16px, 1.45vw, 18px); margin-bottom: 8px; }
+  .cheat .prompt-box { margin: 0; }
+  @media (max-width: 760px) { .cheat-grid { grid-template-columns: 1fr; } }
+
   .label {
     display: inline-block;
-    background: #d94e1f;
+    background: var(--terra);
     color: #fff;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 13px;
+    padding: 3px 11px;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 12px;
     font-weight: 700;
+    letter-spacing: 0.03em;
     margin-right: 10px;
     vertical-align: middle;
   }
-  a:focus, a:focus-visible {
-    outline: none;
-    text-decoration: underline;
+
+  a { color: var(--terra-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+    .nav button { transition: none; }
+  }
+
+  /* keep the slide column readable on smaller laptop widths */
+  @media (max-width: 760px) {
+    .slide { padding: 40px 28px var(--nav-safe); }
+    .grid-2 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -352,14 +460,21 @@
   <p class="small-note">In short: git is telling you "here's what's different since your last save."</p>
 </section>
 
-<!-- 2.5 AGENTS -->
+<!-- 2.5 AGENTS — what they are -->
 <section class="slide">
   <div class="slide-num">2.5 / Agents</div>
   <div class="eyebrow">Specialist Claudes</div>
   <h2>Creating agents inside Claude Code.</h2>
   <p>An agent is just a specialist Claude calls when needed. Today we'll install two: <span class="pill">code-reviewer</span> <span class="pill">security-reviewer</span></p>
-  <p style="margin-top: 8px;"><a href="agents.html" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
-  <h3 style="margin-top: 24px; color: #b8401a;">Steps (we'll do this live)</h3>
+  <p style="margin-top: 14px;"><a href="agents.html" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
+  <p class="small-note">Now you know how to make your own agents for anything — a copywriter, a tax helper, whatever.</p>
+</section>
+
+<!-- 2.5b AGENTS — the steps -->
+<section class="slide">
+  <div class="slide-num">2.5 / Agents — the steps</div>
+  <div class="eyebrow">Specialist Claudes</div>
+  <h2>Steps (we'll do this live)</h2>
   <ul>
     <li>In VS Code, open the Claude Code terminal panel.</li>
     <li>Type <code>/agents</code> and hit enter.</li>
@@ -369,7 +484,6 @@
     <li>Save. Confirm it appears in the <code>/agents</code> list.</li>
     <li>Repeat for the second agent.</li>
   </ul>
-  <p class="small-note">Now you know how to make your own agents for anything — a copywriter, a tax helper, whatever.</p>
 </section>
 
 <!-- 2.6 ALWAYS REVIEW -->
@@ -382,30 +496,37 @@
   <p class="small-note">You just gave Claude a permanent instruction. This is how you train it to your standards.</p>
 </section>
 
-<!-- 2.7 CLAUDE.md -->
+<!-- 2.7 CLAUDE.md — what it is -->
 <section class="slide">
   <div class="slide-num">2.7 / CLAUDE.md</div>
   <div class="eyebrow">Permanent instructions</div>
   <h2>What CLAUDE.md is and how it works.</h2>
   <p>A plain markdown file Claude reads automatically every time it starts. Permanent instructions you don't have to repeat.</p>
-  <p style="margin-top: 18px; color:#b8401a; font-weight: 600;">When making a decision, you need to decide where the direction belongs: global or project.</p>
-  <div class="grid-2" style="margin-top: 20px;">
+  <p style="margin-top: 22px; color:#b8401a; font-weight: 600; font-size: clamp(20px, 1.9vw, 24px);">When making a decision, you need to decide where the direction belongs: global or project.</p>
+  <p class="small-note">Note: these live in a <code>.claude</code> folder that's hidden by default — let Claude open them for you rather than hunting for the files.</p>
+</section>
+
+<!-- 2.7b CLAUDE.md — global vs project -->
+<section class="slide">
+  <div class="slide-num">2.7 / CLAUDE.md — where it lives</div>
+  <div class="eyebrow">Permanent instructions</div>
+  <h2>Global or project?</h2>
+  <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <h3>Global</h3>
       <p><code>~/.claude/CLAUDE.md</code></p>
       <p style="margin-top: 10px;">Applies to <strong>every</strong> project on your computer.</p>
-      <p style="margin-top: 10px; color: #aaa; font-size: 16px;">"Always run code-review after changes." "Be concise." Style preferences.</p>
+      <p style="margin-top: 10px; color: var(--muted); font-size: 16px;">"Always run code-review after changes." "Be concise." Style preferences.</p>
     </div>
     <div class="card">
       <h3>Project</h3>
       <p><code>./CLAUDE.md</code> in repo root</p>
       <p style="margin-top: 10px;">Applies <strong>only</strong> to this website.</p>
-      <p style="margin-top: 10px; color: #aaa; font-size: 16px;">"This is a wedding photographer site." "Brand colors are X." "About page copy is locked."</p>
+      <p style="margin-top: 10px; color: var(--muted); font-size: 16px;">"This is a wedding photographer site." "Brand colors are X." "About page copy is locked."</p>
     </div>
   </div>
   <p class="small-note">Rule of thumb: same for every AI session → global. About this website → project.</p>
   <p class="small-note">To view or edit: just ask Claude — "open my global CLAUDE.md" or "open the project CLAUDE.md."</p>
-  <p class="small-note">Note: these live in a <code>.claude</code> folder that's hidden by default — let Claude open them for you rather than hunting for the files.</p>
 </section>
 
 <!-- 3. GITHUB -->
@@ -541,16 +662,16 @@
       <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; writing-mode: vertical-rl; transform: rotate(180deg);">Detail</div>
     </div>
     <div style="width: 100%; background: rgba(217,78,31,0.14); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#b8401a;">1. Aesthetic / vibe</strong> <span style="color:#555;">— Does it <em>feel</em> like the brand? Don't read words. Squint.</span> <span style="color:#777; font-size:13px;">(Whole site.)</span>
+      <strong style="color:#b8401a;">1. Aesthetic / vibe</strong> <span style="color:#555;">— Does it <em>feel</em> like the brand? Don't read words. Squint.</span> <span style="color:#5f5b52; font-size:13px;">(Whole site.)</span>
     </div>
     <div style="width: 88%; background: rgba(217,78,31,0.12); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#b8401a;">2. Sections / Information Architecture</strong> <span style="color:#555;">— Right sections in the right order?</span> <span style="color:#777; font-size:13px;">(Whole site.)</span>
+      <strong style="color:#b8401a;">2. Sections / Information Architecture</strong> <span style="color:#555;">— Right sections in the right order?</span> <span style="color:#5f5b52; font-size:13px;">(Whole site.)</span>
     </div>
     <div style="width: 74%; background: rgba(217,78,31,0.10); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#b8401a;">3. Layout within each section</strong> <span style="color:#555;">— Hierarchy and balance.</span> <span style="color:#777; font-size:13px;">(One section at a time.)</span>
+      <strong style="color:#b8401a;">3. Layout within each section</strong> <span style="color:#555;">— Hierarchy and balance.</span> <span style="color:#5f5b52; font-size:13px;">(One section at a time.)</span>
     </div>
     <div style="width: 58%; background: rgba(217,78,31,0.08); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
-      <strong style="color:#b8401a;">4. Copy</strong> <span style="color:#555;">— Does it sound like you? Is it clear?</span> <span style="color:#777; font-size:13px;">(Section by section.)</span>
+      <strong style="color:#b8401a;">4. Copy</strong> <span style="color:#555;">— Does it sound like you? Is it clear?</span> <span style="color:#5f5b52; font-size:13px;">(Section by section.)</span>
     </div>
     <div style="width: 42%; background: rgba(217,78,31,0.06); border: 1px solid rgba(217,78,31,0.4); padding: 11px 22px; border-radius: 6px; text-align: center;">
       <strong style="color:#b8401a;">5. Details / craft</strong> <span style="color:#555;">— Micro-interactions, spacing, polish.</span>
@@ -596,43 +717,53 @@
   <div class="slide-num">8 / Troubleshooting cheat sheet</div>
   <div class="eyebrow">Save this</div>
   <h2>When stuck, paste one of these.</h2>
-  <p><span class="label">PREVIEW</span> Preview won't load:</p>
-  <div class="prompt-box">"My local preview won't load. Launch a local server and tell me what URL to open."</div>
-  <p><span class="label">DEPLOY</span> Vercel build failed:</p>
-  <div class="prompt-box">"My Vercel deploy failed. Check the latest deployment logs and fix whatever broke."</div>
-  <p><span class="label">UNDO</span> I broke something:</p>
-  <div class="prompt-box">"Revert to the last commit."</div>
-  <p><span class="label">STALE</span> Claude keeps giving you outdated instructions or APIs that don't exist anymore:</p>
-  <div class="prompt-box">"Base your answer on current information — search the internet for the latest docs before responding."</div>
+  <div class="cheat-grid">
+    <div class="cheat">
+      <p><span class="label">PREVIEW</span> Preview won't load:</p>
+      <div class="prompt-box">"My local preview won't load. Launch a local server and tell me what URL to open."</div>
+    </div>
+    <div class="cheat">
+      <p><span class="label">DEPLOY</span> Vercel build failed:</p>
+      <div class="prompt-box">"My Vercel deploy failed. Check the latest deployment logs and fix whatever broke."</div>
+    </div>
+    <div class="cheat">
+      <p><span class="label">UNDO</span> I broke something:</p>
+      <div class="prompt-box">"Revert to the last commit."</div>
+    </div>
+    <div class="cheat">
+      <p><span class="label">STALE</span> Claude keeps giving you outdated instructions or APIs that don't exist anymore:</p>
+      <div class="prompt-box">"Base your answer on current information — search the internet for the latest docs before responding."</div>
+    </div>
+  </div>
 </section>
 
-<!-- 9. COMMAND SEQUENCE -->
-<section class="slide">
+<!-- 9. COMMAND SEQUENCE (deliberate at-a-glance summary: dense by design) -->
+<section class="slide dense">
   <div class="slide-num">9 / Command sequence</div>
   <div class="eyebrow">The right order matters</div>
   <h2>Once layout + aesthetic are locked, here's the order.</h2>
-  <p style="margin-bottom: 20px;"><a href="https://impeccable.style/docs/" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Full Impeccable docs (impeccable.style/docs)</a></p>
-  <div class="grid-2" style="gap: 24px; align-items: stretch;">
+  <p style="margin-bottom: 18px;"><a href="https://impeccable.style/docs/" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Full Impeccable docs (impeccable.style/docs)</a></p>
+  <div class="grid-2" style="gap: clamp(20px,2.4vw,32px); align-items: stretch;">
     <div class="card" style="background: rgba(217,78,31,0.05);">
-      <div class="eyebrow" style="margin-bottom: 10px;">Creative pass</div>
-      <ul style="font-size: 18px;">
+      <div class="eyebrow" style="margin-bottom: 14px;">Creative pass</div>
+      <ul style="font-size: clamp(16px,1.45vw,18px); line-height:1.45;">
         <li><strong>1. Craft</strong> the layout and visual feel with <code>/craft</code> — use this for the initial site <em>and</em> for any new page you add later.</li>
         <li><strong>2. Push further</strong> with <code>/bolder</code>, <code>/overdrive</code>, <code>/animate</code>, <code>/delight</code> until you love it.</li>
         <li><strong>3. Copy last</strong> — talk Claude through the copy directly (no special command). Don't waste good copy on a layout you're going to throw away.</li>
       </ul>
     </div>
     <div class="card" style="background: rgba(22,163,74,0.05); border-color: rgba(22,163,74,0.25);">
-      <div class="eyebrow" style="margin-bottom: 10px; color: #16a34a;">Technical pass</div>
-      <ul style="font-size: 18px;">
+      <div class="eyebrow" style="margin-bottom: 14px; color: #16a34a;">Technical pass</div>
+      <ul style="font-size: clamp(16px,1.45vw,18px); line-height:1.45;">
         <li><strong>4. Optimize + harden</strong> — <code>/impeccable optimize</code> for accessibility, performance, and code quality, then <code>/impeccable harden</code> to lock down security and resilience.</li>
         <li><strong>5. Audit + critique</strong> — <code>/audit</code> for implementation quality, then <code>/critique</code> for design quality (optional if you're happy). Only after passing do you move to polish.</li>
         <li><strong>6. Polish — always last</strong>, right before launch.</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 24px; text-align: center;">
-    <div style="display: inline-block; background: linear-gradient(135deg, #d94e1f 0%, #f97316 100%); color: #fff; padding: 18px 40px; border-radius: 12px; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; box-shadow: 0 8px 24px rgba(217,78,31,0.35); text-transform: uppercase;">
-      <span style="font-size: 14px; font-weight: 600; letter-spacing: 3px; opacity: 0.85; display: block; margin-bottom: 4px;">Step 7 — Ship it</span>
+  <div style="margin-top: 16px; text-align: center;">
+    <div style="display: inline-block; background: linear-gradient(135deg, #d94e1f 0%, #f97316 100%); color: #fff; padding: 12px 36px; border-radius: 12px; font-family: var(--display); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; box-shadow: 0 8px 22px rgba(217,78,31,0.32); text-transform: uppercase;">
+      <span style="font-size: 13px; font-weight: 600; letter-spacing: 3px; opacity: 0.85; display: block; margin-bottom: 3px;">Step 7 — Ship it</span>
       Commit + Push → LIVE 🚀
     </div>
   </div>
@@ -646,7 +777,7 @@
   <div class="grid-2">
     <div>
       <h3 style="color:#b8401a;">Standard pages</h3>
-      <ul style="font-size: 18px;">
+      <ul style="font-size: clamp(17px,1.5vw,18px); line-height:1.5;">
         <li>Home</li>
         <li>About — your story, your why</li>
         <li>Services / Products / What you do</li>
@@ -658,7 +789,7 @@
     </div>
     <div>
       <h3 style="color:#b8401a;">Specialized — depends on your business</h3>
-      <ul style="font-size: 18px;">
+      <ul style="font-size: clamp(17px,1.5vw,18px); line-height:1.5;">
         <li>Restaurant → Menu, Reservations, Hours</li>
         <li>Photographer → Portfolio, Pricing, Booking</li>
         <li>Consultant → Case Studies, Process, Book a Call</li>
@@ -686,32 +817,32 @@
 </section>
 
 <!-- 10c. WHEN YOU'RE DONE -->
-<section class="slide">
+<section class="slide dense">
   <div class="slide-num">11 / When you're done</div>
   <div class="eyebrow">Treat it like a real launched site</div>
   <h2>Two things to do once your site is good enough to share.</h2>
 
-  <div class="grid-2" style="margin-top: 24px; gap: 30px;">
+  <div class="grid-2" style="margin-top: 18px; gap: clamp(20px,2.4vw,30px);">
 
     <div class="card">
       <div class="eyebrow" style="margin-bottom: 10px;">Step 1</div>
       <h3>Get a real domain.</h3>
-      <p style="font-size: 17px; margin-top: 8px;"><span class="mono">yoursite.com</span> instead of <span class="mono">yoursite.vercel.app</span>. ~$12/year.</p>
-      <p style="font-size: 15px; margin-top: 14px; color: #555;">Buy it inside Vercel: Project → Settings → Domains → "Buy a domain." Vercel handles the DNS setup automatically.</p>
+      <p style="font-size: clamp(16px,1.45vw,18px); margin-top: 8px;"><span class="mono">yoursite.com</span> instead of <span class="mono">yoursite.vercel.app</span>. ~$12/year.</p>
+      <p style="font-size: clamp(15px,1.35vw,16px); margin-top: 12px; color: var(--muted);">Buy it inside Vercel: Project → Settings → Domains → "Buy a domain." Vercel handles the DNS setup automatically.</p>
     </div>
 
     <div class="card">
       <div class="eyebrow" style="margin-bottom: 10px;">Step 2</div>
       <h3>Set up a backup branch.</h3>
-      <p style="font-size: 17px; margin-top: 8px;">So you can save work-in-progress to GitHub without it going live.</p>
-      <p style="font-size: 15px; margin-top: 14px; color: #555;">Right now every push deploys. That was fine while you were building — nobody was looking. Once your site is live and shared, you need a way to back up changes without publishing them.</p>
+      <p style="font-size: clamp(16px,1.45vw,18px); margin-top: 8px;">So you can save work-in-progress to GitHub without it going live.</p>
+      <p style="font-size: clamp(15px,1.35vw,16px); margin-top: 12px; color: var(--muted);">Right now every push deploys. That was fine while you were building — nobody was looking. Once your site is live and shared, you need a way to back up changes without publishing them.</p>
     </div>
 
   </div>
 
-  <p style="margin-top: 22px;"><strong>What's a branch?</strong> Think of it as a parallel copy of your project. Vercel only watches the <code>main</code> branch — push to <code>main</code>, it deploys. Push to any other branch, it just sits safely on GitHub. A <code>backup</code> branch is your "saved but not published" lane.</p>
+  <p style="margin-top: 18px;"><strong>What's a branch?</strong> Think of it as a parallel copy of your project. Vercel only watches the <code>main</code> branch — push to <code>main</code>, it deploys. Push to any other branch, it just sits safely on GitHub. A <code>backup</code> branch is your "saved but not published" lane.</p>
 
-  <p style="margin-top: 18px;"><strong>You don't need to memorize git commands</strong> — Claude does all the branch switching. Just say:</p>
+  <p style="margin-top: 14px;"><strong>You don't need to memorize git commands</strong> — Claude does all the branch switching. Just say:</p>
   <div class="prompt-box">"Set up a backup branch so I can save work-in-progress without deploying. From now on, when I say 'back this up', push to the backup branch. When I say 'ship it', push to main."</div>
 </section>
 
@@ -765,7 +896,7 @@
 
 <div class="nav">
   <button onclick="prev()">← Prev</button>
-  <span id="counter" style="color:#777; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <span id="counter" style="color:#5f5b52; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
   <button onclick="next()">Next →</button>
 </div>
 

@@ -5,137 +5,193 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Class 1 — Agent Prompts</title>
 <style>
+  /* Shares the Class 1 deck's warm system. Code handout, fully on-theme. */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+  :root {
+    --paper-top: #fafaf7;
+    --paper-bot: #ece8de;
+    --ink:        #15140f;
+    --body:       #2c2a24;
+    --muted:      #6a665c;
+    --terra:      #d94e1f;
+    --terra-deep: #b8401a;
+    --terra-ink:  #9a3614;
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    background: #0a0a0a;
-    color: #f5f5f5;
+    font-family: var(--sans);
+    background:
+      radial-gradient(120% 60% at 100% 0%, rgba(217,78,31,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    background-attachment: fixed;
+    color: var(--body);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 60px 40px 120px;
+    padding: clamp(48px, 7vh, 72px) clamp(28px, 5vw, 48px) 120px;
   }
-  header { margin-bottom: 50px; }
+  header { margin-bottom: 44px; }
   .back-link {
     display: inline-block;
-    color: #ff9b6b;
+    color: var(--terra-deep);
     text-decoration: none;
     font-size: 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,107,53,0.3);
-    padding: 6px 14px;
-    border-radius: 20px;
-    transition: all 0.15s;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid var(--hair);
+    padding: 7px 16px;
+    border-radius: 30px;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
   .back-link:hover {
-    background: rgba(255,107,53,0.1);
+    background: rgba(217,78,31,0.08);
+    border-color: rgba(217,78,31,0.35);
   }
+  .back-link:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
   h1 {
-    font-size: 48px;
+    font-family: var(--display);
+    font-size: clamp(38px, 5vw, 52px);
     font-weight: 800;
-    letter-spacing: -1.5px;
-    background: linear-gradient(90deg, #fff 0%, #aaa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 16px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 14px;
   }
   .lede {
-    font-size: 18px;
-    color: #aaa;
-    max-width: 700px;
+    font-size: clamp(17px, 1.6vw, 19px);
+    color: var(--body);
+    max-width: 68ch;
   }
   .steps {
-    background: rgba(255,107,53,0.06);
-    border: 1px solid rgba(255,107,53,0.2);
-    border-radius: 10px;
-    padding: 24px 28px;
-    margin: 30px 0 50px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: 26px 30px;
+    margin: 32px 0 52px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
   }
   .steps h3 {
-    font-size: 16px;
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ff9b6b;
-    margin-bottom: 14px;
+    letter-spacing: 0.16em;
+    color: var(--terra-deep);
+    margin-bottom: 16px;
+  }
+  .steps h3::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--terra);
+    border-radius: 2px;
   }
   .steps ol {
     padding-left: 22px;
   }
   .steps li {
-    font-size: 16px;
-    color: #d0d0d0;
-    margin-bottom: 8px;
+    font-size: clamp(16px, 1.5vw, 18px);
+    color: var(--body);
+    margin-bottom: 9px;
   }
-  .steps code {
-    background: rgba(255,107,53,0.15);
-    color: #ff9b6b;
+  .steps li strong { color: var(--ink); }
+  code, .steps code {
+    background: rgba(217,78,31,0.10);
+    color: var(--terra-ink);
     padding: 2px 8px;
-    border-radius: 4px;
-    font-family: "SF Mono", Menlo, Monaco, monospace;
+    border-radius: 5px;
+    font-family: var(--mono);
     font-size: 0.9em;
+    font-weight: 500;
   }
   .agent-block {
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
   .agent-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     gap: 20px;
     flex-wrap: wrap;
   }
   h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
+    font-family: var(--display);
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
   }
   .copy-btn {
-    background: #ff6b35;
-    color: #000;
+    background: var(--terra);
+    color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 8px;
+    font-family: var(--sans);
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
+    transition: background 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 4px 12px rgba(217,78,31,0.22);
   }
   .copy-btn:hover {
-    background: #ff9b6b;
+    background: var(--terra-deep);
     transform: translateY(-1px);
   }
+  .copy-btn:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
   .copy-btn.copied {
-    background: #4ade80;
+    background: var(--green);
+    box-shadow: 0 4px 12px rgba(22,163,74,0.25);
   }
   .agent-desc {
-    font-size: 15px;
-    color: #888;
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--muted);
     margin-bottom: 16px;
+    max-width: 72ch;
   }
+  /* Code panels: light tinted, fully on-theme, still clearly "copy this" */
   pre {
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 24px;
+    background: #fbf8f2;
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--terra);
+    border-radius: 8px;
+    padding: 22px 24px;
     overflow-x: auto;
-    font-family: "SF Mono", Menlo, Monaco, monospace;
+    font-family: var(--mono);
     font-size: 13px;
-    line-height: 1.6;
-    color: #d0d0d0;
+    line-height: 1.65;
+    color: #3a352c;
     white-space: pre-wrap;
     word-wrap: break-word;
     max-height: 500px;
     overflow-y: auto;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(217,78,31,0.4);
   }
   pre::-webkit-scrollbar { width: 10px; height: 10px; }
-  pre::-webkit-scrollbar-track { background: #1a1a1a; }
-  pre::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; }
-  pre::-webkit-scrollbar-thumb:hover { background: #666; }
+  pre::-webkit-scrollbar-track { background: rgba(20,18,12,0.04); }
+  pre::-webkit-scrollbar-thumb { background: rgba(20,18,12,0.18); border-radius: 5px; }
+  pre::-webkit-scrollbar-thumb:hover { background: rgba(20,18,12,0.3); }
+  @media (prefers-reduced-motion: reduce) {
+    .copy-btn, .back-link { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -144,7 +200,7 @@
 <header>
   <a href="/class-1-website-build/" class="back-link">← Back to deck</a>
   <h1>Agent Prompts</h1>
-  <p class="lede">Copy each block and paste it when Claude Code asks for the agent definition (after <code style="background:rgba(255,107,53,0.15);color:#ff9b6b;padding:2px 6px;border-radius:4px;font-family:monospace;">/agents → Create new agent → Personal</code>).</p>
+  <p class="lede">Copy each block and paste it when Claude Code asks for the agent definition (after <code>/agents → Create new agent → Personal</code>).</p>
 </header>
 
 <div class="steps">

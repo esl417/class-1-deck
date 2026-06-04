@@ -32,7 +32,7 @@ Emotional goals: dissolve fear of the tools, build momentum through small wins (
 Explicitly avoid all four:
 
 - **Corporate slideware** — generic PowerPoint/Google Slides templates, bullet soup, clip art, stock gradients.
-- **Dev-tool dark mode** — black terminal aesthetics, neon syntax colors, heavy mono everywhere. This actively reinforces the exact fear the class exists to remove. (Note: `agents.html` currently uses a dark theme; that's a deliberate "code handout" exception, not the deck direction.)
+- **Dev-tool dark mode** — black terminal aesthetics, neon syntax colors, heavy mono everywhere. This actively reinforces the exact fear the class exists to remove. (The `agents.html` code-handout page now shares the deck's warm light theme too — light tinted code panels, no dark anywhere.)
 - **Dense / textbook** — walls of small text, academic tone, more per slide than can be read from a projector.
 - **Over-designed / trendy** — glassmorphism, gradient text everywhere, motion for its own sake. Readability beats style every time.
 
