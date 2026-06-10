@@ -200,18 +200,24 @@
 <header>
   <a href="/class-1-website-build/" class="back-link">← Back to deck</a>
   <h1>Agent Prompts</h1>
-  <p class="lede">Copy each block and paste it when Claude Code asks for the agent definition (after <code>/agents → Create new agent → Personal</code>).</p>
+  <p class="lede">Copy each block and paste it into the <strong>Prompt</strong> field when you create the agent (start with <code>/agents → Agents → Library → Create agent</code>).</p>
 </header>
 
 <div class="steps">
   <h3>The install flow (per agent)</h3>
   <ol>
-    <li>In the Claude Code terminal, type <code>/agents</code> and hit enter.</li>
-    <li>Choose <strong>Create new agent</strong>.</li>
-    <li>Choose <strong>Personal</strong> (so the agent is available in all your projects).</li>
-    <li>When prompted for the agent definition, click <strong>Copy</strong> below and paste the entire block.</li>
-    <li>Save. Confirm it shows up in the <code>/agents</code> list.</li>
-    <li>Repeat for the second agent.</li>
+    <li>In the Claude Code terminal, type <code>/agents</code> and click <strong>Agents</strong> (the terminal is fine for this).</li>
+    <li>Open the <strong>Library</strong> tab, then click <strong>Create agent</strong>.</li>
+    <li>Location: choose <strong>Personal</strong> (all projects) vs Project (this repo only) — pick <strong>Personal</strong>.</li>
+    <li>Setup: choose <strong>Manual configuration</strong> (vs Generate with Claude).</li>
+    <li><strong>Unique identifier</strong>: type the agent name.</li>
+    <li><strong>Prompt</strong>: click <strong>Copy</strong> below and paste the entire block.</li>
+    <li><strong>When should Claude use this agent?</strong> → <em>after code changes</em>.</li>
+    <li><strong>Select tools</strong>: just continue (leave defaults).</li>
+    <li><strong>Model</strong>: pick <strong>Opus</strong>.</li>
+    <li><strong>Color</strong>: any (doesn't matter).</li>
+    <li><strong>Memory</strong>: set to <strong>User</strong> scope.</li>
+    <li>Save, confirm it shows up, then repeat for the second agent.</li>
   </ol>
 </div>
 
