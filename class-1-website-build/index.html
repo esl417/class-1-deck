@@ -512,13 +512,13 @@
   <div class="eyebrow">Do this first — it installs while we keep going</div>
   <h2>One prompt gets your computer ready.</h2>
   <p>Missing behind-the-scenes tools are what cause the weird errors later — so we install them all now. Paste this into Claude (Mac or Windows, same prompt):</p>
-  <div class="prompt-box">"Check that my computer has everything needed to connect to GitHub and Vercel: git, Node.js, the GitHub CLI, and the Vercel CLI — plus whatever those need on my OS (on a Mac: Xcode Command Line Tools and Homebrew, do NOT install the full Xcode app; on Windows: use winget). Install anything missing, one at a time, then show me a checklist proving each one works."</div>
+  <div class="prompt-box">"Check that my computer has everything needed to connect to GitHub and Vercel: git, Node.js (npm and npx must work), the GitHub CLI, and the Vercel CLI — plus whatever those need on my OS (on a Mac: Xcode Command Line Tools and Homebrew, do NOT install the full Xcode app; on Windows: use winget). Install anything missing, one at a time, then show me a checklist proving each one works."</div>
   <div class="grid-2" style="margin-top: 12px;">
     <div class="card">
       <div class="eyebrow">What Claude will install</div>
       <ul>
         <li><strong>git</strong> — the change-tracker GitHub is built on.</li>
-        <li><strong>Node.js</strong> — the engine the Vercel tool runs on.</li>
+        <li><strong>Node.js</strong> (includes npm + npx) — the engine the Vercel and Impeccable tools run on.</li>
         <li><strong>GitHub CLI + Vercel CLI</strong> — how Claude talks to your accounts.</li>
         <li><strong>Mac only:</strong> Xcode Command Line Tools + Homebrew, the installers that handle the rest. <em>Not the giant Xcode app — you don't need that.</em></li>
         <li><strong>Windows:</strong> uses winget, the installer already built into Windows.</li>
@@ -543,7 +543,7 @@
   <div class="eyebrow">After the installs finish</div>
   <h2>Make sure your terminal itself works.</h2>
   <p>Claude runs everything through your computer's terminal. If its configuration is broken, things fail in confusing ways later — agents won't launch, commands won't be found. Verify it now, while there's nothing to break:</p>
-  <div class="prompt-box">"Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed."</div>
+  <div class="prompt-box">"Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed."</div>
   <ul>
     <li><strong>Quit and reopen VS Code first.</strong> Freshly installed tools only show up in fresh terminals — this alone fixes most problems.</li>
     <li><strong>"command not found" right after installing ≠ broken install.</strong> The terminal just hasn't reloaded. Restart VS Code, then ask Claude to check again.</li>
