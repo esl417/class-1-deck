@@ -512,28 +512,6 @@
   </ul>
 </section>
 
-<!-- 2b. VS CODE file colors -->
-<section class="slide">
-  <div class="slide-num">2 / VS Code file colors</div>
-  <div class="eyebrow">Reading the sidebar</div>
-  <h2>What the colors and letters mean.</h2>
-  <p>VS Code shows you what changed since your last save. Once you understand these, you always know the state of your project.</p>
-  <div class="grid-2" style="margin-top: 30px;">
-    <div class="card">
-      <h3>Letters</h3>
-      <p><strong style="color:#4ade80;">U</strong> = Untracked (a brand new file)</p>
-      <p style="margin-top:8px;"><strong style="color:#fbbf24;">M</strong> = Modified (changed since your last save)</p>
-    </div>
-    <div class="card">
-      <h3>Colors</h3>
-      <p><strong style="color:var(--ink);">White</strong> = no changes</p>
-      <p style="margin-top:8px;"><strong style="color:#4ade80;">Green</strong> = new file</p>
-      <p style="margin-top:8px;"><strong style="color:#fbbf24;">Orange/Yellow</strong> = modified</p>
-    </div>
-  </div>
-  <p class="small-note">In short: VS Code is telling you "here's what's different since your last save."</p>
-</section>
-
 <!-- 2.5 AGENTS — what they are -->
 <section class="slide">
   <div class="slide-num">2.5 / Agents</div>
@@ -681,23 +659,6 @@
     </div>
   </div>
   <p class="small-note">This is the single most important concept of the day. Build locally. Push when proud.</p>
-</section>
-
-<!-- 5.6 FIRST DEPLOY MOMENT -->
-<section class="slide">
-  <div class="slide-num">5.6 / First deploy moment</div>
-  <div class="eyebrow">The dopamine hit</div>
-  <h2>Put your name on the live internet.</h2>
-  <p>Everyone does this together, live.</p>
-  <ul>
-    <li>In Claude Code, paste this prompt:</li>
-  </ul>
-  <div class="prompt-box">"Replace the default starter page with a single page that just says 'Hello from [your name]' as the headline. Delete any starter files you don't need. Then commit and push."</div>
-  <ul style="margin-top: 20px;">
-    <li>Refresh your <span class="mono">*.vercel.app</span> URL in your browser. Wait ~60 seconds.</li>
-    <li>See your name. Live. On the internet.</li>
-  </ul>
-  <p class="small-note">This is the moment it clicks. Now we make it beautiful.</p>
 </section>
 
 <!-- 6. IMPECCABLE INSTALL -->
@@ -915,6 +876,7 @@
       <h3>Get a real domain.</h3>
       <p style="font-size: clamp(16px,1.45vw,18px); margin-top: 8px;"><span class="mono">yoursite.com</span> instead of <span class="mono">yoursite.vercel.app</span>. ~$12/year.</p>
       <p style="font-size: clamp(15px,1.35vw,16px); margin-top: 12px; color: var(--muted);">Buy it inside Vercel: Project → Settings → Domains → "Buy a domain." Vercel handles the DNS setup automatically.</p>
+      <p style="font-size: clamp(15px,1.35vw,16px); margin-top: 12px; color: var(--muted);">Already own a domain elsewhere? Go to Domains → "Add existing" and Vercel walks you through connecting it.</p>
     </div>
 
     <div class="card">
