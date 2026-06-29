@@ -515,6 +515,16 @@
   .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
   .heads-up strong { color: var(--terra-deep); }
 
+  /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
+  .ui-shot {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 9px;
+    border: 1px solid var(--hair);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
+  }
+
   /* keep the slide column readable on smaller laptop widths */
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
@@ -730,7 +740,8 @@
   <div class="grid-2">
     <div class="card">
       <div class="eyebrow">🕐 Reopen the same chat</div>
-      <p>After reopening, click the <strong>clock icon at the top-right</strong> of the Claude box. That's your <strong>conversation history</strong>. Pick the chat you were just in, then type <strong>"continue the Supabase setup."</strong></p>
+      <p>After reopening, click the <strong>clock icon at the top-right</strong> of the Claude box (boxed in red below). That's your <strong>conversation history</strong> — pick the chat you were just in, then type <strong>"continue the Supabase setup."</strong></p>
+      <img class="ui-shot" src="claude-history-icon.png" alt="The Claude Code panel with the clock-shaped conversation-history icon, top-right, highlighted in a red box.">
     </div>
     <div class="card">
       <div class="eyebrow">Can't find the Claude box?</div>
