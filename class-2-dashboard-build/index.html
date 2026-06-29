@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 2: How to Build a Dashboard</title>
+<style>
+  /* ============================================================
+     Class 2 deck — warm "patient teacher's whiteboard" system
+     Headings: Hanken Grotesk (self-hosted). Body: system sans.
+     ============================================================ */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;            /* variable axis */
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+
+  :root {
+    /* palette */
+    --paper-top: #fafaf7;
+    --paper-bot: #ece8de;            /* a hair deeper than before for more presence */
+    --ink:        #15140f;           /* near-black warm ink, slightly warmer than #1a1a1a */
+    --body:       #2c2a24;           /* workhorse reading color, clears AA on paper */
+    --muted:      #6a665c;           /* secondary; do not go lighter on paper */
+    --faint:      #7c776c;           /* captions / slide marker only (AA-large on paper) */
+    --terra:      #d94e1f;
+    --terra-deep: #b8401a;
+    --terra-ink:  #9a3614;           /* text-safe deepest terracotta for fine print on tint */
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;           /* warm near-white card, opaque (no timid translucency) */
+    /* type */
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    /* layout */
+    --pad-x: clamp(48px, 7vw, 104px);
+    --pad-top: clamp(48px, 7vh, 76px);
+    --nav-safe: 116px;               /* bottom safe-area so content never hits the nav */
+    --col: 1180px;                   /* content measure */
+    /* z-index scale */
+    --z-progress: 200;
+    --z-nav: 100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--paper-bot);
+    color: var(--body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  /* ---- Shared slide skeleton -------------------------------------------
+     Every slide is the same frame: a centered max-width content column,
+     consistent padding, and a guaranteed bottom safe-area above the nav.
+     Vertical centering is the default; the column never collides w/ nav. */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    padding: var(--pad-top) var(--pad-x) var(--nav-safe);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(217,78,31,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    overflow-y: auto;
+  }
+  .slide.active { display: flex; flex-direction: column; }
+  /* center the content column vertically + cap its width consistently */
+  .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
+  .slide.active { justify-content: center; }
+  /* dense slides: pin to top + tighten the type ramp so nothing overflows */
+  .slide.dense { justify-content: flex-start; }
+  .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
+  .slide.dense p,
+  .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
+  .slide.dense li { line-height: 1.42; }
+  .slide.dense .small-note { margin-top: 12px; }
+  .slide.dense .card .eyebrow { margin-bottom: 8px; }
+  /* dense cards: tighten internal list rhythm so an at-a-glance summary clears the nav */
+  .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
+  .slide.dense .card ul li:last-child { margin-bottom: 0; }
+
+  /* ---- Title slide: one dominant title, witty promise, proof strip, warm note ----
+     Hierarchy by role, not just size: ink title → terracotta promise →
+     image evidence → quiet aspirational note. Stays one calm column. */
+  .title-slide { gap: clamp(28px, 4.2vh, 52px); text-align: center; }
+  .title-slide.active > *:not(.slide-num) { max-width: 1340px; }
+  .title-slide.active > .title-head { max-width: none; }
+
+  .title-head { display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 1.8vh, 20px); }
+  .title-kicker {
+    font-family: var(--sans);
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--terra-deep);
+    margin-bottom: clamp(2px, 0.6vh, 6px);
+  }
+  .title-main {
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  /* the <br> sets a clean 2-line break on desktop; below the breakpoint it drops
+     out and the headline wraps naturally so the long first sentence never clips */
+  @media (max-width: 860px) {
+    .title-main { font-size: clamp(28px, 6vw, 44px); white-space: normal; }
+    .title-main .hero-break { display: none; }
+  }
+  .title-sub {
+    font-family: var(--display);
+    font-size: clamp(19px, 2.1vw, 27px);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+    max-width: 30ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  .title-proof {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 1.4vw, 18px);
+    width: 100%;
+  }
+  .title-proof img {
+    width: 100%;
+    height: clamp(150px, 21vh, 210px);
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--hair);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 14px 32px -18px rgba(20,18,12,0.28);
+  }
+
+  @media (max-width: 760px) {
+    .title-proof { grid-template-columns: 1fr 1fr; }
+    .title-proof img { height: 130px; }
+  }
+
+  /* ---- Slide marker (top-right): the deck's single deliberate kicker ---- */
+  .slide-num {
+    position: absolute;
+    top: clamp(26px, 4vh, 40px);
+    right: clamp(28px, 4vw, 52px);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    z-index: 3;
+  }
+
+  /* ---- Eyebrow: tied to the accent with a tick, not a floating reflex --- */
+  .eyebrow {
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--terra-deep);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--terra);
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  /* nested eyebrows inside cards are sub-labels, not the slide kicker: no tick */
+  .card .eyebrow { margin-bottom: 10px; }
+  .card .eyebrow::before { display: none; }
+
+  /* ---- Headings: Hanken, real modular scale -------------------------- */
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(46px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.4vw, 50px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 em { font-style: normal; color: var(--terra); }
+  /* one-line headline on wide screens: size to fit the column, wrap on small */
+  /* same size as every other h2; just keep it on one line on wide screens */
+  h2.nowrap-lg { white-space: nowrap; }
+  @media (max-width: 900px) { h2.nowrap-lg { white-space: normal; } }
+  h3 {
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  p {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--body);
+    margin-bottom: 16px;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  ul { list-style: none; padding: 0; max-width: var(--col); }
+  li {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.5;
+    color: var(--body);
+    margin-bottom: 14px;
+    padding-left: 30px;
+    position: relative;
+  }
+  li::before {
+    content: "→";
+    font-family: var(--sans);
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    color: var(--terra);
+    font-weight: 700;
+  }
+  li.check::before { content: "☐"; color: var(--green); }
+  /* numbered sequence: the leading number IS the marker; drop the arrow */
+  ul.numbered li { padding-left: 0; }
+  ul.numbered li::before { content: none; }
+  ul.numbered li strong { color: var(--terra-deep); }
+  li strong { color: var(--ink); font-weight: 700; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(20px, 2.4vw, 36px);
+    max-width: var(--col);
+  }
+
+  /* ---- Cards: opaque warm surface, intentional, not timid glass ------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .card h3 { color: var(--terra-deep); margin-bottom: 12px; }
+  .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
+  .card p + p { margin-top: 10px; }
+
+  code, .mono {
+    font-family: var(--mono);
+    background: rgba(217,78,31,0.10);
+    color: var(--terra-ink);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.88em;
+    font-weight: 500;
+  }
+
+  .pill {
+    display: inline-block;
+    background: rgba(217,78,31,0.12);
+    color: var(--terra-ink);
+    padding: 5px 13px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* ---- Quote: framed block, no thin side-stripe reflex --------------- */
+  .quote {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--terra-deep);
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--terra);
+    margin: 28px 0;
+    max-width: var(--col);
+    text-wrap: balance;
+  }
+
+  /* ---- Floating nav (the one intentional glass moment) --------------- */
+  .nav {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: rgba(255,253,249,0.82);
+    padding: 9px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--hair);
+    box-shadow: 0 6px 20px -6px rgba(20,18,12,0.18);
+    z-index: var(--z-nav);
+  }
+  .nav button {
+    background: transparent;
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 7px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav button:hover { background: rgba(217,78,31,0.08); border-color: rgba(217,78,31,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terra), #f97316);
+    z-index: var(--z-progress);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ---- Flow chips ---------------------------------------------------- */
+  .arrow-flow {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    margin-top: clamp(28px, 4vh, 48px);
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid rgba(217,78,31,0.35);
+    padding: 15px 24px;
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  .flow-arrow { color: var(--terra); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+
+  .small-note {
+    font-size: clamp(15px, 1.35vw, 16px);
+    color: var(--muted);
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 72ch;
+  }
+
+  /* ---- Prompt box (signature "type this" component) ------------------ */
+  .prompt-box {
+    background: var(--surface);
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--terra);
+    padding: 16px 22px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--terra-ink);
+    margin: 12px 0;
+    max-width: 1000px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(217,78,31,0.4);
+  }
+
+  /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2vw, 30px) clamp(24px, 3vw, 44px);
+    max-width: var(--col);
+    margin-top: 6px;
+  }
+  .cheat p { font-size: clamp(16px, 1.45vw, 18px); margin-bottom: 8px; }
+  .cheat .prompt-box { margin: 0; }
+  @media (max-width: 760px) { .cheat-grid { grid-template-columns: 1fr; } }
+
+  .label {
+    display: inline-block;
+    background: var(--terra);
+    color: #fff;
+    padding: 3px 11px;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  a { color: var(--terra-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+    .nav button { transition: none; }
+  }
+
+  /* prerequisites slide only: extra-tight rhythm so both cards fit a 720p projector */
+  #prereq h2 { margin-bottom: 12px; }
+  #prereq p { margin-bottom: 9px; }
+  #prereq .prompt-box { font-size: 14px; padding: 12px 18px; margin: 8px 0; }
+  #prereq .card { padding: 18px 22px; }
+  #prereq .card ul li { margin-bottom: 7px; line-height: 1.35; }
+
+  /* keep the slide column readable on smaller laptop widths */
+  @media (max-width: 760px) {
+    .slide { padding: 40px 28px var(--nav-safe); }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+<!-- TITLE -->
+<section class="slide active title-slide">
+  <div class="title-head">
+    <div class="title-kicker">Building a dashboard with Claude Code</div>
+    <h1 class="title-main">Turn your data into a live dashboard. <br class="hero-break">No coding required.</h1>
+    <p class="title-sub">Build with AI. Don't look like it.</p>
+  </div>
+</section>
+
+<!-- TODO: Overview -->
+<section class="slide">
+  <div class="slide-num">1 / Overview</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Overview</h2>
+  <p class="small-note">What we're building today: a live dashboard wired to real data. Fill in the four tools + the flow.</p>
+</section>
+
+<!-- TODO: Scope -->
+<section class="slide">
+  <div class="slide-num">1.5 / Scope</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Scope</h2>
+  <p class="small-note">What this class is and is not. Assumes Class 1's stack is already installed (see prerequisites).</p>
+</section>
+
+<!-- TODO: Prerequisites recap -->
+<section class="slide">
+  <div class="slide-num">2 / Prerequisites recap</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Prerequisites recap</h2>
+  <p class="small-note">Point students to prereqs.html. Confirm the data/backend tooling is provisioned before class.</p>
+</section>
+
+<!-- TODO: The data source -->
+<section class="slide">
+  <div class="slide-num">3 / The data source</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>The data source</h2>
+  <p class="small-note">Where the dashboard's data lives (DB / API / data layer). Fill in once the stack is chosen.</p>
+</section>
+
+<!-- MCP EXPLAINER — placement provisional; talk through in class. Added so we don't lose track of it. -->
+<section class="slide">
+  <div class="slide-num">3.5 / What is an MCP server?</div>
+  <div class="eyebrow">The thing you installed for the prereqs</div>
+  <h2>How Claude actually <em>reaches</em> your tools.</h2>
+  <p>To set up, you connected Claude to Google Analytics and Supabase. Each connection is an <strong>MCP server</strong> — think of it as a <strong>standard plug</strong> that lets Claude talk directly to an outside service.</p>
+  <div class="quote">On its own, Claude can only talk. An MCP server gives it hands — a safe, defined way to actually do things in another tool.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">Without MCP</div>
+      <p>Claude can <em>tell you</em> what SQL to run or where to click — but you'd have to go do it yourself in another app.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">With MCP</div>
+      <p>Claude does it directly — reads your real analytics, creates tables in your real database — because the plug is connected.</p>
+    </div>
+  </div>
+  <p class="small-note">Same idea as USB: one standard shape, and anything can plug in. New tool you want Claude to use? There's probably an MCP server for it.</p>
+</section>
+
+<!-- TODO: Scaffolding the dashboard -->
+<section class="slide">
+  <div class="slide-num">4 / Scaffolding the dashboard</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Scaffolding the dashboard</h2>
+  <p class="small-note">Prompt to stand up the dashboard shell + connect the data source.</p>
+</section>
+
+<!-- TODO: Building the views -->
+<section class="slide">
+  <div class="slide-num">5 / Building the views</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Building the views</h2>
+  <p class="small-note">Charts, tables, filters — the iteration loop for dashboard panels.</p>
+</section>
+
+<!-- TODO: Reviewing & iterating -->
+<section class="slide">
+  <div class="slide-num">6 / Reviewing & iterating</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Reviewing & iterating</h2>
+  <p class="small-note">Reuse the /impeccable + review habit from Class 1, adapted to dashboards.</p>
+</section>
+
+<!-- TODO: Deploying -->
+<section class="slide">
+  <div class="slide-num">7 / Deploying</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Deploying</h2>
+  <p class="small-note">Ship the dashboard to a live URL.</p>
+</section>
+
+<!-- TODO: Where to go next -->
+<section class="slide">
+  <div class="slide-num">8 / Where to go next</div>
+  <div class="eyebrow">Placeholder — to be written</div>
+  <h2>Where to go next</h2>
+  <p class="small-note">Wrap-up + StratEngine CTA.</p>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">← Prev</button>
+  <span id="counter" style="color:#5f5b52; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <button onclick="next()">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  function show(i) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
