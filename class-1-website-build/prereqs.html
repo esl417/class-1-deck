@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 1: Prerequisites & Setup</title>
+<style>
+  /* ============================================================
+     Class 1 prerequisites — warm "patient teacher's whiteboard" system
+     Headings: Hanken Grotesk (self-hosted). Body: system sans.
+     ============================================================ */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;            /* variable axis */
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+
+  :root {
+    /* palette */
+    --paper-top: #fafaf7;
+    --paper-bot: #ece8de;            /* a hair deeper than before for more presence */
+    --ink:        #15140f;           /* near-black warm ink, slightly warmer than #1a1a1a */
+    --body:       #2c2a24;           /* workhorse reading color, clears AA on paper */
+    --muted:      #6a665c;           /* secondary; do not go lighter on paper */
+    --faint:      #7c776c;           /* captions / slide marker only (AA-large on paper) */
+    --terra:      #d94e1f;
+    --terra-deep: #b8401a;
+    --terra-ink:  #9a3614;           /* text-safe deepest terracotta for fine print on tint */
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;           /* warm near-white card, opaque (no timid translucency) */
+    /* type */
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    /* layout */
+    --pad-x: clamp(48px, 7vw, 104px);
+    --pad-top: clamp(48px, 7vh, 76px);
+    --nav-safe: 116px;               /* bottom safe-area so content never hits the nav */
+    --col: 1180px;                   /* content measure */
+    /* z-index scale */
+    --z-progress: 200;
+    --z-nav: 100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--paper-bot);
+    color: var(--body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  /* ---- Shared slide skeleton -------------------------------------------
+     Every slide is the same frame: a centered max-width content column,
+     consistent padding, and a guaranteed bottom safe-area above the nav.
+     Vertical centering is the default; the column never collides w/ nav. */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    padding: var(--pad-top) var(--pad-x) var(--nav-safe);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(217,78,31,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    overflow-y: auto;
+  }
+  .slide.active { display: flex; flex-direction: column; }
+  /* center the content column vertically + cap its width consistently */
+  .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
+  .slide.active { justify-content: center; }
+  /* dense slides: pin to top + tighten the type ramp so nothing overflows */
+  .slide.dense { justify-content: flex-start; }
+  .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
+  .slide.dense p,
+  .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
+  .slide.dense li { line-height: 1.42; }
+  .slide.dense .small-note { margin-top: 12px; }
+  .slide.dense .card .eyebrow { margin-bottom: 8px; }
+  /* dense cards: tighten internal list rhythm so an at-a-glance summary clears the nav */
+  .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
+  .slide.dense .card ul li:last-child { margin-bottom: 0; }
+
+  /* ---- Title slide: one dominant title, witty promise, proof strip, warm note ----
+     Hierarchy by role, not just size: ink title → terracotta promise →
+     image evidence → quiet aspirational note. Stays one calm column. */
+  .title-slide { gap: clamp(28px, 4.2vh, 52px); text-align: center; }
+  .title-slide.active > *:not(.slide-num) { max-width: 1340px; }
+  .title-slide.active > .title-head { max-width: none; }
+
+  .title-head { display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 1.8vh, 20px); }
+  .title-kicker {
+    font-family: var(--sans);
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--terra-deep);
+    margin-bottom: clamp(2px, 0.6vh, 6px);
+  }
+  .title-main {
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  /* the <br> sets a clean 2-line break on desktop; below the breakpoint it drops
+     out and the headline wraps naturally so the long first sentence never clips */
+  @media (max-width: 860px) {
+    .title-main { font-size: clamp(28px, 6vw, 44px); white-space: normal; }
+    .title-main .hero-break { display: none; }
+  }
+  .title-sub {
+    font-family: var(--display);
+    font-size: clamp(19px, 2.1vw, 27px);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+    max-width: 34ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  /* ---- Slide marker (top-right): the deck's single deliberate kicker ---- */
+  .slide-num {
+    position: absolute;
+    top: clamp(26px, 4vh, 40px);
+    right: clamp(28px, 4vw, 52px);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    z-index: 3;
+  }
+
+  /* ---- Eyebrow: tied to the accent with a tick, not a floating reflex --- */
+  .eyebrow {
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--terra-deep);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--terra);
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  /* nested eyebrows inside cards are sub-labels, not the slide kicker: no tick */
+  .card .eyebrow { margin-bottom: 10px; }
+  .card .eyebrow::before { display: none; }
+
+  /* ---- Headings: Hanken, real modular scale -------------------------- */
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(46px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.4vw, 50px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 em { font-style: normal; color: var(--terra); }
+  /* one-line headline on wide screens: size to fit the column, wrap on small */
+  /* same size as every other h2; just keep it on one line on wide screens */
+  h2.nowrap-lg { white-space: nowrap; }
+  @media (max-width: 900px) { h2.nowrap-lg { white-space: normal; } }
+  h3 {
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  p {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--body);
+    margin-bottom: 16px;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  ul { list-style: none; padding: 0; max-width: var(--col); }
+  li {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.5;
+    color: var(--body);
+    margin-bottom: 14px;
+    padding-left: 30px;
+    position: relative;
+  }
+  li::before {
+    content: "→";
+    font-family: var(--sans);
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    color: var(--terra);
+    font-weight: 700;
+  }
+  li.check::before { content: "☐"; color: var(--green); }
+  li.done-check::before { content: "✓"; color: var(--green); font-weight: 800; }
+  /* numbered sequence: the leading number IS the marker; drop the arrow */
+  ul.numbered li { padding-left: 0; }
+  ul.numbered li::before { content: none; }
+  ul.numbered li strong { color: var(--terra-deep); }
+  li strong { color: var(--ink); font-weight: 700; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(20px, 2.4vw, 36px);
+    max-width: var(--col);
+  }
+
+  /* ---- Cards: opaque warm surface, intentional, not timid glass ------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .card h3 { color: var(--terra-deep); margin-bottom: 12px; }
+  .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
+  .card p + p { margin-top: 10px; }
+
+  code, .mono {
+    font-family: var(--mono);
+    background: rgba(217,78,31,0.10);
+    color: var(--terra-ink);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.88em;
+    font-weight: 500;
+  }
+
+  .pill {
+    display: inline-block;
+    background: rgba(217,78,31,0.12);
+    color: var(--terra-ink);
+    padding: 5px 13px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* ---- Quote: framed block, no thin side-stripe reflex --------------- */
+  .quote {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--terra-deep);
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--terra);
+    margin: 28px 0;
+    max-width: var(--col);
+    text-wrap: balance;
+  }
+
+  /* ---- Floating nav (the one intentional glass moment) --------------- */
+  .nav {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: rgba(255,253,249,0.82);
+    padding: 9px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--hair);
+    box-shadow: 0 6px 20px -6px rgba(20,18,12,0.18);
+    z-index: var(--z-nav);
+  }
+  .nav button {
+    background: transparent;
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 7px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav button:hover { background: rgba(217,78,31,0.08); border-color: rgba(217,78,31,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terra), #f97316);
+    z-index: var(--z-progress);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ---- Flow chips ---------------------------------------------------- */
+  .arrow-flow {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    margin-top: clamp(28px, 4vh, 48px);
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid rgba(217,78,31,0.35);
+    padding: 15px 24px;
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  .flow-arrow { color: var(--terra); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+
+  .small-note {
+    font-size: clamp(15px, 1.35vw, 16px);
+    color: var(--muted);
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 72ch;
+  }
+
+  /* ---- Prompt box (signature "type this" component) ------------------ */
+  .prompt-box {
+    background: var(--surface);
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--terra);
+    padding: 16px 22px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--terra-ink);
+    margin: 12px 0;
+    max-width: 1000px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(217,78,31,0.4);
+  }
+
+  /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2vw, 30px) clamp(24px, 3vw, 44px);
+    max-width: var(--col);
+    margin-top: 6px;
+  }
+  .cheat p { font-size: clamp(16px, 1.45vw, 18px); margin-bottom: 8px; }
+  .cheat .prompt-box { margin: 0; }
+  @media (max-width: 760px) { .cheat-grid { grid-template-columns: 1fr; } }
+
+  .label {
+    display: inline-block;
+    background: var(--terra);
+    color: #fff;
+    padding: 3px 11px;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  a { color: var(--terra-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+    .nav button { transition: none; }
+  }
+
+  /* prerequisites slides: extra-tight rhythm so cards fit a 720p projector */
+  #prereq h2, #homebrew h2 { margin-bottom: 12px; }
+  #prereq p, #homebrew p { margin-bottom: 9px; }
+  #prereq .prompt-box { font-size: 14px; padding: 12px 18px; margin: 8px 0; }
+  #prereq .card { padding: 18px 22px; }
+  #prereq .card ul li { margin-bottom: 7px; line-height: 1.35; }
+  #homebrew .numbered li { margin-bottom: 9px; line-height: 1.4; }
+
+  /* ---- Heads-up strip: a prominent "expect this" callout in the accent ---- */
+  .heads-up {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 15px 22px;
+    background: rgba(217,78,31,0.09);
+    border: 1px solid rgba(217,78,31,0.38);
+    border-radius: 12px;
+  }
+  .heads-up-mark { font-size: clamp(22px, 2.2vw, 28px); flex: 0 0 auto; line-height: 1; }
+  .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
+  .heads-up strong { color: var(--terra-deep); }
+
+  /* ---- Success strip: a slim "you're done" banner, lighter than a card ---- */
+  .done-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 14px 20px;
+    background: rgba(22,163,74,0.08);
+    border: 1px solid rgba(22,163,74,0.30);
+    border-radius: 12px;
+  }
+  .done-strip .done-mark { font-size: clamp(20px, 2vw, 26px); flex: 0 0 auto; line-height: 1; }
+  .done-strip p { margin: 0; font-size: clamp(15px, 1.4vw, 17px); max-width: none; }
+  .done-strip strong { color: #15803d; }
+
+  /* keep the slide column readable on smaller laptop widths */
+  @media (max-width: 760px) {
+    .slide { padding: 40px 28px var(--nav-safe); }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+<!-- TITLE -->
+<section class="slide active title-slide">
+  <div class="title-head">
+    <div class="title-kicker">Class 1 · Before you arrive</div>
+    <h1 class="title-main">Set up your tools <br class="hero-break">before class starts.</h1>
+    <p class="title-sub">Do this once, ahead of time — so class time is building, not installing.</p>
+  </div>
+</section>
+
+<!-- 1. OVERVIEW -->
+<section class="slide">
+  <div class="slide-num">1 / Overview</div>
+  <div class="eyebrow">What you're setting up</div>
+  <h2 class="nowrap-lg">Four free tools, wired together and ready.</h2>
+  <h3 style="margin-top: 30px; color: #b8401a;">The four tools</h3>
+  <ul>
+    <li><strong>VS Code</strong> — where the files for your website live on your computer.</li>
+    <li><strong>Claude Code</strong> — the AI that edits those files for you.</li>
+    <li><strong>GitHub</strong> — the backup + history of every change.</li>
+    <li><strong>Vercel</strong> — turns your files into a live website on the internet.</li>
+  </ul>
+  <div class="arrow-flow">
+    <div class="flow-step">You talk</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Claude edits</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">GitHub saves</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Vercel publishes</div>
+  </div>
+</section>
+
+<!-- 1.6 MENTALITY -->
+<section class="slide">
+  <div class="slide-num">2 / Mentality</div>
+  <div class="eyebrow">The one shift that makes this click</div>
+  <h2>Stop using a tool. Start <em style="color:#d94e1f;">delegating</em> to a person.</h2>
+  <div class="quote">You're not learning a program. You're describing what you want to someone who'll go build it.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">The old habit</div>
+      <ul>
+        <li>Type <strong>keywords</strong> and scroll the results.</li>
+        <li>Point and click every step yourself.</li>
+        <li>Ask <em>"how do I do X?"</em> and go do it.</li>
+        <li>Learn the app before you can use it.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Talking to Claude</div>
+      <ul>
+        <li>Say in <strong>plain English</strong> what you want.</li>
+        <li>Describe the goal — let Claude handle the steps.</li>
+        <li>Say <em>"do X for me"</em> — and it does it.</li>
+        <li>No app to learn. You already know how to talk.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small-note">This is the habit for the whole setup below: when something looks confusing, you don't go hunting — you <strong>describe what you see to Claude</strong> and let it handle it.</p>
+</section>
+
+<!-- 3. VS CODE + CLAUDE CODE -->
+<section class="slide">
+  <div class="slide-num">3 / VS Code + Claude Code</div>
+  <div class="eyebrow">Your workspace</div>
+  <h2>VS Code is just a really fancy file manager.</h2>
+  <div class="quote">"You will never type code. You will type English."</div>
+  <ul>
+    <li>Install VS Code (free, from <span class="mono">code.visualstudio.com</span>).</li>
+    <li>Install the Claude Code extension from the VS Code extension marketplace.</li>
+    <li><strong>File → Open Folder → "New Folder"</strong> — create a brand new folder for your project, then open it. (The #1 stuck-point.)</li>
+  </ul>
+</section>
+
+<!-- 3.1 SIGN INTO CLAUDE CODE -->
+<section class="slide">
+  <div class="slide-num">3.1 / Sign in</div>
+  <div class="eyebrow">Before you can type a single prompt</div>
+  <h2>Open Claude Code and sign in.</h2>
+  <ul>
+    <li>Click the <strong>Claude Code icon</strong> in the VS Code sidebar to open the panel.</li>
+    <li>Click <strong>Sign in</strong> — a browser window opens. Log into your Claude account and approve, then come back to VS Code.</li>
+    <li>You're connected when the panel shows a prompt box waiting for you — not a sign-in button.</li>
+  </ul>
+  <div class="heads-up" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.28);">
+    <span class="heads-up-mark">⚡</span>
+    <p>Switch the model to <strong>Opus</strong> — it's the strongest model for coding. Type <code>/model</code> and pick Opus, or use the model picker at the bottom of the panel.</p>
+  </div>
+</section>
+
+<!-- 3.2a HOMEBREW FIRST (Mac) -->
+<section class="slide dense" id="homebrew">
+  <div class="slide-num">3.2 / Mac: Homebrew first</div>
+  <div class="eyebrow">Mac users only — Windows, skip to the next slide</div>
+  <h2>Install Homebrew yourself, in the terminal.</h2>
+  <p>Homebrew is the installer that sets up everything else. It needs your Mac password, which only <em>you</em> can type — so we do this one step by hand, then let Claude do the rest.</p>
+  <ul class="numbered" style="margin-top: 6px;">
+    <li><strong>1.</strong> In VS Code, open the terminal: menu bar → <strong>Terminal → New Terminal</strong>.</li>
+    <li><strong>2.</strong> Go to <span class="mono">brew.sh</span>, copy the one install command at the top, paste it into the terminal, and press Enter.</li>
+    <li><strong>3.</strong> When it asks for your <strong>password</strong>, type your Mac login password and press Enter. <em>The screen shows nothing as you type — no dots, no stars. That's normal. Type it anyway and hit Enter.</em></li>
+    <li><strong>4.</strong> Press Enter once more if it asks you to confirm, then let it run (a few minutes).</li>
+  </ul>
+  <div class="done-strip">
+    <span class="done-mark">✅</span>
+    <p><strong>Success = </strong> the scrolling stops, you see <strong>"Installation successful!"</strong>, and the plain <code>$</code> prompt comes back waiting for you. Unsure? Paste the last screen to Claude: <em>"did Homebrew install correctly?"</em></p>
+  </div>
+</section>
+
+<!-- 3.2b PREREQUISITES -->
+<section class="slide dense" id="prereq">
+  <div class="slide-num">3.2 / Prerequisites</div>
+  <div class="eyebrow">Then let Claude finish the setup</div>
+  <h2>One prompt installs the rest.</h2>
+  <p>With Homebrew in place, Claude can install everything else in one shot. Paste this into Claude (Mac or Windows, same prompt):</p>
+  <div class="prompt-box">"Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS (on a Mac: Xcode Command Line Tools, and use the Homebrew I just installed; on Windows: use winget — do NOT install the full Xcode app). Install anything missing, one at a time, then show me a checklist proving each one works."</div>
+  <div class="grid-2" style="margin-top: 12px;">
+    <div class="card">
+      <div class="eyebrow">What Claude will install</div>
+      <ul>
+        <li><strong>git</strong> — the change-tracker GitHub is built on.</li>
+        <li><strong>Node.js</strong> (includes npm + npx) — the engine the Vercel and Impeccable tools run on.</li>
+        <li><strong>GitHub CLI + Vercel CLI</strong> — how Claude talks to your accounts.</li>
+        <li><strong>Claude Code CLI</strong> — required before you can create agents (next section).</li>
+        <li><strong>Mac:</strong> Xcode Command Line Tools. <strong>Windows:</strong> winget, built into Windows.</li>
+      </ul>
+      <p style="margin-top: 10px; color: var(--muted); font-size: 15px;">All free and standard — safe to say yes to each.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Your only job</div>
+      <ul>
+        <li><strong>Scrolling terminal text = an install working, not an error.</strong> You never need to read it — Claude does.</li>
+        <li><strong>Answer when Claude asks</strong> — say yes, and type your password if a window asks. That's normal.</li>
+        <li><strong>Let it run</strong> — downloads take 10–20 minutes.</li>
+        <li><strong>If something fails</strong>, paste the error back: <em>"this failed — fix it and continue."</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3.3 LOG INTO THE CLIs -->
+<section class="slide">
+  <div class="slide-num">3.3 / Log into your CLIs</div>
+  <div class="eyebrow">Installed ≠ logged in</div>
+  <h2>Log Claude into GitHub, Vercel, and itself.</h2>
+  <p>The tools are installed, but they don't know who you are yet. One prompt logs you into all three — Claude drives it and pauses when a browser window needs a click.</p>
+  <div class="prompt-box">"Log me into the GitHub CLI, the Vercel CLI, and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next."</div>
+  <div class="heads-up">
+    <span class="heads-up-mark">✋</span>
+    <p><strong>Expect a browser window (or a short code) for each login</strong> — that's normal, not an error. Sign in, approve, and tell Claude you're done. You'll need your GitHub and Vercel accounts (next two slides cover signing up).</p>
+  </div>
+</section>
+
+<!-- 3.4 TERMINAL CHECK -->
+<section class="slide">
+  <div class="slide-num">3.4 / Terminal check</div>
+  <div class="eyebrow">After the installs and logins finish</div>
+  <h2>Make sure your terminal itself works.</h2>
+  <p>Claude runs everything through your computer's terminal. If its configuration is broken, things fail in confusing ways later — agents won't launch, commands won't be found. Verify it now, while there's nothing to break:</p>
+  <div class="prompt-box">"Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed."</div>
+  <ul>
+    <li><strong>Quit and reopen VS Code first.</strong> Freshly installed tools only show up in fresh terminals — this alone fixes most problems.</li>
+    <li><strong>"command not found" right after installing ≠ broken install.</strong> The terminal just hasn't reloaded. Restart VS Code, then ask Claude to check again.</li>
+    <li><strong>Red text when the terminal opens?</strong> Don't read it — copy it and paste it to Claude: <em>"my terminal shows this when it opens — fix it."</em></li>
+  </ul>
+</section>
+
+<!-- 4. AGENTS — what they are -->
+<section class="slide">
+  <div class="slide-num">4 / Agents</div>
+  <div class="eyebrow">Specialist Claudes</div>
+  <h2>Creating agents inside Claude Code.</h2>
+  <p>An agent is just a specialist Claude calls when needed. Now we'll install two: <span class="pill">code-reviewer</span> <span class="pill">security-reviewer</span></p>
+  <p style="margin-top: 14px;"><a href="agents.html" target="_blank" style="color:#b8401a; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
+  <p class="small-note">Now you know how to make your own agents for anything — a copywriter, a tax helper, whatever.</p>
+</section>
+
+<!-- 4b. AGENTS — the steps -->
+<section class="slide dense">
+  <div class="slide-num">4 / Agents — the steps</div>
+  <div class="eyebrow">Specialist Claudes</div>
+  <h2>Steps</h2>
+  <ul>
+    <li>In the terminal, type <code>/agents</code> and click <strong>Agents</strong> (terminal is fine).</li>
+    <li>Open the <strong>Library</strong> tab, then click <strong>Create agent</strong>.</li>
+    <li>Location: choose <strong>Personal</strong> (all projects) vs Project (this repo only) — pick <strong>Personal</strong>.</li>
+    <li>Setup: choose <strong>Manual configuration</strong> (vs Generate with Claude).</li>
+    <li><strong>Unique identifier</strong>: type the agent name.</li>
+    <li><strong>Prompt</strong>: paste the full markdown from the handout.</li>
+    <li><strong>When should Claude use this agent?</strong> → <em>after code changes</em>.</li>
+    <li><strong>Select tools</strong>: just continue (leave defaults).</li>
+    <li><strong>Model</strong>: pick <strong>Opus</strong>.</li>
+    <li><strong>Color</strong>: any (doesn't matter).</li>
+    <li><strong>Memory</strong>: set to <strong>User</strong> scope.</li>
+    <li>Save, confirm it appears, then repeat for the second agent.</li>
+  </ul>
+</section>
+
+<!-- 4.6 ALWAYS REVIEW -->
+<section class="slide">
+  <div class="slide-num">4.6 / Lock the review habit</div>
+  <div class="eyebrow">Teach Claude your standards</div>
+  <h2>Make code-review and security-review automatic.</h2>
+  <p>Update your global CLAUDE.md so Claude <strong>always runs both reviews after code changes</strong> — no need to remember.</p>
+  <div class="prompt-box">Ask Claude: "Open my global CLAUDE.md and add a rule that you always run the code-reviewer and security-reviewer agents after making code changes."</div>
+  <p class="small-note">You just gave Claude a permanent instruction. This is how you train it to your standards.</p>
+</section>
+
+<!-- 5. CLAUDE.md — what it is -->
+<section class="slide">
+  <div class="slide-num">5 / CLAUDE.md</div>
+  <div class="eyebrow">Permanent instructions</div>
+  <h2>What CLAUDE.md is and how it works.</h2>
+  <p>A plain markdown file Claude reads automatically every time it starts. Permanent instructions you don't have to repeat.</p>
+  <p style="margin-top: 22px; color:#b8401a; font-weight: 600; font-size: clamp(20px, 1.9vw, 24px);">When making a decision, you need to decide where the direction belongs: global or project.</p>
+  <p class="small-note">Note: these live in a <code>.claude</code> folder that's hidden by default — let Claude open them for you rather than hunting for the files.</p>
+</section>
+
+<!-- 5b. CLAUDE.md — global vs project -->
+<section class="slide">
+  <div class="slide-num">5 / CLAUDE.md — where it lives</div>
+  <div class="eyebrow">Permanent instructions</div>
+  <h2>Global or project?</h2>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <h3>Global</h3>
+      <p><code>~/.claude/CLAUDE.md</code></p>
+      <p style="margin-top: 10px;">Applies to <strong>every</strong> project on your computer.</p>
+      <p style="margin-top: 10px; color: var(--muted); font-size: 16px;">"Always run code-review after changes." "Be concise." Style preferences.</p>
+    </div>
+    <div class="card">
+      <h3>Project</h3>
+      <p><code>./CLAUDE.md</code> in repo root</p>
+      <p style="margin-top: 10px;">Applies <strong>only</strong> to this website.</p>
+      <p style="margin-top: 10px; color: var(--muted); font-size: 16px;">"This is a wedding photographer site." "Brand colors are X." "About page copy is locked."</p>
+    </div>
+  </div>
+  <p class="small-note">Rule of thumb: same for every AI session → global. About this website → project.</p>
+  <p class="small-note">To view or edit: just ask Claude — "open my global CLAUDE.md" or "open the project CLAUDE.md."</p>
+</section>
+
+<!-- 6. GITHUB -->
+<section class="slide">
+  <div class="slide-num">6 / GitHub</div>
+  <div class="eyebrow">Backup + history</div>
+  <h2>GitHub: like Google Drive or Dropbox, but for code.</h2>
+  <ul>
+    <li>A cloud backup of your whole project, with a full history of every change.</li>
+    <li>Sign up at <span class="mono">github.com</span>.</li>
+    <li>Pick a username you'd put on a resume — you'll see it forever.</li>
+    <li>You do <strong>not</strong> need to learn git commands. Claude handles the saving and uploading.</li>
+  </ul>
+</section>
+
+<!-- 6b. GIT CONCEPTS -->
+<section class="slide">
+  <div class="slide-num">6 / Git concepts</div>
+  <div class="eyebrow">The conceptual heart of the class</div>
+  <h2>The six words you need to know.</h2>
+  <ul>
+    <li><strong>Git</strong> = change tracking. Like Track Changes in Word, but for your whole project.</li>
+    <li><strong>Repo</strong> (repository) = your project's folder, tracked by git. Your website is one repo.</li>
+    <li><strong>Commit</strong> = save. A snapshot you can always roll back to.</li>
+    <li><strong>Push</strong> = send your saves up to GitHub. (This is what triggers a live deploy.)</li>
+    <li><strong>Pull</strong> = grab the latest version from GitHub down to your computer.</li>
+    <li><strong>Clone</strong> = make a fresh copy of a project from GitHub onto your computer.</li>
+  </ul>
+  <p style="margin-top: 20px; color: var(--muted);">We're skipping <em>branching</em> — not needed for a solo website.</p>
+</section>
+
+<!-- 7. VERCEL -->
+<section class="slide">
+  <div class="slide-num">7 / Vercel</div>
+  <div class="eyebrow">Your website's home on the internet</div>
+  <h2>Vercel: free hosting that auto-deploys when you push.</h2>
+  <ul>
+    <li>Sign up at <span class="mono">vercel.com</span> — <strong>use the "Sign up with GitHub" button</strong>. One click, no separate password.</li>
+    <li>You'll land on a dashboard — this is where every site you build lives.</li>
+    <li><strong>Hobby</strong> plan = free forever for personal projects like this.</li>
+    <li>Every push to GitHub → Vercel rebuilds automatically. No buttons to click.</li>
+  </ul>
+</section>
+
+<!-- 8. WIRING -->
+<section class="slide">
+  <div class="slide-num">8 / Wiring it together</div>
+  <div class="eyebrow">Connect the three</div>
+  <h2>Get Claude, GitHub, and Vercel talking.</h2>
+  <p>Ask Claude in the VS Code terminal:</p>
+  <div class="prompt-box">"Connect this project to my GitHub and Vercel. Make sure they're synced and a push will deploy."</div>
+  <h3 style="margin-top: 30px; color: #b8401a;">Verification checklist</h3>
+  <ul>
+    <li class="check"><code>git status</code> works in the VS Code terminal</li>
+    <li class="check">Your project shows up at <span class="mono">github.com/yourname</span></li>
+    <li class="check">Your project shows up in Vercel with a <span class="mono">*.vercel.app</span> URL</li>
+  </ul>
+</section>
+
+<!-- 9. YOU'RE ALL SET -->
+<section class="slide">
+  <div class="slide-num">9 / You're all set</div>
+  <div class="eyebrow">That's everything — see you in class</div>
+  <h2>You're done. Here's what you set up.</h2>
+  <ul>
+    <li class="done-check"><strong>VS Code + Claude Code</strong>, signed in and on Opus.</li>
+    <li class="done-check">All the <strong>tools installed and logged in</strong> (git, Node, gh, vercel, claude).</li>
+    <li class="done-check">Two <strong>review agents</strong> and a global <strong>CLAUDE.md</strong> rule.</li>
+    <li class="done-check"><strong>GitHub + Vercel</strong> accounts, wired to your project — a push will deploy.</li>
+  </ul>
+  <div class="heads-up">
+    <span class="heads-up-mark">🚀</span>
+    <p>Bring your laptop to class with your <strong>project folder open in VS Code</strong>. We'll go straight to building and shipping your site — no setup time lost.</p>
+  </div>
+</section>
+
+<!-- 10. IF SOMETHING BREAKS -->
+<section class="slide">
+  <div class="slide-num">10 / If something breaks</div>
+  <div class="eyebrow">There's almost nothing you can't get past</div>
+  <h2>Stuck? <em>Tell Claude.</em> It's the troubleshooter.</h2>
+  <p>This is the habit for everything going forward: when something doesn't work, you don't go hunting for the fix — you <strong>describe what happened to Claude</strong>, and it diagnoses and fixes it. Paste the error, or just say what you see:</p>
+  <div class="prompt-box">"That didn't work — here's what happened: [paste the message, or describe what you see on screen]. What's going on, and can you fix it?"</div>
+  <p style="margin-top:12px;">Claude reads the error, knows the usual causes, and walks you through it — the same way it ran the setup. <strong>It can almost always get you unstuck.</strong></p>
+  <div class="done-strip" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.3);">
+    <span class="done-mark">✉️</span>
+    <p>Still stuck after asking Claude a couple of times? Don't lose your evening over it — email me at <strong><a href="mailto:eric@stratengineai.com">eric@stratengineai.com</a></strong> and I'll walk you through it.</p>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">← Prev</button>
+  <span id="counter" style="color:#5f5b52; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <button onclick="next()">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  function show(i) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
