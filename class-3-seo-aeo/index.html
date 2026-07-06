@@ -670,16 +670,16 @@
 <section class="slide">
   <div class="slide-num">6 / The core idea</div>
   <div class="eyebrow">The one concept the whole class rests on</div>
-  <h2>One address. A <em>front door</em> that decides who sees what.</h2>
-  <p>Here's the trick. Both versions of your site live behind your single address. When a request comes in, a tiny program at Cloudflare — the <strong>front door</strong> — looks at <em>who's asking</em>. A human or Google? It serves your normal site. An AI crawler? It quietly serves the AI version instead. The visitor never sees a different address.</p>
+  <h2><em>Cloudflare</em> is the front door — it decides who sees what.</h2>
+  <p>Remember from the prereqs: <strong>Cloudflare now sits in front of your website</strong> — every visitor hits Cloudflare first, before reaching your actual site. That position is the whole trick. We put a tiny program there — a <strong>Cloudflare Worker</strong> — that checks <em>who's asking</em> as each request comes through. A human or Google? It passes them to your normal site. An AI crawler? It quietly serves the AI version instead — all at your single address, so the visitor never sees anything different.</p>
   <div class="arrow-flow">
-    <div class="flow-step">Visitor arrives</div>
+    <div class="flow-step">Visitor hits Cloudflare first</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-step">Front door reads who they are</div>
+    <div class="flow-step">Cloudflare reads who they are</div>
     <div class="flow-arrow">→</div>
     <div class="flow-step">Serves the right version</div>
   </div>
-  <p class="small-note">This is the piece to get right. Because it all happens at one address, an AI crawling <code>yourdomain.com/about</code> gets the AI version of that exact page — it walks your whole site this way, never knowing the second version exists.</p>
+  <p class="small-note">This is why we moved your domain to Cloudflare before class: only something sitting <em>in front</em> of your site can intercept every visitor and route them. Because it all happens at one address, an AI crawling <code>yourdomain.com/about</code> gets the AI version of that exact page — walking your whole site this way, never knowing the second version exists.</p>
 </section>
 
 <!-- 5. THE THREE PIECES -->
