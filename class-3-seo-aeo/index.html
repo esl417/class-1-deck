@@ -714,11 +714,17 @@
   <div class="slide-num">10 / Build · Step 2</div>
   <div class="eyebrow">Now fill the shell with content</div>
   <h2>Step 2 — write the AI version of each page.</h2>
-  <p>Now Claude fills each slot with an answer-first version of that page: the same facts as the human page, stripped of clutter and shaped so an AI can lift a clean quote. Say:</p>
-  <div class="prompt-box">"Now generate the bot-page content for each page in llm/. Match the facts on my real pages, but write them answer-first and clean — clear headings, direct statements, no fluff. Every page's canonical link must point to its human URL. Show me one example before doing them all."</div>
-  <div class="heads-up">
-    <span class="heads-up-mark">👀</span>
-    <p><strong>Review the one example first.</strong> This is the habit from every class — check one page, tell Claude what to adjust, <em>then</em> let it do the rest. You're the editor; Claude's the writer.</p>
+  <p>Now Claude fills each slot with an answer-first version of that page — but not by guessing. We hand it a real standard: the <strong>AEO Content Guide</strong>, the rules for exactly how AI answer engines like to be fed (short self-contained chunks, direct claims, quotable facts). Say:</p>
+  <div class="prompt-box">"Grab the AEO Content Guide from https://github.com/esl417/class-materials (the file in class-3-seo-aeo/content-guide/AEO_CONTENT_GUIDE.md), then generate the bot-page content for each page in llm/ following that guide exactly. Match the facts on my real pages. Every page's canonical link must point to its human URL. Show me one example before doing them all."</div>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📘 What the guide is</div>
+      <p>The distilled playbook for AI-readable writing — answer-first, 50–150-word chunks, clear claims, citation-worthy facts. It's <em>why</em> the AI version outperforms your normal pages with the bots.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">👀 Your job: review one first</div>
+      <p>Check the one example, tell Claude what to adjust, <em>then</em> let it do the rest. You're the editor; Claude's the writer.</p>
+    </div>
   </div>
 </section>
 
