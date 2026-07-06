@@ -549,7 +549,11 @@
       <p><strong>3.</strong> Ship it, lock it, and put it somewhere you'll actually look.</p>
     </div>
   </div>
-  <p class="small-note">Not set up yet? Follow the <a href="prereqs.html"><strong>prerequisites guide</strong></a> — but you'll need a few days of analytics data first, so this is a "before class" task.</p>
+  <p class="small-note">Not set up yet? Follow the <a href="prereqs.html"><strong>prerequisites guide</strong></a>.</p>
+  <div class="heads-up" style="margin-top: 12px;">
+    <span class="heads-up-mark">🧪</span>
+    <p><strong>Didn't get your Google tag installed in time (or analytics still empty)?</strong> You can still build everything today with realistic practice data. Once your Supabase connection is set up, paste this into Claude Code: <em>"Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in <code>class-2-dashboard/ga4-dummy-kit</code>) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself."</em> Claude fills your database with ~90 days of practice data, shaped exactly like real Google Analytics — so your dashboard won't change when you go live later.</p>
+  </div>
 </section>
 
 <!-- 3. YOUR TWO DATA SOURCES -->
@@ -599,62 +603,12 @@
 </section>
 
 <!-- ============================================================
-     PART 0.5 — TWO WORK HABITS (before any building)
-     ============================================================ -->
-
-<!-- 5. PLAN MODE -->
-<section class="slide dense">
-  <div class="slide-num">5 / Plan mode</div>
-  <div class="eyebrow">A new habit, before you build anything</div>
-  <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
-  <p>For anything bigger than a one-line change, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole job through and hands you a plan to approve — <em>before</em> a single file changes.</p>
-  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">How to turn it on</div>
-      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Why it's worth it</div>
-      <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more time lost debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
-    </div>
-    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
-  </div>
-  <div class="heads-up" style="margin-top: 12px;">
-    <span class="heads-up-mark">📖</span>
-    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> so every plan is readable — and you can tell if it sounds right before approving.</p>
-  </div>
-</section>
-
-<!-- 6. REFERENCE DOCUMENTS -->
-<section class="slide">
-  <div class="slide-num">6 / Reference documents</div>
-  <div class="eyebrow">Your project's knowledge base</div>
-  <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
-  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">During the build → the plan doc</div>
-      <p>The plan from plan mode <strong>is</strong> a reference doc. Claude saves it and works against it to stay on task. <strong>No extra effort from you</strong> — approving the plan already created it.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">At the very end → the architecture doc</div>
-      <p>When a build is done, have Claude write an <strong>architecture doc</strong>: every metric that exists, how the pipeline is wired, what runs when. This is the one doc worth asking for explicitly.</p>
-    </div>
-  </div>
-  <div class="heads-up" style="margin-top: 14px;">
-    <span class="heads-up-mark">💡</span>
-    <p><strong>Pro tip: keep it current automatically.</strong> Set a rule in your <code>CLAUDE.md</code> up front — <em>"before every GitHub push, update ARCHITECTURE.md to match what changed"</em> — so the doc never goes stale. Every time you ship, the knowledge base updates itself.</p>
-  </div>
-  <p class="small-note">You'll actually write the architecture doc later — right after the data pipeline is built and tested (slide 10). For now, just know it's coming, and that next time you open this project Claude can read it and instantly know how everything fits together.</p>
-</section>
-
-<!-- ============================================================
      PART 1 — BUILD THE DATA LAYER FIRST
      ============================================================ -->
 
-<!-- 7. WHY DATA BEFORE DASHBOARD -->
+<!-- 5. WHY DATA BEFORE DASHBOARD -->
 <section class="slide">
-  <div class="slide-num">7 / Build order</div>
+  <div class="slide-num">5 / Build order</div>
   <div class="eyebrow">This is the one thing people get backwards</div>
   <h2>Build the <em>data</em> first. The dashboard comes second.</h2>
   <p>It's tempting to start with the pretty charts. Don't. A dashboard is just a window onto data — and right now there's no data to look at. If you design the screens first, you're guessing at numbers that don't exist yet.</p>
@@ -667,9 +621,9 @@
   <p class="small-note">Part 1 (now): the data pipeline. Part 2 (after it's proven): the dashboard — in a fresh session.</p>
 </section>
 
-<!-- 8. WHAT A DATABASE ACTUALLY IS -->
+<!-- 6. WHAT A DATABASE ACTUALLY IS -->
 <section class="slide">
-  <div class="slide-num">8 / What a database is</div>
+  <div class="slide-num">6 / What a database is</div>
   <div class="eyebrow">In plain terms — no jargon</div>
   <h2>A database is just <em>labeled spreadsheets</em>.</h2>
   <p>"Database" sounds technical. It isn't, really. Your Supabase project is a stack of <strong>tables</strong> — and a table is a spreadsheet with named columns and rows.</p>
@@ -686,9 +640,9 @@
   <p class="small-note">That's the whole mental model. Tables = spreadsheets. Claude designs them and does the typing; you just decide what data you want stored.</p>
 </section>
 
-<!-- 9. THE BRIDGE — EDGE FUNCTIONS + SERVICE ACCOUNT -->
+<!-- 7. THE BRIDGE — EDGE FUNCTIONS + SERVICE ACCOUNT -->
 <section class="slide dense">
-  <div class="slide-num">9 / The bridge</div>
+  <div class="slide-num">7 / The bridge</div>
   <div class="eyebrow">How analytics gets into your database</div>
   <h2>The bridge: a little robot you can <em>run on demand</em> or schedule.</h2>
   <p>Your analytics is in Google. Your database is in Supabase. Something has to carry data from one to the other. That something is a <strong>serverless function</strong> — a tiny program that runs without a computer of your own to host it. (Supabase calls its version an <strong>edge function</strong> — same thing, their branding.) Think of it as a small robot that fetches numbers from Google Analytics and drops them into your database table.</p>
@@ -711,12 +665,12 @@
   </div>
 </section>
 
-<!-- 10. BUILD + TEST THE INGESTION -->
+<!-- 8. BUILD + TEST THE INGESTION -->
 <section class="slide dense">
-  <div class="slide-num">10 / Build &amp; test the pipeline</div>
+  <div class="slide-num">8 / Build &amp; test the pipeline</div>
   <div class="eyebrow">The first real build of the day</div>
   <h2>Build the pipeline — then <em>prove</em> it works.</h2>
-  <p>In plan mode, paste this. Claude writes a plan and waits — read it, hit approve, it builds. Note the last line: don't just build it, <strong>test it and show you real rows</strong> before you trust it.</p>
+  <p>Paste this and let Claude build. Note the last line: don't just build it, <strong>test it and show you real rows</strong> before you trust it.</p>
   <div class="prompt-box">"I want to ingest my Google Analytics metrics into Supabase so my dashboard can read them. Plan and build the whole pipeline: design the storage and the ingestion that pulls from GA — using the service account we set up — and run it on a daily schedule. When it's done, run it once and show me the actual rows it stored so I know it worked."</div>
   <p class="small-note" style="margin-top:8px;"><strong>Notice the wording:</strong> describe the <em>goal</em>, not the how. You don't need to know about tables or functions — that's Claude's job.</p>
   <div class="grid-2" style="margin-top: 10px;">
@@ -725,8 +679,8 @@
       <p>Claude shows you <strong>real rows of your real numbers</strong> in the table, and the job is scheduled to keep running. Don't move on until you've seen real data land.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Then capture &amp; stop</div>
-      <p>Ask Claude to write the <strong>architecture doc</strong> now, while it's fresh — then <strong>stop here.</strong> The dashboard is a fresh session, for a reason.</p>
+      <div class="eyebrow">Then stop</div>
+      <p>Once you've seen real rows, <strong>stop here.</strong> The dashboard is a fresh session, for a reason.</p>
     </div>
   </div>
 </section>
@@ -735,9 +689,9 @@
      PART 2 — BUILD THE DASHBOARD (the real value-add)
      ============================================================ -->
 
-<!-- 11. NEW SESSION, FRESH /init -->
+<!-- 9. NEW SESSION, FRESH /init -->
 <section class="slide dense">
-  <div class="slide-num">11 / A fresh start</div>
+  <div class="slide-num">9 / A fresh start</div>
   <div class="eyebrow">Part 2 begins — and it's the fun part</div>
   <h2>New session. Run <code>/impeccable init</code>. Now you design.</h2>
   <p>Start <strong>clean</strong>: open a <strong>fresh Claude session</strong> and run <code>/impeccable init</code> to lay down the dashboard's design foundation — exactly like the website in Class 1.</p>
@@ -765,9 +719,9 @@
   </div>
 </section>
 
-<!-- 12. DESIGN AROUND YOUR DECISIONS -->
+<!-- 10. DESIGN AROUND YOUR DECISIONS -->
 <section class="slide dense">
-  <div class="slide-num">12 / Design around your decisions</div>
+  <div class="slide-num">10 / Design around your decisions</div>
   <div class="eyebrow">This is the real value of the whole class</div>
   <h2>Don't build a report. Build a <em>decision tool</em>.</h2>
   <p>Google Analytics dumps raw numbers on you and never says what to do with them. A good dashboard fixes that — built around <strong>the decisions you actually make</strong>, not a generic template.</p>
@@ -785,9 +739,9 @@
   <div class="prompt-box">"I'm not sure which metrics matter most for my business. Suggest the handful worth watching, design the dashboard around them, and — right on the dashboard — explain what each means and what action a good or bad reading should prompt."</div>
 </section>
 
-<!-- 13. PRO TIP — SYNTHETIC METRICS -->
+<!-- 11. PRO TIP — SYNTHETIC METRICS -->
 <section class="slide">
-  <div class="slide-num">13 / Synthetic metrics</div>
+  <div class="slide-num">11 / Synthetic metrics</div>
   <div class="eyebrow">The pro move most people miss</div>
   <h2>Invent metrics Google Analytics <em>doesn't</em> give you.</h2>
   <p>Analytics hands you raw counts — visitors, page views, sessions. The insight is usually in the <strong>numbers you build from them.</strong> A raw count says "what happened." A synthetic metric says "is that good, and is it getting better?"</p>
@@ -801,13 +755,13 @@
       <p><strong>Signup rate</strong> (12 ÷ 500 = 2.4%). <strong>Week-over-week change.</strong> <strong>Traffic-to-pricing ratio.</strong> Now each number argues for a decision.</p>
     </div>
   </div>
-  <div class="prompt-box">"From my raw analytics, calculate a few derived metrics that drive decisions: visitor-to-signup conversion rate, week-over-week traffic change as a %, and the share of visitors who reach my key page. Show each as a single headline number with its trend."</div>
+  <div class="prompt-box">"Look at my raw analytics and suggest a list of derived metrics that would drive decisions for my site — for each one, a one-line explanation of what decision it helps me make. I'll pick the ones I want, then build them as headline numbers with their trend."</div>
   <p class="small-note">This is the difference between a dashboard that reports and a dashboard that tells you what to do next.</p>
 </section>
 
-<!-- 14. THE DASHBOARD BUILD HIERARCHY -->
+<!-- 12. THE DASHBOARD BUILD HIERARCHY -->
 <section class="slide dense">
-  <div class="slide-num">14 / The build loop</div>
+  <div class="slide-num">12 / The build loop</div>
   <div class="eyebrow">How you get from rough to right</div>
   <h2>The first pass is never right. <em>That's the point.</em></h2>
   <p>The first build just gets your information on the screen — rough and ugly is expected. Here's the loop that takes it from there:</p>
@@ -825,9 +779,9 @@
      PART 3 — SHIP & CLOSE
      ============================================================ -->
 
-<!-- 15. DEPLOY IT LIVE -->
+<!-- 13. DEPLOY IT LIVE -->
 <section class="slide">
-  <div class="slide-num">15 / Deploy it live</div>
+  <div class="slide-num">13 / Deploy it live</div>
   <div class="eyebrow">Get it off your laptop</div>
   <h2>Ship it to a live URL.</h2>
   <p>Same move as the website in Class 1: push it to <strong>Vercel</strong> and you get a real link that's always up — so your dashboard is something you actually open, not a thing you have to run by hand.</p>
@@ -839,9 +793,9 @@
   <p class="small-note">It's live the moment Claude finishes — but right now anyone with the link can see your numbers. Fix that next.</p>
 </section>
 
-<!-- 16. LOCK IT DOWN — PASSWORD PROTECT -->
+<!-- 14. LOCK IT DOWN — PASSWORD PROTECT -->
 <section class="slide dense">
-  <div class="slide-num">16 / Lock it down</div>
+  <div class="slide-num">14 / Lock it down</div>
   <div class="eyebrow">Your numbers are private — keep them that way</div>
   <h2>Password-protect it. Two ways — pick one.</h2>
   <p>This dashboard shows your real business numbers. It should not be open to anyone with the link. There are two layers you can lock it at:</p>
@@ -860,9 +814,9 @@
   <p class="small-note">For a dashboard only you look at, the Vercel password is plenty. Reach for Supabase Auth when you want named accounts or to share it with a teammate — and it's not just email/password: you can add <strong>"Sign in with Google"</strong> (or any other provider) and even <strong>passkeys</strong>. Don't know how? Just ask Claude.</p>
 </section>
 
-<!-- 17. WHERE IT LIVES — SUBDOMAIN (OPTIONAL) -->
+<!-- 15. WHERE IT LIVES — SUBDOMAIN (OPTIONAL) -->
 <section class="slide">
-  <div class="slide-num">17 / Where it lives</div>
+  <div class="slide-num">15 / Where it lives</div>
   <div class="eyebrow">Totally optional — your call</div>
   <h2>Leave it on its own, or put it on a <em>subdomain</em>.</h2>
   <p>Your dashboard is a separate deployment with its own Vercel URL. That's completely fine to leave as-is. But if you'd like it under your own domain, you can give it a tidy address like <code>dashboard.yourdomain.com</code>.</p>
@@ -880,9 +834,9 @@
   <p class="small-note">There's no wrong answer — it's your dashboard. As long as you can get to it, you're done.</p>
 </section>
 
-<!-- 18. TROUBLESHOOTING -->
+<!-- 16. TROUBLESHOOTING -->
 <section class="slide">
-  <div class="slide-num">18 / If something breaks</div>
+  <div class="slide-num">16 / If something breaks</div>
   <div class="eyebrow">The habit that gets you unstuck</div>
   <h2>Stuck? <em>Tell Claude.</em> It's the troubleshooter.</h2>
   <p>This is the same habit from Class 1, and it holds today too. When something doesn't work — the pipeline errors, the dashboard's blank, the deploy fails — you don't go hunting for the fix. You <strong>describe what happened to Claude</strong> and let it diagnose:</p>
@@ -894,9 +848,9 @@
   </div>
 </section>
 
-<!-- 19. WHERE TO GO NEXT -->
+<!-- 17. WHERE TO GO NEXT -->
 <section class="slide">
-  <div class="slide-num">19 / Where to go next</div>
+  <div class="slide-num">17 / Where to go next</div>
   <div class="eyebrow">You built a decision tool — now use it</div>
   <h2>You have a live dashboard. Here's what it unlocks.</h2>
   <ul>

@@ -1,0 +1,69 @@
+<!-- ============================================================
+     SLIDES SAVED FOR CLASS 3 (SEO + AEO)
+     Pulled from class-2-dashboard-build/index.html on 2026-07-06.
+     Class 2 builds a single dashboard, so plan mode and reference
+     documents weren't needed there — teach them in Class 3.
+
+     To use these in the Class 3 deck:
+     - They rely on the shared deck CSS classes: .slide, .dense,
+       .slide-num, .eyebrow, .card, .grid-2, .heads-up,
+       .heads-up-mark, .ui-shot, .small-note
+     - plan-mode.png lives in class-2-dashboard-build/ — copy it
+       into the Class 3 deck folder.
+     - Update the slide-num values ("5 /", "6 /") to their Class 3
+       positions.
+     - TODO: the Reference-documents slide has Class-2-specific
+       wording — "how the pipeline is wired", "every metric that
+       exists", and the small-note pointing at "the data pipeline
+       ... (slide 10)". Rework those for the Class 3 build.
+     ============================================================ -->
+
+<!-- ============================================================
+     PART 0.5 — TWO WORK HABITS (before any building)
+     ============================================================ -->
+
+<!-- 5. PLAN MODE -->
+<section class="slide dense">
+  <div class="slide-num">5 / Plan mode</div>
+  <div class="eyebrow">A new habit, before you build anything</div>
+  <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
+  <p>For anything bigger than a one-line change, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole job through and hands you a plan to approve — <em>before</em> a single file changes.</p>
+  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">How to turn it on</div>
+      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Why it's worth it</div>
+      <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more time lost debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
+    </div>
+    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
+  </div>
+  <div class="heads-up" style="margin-top: 12px;">
+    <span class="heads-up-mark">📖</span>
+    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> so every plan is readable — and you can tell if it sounds right before approving.</p>
+  </div>
+</section>
+
+<!-- 6. REFERENCE DOCUMENTS -->
+<section class="slide">
+  <div class="slide-num">6 / Reference documents</div>
+  <div class="eyebrow">Your project's knowledge base</div>
+  <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
+  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">During the build → the plan doc</div>
+      <p>The plan from plan mode <strong>is</strong> a reference doc. Claude saves it and works against it to stay on task. <strong>No extra effort from you</strong> — approving the plan already created it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">At the very end → the architecture doc</div>
+      <p>When a build is done, have Claude write an <strong>architecture doc</strong>: every metric that exists, how the pipeline is wired, what runs when. This is the one doc worth asking for explicitly.</p>
+    </div>
+  </div>
+  <div class="heads-up" style="margin-top: 14px;">
+    <span class="heads-up-mark">💡</span>
+    <p><strong>Pro tip: keep it current automatically.</strong> Set a rule in your <code>CLAUDE.md</code> up front — <em>"before every GitHub push, update ARCHITECTURE.md to match what changed"</em> — so the doc never goes stale. Every time you ship, the knowledge base updates itself.</p>
+  </div>
+  <p class="small-note">You'll actually write the architecture doc later — right after the data pipeline is built and tested (slide 10). For now, just know it's coming, and that next time you open this project Claude can read it and instantly know how everything fits together.</p>
+</section>
