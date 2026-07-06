@@ -113,9 +113,12 @@ accurate, current Cloudflare knowledge.
 
 **Status:** Prereqs deck built (`class-3-seo-aeo/prereqs.html`) + Cloudflare
 student kit (`class-3-seo-aeo/cloudflare-student-kit/`, published to
-`class-materials`). Two setup reference docs drafted; the CLI hosting doc's
-Worker binding was corrected from a Custom Domain to a **route** so human
-traffic still passes through to the Vercel origin. Main class deck not started.
+`class-materials`). Main class deck first pass built
+(`class-3-seo-aeo/index.html`, 15 slides: framing → two work habits (plan mode,
+reference docs) → dual-surface mental model → live build → AEO + measure) and
+linked from the landing hub. Two setup reference docs drafted; the CLI hosting
+doc's Worker binding was corrected from a Custom Domain to a **route** so human
+traffic still passes through to the Vercel origin.
 
 ---
 
