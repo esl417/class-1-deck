@@ -787,16 +787,16 @@
   <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once, in plan mode, and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
   <div class="prompt-box">"I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-aeo folder and follow the directions there. Make a plan and show it to me before building anything."</div>
   <div class="card" style="margin-top:6px;">
-    <div class="eyebrow">✋ Before you say "go" — check the plan lists these four steps</div>
-    <p>This is the plan-mode habit in action: <strong>read Claude's plan and confirm it matches</strong> what you expect before approving. It should include, in order:</p>
+    <div class="eyebrow">✋ Before you say "go" — the plan should cover four stages</div>
+    <p>This is the plan-mode habit in action: <strong>read Claude's plan and sanity-check it</strong> before approving. A good plan moves through these four stages, in order — the next few slides explain what each one is doing and why:</p>
     <ul>
-      <li><strong>1. Scaffold</strong> — an <code>llm/</code> folder mirroring your pages, plus robots.txt / sitemap.xml / _headers.</li>
-      <li><strong>2. Generate</strong> — answer-first bot pages per the AEO guide, canonicals → your human URLs.</li>
-      <li><strong>3. Deploy</strong> — pages to Cloudflare Pages + the routing Worker on a <em>route</em> (so your human site keeps working).</li>
-      <li><strong>4. Verify</strong> — the GPTBot / browser / Googlebot routing test.</li>
+      <li><strong>1. Scaffold</strong> — set up the empty structure for the bot version of your pages.</li>
+      <li><strong>2. Generate</strong> — write the bot pages, following the AEO content guide.</li>
+      <li><strong>3. Deploy</strong> — put the pages and the routing front door live on Cloudflare.</li>
+      <li><strong>4. Verify</strong> — prove AI, humans, and Google each get the right version.</li>
     </ul>
   </div>
-  <p class="small-note">Missing a step, or planning to replace your human site instead of sitting in front of it? Tell Claude what's off and have it re-plan. Only approve once all four are there and read right. The next four slides walk through what each step does as Claude executes them.</p>
+  <p class="small-note">You don't need to know the technical details — the plan and the class materials carry those. You're just confirming these four stages are there and that it's adding a bot version in front of your site, not replacing it. If something looks off, tell Claude and have it re-plan before you approve.</p>
 </section>
 
 <!-- STEP 1 — SCAFFOLD (walkthrough of the plan) -->
