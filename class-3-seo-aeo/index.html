@@ -903,24 +903,33 @@
   <p class="small-note">Redeploy and repeat — a few pages a week. This loop (find what's missing → answer it → format for citability → ship) is the whole game. <strong>Once your full site is converted and you want to go deeper</strong>, run <code>/seo cluster</code> — it maps every topic worth owning across your whole site. (Your <em>human</em> pages still need to be genuinely yours; this added depth lives on the AI surface.)</p>
 </section>
 
-<!-- 11. AEO ESSENTIALS -->
+<!-- RE-RUN THE SEO TOOLKIT — now that the AEO build is live -->
 <section class="slide dense">
-  <div class="slide-num">17 / Structured data</div>
-  <div class="eyebrow">The one "extra" worth understanding</div>
-  <h2>The <em>hidden labels</em> that help AI quote you right.</h2>
-  <p>One thing worth knowing about, because it's doing quiet work on every bot page: <strong>structured data</strong> (also called schema).</p>
+  <div class="slide-num">17 / Run the toolkit again</div>
+  <div class="eyebrow">Same SEO toolkit — now on your live bot surface</div>
+  <h2>Now that it's live, <em>re-run</em> the SEO toolkit.</h2>
+  <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? Run it <strong>twice</strong> — you did it once for your normal site, and now again now that the AEO build is live. Some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">🏷️ What it is</div>
-      <p><strong>Hidden labels on each page</strong> that spell out the facts in a format machines read perfectly — "this is the business, this is the price, this is an FAQ." The AI doesn't have to guess what your text means; the labels tell it plainly, so it quotes you accurately.</p>
+      <div class="eyebrow">Run these now — they measure the bot surface</div>
+      <ul>
+        <li><code>/seo geo yourdomain.com</code> — how <strong>citable</strong> your live pages are to AI (this is the one that needed the build done first).</li>
+        <li><code>/seo schema yourdomain.com</code> — confirms the <strong>structured data</strong> the AEO guide put on your bot pages actually landed, and fixes any gaps.</li>
+      </ul>
     </div>
     <div class="card">
-      <div class="eyebrow">✅ It's already built in</div>
-      <p>You don't add this after the fact — the <strong>AEO guide already calls for it</strong>, so Claude puts it on your bot pages as it generates them. Your job is just to <em>confirm</em> it landed.</p>
+      <div class="eyebrow">And the rest, same as before</div>
+      <ul>
+        <li><code>/seo audit yourdomain.com</code> — full-site health + fix list.</li>
+        <li><code>/seo content yourdomain.com</code> — EEAT / content score.</li>
+        <li><code>/seo backlinks yourdomain.com</code> — who links to you, and gaps.</li>
+      </ul>
     </div>
   </div>
-  <div class="prompt-box">"Run /seo schema on my site and confirm my bot pages have proper structured data — business info, and FAQ markup on any page with questions. Fix anything missing."</div>
-  <p class="small-note">Answer-first writing + machine-readable labels is most of what gets you into AI answers. No tricks — just being the clearest, most quotable source, spelled out in a way machines can't misread.</p>
+  <div class="heads-up">
+    <span class="heads-up-mark">🤝</span>
+    <p><strong>Same deal as before: it doesn't just grade you — Claude can fix what it finds.</strong> Run a check, then say <em>"work through these fixes with me, highest-impact first."</em> Make this a habit — re-run it whenever you ship new pages.</p>
+  </div>
 </section>
 
 <!-- 12. MEASURE IT -->
