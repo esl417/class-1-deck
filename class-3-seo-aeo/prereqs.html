@@ -597,8 +597,13 @@
     <li><strong>3.</strong> Cloudflare shows you <strong>two nameservers</strong> (they look like <code>ada.ns.cloudflare.com</code>). Keep that page open.</li>
     <li><strong>4.</strong> In another tab, log in to where you bought your domain, find the <strong>nameservers</strong> setting, and replace what's there with Cloudflare's two.</li>
   </ul>
+  <div class="card" style="margin-top: 6px;">
+    <div class="eyebrow">🔺 Bought your domain through Vercel? (most of you)</div>
+    <p>Your registrar is Vercel, so step 4 happens there: go to <a href="https://vercel.com/dashboard/domains" target="_blank" rel="noopener">vercel.com/dashboard/domains</a> → click your domain → under <strong>Nameservers</strong>, click <strong>Edit</strong> → paste in Cloudflare's two nameservers and save. That's the whole change.</p>
+  </div>
   <div class="doclink-row">
-    <a class="doclink" href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/" target="_blank" rel="noopener">Cloudflare's official walkthrough</a>
+    <a class="doclink" href="https://vercel.com/docs/domains/managing-nameservers" target="_blank" rel="noopener">Vercel: edit nameservers</a>
+    <a class="doclink alt" href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/" target="_blank" rel="noopener">Cloudflare walkthrough</a>
     <a class="doclink alt" href="https://www.godaddy.com/help/edit-my-domain-nameservers-664" target="_blank" rel="noopener">GoDaddy</a>
     <a class="doclink alt" href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/" target="_blank" rel="noopener">Namecheap</a>
   </div>
