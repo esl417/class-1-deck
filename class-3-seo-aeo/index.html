@@ -782,7 +782,7 @@
   <div class="eyebrow">One prompt plans the whole build — you review it</div>
   <h2>Plan the whole build with <em>one</em> prompt.</h2>
   <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once, in plan mode, and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
-  <div class="prompt-box">"Plan the full dual-web build for my site, explained like I'm not technical. It should cover: (1) scaffold an llm/ bot surface mirroring my pages, (2) generate answer-first bot pages following the AEO Content Guide at github.com/esl417/class-materials (class-3-seo-aeo/content-guide/AEO_CONTENT_GUIDE.md), with canonicals pointing to my human URLs, (3) deploy the pages to Cloudflare Pages and a routing Worker bound to my domain with a route, and (4) verify routing with GPTBot / browser / Googlebot. Don't build yet — show me the plan first."</div>
+  <div class="prompt-box">"Plan the full dual-web build for my site, explained like I'm not technical. Use the class reference files at github.com/esl417/class-materials (class-3-seo-aeo/) — the AEO Content Guide in content-guide/, and the worker.js + wrangler.toml in worker-reference/. The plan should cover: (1) scaffold an llm/ bot surface mirroring my pages, (2) generate answer-first bot pages following the AEO Content Guide, canonicals pointing to my human URLs, (3) deploy the pages to Cloudflare Pages and the reference routing Worker bound to my domain with a route (not a custom domain), and (4) verify routing with GPTBot / browser / Googlebot. Don't build yet — show me the plan first."</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ Before you say "go" — check the plan lists these four steps</div>
     <p>This is the plan-mode habit in action: <strong>read Claude's plan and confirm it matches</strong> what you expect before approving. It should include, in order:</p>
@@ -848,7 +848,10 @@
       <p>Approve when asked. Confirm it's using a <strong>route</strong> (in front of your site), not replacing it — your human site must keep running the entire time.</p>
     </div>
   </div>
-  <p class="small-note">This is the step the plan-review mattered most for: a route keeps your live site working; the wrong setting would put the Worker in its place. You checked for that before you said go.</p>
+  <div class="heads-up">
+    <span class="heads-up-mark">🤖</span>
+    <p><strong>One easy-to-miss gotcha:</strong> Cloudflare can <em>block AI crawlers by default</em> — so your router deploys fine but the bots never reach it. Claude checks your <strong>AI Crawl Control</strong> settings as part of the plan and makes sure the crawlers you want are <em>allowed</em>. (The reference files cover this.)</p>
+  </div>
 </section>
 
 <!-- STEP 4 — VERIFY (walkthrough of the plan) -->
