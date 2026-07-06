@@ -800,19 +800,23 @@
 </section>
 
 <!-- STEP 1 — SCAFFOLD (walkthrough of the plan) -->
-<section class="slide">
+<section class="slide dense">
   <div class="slide-num">12 / Plan step 1 · Scaffold</div>
   <div class="eyebrow">What the plan does first — no prompt to paste</div>
   <h2>Step 1 — build the <em>shell</em> of the AI version.</h2>
-  <p>You approved the plan, so Claude now works through it — you don't paste anything more. First it mirrors your site's structure: for every page a human can visit, a matching slot for the AI version. Empty rooms first, furniture next.</p>
-  <div class="grid-2" style="margin-top: 4px;">
+  <p>You approved the plan, so Claude now works through it — you don't paste anything more. First it mirrors your site's structure: for every page a human can visit, a matching slot for the AI version. It also drops in three small housekeeping files bots expect — Claude handles all of it; here's what they're for.</p>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 36px); max-width: var(--col); margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">What Claude does</div>
-      <p>Reads your existing site to learn its pages, then builds the matching <code>llm/</code> skeleton, plus robots.txt, sitemap.xml, and _headers. Nothing is live — it's all local.</p>
+      <div class="eyebrow">📄 robots.txt</div>
+      <p>A note to crawlers at your site's front step: <strong>who's allowed in, and where the map is.</strong> For the bot surface it says "everyone welcome" and points to the sitemap.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">👀 Your checkpoint</div>
-      <p>Glance at the folder: is there one slot per real page? If a page is missing or extra, say so now — cheap to fix before any content exists.</p>
+      <div class="eyebrow">🗺️ sitemap.xml</div>
+      <p>A <strong>list of every page on your site</strong>, so crawlers can find them all instead of stumbling around. It points at your real (human) page addresses.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🛡️ _headers</div>
+      <p>A few <strong>safety settings</strong> Cloudflare applies to the bot pages — standard security hardening, nothing you configure. Copied straight from the class reference file.</p>
     </div>
   </div>
 </section>
