@@ -661,62 +661,12 @@
 </section>
 
 <!-- ============================================================
-     PART 0.5 — TWO WORK HABITS (before any building)
+     PART 1 — THE MENTAL MODEL (how Cloudflare + dual-web works)
      ============================================================ -->
 
-<!-- 4. PLAN MODE -->
-<section class="slide dense">
-  <div class="slide-num">6 / Plan mode</div>
-  <div class="eyebrow">A new habit, before you build anything</div>
-  <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
-  <p>For anything bigger than a one-line change, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole job through and hands you a plan to approve — <em>before</em> a single file changes.</p>
-  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">How to turn it on</div>
-      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Why it's worth it</div>
-      <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more time lost debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
-    </div>
-    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
-  </div>
-  <div class="heads-up" style="margin-top: 12px;">
-    <span class="heads-up-mark">📖</span>
-    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> so every plan is readable — and you can tell if it sounds right before approving.</p>
-  </div>
-</section>
-
-<!-- 5. REFERENCE DOCUMENTS -->
+<!-- THE DUAL-SURFACE SITE -->
 <section class="slide">
-  <div class="slide-num">7 / Reference documents</div>
-  <div class="eyebrow">Your project's knowledge base</div>
-  <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
-  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">During the build → the plan doc</div>
-      <p>The plan from plan mode <strong>is</strong> a reference doc. Claude saves it and works against it to stay on task. <strong>No extra effort from you</strong> — approving the plan already created it.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">At the very end → the architecture doc</div>
-      <p>When the build is done, have Claude write an <strong>architecture doc</strong>: how the two surfaces are wired, how the front door decides, what deploys where. This is the one doc worth asking for explicitly.</p>
-    </div>
-  </div>
-  <div class="heads-up" style="margin-top: 14px;">
-    <span class="heads-up-mark">💡</span>
-    <p><strong>Pro tip: keep it current automatically.</strong> Set a rule in your <code>CLAUDE.md</code> up front — <em>"before every GitHub push, update ARCHITECTURE.md to match what changed"</em> — so the doc never goes stale. Every time you ship, the knowledge base updates itself.</p>
-  </div>
-  <p class="small-note">You'll actually write the architecture doc later — once the dual-surface site is deployed and proven. For now, just know it's coming, and that next time you open this project Claude can read it and instantly know how the two versions fit together.</p>
-</section>
-
-<!-- ============================================================
-     PART 1 — THE MENTAL MODEL
-     ============================================================ -->
-
-<!-- 4. THE DUAL-SURFACE SITE -->
-<section class="slide">
-  <div class="slide-num">8 / The core idea</div>
+  <div class="slide-num">6 / The core idea</div>
   <div class="eyebrow">The one concept the whole class rests on</div>
   <h2>One address. A <em>front door</em> that decides who sees what.</h2>
   <p>Here's the trick. Both versions of your site live behind your single address. When a request comes in, a tiny program at Cloudflare — the <strong>front door</strong> — looks at <em>who's asking</em>. A human or Google? It serves your normal site. An AI crawler? It quietly serves the AI version instead. The visitor never sees a different address.</p>
@@ -732,7 +682,7 @@
 
 <!-- 5. THE THREE PIECES -->
 <section class="slide dense">
-  <div class="slide-num">9 / The three pieces</div>
+  <div class="slide-num">7 / The three pieces</div>
   <div class="eyebrow">Learn these three names — the rest is mechanical</div>
   <h2>The three pieces that make it work.</h2>
   <p>You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible.</p>
@@ -755,7 +705,7 @@
 
 <!-- 6. THE ONE SAFETY RULE -->
 <section class="slide dense">
-  <div class="slide-num">10 / The one rule</div>
+  <div class="slide-num">8 / The one rule</div>
   <div class="eyebrow">Get this wrong and Google penalizes you</div>
   <h2>The one rule that keeps this <em>safe</em>, not sneaky.</h2>
   <p>Showing different content to different visitors <em>can</em> be against the rules — it's called <strong>cloaking</strong>, and Google punishes it. What we're doing is the safe version, and two rules are what keep it that way. Claude enforces both; you just need to know they exist.</p>
@@ -773,73 +723,150 @@
 </section>
 
 <!-- ============================================================
+     PART 1.5 — TWO WORK HABITS (now that you know what we're building)
+     ============================================================ -->
+
+<!-- PLAN MODE -->
+<section class="slide dense">
+  <div class="slide-num">9 / Plan mode</div>
+  <div class="eyebrow">A new habit, right before we build</div>
+  <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
+  <p>Now you know what we're building. For a job this size, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve — <em>before</em> a single file changes.</p>
+  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">How to turn it on</div>
+      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Why it's worth it</div>
+      <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more time lost debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
+    </div>
+    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
+  </div>
+  <div class="heads-up" style="margin-top: 12px;">
+    <span class="heads-up-mark">📖</span>
+    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> so every plan is readable — and you can tell if it sounds right before approving.</p>
+  </div>
+</section>
+
+<!-- REFERENCE DOCUMENTS -->
+<section class="slide">
+  <div class="slide-num">10 / Reference documents</div>
+  <div class="eyebrow">Your project's knowledge base</div>
+  <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
+  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">During the build → the plan doc</div>
+      <p>The plan from plan mode <strong>is</strong> a reference doc. Claude saves it and works against it to stay on task. <strong>No extra effort from you</strong> — approving the plan already created it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">At the very end → the architecture doc</div>
+      <p>When the build is done, have Claude write an <strong>architecture doc</strong>: how the two surfaces are wired, how the front door decides, what deploys where. This is the one doc worth asking for explicitly.</p>
+    </div>
+  </div>
+  <div class="heads-up" style="margin-top: 14px;">
+    <span class="heads-up-mark">💡</span>
+    <p><strong>Pro tip: keep it current automatically.</strong> Set a rule in your <code>CLAUDE.md</code> up front — <em>"before every GitHub push, update ARCHITECTURE.md to match what changed"</em> — so the doc never goes stale. Every time you ship, the knowledge base updates itself.</p>
+  </div>
+  <p class="small-note">You'll actually write the architecture doc later — once the dual-surface site is deployed and proven. For now, just know it's coming, and that next time you open this project Claude can read it and instantly know how the two versions fit together.</p>
+</section>
+
+<!-- ============================================================
      PART 2 — BUILD IT LIVE
      ============================================================ -->
 
-<!-- 7. SCAFFOLD THE AI SURFACE -->
-<section class="slide">
-  <div class="slide-num">11 / Build · Step 1</div>
-  <div class="eyebrow">First we frame it, then we fill it</div>
-  <h2>Step 1 — build the <em>shell</em> of the AI version.</h2>
-  <p>We start by mirroring your site's structure: for every page a human can visit, we make a matching slot for the AI version. Empty rooms first, furniture next. Open your <strong>website project</strong> in Claude Code and say:</p>
-  <div class="prompt-box">"Set up the bot surface for my site following the dual-web setup: create an llm/ folder that mirrors my site's pages one-for-one, plus the robots.txt, sitemap.xml, and _headers files. Scaffold only — don't write the page content yet. Walk me through what you made."</div>
-  <p class="small-note">Claude reads your existing site to learn its pages, then builds the matching skeleton. Nothing is live yet — this is all local, like practicing before you publish.</p>
+<!-- PLAN THE BUILD — one prompt, review the plan before "go" -->
+<section class="slide dense">
+  <div class="slide-num">11 / Plan the build</div>
+  <div class="eyebrow">One prompt plans the whole build — you review it</div>
+  <h2>Plan the whole build with <em>one</em> prompt.</h2>
+  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once, in plan mode, and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
+  <div class="prompt-box">"Plan the full dual-web build for my site, explained like I'm not technical. It should cover: (1) scaffold an llm/ bot surface mirroring my pages, (2) generate answer-first bot pages following the AEO Content Guide at github.com/esl417/class-materials (class-3-seo-aeo/content-guide/AEO_CONTENT_GUIDE.md), with canonicals pointing to my human URLs, (3) deploy the pages to Cloudflare Pages and a routing Worker bound to my domain with a route, and (4) verify routing with GPTBot / browser / Googlebot. Don't build yet — show me the plan first."</div>
+  <div class="card" style="margin-top:6px;">
+    <div class="eyebrow">✋ Before you say "go" — check the plan lists these four steps</div>
+    <p>This is the plan-mode habit in action: <strong>read Claude's plan and confirm it matches</strong> what you expect before approving. It should include, in order:</p>
+    <ul>
+      <li><strong>1. Scaffold</strong> — an <code>llm/</code> folder mirroring your pages, plus robots.txt / sitemap.xml / _headers.</li>
+      <li><strong>2. Generate</strong> — answer-first bot pages per the AEO guide, canonicals → your human URLs.</li>
+      <li><strong>3. Deploy</strong> — pages to Cloudflare Pages + the routing Worker on a <em>route</em> (so your human site keeps working).</li>
+      <li><strong>4. Verify</strong> — the GPTBot / browser / Googlebot routing test.</li>
+    </ul>
+  </div>
+  <p class="small-note">Missing a step, or planning to replace your human site instead of sitting in front of it? Tell Claude what's off and have it re-plan. Only approve once all four are there and read right. The next four slides walk through what each step does as Claude executes them.</p>
 </section>
 
-<!-- 8. GENERATE THE AI PAGES -->
+<!-- STEP 1 — SCAFFOLD (walkthrough of the plan) -->
 <section class="slide">
-  <div class="slide-num">12 / Build · Step 2</div>
-  <div class="eyebrow">Now fill the shell with content</div>
-  <h2>Step 2 — write the AI version of each page.</h2>
-  <p>Now Claude fills each slot with an answer-first version of that page — but not by guessing. We hand it a real standard: the <strong>AEO Content Guide</strong>, the rules for exactly how AI answer engines like to be fed (short self-contained chunks, direct claims, quotable facts). Say:</p>
-  <div class="prompt-box">"Grab the AEO Content Guide from https://github.com/esl417/class-materials (the file in class-3-seo-aeo/content-guide/AEO_CONTENT_GUIDE.md), then generate the bot-page content for each page in llm/ following that guide exactly. Match the facts on my real pages. Every page's canonical link must point to its human URL. Show me one example before doing them all."</div>
+  <div class="slide-num">12 / Plan step 1 · Scaffold</div>
+  <div class="eyebrow">What the plan does first — no prompt to paste</div>
+  <h2>Step 1 — build the <em>shell</em> of the AI version.</h2>
+  <p>You approved the plan, so Claude now works through it — you don't paste anything more. First it mirrors your site's structure: for every page a human can visit, a matching slot for the AI version. Empty rooms first, furniture next.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">📘 What the guide is</div>
-      <p>The distilled playbook for AI-readable writing — answer-first, 50–150-word chunks, clear claims, citation-worthy facts. It's <em>why</em> the AI version outperforms your normal pages with the bots.</p>
+      <div class="eyebrow">What Claude does</div>
+      <p>Reads your existing site to learn its pages, then builds the matching <code>llm/</code> skeleton, plus robots.txt, sitemap.xml, and _headers. Nothing is live — it's all local.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">👀 Your job: review one first</div>
-      <p>Check the one example, tell Claude what to adjust, <em>then</em> let it do the rest. You're the editor; Claude's the writer.</p>
+      <div class="eyebrow">👀 Your checkpoint</div>
+      <p>Glance at the folder: is there one slot per real page? If a page is missing or extra, say so now — cheap to fix before any content exists.</p>
     </div>
   </div>
 </section>
 
-<!-- 9. DEPLOY LIVE -->
+<!-- STEP 2 — GENERATE (walkthrough of the plan) -->
+<section class="slide">
+  <div class="slide-num">13 / Plan step 2 · Generate</div>
+  <div class="eyebrow">Filling the shell with content</div>
+  <h2>Step 2 — write the AI version of each page.</h2>
+  <p>Next the plan fills each slot with an answer-first version of the page — not by guessing, but following the <strong>AEO Content Guide</strong> it pulled in step 2 of the plan: short self-contained chunks, direct claims, quotable facts, canonicals pointing to your human URLs.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📘 What guides the writing</div>
+      <p>The AEO Content Guide — answer-first, 50–150-word chunks, clear claims, citation-worthy facts. It's <em>why</em> the AI version outperforms your normal pages with the bots.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">👀 Your checkpoint: review one first</div>
+      <p>Have Claude show <strong>one example page</strong> before it does them all. Check it reads clean and true, tell it what to adjust, <em>then</em> let it finish the rest. You're the editor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 3 — DEPLOY (walkthrough of the plan) -->
 <section class="slide dense">
-  <div class="slide-num">13 / Build · Step 3</div>
+  <div class="slide-num">14 / Plan step 3 · Deploy</div>
   <div class="eyebrow">Local practice → live on the internet</div>
   <h2>Step 3 — put it live on Cloudflare.</h2>
-  <p>The AI version and the front door both need to go live. Claude does this from the command line — you just approve. Say:</p>
-  <div class="prompt-box">"Deploy this for real: publish the llm/ pages to Cloudflare Pages, then create and deploy the routing Worker that serves the bot surface to AI crawlers and passes humans and Google through to my real site. Bind it to my domain with a route so my human site keeps working. Tell me each time you need me to approve something."</div>
+  <p>Now the plan goes live. Claude publishes the AI pages and stands up the front door from the command line — you just approve each time it asks.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">What Claude ships</div>
-      <p>The AI pages to <strong>Pages</strong>, then the <strong>Worker</strong> bound to your domain — the front door goes live in seconds.</p>
+      <p>The AI pages to <strong>Cloudflare Pages</strong>, then the routing <strong>Worker</strong> bound to your domain <em>with a route</em> — the front door goes live in seconds.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Your one job</div>
-      <p>Approve when asked. Your human site keeps running the entire time — the Worker sits <em>in front</em> of it, it doesn't replace it.</p>
+      <div class="eyebrow">👀 Your checkpoint</div>
+      <p>Approve when asked. Confirm it's using a <strong>route</strong> (in front of your site), not replacing it — your human site must keep running the entire time.</p>
     </div>
   </div>
+  <p class="small-note">This is the step the plan-review mattered most for: a route keeps your live site working; the wrong setting would put the Worker in its place. You checked for that before you said go.</p>
 </section>
 
-<!-- 10. PROVE IT WORKS -->
+<!-- STEP 4 — VERIFY (walkthrough of the plan) -->
 <section class="slide dense">
-  <div class="slide-num">14 / Build · Step 4</div>
+  <div class="slide-num">15 / Plan step 4 · Verify</div>
   <div class="eyebrow">Don't assume — prove it</div>
   <h2>Step 4 — prove both versions are live.</h2>
-  <p>The real test: ask for your site <em>as different visitors</em> and confirm each gets the right version. Claude runs this for you — three checks that together prove it works <strong>and</strong> that it's cloaking-safe:</p>
+  <p>The plan's last step: Claude asks for your site <em>as different visitors</em> and confirms each gets the right version — three checks that together prove it works <strong>and</strong> that it's cloaking-safe:</p>
   <ul class="numbered">
     <li><strong>1.</strong> As an <strong>AI bot</strong> (GPTBot) → should return the clean <strong>AI version</strong>.</li>
     <li><strong>2.</strong> As a <strong>human</strong> (a normal browser) → should return your <strong>normal site</strong>.</li>
     <li><strong>3.</strong> As <strong>Google</strong> (Googlebot) → must match the <em>human</em> result, <strong>not</strong> the AI one. This is the cloaking-safety check.</li>
   </ul>
-  <div class="prompt-box">"Run the live routing test on my domain: request it as GPTBot, as a normal browser, and as Googlebot. Show me all three and confirm Google gets the same page as the human — not the bot page."</div>
   <div class="done-strip">
     <span class="done-mark">✅</span>
     <p><strong>Three different answers, Google matching the human</strong> — that's your dual-surface site, live and safe.</p>
   </div>
+  <p class="small-note">Something off? Tell Claude what you saw — it diagnoses and re-runs. This is the same "describe it to Claude" troubleshooting habit from every class.</p>
 </section>
 
 <!-- ============================================================
@@ -848,7 +875,7 @@
 
 <!-- 11. AEO ESSENTIALS -->
 <section class="slide dense">
-  <div class="slide-num">15 / Get cited</div>
+  <div class="slide-num">16 / Get cited</div>
   <div class="eyebrow">The extras that make AI actually quote you</div>
   <h2>Help the AI understand — and cite — you.</h2>
   <p>The AI version exists; now we make it easy to quote. A few small, high-leverage additions Claude can make:</p>
@@ -868,7 +895,7 @@
 
 <!-- 12. MEASURE IT -->
 <section class="slide">
-  <div class="slide-num">16 / Measure it</div>
+  <div class="slide-num">17 / Measure it</div>
   <div class="eyebrow">You can't improve what you can't see</div>
   <h2>Watch the AI crawlers show up.</h2>
   <p>Once you're live, Cloudflare shows you which AI crawlers are visiting and how often — real proof the AI version is being read. It's the same idea as the Class 2 dashboard, but for bots.</p>
@@ -887,7 +914,7 @@
 
 <!-- 13. PAID ACCELERATOR — LINKBY -->
 <section class="slide dense">
-  <div class="slide-num">17 / An optional accelerator</div>
+  <div class="slide-num">18 / An optional accelerator</div>
   <div class="eyebrow">Optional · costs money · results not guaranteed</div>
   <h2>Want to speed it up? A <em>paid</em> lever for AI visibility.</h2>
   <p>Everything so far is free and organic. If you have a budget and want to accelerate, there's a paid angle that's turned out to matter for AI search specifically: getting your brand <strong>mentioned in premium media</strong>. Tools like <a href="https://linkby.com" target="_blank" rel="noopener">Linkby</a> make that reachable without a PR agency — but treat it as an experiment, not a guarantee.</p>
@@ -909,7 +936,7 @@
 
 <!-- 14. RECAP / SHIP -->
 <section class="slide">
-  <div class="slide-num">18 / You shipped it</div>
+  <div class="slide-num">19 / You shipped it</div>
   <div class="eyebrow">That's the class — here's what's now live</div>
   <h2>You built a site that gets found <em>both</em> ways.</h2>
   <ul>
