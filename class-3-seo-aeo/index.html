@@ -593,12 +593,80 @@
 </section>
 
 <!-- ============================================================
+     PART 0.25 — THE SEO FOUNDATION (broad strokes + the toolkit)
+     ============================================================ -->
+
+<!-- 4. HOW TO IMPROVE SEO -->
+<section class="slide dense">
+  <div class="slide-num">4 / The foundation</div>
+  <div class="eyebrow">Mostly its own discipline — but here's the 80/20</div>
+  <h2>Improving SEO, in broad strokes.</h2>
+  <p>SEO is a whole field of its own, and most of it is out of scope for today — we're here to build the AI layer. But since it's the foundation, know the two levers that move the needle most. Strip away the jargon and it comes down to <strong>trust</strong>: Google ranks the sites other credible sites vouch for, and that clearly know their subject.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🔗 Lever 1 · Backlinks in your niche</div>
+      <p>A <strong>backlink</strong> is another site linking to yours — Google reads it as a vote of trust. <em>Relevant</em> beats <em>many</em>: one link from a respected blog in your field outweighs a hundred junk ones. Free, self-serve ways to earn them:</p>
+      <ul>
+        <li>Reclaim <strong>unlinked mentions</strong> — find sites already naming you, ask them to link.</li>
+        <li>Answer reporters on <strong>Connectively / Qwoted / Source of Sources</strong> — expert quotes earn press links.</li>
+        <li><strong>Guest-post</strong> one strong piece on a respected niche blog (quality over volume).</li>
+        <li>Get listed in real <strong>directories</strong> — chamber of commerce, industry associations, local sponsorships.</li>
+        <li>Publish <strong>original data</strong> (a small survey or stat) — other writers cite sources.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🎓 Lever 2 · EEAT content</div>
+      <p><strong>EEAT</strong> = Experience, Expertise, Authoritativeness, Trust — Google's bar for "does this site actually know its stuff?" You raise it by proving you do:</p>
+      <ul>
+        <li>Write from <strong>real experience</strong> — case studies, results, specifics only you'd know.</li>
+        <li>Show <strong>who's behind it</strong> — author bios, credentials, a real About page.</li>
+        <li>Stay on <strong>one topic</strong> — a focused site reads as an expert; a scattered one doesn't.</li>
+        <li>Be <strong>accurate and current</strong> — cite sources, keep facts fresh, fix what's stale.</li>
+        <li>Collect <strong>reviews and testimonials</strong> — outside validation is a trust signal too.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small-note">Skip the shortcuts that backfire: buying links, keyword-stuffing, thin AI-spun pages. Google is built to catch them, and they drag you down. Slow, real trust is the only kind that lasts.</p>
+</section>
+
+<!-- 5. THE SEO TOOLKIT -->
+<section class="slide dense">
+  <div class="slide-num">5 / Do it yourself</div>
+  <div class="eyebrow">A free SEO toolkit — for after class</div>
+  <h2>Have Claude <em>audit</em> your SEO for you.</h2>
+  <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it. Set it up on your own time after class.</p>
+  <div class="grid-2">
+    <div class="card">
+      <div class="eyebrow">Step 1 · Install it (one time)</div>
+      <p>In Claude Code, paste these two lines:</p>
+      <div class="prompt-box" style="margin:8px 0 0;">/plugin marketplace add AgriciDaniel/claude-seo<br>/plugin install claude-seo@agricidaniel-claude-seo</div>
+      <p style="margin-top:10px;">Then restart Claude Code so the tools switch on — the same restart move from the prereqs.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Step 2 · Run these, in this order</div>
+      <p>Open Claude Code in your website project and run them one at a time (swap in your domain):</p>
+      <ul>
+        <li><code>/seo audit yourdomain.com</code> — the big one: full-site health + fix list.</li>
+        <li><code>/seo content yourdomain.com</code> — your EEAT / content score.</li>
+        <li><code>/seo backlinks yourdomain.com</code> — who links to you, and gaps.</li>
+        <li><code>/seo geo yourdomain.com</code> — how citable you are to AI.</li>
+        <li><code>/seo schema yourdomain.com</code> — structured-data check + fixes.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🤝</span>
+    <p><strong>The best part: it doesn't just grade you — Claude can fix what it finds.</strong> Run an audit, then say <em>"work through these fixes with me, highest-impact first."</em> Source + docs: <a href="https://github.com/AgriciDaniel/claude-seo" target="_blank" rel="noopener">github.com/AgriciDaniel/claude-seo</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
      PART 0.5 — TWO WORK HABITS (before any building)
      ============================================================ -->
 
 <!-- 4. PLAN MODE -->
 <section class="slide dense">
-  <div class="slide-num">4 / Plan mode</div>
+  <div class="slide-num">6 / Plan mode</div>
   <div class="eyebrow">A new habit, before you build anything</div>
   <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
   <p>For anything bigger than a one-line change, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole job through and hands you a plan to approve — <em>before</em> a single file changes.</p>
@@ -621,7 +689,7 @@
 
 <!-- 5. REFERENCE DOCUMENTS -->
 <section class="slide">
-  <div class="slide-num">5 / Reference documents</div>
+  <div class="slide-num">7 / Reference documents</div>
   <div class="eyebrow">Your project's knowledge base</div>
   <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
   <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
@@ -648,7 +716,7 @@
 
 <!-- 4. THE DUAL-SURFACE SITE -->
 <section class="slide">
-  <div class="slide-num">6 / The core idea</div>
+  <div class="slide-num">8 / The core idea</div>
   <div class="eyebrow">The one concept the whole class rests on</div>
   <h2>One address. A <em>front door</em> that decides who sees what.</h2>
   <p>Here's the trick. Both versions of your site live behind your single address. When a request comes in, a tiny program at Cloudflare — the <strong>front door</strong> — looks at <em>who's asking</em>. A human or Google? It serves your normal site. An AI crawler? It quietly serves the AI version instead. The visitor never sees a different address.</p>
@@ -664,7 +732,7 @@
 
 <!-- 5. THE THREE PIECES -->
 <section class="slide dense">
-  <div class="slide-num">7 / The three pieces</div>
+  <div class="slide-num">9 / The three pieces</div>
   <div class="eyebrow">Learn these three names — the rest is mechanical</div>
   <h2>The three pieces that make it work.</h2>
   <p>You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible.</p>
@@ -687,7 +755,7 @@
 
 <!-- 6. THE ONE SAFETY RULE -->
 <section class="slide dense">
-  <div class="slide-num">8 / The one rule</div>
+  <div class="slide-num">10 / The one rule</div>
   <div class="eyebrow">Get this wrong and Google penalizes you</div>
   <h2>The one rule that keeps this <em>safe</em>, not sneaky.</h2>
   <p>Showing different content to different visitors <em>can</em> be against the rules — it's called <strong>cloaking</strong>, and Google punishes it. What we're doing is the safe version, and two rules are what keep it that way. Claude enforces both; you just need to know they exist.</p>
@@ -710,7 +778,7 @@
 
 <!-- 7. SCAFFOLD THE AI SURFACE -->
 <section class="slide">
-  <div class="slide-num">9 / Build · Step 1</div>
+  <div class="slide-num">11 / Build · Step 1</div>
   <div class="eyebrow">First we frame it, then we fill it</div>
   <h2>Step 1 — build the <em>shell</em> of the AI version.</h2>
   <p>We start by mirroring your site's structure: for every page a human can visit, we make a matching slot for the AI version. Empty rooms first, furniture next. Open your <strong>website project</strong> in Claude Code and say:</p>
@@ -720,7 +788,7 @@
 
 <!-- 8. GENERATE THE AI PAGES -->
 <section class="slide">
-  <div class="slide-num">10 / Build · Step 2</div>
+  <div class="slide-num">12 / Build · Step 2</div>
   <div class="eyebrow">Now fill the shell with content</div>
   <h2>Step 2 — write the AI version of each page.</h2>
   <p>Now Claude fills each slot with an answer-first version of that page — but not by guessing. We hand it a real standard: the <strong>AEO Content Guide</strong>, the rules for exactly how AI answer engines like to be fed (short self-contained chunks, direct claims, quotable facts). Say:</p>
@@ -739,7 +807,7 @@
 
 <!-- 9. DEPLOY LIVE -->
 <section class="slide dense">
-  <div class="slide-num">11 / Build · Step 3</div>
+  <div class="slide-num">13 / Build · Step 3</div>
   <div class="eyebrow">Local practice → live on the internet</div>
   <h2>Step 3 — put it live on Cloudflare.</h2>
   <p>The AI version and the front door both need to go live. Claude does this from the command line — you just approve. Say:</p>
@@ -758,7 +826,7 @@
 
 <!-- 10. PROVE IT WORKS -->
 <section class="slide dense">
-  <div class="slide-num">12 / Build · Step 4</div>
+  <div class="slide-num">14 / Build · Step 4</div>
   <div class="eyebrow">Don't assume — prove it</div>
   <h2>Step 4 — prove both versions are live.</h2>
   <p>The real test: ask for your site <em>as different visitors</em> and confirm each gets the right version. Claude runs this for you — three checks that together prove it works <strong>and</strong> that it's cloaking-safe:</p>
@@ -780,7 +848,7 @@
 
 <!-- 11. AEO ESSENTIALS -->
 <section class="slide dense">
-  <div class="slide-num">13 / Get cited</div>
+  <div class="slide-num">15 / Get cited</div>
   <div class="eyebrow">The extras that make AI actually quote you</div>
   <h2>Help the AI understand — and cite — you.</h2>
   <p>The AI version exists; now we make it easy to quote. A few small, high-leverage additions Claude can make:</p>
@@ -800,7 +868,7 @@
 
 <!-- 12. MEASURE IT -->
 <section class="slide">
-  <div class="slide-num">14 / Measure it</div>
+  <div class="slide-num">16 / Measure it</div>
   <div class="eyebrow">You can't improve what you can't see</div>
   <h2>Watch the AI crawlers show up.</h2>
   <p>Once you're live, Cloudflare shows you which AI crawlers are visiting and how often — real proof the AI version is being read. It's the same idea as the Class 2 dashboard, but for bots.</p>
@@ -819,7 +887,7 @@
 
 <!-- 13. RECAP / SHIP -->
 <section class="slide">
-  <div class="slide-num">15 / You shipped it</div>
+  <div class="slide-num">17 / You shipped it</div>
   <div class="eyebrow">That's the class — here's what's now live</div>
   <h2>You built a site that gets found <em>both</em> ways.</h2>
   <ul>
