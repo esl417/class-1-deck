@@ -201,12 +201,23 @@ name = "aso-router"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
-# Bind the Worker to your apex domain. custom_domain=true auto-provisions TLS
-# and handles routing — no manual DNS record editing.
+# Bind the Worker to your apex domain with a ROUTE (not a Custom Domain).
+# A route sits IN FRONT OF your existing DNS record — so when the Worker calls
+# fetch(request) for humans/Google, the request still flows through to your real
+# site (Vercel, etc.). custom_domain=true would DELETE that record and make the
+# Worker itself the origin, leaving human traffic with nowhere to go — the site
+# would break. Use a route.
 routes = [
-  { pattern = "yourdomain.com", custom_domain = true }
+  { pattern = "yourdomain.com/*", zone_name = "yourdomain.com" }
 ]
 ```
+
+> ⚠️ **Prerequisite for the route to work:** your domain must already have a
+> **proxied** (orange-cloud) DNS record pointing at your human site — for a Vercel
+> site, a `CNAME` for the apex/`www` at `cname.vercel-dns.com`, proxied through
+> Cloudflare. When students moved their domain to Cloudflare during setup, Cloudflare
+> imported this record automatically; the route runs in front of it. If the human site
+> ever 522/523s after deploy, that proxied origin record is what to check first.
 
 In your `worker.js`, make sure the Pages URL from Step 1 is the address it fetches the bot pages
 from, e.g.:
@@ -242,9 +253,15 @@ npx wrangler@latest deploy
 That's it — the Worker is now live at `yourdomain.com`, routing humans/Google to your site and AI
 bots to the Pages bot site. Re-run `npx wrangler@latest deploy` any time you change the router logic.
 
-> ✅ **This path is tested.** Deploying the existing `worker.js` via `npx wrangler@latest deploy`
-> was verified working — upload to live in ~3 seconds, the User-Agent routing ran correctly, and
-> the worker was cleanly removed afterward. The CLI flow in this doc is confirmed, not theoretical.
+> ✅ **The deploy flow is tested.** Deploying `worker.js` via `npx wrangler@latest deploy`
+> was verified — upload to live in ~3 seconds, the User-Agent routing logic ran correctly, and
+> the worker was cleanly removed afterward. The CLI flow is confirmed, not theoretical.
+>
+> ⚠️ **Still verify on a real Vercel origin before class.** The one thing to confirm live is
+> that a *human* request passes through to the actual human site (not just that the routing
+> branch fires). That only works with the **route** config above and a proxied origin DNS
+> record in place (see the Step 2 note). Do a real `curl -A "Mozilla" https://yourdomain.com`
+> against a domain whose human site is on Vercel and confirm you get the Vercel page, not an error.
 
 ---
 

@@ -111,7 +111,11 @@ accurate, current Cloudflare knowledge.
 `blog`/`blog-geo`/`blog-schema` skills, and the `cloudflare` /
 `workers-best-practices` / `wrangler` skills.
 
-**Status:** Two setup reference docs drafted. Deck + prereqs not started.
+**Status:** Prereqs deck built (`class-3-seo-aeo/prereqs.html`) + Cloudflare
+student kit (`class-3-seo-aeo/cloudflare-student-kit/`, published to
+`class-materials`). Two setup reference docs drafted; the CLI hosting doc's
+Worker binding was corrected from a Custom Domain to a **route** so human
+traffic still passes through to the Vercel origin. Main class deck not started.
 
 ---
 
