@@ -732,7 +732,7 @@
 </section>
 
 <!-- 11. DATABASE — THE RESTART + RESUME (the gotcha) -->
-<section class="slide dense">
+<section class="slide dense" id="restart">
   <div class="slide-num">11 / Step 3 · The restart everyone trips on</div>
   <div class="eyebrow">Read this before you start — it's the tricky bit</div>
   <h2>Claude will ask you to <em>restart</em>. Here's how to come back.</h2>
@@ -812,7 +812,19 @@
     if (e.key === 'Home') { e.preventDefault(); show(0); }
     if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
   });
-  show(0);
+  // Deep-link support: a hash matching a slide's id (e.g. #restart) opens that slide.
+  function showFromHash() {
+    const id = location.hash.slice(1);
+    if (!id) { show(0); return; }
+    const target = document.getElementById(id);
+    if (target && target.classList.contains('slide')) {
+      show([...slides].indexOf(target));
+    } else {
+      show(0);
+    }
+  }
+  window.addEventListener('hashchange', showFromHash);
+  showFromHash();
 </script>
 </body>
 </html>
