@@ -562,7 +562,7 @@
   <div class="eyebrow">A fallback so nobody's blocked</div>
   <h2>No analytics data? Build with <em>sample data</em> instead.</h2>
   <p>If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your <strong>Supabase connection is set up</strong>, paste this into Claude Code:</p>
-  <div class="prompt-box">"Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself."</div>
+  <div class="prompt-box">Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself.</div>
   <p class="small-note" style="margin-top: 10px;">Claude fills your database with <strong>~90 days of practice data</strong>, shaped exactly like real Google Analytics — so your dashboard won't change when you swap in your real numbers later.</p>
   <div class="heads-up" style="margin-top: 14px;">
     <span class="heads-up-mark">🔁</span>
@@ -685,7 +685,7 @@
   <div class="eyebrow">The first real build of the day</div>
   <h2>Build the pipeline — then <em>prove</em> it works.</h2>
   <p>Paste this and let Claude build. Note the last line: don't just build it, <strong>test it and show you real rows</strong> before you trust it.</p>
-  <div class="prompt-box">"I want to ingest my Google Analytics metrics into Supabase so my dashboard can read them. Plan and build the whole pipeline: design the storage and the ingestion that pulls from GA — using the service account we set up — and run it on a daily schedule. When it's done, run it once and show me the actual rows it stored so I know it worked."</div>
+  <div class="prompt-box">I want to ingest my Google Analytics metrics into Supabase so my dashboard can read them. Plan and build the whole pipeline: design the storage and the ingestion that pulls from GA — using the service account we set up — and run it on a daily schedule. When it's done, run it once and show me the actual rows it stored so I know it worked.</div>
   <p class="small-note" style="margin-top:8px;"><strong>Notice the wording:</strong> describe the <em>goal</em>, not the how. You don't need to know about tables or functions — that's Claude's job.</p>
   <div class="grid-2" style="margin-top: 10px;">
     <div class="card">
@@ -699,7 +699,7 @@
   </div>
   <div class="heads-up" style="margin-top: 12px; flex-direction: column; align-items: stretch; gap: 10px;">
     <p style="margin: 0;"><span class="heads-up-mark" style="margin-right: 10px;">🧪</span><strong>Analytics still empty?</strong> The GA pull above will come back with nothing to store. Load ~90 days of practice data instead — paste this and build the whole dashboard today:</p>
-    <div class="prompt-box" style="margin: 0;">"Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself."</div>
+    <div class="prompt-box" style="margin: 0;">Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself.</div>
   </div>
 </section>
 
@@ -754,7 +754,7 @@
     </div>
   </div>
   <p style="margin-top:14px;"><strong>One rule, whoever picks the metrics:</strong> the dashboard must explain <em>itself</em> — every number says what it means and what to do about it.</p>
-  <div class="prompt-box">"I'm not sure which metrics matter most for my business. Suggest the handful worth watching, design the dashboard around them, and — right on the dashboard — explain what each means and what action a good or bad reading should prompt."</div>
+  <div class="prompt-box">I'm not sure which metrics matter most for my business. Suggest the handful worth watching, design the dashboard around them, and — right on the dashboard — explain what each means and what action a good or bad reading should prompt.</div>
 </section>
 
 <!-- 11. PRO TIP — SYNTHETIC METRICS -->
@@ -773,7 +773,7 @@
       <p><strong>Signup rate</strong> (12 ÷ 500 = 2.4%). <strong>Week-over-week change.</strong> <strong>Traffic-to-pricing ratio.</strong> Now each number argues for a decision.</p>
     </div>
   </div>
-  <div class="prompt-box">"Look at my raw analytics and suggest a list of derived metrics that would drive decisions for my site — for each one, a one-line explanation of what decision it helps me make. I'll pick the ones I want, then build them as headline numbers with their trend."</div>
+  <div class="prompt-box">Look at my raw analytics and suggest a list of derived metrics that would drive decisions for my site — for each one, a one-line explanation of what decision it helps me make. I'll pick the ones I want, then build them as headline numbers with their trend.</div>
   <p class="small-note">This is the difference between a dashboard that reports and a dashboard that tells you what to do next.</p>
 </section>
 
@@ -800,7 +800,7 @@
   <h2>See every change the <em>instant</em> it happens.</h2>
   <p>While you're looping, you don't want to ship to Vercel and wait a minute to see each tweak. A <strong>local preview</strong> runs the dashboard right on your laptop and <strong>refreshes the second Claude changes something</strong> — so the loop above happens in real time, right in front of you.</p>
   <p style="margin-top:14px;">You set up nothing. Just tell Claude:</p>
-  <div class="prompt-box">"Launch the dashboard locally and open it in my web browser so I can see it live."</div>
+  <div class="prompt-box">Launch the dashboard locally and open it in my web browser so I can see it live.</div>
   <p class="small-note"><strong>Say "in my web browser" — it matters.</strong> Without it, the preview can open in a cramped little panel inside VS Code. That phrase pops it open full-size in your real browser (Chrome, Safari…). Leave the tab up while you build — it updates itself. When it looks right, <em>then</em> you deploy.</p>
 </section>
 
@@ -814,7 +814,7 @@
   <div class="eyebrow">Get it off your laptop</div>
   <h2>Ship it to a live URL.</h2>
   <p>Same move as the website in Class 1: push it to <strong>Vercel</strong> and you get a real link that's always up — so your dashboard is something you actually open, not a thing you have to run by hand.</p>
-  <div class="prompt-box">"Deploy this dashboard to Vercel and give me the live URL."</div>
+  <div class="prompt-box">Deploy this dashboard to Vercel and give me the live URL.</div>
   <div class="heads-up">
     <span class="heads-up-mark">⚠️</span>
     <p><strong>This is a <em>separate</em> deployment from your Class 1 website.</strong> Different project, different URL — that's expected. Two next things matter before you share it: <strong>lock it</strong>, and decide <strong>where it lives</strong>.</p>
@@ -832,12 +832,12 @@
     <div class="card">
       <div class="eyebrow">✅ Recommended · Vercel password</div>
       <p>Vercel has a built-in gate — <strong>Deployment Protection</strong>. Flip it on, set one password, done. <strong>No code, nothing to build.</strong> You do this yourself in the Vercel settings (a quick browser click).</p>
-      <div class="prompt-box" style="margin-top:10px;">"Walk me through turning on password protection for this deployment in Vercel's settings."</div>
+      <div class="prompt-box" style="margin-top:10px;">Walk me through turning on password protection for this deployment in Vercel's settings.</div>
     </div>
     <div class="card">
       <div class="eyebrow">Upgrade · A real login screen</div>
       <p>Want proper accounts (and maybe more than one viewer later)? Have Claude build a real <strong>login page using Supabase Auth</strong> — the same Supabase you already connected. More to build, but it's a true login.</p>
-      <div class="prompt-box" style="margin-top:10px;">"Add a login screen to this dashboard using Supabase Auth, and create an account for me."</div>
+      <div class="prompt-box" style="margin-top:10px;">Add a login screen to this dashboard using Supabase Auth, and create an account for me.</div>
     </div>
   </div>
   <p class="small-note">For a dashboard only you look at, the Vercel password is plenty. Reach for Supabase Auth when you want named accounts or to share it with a teammate — and it's not just email/password: you can add <strong>"Sign in with Google"</strong> (or any other provider) and even <strong>passkeys</strong>. Don't know how? Just ask Claude.</p>
@@ -857,7 +857,7 @@
     <div class="card">
       <div class="eyebrow">Use a subdomain</div>
       <p>If you own a domain, point a subdomain at it: <code>dashboard.yourdomain.com</code>. Cleaner to remember, and it sits alongside your main site.</p>
-      <div class="prompt-box" style="margin-top:10px;">"Help me set up dashboard.mydomain.com to point at this Vercel deployment."</div>
+      <div class="prompt-box" style="margin-top:10px;">Help me set up dashboard.mydomain.com to point at this Vercel deployment.</div>
     </div>
   </div>
   <p class="small-note">There's no wrong answer — it's your dashboard. As long as you can get to it, you're done.</p>
@@ -869,7 +869,7 @@
   <div class="eyebrow">The habit that gets you unstuck</div>
   <h2>Stuck? <em>Tell Claude.</em> It's the troubleshooter.</h2>
   <p>This is the same habit from Class 1, and it holds today too. When something doesn't work — the pipeline errors, the dashboard's blank, the deploy fails — you don't go hunting for the fix. You <strong>describe what happened to Claude</strong> and let it diagnose:</p>
-  <div class="prompt-box">"That didn't work — here's what happened: [paste the message, or describe what you see]. What's going on, and can you fix it?"</div>
+  <div class="prompt-box">That didn't work — here's what happened: [paste the message, or describe what you see]. What's going on, and can you fix it?</div>
   <p style="margin-top:12px;">Claude reads the error, knows the usual causes, and walks you through it — the same way it ran the whole build. <strong>It can almost always get you unstuck.</strong></p>
   <div class="done-strip" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.3);">
     <span class="done-mark">✉️</span>
