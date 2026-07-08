@@ -552,7 +552,21 @@
   <p class="small-note">Not set up yet? Follow the <a href="prereqs.html"><strong>prerequisites guide</strong></a>.</p>
   <div class="heads-up" style="margin-top: 12px;">
     <span class="heads-up-mark">🧪</span>
-    <p><strong>Didn't get your Google tag installed in time (or analytics still empty)?</strong> You can still build everything today with realistic practice data. Once your Supabase connection is set up, paste this into Claude Code: <em>"Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in <code>class-2-dashboard/ga4-dummy-kit</code>) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself."</em> Claude fills your database with ~90 days of practice data, shaped exactly like real Google Analytics — so your dashboard won't change when you go live later.</p>
+    <p><strong>No real data yet?</strong> Analytics empty, or didn't get your Google tag installed in time? You can still build everything today with realistic practice data — <strong>the next slide shows you how.</strong></p>
+  </div>
+</section>
+
+<!-- 2.5 SAMPLE DATA FALLBACK -->
+<section class="slide">
+  <div class="slide-num">2.5 / No real data yet?</div>
+  <div class="eyebrow">A fallback so nobody's blocked</div>
+  <h2>No analytics data? Build with <em>sample data</em> instead.</h2>
+  <p>If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your <strong>Supabase connection is set up</strong>, paste this into Claude Code:</p>
+  <div class="prompt-box">"Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself."</div>
+  <p class="small-note" style="margin-top: 10px;">Claude fills your database with <strong>~90 days of practice data</strong>, shaped exactly like real Google Analytics — so your dashboard won't change when you swap in your real numbers later.</p>
+  <div class="heads-up" style="margin-top: 14px;">
+    <span class="heads-up-mark">🔁</span>
+    <p><strong>Going live later is easy.</strong> Because the sample data matches the real shape, your finished dashboard just works once real analytics starts flowing — nothing to rebuild.</p>
   </div>
 </section>
 
@@ -682,6 +696,10 @@
       <div class="eyebrow">Then stop</div>
       <p>Once you've seen real rows, <strong>stop here.</strong> The dashboard is a fresh session, for a reason.</p>
     </div>
+  </div>
+  <div class="heads-up" style="margin-top: 12px;">
+    <span class="heads-up-mark">🧪</span>
+    <p><strong>Analytics still empty?</strong> The GA pull above will come back with nothing to store. Use the <strong>sample-data kit from slide 2.5</strong> instead — load it now, and it fills the same table with ~90 days of practice data so you can build the whole dashboard today.</p>
   </div>
 </section>
 
