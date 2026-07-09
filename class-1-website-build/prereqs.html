@@ -426,6 +426,36 @@
   #prereq .card ul li { margin-bottom: 7px; line-height: 1.35; }
   #homebrew .numbered li { margin-bottom: 9px; line-height: 1.4; }
 
+  /* ---- Screenshot figure: a captioned UI shot, framed like paper ---- */
+  .shot {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    border: 1px solid var(--hair);
+    background: #1e1e1e;             /* matches the dark VS Code chrome behind transparent edges */
+  }
+  .shot figcaption {
+    font-family: var(--sans);
+    font-size: clamp(14px, 1.3vw, 15px);
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .shot figcaption strong { color: var(--terra-deep); }
+  /* two shots side by side; stack on narrow screens */
+  .shot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); max-width: var(--col); margin-top: 6px; align-items: start; }
+  @media (max-width: 760px) { .shot-pair { grid-template-columns: 1fr; } }
+
   /* ---- Heads-up strip: a prominent "expect this" callout in the accent ---- */
   .heads-up {
     display: flex;
@@ -476,6 +506,20 @@
   </div>
 </section>
 
+<!-- 0.5 LEVEL SET -->
+<section class="slide">
+  <div class="slide-num">Before we start</div>
+  <div class="eyebrow">A little honesty up front</div>
+  <h2>Yes, this part is a <em>drag.</em> You only do it once.</h2>
+  <p>Installing all this stuff isn't the fun part. It takes a while, a few things will look confusing, and none of it feels like "building a website" yet. That's normal — setup always feels like this.</p>
+  <div class="quote">Get through this once, and you never touch it again.</div>
+  <p>Everything below is a one-time setup for your computer. After today, you open VS Code and go straight to building — no installing, no accounts, no drag. So take a breath, follow along, and let Claude do the heavy lifting.</p>
+  <div class="done-strip">
+    <span class="done-mark">☕</span>
+    <p><strong>Set aside about an hour, unhurried.</strong> Nothing here is hard — it's just a bunch of small steps. Stuck on any of them? That's what the last slide (and Claude) are for.</p>
+  </div>
+</section>
+
 <!-- 1. OVERVIEW -->
 <section class="slide">
   <div class="slide-num">1 / Overview</div>
@@ -499,9 +543,49 @@
   </div>
 </section>
 
-<!-- 1.6 MENTALITY -->
+<!-- 3. VS CODE + CLAUDE CODE -->
 <section class="slide">
-  <div class="slide-num">2 / Mentality</div>
+  <div class="slide-num">3 / VS Code + Claude Code</div>
+  <div class="eyebrow">Your workspace</div>
+  <h2>VS Code is just a really fancy file manager.</h2>
+  <div class="quote">"You will never type code. You will type English."</div>
+  <ul>
+    <li>Install VS Code (free, from <span class="mono">code.visualstudio.com</span>).</li>
+    <li>Install the Claude Code extension from the VS Code extension marketplace.</li>
+    <li><strong>File → Open Folder → "New Folder"</strong> — create a brand new folder for your project, then open it. (The #1 stuck-point.)</li>
+  </ul>
+</section>
+
+<!-- 3.1 SIGN INTO CLAUDE CODE -->
+<section class="slide dense">
+  <div class="slide-num">3.1 / Sign in</div>
+  <div class="eyebrow">Before you can type a single prompt</div>
+  <h2>Open Claude Code and sign in.</h2>
+  <ul>
+    <li>Find the <strong>Claude Code icon</strong> — the orange starburst in the <strong>top-right toolbar</strong> of VS Code (near the split-screen and "…" icons). Click it to open the panel.</li>
+    <li>Click <strong>Sign in</strong> — a browser window opens. Log into your Claude account and approve, then come back to VS Code.</li>
+    <li>You're connected when the panel shows a prompt box waiting for you — not a sign-in button.</li>
+  </ul>
+  <p class="small-note" style="margin-top: 10px;"><strong>💳 Needs a paid Claude plan (Pro or Max)</strong> — the free account won't work. Subscribe at <span class="mono">claude.ai</span> first.</p>
+  <div class="shot-pair">
+    <figure class="shot">
+      <img src="claude-icon-toolbar.png" alt="The orange Claude Code starburst icon in the top-right toolbar of VS Code, highlighted with a red box.">
+      <figcaption>Look for <strong>this orange starburst</strong> in the top-right toolbar.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="new-file-button.png" alt="The New File button in the VS Code Explorer panel header, highlighted with a red box.">
+      <figcaption><strong>Don't see the icon?</strong> In the file list on the left, click <strong>New File</strong> (this button) — or press <code>⌘N</code> (Mac) / <code>Ctrl+N</code> (Windows) — and make any file. The toolbar icons appear once a file is open.</figcaption>
+    </figure>
+  </div>
+  <div class="heads-up" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.28); margin-top: 14px;">
+    <span class="heads-up-mark">⚡</span>
+    <p>Once you're in, switch the model to <strong>Opus</strong> — the strongest model for coding. Type <code>/model</code> and pick Opus, or use the model picker at the bottom of the panel.</p>
+  </div>
+</section>
+
+<!-- MENTALITY -->
+<section class="slide">
+  <div class="slide-num">Mentality</div>
   <div class="eyebrow">The one shift that makes this click</div>
   <h2>Stop using a tool. Start <em style="color:#d94e1f;">delegating</em> to a person.</h2>
   <div class="quote">You're not learning a program. You're describing what you want to someone who'll go build it.</div>
@@ -528,81 +612,75 @@
   <p class="small-note">This is the habit for the whole setup below: when something looks confusing, you don't go hunting — you <strong>describe what you see to Claude</strong> and let it handle it.</p>
 </section>
 
-<!-- 3. VS CODE + CLAUDE CODE -->
-<section class="slide">
-  <div class="slide-num">3 / VS Code + Claude Code</div>
-  <div class="eyebrow">Your workspace</div>
-  <h2>VS Code is just a really fancy file manager.</h2>
-  <div class="quote">"You will never type code. You will type English."</div>
-  <ul>
-    <li>Install VS Code (free, from <span class="mono">code.visualstudio.com</span>).</li>
-    <li>Install the Claude Code extension from the VS Code extension marketplace.</li>
-    <li><strong>File → Open Folder → "New Folder"</strong> — create a brand new folder for your project, then open it. (The #1 stuck-point.)</li>
-  </ul>
-</section>
-
-<!-- 3.1 SIGN INTO CLAUDE CODE -->
-<section class="slide">
-  <div class="slide-num">3.1 / Sign in</div>
-  <div class="eyebrow">Before you can type a single prompt</div>
-  <h2>Open Claude Code and sign in.</h2>
-  <ul>
-    <li>Click the <strong>Claude Code icon</strong> in the VS Code sidebar to open the panel.</li>
-    <li>Click <strong>Sign in</strong> — a browser window opens. Log into your Claude account and approve, then come back to VS Code.</li>
-    <li>You're connected when the panel shows a prompt box waiting for you — not a sign-in button.</li>
-  </ul>
-  <div class="heads-up" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.28);">
-    <span class="heads-up-mark">⚡</span>
-    <p>Switch the model to <strong>Opus</strong> — it's the strongest model for coding. Type <code>/model</code> and pick Opus, or use the model picker at the bottom of the panel.</p>
-  </div>
-</section>
-
-<!-- 3.2a HOMEBREW FIRST (Mac) -->
-<section class="slide dense" id="homebrew">
-  <div class="slide-num">3.2 / Mac: Homebrew first</div>
-  <div class="eyebrow">Mac users only — Windows, skip to the next slide</div>
-  <h2>Install Homebrew yourself, in the terminal.</h2>
-  <p>Homebrew is the installer that sets up everything else. It needs your Mac password, which only <em>you</em> can type — so we do this one step by hand, then let Claude do the rest.</p>
-  <ul class="numbered" style="margin-top: 6px;">
-    <li><strong>1.</strong> In VS Code, open the terminal: menu bar → <strong>Terminal → New Terminal</strong>.</li>
-    <li><strong>2.</strong> Go to <span class="mono">brew.sh</span>, copy the one install command at the top, paste it into the terminal, and press Enter.</li>
-    <li><strong>3.</strong> When it asks for your <strong>password</strong>, type your Mac login password and press Enter. <em>The screen shows nothing as you type — no dots, no stars. That's normal. Type it anyway and hit Enter.</em></li>
-    <li><strong>4.</strong> Press Enter once more if it asks you to confirm, then let it run (a few minutes).</li>
-  </ul>
-  <div class="done-strip">
-    <span class="done-mark">✅</span>
-    <p><strong>Success = </strong> the scrolling stops, you see <strong>"Installation successful!"</strong>, and the plain <code>$</code> prompt comes back waiting for you. Unsure? Paste the last screen to Claude: <em>"did Homebrew install correctly?"</em></p>
-  </div>
-</section>
-
-<!-- 3.2b PREREQUISITES -->
+<!-- 3.2 PREREQUISITES -->
 <section class="slide dense" id="prereq">
   <div class="slide-num">3.2 / Prerequisites</div>
-  <div class="eyebrow">Then let Claude finish the setup</div>
-  <h2>One prompt installs the rest.</h2>
-  <p>With Homebrew in place, Claude can install everything else in one shot. Paste this into Claude (Mac or Windows, same prompt):</p>
-  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS (on a Mac: Xcode Command Line Tools, and use the Homebrew I just installed; on Windows: use winget — do NOT install the full Xcode app). Install anything missing, one at a time, then show me a checklist proving each one works.</div>
+  <div class="eyebrow">Let Claude do the whole setup</div>
+  <h2>One prompt installs everything.</h2>
+  <p>Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):</p>
+  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Install anything missing, one at a time, then show me a checklist proving each one works.</div>
   <div class="grid-2" style="margin-top: 12px;">
     <div class="card">
       <div class="eyebrow">What Claude will install</div>
       <ul>
+        <li><strong>Homebrew</strong> (Mac) — the installer everything else is set up through.</li>
         <li><strong>git</strong> — the change-tracker GitHub is built on.</li>
         <li><strong>Node.js</strong> (includes npm + npx) — the engine the Vercel and Impeccable tools run on.</li>
         <li><strong>GitHub CLI + Vercel CLI</strong> — how Claude talks to your accounts.</li>
         <li><strong>Claude Code CLI</strong> — required before you can create agents (next section).</li>
-        <li><strong>Mac:</strong> Xcode Command Line Tools. <strong>Windows:</strong> winget, built into Windows.</li>
       </ul>
       <p style="margin-top: 10px; color: var(--muted); font-size: 15px;">All free and standard — safe to say yes to each.</p>
     </div>
     <div class="card">
       <div class="eyebrow">Your only job</div>
       <ul>
+        <li><strong>Type your Mac password when it asks</strong> — this is the one thing Claude can't do for you. The screen stays blank as you type (no dots, no stars) — that's normal. Type it and hit Enter.</li>
         <li><strong>Scrolling terminal text = an install working, not an error.</strong> You never need to read it — Claude does.</li>
-        <li><strong>Answer when Claude asks</strong> — say yes, and type your password if a window asks. That's normal.</li>
-        <li><strong>Let it run</strong> — downloads take 10–20 minutes.</li>
+        <li><strong>Answer when Claude asks</strong> — say yes, and let it run. Downloads take 10–20 minutes.</li>
         <li><strong>If something fails</strong>, paste the error back: <em>"this failed — fix it and continue."</em></li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- 3.2b WHAT IS GITHUB -->
+<section class="slide">
+  <div class="slide-num">3.2 / What GitHub is</div>
+  <div class="eyebrow">Backup + history</div>
+  <h2>GitHub: like Google Drive or Dropbox, but for code.</h2>
+  <ul>
+    <li>A cloud backup of your whole project, with a full history of every change.</li>
+    <li>You do <strong>not</strong> need to learn git commands. Claude handles the saving and uploading.</li>
+    <li>It's also what Vercel watches — every change you send up can trigger a fresh publish of your site.</li>
+  </ul>
+</section>
+
+<!-- 3.2c WHAT IS VERCEL -->
+<section class="slide">
+  <div class="slide-num">3.2 / What Vercel is</div>
+  <div class="eyebrow">Your website's home on the internet</div>
+  <h2>Vercel: free hosting that auto-deploys when you push.</h2>
+  <ul>
+    <li>It takes your files and turns them into a live website anyone can visit.</li>
+    <li>You'll get a dashboard — this is where every site you build lives.</li>
+    <li><strong>Hobby</strong> plan = free forever for personal projects like this.</li>
+    <li>Every change you send to GitHub → Vercel rebuilds automatically. No buttons to click.</li>
+  </ul>
+</section>
+
+<!-- 3.2d CREATE ACCOUNTS -->
+<section class="slide">
+  <div class="slide-num">3.2 / Create your accounts</div>
+  <div class="eyebrow">Before Claude can log you in, the accounts have to exist</div>
+  <h2>Sign up for GitHub and Vercel — two free accounts.</h2>
+  <p>The next step logs Claude into these for you. But you have to <em>have</em> the accounts first. Both are free, and it's two quick sign-ups:</p>
+  <ul>
+    <li><strong>GitHub</strong> — sign up at <span class="mono">github.com</span>. Pick a username you'd put on a resume; you'll see it forever.</li>
+    <li><strong>Vercel</strong> — sign up at <span class="mono">vercel.com</span> using the <strong>"Continue with GitHub"</strong> button. One click, no separate password — and it links the two accounts automatically.</li>
+  </ul>
+  <div class="heads-up" style="background: rgba(217,78,31,0.07); border-color: rgba(217,78,31,0.28);">
+    <span class="heads-up-mark">💡</span>
+    <p>We go deeper on <strong>what</strong> GitHub and Vercel actually do later in this deck. For now, you just need the accounts created so the login step has something to sign into.</p>
   </div>
 </section>
 
@@ -615,7 +693,7 @@
   <div class="prompt-box">Log me into the GitHub CLI, the Vercel CLI, and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.</div>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
-    <p><strong>Expect a browser window (or a short code) for each login</strong> — that's normal, not an error. Sign in, approve, and tell Claude you're done. You'll need your GitHub and Vercel accounts (next two slides cover signing up).</p>
+    <p><strong>Expect a browser window (or a short code) for each login</strong> — that's normal, not an error. Sign in, approve, and tell Claude you're done. This is where the GitHub and Vercel accounts you just made get used.</p>
   </div>
 </section>
 
@@ -720,22 +798,9 @@
   <p class="small-note">To view or edit: just ask Claude — "open my global CLAUDE.md" or "open the project CLAUDE.md."</p>
 </section>
 
-<!-- 6. GITHUB -->
+<!-- GIT CONCEPTS -->
 <section class="slide">
-  <div class="slide-num">6 / GitHub</div>
-  <div class="eyebrow">Backup + history</div>
-  <h2>GitHub: like Google Drive or Dropbox, but for code.</h2>
-  <ul>
-    <li>A cloud backup of your whole project, with a full history of every change.</li>
-    <li>Sign up at <span class="mono">github.com</span>.</li>
-    <li>Pick a username you'd put on a resume — you'll see it forever.</li>
-    <li>You do <strong>not</strong> need to learn git commands. Claude handles the saving and uploading.</li>
-  </ul>
-</section>
-
-<!-- 6b. GIT CONCEPTS -->
-<section class="slide">
-  <div class="slide-num">6 / Git concepts</div>
+  <div class="slide-num">Git concepts</div>
   <div class="eyebrow">The conceptual heart of the class</div>
   <h2>The six words you need to know.</h2>
   <ul>
@@ -747,19 +812,6 @@
     <li><strong>Clone</strong> = make a fresh copy of a project from GitHub onto your computer.</li>
   </ul>
   <p style="margin-top: 20px; color: var(--muted);">We're skipping <em>branching</em> — not needed for a solo website.</p>
-</section>
-
-<!-- 7. VERCEL -->
-<section class="slide">
-  <div class="slide-num">7 / Vercel</div>
-  <div class="eyebrow">Your website's home on the internet</div>
-  <h2>Vercel: free hosting that auto-deploys when you push.</h2>
-  <ul>
-    <li>Sign up at <span class="mono">vercel.com</span> — <strong>use the "Sign up with GitHub" button</strong>. One click, no separate password.</li>
-    <li>You'll land on a dashboard — this is where every site you build lives.</li>
-    <li><strong>Hobby</strong> plan = free forever for personal projects like this.</li>
-    <li>Every push to GitHub → Vercel rebuilds automatically. No buttons to click.</li>
-  </ul>
 </section>
 
 <!-- 8. WIRING -->
