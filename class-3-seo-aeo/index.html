@@ -19,15 +19,15 @@
 
   :root {
     /* palette */
-    --paper-top: #fafaf7;
-    --paper-bot: #ece8de;            /* a hair deeper than before for more presence */
+    --paper-top: #fdfcf9;
+    --paper-bot: #f2eee6;            /* lifted lighter so the teal accent separates cleanly, still clearly warm */
     --ink:        #15140f;           /* near-black warm ink, slightly warmer than #1a1a1a */
     --body:       #2c2a24;           /* workhorse reading color, clears AA on paper */
     --muted:      #6a665c;           /* secondary; do not go lighter on paper */
     --faint:      #7c776c;           /* captions / slide marker only (AA-large on paper) */
-    --terra:      #d94e1f;
-    --terra-deep: #b8401a;
-    --terra-ink:  #9a3614;           /* text-safe deepest terracotta for fine print on tint */
+    --accent:      #0f8a80;
+    --accent-deep: #0c6f67;
+    --accent-ink:  #0a5952;           /* text-safe deepest teal for fine print on tint */
     --green:      #16a34a;
     --hair:       rgba(20,18,12,0.10);
     --surface:    #fffdf9;           /* warm near-white card, opaque (no timid translucency) */
@@ -71,7 +71,7 @@
     top: 0; left: 0;
     padding: var(--pad-top) var(--pad-x) var(--nav-safe);
     background:
-      radial-gradient(120% 80% at 100% 0%, rgba(217,78,31,0.05), transparent 60%),
+      radial-gradient(120% 80% at 100% 0%, rgba(15,138,128,0.05), transparent 60%),
       linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
     overflow-y: auto;
   }
@@ -92,7 +92,7 @@
   .slide.dense .card ul li:last-child { margin-bottom: 0; }
 
   /* ---- Title slide: one dominant title, witty promise, warm note ----
-     Hierarchy by role, not just size: ink title → terracotta promise →
+     Hierarchy by role, not just size: ink title → teal promise →
      quiet aspirational note. Stays one calm column. */
   .title-slide { gap: clamp(28px, 4.2vh, 52px); text-align: center; }
   .title-slide.active > *:not(.slide-num) { max-width: 1340px; }
@@ -104,7 +104,7 @@
     font-size: clamp(15px, 1.5vw, 19px);
     font-weight: 700;
     letter-spacing: 0.01em;
-    color: var(--terra-deep);
+    color: var(--accent-deep);
     margin-bottom: clamp(2px, 0.6vh, 6px);
   }
   .title-main {
@@ -157,13 +157,13 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: var(--terra-deep);
+    color: var(--accent-deep);
     margin-bottom: 22px;
   }
   .eyebrow::before {
     content: "";
     width: 22px; height: 2px;
-    background: var(--terra);
+    background: var(--accent);
     border-radius: 2px;
     flex: 0 0 auto;
   }
@@ -192,7 +192,7 @@
     color: var(--ink);
     text-wrap: balance;
   }
-  h2 em { font-style: normal; color: var(--terra); }
+  h2 em { font-style: normal; color: var(--accent); }
   /* one-line headline on wide screens: sized so the full string fits the
      content column at every width down to the breakpoint (no clip/overflow),
      then wraps normally on small screens. */
@@ -231,7 +231,7 @@
     position: absolute;
     left: 0;
     top: 0.02em;
-    color: var(--terra);
+    color: var(--accent);
     font-weight: 700;
   }
   li.check::before { content: "☐"; color: var(--green); }
@@ -239,7 +239,7 @@
   /* numbered sequence: the leading number IS the marker; drop the arrow */
   ul.numbered li { padding-left: 0; }
   ul.numbered li::before { content: none; }
-  ul.numbered li strong { color: var(--terra-deep); }
+  ul.numbered li strong { color: var(--accent-deep); }
   li strong { color: var(--ink); font-weight: 700; }
 
   .grid-2 {
@@ -257,14 +257,14 @@
     padding: clamp(22px, 2.4vw, 30px);
     box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
   }
-  .card h3 { color: var(--terra-deep); margin-bottom: 12px; }
+  .card h3 { color: var(--accent-deep); margin-bottom: 12px; }
   .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
   .card p + p { margin-top: 10px; }
 
   code, .mono {
     font-family: var(--mono);
-    background: rgba(217,78,31,0.10);
-    color: var(--terra-ink);
+    background: rgba(15,138,128,0.10);
+    color: var(--accent-ink);
     padding: 2px 8px;
     border-radius: 5px;
     font-size: 0.88em;
@@ -273,8 +273,8 @@
 
   .pill {
     display: inline-block;
-    background: rgba(217,78,31,0.12);
-    color: var(--terra-ink);
+    background: rgba(15,138,128,0.12);
+    color: var(--accent-ink);
     padding: 5px 13px;
     border-radius: 30px;
     font-size: 14px;
@@ -290,9 +290,9 @@
     font-weight: 800;
     line-height: 1.16;
     letter-spacing: -0.02em;
-    color: var(--terra-deep);
+    color: var(--accent-deep);
     padding: 4px 0 4px 30px;
-    border-left: 3px solid var(--terra);
+    border-left: 3px solid var(--accent);
     margin: 28px 0;
     max-width: var(--col);
     text-wrap: balance;
@@ -328,14 +328,14 @@
     font-weight: 600;
     transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .nav button:hover { background: rgba(217,78,31,0.08); border-color: rgba(217,78,31,0.35); }
-  .nav button:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+  .nav button:hover { background: rgba(15,138,128,0.08); border-color: rgba(15,138,128,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .progress {
     position: fixed;
     top: 0; left: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--terra), #f97316);
+    background: linear-gradient(90deg, var(--accent), #14a89b);
     z-index: var(--z-progress);
     transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -349,7 +349,7 @@
   }
   .flow-step {
     background: var(--surface);
-    border: 1px solid rgba(217,78,31,0.35);
+    border: 1px solid rgba(15,138,128,0.35);
     padding: 15px 24px;
     border-radius: 12px;
     font-family: var(--display);
@@ -359,7 +359,7 @@
     color: var(--ink);
     box-shadow: 0 1px 2px rgba(20,18,12,0.04);
   }
-  .flow-arrow { color: var(--terra); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+  .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
   .small-note {
     font-size: clamp(15px, 1.35vw, 16px);
@@ -373,16 +373,16 @@
   .prompt-box {
     background: var(--surface);
     border: 1px solid #e7e1d4;
-    border-left: 4px solid var(--terra);
+    border-left: 4px solid var(--accent);
     padding: 16px 22px;
     border-radius: 8px;
     font-family: var(--mono);
     font-size: clamp(15px, 1.4vw, 16px);
     line-height: 1.5;
-    color: var(--terra-ink);
+    color: var(--accent-ink);
     margin: 12px 0;
     max-width: 1000px;
-    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(217,78,31,0.4);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
   }
 
   /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
@@ -399,7 +399,7 @@
 
   .label {
     display: inline-block;
-    background: var(--terra);
+    background: var(--accent);
     color: #fff;
     padding: 3px 11px;
     border-radius: 5px;
@@ -411,8 +411,8 @@
     vertical-align: middle;
   }
 
-  a { color: var(--terra-deep); }
-  a:focus, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+  a { color: var(--accent-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
 
   @media (prefers-reduced-motion: reduce) {
     .progress { transition: none; }
@@ -424,7 +424,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--terra);
+    background: var(--accent);
     color: #fff;
     text-decoration: none;
     font-family: var(--sans);
@@ -433,10 +433,10 @@
     letter-spacing: 0.01em;
     padding: 11px 20px;
     border-radius: 9px;
-    box-shadow: 0 6px 18px -6px rgba(217,78,31,0.5);
+    box-shadow: 0 6px 18px -6px rgba(15,138,128,0.5);
     transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
   }
-  .doclink:hover { background: var(--terra-deep); transform: translateY(-1px); box-shadow: 0 9px 22px -7px rgba(217,78,31,0.55); }
+  .doclink:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 9px 22px -7px rgba(15,138,128,0.55); }
   .doclink::after { content: "↗"; font-weight: 700; }
   /* the row of platform doc buttons (secondary, outlined) */
   .doclink-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
@@ -451,13 +451,13 @@
   @media (max-width: 520px) { .doclink-grid { grid-template-columns: 1fr; } }
   .doclink.alt {
     background: var(--surface);
-    color: var(--terra-ink);
-    border: 1px solid rgba(217,78,31,0.4);
+    color: var(--accent-ink);
+    border: 1px solid rgba(15,138,128,0.4);
     box-shadow: 0 1px 2px rgba(20,18,12,0.04);
     font-size: clamp(14px, 1.3vw, 16px);
     padding: 9px 16px;
   }
-  .doclink.alt:hover { background: rgba(217,78,31,0.08); color: var(--terra-ink); }
+  .doclink.alt:hover { background: rgba(15,138,128,0.08); color: var(--accent-ink); }
 
   /* ---- Success strip: a slim "you're done" banner, lighter than a card ---- */
   .done-strip {
@@ -481,13 +481,13 @@
     gap: 14px;
     margin-top: 16px;
     padding: 15px 22px;
-    background: rgba(217,78,31,0.09);
-    border: 1px solid rgba(217,78,31,0.38);
+    background: rgba(15,138,128,0.09);
+    border: 1px solid rgba(15,138,128,0.38);
     border-radius: 12px;
   }
   .heads-up-mark { font-size: clamp(22px, 2.2vw, 28px); flex: 0 0 auto; line-height: 1; }
   .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
-  .heads-up strong { color: var(--terra-deep); }
+  .heads-up strong { color: var(--accent-deep); }
 
   /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
   .ui-shot {
