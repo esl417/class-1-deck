@@ -14,7 +14,7 @@ writing code by hand.
 |---|-------|--------|-------|
 | 1 | How to Build a Website | ✅ Built | Zero → live deployed website |
 | 2 | How to Build a Dashboard | ✅ Built | Real data → decision-oriented dashboard |
-| 3 | SEO + AEO | ⬜ To build | Get found by search engines *and* AI answers |
+| 3 | SEO + AEO | ✅ Built | Get found by search engines *and* AI answers |
 | 4 | Automations | ⬜ To build | Make work happen without you |
 | 5 | Agents | ⬜ To build | Build software that acts on its own |
 | 6 | Go-To-Market (GTM) | ⬜ To build | Sell it — powered by StratEngine |
@@ -75,7 +75,7 @@ writing code by hand.
 
 ---
 
-## Class 3 — SEO + AEO ⬜
+## Class 3 — SEO + AEO ✅
 
 **Promise:** Get the site you built found — by search engines *and* by AI
 answer engines (ChatGPT, Perplexity, Google AI Overviews).
