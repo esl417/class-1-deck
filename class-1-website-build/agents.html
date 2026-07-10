@@ -167,6 +167,17 @@
     margin-bottom: 16px;
     max-width: 72ch;
   }
+  .send-note {
+    font-size: clamp(14px, 1.3vw, 15px);
+    color: var(--body);
+    background: rgba(15,138,128,0.06);
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    max-width: 72ch;
+  }
+  .send-note strong { color: var(--accent-ink); }
   /* Code panels: light tinted, fully on-theme, still clearly "copy this" */
   pre {
     background: #fbf8f2;
@@ -200,24 +211,18 @@
 <header>
   <a href="/class-1-website-build/" class="back-link">← Back to deck</a>
   <h1>Agent Prompts</h1>
-  <p class="lede">Copy each block and paste it into the <strong>Prompt</strong> field when you create the agent (start with <code>/agents → Agents → Library → Create agent</code>).</p>
+  <p class="lede">Each block below is a ready-to-send message. Click <strong>Copy</strong>, paste it straight into the Claude Code chat, and press enter — Claude builds the agent and installs it globally for you.</p>
 </header>
 
 <div class="steps">
   <h3>The install flow (per agent)</h3>
   <ol>
-    <li>In the Claude Code terminal, type <code>/agents</code> and click <strong>Agents</strong> (the terminal is fine for this).</li>
-    <li>Open the <strong>Library</strong> tab, then click <strong>Create agent</strong>.</li>
-    <li>Location: choose <strong>Personal</strong> (all projects) vs Project (this repo only) — pick <strong>Personal</strong>.</li>
-    <li>Setup: choose <strong>Manual configuration</strong> (vs Generate with Claude).</li>
-    <li><strong>Unique identifier</strong>: type the agent name.</li>
-    <li><strong>Prompt</strong>: click <strong>Copy</strong> below and paste the entire block.</li>
-    <li><strong>When should Claude use this agent?</strong> → <em>after code changes</em>.</li>
-    <li><strong>Select tools</strong>: just continue (leave defaults).</li>
-    <li><strong>Model</strong>: pick <strong>Opus</strong>.</li>
-    <li><strong>Color</strong>: any (doesn't matter).</li>
-    <li><strong>Memory</strong>: set to <strong>User</strong> scope.</li>
-    <li>Save, confirm it shows up, then repeat for the second agent.</li>
+    <li>Open Claude Code in your project (the VS Code chat or the terminal — either works).</li>
+    <li>Click <strong>Copy</strong> on the first block below.</li>
+    <li><strong>Paste it into the Claude chat and press enter.</strong> The whole block is the message — the first line tells Claude to create the agent and install it globally, and everything under the line is the agent itself.</li>
+    <li>Let it finish. Claude writes the agent file into your global <code>~/.claude/agents/</code> folder so it's available in every project.</li>
+    <li>Repeat for the second block.</li>
+    <li>To confirm both landed, ask Claude: <code>list my global agents</code>.</li>
   </ol>
 </div>
 
@@ -228,7 +233,8 @@
     <button class="copy-btn" onclick="copyAgent('code-reviewer-text', this)">Copy</button>
   </div>
   <p class="agent-desc">Reviews code changes for high-confidence bugs, correctness issues, and security problems. Runs after Claude makes edits.</p>
-  <pre id="code-reviewer-text">---
+  <p class="send-note"><strong>Copy sends this as a message:</strong> "Create a new agent called <code>code-reviewer</code> using exactly the definition below, and install it globally…" followed by everything in the panel. Just paste and press enter.</p>
+  <pre id="code-reviewer-text" data-agent-name="code-reviewer">---
 name: code-reviewer
 description: Reviews code changes (PRs, diffs, recent commits) for high-confidence bugs, correctness issues, and security problems. Use after making code changes, before committing, or when reviewing someone else's work. Scales to large PRs via parallel sub-agents.
 tools: Read, Grep, Glob, Bash, Agent
@@ -499,7 +505,8 @@ Write findings in the language the user is communicating in. Priority tags (`[P0
     <button class="copy-btn" onclick="copyAgent('security-reviewer-text', this)">Copy</button>
   </div>
   <p class="agent-desc">Security-focused review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Runs alongside code-reviewer after Claude makes edits.</p>
-  <pre id="security-reviewer-text">---
+  <p class="send-note"><strong>Copy sends this as a message:</strong> "Create a new agent called <code>security-reviewer</code> using exactly the definition below, and install it globally…" followed by everything in the panel. Just paste and press enter.</p>
+  <pre id="security-reviewer-text" data-agent-name="security-reviewer">---
 name: security-reviewer
 description: Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Use to review a PR for security vulnerabilities, perform a security audit of code changes, identify injection/auth/data-exposure issues, or run a full-project security audit. Supports both diff mode and full-project mode; scales via parallel sub-agents.
 tools: Read, Grep, Glob, Bash, Agent, WebFetch
@@ -828,7 +835,9 @@ Write findings in the language the user is communicating in. Priority tags, seve
 <script>
   function copyAgent(id, btn) {
     const pre = document.getElementById(id);
-    const text = pre.textContent;
+    const name = pre.dataset.agentName;
+    const instruction = "Create a new agent called \"" + name + "\" using exactly the definition below, and install it globally (in ~/.claude/agents, so it's available in every project — not just this one). Here is the full agent definition:\n\n";
+    const text = instruction + pre.textContent;
     navigator.clipboard.writeText(text).then(() => {
       const original = btn.textContent;
       btn.textContent = 'Copied!';

@@ -730,29 +730,24 @@
   <div class="eyebrow">Specialist Claudes</div>
   <h2>Creating agents inside Claude Code.</h2>
   <p>An agent is just a specialist Claude calls when needed. Now we'll install two: <span class="pill">code-reviewer</span> <span class="pill">security-reviewer</span></p>
+  <p style="margin-top: 14px;">You don't build these by hand. Each one is a ready-made message — you paste it into Claude, and Claude creates the agent for you.</p>
   <p style="margin-top: 14px;"><a href="agents.html" target="_blank" style="color:#0c6f67; text-decoration:underline; font-weight:600;">→ Open agent prompts (copy &amp; paste)</a></p>
   <p class="small-note">Now you know how to make your own agents for anything — a copywriter, a tax helper, whatever.</p>
 </section>
 
 <!-- 4b. AGENTS — the steps -->
-<section class="slide dense">
+<section class="slide">
   <div class="slide-num">4 / Agents — the steps</div>
   <div class="eyebrow">Specialist Claudes</div>
   <h2>Steps</h2>
   <ul>
-    <li>In the terminal, type <code>/agents</code> and click <strong>Agents</strong> (terminal is fine).</li>
-    <li>Open the <strong>Library</strong> tab, then click <strong>Create agent</strong>.</li>
-    <li>Location: choose <strong>Personal</strong> (all projects) vs Project (this repo only) — pick <strong>Personal</strong>.</li>
-    <li>Setup: choose <strong>Manual configuration</strong> (vs Generate with Claude).</li>
-    <li><strong>Unique identifier</strong>: type the agent name.</li>
-    <li><strong>Prompt</strong>: paste the full markdown from the handout.</li>
-    <li><strong>When should Claude use this agent?</strong> → <em>after code changes</em>.</li>
-    <li><strong>Select tools</strong>: just continue (leave defaults).</li>
-    <li><strong>Model</strong>: pick <strong>Opus</strong>.</li>
-    <li><strong>Color</strong>: any (doesn't matter).</li>
-    <li><strong>Memory</strong>: set to <strong>User</strong> scope.</li>
-    <li>Save, confirm it appears, then repeat for the second agent.</li>
+    <li>Open the <a href="agents.html" target="_blank" style="color:#0c6f67; text-decoration:underline; font-weight:600;">agent prompts handout</a> and click <strong>Copy</strong> on the first agent.</li>
+    <li><strong>Paste it into the Claude chat and press enter.</strong> The message already tells Claude to create the agent and install it globally.</li>
+    <li>Let Claude finish. It writes the agent into your global <code>~/.claude/agents/</code> folder, so it works in <strong>every</strong> project.</li>
+    <li>Do the same for the second agent.</li>
+    <li>To check both landed, ask Claude: <span class="pill">list my global agents</span></li>
   </ul>
+  <p class="small-note">Claude Code used to have a menu for this. Now it's simpler: you just ask Claude, and it builds the agent for you.</p>
 </section>
 
 <!-- 4.6 ALWAYS REVIEW -->
