@@ -483,7 +483,7 @@
   <div class="slide-num">1 / Today</div>
   <div class="eyebrow">What we're doing today</div>
   <h2 class="nowrap-lg">A live website on a real URL by the end of class.</h2>
-  <p style="margin-top: 20px;">Your tools are already installed and wired together from the <strong>prereqs</strong> — so today is pure building. Here's the setup you did, at a glance:</p>
+  <p style="margin-top: 20px;">Your tools are already installed and logged in from the <strong>prereqs</strong> — today we connect them and build. Here's the machine we're driving:</p>
   <div class="arrow-flow">
     <div class="flow-step">You talk</div>
     <div class="flow-arrow">→</div>
@@ -495,7 +495,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🧰</span>
-    <p><strong>Not set up yet?</strong> Open the <strong>prereqs deck</strong> (<span class="mono">prereqs.html</span>) and run through it first — VS Code + Claude Code, the tool installs and logins, your review agents, and GitHub + Vercel wired to your project.</p>
+    <p><strong>Not set up yet?</strong> Open the <strong>prereqs deck</strong> (<span class="mono">prereqs.html</span>) and run through it first — VS Code + Claude Code, the tool installs and logins, your review agents, and your GitHub + Vercel accounts.</p>
   </div>
 </section>
 
@@ -557,6 +557,37 @@
     </div>
   </div>
   <p class="small-note">Rule of thumb: one focused task per session. Locked the aesthetic? New session. Moving from layout to copy? New session. A short, on-topic conversation always beats a giant one.</p>
+</section>
+
+<!-- 2.5 GIT WORDS (moved from prereqs: belongs right before the repo gets created) -->
+<section class="slide">
+  <div class="slide-num">2.5 / Git words</div>
+  <div class="eyebrow">The conceptual heart of the class</div>
+  <h2>The six words you need to know.</h2>
+  <ul>
+    <li><strong>Git</strong> = change tracking. Like Track Changes in Word, but for your whole project.</li>
+    <li><strong>Repo</strong> (repository) = your project's folder, tracked by git. Your website is one repo.</li>
+    <li><strong>Commit</strong> = save. A snapshot you can always roll back to.</li>
+    <li><strong>Push</strong> = send your saves up to GitHub. (This is what triggers a live deploy.)</li>
+    <li><strong>Pull</strong> = grab the latest version from GitHub down to your computer.</li>
+    <li><strong>Clone</strong> = make a fresh copy of a project from GitHub onto your computer.</li>
+  </ul>
+  <p style="margin-top: 20px; color: var(--muted);">We're skipping <em>branching</em> for now — it comes up once, at the very end.</p>
+</section>
+
+<!-- 2.6 CREATE YOUR REPO (moved from prereqs wiring: prereqs only log in, so the repo gets created here) -->
+<section class="slide">
+  <div class="slide-num">2.6 / Create your repo</div>
+  <div class="eyebrow">Connect the three</div>
+  <h2>Create your repo — and wire it to GitHub and Vercel.</h2>
+  <p>The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude in the VS Code terminal:</p>
+  <div class="prompt-box">Create a GitHub repo for this project and connect it to my Vercel. Make sure they're synced and a push will deploy.</div>
+  <h3 style="margin-top: 30px; color: #0c6f67;">Verification checklist</h3>
+  <ul>
+    <li class="check"><code>git status</code> works in the VS Code terminal</li>
+    <li class="check">Your project shows up at <span class="mono">github.com/yourname</span></li>
+    <li class="check">Your project shows up in Vercel with a <span class="mono">*.vercel.app</span> URL</li>
+  </ul>
 </section>
 
 <!-- 5.5 LOCAL VS PUSH (moved here: only true once Vercel is wired up) -->
