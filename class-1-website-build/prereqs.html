@@ -618,7 +618,7 @@
   <div class="eyebrow">Let Claude do the whole setup</div>
   <h2>One prompt installs everything.</h2>
   <p>Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):</p>
-  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Install anything missing, one at a time, then show me a checklist proving each one works.</div>
+  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.</div>
   <div class="grid-2" style="margin-top: 12px;">
     <div class="card">
       <div class="eyebrow">What Claude will install</div>
@@ -628,6 +628,7 @@
         <li><strong>Node.js</strong> (includes npm + npx) — the engine the Vercel and Impeccable tools run on.</li>
         <li><strong>GitHub CLI + Vercel CLI</strong> — how Claude talks to your accounts.</li>
         <li><strong>Claude Code CLI</strong> — required before you can create agents (next section).</li>
+        <li><strong>Impeccable</strong> — the design tool that makes your site look professional (installed globally, ready for class).</li>
       </ul>
       <p style="margin-top: 10px; color: var(--muted); font-size: 15px;">All free and standard — safe to say yes to each.</p>
     </div>
