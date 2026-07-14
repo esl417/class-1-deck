@@ -91,6 +91,24 @@
   .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
   .slide.dense .card ul li:last-child { margin-bottom: 0; }
 
+  /* ---- Short-viewport fit -----------------------------------------------
+     Slides are a hard 100vh with no scroll, so on laptop-height screens
+     (<=900px) the dense slides need the chrome and type pulled in or the
+     tallest ones (4, 5, 11) spill under the nav. Scales the frame, not the
+     copy — nothing gets cut, it just tightens. */
+  @media (max-height: 900px) {
+    :root { --pad-top: clamp(30px, 4.4vh, 48px); --nav-safe: 84px; }
+    .slide.dense h2 { font-size: clamp(26px, 2.9vw, 33px); margin-bottom: 12px; }
+    .slide.dense p,
+    .slide.dense li { font-size: clamp(15px, 1.4vw, 17px); margin-bottom: 8px; }
+    .slide.dense .card ul li { font-size: clamp(14px, 1.25vw, 15.5px); margin-bottom: 6px; }
+    .slide.dense .card { padding: clamp(16px, 1.7vw, 22px); }
+    .slide.dense .eyebrow { margin-bottom: 10px; }
+    .slide.dense .small-note { margin-top: 8px; font-size: clamp(13px, 1.2vw, 14.5px); }
+    .slide.dense .prompt-box { padding: 12px 16px; font-size: clamp(13px, 1.25vw, 14.5px); }
+    .slide.dense .grid-2 { gap: clamp(16px, 1.9vw, 26px); }
+  }
+
   /* ---- Title slide: one dominant title, witty promise, warm note ----
      Hierarchy by role, not just size: ink title → teal promise →
      quiet aspirational note. Stays one calm column. */
@@ -644,29 +662,29 @@
   <div class="slide-num">4 / The foundation</div>
   <div class="eyebrow">Mostly its own discipline — but here's the 80/20</div>
   <h2>Improving SEO, in broad strokes.</h2>
-  <p>SEO is a whole field of its own, and most of it is out of scope for today — we're here to build the AI layer. But since it's the foundation, know the two levers that move the needle most. Strip away the jargon and it comes down to <strong>trust</strong>: Google ranks the sites other credible sites vouch for, and that clearly know their subject.</p>
+  <p>SEO is a field of its own and mostly out of scope today — but it's the foundation, so know the two levers that move the needle. Strip the jargon and it's <strong>trust</strong>: Google ranks the sites other credible sites vouch for, and that clearly know their subject.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🔗 Lever 1 · Backlinks in your niche</div>
-      <p>A <strong>backlink</strong> is another site linking to yours — Google reads it as a vote of trust. <em>Relevant</em> beats <em>many</em>: one link from a respected blog in your field outweighs a hundred junk ones. Free, self-serve ways to earn them:</p>
+      <p>A <strong>backlink</strong> is another site linking to yours — a vote of trust. <em>Relevant</em> beats <em>many</em>: one link from a respected blog in your field outweighs a hundred junk ones. Free ways to earn them:</p>
       <ul>
-        <li>Reclaim <strong>unlinked mentions</strong> — find sites already naming you, ask them to link.</li>
-        <li>Answer reporters on <strong>Connectively / Qwoted / Source of Sources</strong> — expert quotes earn press links.</li>
-        <li><strong>Guest-post</strong> one strong piece on a respected niche blog (quality over volume).</li>
-        <li>Get listed in real <strong>directories</strong> — chamber of commerce, industry associations, local sponsorships.</li>
-        <li>Publish <strong>original data</strong> (a small survey or stat) — other writers cite sources.</li>
+        <li>Reclaim <strong>unlinked mentions</strong> — sites already naming you; ask them to link.</li>
+        <li>Answer reporters on <strong>Connectively / Qwoted / Source of Sources</strong>.</li>
+        <li><strong>Guest-post</strong> one strong piece on a respected niche blog.</li>
+        <li>Get listed in real <strong>directories</strong> — chambers, associations, sponsorships.</li>
+        <li>Publish <strong>original data</strong> — writers cite sources.</li>
       </ul>
     </div>
     <div class="card">
       <div class="eyebrow">🎓 Lever 2 · EEAT content</div>
-      <p><strong>EEAT</strong> = Experience, Expertise, Authoritativeness, Trust — Google's bar for "does this site actually know its stuff?" You raise it by proving you do:</p>
+      <p><strong>EEAT</strong> = Experience, Expertise, Authoritativeness, Trust — Google's bar for "does this site know its stuff?" You raise it by proving you do:</p>
       <ul>
-        <li>Write from <strong>real experience</strong> — case studies, results, specifics only you'd know.</li>
-        <li>Show <strong>who's behind it</strong> — author bios, credentials, a real About page.</li>
-        <li>Stay on <strong>one topic</strong> — a focused site reads as an expert; a scattered one doesn't.</li>
-        <li>Be <strong>accurate and current</strong> — cite sources, keep facts fresh, fix what's stale.</li>
-        <li>Collect <strong>reviews and testimonials</strong> — outside validation is a trust signal too.</li>
-        <li><strong>Write it yourself — Google sniffs out AI-generated content, and it damages your EEAT.</strong> Draft with AI if you like, but the ideas, experience, and voice must be genuinely yours.</li>
+        <li>Write from <strong>real experience</strong> — case studies, specifics only you'd know.</li>
+        <li>Show <strong>who's behind it</strong> — bios, credentials, a real About page.</li>
+        <li>Stay on <strong>one topic</strong> — a focused site reads as an expert.</li>
+        <li>Be <strong>accurate and current</strong> — cite sources, fix what's stale.</li>
+        <li>Collect <strong>reviews and testimonials</strong> — outside validation counts.</li>
+        <li><strong>Write it yourself.</strong> Google sniffs out AI-generated content and it damages EEAT. Draft with AI, but the ideas and voice must be yours.</li>
       </ul>
     </div>
   </div>
@@ -678,7 +696,7 @@
   <div class="slide-num">5 / Do it yourself</div>
   <div class="eyebrow">A free SEO toolkit — for after class</div>
   <h2>Have Claude <em>audit</em> your SEO for you.</h2>
-  <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it. Set it up on your own time after class.</p>
+  <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.</p>
   <div class="grid-2">
     <div class="card">
       <div class="eyebrow">Step 1 · Install it (one time)</div>
@@ -687,16 +705,14 @@
       <p style="margin-top:10px;">Restart Claude Code when it asks, so the tools switch on — the same restart move from the prereqs.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Step 2 · Run these, in this order</div>
+      <div class="eyebrow">Step 2 · Run these on your site today</div>
       <p>Open Claude Code in your website project and run them one at a time (swap in your domain):</p>
       <ul>
         <li><code>/seo audit yourdomain.com</code> — the big one: full-site health + fix list.</li>
         <li><code>/seo content yourdomain.com</code> — your EEAT / content score.</li>
         <li><code>/seo backlinks yourdomain.com</code> — who links to you, and gaps.</li>
-        <li><code>/seo geo yourdomain.com</code> — how citable you are to AI. <strong>Run this one <em>after</em> today's AEO build is live</strong> — it measures the bot surface you just shipped.</li>
-        <li><code>/seo schema yourdomain.com</code> — structured-data check + fixes.</li>
       </ul>
-      <p style="margin-top:8px;">A starter set — there are <strong>~25 in all</strong>. Ask Claude: <em>"which other /seo commands fit my site?"</em></p>
+      <p style="margin-top:8px;">A starter set — there are <strong>~25 in all</strong>. Two more (<code>/seo geo</code>, <code>/seo schema</code>) measure the AI surface, so they come <em>after</em> today's build — we'll run them later.</p>
     </div>
   </div>
   <div class="heads-up">
@@ -795,7 +811,7 @@
 </section>
 
 <!-- REFERENCE DOCUMENTS -->
-<section class="slide">
+<section class="slide dense">
   <div class="slide-num">10 / Reference documents</div>
   <div class="eyebrow">Your project's knowledge base</div>
   <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
@@ -814,7 +830,7 @@
     <span class="heads-up-mark">💡</span>
     <p><strong>Pro tip: keep it current automatically.</strong> Set a rule in your <code>CLAUDE.md</code> up front — <em>"before every GitHub push, update ARCHITECTURE.md to match what changed"</em> — so the doc never goes stale. Every time you ship, the knowledge base updates itself.</p>
   </div>
-  <p class="small-note">You'll actually write the architecture doc later — once the dual-surface site is deployed and proven. For now, just know it's coming, and that next time you open this project Claude can read it and instantly know how the two versions fit together.</p>
+  <p class="small-note">You'll write the architecture doc later — once the site is deployed and proven. For now just know it's coming: next time you open this project, Claude reads it and instantly knows how the two versions fit together.</p>
 </section>
 
 <!-- ============================================================
@@ -826,11 +842,11 @@
   <div class="slide-num">11 / Plan the build</div>
   <div class="eyebrow">One prompt plans the whole build — you review it</div>
   <h2>Plan the whole build with <em>one</em> prompt.</h2>
-  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once, in plan mode, and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
+  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
   <div class="prompt-box">I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-aeo folder and follow the directions there. Make a plan and show it to me before building anything.</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ Before you say "go" — the plan should cover four stages</div>
-    <p>This is the plan-mode habit in action: <strong>read Claude's plan and sanity-check it</strong> before approving. A good plan moves through these four stages, in order — the next few slides explain what each one is doing and why:</p>
+    <p><strong>Read Claude's plan and sanity-check it</strong> before approving. A good plan moves through these four stages, in order:</p>
     <ul>
       <li><strong>1. Scaffold</strong> — set up the empty structure for the bot version of your pages.</li>
       <li><strong>2. Generate</strong> — write the bot pages, following the AEO content guide.</li>
@@ -838,7 +854,7 @@
       <li><strong>4. Verify</strong> — prove AI, humans, and Google each get the right version.</li>
     </ul>
   </div>
-  <p class="small-note">You don't need to know the technical details — the plan and the class materials carry those. You're just confirming these four stages are there and that it's adding a bot version in front of your site, not replacing it. If something looks off, tell Claude and have it re-plan before you approve.</p>
+  <p class="small-note">You're just confirming those four stages are there, and that it's adding a bot version <em>in front of</em> your site, not replacing it. If something looks off, tell Claude and have it re-plan before you approve.</p>
 </section>
 
 <!-- STEP 1 — SCAFFOLD (walkthrough of the plan) -->
