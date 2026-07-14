@@ -385,6 +385,48 @@
     box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
   }
 
+  /* ---- 3-across sequence: steps must read left-to-right --------------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    gap: clamp(16px, 1.8vw, 26px);
+    max-width: var(--col);
+    margin-top: 4px;
+    align-items: stretch;
+  }
+  .grid-3 .card { display: flex; flex-direction: column; }
+  .grid-3 .card p { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.45; }
+  .grid-3 .card p code { font-size: 0.95em; }
+  .card-hero { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .card-hero .prompt-box {
+    margin: 6px 0 0;
+    max-width: none;
+    font-size: clamp(11.5px, 0.98vw, 13.5px);
+    line-height: 1.42;
+    padding: 12px 14px;
+    box-shadow: none;
+  }
+  @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+  /* ---- Step tags: mark which steps only report vs. actually edit ------ */
+  .tag-report, .tag-write {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.78em;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    vertical-align: middle;
+  }
+  .tag-report { background: #efeade; color: var(--muted); }
+  .tag-write { background: var(--accent); color: #fff; }
+
+  @media (max-width: 760px) {
+    .step-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+
   /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
   .cheat-grid {
     display: grid;
@@ -889,18 +931,27 @@
   <div class="slide-num">16 / Now the real work</div>
   <div class="eyebrow">The setup is done — this is where AEO actually happens</div>
   <h2>Steps 1–4 built the machine. Now <em>feed it.</em></h2>
-  <p>The infrastructure is live, but your bot pages were written from your existing marketing copy — thin, and aimed at selling, not answering. The payoff comes from <strong>enriching them</strong>: adding real, direct answers to the questions people actually ask AI about your space. Do it in order — <strong>content first, formatting last</strong>:</p>
-  <div class="grid-2" style="margin-top: 4px;">
+  <p>Your AI pages came from existing marketing copy — thin, and aimed at selling, not answering. Now <strong>enrich them</strong>. The <code>/seo</code> commands only <em>grade</em>; <strong>step 2 is the only one that changes anything.</strong> The build copied the AEO guide into your project and pointed <code>CLAUDE.md</code> at it — so Claude knows the standard every time, not just today.</p>
+
+  <div class="grid-3">
     <div class="card">
-      <div class="eyebrow">1 · Find what to add — <code>/seo content-brief</code></div>
-      <p>Run <code>/seo content-brief yourdomain.com/page</code> on a page you want to improve. It <strong>reads that page</strong>, checks it against the top competitors, and hands you a concrete list of <strong>what to add</strong> — the questions and sections you're missing. No prep needed; it works off the page you already built.</p>
+      <div class="eyebrow">1 · Get the plan <span class="tag-report">report only</span></div>
+      <p><code>/seo content-brief yourdomain.com/page</code></p>
+      <p>Checks that page against the top competitors and hands back a <strong>brief</strong> — the questions and sections you're missing. It edits nothing; it tells step 2 what to write.</p>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">2 · Claude writes it <span class="tag-write">changes your site</span></div>
+      <p>No command does this — paste this prompt:</p>
+      <div class="prompt-box">Write the brief's new sections into the AI version of that page — the matching file in my llm/ folder, not my human site. Follow AEO_CONTENT_GUIDE.md. Ask me anything from the brief you don't have a real answer for; don't invent facts. Then redeploy and confirm it's live.</div>
     </div>
     <div class="card">
-      <div class="eyebrow">2 · Write the answers, then polish for citability</div>
-      <p>Have Claude write clear, answer-first sections for those questions <em>following the AEO guide</em>. <strong>Then</strong> run <code>/seo geo yourdomain.com</code> — it checks the <em>formatting</em> (passage length, question-style headings, FAQ structure) so what you wrote is easy for AI to lift.</p>
+      <div class="eyebrow">3 · Get the grade <span class="tag-report">report only</span></div>
+      <p><code>/seo geo yourdomain.com</code></p>
+      <p>Scores how <strong>citable</strong> your live pages are and names the passages to fix. Also just a report — so hand it back: <em>"work through these GEO fixes with me, highest-impact first."</em></p>
     </div>
   </div>
-  <p class="small-note">Redeploy and repeat — a few pages a week. This loop (find what's missing → answer it → format for citability → ship) is the whole game. <strong>Once your full site is converted and you want to go deeper</strong>, run <code>/seo cluster</code> — it maps every topic worth owning across your whole site. (Your <em>human</em> pages still need to be genuinely yours; this added depth lives on the AI surface.)</p>
+
+  <p class="small-note">Repeat a few pages a week — that loop is the whole game. <strong>Once your full site is converted</strong>, run <code>/seo cluster</code> to map every topic worth owning. (Your <em>human</em> pages still need to be genuinely yours.)</p>
 </section>
 
 <!-- RE-RUN THE SEO TOOLKIT — now that the AEO build is live -->
