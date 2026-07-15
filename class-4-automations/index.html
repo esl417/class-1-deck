@@ -189,6 +189,22 @@
   h2 em { font-style: normal; color: var(--accent); }
   h2.nowrap-lg { white-space: nowrap; font-size: clamp(30px, 3.5vw, 46px); }
   @media (max-width: 820px) { h2.nowrap-lg { white-space: normal; font-size: clamp(28px, 5vw, 40px); } }
+
+  /* ---- Headlines fit ONE line -------------------------------------------
+     The content column is 1180px; headlines up to ~60 chars must sit on ONE
+     line inside it without clipping. Two things together make that safe:
+     (1) white-space: nowrap so it never wraps to 2, and
+     (2) a font size that SCALES DOWN with the viewport (vw-led clamp with a
+         modest cap) so the longest line still fits at laptop widths — nowrap
+         with too-big a font clips off the right edge (the recurring bug).
+     Below the phone breakpoint, release to normal wrapping. */
+  h2, .slide.dense h2 {
+    white-space: nowrap;
+    font-size: clamp(24px, 2.9vw, 40px);
+  }
+  @media (max-width: 760px) {
+    h2, .slide.dense h2 { white-space: normal; font-size: clamp(26px, 6vw, 34px); }
+  }
   h3 {
     font-family: var(--display);
     font-size: clamp(21px, 2vw, 25px);
@@ -480,8 +496,8 @@
 <section class="slide active title-slide">
   <div class="title-head">
     <div class="title-kicker">Class 4 · Making work happen without you</div>
-    <h1 class="title-main">A script that runs your <br class="hero-break">morning — so you don't.</h1>
-    <p class="title-sub">Take something you do by hand every day and hand it to a small program on your own computer.</p>
+    <h1 class="title-main">The work you do by hand, <br class="hero-break">done without you.</h1>
+    <p class="title-sub">Automations: teach your own computer to run the repetitive parts of your day, so you don't have to.</p>
   </div>
 </section>
 
@@ -512,22 +528,27 @@
 <section class="slide dense">
   <div class="slide-num">2 / What this is</div>
   <div class="eyebrow">Why this class exists</div>
-  <h2>An automation does a <em>chore</em> — the work leaves your plate.</h2>
-  <p>Not everything a computer does on a schedule is an automation. The test is simple: <strong>did something you used to do by hand stop landing on you?</strong> A briefing you assembled every morning, now assembled for you — that's the real thing. Two look-alikes that don't count:</p>
-  <div class="grid-2" style="margin-top: 4px;">
+  <h2>An automation does the <em>busywork</em> — so you don't.</h2>
+  <p>You already know what these are — you just do them by hand. Think about the little office jobs that eat your day and don't really need <em>you</em>, just your time. Each of these can run on its own:</p>
+  <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
     <div class="card">
-      <div class="eyebrow">Not a "sync" (Class 2)</div>
-      <p>Moving data from one place to another so a dashboard can exist is <strong>plumbing</strong> — nobody was doing it by hand, so nothing left your plate. Useful, but it's not taking a chore off you.</p>
+      <div class="eyebrow">📥 Sort my inbox</div>
+      <p>Instead of scanning a hundred messages every morning, it reads them and tells you the few that <strong>actually need you today</strong>.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Not a "monitor"</div>
-      <p>A program that just <em>watches</em> and emails you an alert still leaves the doing to you. It hands you a to-do. An automation hands you a <strong>done</strong>.</p>
+      <div class="eyebrow">✍️ Draft the reply</div>
+      <p>For the emails you answer the same way every time, it <strong>writes the reply in your words</strong> — you just read it and hit send.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📝 Summarize the thread</div>
+      <p>A 20-message back-and-forth becomes three lines: <strong>what was decided, and what's next</strong> — without you reading all of it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔔 Chase the follow-ups</div>
+      <p>It remembers who never replied and <strong>sends the nudge</strong>, so you're not keeping a mental list of loose ends.</p>
     </div>
   </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🤖</span>
-    <p><strong>An automation follows fixed rules — it does exactly what you told it, every time.</strong> That's its strength and its limit: it never gets bored, never skips a day, but it can't decide what's <em>worth</em> doing. Hold that thought — it's the whole seam between today and the agents class.</p>
-  </div>
+  <p class="small-note">Notice what they share: each one <strong>reads something and makes a small judgment</strong> — what's urgent, how to reply, what matters. That "deciding" is the interesting part, and it's exactly what today's build does.</p>
 </section>
 
 <!-- 3. THE BRIEFING, SHOWN -->
