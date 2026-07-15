@@ -78,9 +78,13 @@
   .slide.active { display: flex; flex-direction: column; }
   /* center the content column vertically + cap its width consistently */
   .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
-  .slide.active { justify-content: center; }
-  /* dense slides: pin to top + tighten the type ramp so nothing overflows */
-  .slide.dense { justify-content: flex-start; }
+  /* Every slide centers vertically for one consistent read. `safe` is the guard:
+     when a slide's content is taller than 100vh, plain centering would push the
+     headline off the top edge — `safe center` falls back to top-alignment in
+     exactly that case, so the eyebrow/headline are never clipped. */
+  .slide.active { justify-content: safe center; }
+  /* dense slides: same centered alignment as every other slide; the type
+     ramp below is tightened so content-heavy slides still clear the nav */
   .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
   .slide.dense p,
   .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
@@ -92,10 +96,9 @@
   .slide.dense .card ul li:last-child { margin-bottom: 0; }
 
   /* ---- Short-viewport fit -----------------------------------------------
-     Slides are a hard 100vh with no scroll, so on laptop-height screens
-     (<=900px) the dense slides need the chrome and type pulled in or the
-     tallest ones (4, 5, 11) spill under the nav. Scales the frame, not the
-     copy — nothing gets cut, it just tightens. */
+     Slides are a hard 100vh, so on laptop-height screens (<=900px) the dense
+     slides need the chrome and type pulled in or the tallest ones (4, 5, 11)
+     overflow the frame. Scales the frame, not the copy — nothing gets cut. */
   @media (max-height: 900px) {
     :root { --pad-top: clamp(30px, 4.4vh, 48px); --nav-safe: 84px; }
     .slide.dense h2 { font-size: clamp(26px, 2.9vw, 33px); margin-bottom: 12px; }
