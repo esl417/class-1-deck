@@ -15,7 +15,7 @@ writing code by hand.
 | 1 | How to Build a Website | ✅ Built | Zero → live deployed website |
 | 2 | How to Build a Dashboard | ✅ Built | Real data → decision-oriented dashboard |
 | 3 | SEO + AEO | ✅ Built | Get found by search engines *and* AI answers |
-| 4 | Automations | ⬜ To build | Make work happen without you |
+| 4 | Automations | ✅ Built | Make work happen without you |
 | 5 | Agents | ⬜ To build | Build software that acts on its own |
 | 6 | Go-To-Market (GTM) | ⬜ To build | Sell it — powered by StratEngine |
 
@@ -125,19 +125,55 @@ traffic still passes through to the Vercel origin.
 
 ---
 
-## Class 4 — Automations ⬜
+## Class 4 — Automations ✅
 
-**Promise:** Make routine work happen without you — scheduled and triggered.
+**Promise:** Make routine work happen without you — a "morning briefing" that
+runs on its own and tells you what actually needs you today.
 
-**Likely arc (to design):**
-- What an automation is vs. an agent (set rules vs. judgment).
-- Triggers: schedule (cron) vs. event-driven.
-- Building one with Claude Code: serverless functions + a schedule.
-- Connecting services (the dashboard pipeline from Class 2 is a first example).
-- Notifications / delivery (email, Slack, etc.).
-- Reliability: logging, retries, knowing when it broke.
+**What gets built:** a **local Python script** on the student's own Mac/PC (no
+hosted service) that reads a few of their own work sources, uses Claude to sort
+what matters, and delivers a triaged brief. It's built as separate pluggable
+reader functions — deliberately, because Class 5's agent reuses them as tools.
 
-**Status:** Not started.
+**Arc:**
+1. **Finish line** — a script runs your morning for you.
+2. **What an automation is** — it does a chore you'd do by hand (sort inbox,
+   draft reply, summarize, chase follow-ups), shown via real examples not jargon.
+3. **The briefing, shown** — one triaged screen; read-only, it never sends.
+4. **The method** — map the steps you do by hand, hand the map to Claude; Claude
+   helps you map it and builds the automation around it.
+5. **Judgment vs. determinism** — do everything with fixed rules; call Claude
+   only where a rule genuinely can't decide (cost + consistency).
+6. **Pluggable** — wire in the places your work lives (email read-only, Slack,
+   Notion, tasks, calendar, dashboard); anything with an API or MCP server.
+7–8. **Work habits** — plan mode + reference docs (carried from Class 3).
+9. **Plan the build** — one plan-mode prompt; start with ≤3 sources, get the
+   core pipeline working end-to-end, then extend.
+10. **Keys + `.env`** — API keys are passwords: in a gitignored `.env`, never
+    pasted into the chat. First time the series manages credentials.
+11. **The readers** — a reader per source (private link vs. copy-paste key).
+12. **The judgment step** — a `CLAUDE.md` tells it what "matters" means (the real
+    file, read by a headless `claude -p` call; the seed of an agent). LLM auth:
+    free `setup-token` by default, API key as the alternative.
+13. **Deliver + schedule** — brief writes to a file and pops open on screen;
+    launchd / Task Scheduler with a built-in catch-up on wake (laptops miss).
+14. **Prove it** — run it live, watch the brief appear.
+15. **Extend it** — more fixed jobs (draft replies, file tasks) — still the
+    automation, not the agent. The leap to software that *chooses* is Class 5.
+16. **When it breaks** — it tells you when it fails; silence never means "fine."
+17. **Homework** — plug in one more source that's yours.
+18. **Recap** — next class gives these tools a brain, its own key, and the
+    freedom to choose when to run.
+
+**Through-line to Class 5:** the read-adapters + the `CLAUDE.md` instruction are
+the agent's tools and personality, already debugged — shrinking the bug-heavy
+agent build. Three parallel escalations (fixed script → LLM drives; cron → agent
+decides when; borrowed subscription → its own key) all say *human-anchored →
+autonomous*.
+
+**Status:** Deck built (`class-4-automations/index.html`, 19 slides). Design
+intent captured in `class-4-automations/DESIGN-INTENT.md`. Reference build
+(dogfooding the deck's own directions) not yet done.
 
 ---
 
