@@ -1,0 +1,10 @@
+# Google/Bing ARE allowed to crawl — they must fetch each page to see its
+# <meta name="robots" content="noindex"> tag, which keeps the page out of
+# search results. (Disallowing them here would hide the noindex and could
+# leave bare URLs in results instead.)
+#
+# AI crawlers ignore the noindex tag, so they read the full pages — which is
+# what we want.
+
+User-agent: *
+Allow: /

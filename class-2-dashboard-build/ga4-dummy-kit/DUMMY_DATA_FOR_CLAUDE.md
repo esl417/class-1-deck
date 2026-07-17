@@ -77,7 +77,7 @@ it yourself.**
       > folder — the Supabase tools only switch on after a restart. The one tricky part
       > is getting back into *this* conversation so I remember where we are. Here's a
       > short visual walkthrough of exactly how — follow the slide on screen:
-      > **https://class-1-deck.vercel.app/class-2-dashboard-build/prereqs.html#restart**
+      > **https://classes.ericgrows.com/class-2-dashboard-build/prereqs.html#restart**
       >
       > In short: after it reopens, click the **🕐 clock icon at the top-right** of the
       > Claude box to open your conversation history, pick **this** chat, and type

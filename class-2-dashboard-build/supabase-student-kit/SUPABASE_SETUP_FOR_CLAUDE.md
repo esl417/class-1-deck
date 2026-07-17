@@ -88,7 +88,7 @@ people get stuck on):
 > click the **🕐 clock icon at the top-right of the Claude box** to open your conversation
 > history, and pick *this* chat so I remember where we were — then say *continue the
 > Supabase setup.* Here's a short visual of exactly how to get back into this chat:
-> **https://class-1-deck.vercel.app/class-2-dashboard-build/prereqs.html#restart**"
+> **https://classes.ericgrows.com/class-2-dashboard-build/prereqs.html#restart**"
 
 Wait for them to restart and return. **You cannot do this step for them** — they must
 restart the app and reopen this conversation themselves. (If they start a brand-new chat
