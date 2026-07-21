@@ -540,6 +540,7 @@
 
 <!-- TITLE -->
 <section class="slide active title-slide">
+  <div class="slide-num" data-label=""></div>
   <div class="title-head">
     <div class="title-kicker">Class 2 · Before you arrive</div>
     <h1 class="title-main">Set up the dashboard tooling <br class="hero-break">before class starts.</h1>
@@ -549,7 +550,7 @@
 
 <!-- 1. THE GOOGLE TAG — WHY + DEADLINE -->
 <section class="slide">
-  <div class="slide-num">1 / Step 1 · The Google tag</div>
+  <div class="slide-num" data-label="Step 1 · The Google tag"></div>
   <div class="eyebrow">Due one week before class</div>
   <h2>Install a <em>Google tag</em> on your site — now, not in class.</h2>
   <p>The dashboard you build in class reads from <strong>your real website traffic</strong>. That data only exists if your site has been collecting it. The Google tag is the little snippet that does the collecting — and it needs to run for about a week before there's anything worth charting.</p>
@@ -562,7 +563,7 @@
 
 <!-- 2. CREATE THE TAG -->
 <section class="slide">
-  <div class="slide-num">2 / Step 1 · Create the tag</div>
+  <div class="slide-num" data-label="Step 1 · Create the tag"></div>
   <div class="eyebrow">Do this first — everyone, every path</div>
   <h2>Create the tag in Google Analytics.</h2>
   <p>This gives you a <strong>Measurement ID</strong> (it looks like <code>G-XXXXXXXXXX</code>). You'll need it for every install path on the next slide, so do this part first.</p>
@@ -580,7 +581,7 @@
 
 <!-- 3. INSTALL — TWO PATHS -->
 <section class="slide dense">
-  <div class="slide-num">3 / Step 1 · Install the tag</div>
+  <div class="slide-num" data-label="Step 1 · Install the tag"></div>
   <div class="eyebrow">Pick the path that matches your site</div>
   <h2>Install the tag — two paths.</h2>
   <div class="grid-2">
@@ -606,7 +607,7 @@
 
 <!-- 4. CONFIRM IT'S COLLECTING -->
 <section class="slide">
-  <div class="slide-num">4 / Step 1 · Confirm it works</div>
+  <div class="slide-num" data-label="Step 1 · Confirm it works"></div>
   <div class="eyebrow">Don't assume — verify</div>
   <h2>Confirm it's collecting data.</h2>
   <p>Two quick checks. Do both — the first proves the tag is on the page, the second proves data is reaching Google.</p>
@@ -625,7 +626,7 @@
 
 <!-- 5. CONNECT CLAUDE TO YOUR DATA — WHY -->
 <section class="slide">
-  <div class="slide-num">5 / Step 2 · Connect Claude to your data</div>
+  <div class="slide-num" data-label="Step 2 · Connect Claude to your data"></div>
   <div class="eyebrow">Also due one week before class</div>
   <h2>Give Claude <em>read-only</em> eyes on your analytics.</h2>
   <p>The tag is collecting data — but it's locked inside Google. To build a dashboard from it, Claude has to be able to <strong>read</strong> that data directly. This step grants exactly that, and nothing more.</p>
@@ -644,7 +645,7 @@
 
 <!-- 6. CONNECT CLAUDE — START THE PROJECT + PASTE THE PROMPT -->
 <section class="slide dense">
-  <div class="slide-num">6 / Step 2 · Start your dashboard project</div>
+  <div class="slide-num" data-label="Step 2 · Start your dashboard project"></div>
   <div class="eyebrow">This is the whole step</div>
   <h2>Make your dashboard project, then paste this.</h2>
   <p>This is the project you'll build your dashboard in for class — so set it up now and connect your data inside it.</p>
@@ -662,7 +663,7 @@
 
 <!-- 7. CONNECT CLAUDE — THE TWO CLICKS -->
 <section class="slide dense">
-  <div class="slide-num">7 / Step 2 · The two clicks you'll make</div>
+  <div class="slide-num" data-label="Step 2 · The two clicks you'll make"></div>
   <div class="eyebrow">The only moments Claude needs you</div>
   <h2>Claude will pause twice. Here's what for.</h2>
   <div class="grid-2">
@@ -684,7 +685,7 @@
 
 <!-- 8. DATABASE — WHY -->
 <section class="slide">
-  <div class="slide-num">8 / Step 3 · The database</div>
+  <div class="slide-num" data-label="Step 3 · The database"></div>
   <div class="eyebrow">The last thing to set up</div>
   <h2>Get a free <em>Supabase</em> database.</h2>
   <p>Your dashboard needs somewhere to store and organize data. <strong>Supabase</strong> is a free, hosted database — you'll create an account and one project now, and in class Claude will build the tables inside it for you.</p>
@@ -703,7 +704,7 @@
 
 <!-- 9. DATABASE — SIGN UP WALKTHROUGH -->
 <section class="slide dense">
-  <div class="slide-num">9 / Step 3 · Create your account + project</div>
+  <div class="slide-num" data-label="Step 3 · Create your account + project"></div>
   <div class="eyebrow">~3 minutes, all in the browser</div>
   <h2>Sign up and create one project.</h2>
   <ul class="numbered">
@@ -721,7 +722,7 @@
 
 <!-- 10. DATABASE — GIVE CLAUDE ACCESS (THE PROMPT) -->
 <section class="slide dense">
-  <div class="slide-num">10 / Step 3 · Connect Claude to your database</div>
+  <div class="slide-num" data-label="Step 3 · Connect Claude to your database"></div>
   <div class="eyebrow">Same idea as the analytics step</div>
   <h2>Let Claude build inside your database.</h2>
   <p>Back in your <strong>dashboard project</strong> in Claude Code (the same folder as before), paste this:</p>
@@ -734,7 +735,7 @@
 
 <!-- 11. DATABASE — THE RESTART + RESUME (the gotcha) -->
 <section class="slide dense" id="restart">
-  <div class="slide-num">11 / Step 3 · The restart everyone trips on</div>
+  <div class="slide-num" data-label="Step 3 · The restart everyone trips on"></div>
   <div class="eyebrow">Read this before you start — it's the tricky bit</div>
   <h2>Claude will ask you to <em>restart</em>. Here's how to come back.</h2>
   <p>The Supabase tools only switch on after Claude Code restarts. When Claude tells you to, <strong>fully quit and reopen it</strong> — then you need to get back into <em>this same conversation</em> so Claude remembers what it was doing.</p>
@@ -758,7 +759,7 @@
 
 <!-- 12. YOU'RE DONE -->
 <section class="slide">
-  <div class="slide-num">12 / You're all set</div>
+  <div class="slide-num" data-label="You're all set"></div>
   <div class="eyebrow">That's everything — see you in class</div>
   <h2>You're done. Here's what you set up.</h2>
   <ul>
@@ -775,7 +776,7 @@
 
 <!-- 13. IF SOMETHING BREAKS -->
 <section class="slide">
-  <div class="slide-num">13 / If something breaks</div>
+  <div class="slide-num" data-label="If something breaks"></div>
   <div class="eyebrow">There's almost nothing you can't get past</div>
   <h2>Stuck? <em>Tell Claude.</em> It's the troubleshooter.</h2>
   <p>This is the habit for everything going forward: when something doesn't work, you don't go hunting for the fix — you <strong>describe what happened to Claude</strong>, and it diagnoses and fixes it. Paste the error, or just say what you see:</p>
@@ -802,6 +803,8 @@
     slides[current].classList.remove('active');
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides[current].classList.add('active');
+    const _m = slides[current].querySelector('.slide-num');
+    if (_m) _m.textContent = _m.dataset.label ? (current + 1) + ' \u00b7 ' + _m.dataset.label : String(current + 1);
     document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
     document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
   }

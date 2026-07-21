@@ -466,6 +466,7 @@
 
 <!-- TITLE -->
 <section class="slide active title-slide">
+  <div class="slide-num" data-label=""></div>
   <div class="title-head">
     <div class="title-kicker">Building a website with Claude&nbsp;Code</div>
     <h1 class="title-main">The foundation for building real software with AI. <br class="hero-break">No coding required.</h1>
@@ -878,6 +879,7 @@
 
 <!-- END / CTA -->
 <section class="slide" style="padding: 50px 60px 110px; justify-content: center;">
+  <div class="slide-num" data-label=""></div>
   <div style="text-align: center; margin-bottom: 36px;">
     <div class="eyebrow">End of Class 1</div>
     <h1 style="font-size: 72px; letter-spacing: -2.5px; line-height: 1; margin: 8px auto 0; max-width: 1100px;">Now go build something.</h1>
@@ -926,7 +928,7 @@
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides[current].classList.add('active');
     const _m = slides[current].querySelector('.slide-num');
-    if (_m) _m.textContent = (current + 1) + ' \u00b7 ' + _m.dataset.label;
+    if (_m) _m.textContent = _m.dataset.label ? (current + 1) + ' \u00b7 ' + _m.dataset.label : String(current + 1);
     document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
     document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
   }

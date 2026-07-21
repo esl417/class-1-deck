@@ -593,6 +593,7 @@
 
 <!-- TITLE -->
 <section class="slide active title-slide">
+  <div class="slide-num" data-label=""></div>
   <div class="title-head">
     <div class="title-kicker">Class 4 · Making work happen without you</div>
     <h1 class="title-main">The work you do by hand, <br class="hero-break">done without you.</h1>
@@ -1037,7 +1038,7 @@
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides[current].classList.add('active');
     const _m = slides[current].querySelector('.slide-num');
-    if (_m) _m.textContent = (current + 1) + ' \u00b7 ' + _m.dataset.label;
+    if (_m) _m.textContent = _m.dataset.label ? (current + 1) + ' \u00b7 ' + _m.dataset.label : String(current + 1);
     document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
     document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
   }
