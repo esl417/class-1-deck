@@ -514,7 +514,7 @@
 
 <!-- 1. WHAT YOU'LL WALK OUT WITH -->
 <section class="slide">
-  <div class="slide-num">1 / The finish line</div>
+  <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
   <h2 class="nowrap-lg">By the end of today, you'll have <em>this</em>.</h2>
   <p>A private, live dashboard — your own URL — that pulls your real website traffic out of Google Analytics, mixes in your own data, and turns it into a few numbers that actually tell you what to <strong>do</strong>.</p>
@@ -533,7 +533,7 @@
 
 <!-- 2. WHERE WE ARE — PREREQS DONE -->
 <section class="slide">
-  <div class="slide-num">2 / Where we are</div>
+  <div class="slide-num" data-label="Where we are"></div>
   <div class="eyebrow">You already did the hard part</div>
   <h2>The plumbing is in. Today we build.</h2>
   <p>If you did the prerequisites, two connections already exist — that's why class time is for building, not installing.</p>
@@ -559,7 +559,7 @@
 
 <!-- 2.5 SAMPLE DATA FALLBACK -->
 <section class="slide">
-  <div class="slide-num">2.5 / No real data yet?</div>
+  <div class="slide-num" data-label="No real data yet?"></div>
   <div class="eyebrow">A fallback so nobody's blocked</div>
   <h2>No analytics data? Build with <em>sample data</em> instead.</h2>
   <p>If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your <strong>Supabase connection is set up</strong>, paste this into Claude Code:</p>
@@ -573,7 +573,7 @@
 
 <!-- 3. YOUR TWO DATA SOURCES -->
 <section class="slide">
-  <div class="slide-num">3 / Two data sources</div>
+  <div class="slide-num" data-label="Two data sources"></div>
   <div class="eyebrow">Where your dashboard's numbers come from</div>
   <h2>You have <em>two</em> data sources. They do different jobs.</h2>
   <div class="grid-2" style="margin-top: 4px;">
@@ -600,7 +600,7 @@
 
 <!-- 4. WHAT IS AN MCP SERVER? (already written) -->
 <section class="slide dense">
-  <div class="slide-num">4 / What is an MCP server?</div>
+  <div class="slide-num" data-label="What is an MCP server?"></div>
   <div class="eyebrow">The Supabase connection you set up in the prereqs</div>
   <h2>How Claude actually <em>operates</em> Supabase.</h2>
   <p>When you connected Claude to Supabase, you installed its <strong>MCP server</strong> — a <strong>remote control</strong> Supabase hands to Claude: a set of clearly-labeled buttons it can press to do real things, reliably. Without it, Claude can only talk; with it, it can act.</p>
@@ -623,7 +623,7 @@
 
 <!-- 5. WHY DATA BEFORE DASHBOARD -->
 <section class="slide">
-  <div class="slide-num">5 / Build order</div>
+  <div class="slide-num" data-label="Build order"></div>
   <div class="eyebrow">This is the one thing people get backwards</div>
   <h2>Build the <em>data</em> first. The dashboard comes second.</h2>
   <p>It's tempting to start with the pretty charts. Don't. A dashboard is just a window onto data — and right now there's no data to look at. If you design the screens first, you're guessing at numbers that don't exist yet.</p>
@@ -638,7 +638,7 @@
 
 <!-- 6. WHAT A DATABASE ACTUALLY IS -->
 <section class="slide">
-  <div class="slide-num">6 / What a database is</div>
+  <div class="slide-num" data-label="What a database is"></div>
   <div class="eyebrow">In plain terms — no jargon</div>
   <h2>A database is just <em>labeled spreadsheets</em>.</h2>
   <p>"Database" sounds technical. It isn't, really. Your Supabase project is a stack of <strong>tables</strong> — and a table is a spreadsheet with named columns and rows.</p>
@@ -657,7 +657,7 @@
 
 <!-- 7. THE BRIDGE — EDGE FUNCTIONS + SERVICE ACCOUNT -->
 <section class="slide dense">
-  <div class="slide-num">7 / The bridge</div>
+  <div class="slide-num" data-label="The bridge"></div>
   <div class="eyebrow">How analytics gets into your database</div>
   <h2>The bridge: a little robot you can <em>run on demand</em> or schedule.</h2>
   <p>Your analytics is in Google. Your database is in Supabase. Something has to carry data from one to the other. That something is a <strong>serverless function</strong> — a tiny program that runs without a computer of your own to host it. (Supabase calls its version an <strong>edge function</strong> — same thing, their branding.) Think of it as a small robot that fetches numbers from Google Analytics and drops them into your database table.</p>
@@ -682,7 +682,7 @@
 
 <!-- 8. BUILD + TEST THE INGESTION -->
 <section class="slide dense">
-  <div class="slide-num">8 / Build &amp; test the pipeline</div>
+  <div class="slide-num" data-label="Build &amp; test the pipeline"></div>
   <div class="eyebrow">The first real build of the day</div>
   <h2>Build the pipeline — then <em>prove</em> it works.</h2>
   <p>Paste this and let Claude build. Note the last line: don't just build it, <strong>test it and show you real rows</strong> before you trust it.</p>
@@ -710,7 +710,7 @@
 
 <!-- 9. NEW SESSION, FRESH /init -->
 <section class="slide dense">
-  <div class="slide-num">9 / A fresh start</div>
+  <div class="slide-num" data-label="A fresh start"></div>
   <div class="eyebrow">Part 2 begins — and it's the fun part</div>
   <h2>New session. Run <code>/impeccable init</code>. Now you design.</h2>
   <p>Start <strong>clean</strong>: open a <strong>fresh Claude session</strong> and run <code>/impeccable init</code> to lay down the dashboard's design foundation — exactly like the website in Class 1.</p>
@@ -740,7 +740,7 @@
 
 <!-- 10. DESIGN AROUND YOUR DECISIONS -->
 <section class="slide dense">
-  <div class="slide-num">10 / Design around your decisions</div>
+  <div class="slide-num" data-label="Design around your decisions"></div>
   <div class="eyebrow">This is the real value of the whole class</div>
   <h2>Don't build a report. Build a <em>decision tool</em>.</h2>
   <p>Google Analytics dumps raw numbers on you and never says what to do with them. A good dashboard fixes that — built around <strong>the decisions you actually make</strong>, not a generic template.</p>
@@ -760,7 +760,7 @@
 
 <!-- 11. PRO TIP — SYNTHETIC METRICS -->
 <section class="slide">
-  <div class="slide-num">11 / Synthetic metrics</div>
+  <div class="slide-num" data-label="Synthetic metrics"></div>
   <div class="eyebrow">The pro move most people miss</div>
   <h2>Invent metrics Google Analytics <em>doesn't</em> give you.</h2>
   <p>Analytics hands you raw counts — visitors, page views, sessions. The insight is usually in the <strong>numbers you build from them.</strong> A raw count says "what happened." A synthetic metric says "is that good, and is it getting better?"</p>
@@ -780,7 +780,7 @@
 
 <!-- 12. THE DASHBOARD BUILD HIERARCHY -->
 <section class="slide dense">
-  <div class="slide-num">12 / The build loop</div>
+  <div class="slide-num" data-label="The build loop"></div>
   <div class="eyebrow">How you get from rough to right</div>
   <h2>The first pass is never right. <em>That's the point.</em></h2>
   <p>The first build just gets your information on the screen — rough and ugly is expected. Here's the loop that takes it from there:</p>
@@ -796,7 +796,7 @@
 
 <!-- 12b. SEE IT LIVE — LOCAL PREVIEW -->
 <section class="slide">
-  <div class="slide-num">13 / See it update live</div>
+  <div class="slide-num" data-label="See it update live"></div>
   <div class="eyebrow">What makes the build loop feel fast</div>
   <h2>See every change the <em>instant</em> it happens.</h2>
   <p>While you're looping, you don't want to ship to Vercel and wait a minute to see each tweak. A <strong>local preview</strong> runs the dashboard right on your laptop and <strong>refreshes the second Claude changes something</strong> — so the loop above happens in real time, right in front of you.</p>
@@ -811,7 +811,7 @@
 
 <!-- 14. DEPLOY IT LIVE -->
 <section class="slide">
-  <div class="slide-num">14 / Deploy it live</div>
+  <div class="slide-num" data-label="Deploy it live"></div>
   <div class="eyebrow">Get it off your laptop</div>
   <h2>Ship it to a live URL.</h2>
   <p>Same move as the website in Class 1: push it to <strong>Vercel</strong> and you get a real link that's always up — so your dashboard is something you actually open, not a thing you have to run by hand.</p>
@@ -825,7 +825,7 @@
 
 <!-- 14. LOCK IT DOWN — PASSWORD PROTECT -->
 <section class="slide dense">
-  <div class="slide-num">15 / Lock it down</div>
+  <div class="slide-num" data-label="Lock it down"></div>
   <div class="eyebrow">Your numbers are private — keep them that way</div>
   <h2>Password-protect it. Two ways — pick one.</h2>
   <p>This dashboard shows your real business numbers. It should not be open to anyone with the link. There are two layers you can lock it at:</p>
@@ -846,7 +846,7 @@
 
 <!-- 15. WHERE IT LIVES — SUBDOMAIN (OPTIONAL) -->
 <section class="slide">
-  <div class="slide-num">16 / Where it lives</div>
+  <div class="slide-num" data-label="Where it lives"></div>
   <div class="eyebrow">Totally optional — your call</div>
   <h2>Leave it on its own, or put it on a <em>subdomain</em>.</h2>
   <p>Your dashboard is a separate deployment with its own Vercel URL. That's completely fine to leave as-is. But if you'd like it under your own domain, you can give it a tidy address like <code>dashboard.yourdomain.com</code>.</p>
@@ -866,7 +866,7 @@
 
 <!-- 16. TROUBLESHOOTING -->
 <section class="slide">
-  <div class="slide-num">17 / If something breaks</div>
+  <div class="slide-num" data-label="If something breaks"></div>
   <div class="eyebrow">The habit that gets you unstuck</div>
   <h2>Stuck? <em>Tell Claude.</em> It's the troubleshooter.</h2>
   <p>This is the same habit from Class 1, and it holds today too. When something doesn't work — the pipeline errors, the dashboard's blank, the deploy fails — you don't go hunting for the fix. You <strong>describe what happened to Claude</strong> and let it diagnose:</p>
@@ -880,7 +880,7 @@
 
 <!-- 17. WHERE TO GO NEXT -->
 <section class="slide">
-  <div class="slide-num">18 / Where to go next</div>
+  <div class="slide-num" data-label="Where to go next"></div>
   <div class="eyebrow">You built a decision tool — now use it</div>
   <h2>You have a live dashboard. Here's what it unlocks.</h2>
   <ul>
@@ -906,6 +906,8 @@
     slides[current].classList.remove('active');
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides[current].classList.add('active');
+    const _m = slides[current].querySelector('.slide-num');
+    if (_m) _m.textContent = (current + 1) + ' \u00b7 ' + _m.dataset.label;
     document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
     document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
   }

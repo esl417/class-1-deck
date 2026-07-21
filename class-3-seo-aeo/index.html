@@ -590,7 +590,7 @@
 
 <!-- 1. THE FINISH LINE -->
 <section class="slide">
-  <div class="slide-num">1 / The finish line</div>
+  <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
   <h2>By the end of today, your site serves <em>two</em> versions.</h2>
   <p>Same address, same look for your customers — but when ChatGPT, Perplexity, or Google's AI comes to read your site, they get a version built to be quoted. You'll deploy it live, and prove it works, before you leave.</p>
@@ -609,7 +609,7 @@
 
 <!-- 2. WHERE WE ARE — PREREQS DONE -->
 <section class="slide">
-  <div class="slide-num">2 / Where we are</div>
+  <div class="slide-num" data-label="Where we are"></div>
   <div class="eyebrow">You already did the hard part</div>
   <h2>The groundwork is in. Today we build.</h2>
   <p>If you did the prerequisites, your domain already runs through Cloudflare and Claude is set up to deploy there — that's why class time is for building, not waiting on DNS.</p>
@@ -631,7 +631,7 @@
 
 <!-- 3. SEO + AEO ARE TWO JOBS -->
 <section class="slide dense">
-  <div class="slide-num">3 / SEO + AEO</div>
+  <div class="slide-num" data-label="SEO + AEO"></div>
   <div class="eyebrow">Why this class exists now</div>
   <h2>AEO didn't <em>replace</em> SEO. It sits on top of it.</h2>
   <p>You'll hear that SEO is dead — that AEO is the new way and ranking on Google no longer matters. That's flat wrong. The two aren't old-vs-new; they're two links in one chain. SEO gets you <strong>found</strong>. AEO decides whether you get <strong>used</strong>. Skip the first and the second never happens.</p>
@@ -663,7 +663,7 @@
 
 <!-- 4. HOW TO IMPROVE SEO -->
 <section class="slide dense">
-  <div class="slide-num">4 / The foundation</div>
+  <div class="slide-num" data-label="The foundation"></div>
   <div class="eyebrow">Mostly its own discipline — but here's the 80/20</div>
   <h2>Improving SEO, in broad strokes.</h2>
   <p>SEO is a field of its own and mostly out of scope today — but it's the foundation, so know the two levers that move the needle. Strip the jargon and it's <strong>trust</strong>: Google ranks the sites other credible sites vouch for, and that clearly know their subject.</p>
@@ -697,7 +697,7 @@
 
 <!-- 5. THE SEO TOOLKIT -->
 <section class="slide dense">
-  <div class="slide-num">5 / Do it yourself</div>
+  <div class="slide-num" data-label="Do it yourself"></div>
   <div class="eyebrow">A free SEO toolkit — for after class</div>
   <h2>Have Claude <em>audit</em> your SEO for you.</h2>
   <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.</p>
@@ -731,7 +731,7 @@
 
 <!-- THE DUAL-SURFACE SITE -->
 <section class="slide">
-  <div class="slide-num">6 / The core idea</div>
+  <div class="slide-num" data-label="The core idea"></div>
   <div class="eyebrow">The one concept the whole class rests on</div>
   <h2 class="nowrap-lg"><em>Cloudflare</em> is the front door — it picks who sees what.</h2>
   <p>Remember from the prereqs: <strong>Cloudflare now sits in front of your website</strong> — every visitor hits Cloudflare first, before reaching your actual site. That position is the whole trick. We put a tiny program there — a <strong>Cloudflare Worker</strong> — that checks <em>who's asking</em> as each request comes through. A human or Google? It passes them to your normal site. An AI crawler? It quietly serves the AI version instead — all at your single address, so the visitor never sees anything different.</p>
@@ -747,7 +747,7 @@
 
 <!-- 5. THE THREE PIECES -->
 <section class="slide dense">
-  <div class="slide-num">7 / The three pieces</div>
+  <div class="slide-num" data-label="The three pieces"></div>
   <div class="eyebrow">Learn these three names — the rest is mechanical</div>
   <h2>The three pieces that make it work.</h2>
   <p>You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible.</p>
@@ -770,7 +770,7 @@
 
 <!-- 6. THE ONE SAFETY RULE -->
 <section class="slide dense">
-  <div class="slide-num">8 / The one rule</div>
+  <div class="slide-num" data-label="The one rule"></div>
   <div class="eyebrow">Get this wrong and Google penalizes you</div>
   <h2>The one rule that keeps this <em>safe</em>, not sneaky.</h2>
   <p>Showing different content to different visitors <em>can</em> be against the rules — it's called <strong>cloaking</strong>, and Google punishes it. What we're doing is the safe version, and two rules are what keep it that way. Claude enforces both; you just need to know they exist.</p>
@@ -793,7 +793,7 @@
 
 <!-- PLAN MODE -->
 <section class="slide dense">
-  <div class="slide-num">9 / Plan mode</div>
+  <div class="slide-num" data-label="Plan mode"></div>
   <div class="eyebrow">A new habit, right before we build</div>
   <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
   <p>Now you know what we're building. For a job this size, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve — <em>before</em> a single file changes.</p>
@@ -816,7 +816,7 @@
 
 <!-- REFERENCE DOCUMENTS -->
 <section class="slide dense">
-  <div class="slide-num">10 / Reference documents</div>
+  <div class="slide-num" data-label="Reference documents"></div>
   <div class="eyebrow">Your project's knowledge base</div>
   <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
   <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that document how it works — what exists, how it's wired, why it's built that way. Like a Wikipedia for your project: anyone (you, or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
@@ -843,7 +843,7 @@
 
 <!-- PLAN THE BUILD — one prompt, review the plan before "go" -->
 <section class="slide dense">
-  <div class="slide-num">11 / Plan the build</div>
+  <div class="slide-num" data-label="Plan the build"></div>
   <div class="eyebrow">One prompt plans the whole build — you review it</div>
   <h2>Plan the whole build with <em>one</em> prompt.</h2>
   <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
@@ -863,7 +863,7 @@
 
 <!-- STEP 1 — SCAFFOLD (walkthrough of the plan) -->
 <section class="slide dense">
-  <div class="slide-num">12 / Plan step 1 · Scaffold</div>
+  <div class="slide-num" data-label="Plan step 1 · Scaffold"></div>
   <div class="eyebrow">What the plan does first — no prompt to paste</div>
   <h2>Step 1 — build the <em>shell</em> of the AI version.</h2>
   <p>You approved the plan, so Claude now works through it — you don't paste anything more. First it mirrors your site's structure: for every page a human can visit, a matching slot for the AI version. It also drops in three small housekeeping files bots expect — Claude handles all of it; here's what they're for.</p>
@@ -885,7 +885,7 @@
 
 <!-- STEP 2 — GENERATE (walkthrough of the plan) -->
 <section class="slide">
-  <div class="slide-num">13 / Plan step 2 · Generate</div>
+  <div class="slide-num" data-label="Plan step 2 · Generate"></div>
   <div class="eyebrow">Filling the shell with content</div>
   <h2>Step 2 — write the AI version of each page.</h2>
   <p>Now the reason the whole dual-web setup exists. Your <strong>human</strong> pages are full of stuff a person needs but a bot has to fight through — menus, popups, cookie banners, animations, marketing fluff, and content that only loads after JavaScript runs. The AI version strips all of that away, following the <strong>AEO Content Guide</strong>: just the answers, in clean, self-contained chunks.</p>
@@ -904,7 +904,7 @@
 
 <!-- STEP 3 — DEPLOY (walkthrough of the plan) -->
 <section class="slide dense">
-  <div class="slide-num">14 / Plan step 3 · Deploy</div>
+  <div class="slide-num" data-label="Plan step 3 · Deploy"></div>
   <div class="eyebrow">Local practice → live on the internet</div>
   <h2>Step 3 — put it live on Cloudflare.</h2>
   <p>Now the plan goes live. Claude publishes the AI pages and stands up the front door from the command line — you just approve each time it asks.</p>
@@ -926,7 +926,7 @@
 
 <!-- STEP 4 — VERIFY (walkthrough of the plan) -->
 <section class="slide dense">
-  <div class="slide-num">15 / Plan step 4 · Verify</div>
+  <div class="slide-num" data-label="Plan step 4 · Verify"></div>
   <div class="eyebrow">Don't assume — prove it</div>
   <h2>Step 4 — prove both versions are live.</h2>
   <p>The plan's last step: Claude asks for your site <em>as different visitors</em> and confirms each gets the right version — three checks that together prove it works <strong>and</strong> that it's cloaking-safe:</p>
@@ -948,7 +948,7 @@
 
 <!-- NOW ENRICH THE CONTENT — the real AEO work -->
 <section class="slide dense">
-  <div class="slide-num">16 / Now the real work</div>
+  <div class="slide-num" data-label="Now the real work"></div>
   <div class="eyebrow">The setup is done — this is where AEO actually happens</div>
   <h2>Steps 1–4 built the machine. Now <em>feed it.</em></h2>
   <p>Your AI pages came from existing marketing copy — thin, and aimed at selling, not answering. Now <strong>enrich them</strong>. The <code>/seo</code> commands only <em>grade</em>; <strong>step 2 is the only one that changes anything.</strong> The build copied the AEO guide into your project and pointed <code>CLAUDE.md</code> at it — so Claude knows the standard every time, not just today.</p>
@@ -976,7 +976,7 @@
 
 <!-- RE-RUN THE SEO TOOLKIT — now that the AEO build is live -->
 <section class="slide dense">
-  <div class="slide-num">17 / Run the toolkit again</div>
+  <div class="slide-num" data-label="Run the toolkit again"></div>
   <div class="eyebrow">Same SEO toolkit — now on your live bot surface</div>
   <h2>Now that it's live, <em>re-run</em> the SEO toolkit.</h2>
   <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? <strong>Run it again</strong> now that the AEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):</p>
@@ -1005,7 +1005,7 @@
 
 <!-- 12. MEASURE IT -->
 <section class="slide">
-  <div class="slide-num">18 / Measure it</div>
+  <div class="slide-num" data-label="Measure it"></div>
   <div class="eyebrow">You can't improve what you can't see</div>
   <h2>Watch the AI crawlers show up.</h2>
   <p>Once you're live, Cloudflare shows you which AI crawlers are visiting and how often — real proof the AI version is being read. It's the same idea as the Class 2 dashboard, but for bots.</p>
@@ -1024,7 +1024,7 @@
 
 <!-- 13. PAID ACCELERATOR — LINKBY -->
 <section class="slide dense">
-  <div class="slide-num">19 / An optional accelerator</div>
+  <div class="slide-num" data-label="An optional accelerator"></div>
   <div class="eyebrow">Optional · costs money · results not guaranteed</div>
   <h2>Want to speed it up? A <em>paid</em> lever for AI visibility.</h2>
   <p>Everything so far is free and organic. If you have a budget and want to accelerate, there's a paid angle that's turned out to matter for AI search specifically: getting your brand <strong>mentioned in premium media</strong>. Tools like <a href="https://linkby.com" target="_blank" rel="noopener">Linkby</a> make that reachable without a PR agency — but treat it as an experiment, not a guarantee.</p>
@@ -1046,7 +1046,7 @@
 
 <!-- 14. HOMEWORK — TRACK IT IN THE CLASS 2 DASHBOARD -->
 <section class="slide dense">
-  <div class="slide-num">20 / Homework</div>
+  <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework · start it this week</div>
   <h2>Track your SEO + AEO in your <em>Class 2 dashboard</em>.</h2>
   <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + AEO tracker</strong> to the dashboard you built in Class 2. The sooner you build it, the sooner it starts collecting data — and trends only show up over weeks, so starting now matters.</p>
@@ -1069,7 +1069,7 @@
 
 <!-- 15. RECAP / SHIP -->
 <section class="slide">
-  <div class="slide-num">21 / You shipped it</div>
+  <div class="slide-num" data-label="You shipped it"></div>
   <div class="eyebrow">That's the class — here's what's now live</div>
   <h2>You built a site that gets found <em>both</em> ways.</h2>
   <ul>
@@ -1100,6 +1100,8 @@
     slides[current].classList.remove('active');
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides[current].classList.add('active');
+    const _m = slides[current].querySelector('.slide-num');
+    if (_m) _m.textContent = (current + 1) + ' \u00b7 ' + _m.dataset.label;
     document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
     document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
   }
