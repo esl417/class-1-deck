@@ -18,8 +18,11 @@
  * those two things.
  */
 
-// 🔧 THE ONE THING TO SET: your Cloudflare Pages URL (from `wrangler pages deploy`).
-// It looks like https://your-project-name.pages.dev — no trailing slash.
+// 🔧 THE ONE THING TO SET: your Cloudflare Pages URL. It's the *.pages.dev
+// address of the Pages project you connected to GitHub (Workers & Pages → your
+// Pages project → its URL). It looks like https://your-project-name.pages.dev —
+// no trailing slash. The bot surface auto-deploys there on every git push; this
+// Worker just proxies AI crawlers to it.
 const PAGES_URL = 'https://YOUR-PAGES-PROJECT.pages.dev';
 
 export default {

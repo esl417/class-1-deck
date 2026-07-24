@@ -172,10 +172,17 @@ export default {
 
 ### Step 3 — Deploy both, and point the domain at the Worker
 
-This is the CLI part — see the companion doc **cloudflare-llm-hosting-setup.md** for the full,
-beginner-tested deploy flow (`wrangler pages deploy ./llm` for the bot pages, `wrangler deploy` for
-the Worker, `routes` in `wrangler.toml` to bind it to `yourdomain.com`). The Worker's
-`YOUR-PAGES-PROJECT.pages.dev` URL must match the Pages project name from that deploy.
+The two pieces deploy in **two different ways** — see the companion doc
+**cloudflare-llm-hosting-setup.md** for the full, beginner-tested flow:
+
+- **Bot pages (Pages) → auto-pull from GitHub.** Connect Cloudflare Pages to the repo once in
+  the dashboard (Workers & Pages → Create → Pages → Connect to Git), production branch `main`,
+  build output directory `llm/`, no build command. After that, **every `git push` auto-rebuilds
+  and redeploys the bot surface** — no manual upload. This is dashboard state, not repo config.
+- **Worker → CLI.** `wrangler deploy`, with `routes` in `wrangler.toml` binding it to
+  `yourdomain.com`. The Worker is the only piece that ships by command.
+
+The Worker's `YOUR-PAGES-PROJECT.pages.dev` URL must match the Pages project you connected.
 
 ---
 

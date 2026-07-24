@@ -759,7 +759,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">📄 Pages — where the AI version lives</div>
-      <p>Cloudflare's free file host. It holds the AI version of your pages. The Worker quietly pulls from it — it has its own hidden address the public never sees.</p>
+      <p>Cloudflare's free file host. It holds the AI version of your pages, and it's <strong>wired to your GitHub</strong> — every time you push, it rebuilds automatically. The Worker quietly pulls from it — it has its own hidden address the public never sees.</p>
     </div>
   </div>
   <div class="card" style="margin-top: 6px;">
@@ -908,17 +908,18 @@
   <div class="slide-num" data-label="Plan step 3 · Deploy"></div>
   <div class="eyebrow">Local practice → live on the internet</div>
   <h2>Step 3 — put it live on Cloudflare.</h2>
-  <p>Now the plan goes live. Claude publishes the AI pages and stands up the front door from the command line — you just approve each time it asks.</p>
+  <p>Now the plan goes live. The two pieces deploy in <strong>two different ways</strong> — and this is the setup that saves you forever: your AI pages ship <em>on GitHub push</em>, so you never run a publish command by hand.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">What Claude ships</div>
-      <p>The AI pages to <strong>Cloudflare Pages</strong>, then the routing <strong>Worker</strong> bound to your domain <em>with a route</em> — the front door goes live in seconds.</p>
+      <div class="eyebrow">📄 The AI pages → auto-deploy on push</div>
+      <p>Claude connects <strong>Cloudflare Pages to your GitHub repo</strong> once (a few clicks in the dashboard — Claude walks you through it). After that, <strong>every <code>git push</code> rebuilds the AI pages automatically</strong>. No separate upload, ever.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">👀 Your checkpoint</div>
-      <p>Approve when asked. Confirm it's using a <strong>route</strong> (in front of your site), not replacing it — your human site must keep running the entire time.</p>
+      <div class="eyebrow">🚪 The Worker → shipped by Claude</div>
+      <p>The routing <strong>Worker</strong>, bound to your domain <em>with a route</em>, is the one piece Claude deploys from the command line. It rarely changes after this — the front door goes live in seconds.</p>
     </div>
   </div>
+  <p class="small-note">👀 Your checkpoint: approve when asked, and confirm the Worker uses a <strong>route</strong> (in front of your site), not replacing it — your human site must keep running the whole time.</p>
   <div class="heads-up">
     <span class="heads-up-mark">🤖</span>
     <p><strong>One easy-to-miss gotcha:</strong> Cloudflare can <em>block AI crawlers by default</em> — so your router deploys fine but the bots never reach it. Claude checks your <strong>AI Crawl Control</strong> settings as part of the plan and makes sure the crawlers you want are <em>allowed</em>. (The reference files cover this.)</p>
@@ -963,7 +964,7 @@
     <div class="card card-hero">
       <div class="eyebrow">2 · Claude writes it <span class="tag-write">changes your site</span></div>
       <p>No command does this — paste this prompt:</p>
-      <div class="prompt-box">Write the brief's new sections into the AI version of that page — the matching file in my llm/ folder, not my human site. Follow AEO_CONTENT_GUIDE.md. Ask me anything from the brief you don't have a real answer for; don't invent facts. Then redeploy and confirm it's live.</div>
+      <div class="prompt-box">Write the brief's new sections into the AI version of that page — the matching file in my llm/ folder, not my human site. Follow AEO_CONTENT_GUIDE.md. Ask me anything from the brief you don't have a real answer for; don't invent facts. Then commit and push so Cloudflare Pages auto-deploys it, and confirm it's live.</div>
     </div>
     <div class="card">
       <div class="eyebrow">3 · Get the grade <span class="tag-report">report only</span></div>
@@ -972,7 +973,7 @@
     </div>
   </div>
 
-  <p class="small-note">Repeat a few pages a week — that loop is the whole game. <strong>Once your full site is converted</strong>, run <code>/seo cluster</code> to map every topic worth owning. (Your <em>human</em> pages still need to be genuinely yours.)</p>
+  <p class="small-note">Repeat a few pages a week — that loop is the whole game, and it's frictionless because <strong>publishing is just a push</strong>: edit the page, push, the AI version is live. <strong>Once your full site is converted</strong>, run <code>/seo cluster</code> to map every topic worth owning. (Your <em>human</em> pages still need to be genuinely yours.)</p>
 </section>
 
 <!-- RE-RUN THE SEO TOOLKIT — now that the AEO build is live -->

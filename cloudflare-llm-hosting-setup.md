@@ -162,32 +162,45 @@ these once before deploying:
 | 3 | **Log Wrangler into your account** | `npx wrangler@latest login` — opens a browser once to authorize. (This is simpler than creating an API token; do this and you're authenticated for every command.) |
 | 4 | **Your two folders ready** | `llm/` = the bot HTML pages. The Worker code = a single `.js` file (the router). |
 
-> The nameserver step (#2) is the *only* part that isn't CLI. It happens **once per domain, ever** —
-> not on every deploy. After that, everything is `npx wrangler@latest …`.
+> Two one-time dashboard steps: the nameserver switch (#2) and connecting Pages to GitHub
+> (Step 1 below). Both happen **once, ever** — not on every deploy. After that, bot-page updates
+> are just `git push` (Pages auto-pulls), and the Worker ships with `npx wrangler@latest deploy`.
 
 > 🔎 **Confirm you're logged in** any time with `npx wrangler@latest whoami` — it prints your account
 > name and ID.
 
 ---
 
-## Step 1 — Deploy the bot pages to Pages
+## Step 1 — Connect the bot pages to GitHub (Pages auto-deploy)
 
-From the folder that contains your `llm/` directory:
+The bot surface (`llm/`) is served by Cloudflare Pages, and Pages **auto-pulls from your GitHub
+repo**. You connect it once in the dashboard; after that, **every `git push` rebuilds and
+redeploys the bot surface automatically** — there is no manual upload step to remember. This is
+the deploy model to use from the start.
 
-```bash
-npx wrangler@latest pages deploy ./llm --project-name=my-llm-site
-```
+> **Why the dashboard, not the CLI?** Pages' Git integration is dashboard state, not repo config —
+> that's why it doesn't live in `wrangler.toml` or any file. You set it up once and it stays.
 
-- First run creates the Pages project and prints a URL like `https://my-llm-site.pages.dev`.
-- **Copy that URL** — the Worker needs it in the next step.
+First, make sure `llm/` (and everything else) is committed and pushed to the repo. Then, in the
+Cloudflare dashboard:
+
+1. **Workers & Pages → Create → Pages → Connect to Git.**
+2. Authorize Cloudflare's GitHub app if prompted, then **pick your website repo**.
+3. **Production branch:** `main`.
+4. **Build command:** leave **empty** — the `llm/` files are static HTML committed to the repo,
+   so there's nothing to build.
+5. **Build output directory:** `llm/` — the load-bearing setting. Pages publishes only that
+   subdirectory and ignores the Next.js app, `infra/`, scripts, etc.
+6. **Save and Deploy.** Cloudflare builds and gives you the project's URL, like
+   `https://my-llm-site.pages.dev`.
+
+- **Copy that `.pages.dev` URL** — the Worker needs it in the next step.
 - **No custom domain needed here.** The `.pages.dev` URL is internal plumbing the Worker uses.
+- **`llm/_headers` works automatically** — Pages reads it from the output directory and applies
+  those security headers to every served page. Keep it inside `llm/`.
 
-Re-deploy any time you change the bot pages by running the same command again.
-
-> ✅ **Tested.** On a clean terminal with a browser login, this command authenticated with no
-> friction and went straight to the normal "create this project?" prompt — the exact student
-> experience. (It only failed inside an environment that had a leftover API token; see the
-> instructor note above.)
+Re-deploy any time by pushing to `main` — Cloudflare rebuilds the bot surface on its own. Watch it
+land in the Pages project's **Deployments** tab.
 
 ---
 
@@ -278,17 +291,18 @@ bots to the Pages bot site. Re-run `npx wrangler@latest deploy` any time you cha
 0d. Point your domain's nameservers at Cloudflare (dashboard, once)
 ```
 
-**Deploy (the repeatable part — Claude runs these, OAuth pops a browser the first time):**
+**Deploy — two models (bot pages auto-pull from GitHub; the Worker ships by CLI):**
 
 ```bash
-# 1. Ship the bot pages
-npx wrangler@latest pages deploy ./llm --project-name=my-llm-site
+# 1. Ship the bot pages: just push. Pages is connected to the repo (Step 1),
+#    so this auto-rebuilds and redeploys the bot surface — no wrangler command.
+git add -A && git commit -m "update bot pages" && git push
 
-# 2. (first time only) set secrets
+# 2. (first time only) set the Worker's secrets
 npx wrangler@latest secret put AIREFS_API_KEY
 # ...repeat for each secret your worker uses
 
-# 3. Ship the router
+# 3. Ship the router (the one piece that deploys by command)
 npx wrangler@latest deploy
 ```
 
@@ -299,11 +313,13 @@ npx wrangler@latest deploy
 | Task | CLI? |
 |---|---|
 | Install the CLI | ✅ none needed — `npx wrangler@latest …` runs it on demand |
-| Deploy bot pages (Pages) | ✅ `npx wrangler@latest pages deploy` |
+| Deploy bot pages (Pages) | ❌ auto-pulls from GitHub — just `git push` (connected once in the dashboard) |
 | Deploy the Worker/router | ✅ `npx wrangler@latest deploy` |
 | Bind Worker to your domain | ✅ via `routes` in `wrangler.toml` |
 | Set secrets | ✅ `npx wrangler@latest secret put` |
-| Re-deploy after edits | ✅ same commands |
+| Re-deploy bot pages after edits | ❌ `git push` — Pages rebuilds automatically |
+| Re-deploy the Worker after edits | ✅ `npx wrangler@latest deploy` |
+| **Connect Pages to GitHub** | ❌ one-time dashboard step (Connect to Git, output dir `llm/`) |
 | **Point domain at Cloudflare (nameservers)** | ❌ one-time dashboard/registrar step |
 | **Custom domain for Pages** | ❌ dashboard-only — **but we don't need it** |
 
