@@ -7,7 +7,7 @@
  *
  * Claude: use this as the template. The ONLY thing you must change is the one
  * marked PAGES_URL below — set it to the *.pages.dev URL from the Pages deploy.
- * Everything else works as-is. Keep the three bot lists as they are unless you
+ * Everything else works as-is. Keep the four bot lists as they are unless you
  * have a specific reason to add a crawler (Cloudflare's AI Crawl Control
  * dashboard is the reference for new AI bot user-agents).
  *
@@ -59,17 +59,26 @@ export default {
       'duckassistbot',     // DuckDuckGo Assist (AI)
       'you-com-bot',       // You.com AI
       'anthropic-ai',      // Anthropic generic
-      // NOTE: social preview crawlers (facebookexternalhit, Twitterbot,
-      // LinkedInBot, etc.) are deliberately NOT here. They build the
-      // link-share preview card from whatever page they fetch, so they must
-      // hit your real human site to pick up its designed OG title, description,
-      // and preview image. Leave them to fall through to `return fetch(request)`.
       // Other AI / data crawlers
       'ccbot',             // Common Crawl (AI training)
       'bytespider',        // ByteDance
       'petalbot',          // Huawei AI
       'amazonbot',         // Amazon (AI training)
       'archive.org_bot',   // Internet Archive
+    ];
+
+    // ── Social preview crawlers ───────────────────────────────────────────────
+    // CRITICAL: these must get the SAME page as humans. They build the
+    // link-share preview card (title, description, image) from whatever page
+    // they fetch — so they must hit your real human site to pick up its designed
+    // OG preview image. Serving them the plain bot surface gives you an ugly,
+    // image-less unfurl. Do NOT move any of these into the AI list above.
+    const socialPreviewBots = [
+      'facebookbot',
+      'meta-externalagent',
+      'meta-externalfetcher',
+      'twitterbot',
+      'linkedinbot',
     ];
 
     // ── SEO tools ───────────────────────────────────────────────────────────
@@ -84,11 +93,14 @@ export default {
     const isTraditionalSearchBot = traditionalSearchBots.some(b => userAgent.includes(b));
     const isAISearchBot = aiSearchBots.some(b => userAgent.includes(b));
     const isSEOToolBot = seoToolBots.some(b => userAgent.includes(b));
+    const isSocialPreviewBot = socialPreviewBots.some(b => userAgent.includes(b));
 
     // ── Route AI crawlers + SEO tools → the bot-optimized Pages surface ───────
     // This is a pass-through fetch (a proxy), NOT a redirect: the visitor's URL
     // stays on your apex domain, and the .pages.dev origin never shows.
-    if (isAISearchBot || isSEOToolBot) {
+    // Social preview crawlers are excluded here on purpose — they fall through
+    // to the human site below so link-share cards use your real OG image.
+    if ((isAISearchBot || isSEOToolBot) && !isSocialPreviewBot) {
       return fetch(PAGES_URL + url.pathname, {
         method: request.method,
         headers: request.headers,
@@ -97,9 +109,9 @@ export default {
     }
 
     // ── Everyone else (humans + Google/Bing + social preview crawlers) → real site ──
-    // Social preview crawlers (Facebook, Twitter/X, LinkedIn) land here on
-    // purpose: they generate link-share cards from your designed page and its
-    // OG preview image, not from the plain bot surface.
+    // Social preview crawlers (see socialPreviewBots above) land here on purpose:
+    // they generate link-share cards from your designed page and its OG preview
+    // image, not from the plain bot surface.
     // `fetch(request)` passes through to your apex origin (your human site,
     // e.g. Vercel, reached via the Cloudflare-proxied DNS record). Because this
     // Worker is bound with a ROUTE (not a Custom Domain), that origin record is
