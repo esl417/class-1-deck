@@ -138,12 +138,15 @@ export default {
     const aiBots = [
       'gptbot', 'oai-searchbot', 'chatgpt-user', 'claudebot', 'claude-user',
       'perplexitybot', 'perplexity-user', 'ccbot', 'google-extended', 'bytespider',
-      'amazonbot', 'meta-externalagent',
+      'amazonbot',
       // …keep this list current from Cloudflare's AI Crawl Control dashboard
     ];
 
     // CRITICAL: traditional search engines must get the SAME pages as humans
     // (serving them the bot surface would be cloaking). They are NOT in aiBots.
+    // Same goes for social preview crawlers (facebookexternalhit, Twitterbot,
+    // LinkedInBot, meta-externalagent): they build link-share cards from the
+    // page they fetch, so they must hit the human site to get its OG image.
     const isAiBot = aiBots.some(b => ua.includes(b));
 
     if (isAiBot) {

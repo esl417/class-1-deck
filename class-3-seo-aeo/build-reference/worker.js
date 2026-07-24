@@ -59,12 +59,11 @@ export default {
       'duckassistbot',     // DuckDuckGo Assist (AI)
       'you-com-bot',       // You.com AI
       'anthropic-ai',      // Anthropic generic
-      // Social preview crawlers (fine to serve the clean version to)
-      'facebookbot',
-      'meta-externalagent',
-      'meta-externalfetcher',
-      'twitterbot',
-      'linkedinbot',
+      // NOTE: social preview crawlers (facebookexternalhit, Twitterbot,
+      // LinkedInBot, etc.) are deliberately NOT here. They build the
+      // link-share preview card from whatever page they fetch, so they must
+      // hit your real human site to pick up its designed OG title, description,
+      // and preview image. Leave them to fall through to `return fetch(request)`.
       // Other AI / data crawlers
       'ccbot',             // Common Crawl (AI training)
       'bytespider',        // ByteDance
@@ -97,7 +96,10 @@ export default {
       });
     }
 
-    // ── Everyone else (humans + Google/Bing) → your real site, untouched ──────
+    // ── Everyone else (humans + Google/Bing + social preview crawlers) → real site ──
+    // Social preview crawlers (Facebook, Twitter/X, LinkedIn) land here on
+    // purpose: they generate link-share cards from your designed page and its
+    // OG preview image, not from the plain bot surface.
     // `fetch(request)` passes through to your apex origin (your human site,
     // e.g. Vercel, reached via the Cloudflare-proxied DNS record). Because this
     // Worker is bound with a ROUTE (not a Custom Domain), that origin record is
