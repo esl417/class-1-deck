@@ -31,7 +31,7 @@ runbook it can execute with the student.
 
 **Why it fits here.** The dual-web scaffolding to do this already exists in this
 repo (bot surface under `llm/`, UA-based routing Worker). This is a natural
-second use of it beyond SEO/AEO: not "help AI rank the site" but "make the site
+second use of it beyond SEO/GEO: not "help AI rank the site" but "make the site
 an agent-operable teaching tool."
 
 **Open questions.**

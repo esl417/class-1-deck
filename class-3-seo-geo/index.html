@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Class 3: SEO + AEO</title>
+<title>Class 3: SEO + GEO</title>
 <style>
   /* ============================================================
      Class 3 deck — warm "patient teacher's whiteboard" system
@@ -630,19 +630,19 @@
   <p class="small-note">Not set up yet? Follow the <a href="prereqs.html"><strong>prerequisites guide</strong></a> — you need your domain on Cloudflare before we can build on it.</p>
 </section>
 
-<!-- 3. SEO + AEO ARE TWO JOBS -->
+<!-- 3. SEO + GEO ARE TWO JOBS -->
 <section class="slide dense">
-  <div class="slide-num" data-label="SEO + AEO"></div>
+  <div class="slide-num" data-label="SEO + GEO"></div>
   <div class="eyebrow">Why this class exists now</div>
-  <h2>AEO didn't <em>replace</em> SEO. It sits on top of it.</h2>
-  <p>You'll hear that SEO is dead — that AEO is the new way and ranking on Google no longer matters. That's flat wrong. The two aren't old-vs-new; they're two links in one chain. SEO gets you <strong>found</strong>. AEO decides whether you get <strong>used</strong>. Skip the first and the second never happens.</p>
+  <h2>GEO didn't <em>replace</em> SEO. It sits on top of it.</h2>
+  <p>You'll hear that SEO is dead — that GEO is the new way and ranking on Google no longer matters. That's flat wrong. The two aren't old-vs-new; they're two links in one chain. SEO gets you <strong>found</strong>. GEO decides whether you get <strong>used</strong>. Skip the first and the second never happens.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">SEO — how AI finds you at all</div>
       <p><strong>Search Engine Optimization.</strong> ChatGPT and the others don't know your site exists on their own — they <em>discover</em> sources by running Google searches behind the scenes. If you don't rank, you're never in the pool of pages the AI even looks at. Ranking is the <strong>price of admission</strong>.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">AEO — what happens once it's on your page</div>
+      <div class="eyebrow">GEO — what happens once it's on your page</div>
       <p><strong>Answer Engine Optimization.</strong> Now the crawler is reading you. Can it? A page buried in JavaScript, menus, and fluff is hard for it to parse — so it moves on. Serve it clean, answer-first content and it can lift a clear quote and <strong>cite you</strong>. That's the whole job of the AI version we build today.</p>
     </div>
   </div>
@@ -651,11 +651,11 @@
     <div class="flow-arrow">→</div>
     <div class="flow-step">AI finds &amp; crawls you</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-step">Reads you easily (AEO)</div>
+    <div class="flow-step">Reads you easily (GEO)</div>
     <div class="flow-arrow">→</div>
     <div class="flow-step">Cites you</div>
   </div>
-  <p class="small-note">(AEO is also called <strong>GEO</strong> — same idea.) The takeaway: keep doing SEO, it's as important as ever — it's the foundation. Today we add the layer on top: making your site effortless for an AI to read once its search has sent it your way.</p>
+  <p class="small-note">(GEO is the same thing as what you may have heard called <strong>AEO</strong> — different name, same idea.) The takeaway: keep doing SEO, it's as important as ever — it's the foundation. Today we add the layer on top: making your site effortless for an AI to read once its search has sent it your way.</p>
 </section>
 
 <!-- ============================================================
@@ -848,13 +848,13 @@
   <div class="eyebrow">One prompt plans the whole build — you review it</div>
   <h2>Plan the whole build with <em>one</em> prompt.</h2>
   <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
-  <div class="prompt-box">I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-aeo folder and follow the directions there. Make a plan and show it to me before building anything.</div>
+  <div class="prompt-box">I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-geo folder and follow the directions there. Make a plan and show it to me before building anything.</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ Before you say "go" — the plan should cover four stages</div>
     <p><strong>Read Claude's plan and sanity-check it</strong> before approving. A good plan moves through these four stages, in order:</p>
     <ul>
       <li><strong>1. Scaffold</strong> — set up the empty structure for the bot version of your pages.</li>
-      <li><strong>2. Generate</strong> — write the bot pages, following the AEO content guide.</li>
+      <li><strong>2. Generate</strong> — write the bot pages, following the GEO content guide.</li>
       <li><strong>3. Deploy</strong> — put the pages and the routing front door live on Cloudflare.</li>
       <li><strong>4. Verify</strong> — prove AI, humans, and Google each get the right version.</li>
     </ul>
@@ -889,7 +889,7 @@
   <div class="slide-num" data-label="Plan step 2 · Generate"></div>
   <div class="eyebrow">Filling the shell with content</div>
   <h2>Step 2 — write the AI version of each page.</h2>
-  <p>Now the reason the whole dual-web setup exists. Your <strong>human</strong> pages are full of stuff a person needs but a bot has to fight through — menus, popups, cookie banners, animations, marketing fluff, and content that only loads after JavaScript runs. The AI version strips all of that away, following the <strong>AEO Content Guide</strong>: just the answers, in clean, self-contained chunks.</p>
+  <p>Now the reason the whole dual-web setup exists. Your <strong>human</strong> pages are full of stuff a person needs but a bot has to fight through — menus, popups, cookie banners, animations, marketing fluff, and content that only loads after JavaScript runs. The AI version strips all of that away, following the <strong>GEO Content Guide</strong>: just the answers, in clean, self-contained chunks.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Why the junk actually costs you</div>
@@ -900,7 +900,7 @@
       <p>AI doesn't read your whole page — it lifts the one <strong>passage</strong> that answers the question. So a page that's already broken into direct, self-contained answers is easy to lift from and <strong>cite</strong>. That's what the guide's structure engineers for.</p>
     </div>
   </div>
-  <p class="small-note">And it can go <em>beyond</em> your human pages: since these exist only for AI, you can add <strong>more</strong> — extra answers and FAQs aimed at the exact questions people ask AI about your business. That ongoing tuning is <strong>AEO itself</strong>. Claude writes the first pass from the guide — have it show you one example to check.</p>
+  <p class="small-note">And it can go <em>beyond</em> your human pages: since these exist only for AI, you can add <strong>more</strong> — extra answers and FAQs aimed at the exact questions people ask AI about your business. That ongoing tuning is <strong>GEO itself</strong>. Claude writes the first pass from the guide — have it show you one example to check.</p>
 </section>
 
 <!-- STEP 3 — DEPLOY (walkthrough of the plan) -->
@@ -948,12 +948,12 @@
      PART 3 — GET CITED & MEASURE
      ============================================================ -->
 
-<!-- NOW ENRICH THE CONTENT — the real AEO work -->
+<!-- NOW ENRICH THE CONTENT — the real GEO work -->
 <section class="slide dense">
   <div class="slide-num" data-label="Now the real work"></div>
-  <div class="eyebrow">The setup is done — this is where AEO actually happens</div>
+  <div class="eyebrow">The setup is done — this is where GEO actually happens</div>
   <h2>Steps 1–4 built the machine. Now <em>feed it.</em></h2>
-  <p>Your AI pages came from existing marketing copy — thin, and aimed at selling, not answering. Now <strong>enrich them</strong>. The <code>/seo</code> commands only <em>grade</em>; <strong>step 2 is the only one that changes anything.</strong> The build copied the AEO guide into your project and pointed <code>CLAUDE.md</code> at it — so Claude knows the standard every time, not just today.</p>
+  <p>Your AI pages came from existing marketing copy — thin, and aimed at selling, not answering. Now <strong>enrich them</strong>. The <code>/seo</code> commands only <em>grade</em>; <strong>step 2 is the only one that changes anything.</strong> The build copied the GEO guide into your project and pointed <code>CLAUDE.md</code> at it — so Claude knows the standard every time, not just today.</p>
 
   <div class="grid-3">
     <div class="card">
@@ -964,7 +964,7 @@
     <div class="card card-hero">
       <div class="eyebrow">2 · Claude writes it <span class="tag-write">changes your site</span></div>
       <p>No command does this — paste this prompt:</p>
-      <div class="prompt-box">Write the brief's new sections into the AI version of that page — the matching file in my llm/ folder, not my human site. Follow AEO_CONTENT_GUIDE.md. Ask me anything from the brief you don't have a real answer for; don't invent facts. Then commit and push so Cloudflare Pages auto-deploys it, and confirm it's live.</div>
+      <div class="prompt-box">Write the brief's new sections into the AI version of that page — the matching file in my llm/ folder, not my human site. Follow GEO_CONTENT_GUIDE.md. Ask me anything from the brief you don't have a real answer for; don't invent facts. Then commit and push so Cloudflare Pages auto-deploys it, and confirm it's live.</div>
     </div>
     <div class="card">
       <div class="eyebrow">3 · Get the grade <span class="tag-report">report only</span></div>
@@ -976,18 +976,18 @@
   <p class="small-note">Repeat a few pages a week — that loop is the whole game, and it's frictionless because <strong>publishing is just a push</strong>: edit the page, push, the AI version is live. <strong>Once your full site is converted</strong>, run <code>/seo cluster</code> to map every topic worth owning. (Your <em>human</em> pages still need to be genuinely yours.)</p>
 </section>
 
-<!-- RE-RUN THE SEO TOOLKIT — now that the AEO build is live -->
+<!-- RE-RUN THE SEO TOOLKIT — now that the GEO build is live -->
 <section class="slide dense">
   <div class="slide-num" data-label="Run the toolkit again"></div>
   <div class="eyebrow">Same SEO toolkit — now on your live bot surface</div>
   <h2>Now that it's live, <em>re-run</em> the SEO toolkit.</h2>
-  <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? <strong>Run it again</strong> now that the AEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):</p>
+  <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? <strong>Run it again</strong> now that the GEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Run these now — they measure the bot surface</div>
       <ul>
         <li><code>/seo geo yourdomain.com</code> — how <strong>citable</strong> your live pages are to AI (this is the one that needed the build done first).</li>
-        <li><code>/seo schema yourdomain.com</code> — confirms the <strong>structured data</strong> the AEO guide put on your bot pages actually landed, and fixes any gaps.</li>
+        <li><code>/seo schema yourdomain.com</code> — confirms the <strong>structured data</strong> the GEO guide put on your bot pages actually landed, and fixes any gaps.</li>
       </ul>
     </div>
     <div class="card">
@@ -1018,7 +1018,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">The real scoreboard</div>
-      <p>Ask the AIs about your topic yourself. Over the weeks ahead, do they start mentioning you? That's AEO working — being <em>in the answer</em>.</p>
+      <p>Ask the AIs about your topic yourself. Over the weeks ahead, do they start mentioning you? That's GEO working — being <em>in the answer</em>.</p>
     </div>
   </div>
   <p class="small-note">Ask Claude any time: <em>"which AI crawlers have hit my site lately, and how often?"</em> — it can pull the numbers straight from Cloudflare.</p>
@@ -1050,8 +1050,8 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework · start it this week</div>
-  <h2>Track your SEO + AEO in your <em>Class 2 dashboard</em>.</h2>
-  <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + AEO tracker</strong> to the dashboard you built in Class 2. The sooner you build it, the sooner it starts collecting data — and trends only show up over weeks, so starting now matters.</p>
+  <h2>Track your SEO + GEO in your <em>Class 2 dashboard</em>.</h2>
+  <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + GEO tracker</strong> to the dashboard you built in Class 2. The sooner you build it, the sooner it starts collecting data — and trends only show up over weeks, so starting now matters.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Why now, not later</div>

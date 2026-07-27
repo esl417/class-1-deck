@@ -14,7 +14,7 @@ writing code by hand.
 |---|-------|--------|-------|
 | 1 | How to Build a Website | ✅ Built | Zero → live deployed website |
 | 2 | How to Build a Dashboard | ✅ Built | Real data → decision-oriented dashboard |
-| 3 | SEO + AEO | ✅ Built | Get found by search engines *and* AI answers |
+| 3 | SEO + GEO | ✅ Built | Get found by search engines *and* AI answers |
 | 4 | Automations | ✅ Built | Make work happen without you |
 | 5 | Agents | ⬜ To build | Build software that acts on its own |
 | 6 | Go-To-Market (GTM) | ⬜ To build | Sell it — powered by StratEngine |
@@ -75,7 +75,7 @@ writing code by hand.
 
 ---
 
-## Class 3 — SEO + AEO ✅
+## Class 3 — SEO + GEO ✅
 
 **Promise:** Get the site you built found — by search engines *and* by AI
 answer engines (ChatGPT, Perplexity, Google AI Overviews).
@@ -97,12 +97,12 @@ accurate, current Cloudflare knowledge.
   generation is a separate command).
 
 **Likely full arc (to design):**
-- Why SEO and AEO are now two jobs, not one.
+- Why SEO and GEO are now two jobs, not one.
 - The dual-surface mental model: human pages, bot pages, the routing Worker.
 - Setup, live: wire it on Cloudflare via Claude (one-time DNS step aside).
 - Technical SEO basics the build needs (sitemaps, schema, meta, CWV).
 - On-page: answer-first content, headings, internal linking.
-- AEO / GEO: llms.txt, citability, structured data, getting cited by AI.
+- GEO: llms.txt, citability, structured data, getting cited by AI.
 - Generating the bot-page content (separate from the routing setup).
 - Measuring it: what to watch and where.
 
@@ -111,15 +111,15 @@ accurate, current Cloudflare knowledge.
 `blog`/`blog-geo`/`blog-schema` skills, and the `cloudflare` /
 `workers-best-practices` / `wrangler` skills.
 
-**Status:** Prereqs deck built (`class-3-seo-aeo/prereqs.html`) + Cloudflare
-student kit (`class-3-seo-aeo/cloudflare-student-kit/`, published to
+**Status:** Prereqs deck built (`class-3-seo-geo/prereqs.html`) + Cloudflare
+student kit (`class-3-seo-geo/cloudflare-student-kit/`, published to
 `class-materials`). Main class deck first pass built
-(`class-3-seo-aeo/index.html`, 17 slides: framing → SEO+AEO as a funnel (not
+(`class-3-seo-geo/index.html`, 17 slides: framing → SEO+GEO as a funnel (not
 old-vs-new) → the SEO foundation (backlinks + EEAT broad strokes, and the free
 `AgriciDaniel/claude-seo` toolkit to run after class) → two work habits (plan
-mode, reference docs) → dual-surface mental model → live build → AEO + measure)
+mode, reference docs) → dual-surface mental model → live build → GEO + measure)
 and linked from the landing hub. Bot-page writing standard published as
-`content-guide/AEO_CONTENT_GUIDE.md` and wired into the build step. Two setup reference docs drafted; the CLI hosting
+`content-guide/GEO_CONTENT_GUIDE.md` and wired into the build step. Two setup reference docs drafted; the CLI hosting
 doc's Worker binding was corrected from a Custom Domain to a **route** so human
 traffic still passes through to the Vercel origin.
 
@@ -202,7 +202,7 @@ the go-to-market motion.
 **Likely arc (to design):**
 - From product to market: positioning, audience, offer.
 - Using StratEngine to plan and run the GTM.
-- Channels: content, outbound, the site/SEO/AEO from earlier classes.
+- Channels: content, outbound, the site/SEO/GEO from earlier classes.
 - Measuring with the dashboard from Class 2.
 
 **Status:** Not started. Built on StratEngine.
