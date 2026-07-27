@@ -1,0 +1,17 @@
+# Wrangler config for the class-decks dual-web Worker.
+#
+# Binds the Worker by ROUTE (not custom_domain): it runs IN FRONT OF the existing
+# proxied DNS record for classes.ericgrows.com that points at Vercel, so
+# fetch(request) for humans/Google still reaches the real deck origin. A
+# custom_domain binding would delete that record and break the human site.
+#
+# Prerequisite (already true): classes.ericgrows.com is a proxied (orange-cloud)
+# record on the ericgrows.com Cloudflare zone, pointing at the Vercel origin.
+
+name = "classes-dual-web"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+routes = [
+  { pattern = "classes.ericgrows.com/*", zone_name = "ericgrows.com" }
+]
