@@ -58,6 +58,83 @@ const DECKS = [
       'cause, and keep them moving. Assume zero technical background and a fair amount ' +
       'of setup fatigue — this part is a slog and they know it.',
   },
+  {
+    dir: 'class-2-dashboard-build',
+    title: 'Class 2: How to Build a Dashboard',
+    standing:
+      'The student has completed Class 1 (a live website) and the Class 2 prereqs ' +
+      '(Google Analytics connected read-only, an empty Supabase database connected). ' +
+      'Today they build a data pipeline (GA → Supabase, scheduled) and a private ' +
+      'dashboard on top of it. Two things reliably trip people: (1) they try to ' +
+      'design the dashboard before the data pipeline is proven — the deck insists ' +
+      'data-first; (2) their analytics may be empty (tag installed late), in which ' +
+      'case they build on the sample-data kit instead. Verify data actually landed ' +
+      'before trusting anything.',
+  },
+  {
+    dir: 'class-2-dashboard-build',
+    file: 'prereqs.html',
+    out: 'prereqs-llm.md',
+    teaching: 'prereqs-teaching.md',
+    title: 'Class 2 Prerequisites & Setup',
+    standing:
+      'BEFORE-CLASS setup for the dashboard class. Three setup jobs: install a ' +
+      'Google Analytics tag on their site (needs ~7 days of data before class), ' +
+      'connect Claude read-only to that analytics, and create a free Supabase ' +
+      'database + connect Claude to it. You are usually consulted because one of ' +
+      'these broke. The single biggest gotcha is the Supabase MCP RESTART: Claude ' +
+      'Code must restart mid-setup, and the student must return to the SAME chat via ' +
+      'the history (clock) icon, not start a new one. Also: analytics data can take ' +
+      'up to ~48h to appear — empty ≠ broken. Read the actual error, fix the real ' +
+      'cause, reassure through the slog.',
+  },
+  {
+    dir: 'class-3-seo-geo',
+    title: 'Class 3: SEO + GEO (getting found by search and AI)',
+    standing:
+      'The student has a live site (Class 1) and a dashboard (Class 2), and the ' +
+      'Class 3 prereqs done (domain on Cloudflare, Claude armed with Cloudflare ' +
+      'skills + logged in). Today they build the dual-web setup: a clean AI-only ' +
+      'version of their site plus a Cloudflare Worker that serves it to AI crawlers ' +
+      'while humans and Google get the normal site. This is a plan-mode build driven ' +
+      'by one big prompt. The cloaking-safety rule is load-bearing: Google/Bing MUST ' +
+      'get the human page, never the bot version. Known gotchas: Cloudflare blocks ' +
+      'AI crawlers by default (AI Crawl Control), and the Worker must bind by ROUTE ' +
+      'not custom_domain.',
+  },
+  {
+    dir: 'class-3-seo-geo',
+    file: 'prereqs.html',
+    out: 'prereqs-llm.md',
+    teaching: 'prereqs-teaching.md',
+    title: 'Class 3 Prerequisites & Setup',
+    standing:
+      'BEFORE-CLASS setup for the SEO+GEO class. Two jobs: move their domain onto ' +
+      'Cloudflare (up to a day to go Active — needs ~7 days lead time), and arm ' +
+      'Claude with Cloudflare skills + a logged-in terminal. You are usually ' +
+      'consulted because the domain move stalled or the login broke. The #1 known ' +
+      'gotcha: right after moving to Cloudflare a site can break into a redirect ' +
+      'loop or SSL error — the fix is almost always setting Cloudflare SSL/TLS mode ' +
+      'to Full (strict). Also: the Cloudflare setup has a Claude Code RESTART where ' +
+      'the student must resume the SAME chat via the history icon (same as Class 2). ' +
+      'Path A owns a domain (flip nameservers); Path B buys one inside Cloudflare ' +
+      '(instant, no wait).',
+  },
+  {
+    dir: 'class-4-automations',
+    title: 'Class 4: Automations',
+    standing:
+      'The student has completed Classes 1-3 (live site, dashboard, dual-web). ' +
+      'Today they build a "morning briefing" — a Python script on their own ' +
+      'computer that reads a few sources (email/calendar/tasks/Slack/etc, all ' +
+      'read-only), asks Claude to judge what matters, and writes one brief, on a ' +
+      'schedule. NEW territory this class: API keys and .env files. The critical ' +
+      'safety rule: secrets go in .env (never in the Claude chat, never to GitHub ' +
+      'via .gitignore) — the student pastes the real key into the .env file ' +
+      'themselves. Also teach the deterministic-vs-judgment split (do everything ' +
+      'possible with fixed rules, call Claude only for the "what matters" step) and ' +
+      'the laptop catch-up check (a missed scheduled run fires on next wake).',
+  },
 ];
 
 // ---- tiny HTML helpers (no DOM lib; the decks are hand-authored, regular HTML) ----

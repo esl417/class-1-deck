@@ -28,6 +28,17 @@ const BOT_VIEWS = {
   '/class-1-website-build': '/class-1-website-build/llm.md',
   '/class-1-website-build/': '/class-1-website-build/llm.md',
   '/class-1-website-build/prereqs.html': '/class-1-website-build/prereqs-llm.md',
+
+  '/class-2-dashboard-build': '/class-2-dashboard-build/llm.md',
+  '/class-2-dashboard-build/': '/class-2-dashboard-build/llm.md',
+  '/class-2-dashboard-build/prereqs.html': '/class-2-dashboard-build/prereqs-llm.md',
+
+  '/class-3-seo-geo': '/class-3-seo-geo/llm.md',
+  '/class-3-seo-geo/': '/class-3-seo-geo/llm.md',
+  '/class-3-seo-geo/prereqs.html': '/class-3-seo-geo/prereqs-llm.md',
+
+  '/class-4-automations': '/class-4-automations/llm.md',
+  '/class-4-automations/': '/class-4-automations/llm.md',
 };
 
 export default {
