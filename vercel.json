@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node build-llm.mjs",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/class-1-website-build",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-SearchBot|Claude-User|anthropic-ai|PerplexityBot|Perplexity-User|Google-Extended|Applebot-Extended|Bytespider|CCBot|Amazonbot|cohere-ai|Meta-ExternalAgent).*"
+        }
+      ],
+      "destination": "/class-1-website-build/llm.md"
+    },
+    {
+      "source": "/class-1-website-build/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-SearchBot|Claude-User|anthropic-ai|PerplexityBot|Perplexity-User|Google-Extended|Applebot-Extended|Bytespider|CCBot|Amazonbot|cohere-ai|Meta-ExternalAgent).*"
+        }
+      ],
+      "destination": "/class-1-website-build/llm.md"
+    }
+  ]
+}
