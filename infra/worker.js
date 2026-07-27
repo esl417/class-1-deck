@@ -19,12 +19,16 @@
  * To add a deck: add its folder to DECKS_WITH_BOT_VIEW once its llm.md exists.
  */
 
-// Deck folders that have a generated bot view (build-llm.mjs writes <folder>/llm.md).
-// Only these paths get swapped; everything else (assets, other pages, the llm.md
-// file itself) passes straight through.
-const DECKS_WITH_BOT_VIEW = [
-  'class-1-website-build',
-];
+// Map of deck request paths → their generated bot view (build-llm.mjs output).
+// When an AI crawler requests a key path, it gets the mapped bot view instead.
+// A deck root is matched with or without its trailing slash; a named page (e.g.
+// prereqs.html) is matched exactly. Everything else — assets, the bot-view files
+// themselves, any path not listed — passes straight through untouched.
+const BOT_VIEWS = {
+  '/class-1-website-build': '/class-1-website-build/llm.md',
+  '/class-1-website-build/': '/class-1-website-build/llm.md',
+  '/class-1-website-build/prereqs.html': '/class-1-website-build/prereqs-llm.md',
+};
 
 export default {
   async fetch(request) {
@@ -62,18 +66,15 @@ export default {
     const isSocialPreviewBot = socialPreviewBots.some(b => userAgent.includes(b));
     const isAISearchBot = aiSearchBots.some(b => userAgent.includes(b));
 
-    // Which deck folder is this request in (if any)? Match the deck root with an
-    // optional trailing slash — NOT sub-assets, and NOT the llm.md file itself.
-    const deck = DECKS_WITH_BOT_VIEW.find(
-      d => url.pathname === `/${d}` || url.pathname === `/${d}/`
-    );
+    // Does this exact path have a bot view? (deck root or a named page like prereqs)
+    const botView = BOT_VIEWS[url.pathname];
 
-    // ── AI crawler on a deck root → serve that deck's bot view ────────────────
+    // ── AI crawler on a mapped deck path → serve that deck's bot view ──────────
     // Traditional search + social preview are excluded first (cloaking guard).
-    // Pass-through fetch to the SAME origin with the path rewritten to llm.md.
-    if (deck && isAISearchBot && !isTraditionalSearchBot && !isSocialPreviewBot) {
+    // Pass-through fetch to the SAME origin with the path rewritten to the bot view.
+    if (botView && isAISearchBot && !isTraditionalSearchBot && !isSocialPreviewBot) {
       const botUrl = new URL(request.url);
-      botUrl.pathname = `/${deck}/llm.md`;
+      botUrl.pathname = botView;
       return fetch(botUrl, {
         method: request.method,
         headers: request.headers,
