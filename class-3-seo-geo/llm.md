@@ -569,39 +569,19 @@ _The real scoreboard_
 
 Ask the AIs about your topic yourself. Over the weeks ahead, do they start mentioning you? That's GEO working — being in the answer .
 
+And to move that scoreboard: the mention counts even when there's no link. A link is still the best outcome — it feeds Google and gets you named. But AI models read the web for who's discussed as credible in a category, so coverage that never links to you still isn't wasted. Same moves as the SEO slide — publish original data, go on a podcast, answer reporters — now paying off on both sides.
+
 Ask Claude any time: "which AI crawlers have hit my site lately, and how often?" — it can pull the numbers straight from Cloudflare.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Teach them to watch the proof. Cloudflare's AI Crawl Control (in their dashboard) shows which AI bots visit (GPTBot, ClaudeBot, PerplexityBot) and how often — rising visits mean the AI world is discovering them. It's the Class 2 dashboard idea, but for bots; they can even ask Claude "which AI crawlers hit my site lately, and how often?" to pull it directly. The REAL scoreboard, though, is qualitative: over the weeks ahead, do the AIs start mentioning them when asked about their topic? That's GEO working — being IN the answer. Set the expectation that this is a slow build measured in weeks, not an instant result.
 
-## Slide 20 · An optional accelerator
+One lever worth naming while you're on the scoreboard: on the AI side, the MENTION is doing the work — the link is a bonus on top. Be careful not to flip this into "links don't matter," because they do: a link is a mention PLUS a link, it's strictly better, and it's what actually moves Google. The narrow, correct claim is that unlinked coverage still counts for AI, which is NOT true for SEO. That's the news for them — a podcast or a write-up with no link attached looks like a wasted effort under SEO rules, and isn't under AI rules. The evidence: an Ahrefs study of 75k brands found web mentions correlate with AI Overview visibility far more strongly than backlinks or domain rating, and a 2025 Toronto preprint found AI search leans heavily on earned media (third-party coverage) over brand-owned content. Point back to slide 4 — publish original data, go on a podcast, answer reporters are already up there as link tactics; the same moves now pay off on both sides. Keep it to a beat or two; it's context, not a build step, and there's nothing for them to do in the room.
 
-**What the student sees on this slide:**
+Two honesty guards if a student presses on the numbers: it's correlation, not proof of causation (Ahrefs says so themselves, and it's their own product's data), and this measures Google AI Overviews specifically rather than all AI systems. Don't quote figures as settled science. Also don't oversell reach — a brand-new site starts near zero and existing visibility compounds, so this is a long game. Students arriving with real domain authority are further along than the ones starting cold.
 
-_Optional · costs money · results not guaranteed_
-
-## Want to speed it up? A paid lever for AI visibility.
-
-Everything so far is free and organic. If you have a budget and want to accelerate, there's a paid angle that's turned out to matter for AI search specifically: getting your brand mentioned in premium media . Tools like Linkby make that reachable without a PR agency — but treat it as an experiment, not a guarantee.
-
-_Why it moves AI visibility_
-
-LLMs don't rank links like Google — they read the web for context and authoritative brand mentions , and they ignore the "nofollow" tag that normally blocks SEO credit. So a mention in several high-tier publications trains the model to see you as a trusted name in your category — exactly what gets you into AI answers.
-
-_How Linkby works_
-
-Performance PR, pay-per-click. You write a short brief; real publishers opt in and write editorial coverage; you pay only when someone clicks through (you set the budget and the per-click price). No agency retainer, no upfront spend — and a Google "halo" bonus when that coverage ranks and sends you real traffic.
-
- ⚠️
-
-Set expectations honestly: this is a paid experiment with no guaranteed outcome — AI visibility is influenced, not bought. Start with a small budget, see if mentions and citations tick up, and only scale if they do. The free work you did today is the foundation; this is an optional boost on top.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Clearly optional, costs money, no guaranteed outcome — set honest expectations and don't oversell. Everything else in the class is free and organic; this is a paid lever (e.g. Linkby) for getting brand mentions in premium media. Why it moves AI visibility: LLMs don't rank links like Google — they read the web for authoritative brand mentions and ignore the "nofollow" tag, so mentions across high-tier publications train the model to see you as a trusted name. Linkby is performance PR, pay-per-click (write a brief, publishers opt in and write coverage, pay only on click-through, you set the budget). The honest framing to hold: this is an experiment, not a purchase of visibility — start small, watch whether citations tick up, scale only if they do. The free work is the foundation; this is optional boost.
-
-## Slide 21 · Homework
+## Slide 20 · Homework
 
 **What the student sees on this slide:**
 
@@ -633,7 +613,7 @@ Concretely, the split for this homework: the PLUMBING is fair game for Claude to
 
 Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those. Help them implement, but keep them the one making the decisions.
 
-## Slide 22 · You shipped it
+## Slide 21 · You shipped it
 
 **What the student sees on this slide:**
 
