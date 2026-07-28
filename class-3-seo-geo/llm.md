@@ -508,6 +508,15 @@ Repeat a few pages a week — that loop is the whole game, and it's frictionless
 
 The reframe that matters: steps 1–4 built the MACHINE; now they FEED it, and this is where GEO actually happens. Their AI pages started from thin marketing copy — now enrich them. Teach the three-part loop and which parts change anything: (1) `/seo content-brief` — REPORT ONLY, hands back the questions/sections they're missing; (2) the paste prompt — the ONLY step that changes the site: Claude writes the brief's sections into the AI version (the llm/ folder, NOT the human site), following the GEO guide, asking before inventing any facts, then pushes so Pages auto-deploys; (3) `/seo geo` — REPORT ONLY, scores citability. Emphasize: the `/seo` commands only GRADE; hand their reports back with "work through these fixes with me, highest-impact first." The habit: a few pages a week — that loop is the whole game, frictionless because publishing is just a push. Guardrail: their HUMAN pages must still be genuinely theirs (EEAT).
 
+Nudge worth making — DataForSEO, and be clear about WHY it matters. This is deliberately cart-before-horse: DataForSEO (dataforseo.com) is formally introduced in the end-of-deck homework, and you can surface it early here because the content loop is a great place to show its value. But keep the priority straight:
+
+- The REAL reason to get DataForSEO is the HOMEWORK: it feeds real SEO/GEO data (competitor rankings, keyword volumes, AI-citation checks) into their Class 2 dashboard, so they can actually SEE how their site is performing over time and make decisions from it. That performance picture is the point — it's how they'll know today's build is working.
+- Using it to enrich `/seo content-brief` (grounding the brief in what's actually ranking, rather than lighter signals) is a genuine BONUS use of the same connection — a nice reason to grab it now — but it's not the justification. Don't oversell the brief use as the reason; lead with the dashboard/performance reason.
+
+So the nudge is: "the DataForSEO you'll set up for homework isn't just for tracking — if you connect it now, it also makes every content-brief sharper. But the main payoff is the homework: real performance data flowing into your dashboard." Be honest it's optional and paid (pay-as-you-go MCP server, ~$50 prepaid, fractions of a penny per lookup). A student without it isn't blocked — `/seo content-brief` still runs.
+
+And if they DO connect it: have Claude update their CLAUDE.md to remember to use DataForSEO whenever running an `/seo` command — so from then on every SEO/GEO command automatically draws on the richer data without the student having to ask. That's the permanent-instruction pattern from Class 1, applied here.
+
 ## Slide 18 · Run the toolkit again
 
 **What the student sees on this slide:**
@@ -616,7 +625,11 @@ No step-by-step this time — you've got the tools. You know plan mode, MCP serv
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This is a do-it-yourself homework by design — DON'T walk them through it step by step, that's the point. They add an SEO+GEO tracker to their Class 2 dashboard. Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those, don't build it for them. This is them proving they can do it independently.
+This is a do-it-yourself homework, but be careful what that means — it does NOT mean refuse to help or make them do it manually. Walking them through it IS the skill: the whole point of the class is the student using Claude to figure out how to get things implemented. So absolutely help them. The real line is engagement, not hand-holding: don't do it FOR them while they sit passive with zero input. They should stay in the loop and own the parts that are genuinely theirs to decide.
+
+Concretely, the split for this homework: the PLUMBING is fair game for Claude to run end-to-end — a student can say "install DataForSEO into my dashboard" and Claude can go connect the MCP, build the data pipeline, and get the SEO/GEO data flowing in. That's mechanical; let Claude do it. But the part that's THEIRS is building the dashboard UI to actually use that data — deciding what to track, how to display it, what a good/bad reading looks like. Claude shouldn't silently design the whole tracker; the student has to spend the time shaping how they'll read and act on it (same "build a decision tool, not a report" lesson from Class 2). So: Claude does the pipeline, the student drives the dashboard.
+
+Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those. Help them implement, but keep them the one making the decisions.
 
 ## Slide 22 · You shipped it
 

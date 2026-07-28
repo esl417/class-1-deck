@@ -176,6 +176,8 @@ First real encounter with MCP — teach the category, because MCP recurs (Supaba
 
 The "isn't that just an API?" question is worth answering cleanly if asked: an API is the raw machinery; an MCP server is a standard wrapper around it built so an AI can use it reliably without custom wiring — a universal remote. Don't over-explain; the student never has to build one, just understand that this is how Claude gets hands-on access to a real service. If they hit "Claude can't do anything in Supabase," the cause is usually the MCP server not connected/authenticated (the prereqs restart-and-auth step).
 
+The bigger, reusable lesson to teach here — don't let it stay about Supabase alone: ANY service that offers an MCP server OR an API can work with Claude and have its data pulled in. Supabase is just the first example. So if the student uses other tools — a CRM, Stripe, their email platform, a project tracker, anything — the move is the same: have Claude check whether that service exposes an MCP server or an API, and if it does, Claude can ingest from it or act on it. Frame it as a capability they now own: "got a service you want in your dashboard? Ask Claude if it has an MCP or an API — if it does, we can wire it in." This turns today's one-off connection into a pattern they can apply to their whole stack as needs arise.
+
 ## Slide 7 · Build order
 
 **What the student sees on this slide:**
@@ -323,6 +325,8 @@ This grows into your whole-business cockpit. Today it's a GA4 panel — but like
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Two things to reinforce. (1) Start CLEAN — a brand-new Claude session before running `/impeccable init` for the dashboard. The pipeline work is done; a fresh session gives sharper results (same session-hygiene lesson from Class 1). (2) `/impeccable init` here does the same job as in Class 1 — lays down PRODUCT.md and DESIGN.md — but the framing is different: this is a PRIVATE, internal dashboard only they see. No brand to match, no one to impress. Encourage them to actually enjoy it — pick a whole aesthetic (they'll look at it daily). Same teach-don't-perform rule as Class 1's Design brief: don't run init's interview for them; help them describe the vibe, then let the command do its thing. Plant the seed that this dashboard grows into their whole-business cockpit over the coming classes.
+
+LIKELY GOTCHA — Impeccable not installed in this project. This is a new project folder (the dashboard), so if `/impeccable init` isn't recognized or the student says Impeccable "isn't installed," the almost-certain cause is that in Class 1 it got installed at the PROJECT level instead of globally — so it doesn't carry over to this new dashboard project. The fix is to install it GLOBALLY this time so it works everywhere from now on. Point Claude to install it globally from impeccable.style using npx — and when it asks "project or global?", choose GLOBAL (the whole point is that a global install follows them into every future project, so this never happens again). Fallback download options are at impeccable.style/#downloads. After installing, they may need to restart Claude Code for the skill to load. Don't debug it as if the command is broken — it's a scope/install issue, and global reinstall is the fix.
 
 ## Slide 12 · Design around your decisions
 

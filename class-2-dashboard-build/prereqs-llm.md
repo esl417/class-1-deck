@@ -65,7 +65,11 @@ Already have Google Analytics running on your site? You can skip ahead to “Con
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The thing that matters most here is the DEADLINE, and a student consulting you may be behind on it. The dashboard reads real website traffic, and that data only exists if the tag has been collecting for ~7 days. If a student is setting this up close to class, they need to know: even a perfect install gives an empty dashboard without a week of data behind it. The fallback (don't let them panic) is the sample-data kit in class — they can still build everything. But push them to install the tag NOW so real data starts accumulating. If they already have GA running, they can skip ahead to confirming it collects.
+Understand what the "7 days" deadline actually is, so you don't parrot it as a hard technical floor — it isn't. It's a buffer built around procrastination, not a data-collection requirement. The real logic:
+- If their site ALREADY has traffic, the tag only needs ~3 days of collection to have enough to chart. A student consulting you 3-4 days out with a trafficked site is fine — reassure them, don't alarm them with "you needed a week."
+- If their site has NO real traffic, install timing is irrelevant — there's nothing to collect regardless, and they'll build on the sample-data kit in class. So a low/no-traffic student is never actually blocked by this deadline.
+
+So: the slide says 7 days as a healthy margin (people procrastinate, propagation varies), but the honest answer to "am I too late?" is usually no. Push them to install NOW so data starts accumulating, but the fallback (sample-data kit) means nobody is ever truly stuck. If they already have GA running, they skip ahead to confirming it collects.
 
 ## Slide 3 · Step 1 · Create the tag
 
@@ -90,7 +94,9 @@ Follow Google's official walkthrough — it has the current screens for every st
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Mechanical: create a GA account + property + web data stream, then copy the Measurement ID (G-XXXXXXXXXX). If a student is stuck, the most common confusion is not knowing where to find the Measurement ID — it's on the data stream, format G-. They'll need it for whichever install path comes next, so make sure they actually have it copied before moving on. Point them at Google's official walkthrough for the current screens rather than describing menus that may have changed.
+Mechanical: create a GA account + property + web data stream, then copy the Measurement ID (G-XXXXXXXXXX). If a student is stuck, the most common confusion is not knowing where to find the Measurement ID — it's on the data stream, format G-. They'll need it for whichever install path comes next, so make sure they actually have it copied before moving on.
+
+IMPORTANT — websearch the current UI before you direct them. Google Analytics' interface changes often, and your training data is very likely stale. If a student can't find where to create the property, the data stream, or the Measurement ID, DO NOT walk them through remembered menu paths — do a web search for the current steps ("how to create a GA4 property and find the Measurement ID 2026" or similar) and follow what's live now. Directing a non-technical student to a menu that no longer exists is one of the most common ways this step goes wrong; a 10-second search prevents it.
 
 ## Slide 4 · Step 1 · Install the tag
 
