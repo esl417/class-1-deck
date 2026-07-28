@@ -3,10 +3,13 @@
  * build-llm.mjs — assembles the "bot view" of each class deck.
  *
  * For every deck listed in DECKS, this reads the deck's index.html, pulls each
- * slide's human-visible content PLUS an optional inline teaching note, and emits
- * a single llm.md next to the deck. That llm.md is what Claude fetches when a
- * student pastes the deck link (a User-Agent rewrite in vercel.json points AI
- * bots at it; humans and Google still get index.html).
+ * slide's human-visible content PLUS its teaching note, and emits a single llm.md
+ * next to the deck. That llm.md is what Claude fetches when a student pastes the
+ * deck link: a Cloudflare Worker (infra/worker.js) sniffs the User-Agent and does
+ * a pass-through fetch of llm.md for AI crawlers, while humans and Google/Bing get
+ * the normal index.html at the same URL. (A vercel.json rewrite CANNOT do this —
+ * Vercel's filesystem precedence serves index.html before rewrites run — which is
+ * why the swap lives in the Worker. See ARCHITECTURE.md, section 2.)
  *
  * Source of truth is index.html. Slide content is never authored twice — it is
  * extracted live from the deck on every build. index.html is NEVER modified and
@@ -17,6 +20,7 @@
  * The build matches notes to slides by label and warns about any note whose label
  * matches no slide (the drift catch — e.g. after a label is renamed).
  *
+ * Full system + how to author/add decks: ARCHITECTURE.md at the repo root.
  * Zero dependencies. Run: node build-llm.mjs
  */
 
