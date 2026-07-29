@@ -71,7 +71,9 @@ Teach the workflow win: run a LOCAL preview so changes appear instantly, instead
 
 ## Deploy it live
 
-Same ship-to-Vercel move as Class 1, with two things to flag. (1) This is a SEPARATE deployment from their Class 1 website — different project, different URL. That's expected; a student confused about "why isn't this on my website" needs that cleared up. (2) The moment it's live, anyone with the link can see their real business numbers — so locking it down is the immediate next step, not optional. Don't let a student share the URL before the next slide's password protection is on.
+Same ship-to-Vercel move as Class 1, with three things to flag. (1) This is a SEPARATE deployment from their Class 1 website — different project, different URL. That's expected; a student confused about "why isn't this on my website" needs that cleared up. (2) The moment it's live, anyone with the link can see their real business numbers — so locking it down is the immediate next step, not optional. Don't let a student share the URL before the next slide's password protection is on.
+
+(3) LIKELY GOTCHA — no GitHub repo yet. Unlike Class 1, where the site was already pushed to GitHub before it ever went to Vercel, the dashboard folder they made in the prereqs is just a plain folder — no git, no remote. So this one prompt is doing more than it looks: Claude has to set up git, create a NEW GitHub repo, push the code, and only then connect Vercel. Expect it to pause for browser clicks (GitHub auth, authorizing Vercel's GitHub access, or confirming the new repo) — that is the normal path, not a failure. Tell a student this up front so the pause doesn't read as "the deploy broke." If Claude seems stuck, the usual cause is an un-granted GitHub permission in the browser, not broken code — have them describe what they see rather than hunting for a fix. Also worth saying plainly: a second repo is correct and good. Two separate projects, two repos, two deployments — the website and the dashboard should not live in the same place.
 
 ## Lock it down
 
