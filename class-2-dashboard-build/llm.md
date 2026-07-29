@@ -145,12 +145,15 @@ The database that holds your data. Claude can build in it freely — keep a copy
 This is where the real work happens.
 
  Google Analytics
- →
- Your Supabase database
- →
+ Your own business data
+
+Your Supabase database
+ everything in one place
+
+ You see
  Your dashboard
 
-Analytics is just the start. As you record more about your website and business — signups, sales, support tickets, ad spend — it all lands in this same Supabase. The more you record, the deeper the insights you can draw across all of it.
+ Analytics is just the start. As you record more about your website and business — signups, sales, support tickets, ad spend — it all lands in this same Supabase. The more you record, the deeper the insights you can draw across all of it.
 
 ## Slide 6 · What is an MCP server?
 
@@ -162,13 +165,21 @@ _The Supabase connection you set up in the prereqs_
 
 When you connected Claude to Supabase, you installed its MCP server — a remote control Supabase hands to Claude: a set of clearly-labeled buttons it can press to do real things, reliably. Without it, Claude can only talk; with it, it can act.
 
-_Without the MCP server_
+ Without the MCP server
 
-Claude can only tell you what to do — "create a table like this" — and you'd have to do it yourself in Supabase.
+ Claude
 
-_With the MCP server_
+ Supabase
 
-Claude presses the buttons itself — creates tables, runs queries, deploys functions — directly in your real database.
+It can only tell you what to do — "create a table like this" — and you do it by hand.
+
+ With the MCP server
+
+ Claude
+
+ Supabase
+
+It presses the buttons itself — creates tables, runs queries, deploys functions — in your real database.
 
 "Isn't that just an API?" An API is the raw machinery a service exposes; an MCP server is a standard wrapper around it, built so an AI can use it reliably without custom wiring. Like a universal remote — one set of controls any tool can offer.
 
@@ -450,13 +461,15 @@ Same move as the website in Class 1: push it to Vercel and you get a real link t
 
  ⚠️
 
-This is a separate deployment from your Class 1 website. Different project, different URL — that's expected. Two next things matter before you share it: lock it , and decide where it lives .
+This gets its own separate GitHub repo and Vercel project — nothing to do with your Class 1 website. Different repo, different project, different URL — that's expected. Claude sets the repo up as part of deploying, and may need you to click something in GitHub along the way. Two next things matter before you share it: lock it , and decide where it lives .
 
 It's live the moment Claude finishes — but right now anyone with the link can see your numbers. Fix that next.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Same ship-to-Vercel move as Class 1, with two things to flag. (1) This is a SEPARATE deployment from their Class 1 website — different project, different URL. That's expected; a student confused about "why isn't this on my website" needs that cleared up. (2) The moment it's live, anyone with the link can see their real business numbers — so locking it down is the immediate next step, not optional. Don't let a student share the URL before the next slide's password protection is on.
+Same ship-to-Vercel move as Class 1, with three things to flag. (1) This is a SEPARATE deployment from their Class 1 website — different project, different URL. That's expected; a student confused about "why isn't this on my website" needs that cleared up. (2) The moment it's live, anyone with the link can see their real business numbers — so locking it down is the immediate next step, not optional. Don't let a student share the URL before the next slide's password protection is on.
+
+(3) LIKELY GOTCHA — no GitHub repo yet. Unlike Class 1, where the site was already pushed to GitHub before it ever went to Vercel, the dashboard folder they made in the prereqs is just a plain folder — no git, no remote. So this one prompt is doing more than it looks: Claude has to set up git, create a NEW GitHub repo, push the code, and only then connect Vercel. Expect it to pause for browser clicks (GitHub auth, authorizing Vercel's GitHub access, or confirming the new repo) — that is the normal path, not a failure. Tell a student this up front so the pause doesn't read as "the deploy broke." If Claude seems stuck, the usual cause is an un-granted GitHub permission in the browser, not broken code — have them describe what they see rather than hunting for a fix. Also worth saying plainly: a second repo is correct and good. Two separate projects, two repos, two deployments — the website and the dashboard should not live in the same place.
 
 ## Slide 17 · Lock it down
 
