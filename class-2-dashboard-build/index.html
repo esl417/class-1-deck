@@ -380,6 +380,195 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
+  /* ---- Converge: two (or more) inputs feeding one node, then an output --
+     For "these are different jobs" relationships that a straight chain
+     would flatten. Grid so the join column stays aligned to the inputs. */
+  .flow-converge {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(52px, 6vw, 84px) minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0 clamp(8px, 1vw, 14px);
+    margin-top: clamp(20px, 3vh, 34px);
+    max-width: var(--col);
+  }
+  /* the bracket starts flush on the chips (negative left margin closes the
+     gutter) and stops short on the right, leaving room for its arrow run */
+  .flow-converge > .flow-join {
+    margin-left: calc(-1 * clamp(8px, 1vw, 14px));
+    margin-right: clamp(18px, 2vw, 28px);
+    width: auto;
+  }
+  .flow-converge .inputs { display: flex; flex-direction: column; gap: clamp(10px, 1.4vh, 16px); }
+  .flow-converge .flow-step { text-align: center; }
+  /* Connectors ---------------------------------------------------------
+     All arrows share one <marker> arrowhead, which SVG renders at a fixed
+     size in stroke-widths regardless of the container. Earlier these were
+     stretched polygons: because each SVG filled a different-sized box,
+     identical viewBox coords rendered at different physical sizes (one
+     11x13, the other 8x20). Markers + non-scaling-stroke keep every arrow
+     in the deck visually identical. */
+  .join-out, .flow-wire { display: block; }
+  .join-out path, .flow-wire path {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+  /* the head is a filled shape, not a stroked one */
+  .join-out path.flow-arrowhead,
+  .flow-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* Both connectors keep a 1:1 coordinate space (no preserveAspectRatio
+     ="none"), so the shared arrowhead is never distorted. The bracket's
+     vertical arms are the one thing that must stretch, so they're drawn as
+     a CSS border box and only the horizontal run is SVG. */
+  .flow-join {
+    position: relative;
+    width: 100%;
+    height: calc(50% + clamp(5px, 0.7vh, 8px));
+    min-height: 44px;
+    border: 2px solid var(--accent);
+    border-left: none;
+    border-radius: 0 14px 14px 0;
+  }
+  /* the horizontal run out of the bracket, into the hub */
+  .flow-join .join-out,
+  .flow-wire {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(18px, 2vw, 28px);
+    height: 14px;
+    overflow: visible;
+  }
+  /* the straight run into the final node */
+  .flow-wire {
+    position: static;
+    transform: none;
+    width: clamp(30px, 3.4vw, 46px);
+    height: 14px;
+    flex: 0 0 auto;
+  }
+  /* the hub node the inputs land in — heavier than a plain chip */
+  .flow-hub {
+    background: rgba(15,138,128,0.10);
+    border: 2px solid var(--accent);
+    padding: clamp(18px, 2vw, 26px) clamp(16px, 1.8vw, 24px);
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
+  }
+  .flow-hub .hub-title {
+    font-family: var(--display);
+    font-size: clamp(17px, 1.6vw, 20px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .flow-hub .hub-sub {
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: var(--accent-ink);
+    margin-top: 5px;
+    line-height: 1.35;
+  }
+  /* label sits above its chip without pushing the column off the shared
+     centerline — absolutely positioned so the grid row stays aligned */
+  .flow-outcome { position: relative; }
+  .flow-node-label {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  /* stacked: the bracket can't span a single column, so drop it and let the
+     chips read top-to-bottom; the label goes back in flow so it can't overlap */
+  @media (max-width: 860px) {
+    .flow-converge { grid-template-columns: 1fr; gap: clamp(10px, 1.4vh, 16px) 0; }
+    .flow-converge > .flow-join { display: none; }
+    .flow-converge > .flow-wire { display: none; }
+    .flow-outcome { position: static; }
+    .flow-node-label { position: static; display: block; margin-bottom: 5px; }
+  }
+
+  /* ---- Link pair: the same two nodes, once broken and once connected ----
+     For "without X / with X" slides, where the point is whether the
+     connection exists at all. */
+  .flow-linkpair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2.4vw, 34px);
+    margin-top: clamp(18px, 2.6vh, 30px);
+    max-width: var(--col);
+  }
+  .link-case {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(18px, 2vw, 24px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  .link-case.is-connected { border-color: rgba(15,138,128,0.45); }
+  .link-case .case-label {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: clamp(12px, 1.6vh, 16px);
+  }
+  .link-case.is-connected .case-label { color: var(--accent-deep); }
+  .link-row { display: flex; align-items: center; justify-content: center; gap: clamp(6px, 0.8vw, 10px); }
+  .link-row .flow-step { padding: 12px 16px; font-size: clamp(14px, 1.3vw, 16px); text-align: center; }
+  /* the connector itself carries the meaning: severed vs. solid */
+  .link-wire {
+    flex: 1 1 auto;
+    min-width: clamp(34px, 5vw, 66px);
+    height: 2px;
+    position: relative;
+  }
+  .link-wire.is-broken { background: repeating-linear-gradient(90deg, var(--muted) 0 5px, transparent 5px 11px); opacity: 0.75; }
+  .link-wire.is-broken::after {
+    content: "✕";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: clamp(14px, 1.4vw, 17px);
+    font-weight: 700;
+    padding: 0 5px;
+    line-height: 1;
+  }
+  .link-wire.is-solid { background: var(--accent); }
+  /* arrowhead proportions match the SVG connectors (17 long x 20 tall) so
+     every arrow in the deck terminates with the same shape */
+  .link-wire.is-solid::after {
+    content: "";
+    position: absolute;
+    right: -1px; top: 50%;
+    transform: translateY(-50%);
+    border-left: 11px solid var(--accent);
+    border-top: 6.5px solid transparent;
+    border-bottom: 6.5px solid transparent;
+  }
+  .link-caption {
+    font-size: clamp(14px, 1.3vw, 16px);
+    color: var(--body);
+    margin-top: clamp(12px, 1.6vh, 16px);
+    margin-bottom: 0;
+    max-width: none;
+    text-align: center;
+  }
+  .link-case.is-connected .link-caption strong { color: var(--accent-deep); }
+  @media (max-width: 760px) { .flow-linkpair { grid-template-columns: 1fr; } }
+
   .small-note {
     font-size: clamp(15px, 1.35vw, 16px);
     color: var(--muted);
@@ -589,12 +778,29 @@
       <p>This is where the real work happens.</p>
     </div>
   </div>
-  <div class="arrow-flow">
-    <div class="flow-step">Google Analytics</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Your Supabase database</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Your dashboard</div>
+  <div class="flow-converge">
+    <div class="inputs">
+      <div class="flow-step">Google Analytics</div>
+      <div class="flow-step">Your own business data</div>
+    </div>
+    <div class="flow-join" aria-hidden="true">
+      <svg class="join-out" viewBox="0 0 40 14" aria-hidden="true">
+        <path d="M0 7 H27" />
+        <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+      </svg>
+    </div>
+    <div class="flow-hub">
+      <div class="hub-title">Your Supabase database</div>
+      <div class="hub-sub">everything in one place</div>
+    </div>
+    <svg class="flow-wire" viewBox="0 0 40 14" aria-hidden="true">
+      <path d="M0 7 H27" />
+      <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+    </svg>
+    <div class="flow-outcome">
+      <span class="flow-node-label">You see</span>
+      <div class="flow-step">Your dashboard</div>
+    </div>
   </div>
   <p class="small-note">Analytics is just the start. As you record more about your website and business — signups, sales, support tickets, ad spend — it all lands in this same Supabase. The more you record, the deeper the insights you can draw across all of it.</p>
 </section>
@@ -605,14 +811,24 @@
   <div class="eyebrow">The Supabase connection you set up in the prereqs</div>
   <h2>How Claude actually <em>operates</em> Supabase.</h2>
   <p>When you connected Claude to Supabase, you installed its <strong>MCP server</strong> — a <strong>remote control</strong> Supabase hands to Claude: a set of clearly-labeled buttons it can press to do real things, reliably. Without it, Claude can only talk; with it, it can act.</p>
-  <div class="grid-2" style="margin-top: 8px;">
-    <div class="card">
-      <div class="eyebrow">Without the MCP server</div>
-      <p>Claude can only <em>tell you</em> what to do — "create a table like this" — and you'd have to do it yourself in Supabase.</p>
+  <div class="flow-linkpair">
+    <div class="link-case">
+      <div class="case-label">Without the MCP server</div>
+      <div class="link-row">
+        <div class="flow-step">Claude</div>
+        <div class="link-wire is-broken" aria-hidden="true"></div>
+        <div class="flow-step">Supabase</div>
+      </div>
+      <p class="link-caption">It can only <em>tell you</em> what to do — "create a table like this" — and <strong>you</strong> do it by hand.</p>
     </div>
-    <div class="card">
-      <div class="eyebrow">With the MCP server</div>
-      <p>Claude presses the buttons itself — creates tables, runs queries, deploys functions — directly in your real database.</p>
+    <div class="link-case is-connected">
+      <div class="case-label">With the MCP server</div>
+      <div class="link-row">
+        <div class="flow-step">Claude</div>
+        <div class="link-wire is-solid" aria-hidden="true"></div>
+        <div class="flow-step">Supabase</div>
+      </div>
+      <p class="link-caption">It presses the buttons itself — <strong>creates tables, runs queries, deploys functions</strong> — in your real database.</p>
     </div>
   </div>
   <p class="small-note"><strong>"Isn't that just an API?"</strong> An API is the raw machinery a service exposes; an MCP server is a <em>standard wrapper</em> around it, built so an AI can use it reliably without custom wiring. Like a universal remote — one set of controls any tool can offer.</p>

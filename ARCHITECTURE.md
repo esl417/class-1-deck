@@ -32,6 +32,29 @@ JS renders it as `"<n> · <label>"` (e.g. `4 · No real data yet?`), where `n` i
 slide's position in document order. That number+label is how a student refers to a
 slide ("slide 4", "the no-real-data slide") and how the bot view is addressed.
 
+### Diagram components
+
+Concept diagrams are plain HTML/CSS using each deck's existing tokens
+(`--accent`, `--surface`, `--hair`, `--display`), not exported images — so they
+theme with the deck, scale with `clamp()`, and stay editable as text. Each deck
+carries its own copy in its `<style>` block (same as `.arrow-flow`); there is no
+shared stylesheet.
+
+- `.arrow-flow` — a straight left-to-right chain. Use only when the concept
+  really is linear.
+- `.flow-converge` — several inputs bracketing into one hub, then an output
+  (`.flow-hub`, `.flow-join`, `.flow-outcome`). For "these do different jobs"
+  relationships a chain would flatten.
+- `.flow-linkpair` — the same two nodes drawn twice, once severed and once
+  connected (`.link-wire.is-broken` / `.is-solid`). For "without X / with X",
+  where the point is whether the connection exists at all.
+
+**Arrowheads:** every connector uses one shape at one size. Do not mix a `→`
+text glyph with a drawn arrow — the glyph's weight comes from the font and won't
+match. Avoid `preserveAspectRatio="none"` on any SVG containing an arrowhead: a
+stretched viewBox renders identical coordinates at different physical sizes and
+distorts the head. Stretch only with CSS borders; keep arrow SVGs 1:1.
+
 - **Host:** Vercel (project `classes`, public domain `classes.ericgrows.com`).
 - **DNS:** `ericgrows.com` is on Cloudflare, proxying to the Vercel origin.
 - **Deploy:** push to `main` → Vercel builds and serves.
