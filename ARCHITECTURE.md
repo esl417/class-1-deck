@@ -48,6 +48,20 @@ shared stylesheet.
 - `.flow-linkpair` — the same two nodes drawn twice, once severed and once
   connected (`.link-wire.is-broken` / `.is-solid`). For "without X / with X",
   where the point is whether the connection exists at all.
+- `.flow-fork` — one input, a decision node, two destinations (`.fork-gate`,
+  `.flow-split`, `.fork-dest`). For either/or routing, which a straight chain
+  misrepresents as then/then.
+- `.flow-stack` — layers in front-to-back order (`.stack-layer.is-front`). For
+  architecture where the concept is position in space, not sequence in time.
+- `.flow-canon` — two twins with one openly pointing home (`.canon-page`,
+  `.canon-link`). Built for the canonical-link rule in Class 3.
+
+Where a diagram makes an adjacent card redundant, fold the card's detail into
+the diagram and delete the card — a picture beside prose that says the same
+thing reads as duplication, not reinforcement. Removing content can also make a
+slide's `dense` modifier unnecessary; drop it so the slide re-centers. Note
+`dense` pins to the top and can make a marginal overflow *worse*, since the
+saved type height doesn't offset the lost centering — measure, don't assume.
 
 **Arrowheads:** every connector uses one shape at one size. Do not mix a `→`
 text glyph with a drawn arrow — the glyph's weight comes from the font and won't

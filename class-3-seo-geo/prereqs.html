@@ -361,6 +361,66 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
+  /* ---- Position stack: what sits in FRONT of what ---------------------
+     Same component as the main Class 3 deck, used here for the simpler
+     "Cloudflare stands in front of your site" idea. Deliberately stops
+     short of the human/AI fork — that's the main deck's reveal. */
+  .flow-stack {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(8px, 1vw, 14px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .stack-layer {
+    flex: 1 1 0;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .stack-layer.is-front { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .stack-layer .layer-pos {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+  }
+  .stack-layer.is-front .layer-pos { color: var(--accent-deep); }
+  .stack-layer .layer-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.55vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .stack-layer .layer-role {
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.4;
+    color: var(--body);
+    margin: 0;
+    max-width: none;
+  }
+  /* the connector between layers, same arrowhead as every other deck arrow */
+  .stack-wire {
+    align-self: center;
+    width: clamp(24px, 2.8vw, 40px);
+    height: 14px;
+    flex: 0 0 auto;
+    display: block;
+  }
+  .stack-wire path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .stack-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  @media (max-width: 860px) {
+    .flow-stack { flex-direction: column; }
+    .stack-wire { transform: rotate(90deg); }
+  }
+
   .small-note {
     font-size: clamp(15px, 1.35vw, 16px);
     color: var(--muted);
@@ -539,10 +599,35 @@
   <div class="slide-num" data-label="Step 1 · What Cloudflare is"></div>
   <div class="eyebrow">The 60-second version</div>
   <h2>What Cloudflare is — and why your site won't notice.</h2>
-  <div class="grid-2" style="margin-top: 4px;">
+  <div class="flow-stack">
+    <div class="stack-layer">
+      <span class="layer-pos">Arrives</span>
+      <span class="layer-name">A visitor</span>
+      <p class="layer-role">Types your address, same as always</p>
+    </div>
+    <svg class="stack-wire" viewBox="0 0 40 14" aria-hidden="true">
+      <path d="M0 7 H27" />
+      <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+    </svg>
+    <div class="stack-layer is-front">
+      <span class="layer-pos">Answers first</span>
+      <span class="layer-name">☁️ Cloudflare</span>
+      <p class="layer-role">Stands in front, then passes them along</p>
+    </div>
+    <svg class="stack-wire" viewBox="0 0 40 14" aria-hidden="true">
+      <path d="M0 7 H27" />
+      <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+    </svg>
+    <div class="stack-layer">
+      <span class="layer-pos">Unchanged</span>
+      <span class="layer-name">Your website</span>
+      <p class="layer-role">Exactly where it already lives</p>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top: 14px;">
     <div class="card">
       <div class="eyebrow">What it is</div>
-      <p>A free service that stands in front of your website and answers every visitor first, before passing them along. A huge share of the internet already runs through it — boring, trusted plumbing.</p>
+      <p>A free service that answers for your address. A huge share of the internet already runs through it — boring, trusted plumbing.</p>
     </div>
     <div class="card">
       <div class="eyebrow">What changes for your visitors</div>
@@ -550,7 +635,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🛡️ The bonus you get for free</div>
-      <p>Standing in front of your site, Cloudflare also <strong>shields and speeds it up</strong> — it blocks attacks and bad bots, absorbs traffic floods (DDoS), and caches your pages worldwide so they load faster. Real security upgrades, at $0, whether or not we do the AI-bot trick.</p>
+      <p>From out front, Cloudflare also <strong>shields and speeds up</strong> your site — blocking attacks and bad bots, absorbing traffic floods (DDoS), and caching your pages worldwide. Real security upgrades, at $0, whether or not we do the AI-bot trick.</p>
     </div>
   </div>
   <p class="small-note">Cost: $0. The Free plan is genuinely free — no trial, no credit card.</p>

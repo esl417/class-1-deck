@@ -222,13 +222,18 @@ _The one concept the whole class rests on_
 
 Remember from the prereqs: Cloudflare now sits in front of your website — every visitor hits Cloudflare first, before reaching your actual site. That position is the whole trick. We put a tiny program there — a Cloudflare Worker — that checks who's asking as each request comes through. A human or Google? It passes them to your normal site. An AI crawler? It quietly serves the AI version instead — all at your single address, so the visitor never sees anything different.
 
- Visitor hits Cloudflare first
- →
- Cloudflare reads who they are
- →
- Serves the right version
+ Every visitor
 
-This is why we moved your domain to Cloudflare before class: only something sitting in front of your site can intercept every visitor and route them.
+🚪 The Worker
+ reads who's asking
+
+ Human or Google
+ Your normal site
+
+ AI crawler
+ The AI version
+
+ This is why we moved your domain to Cloudflare before class: only something sitting in front of your site can intercept every visitor and route them.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -242,19 +247,22 @@ _Learn these three names — the rest is mechanical_
 
 ## The three pieces that make it work.
 
-You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible.
+You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible. Here's where each one sits:
 
-_🚪 The Worker — the front door_
+ Points the way
+ 🌐 DNS
+
+The setting that makes Cloudflare answer for your domain in the first place — which you already did in the prerequisites. That's why the front door can sit out front.
+
+ Out front
+ 🚪 The Worker
 
 A tiny program running at your address. It reads each visitor and decides: normal site, or AI version. This is the router — the whole trick lives here.
 
-_📄 Pages — where the AI version lives_
+ Behind it
+ 📄 Pages
 
-Cloudflare's free file host. It holds the AI version of your pages, and it's wired to your GitHub — every time you push, it rebuilds automatically. The Worker quietly pulls from it — it has its own hidden address the public never sees.
-
-_🌐 DNS — points your address at Cloudflare_
-
-The setting that makes Cloudflare answer for your domain in the first place — which you already did in the prerequisites. That's why the front door can sit out front.
+Cloudflare's free file host, holding the AI version of your pages. It's wired to your GitHub — every push rebuilds it. The Worker pulls from its own hidden address the public never sees.
 
 Human site (untouched, wherever it already lives) + AI version (on Pages) + the Worker choosing between them. That's the entire architecture.
 
@@ -280,7 +288,15 @@ _Rule 2 · Every AI page points home_
 
 Each AI page carries a signal (a canonical link ) saying "the real, original version of me is the human page." That openly tells search engines the two are twins — no hiding, no penalty.
 
-The content is the same on both — the AI version is just cleaner and easier to quote. Same information, openly linked back to its human twin. That's what keeps it above-board.
+ The original
+ Your human page
+
+rel="canonical"
+
+ The twin
+ The AI page
+
+ The content is the same on both — the AI version is just cleaner and easier to quote. Same information, openly linked back to its human twin. That's what keeps it above-board.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

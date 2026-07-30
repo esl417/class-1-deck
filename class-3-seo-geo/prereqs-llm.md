@@ -77,9 +77,22 @@ _The 60-second version_
 
 ## What Cloudflare is — and why your site won't notice.
 
+ Arrives
+ A visitor
+
+Types your address, same as always
+
+Answers first
+ ☁️ Cloudflare
+ Stands in front, then passes them along
+
+Unchanged
+ Your website
+ Exactly where it already lives
+
 _What it is_
 
-A free service that stands in front of your website and answers every visitor first, before passing them along. A huge share of the internet already runs through it — boring, trusted plumbing.
+A free service that answers for your address. A huge share of the internet already runs through it — boring, trusted plumbing.
 
 _What changes for your visitors_
 
@@ -87,7 +100,7 @@ Nothing. Same address, same site, same look. But once Cloudflare is standing in 
 
 _🛡️ The bonus you get for free_
 
-Standing in front of your site, Cloudflare also shields and speeds it up — it blocks attacks and bad bots, absorbs traffic floods (DDoS), and caches your pages worldwide so they load faster. Real security upgrades, at $0, whether or not we do the AI-bot trick.
+From out front, Cloudflare also shields and speeds up your site — blocking attacks and bad bots, absorbing traffic floods (DDoS), and caching your pages worldwide. Real security upgrades, at $0, whether or not we do the AI-bot trick.
 
 Cost: $0. The Free plan is genuinely free — no trial, no credit card.
 

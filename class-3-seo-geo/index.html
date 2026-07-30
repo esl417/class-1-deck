@@ -383,6 +383,222 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
+  /* ---- Fork: one input, a decision point, two different destinations -----
+     The mirror of a converge. For "either/or" concepts that a straight chain
+     turns into a misleading "then/then". */
+  .flow-fork {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) auto auto clamp(46px, 5vw, 72px) minmax(0, 1.1fr);
+    align-items: center;
+    gap: 0 clamp(8px, 1vw, 14px);
+    margin-top: clamp(18px, 2.6vh, 30px);
+    max-width: var(--col);
+  }
+  /* the decision node — heavier than a plain chip, it's where the choice happens */
+  .fork-gate {
+    background: rgba(15,138,128,0.10);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: clamp(16px, 1.8vw, 24px) clamp(14px, 1.6vw, 20px);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
+  }
+  .fork-gate .gate-title {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .fork-gate .gate-sub {
+    font-size: clamp(12px, 1.15vw, 14px);
+    color: var(--accent-ink);
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+  /* the split: a bracket whose arms reach the two output rows' centerlines */
+  /* arms span the two destination rows' centerlines; the right margin leaves
+     clear space for the branch arrowheads so they don't touch the cards */
+  .flow-split {
+    position: relative;
+    /* height = distance between the two destination centerlines: half a card
+       plus half the row gap, top and bottom */
+    height: calc(50% + clamp(7px, 0.9vh, 11px));
+    margin: 0 clamp(14px, 1.6vw, 22px) 0 clamp(18px, 2vw, 28px);
+    border: 2px solid var(--accent);
+    border-right: none;
+    border-radius: 14px 0 0 14px;
+  }
+  /* horizontal run INTO the split, from the gate */
+  .flow-split .split-in {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(18px, 2vw, 28px);
+    height: 14px;
+    overflow: visible;
+  }
+  /* the two runs OUT of the split, to each destination */
+  .flow-split .split-out {
+    position: absolute;
+    left: 100%;
+    width: clamp(10px, 1.2vw, 16px);
+    height: 14px;
+    overflow: visible;
+    transform: translateY(-50%);
+  }
+  .flow-split .split-out.to-top { top: 0; }
+  .flow-split .split-out.to-bot { top: 100%; }
+  .flow-outs { display: flex; flex-direction: column; gap: clamp(14px, 1.8vh, 22px); }
+  /* destination cards: one per branch, tinted by outcome */
+  .fork-dest {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: clamp(12px, 1.4vw, 18px) clamp(14px, 1.6vw, 20px);
+  }
+  .fork-dest .dest-who {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .fork-dest .dest-gets {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.45vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  /* a straight run between two nodes, same arrowhead as every other connector */
+  .flow-wire {
+    width: clamp(30px, 3.4vw, 46px);
+    height: 14px;
+    flex: 0 0 auto;
+  }
+  /* connectors: 1:1 coordinate space so arrowheads are never distorted */
+  .split-in, .split-out, .flow-wire { display: block; }
+  .split-in path, .split-out path, .flow-wire path {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+  .split-in path.flow-arrowhead,
+  .split-out path.flow-arrowhead,
+  .flow-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* stacked: the bracket can't span one column — drop it, keep reading order */
+  @media (max-width: 860px) {
+    .flow-fork { grid-template-columns: 1fr; gap: clamp(12px, 1.6vh, 18px) 0; }
+    .flow-fork > .flow-split { display: none; }
+    .flow-fork > .flow-wire { display: none; }
+  }
+
+  /* ---- Position stack: what sits in FRONT of what ---------------------
+     For architecture where the concept is ordering in space, not time.
+     Reads left-to-right as "the request passes through these in order". */
+  .flow-stack {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(8px, 1vw, 14px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .stack-layer {
+    flex: 1 1 0;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .stack-layer.is-front { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .stack-layer .layer-pos {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+  }
+  .stack-layer.is-front .layer-pos { color: var(--accent-deep); }
+  .stack-layer .layer-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.55vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .stack-layer .layer-role {
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.4;
+    color: var(--body);
+    margin: 0;
+    max-width: none;
+  }
+  @media (max-width: 860px) { .flow-stack { flex-direction: column; } }
+
+  /* ---- Canonical pair: two twins, one openly pointing home ------------
+     The back-arrow IS the point — it's what separates this from cloaking. */
+  .flow-canon {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0 clamp(10px, 1.2vw, 18px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .canon-page {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    text-align: center;
+  }
+  .canon-page.is-origin { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .canon-page .page-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .canon-page .page-who {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin-bottom: 3px;
+    display: block;
+  }
+  .canon-page.is-origin .page-who { color: var(--accent-deep); }
+  /* the canonical link, labelled — a back-arrow pointing at the original */
+  .canon-link { text-align: center; }
+  .canon-link svg { width: clamp(56px, 7vw, 104px); height: 14px; display: block; }
+  .canon-link path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .canon-link path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  .canon-link .link-tag {
+    display: block;
+    font-family: var(--mono);
+    font-size: clamp(11px, 1.05vw, 13px);
+    color: var(--accent-ink);
+    margin-top: 7px;
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .flow-canon { grid-template-columns: 1fr; gap: clamp(10px, 1.4vh, 14px) 0; }
+    .canon-link svg { transform: rotate(90deg); margin: 0 auto; }
+  }
+
   .small-note {
     font-size: clamp(15px, 1.35vw, 16px);
     color: var(--muted);
@@ -736,41 +952,72 @@
   <div class="eyebrow">The one concept the whole class rests on</div>
   <h2 class="nowrap-lg"><em>Cloudflare</em> is the front door — it picks who sees what.</h2>
   <p>Remember from the prereqs: <strong>Cloudflare now sits in front of your website</strong> — every visitor hits Cloudflare first, before reaching your actual site. That position is the whole trick. We put a tiny program there — a <strong>Cloudflare Worker</strong> — that checks <em>who's asking</em> as each request comes through. A human or Google? It passes them to your normal site. An AI crawler? It quietly serves the AI version instead — all at your single address, so the visitor never sees anything different.</p>
-  <div class="arrow-flow">
-    <div class="flow-step">Visitor hits Cloudflare first</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Cloudflare reads who they are</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Serves the right version</div>
+  <div class="flow-fork">
+    <div class="flow-step" style="text-align:center;">Every visitor</div>
+    <svg class="flow-wire" viewBox="0 0 40 14" aria-hidden="true">
+      <path d="M0 7 H27" />
+      <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+    </svg>
+    <div class="fork-gate">
+      <div class="gate-title">🚪 The Worker</div>
+      <div class="gate-sub">reads who's asking</div>
+    </div>
+    <div class="flow-split" aria-hidden="true">
+      <svg class="split-in" viewBox="0 0 40 14" aria-hidden="true">
+        <path d="M0 7 H27" />
+        <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+      </svg>
+      <svg class="split-out to-top" viewBox="0 0 24 14" aria-hidden="true">
+        <path d="M0 7 H11" />
+        <path class="flow-arrowhead" d="M24 7 L10 1.5 L10 12.5 z" />
+      </svg>
+      <svg class="split-out to-bot" viewBox="0 0 24 14" aria-hidden="true">
+        <path d="M0 7 H11" />
+        <path class="flow-arrowhead" d="M24 7 L10 1.5 L10 12.5 z" />
+      </svg>
+    </div>
+    <div class="flow-outs">
+      <div class="fork-dest">
+        <div class="dest-who">Human or Google</div>
+        <div class="dest-gets">Your normal site</div>
+      </div>
+      <div class="fork-dest">
+        <div class="dest-who">AI crawler</div>
+        <div class="dest-gets">The AI version</div>
+      </div>
+    </div>
   </div>
   <p class="small-note">This is why we moved your domain to Cloudflare before class: only something sitting <em>in front</em> of your site can intercept every visitor and route them.</p>
 </section>
 
 <!-- 5. THE THREE PIECES -->
-<section class="slide dense">
+<section class="slide">
   <div class="slide-num" data-label="The three pieces"></div>
   <div class="eyebrow">Learn these three names — the rest is mechanical</div>
   <h2>The three pieces that make it work.</h2>
-  <p>You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible.</p>
-  <div class="grid-2">
-    <div class="card">
-      <div class="eyebrow">🚪 The Worker — the front door</div>
-      <p>A tiny program running at your address. It reads each visitor and decides: normal site, or AI version. This is the router — the whole trick lives here.</p>
+  <p>You don't build these by hand — Claude does. But knowing the three names makes everything Claude tells you legible. Here's where each one sits:</p>
+  <div class="flow-stack">
+    <div class="stack-layer">
+      <span class="layer-pos">Points the way</span>
+      <span class="layer-name">🌐 DNS</span>
+      <p class="layer-role">The setting that makes Cloudflare answer for your domain in the first place — which you already did in the prerequisites. That's why the front door can sit out front.</p>
     </div>
-    <div class="card">
-      <div class="eyebrow">📄 Pages — where the AI version lives</div>
-      <p>Cloudflare's free file host. It holds the AI version of your pages, and it's <strong>wired to your GitHub</strong> — every time you push, it rebuilds automatically. The Worker quietly pulls from it — it has its own hidden address the public never sees.</p>
+    <div class="stack-layer is-front">
+      <span class="layer-pos">Out front</span>
+      <span class="layer-name">🚪 The Worker</span>
+      <p class="layer-role">A tiny program running at your address. It reads each visitor and decides: normal site, or AI version. <strong>This is the router — the whole trick lives here.</strong></p>
     </div>
-  </div>
-  <div class="card" style="margin-top: 6px;">
-    <div class="eyebrow">🌐 DNS — points your address at Cloudflare</div>
-    <p>The setting that makes Cloudflare answer for your domain in the first place — which you already did in the prerequisites. That's why the front door can sit out front.</p>
+    <div class="stack-layer">
+      <span class="layer-pos">Behind it</span>
+      <span class="layer-name">📄 Pages</span>
+      <p class="layer-role">Cloudflare's free file host, holding the AI version of your pages. It's <strong>wired to your GitHub</strong> — every push rebuilds it. The Worker pulls from its own hidden address the public never sees.</p>
+    </div>
   </div>
   <p class="small-note">Human site (untouched, wherever it already lives) + AI version (on Pages) + the Worker choosing between them. That's the entire architecture.</p>
 </section>
 
 <!-- 6. THE ONE SAFETY RULE -->
-<section class="slide dense">
+<section class="slide">
   <div class="slide-num" data-label="The one rule"></div>
   <div class="eyebrow">Get this wrong and Google penalizes you</div>
   <h2>The one rule that keeps this <em>safe</em>, not sneaky.</h2>
@@ -783,6 +1030,24 @@
     <div class="card">
       <div class="eyebrow">Rule 2 · Every AI page points home</div>
       <p>Each AI page carries a signal (a <strong>canonical link</strong>) saying "the real, original version of me is the human page." That openly tells search engines the two are twins — no hiding, no penalty.</p>
+    </div>
+  </div>
+  <div class="flow-canon">
+    <div class="canon-page is-origin">
+      <span class="page-who">The original</span>
+      <span class="page-name">Your human page</span>
+    </div>
+    <div class="canon-link">
+      <svg viewBox="0 0 100 14" aria-hidden="true">
+        <!-- points back at the original: the head is on the left -->
+        <path d="M100 7 H14" />
+        <path class="flow-arrowhead" d="M0 7 L14 1.5 L14 12.5 z" />
+      </svg>
+      <span class="link-tag">rel="canonical"</span>
+    </div>
+    <div class="canon-page">
+      <span class="page-who">The twin</span>
+      <span class="page-name">The AI page</span>
     </div>
   </div>
   <p class="small-note">The content is the same on both — the AI version is just cleaner and easier to quote. Same information, openly linked back to its human twin. That's what keeps it above-board.</p>
