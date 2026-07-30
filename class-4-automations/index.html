@@ -368,6 +368,97 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
+  /* ---- Daily cycle: the scheduled run, plus the catch-up branch ---------
+     A schedule is cyclical, and the "laptop was asleep" case is a branch off
+     it — both invisible when described in prose. Set in a tinted band so it
+     reads as one self-contained object, not headers for the cards below. */
+  .flow-cycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(6px, 0.8vw, 12px);
+    margin-top: clamp(12px, 1.5vh, 18px);
+    padding: clamp(11px, 1.4vh, 15px) clamp(16px, 2vw, 26px);
+    background: rgba(15,138,128,0.055);
+    border: 1px solid rgba(15,138,128,0.22);
+    border-radius: 14px;
+    max-width: var(--col);
+  }
+  .cycle-node {
+    flex: 0 1 auto;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+    padding: clamp(8px, 0.95vw, 12px) clamp(12px, 1.4vw, 18px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cycle-node.is-run { border: 2px solid var(--accent); background: rgba(15,138,128,0.10); }
+  /* the missed-run case: dashed, to read as "didn't happen" */
+  .cycle-node.is-missed { border-style: dashed; border-color: rgba(20,18,12,0.25); background: transparent; }
+  .cycle-node .node-name {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.45vw, 18px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cycle-node.is-missed .node-name { color: var(--muted); }
+  .cycle-node .node-sub {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.15vw, 13px);
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  /* connectors: 1:1 coordinate space so arrowheads are never distorted */
+  .cycle-wire { width: clamp(24px, 2.8vw, 40px); height: 14px; flex: 0 0 auto; display: block; }
+  .cycle-wire path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .cycle-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* the catch-up path is the recovery route, drawn to read as secondary */
+  .cycle-wire.is-catchup path { stroke: var(--accent-deep); stroke-dasharray: 5 4; }
+  .cycle-wire.is-catchup path.flow-arrowhead { fill: var(--accent-deep); stroke-dasharray: none; }
+  .cycle-split { flex: 0 0 auto; display: flex; align-items: center; }
+  /* the two outcomes of 7am, stacked — this is a branch, not a chain */
+  .cycle-branches {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vh, 12px);
+    flex: 0 1 auto;
+  }
+  .cycle-branch { display: flex; align-items: center; gap: clamp(8px, 1vw, 12px); flex-wrap: wrap; }
+  .cycle-branch .branch-when {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 9ch;
+    text-align: right;
+  }
+  /* the recovery path back up to the successful run */
+  .catchup-return { display: flex; align-items: center; gap: 7px; }
+  .catchup-return .return-label {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12.5px);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--accent-deep);
+    white-space: nowrap;
+  }
+  @media (max-width: 860px) {
+    .flow-cycle { flex-direction: column; }
+    .cycle-split .cycle-wire { transform: rotate(90deg); }
+    .cycle-branch { flex-direction: column; align-items: stretch; text-align: center; }
+    .cycle-branch .branch-when { text-align: center; min-width: 0; }
+    .catchup-return { justify-content: center; }
+  }
+
   /* ---- Process map: mapped steps, each tagged deterministic vs judgment ---- */
   .proc-map { display: flex; flex-direction: column; gap: 8px; max-width: var(--col); }
   .proc-phase {
@@ -745,18 +836,57 @@
   <div class="slide-num" data-label="Runs without you"></div>
   <div class="eyebrow">The part that makes it an automation</div>
   <h2>It runs on a schedule — on your own computer.</h2>
-  <p>No website, no cloud service to rent. The script lives on <strong>your Mac (or PC)</strong>, and your computer's own built-in scheduler runs it at the time you choose. That's the whole "without you" part — you set it once and it happens each morning.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">⏰ The built-in scheduler</div>
-      <p>Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up for you: "run this at 7am every day." On Mac it's <strong>launchd</strong>; on Windows, <strong>Task Scheduler</strong>. You never touch the details.</p>
+  <p>No website, no cloud service to rent. The script lives on <strong>your Mac (or PC)</strong>, and your computer's own built-in scheduler runs it at the time you choose — you set it once and it happens each morning.</p>
+  <div class="flow-cycle">
+    <div class="cycle-node">
+      <span class="node-name">⏰ 7:00am</span>
+      <span class="node-sub">The alarm goes off</span>
     </div>
-    <div class="card">
-      <div class="eyebrow">😴 The catch — and the fix we build in</div>
-      <p>It's a <strong>laptop</strong>. If it's asleep or closed at 7am, that run is simply <strong>missed</strong> — the scheduler won't wake it. So we build in <strong>catch-up</strong>: every time the machine wakes, the script checks "did I already run today?" — if not, it runs now.</p>
+    <div class="cycle-split" aria-hidden="true">
+      <svg class="cycle-wire" viewBox="0 0 40 14">
+        <path d="M0 7 H27" />
+        <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+      </svg>
+    </div>
+    <div class="cycle-branches">
+      <div class="cycle-branch">
+        <span class="branch-when">Laptop awake</span>
+        <div class="cycle-node is-run">
+          <span class="node-name">Your brief runs</span>
+          <span class="node-sub">Waiting when you sit down</span>
+        </div>
+      </div>
+      <div class="cycle-branch">
+        <span class="branch-when">Laptop closed</span>
+        <div class="cycle-node is-missed">
+          <span class="node-name">Run missed</span>
+          <span class="node-sub">The scheduler won't wake it</span>
+        </div>
+        <div class="catchup-return">
+          <span class="return-label">On wake</span>
+          <svg class="cycle-wire is-catchup" viewBox="0 0 40 14">
+            <path d="M0 7 H27" />
+            <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
+          </svg>
+          <div class="cycle-node is-run">
+            <span class="node-name">It catches up</span>
+            <span class="node-sub">Runs as soon as you open it</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <p class="small-note">That catch-up check is a real step Claude writes into the build, not something the scheduler does for free — it's what makes a laptop automation you can actually trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)</p>
+  <div class="grid-2" style="margin-top: 14px;">
+    <div class="card">
+      <div class="eyebrow">⏰ The built-in scheduler</div>
+      <p>Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up: "run this at 7am every day." On Mac it's <strong>launchd</strong>; on Windows, <strong>Task Scheduler</strong>. You never touch the details.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">😴 How catch-up works</div>
+      <p>A missed run isn't recovered for free. Every time the machine wakes, the script checks <em>"did I already run today?"</em> — if not, it runs now.</p>
+    </div>
+  </div>
+  <p class="small-note">Ask Claude for the catch-up check explicitly — it's what makes a laptop automation you can trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)</p>
 </section>
 
 <!-- ============================================================

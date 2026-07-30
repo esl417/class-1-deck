@@ -237,17 +237,35 @@ _The part that makes it an automation_
 
 ## It runs on a schedule — on your own computer.
 
-No website, no cloud service to rent. The script lives on your Mac (or PC) , and your computer's own built-in scheduler runs it at the time you choose. That's the whole "without you" part — you set it once and it happens each morning.
+No website, no cloud service to rent. The script lives on your Mac (or PC) , and your computer's own built-in scheduler runs it at the time you choose — you set it once and it happens each morning.
+
+ ⏰ 7:00am
+ The alarm goes off
+
+Laptop awake
+
+ Your brief runs
+ Waiting when you sit down
+
+ Laptop closed
+
+ Run missed
+ The scheduler won't wake it
+
+ On wake
+
+ It catches up
+ Runs as soon as you open it
 
 _⏰ The built-in scheduler_
 
-Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up for you: "run this at 7am every day." On Mac it's launchd ; on Windows, Task Scheduler . You never touch the details.
+ Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up: "run this at 7am every day." On Mac it's launchd ; on Windows, Task Scheduler . You never touch the details.
 
-_😴 The catch — and the fix we build in_
+_😴 How catch-up works_
 
-It's a laptop . If it's asleep or closed at 7am, that run is simply missed — the scheduler won't wake it. So we build in catch-up : every time the machine wakes, the script checks "did I already run today?" — if not, it runs now.
+A missed run isn't recovered for free. Every time the machine wakes, the script checks "did I already run today?" — if not, it runs now.
 
-That catch-up check is a real step Claude writes into the build, not something the scheduler does for free — it's what makes a laptop automation you can actually trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)
+Ask Claude for the catch-up check explicitly — it's what makes a laptop automation you can trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

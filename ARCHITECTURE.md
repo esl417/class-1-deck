@@ -55,6 +55,9 @@ shared stylesheet.
   architecture where the concept is position in space, not sequence in time.
 - `.flow-canon` — two twins with one openly pointing home (`.canon-page`,
   `.canon-link`). Built for the canonical-link rule in Class 3.
+- `.flow-cycle` — a scheduled run plus its recovery branch (`.cycle-node`
+  `.is-run` / `.is-missed`, `.cycle-branches`, `.catchup-return`). Built for the
+  Class 4 scheduler, where the failure case and its catch-up are the point.
 
 **A diagram placed above a card grid must not look like a header row.** If its
 boxes are full-width and land on the same column positions as the cards below,
