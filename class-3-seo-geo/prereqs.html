@@ -365,31 +365,42 @@
      Same component as the main Class 3 deck, used here for the simpler
      "Cloudflare stands in front of your site" idea. Deliberately stops
      short of the human/AI fork — that's the main deck's reveal. */
+  /* Sits in a tinted band and centers as one object, so it can't be mistaken
+     for a header row above the three cards below it. The layers are sized to
+     their content (not stretched to the column) precisely so their edges do
+     NOT line up with the cards underneath. */
   .flow-stack {
     display: flex;
-    align-items: stretch;
-    gap: clamp(8px, 1vw, 14px);
-    margin-top: clamp(16px, 2.2vh, 26px);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, 0.8vw, 12px);
+    margin-top: clamp(14px, 1.8vh, 22px);
+    padding: clamp(14px, 1.8vh, 20px) clamp(16px, 2vw, 26px);
+    background: rgba(15,138,128,0.055);
+    border: 1px solid rgba(15,138,128,0.22);
+    border-radius: 14px;
     max-width: var(--col);
+    flex-wrap: wrap;
   }
   .stack-layer {
-    flex: 1 1 0;
+    flex: 0 1 auto;
     background: var(--surface);
     border: 1px solid var(--hair);
-    border-radius: 12px;
-    padding: clamp(14px, 1.6vw, 20px);
+    border-radius: 10px;
+    padding: clamp(10px, 1.1vw, 14px) clamp(12px, 1.4vw, 18px);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
+    text-align: center;
   }
   .stack-layer.is-front { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  /* a quiet caption under the name, not an uppercase header label */
   .stack-layer .layer-pos {
     font-family: var(--sans);
-    font-size: clamp(11px, 1.05vw, 12px);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
+    font-size: clamp(12px, 1.15vw, 13px);
+    font-weight: 500;
     color: var(--muted);
+    line-height: 1.3;
   }
   .stack-layer.is-front .layer-pos { color: var(--accent-deep); }
   .stack-layer .layer-name {
@@ -601,27 +612,24 @@
   <h2>What Cloudflare is — and why your site won't notice.</h2>
   <div class="flow-stack">
     <div class="stack-layer">
-      <span class="layer-pos">Arrives</span>
       <span class="layer-name">A visitor</span>
-      <p class="layer-role">Types your address, same as always</p>
+      <span class="layer-pos">Same address as always</span>
     </div>
     <svg class="stack-wire" viewBox="0 0 40 14" aria-hidden="true">
       <path d="M0 7 H27" />
       <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
     </svg>
     <div class="stack-layer is-front">
-      <span class="layer-pos">Answers first</span>
       <span class="layer-name">☁️ Cloudflare</span>
-      <p class="layer-role">Stands in front, then passes them along</p>
+      <span class="layer-pos">Answers first, then passes along</span>
     </div>
     <svg class="stack-wire" viewBox="0 0 40 14" aria-hidden="true">
       <path d="M0 7 H27" />
       <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
     </svg>
     <div class="stack-layer">
-      <span class="layer-pos">Unchanged</span>
       <span class="layer-name">Your website</span>
-      <p class="layer-role">Exactly where it already lives</p>
+      <span class="layer-pos">Unchanged</span>
     </div>
   </div>
   <div class="grid-2" style="margin-top: 14px;">

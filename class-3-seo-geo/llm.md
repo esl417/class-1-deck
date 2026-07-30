@@ -291,7 +291,7 @@ Each AI page carries a signal (a canonical link ) saying "the real, original ver
  The original
  Your human page
 
-rel="canonical"
+"the real one is over there"
 
  The twin
  The AI page

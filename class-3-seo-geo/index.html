@@ -586,10 +586,13 @@
   .canon-link svg { width: clamp(56px, 7vw, 104px); height: 14px; display: block; }
   .canon-link path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
   .canon-link path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* plain language, not the raw HTML attribute — this audience doesn't
+     write markup, so a code-looking tag reads as jargon they can't act on */
   .canon-link .link-tag {
     display: block;
-    font-family: var(--mono);
-    font-size: clamp(11px, 1.05vw, 13px);
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.15vw, 14px);
+    font-style: italic;
     color: var(--accent-ink);
     margin-top: 7px;
     white-space: nowrap;
@@ -1043,7 +1046,7 @@
         <path d="M100 7 H14" />
         <path class="flow-arrowhead" d="M0 7 L14 1.5 L14 12.5 z" />
       </svg>
-      <span class="link-tag">rel="canonical"</span>
+      <span class="link-tag">"the real one is over there"</span>
     </div>
     <div class="canon-page">
       <span class="page-who">The twin</span>

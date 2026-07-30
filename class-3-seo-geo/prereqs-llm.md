@@ -77,22 +77,18 @@ _The 60-second version_
 
 ## What Cloudflare is — and why your site won't notice.
 
- Arrives
  A visitor
+ Same address as always
 
-Types your address, same as always
+☁️ Cloudflare
+ Answers first, then passes along
 
-Answers first
- ☁️ Cloudflare
- Stands in front, then passes them along
-
-Unchanged
  Your website
- Exactly where it already lives
+ Unchanged
 
 _What it is_
 
-A free service that answers for your address. A huge share of the internet already runs through it — boring, trusted plumbing.
+ A free service that answers for your address. A huge share of the internet already runs through it — boring, trusted plumbing.
 
 _What changes for your visitors_
 

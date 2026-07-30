@@ -56,6 +56,14 @@ shared stylesheet.
 - `.flow-canon` — two twins with one openly pointing home (`.canon-page`,
   `.canon-link`). Built for the canonical-link rule in Class 3.
 
+**A diagram placed above a card grid must not look like a header row.** If its
+boxes are full-width and land on the same column positions as the cards below,
+readers infer a mapping that isn't there. Size the diagram's nodes to their
+content, center them, and set the whole thing in a tinted band so it reads as
+one self-contained object. Keep labels in plain language — this audience does
+not write markup, so a code-styled tag (`rel="canonical"`) is jargon they can't
+act on; say what it means instead.
+
 Where a diagram makes an adjacent card redundant, fold the card's detail into
 the diagram and delete the card — a picture beside prose that says the same
 thing reads as duplication, not reinforcement. Removing content can also make a
