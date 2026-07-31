@@ -380,6 +380,93 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
+  /* ---- Zones + gate: what's private, what's public, and what crosses -----
+     "When does the world see this?" is a spatial question, so the answer is
+     drawn as territory: a private side, a public side, and the one action
+     that moves work across the boundary. */
+  .flow-zones {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(10px, 1.2vw, 16px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .zone {
+    border-radius: 14px;
+    padding: clamp(14px, 1.7vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  /* private: quiet, no emphasis — nothing at stake here */
+  .zone.is-private {
+    background: var(--surface);
+    border: 1px dashed rgba(20,18,12,0.28);
+  }
+  /* public: the accent, because this is the side that matters */
+  .zone.is-public {
+    background: rgba(15,138,128,0.09);
+    border: 2px solid var(--accent);
+  }
+  .zone .zone-who {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+  }
+  .zone.is-public .zone-who { color: var(--accent-deep); }
+  .zone .zone-name {
+    font-family: var(--display);
+    font-size: clamp(17px, 1.7vw, 21px);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .zone .zone-note {
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.4;
+    color: var(--body);
+    margin: 0;
+    max-width: none;
+  }
+  /* the gate: the single action that moves work from private to public */
+  .zone-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    padding: 0 clamp(2px, 0.5vw, 8px);
+  }
+  .zone-gate .gate-verb {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--accent-deep);
+    white-space: nowrap;
+  }
+  .zone-gate .gate-wire { width: clamp(34px, 4vw, 54px); height: 14px; display: block; }
+  .zone-gate .gate-wire path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .zone-gate .gate-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  .zone-gate .gate-when {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12.5px);
+    font-style: italic;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  @media (max-width: 860px) {
+    .flow-zones { grid-template-columns: 1fr; }
+    .zone-gate { flex-direction: row; gap: 10px; padding: 4px 0; }
+    .zone-gate .gate-wire { transform: rotate(90deg); }
+  }
+
   .small-note {
     font-size: clamp(15px, 1.35vw, 16px);
     color: var(--muted);
@@ -597,14 +684,24 @@
   <div class="slide-num" data-label="The critical rule"></div>
   <div class="eyebrow">When does the world see your changes?</div>
   <h2>Local = practice. Push = publish.</h2>
-  <div class="grid-2" style="margin-top: 30px;">
-    <div class="card">
-      <h3>Local (your computer)</h3>
-      <p>Every edit shows up the moment you save. Preview it in your browser anytime. Experiment, break things, undo, redo — nobody sees it.</p>
+  <div class="flow-zones">
+    <div class="zone is-private">
+      <span class="zone-who">Nobody sees this</span>
+      <span class="zone-name">Local — your computer</span>
+      <p class="zone-note">Every edit shows up the moment you save. Preview it in your browser anytime. Experiment, break things, undo, redo.</p>
     </div>
-    <div class="card">
-      <h3>Push (to GitHub)</h3>
-      <p>The moment you push, Vercel rebuilds and the changes go live for the whole internet. Only push when you're ready.</p>
+    <div class="zone-gate">
+      <span class="gate-verb">Push</span>
+      <svg class="gate-wire" viewBox="0 0 54 14" aria-hidden="true">
+        <path d="M0 7 H41" />
+        <path class="flow-arrowhead" d="M54 7 L40 1.5 L40 12.5 z" />
+      </svg>
+      <span class="gate-when">only when you're ready</span>
+    </div>
+    <div class="zone is-public">
+      <span class="zone-who">The whole internet sees it</span>
+      <span class="zone-name">Live — your real URL</span>
+      <p class="zone-note">The moment you push, Vercel rebuilds and your changes go live for anyone who visits.</p>
     </div>
   </div>
   <p class="small-note">This is the single most important concept of the day. Build locally. Push when proud.</p>
@@ -676,8 +773,8 @@
       <strong style="color:var(--accent-deep);">5. Details / craft</strong> <span style="color:var(--body);">— Micro-interactions, spacing, polish.</span>
     </div>
   </div>
-  <p class="small-note" style="margin-top: 18px;"><strong>You can use the iteration commands at every layer</strong> — <code>/impeccable bolder</code>, <code>animate</code>, <code>delight</code>, etc. all work whether you're fixing the whole-site aesthetic or just one section's layout. <strong>Full list on the next slide.</strong></p>
-  <p class="small-note"><strong>And:</strong> <em>describe what's wrong</em> — don't try to micro-direct the fix. "The CTA feels lost" beats "move the button 4px left."</p>
+  <p class="small-note" style="margin-top: 14px;"><strong>The iteration commands work at every layer</strong> — <code>/impeccable bolder</code>, <code>animate</code>, <code>delight</code>, whether you're fixing the whole-site aesthetic or one section's layout. <strong>Full list next slide.</strong></p>
+  <p class="small-note" style="margin-top: 6px;"><strong>And:</strong> <em>describe what's wrong</em> — don't micro-direct the fix. "The CTA feels lost" beats "move the button 4px left."</p>
 </section>
 
 <!-- 6b. THE FIRST PASS IS NEVER RIGHT (duplicated from Class 2) -->

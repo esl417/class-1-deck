@@ -55,9 +55,19 @@ shared stylesheet.
   architecture where the concept is position in space, not sequence in time.
 - `.flow-canon` — two twins with one openly pointing home (`.canon-page`,
   `.canon-link`). Built for the canonical-link rule in Class 3.
+- `.flow-zones` — a private zone, a public zone, and the one action that moves
+  work across the boundary (`.zone.is-private` / `.is-public`, `.zone-gate`).
+  Built for Class 1's local-vs-push rule; the dashed private side and accented
+  public side carry the stakes.
 - `.flow-cycle` — a scheduled run plus its recovery branch (`.cycle-node`
   `.is-run` / `.is-missed`, `.cycle-branches`, `.catchup-return`). Built for the
   Class 4 scheduler, where the failure case and its catch-up are the point.
+
+Before adding a diagram, read the slide's **markup**, not the deck outline. Some
+slides already contain hand-rolled diagrams built from inline styles (Class 1's
+review funnel, Class 4's `.proc-map`) that an outline scan reports as prose.
+Where one exists and works, leave it — a purpose-built visual usually beats a
+generic component swapped in over it.
 
 **A diagram placed above a card grid must not look like a header row.** If its
 boxes are full-width and land on the same column positions as the cards below,

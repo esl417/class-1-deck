@@ -224,13 +224,18 @@ _When does the world see your changes?_
 
 ## Local = practice. Push = publish.
 
-### Local (your computer)
+ Nobody sees this
+ Local — your computer
 
-Every edit shows up the moment you save. Preview it in your browser anytime. Experiment, break things, undo, redo — nobody sees it.
+Every edit shows up the moment you save. Preview it in your browser anytime. Experiment, break things, undo, redo.
 
-### Push (to GitHub)
+ Push
 
-The moment you push, Vercel rebuilds and the changes go live for the whole internet. Only push when you're ready.
+only when you're ready
+
+ The whole internet sees it
+ Live — your real URL
+ The moment you push, Vercel rebuilds and your changes go live for anyone who visits.
 
 This is the single most important concept of the day. Build locally. Push when proud.
 
@@ -338,9 +343,9 @@ Once a layer feels done, click the ✳ starburst to open a new session. A clean 
 
  5. Details / craft — Micro-interactions, spacing, polish.
 
-You can use the iteration commands at every layer — /impeccable bolder , animate , delight , etc. all work whether you're fixing the whole-site aesthetic or just one section's layout. Full list on the next slide.
+The iteration commands work at every layer — /impeccable bolder , animate , delight , whether you're fixing the whole-site aesthetic or one section's layout. Full list next slide.
 
-And: describe what's wrong — don't try to micro-direct the fix. "The CTA feels lost" beats "move the button 4px left."
+And: describe what's wrong — don't micro-direct the fix. "The CTA feels lost" beats "move the button 4px left."
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
