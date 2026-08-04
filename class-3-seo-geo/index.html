@@ -773,19 +773,41 @@
   .heads-up strong { color: var(--accent-deep); }
 
   /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
+  /* Height-capped, not width-driven: the shot is a wide 2:1 crop, so sizing it
+     by width blows past the slide's vertical budget and pushes it below the
+     fold. Cap the height and let width follow the aspect ratio. */
   .ui-shot {
     display: block;
-    width: 100%;
-    margin-top: 12px;
+    width: auto;
+    max-width: 100%;
+    max-height: 300px;
+    margin: 12px auto 0;
     border-radius: 9px;
     border: 1px solid var(--hair);
     box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
+  }
+
+  /* Plan-mode slide: two text cards + the UI shot. Was an inline
+     grid-template-columns, which no media query could override. */
+  .plan-mode-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 1.35fr;
+    gap: clamp(16px, 2vw, 28px);
+    align-items: center;
+    margin-top: 4px;
+  }
+  /* Below this the third column is too narrow to read the shot in: drop to two
+     cards side by side with the shot spanning underneath. */
+  @media (max-width: 1100px) {
+    .plan-mode-grid { grid-template-columns: 1fr 1fr; }
+    .plan-mode-grid .ui-shot { grid-column: 1 / -1; }
   }
 
   /* keep the slide column readable on smaller laptop widths */
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
     .grid-2 { grid-template-columns: 1fr; }
+    .plan-mode-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -1066,7 +1088,7 @@
   <div class="eyebrow">A new habit, right before we build</div>
   <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
   <p>Now you know what we're building. For a job this size, don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve — <em>before</em> a single file changes.</p>
-  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
+  <div class="plan-mode-grid">
     <div class="card">
       <div class="eyebrow">How to turn it on</div>
       <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
