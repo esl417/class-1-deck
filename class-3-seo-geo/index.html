@@ -305,6 +305,18 @@
     margin-bottom: 8px;
   }
 
+  /* Homework eyebrow — solid badge so "your homework" reads as an
+     assignment, not just another section label. Built from .pill's shape. */
+  .eyebrow.eyebrow-hw {
+    background: var(--accent);
+    color: #fff;
+    padding: 7px 16px;
+    border-radius: 30px;
+    letter-spacing: 0.13em;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px -4px rgba(15,138,128,0.7);
+  }
+
   /* ---- Quote: framed block, no thin side-stripe reflex --------------- */
   .quote {
     font-family: var(--display);
@@ -622,7 +634,7 @@
     line-height: 1.5;
     color: var(--accent-ink);
     margin: 12px 0;
-    max-width: 1000px;
+    max-width: var(--col);
     box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
   }
 
@@ -1318,23 +1330,23 @@
 <!-- 14. HOMEWORK — TRACK IT IN THE CLASS 2 DASHBOARD -->
 <section class="slide dense">
   <div class="slide-num" data-label="Homework"></div>
-  <div class="eyebrow">Your homework · start it this week</div>
-  <h2>Track your SEO + GEO in your <em>Class 2 dashboard</em>.</h2>
-  <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + GEO tracker</strong> to the dashboard you built in Class 2. Rankings and citations move slowly, so start it <strong>this week</strong> — wait a month and you've lost the "before vs. after" story.</p>
+  <div class="eyebrow eyebrow-hw">Your homework · start it this week</div>
+  <h2>Build an SEO + GEO tracker into your <em>Class 2 dashboard</em>.</h2>
+  <p>You just changed how your site gets found — now build the thing that tells you <strong>whether it worked</strong>. Same skills as Class 2: connect a data source, pull it in, put it on the dashboard. Rankings and citations move slowly, so start <strong>this week</strong> — wait a month and you've lost the "before vs. after" story.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">Two data sources to connect</div>
-      <p><strong>Google Search Console</strong> (<a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>) — <strong>free</strong>. Your real queries, impressions, clicks, and rankings straight from Google.</p>
-      <p style="margin-top: 6px;"><strong>DataForSEO</strong> (<a href="https://dataforseo.com" target="_blank" rel="noopener">dataforseo.com</a>) — what Search Console can't give you: competitor rankings, keyword volumes, AI-citation checks. <strong>~$50 prepaid</strong>, but pennies per lookup.</p>
+      <div class="eyebrow">1 · Connect the data</div>
+      <p><strong>Google Search Console</strong> (<a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>) — <strong>free</strong>. Your real queries, impressions, clicks, and rankings from Google.</p>
+      <p style="margin-top: 6px;"><strong>DataForSEO</strong> (<a href="https://dataforseo.com" target="_blank" rel="noopener">dataforseo.com</a>) — competitor rankings, keyword volumes, AI-citation checks. <strong>~$50 prepaid</strong>, pennies per lookup.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">⚡ Plug them into the <code>/seo</code> toolkit</div>
-      <p>Signing up isn't enough. That plugin from earlier has <strong>extensions for exactly these two sources</strong>, and they're off until you set them up.</p>
-      <p style="margin-top: 6px;">Wire them in and every <code>/seo</code> command stops guessing from a public crawl and runs on <em>your</em> real numbers. Same commands, real data — that's the superpower.</p>
+      <div class="eyebrow">2 · Put it on the dashboard</div>
+      <p>Exactly what you did in Class 2 — MCP server in, pipeline built, numbers on screen. Claude can do the plumbing end-to-end.</p>
+      <p style="margin-top: 6px;">The part that's <strong>yours</strong>: deciding what to track and what a good or bad reading looks like. Build a <strong>decision tool, not a report</strong>.</p>
     </div>
   </div>
-  <div class="prompt-box" style="margin:12px 0 0;">I have Search Console verified and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data, then verify each one actually returns data.</div>
-  <p class="small-note"><strong>Then restart Claude Code</strong> — MCP tools only load at session start, so the connection isn't live until you do. After that: tell Claude what you want to track and build it the same way you've built everything else. No step-by-step this time — <strong>you've got the tools</strong>.</p>
+  <div class="prompt-box" style="margin-top:12px; margin-bottom:0;">Connect Google Search Console and DataForSEO to my dashboard and get my SEO + GEO data flowing in. Ask me what I want to track before you design anything.</div>
+  <p class="small-note"><strong>While you're in there:</strong> the <code>/seo</code> plugin from earlier has extensions for these same two sources. Have Claude switch them on in the same sitting — set once and every future <code>/seo</code> command runs on your real numbers instead of a public crawl. (Then <strong>restart Claude Code</strong>; MCP tools only load at session start.)</p>
 </section>
 
 <!-- 15. RECAP / SHIP -->

@@ -601,28 +601,28 @@ Two honesty guards if a student presses on the numbers: it's correlation, not pr
 
 **What the student sees on this slide:**
 
-_Your homework · start it this week_
+Your homework · start it this week
 
-## Track your SEO + GEO in your Class 2 dashboard .
+## Build an SEO + GEO tracker into your Class 2 dashboard .
 
-You just changed how your site gets found — now you need to see whether it's working . Your homework: add an SEO + GEO tracker to the dashboard you built in Class 2. Rankings and citations move slowly, so start it this week — wait a month and you've lost the "before vs. after" story.
+You just changed how your site gets found — now build the thing that tells you whether it worked . Same skills as Class 2: connect a data source, pull it in, put it on the dashboard. Rankings and citations move slowly, so start this week — wait a month and you've lost the "before vs. after" story.
 
-_Two data sources to connect_
+_1 · Connect the data_
 
-Google Search Console ( search.google.com/search-console ) — free . Your real queries, impressions, clicks, and rankings straight from Google.
+Google Search Console ( search.google.com/search-console ) — free . Your real queries, impressions, clicks, and rankings from Google.
 
-DataForSEO ( dataforseo.com ) — what Search Console can't give you: competitor rankings, keyword volumes, AI-citation checks. ~$50 prepaid , but pennies per lookup.
+DataForSEO ( dataforseo.com ) — competitor rankings, keyword volumes, AI-citation checks. ~$50 prepaid , pennies per lookup.
 
-_⚡ Plug them into the /seo toolkit_
+_2 · Put it on the dashboard_
 
-Signing up isn't enough. That plugin from earlier has extensions for exactly these two sources , and they're off until you set them up.
+Exactly what you did in Class 2 — MCP server in, pipeline built, numbers on screen. Claude can do the plumbing end-to-end.
 
-Wire them in and every /seo command stops guessing from a public crawl and runs on your real numbers. Same commands, real data — that's the superpower.
+The part that's yours : deciding what to track and what a good or bad reading looks like. Build a decision tool, not a report .
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> I have Search Console verified and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data, then verify each one actually returns data.
+> Connect Google Search Console and DataForSEO to my dashboard and get my SEO + GEO data flowing in. Ask me what I want to track before you design anything.
 
-Then restart Claude Code — MCP tools only load at session start, so the connection isn't live until you do. After that: tell Claude what you want to track and build it the same way you've built everything else. No step-by-step this time — you've got the tools .
+While you're in there: the /seo plugin from earlier has extensions for these same two sources. Have Claude switch them on in the same sitting — set once and every future /seo command runs on your real numbers instead of a public crawl. (Then restart Claude Code ; MCP tools only load at session start.)
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -632,17 +632,15 @@ Concretely, the split for this homework: the PLUMBING is fair game for Claude to
 
 Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those. Help them implement, but keep them the one making the decisions.
 
-The step people miss — WIRE BOTH SOURCES INTO THE `/seo` PLUGIN, not just into the dashboard. The claude-seo plugin (github.com/AgriciDaniel/claude-seo, installed back on the toolkit slide) ships extensions for exactly these two sources, and they are INERT until someone configures them. Signing up for Search Console and DataForSEO does not connect them — the plugin has to be pointed at the credentials. Until you do that, every `/seo` command is inferring from a public crawl of their site; after you do it, the same commands run on their real Search Console queries/impressions/rankings and live DataForSEO competitor and keyword data. Same commands, real data — that's the whole upgrade, and it's a configuration gap, not a missing feature. If a student reports that `/seo` results feel generic or that a command "can't see" their data, this is almost always why: check the extension config before you go debugging anything else.
+While they're connecting these two sources, wire them into the `/seo` plugin too — it's quick, and this is the natural moment for it since the credentials are already in hand. The claude-seo plugin (github.com/AgriciDaniel/claude-seo, from the toolkit slide) has extensions for exactly these two sources, off until configured. Once they're on, every `/seo` command runs on their real Search Console and DataForSEO numbers instead of inferring from a public crawl. Set and forget — do it once here and every future `/seo` run benefits. Useful diagnostic later: if `/seo` results ever feel generic or a command "can't see" their data, check this config first.
 
-Do this part end-to-end for them — it's pure plumbing. Two practical notes from doing it live:
+Just do this part for them — it's pure plumbing, and quick. Two practical notes from doing it live:
 - Search Console auth is a Google service-account key. You need the JSON key file placed where the plugin's config expects it, and the plugin's config pointed at that path. The service account also has to be granted access to the property in Search Console itself, or it authenticates fine and sees zero properties.
 - DataForSEO is an API login/password pair from their dashboard, registered as an MCP server. Install at USER scope (not project scope) so it's available in every project rather than only the one they happen to be in — same global-vs-project gotcha as other installs.
 
-Then VERIFY each one with a real call rather than trusting that setup succeeded — list the Search Console properties and run one live query, and make one real DataForSEO lookup. A silent auth failure looks identical to "no data yet," and a student with a young site genuinely has almost no data, so a live check is the only way to tell those apart. If their numbers come back tiny (a handful of impressions, zero clicks), that's normal for a new site and worth saying out loud so they don't read it as a broken setup.
+Verify each with one real call rather than assuming setup worked — list the Search Console properties, run a live query, make one DataForSEO lookup. A silent auth failure and "young site with no data yet" look identical otherwise. If the numbers come back tiny (a few impressions, zero clicks), say so out loud — that's normal for a new site, not a broken setup.
 
-One timing gotcha to warn them about: MCP server tools load at SESSION START. After registering DataForSEO, the server isn't usable until they restart Claude Code. The skill/commands are active immediately, but the live data tools aren't — so if they run `/seo` right after setup and it behaves as if DataForSEO isn't there, tell them to restart before assuming anything is wrong.
-
-Finally, once both are connected, have them update their CLAUDE.md so Claude uses these sources on every `/seo` run without being asked — same permanent-instruction pattern from Class 1, and it's what makes the wiring pay off on every future command instead of just today's.
+Two things worth mentioning as you go: MCP tools load at session start, so DataForSEO isn't live until they restart Claude Code (the commands work immediately, the data tools don't). And once both are connected, have them add a line to CLAUDE.md so Claude reaches for these sources on every `/seo` run without being asked — the permanent-instruction pattern from Class 1, and what makes this genuinely set-and-forget.
 
 ## Slide 21 · You shipped it
 
