@@ -617,6 +617,15 @@ Google Search Console ( search.google.com/search-console ) — free . Shows exac
 
 DataForSEO ( dataforseo.com ) — pay-as-you-go, for the data Search Console can't give you: competitor rankings, keyword volumes, and AI-citation checks. ~$50 prepaid minimum , but each lookup costs fractions of a penny , so it lasts a long time. Also an MCP server, just like Supabase in Class 2.
 
+ ⚡
+
+Don't just connect them — plug them into the SEO toolkit. That /seo plugin you installed earlier has extensions built for exactly these two sources , and they're off until you set them up. Hook them in and every /seo command stops guessing from a public crawl and starts running on your real numbers — your actual queries and rankings from Search Console, live competitor and keyword data from DataForSEO. Same commands, real data. That's the superpower.
+
+[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
+> I have Google Search Console verified for my domain and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data — walk me through what credentials you need, then verify each one is actually returning data.
+
+Heads up: an MCP server's tools load when a session starts, so restart Claude Code after wiring it up — the connection isn't live until you do.
+
  🎓
 
 No step-by-step this time — you've got the tools. You know plan mode, MCP servers, the dashboard, and how to point Claude at what you need. Tell Claude what you want to track (rankings, AI crawler hits, citations over time) and build it the same way you've built everything else. This is you doing it on your own.
@@ -628,6 +637,18 @@ This is a do-it-yourself homework, but be careful what that means — it does NO
 Concretely, the split for this homework: the PLUMBING is fair game for Claude to run end-to-end — a student can say "install DataForSEO into my dashboard" and Claude can go connect the MCP, build the data pipeline, and get the SEO/GEO data flowing in. That's mechanical; let Claude do it. But the part that's THEIRS is building the dashboard UI to actually use that data — deciding what to track, how to display it, what a good/bad reading looks like. Claude shouldn't silently design the whole tracker; the student has to spend the time shaping how they'll read and act on it (same "build a decision tool, not a report" lesson from Class 2). So: Claude does the pipeline, the student drives the dashboard.
 
 Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those. Help them implement, but keep them the one making the decisions.
+
+The step people miss — WIRE BOTH SOURCES INTO THE `/seo` PLUGIN, not just into the dashboard. The claude-seo plugin (github.com/AgriciDaniel/claude-seo, installed back on the toolkit slide) ships extensions for exactly these two sources, and they are INERT until someone configures them. Signing up for Search Console and DataForSEO does not connect them — the plugin has to be pointed at the credentials. Until you do that, every `/seo` command is inferring from a public crawl of their site; after you do it, the same commands run on their real Search Console queries/impressions/rankings and live DataForSEO competitor and keyword data. Same commands, real data — that's the whole upgrade, and it's a configuration gap, not a missing feature. If a student reports that `/seo` results feel generic or that a command "can't see" their data, this is almost always why: check the extension config before you go debugging anything else.
+
+Do this part end-to-end for them — it's pure plumbing. Two practical notes from doing it live:
+- Search Console auth is a Google service-account key. You need the JSON key file placed where the plugin's config expects it, and the plugin's config pointed at that path. The service account also has to be granted access to the property in Search Console itself, or it authenticates fine and sees zero properties.
+- DataForSEO is an API login/password pair from their dashboard, registered as an MCP server. Install at USER scope (not project scope) so it's available in every project rather than only the one they happen to be in — same global-vs-project gotcha as other installs.
+
+Then VERIFY each one with a real call rather than trusting that setup succeeded — list the Search Console properties and run one live query, and make one real DataForSEO lookup. A silent auth failure looks identical to "no data yet," and a student with a young site genuinely has almost no data, so a live check is the only way to tell those apart. If their numbers come back tiny (a handful of impressions, zero clicks), that's normal for a new site and worth saying out loud so they don't read it as a broken setup.
+
+One timing gotcha to warn them about: MCP server tools load at SESSION START. After registering DataForSEO, the server isn't usable until they restart Claude Code. The skill/commands are active immediately, but the live data tools aren't — so if they run `/seo` right after setup and it behaves as if DataForSEO isn't there, tell them to restart before assuming anything is wrong.
+
+Finally, once both are connected, have them update their CLAUDE.md so Claude uses these sources on every `/seo` run without being asked — same permanent-instruction pattern from Class 1, and it's what makes the wiring pay off on every future command instead of just today's.
 
 ## Slide 21 · You shipped it
 
