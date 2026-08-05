@@ -1320,28 +1320,21 @@
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework · start it this week</div>
   <h2>Track your SEO + GEO in your <em>Class 2 dashboard</em>.</h2>
-  <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + GEO tracker</strong> to the dashboard you built in Class 2. The sooner you build it, the sooner it starts collecting data — and trends only show up over weeks, so starting now matters.</p>
+  <p>You just changed how your site gets found — now you need to <strong>see whether it's working</strong>. Your homework: add an <strong>SEO + GEO tracker</strong> to the dashboard you built in Class 2. Rankings and citations move slowly, so start it <strong>this week</strong> — wait a month and you've lost the "before vs. after" story.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">Why now, not later</div>
-      <p>Rankings, AI citations, and crawler visits all move slowly. If you wait a month to start tracking, you've lost a month of the "before vs. after" story. Get it collecting <strong>this week</strong> so you can watch the difference this build makes.</p>
+      <div class="eyebrow">Two data sources to connect</div>
+      <p><strong>Google Search Console</strong> (<a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>) — <strong>free</strong>. Your real queries, impressions, clicks, and rankings straight from Google.</p>
+      <p style="margin-top: 6px;"><strong>DataForSEO</strong> (<a href="https://dataforseo.com" target="_blank" rel="noopener">dataforseo.com</a>) — what Search Console can't give you: competitor rankings, keyword volumes, AI-citation checks. <strong>~$50 prepaid</strong>, but pennies per lookup.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">The data sources you'll need</div>
-      <p><strong>Google Search Console</strong> (<a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>) — <strong>free</strong>. Shows exactly what queries surface your site, your real impressions, clicks, and average ranking straight from Google. Verify your domain once, then let Claude read it as an MCP server.</p>
-      <p style="margin-top: 6px;"><strong>DataForSEO</strong> (<a href="https://dataforseo.com" target="_blank" rel="noopener">dataforseo.com</a>) — pay-as-you-go, for the data Search Console can't give you: competitor rankings, keyword volumes, and AI-citation checks. <strong>~$50 prepaid minimum</strong>, but each lookup costs <strong>fractions of a penny</strong>, so it lasts a long time. Also an MCP server, just like Supabase in Class 2.</p>
+      <div class="eyebrow">⚡ Plug them into the <code>/seo</code> toolkit</div>
+      <p>Signing up isn't enough. That plugin from earlier has <strong>extensions for exactly these two sources</strong>, and they're off until you set them up.</p>
+      <p style="margin-top: 6px;">Wire them in and every <code>/seo</code> command stops guessing from a public crawl and runs on <em>your</em> real numbers. Same commands, real data — that's the superpower.</p>
     </div>
   </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">⚡</span>
-    <p><strong>Don't just connect them — plug them into the SEO toolkit.</strong> That <code>/seo</code> plugin you installed earlier has <strong>extensions built for exactly these two sources</strong>, and they're off until you set them up. Hook them in and every <code>/seo</code> command stops guessing from a public crawl and starts running on <em>your</em> real numbers — your actual queries and rankings from Search Console, live competitor and keyword data from DataForSEO. Same commands, real data. That's the superpower.</p>
-  </div>
-  <div class="prompt-box" style="margin:10px 0 0;">I have Google Search Console verified for my domain and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data — walk me through what credentials you need, then verify each one is actually returning data.</div>
-  <p class="small-note">Heads up: an MCP server's tools load when a session starts, so <strong>restart Claude Code after wiring it up</strong> — the connection isn't live until you do.</p>
-  <div class="heads-up">
-    <span class="heads-up-mark">🎓</span>
-    <p><strong>No step-by-step this time — you've got the tools.</strong> You know plan mode, MCP servers, the dashboard, and how to point Claude at what you need. Tell Claude what you want to track (rankings, AI crawler hits, citations over time) and build it the same way you've built everything else. This is you doing it on your own.</p>
-  </div>
+  <div class="prompt-box" style="margin:12px 0 0;">I have Search Console verified and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data, then verify each one actually returns data.</div>
+  <p class="small-note"><strong>Then restart Claude Code</strong> — MCP tools only load at session start, so the connection isn't live until you do. After that: tell Claude what you want to track and build it the same way you've built everything else. No step-by-step this time — <strong>you've got the tools</strong>.</p>
 </section>
 
 <!-- 15. RECAP / SHIP -->

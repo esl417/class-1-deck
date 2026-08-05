@@ -605,30 +605,24 @@ _Your homework · start it this week_
 
 ## Track your SEO + GEO in your Class 2 dashboard .
 
-You just changed how your site gets found — now you need to see whether it's working . Your homework: add an SEO + GEO tracker to the dashboard you built in Class 2. The sooner you build it, the sooner it starts collecting data — and trends only show up over weeks, so starting now matters.
+You just changed how your site gets found — now you need to see whether it's working . Your homework: add an SEO + GEO tracker to the dashboard you built in Class 2. Rankings and citations move slowly, so start it this week — wait a month and you've lost the "before vs. after" story.
 
-_Why now, not later_
+_Two data sources to connect_
 
-Rankings, AI citations, and crawler visits all move slowly. If you wait a month to start tracking, you've lost a month of the "before vs. after" story. Get it collecting this week so you can watch the difference this build makes.
+Google Search Console ( search.google.com/search-console ) — free . Your real queries, impressions, clicks, and rankings straight from Google.
 
-_The data sources you'll need_
+DataForSEO ( dataforseo.com ) — what Search Console can't give you: competitor rankings, keyword volumes, AI-citation checks. ~$50 prepaid , but pennies per lookup.
 
-Google Search Console ( search.google.com/search-console ) — free . Shows exactly what queries surface your site, your real impressions, clicks, and average ranking straight from Google. Verify your domain once, then let Claude read it as an MCP server.
+_⚡ Plug them into the /seo toolkit_
 
-DataForSEO ( dataforseo.com ) — pay-as-you-go, for the data Search Console can't give you: competitor rankings, keyword volumes, and AI-citation checks. ~$50 prepaid minimum , but each lookup costs fractions of a penny , so it lasts a long time. Also an MCP server, just like Supabase in Class 2.
+Signing up isn't enough. That plugin from earlier has extensions for exactly these two sources , and they're off until you set them up.
 
- ⚡
-
-Don't just connect them — plug them into the SEO toolkit. That /seo plugin you installed earlier has extensions built for exactly these two sources , and they're off until you set them up. Hook them in and every /seo command stops guessing from a public crawl and starts running on your real numbers — your actual queries and rankings from Search Console, live competitor and keyword data from DataForSEO. Same commands, real data. That's the superpower.
+Wire them in and every /seo command stops guessing from a public crawl and runs on your real numbers. Same commands, real data — that's the superpower.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> I have Google Search Console verified for my domain and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data — walk me through what credentials you need, then verify each one is actually returning data.
+> I have Search Console verified and a DataForSEO account. Set up the claude-seo plugin's extensions for both so the /seo commands use my real data, then verify each one actually returns data.
 
-Heads up: an MCP server's tools load when a session starts, so restart Claude Code after wiring it up — the connection isn't live until you do.
-
- 🎓
-
-No step-by-step this time — you've got the tools. You know plan mode, MCP servers, the dashboard, and how to point Claude at what you need. Tell Claude what you want to track (rankings, AI crawler hits, citations over time) and build it the same way you've built everything else. This is you doing it on your own.
+Then restart Claude Code — MCP tools only load at session start, so the connection isn't live until you do. After that: tell Claude what you want to track and build it the same way you've built everything else. No step-by-step this time — you've got the tools .
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
