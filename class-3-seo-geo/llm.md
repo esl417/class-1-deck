@@ -615,14 +615,13 @@ DataForSEO ( dataforseo.com ) — competitor rankings, keyword volumes, AI-citat
 
 _2 · Put it on the dashboard_
 
-Exactly what you did in Class 2 — MCP server in, pipeline built, numbers on screen. Claude can do the plumbing end-to-end.
+Exactly what you did in Class 2 — MCP server in, pipeline built, numbers on screen. No step-by-step this time; you've done all of this before.
 
 The part that's yours : deciding what to track and what a good or bad reading looks like. Build a decision tool, not a report .
 
-[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Connect Google Search Console and DataForSEO to my dashboard and get my SEO + GEO data flowing in. Ask me what I want to track before you design anything.
+ 💡
 
-While you're in there: the /seo plugin from earlier has extensions for these same two sources. Have Claude switch them on in the same sitting — set once and every future /seo command runs on your real numbers instead of a public crawl. (Then restart Claude Code ; MCP tools only load at session start.)
+While you're in there — set once, works forever. Tell Claude to also connect Search Console and DataForSEO to your /seo commands. Right now those commands guess about your site from the outside; once they're connected, they read your actual Google data every time you run them. Same commands, real numbers. (Then restart Claude Code so the connection loads.)
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -632,7 +631,7 @@ Concretely, the split for this homework: the PLUMBING is fair game for Claude to
 
 Your role if consulted: reinforce WHY NOW (rankings, citations, crawler visits all move slowly — waiting a month loses the before/after story; start collecting this week), and point them at the data sources — Google Search Console (free; real impressions/clicks/rankings; verify domain, then Claude reads it as an MCP server) and DataForSEO (pay-as-you-go, ~$50 prepaid but fractions-of-a-penny per lookup; competitor rankings, keyword volumes, AI-citation checks; also an MCP server like Supabase). They already know plan mode, MCP servers, and the dashboard — coach them to apply those. Help them implement, but keep them the one making the decisions.
 
-While they're connecting these two sources, wire them into the `/seo` plugin too — it's quick, and this is the natural moment for it since the credentials are already in hand. The claude-seo plugin (github.com/AgriciDaniel/claude-seo, from the toolkit slide) has extensions for exactly these two sources, off until configured. Once they're on, every `/seo` command runs on their real Search Console and DataForSEO numbers instead of inferring from a public crawl. Set and forget — do it once here and every future `/seo` run benefits. Useful diagnostic later: if `/seo` results ever feel generic or a command "can't see" their data, check this config first.
+While they're connecting these two sources to the dashboard, connect them to the `/seo` commands too — quick, and the natural moment, since the credentials are already in hand. Plain version for the student: the `/seo` commands can either guess about their site from the outside (public crawl) or read their actual Google data — connecting these two sources is what flips them to the second. The claude-seo plugin (github.com/AgriciDaniel/claude-seo, from the toolkit slide) supports both sources, but the connection is off until someone sets it up; signing up for the accounts doesn't do it. Set and forget — once here, every future `/seo` run benefits. Useful diagnostic later: if `/seo` results ever feel generic or a command "can't see" their data, check this first.
 
 Just do this part for them — it's pure plumbing, and quick. Two practical notes from doing it live:
 - Search Console auth is a Google service-account key. You need the JSON key file placed where the plugin's config expects it, and the plugin's config pointed at that path. The service account also has to be granted access to the property in Search Console itself, or it authenticates fine and sees zero properties.
