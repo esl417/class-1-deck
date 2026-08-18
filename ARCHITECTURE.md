@@ -23,8 +23,14 @@ class-1-website-build/  index.html   prereqs.html   fonts/  *.png   (+ student k
 class-2-dashboard-build/ index.html  prereqs.html   ...
 class-3-seo-geo/        index.html   prereqs.html   ...   build-reference/  cloudflare-student-kit/
 class-4-automations/    index.html                  ...   (no prereqs deck)
+aivisibility/           index.html                  ...   (free Maven lightning lesson)
 index.html              (landing page linking to all decks)
 ```
+
+`aivisibility/` is not part of the paid six-class series — it's a free 45-minute
+Maven lightning lesson used as a lead magnet, and it assumes the attendee has
+nothing installed but the Claude desktop app. Its slug is deliberately topic-named
+rather than `lightning-lesson`, so additional lightning lessons can sit beside it.
 
 A **slide** is `<section class="slide">` (or `slide dense`) inside `<div class="deck">`.
 Each carries a `<div class="slide-num" data-label="…">`; at runtime the deck's inline

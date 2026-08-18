@@ -125,6 +125,24 @@ const DECKS = [
       '(instant, no wait).',
   },
   {
+    dir: 'aivisibility',
+    title: "Lightning Lesson: Audit Your Website's AI Visibility with Claude Code",
+    standing:
+      'A FREE 45-minute standalone Maven lightning lesson, not part of the paid ' +
+      'series. Assume the attendee has NOTHING installed except the Claude desktop ' +
+      'app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website ' +
+      'project. They install the claude-seo plugin entirely through the desktop ' +
+      "Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo " +
+      '-> Sync -> install; no restart needed) and run ONE command, `/seo geo ' +
+      'yourdomain.com`, against their own site. Two gotchas dominate: (1) it MUST be ' +
+      'the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; ' +
+      '(2) a red "not made by Anthropic" warning appears during install and is ' +
+      'expected and correct. The run takes several minutes and nothing waits on it. ' +
+      'The teaching (SEO vs GEO, what you control vs what you do not, being the ' +
+      'answer, the readable-twin idea) is the spine; the audit is the proof. Close ' +
+      'routes to a WAITLIST for a course opening early October, not to enrollment.',
+  },
+  {
     dir: 'class-4-automations',
     title: 'Class 4: Automations',
     standing:
