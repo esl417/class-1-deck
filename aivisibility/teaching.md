@@ -306,8 +306,8 @@ handing it over here converts a reason to enroll into a free tip. Let the ceilin
 a real ceiling; the close is where the door gets pointed at.
 
 If someone asks in Q&A how you'd get the missing data, that's a genuine question and you
-answer it honestly: it takes connecting a live data source, that's what the course
-covers, and here's the waitlist.
+answer it honestly: it takes connecting a live data source, and that's what the course
+covers, and it's open now. Don't pitch it here; the offer slide is two minutes away.
 
 ## The advantage
 
@@ -362,13 +362,43 @@ The rows worth saying out loud: the dashboard class isn't about dashboards, it's
 getting at your own data. The automation class isn't about a morning briefing, it's
 about work happening without you. Same shape as today.
 
-**The CTA is the WAITLIST, not enrollment.** The cohort opens early October and the
-discount is exclusive to attendees (p2-promo owns the code and the real link; both link
-boxes on the slide are placeholders until it lands).
+**The course is live and enrolling, so this slide sets up the ask rather than making it.**
+Name the two doors, keep it short, and move to the offer slide, which is where the actual
+sell happens. Don't do the pitch twice.
 
 Both doors are genuinely real, and say so. The free YouTube version is the same material,
-not a teaser. Routing someone to free who'd be unhappy paying is a good outcome. That
-honesty is also the most persuasive thing on the slide, so don't rush past it.
+not a teaser. Routing someone there who'd be unhappy paying is a good outcome, and that
+honesty is what makes the paid ask land thirty seconds later.
+
+Maven emails every registrant the recording 48 hours after the lesson with a link to the
+course, so anyone who drops off still gets a second touch. That means you can close soft
+here without losing them.
+
+## The offer
+
+**Two minutes, and this is the only hard sell in the session. Earn it by being specific
+and then stop talking.**
+
+The facts, all verified against the live course page:
+
+- **Run Your Whole Business with AI**, six weeks, Sept 29 to Nov 3
+- 11 live sessions, 6 lessons, 6 projects
+- 2 to 4 hours a week live, plus project time
+- $1,795, and **FOUNDING400 takes it to $1,395**
+- **10 founding seats at that price**
+- Lifetime access to recordings, 3 months of StratEngine AI Professional, Maven guarantee
+
+**The scarcity is real, so state it flatly and do not dress it up.** Ten seats is ten
+seats. No countdown theater, no "spots are going fast." This audience detects that
+instantly and it would undo the trust the whole session just built.
+
+Leave the QR up through the Q&A. People scan during questions, not during the pitch.
+
+Say the September 29 date out loud. Attendees hearing this on Aug 25 have about five
+weeks, and some will assume a launch that far out means they can decide later.
+
+The strongest thing you can say here is the least salesy: they just did the smallest
+version of this and it worked. The course is the same move applied to the whole business.
 
 ## Questions
 
