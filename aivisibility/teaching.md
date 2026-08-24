@@ -321,15 +321,6 @@ If someone asks in Q&A how you'd get the missing data, that's a genuine question
 answer it honestly: it takes connecting a live data source, and that's what the course
 covers, and it's open now. Don't pitch it here; the offer slide is two minutes away.
 
-## The advantage
-
-Stated plainly as a technical advantage, not scarcity. Their competitors aren't doing
-this, not because it's out of reach but because almost nobody teaches it and the
-penalty for getting it wrong is real.
-
-Say the last line honestly: that gap is temporary. No urgency theater, no fake
-deadline. This audience smells that instantly.
-
 ## The real lesson
 
 The spine of the whole session. Slow down and mean it. Big type, three short paragraphs,
@@ -403,6 +394,11 @@ The facts, all verified against the live course page:
 **The scarcity is real, so state it flatly and do not dress it up.** Ten seats is ten
 seats. No countdown theater, no "spots are going fast." This audience detects that
 instantly and it would undo the trust the whole session just built.
+
+The "your competitors are not doing this yet" callout is a technical advantage, not
+scarcity — it moved here from a cut slide. Their competitors aren't doing it because
+almost nobody teaches it and the penalty for getting it wrong is real. Say the last line
+honestly: that gap is temporary. No urgency theater, no fake deadline, same as above.
 
 Leave the QR up through the Q&A. People scan during questions, not during the pitch.
 

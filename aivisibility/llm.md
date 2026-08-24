@@ -639,7 +639,45 @@ his ask, not mine.
 Watch the clock. This can expand to fill whatever you give it, and the close still
 needs its time.
 
-## Slide 16 · The ceiling
+## Slide 16 · The real lesson
+
+**What the student sees on this slide:**
+
+_The real lesson_
+
+## You installed an expert.
+
+Today it was an SEO expert. You added it in four clicks, and it went and examined your actual business.
+
+That was the skill, not the SEO. Whenever someone has written down how to do a job properly, you can hand that to Claude and put it to work on yours.
+
+Every one of them installs exactly the way this one did.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+The spine of the whole session. Slow down and mean it. Big type, three short paragraphs,
+long pauses between them. Silence is the technique on this slide.
+
+**The one thing they should walk out believing:** you can install an expert. Today it
+was an SEO expert, added in four clicks, and it went and examined their real business.
+That's a concrete thing that happened forty minutes ago, not an abstraction, which is
+exactly why it's the takeaway.
+
+Then the turn: the SEO was never the point. The skill is knowing that when somebody has
+written down how to do a job properly, you can hand that to Claude and put it to work.
+
+**Be careful what you promise here, and this is checked.** The official plugin
+marketplace today is overwhelmingly developer tools and vendor integrations (Stripe,
+Intercom, Salesforce). There is NOT a ready-made bookkeeping or hiring or contracts
+plugin waiting for a small business owner. Do not list those as if they're sitting there
+to be installed; anyone who goes looking will find nothing and the whole close curdles.
+
+What IS true and safe to say: the mechanism is general. New skills appear constantly,
+anyone can write one, and the four-click move they just learned is how any of them gets
+added. If someone asks what else is available, be honest that the good ones today skew
+technical and marketing, and that this is early.
+
+## Slide 17 · The ceiling
 
 **What the student sees on this slide:**
 
@@ -681,68 +719,7 @@ If someone asks in Q&A how you'd get the missing data, that's a genuine question
 answer it honestly: it takes connecting a live data source, and that's what the course
 covers, and it's open now. Don't pitch it here; the offer slide is two minutes away.
 
-## Slide 17 · The advantage
-
-**What the student sees on this slide:**
-
-_Your advantage_
-
-## Almost nobody has built the dual web.
-
-Everything on your report is real work worth doing, and you can do it inside the website you already have. But there's a ceiling on it, and the thing that lifts the ceiling is serving AI its own version of your site.
-
- ⏳
-
-Your competitors are not doing this yet. Not because it's out of reach, but because almost nobody is teaching it and the penalty for getting it wrong is real. That gap is temporary.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Stated plainly as a technical advantage, not scarcity. Their competitors aren't doing
-this, not because it's out of reach but because almost nobody teaches it and the
-penalty for getting it wrong is real.
-
-Say the last line honestly: that gap is temporary. No urgency theater, no fake
-deadline. This audience smells that instantly.
-
-## Slide 18 · The real lesson
-
-**What the student sees on this slide:**
-
-_The real lesson_
-
-## You installed an expert.
-
-Today it was an SEO expert. You added it in four clicks, and it went and examined your actual business.
-
-That was the skill, not the SEO. Whenever someone has written down how to do a job properly, you can hand that to Claude and put it to work on yours.
-
-Every one of them installs exactly the way this one did.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The spine of the whole session. Slow down and mean it. Big type, three short paragraphs,
-long pauses between them. Silence is the technique on this slide.
-
-**The one thing they should walk out believing:** you can install an expert. Today it
-was an SEO expert, added in four clicks, and it went and examined their real business.
-That's a concrete thing that happened forty minutes ago, not an abstraction, which is
-exactly why it's the takeaway.
-
-Then the turn: the SEO was never the point. The skill is knowing that when somebody has
-written down how to do a job properly, you can hand that to Claude and put it to work.
-
-**Be careful what you promise here, and this is checked.** The official plugin
-marketplace today is overwhelmingly developer tools and vendor integrations (Stripe,
-Intercom, Salesforce). There is NOT a ready-made bookkeeping or hiring or contracts
-plugin waiting for a small business owner. Do not list those as if they're sitting there
-to be installed; anyone who goes looking will find nothing and the whole close curdles.
-
-What IS true and safe to say: the mechanism is general. New skills appear constantly,
-anyone can write one, and the four-click move they just learned is how any of them gets
-added. If someone asks what else is available, be honest that the good ones today skew
-technical and marketing, and that this is early.
-
-## Slide 19 · What's next
+## Slide 18 · What's next
 
 **What the student sees on this slide:**
 
@@ -803,7 +780,7 @@ Maven emails every registrant the recording 48 hours after the lesson with a lin
 course, so anyone who drops off still gets a second touch. That means you can close soft
 here without losing them.
 
-## Slide 20 · The offer
+## Slide 19 · The offer
 
 **What the student sees on this slide:**
 
@@ -819,6 +796,10 @@ $1,795 $1,395
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > maven.com/ericgrows/run-your-whole-business-with-ai
+
+ ⏳
+
+Your competitors are not doing this yet. Not because it's out of reach, but because almost nobody is teaching it and the penalty for getting it wrong is real. That gap is temporary.
 
 Still free on YouTube if you'd rather do it alone, at ericgrows.com . Same material, no help.
 
@@ -840,6 +821,11 @@ The facts, all verified against the live course page:
 seats. No countdown theater, no "spots are going fast." This audience detects that
 instantly and it would undo the trust the whole session just built.
 
+The "your competitors are not doing this yet" callout is a technical advantage, not
+scarcity — it moved here from a cut slide. Their competitors aren't doing it because
+almost nobody teaches it and the penalty for getting it wrong is real. Say the last line
+honestly: that gap is temporary. No urgency theater, no fake deadline, same as above.
+
 Leave the QR up through the Q&A. People scan during questions, not during the pitch.
 
 Say the September 29 date out loud. Attendees hearing this on Aug 25 have about five
@@ -848,7 +834,7 @@ weeks, and some will assume a launch that far out means they can decide later.
 The strongest thing you can say here is the least salesy: they just did the smallest
 version of this and it worked. The course is the same move applied to the whole business.
 
-## Slide 21 · Questions
+## Slide 20 · Questions
 
 **What the student sees on this slide:**
 
