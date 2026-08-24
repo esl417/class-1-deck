@@ -248,20 +248,26 @@ danger is the point; the details are the curriculum.
 
 ## Your results
 
-**You are not lecturing here. You are running the room.** This is the one stretch of the
-session where the students are the ones working: they're reading their own report while
-you take reactions off the chat. The slide is a backdrop, not content. Do not read it
-aloud and do not walk through an example report on your screen.
+**You are not lecturing here. You are running the room.** The slide is a backdrop, not
+content. Do not read it aloud and do not walk through an example report on your screen.
 
-The shape of these few minutes:
+**Nobody chats with Claude during this beat.** They read, they post one thing to the
+chat, and you teach off what comes back. With twenty people, sending everyone into their
+own private Claude conversation is twenty separate experiences, no shared attention, and
+nothing for you to do. The chat is what makes this work at this room size: they read
+privately, they post publicly, one person's finding becomes everyone's lesson. The
+talking-to-Claude part is real and valuable, but it's homework, and the slide now says so.
 
-1. Give the instruction once: top of the report, find the overall score, find the lowest
-   category, ask about that one.
-2. Read the three prompts out loud and tell them to try one right now, while you're
-   still on screen. **This is the Mentality slide cashing out** and it may be the most
-   valuable thirty seconds of the session.
-3. Then go quiet and work the chat. Ask an open question to prime it: "what's your
-   lowest score?" or "what's the first thing it told you?"
+Five minutes, hard cap. The shape:
+
+1. Give the instruction once: top of the report, find the overall score, find your
+   lowest category. That's it — no reading comprehension required yet.
+2. **"Put your lowest category in the chat."** One or two words from each person. Low
+   effort, and now you have twenty data points on screen.
+3. Read the chat back and cluster it out loud: "okay, a lot of you are low on X." That
+   moment is the point of the whole beat — twenty people stop feeling alone with a bad
+   number, and it's teaching you could not have scripted in advance.
+4. Take two or three specific ones live, by name, and answer them for the room.
 
 Answer individuals by name. Someone's specific finding, answered live, is worth more
 than any general point you could make, and it's the thing they'll tell other people
@@ -269,8 +275,8 @@ about afterward.
 
 Expect and handle these:
 
-- **"Mine says something I don't understand."** Perfect, that's what the prompts are
-  for. Have them paste the line into Claude in the same window.
+- **"Mine says something I don't understand."** Expected, and say so — nobody
+  understands every line. That's exactly what the after-class conversation is for.
 - **"Mine scored badly."** Reframe immediately: a low score is a to-do list, and it's
   measuring readiness, not the quality of their business.
 - **"Mine isn't done yet."** Fine, it'll be waiting for them. Nothing after this depends
@@ -278,6 +284,12 @@ Expect and handle these:
 - **A finding about something off their website** (reviews, listings, no Wikipedia):
   that's the "on your site vs around your site" split from earlier appearing in their
   own results. Name it when it comes up rather than teaching it again.
+
+Land the homework before you click on, and land it broad — not as a task list. Go back
+to it on your own time, ask it anything, it will explain any of this in plain English.
+The one steer worth giving them: ask what they can actually fix on their own site.
+That's slide 11 doing its job — it keeps them off the off-site stuff they can't move and
+pointed at the half they control.
 
 Say the promo-footer line here: the person who built this has a free community, that's
 his ask, not mine.
