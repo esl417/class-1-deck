@@ -426,9 +426,9 @@ audience is exactly the group most tempted to mass-generate pages, so say it pla
 
 _What you can change_
 
-## Half of this isn't on your website at all.
+## Half of SEO isn't on your website at all.
 
-Your report is going to name things you can fix this afternoon, and things no amount of work on your website will touch. Knowing which is which is most of the skill.
+Some of it you can fix this afternoon, in your own words on your own pages. The rest no amount of work on your website will touch. Knowing which is which is most of the skill.
 
 _On your site · yours to change_
 
