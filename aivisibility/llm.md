@@ -576,7 +576,7 @@ Find your overall score and the categories under it.
 
 Find your lowest one.
 
-You will not understand every line, and you don't have to. Nothing here needs fixing today.
+You will not understand every line, and you don't have to. Nothing has to get fixed in the next five minutes.
 
 _💬 Then tell the room_
 
