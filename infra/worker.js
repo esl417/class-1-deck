@@ -39,6 +39,9 @@ const BOT_VIEWS = {
 
   '/class-4-automations': '/class-4-automations/llm.md',
   '/class-4-automations/': '/class-4-automations/llm.md',
+
+  '/aivisibility': '/aivisibility/llm.md',
+  '/aivisibility/': '/aivisibility/llm.md',
 };
 
 export default {
