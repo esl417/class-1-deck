@@ -387,7 +387,7 @@ The facts, all verified against the live course page:
 - **Run Your Whole Business with AI**, six weeks, Sept 29 to Nov 3
 - 11 live sessions, 6 lessons, 6 projects
 - 2 to 4 hours a week live, plus project time
-- $1,795, and **FOUNDING400 takes it to $1,395**
+- $1,795, and **FOUNDER400 takes it to $1,395**
 - **10 founding seats at that price**
 - Lifetime access to recordings, 3 months of StratEngine AI Professional, Maven guarantee
 
