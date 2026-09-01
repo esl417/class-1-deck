@@ -157,6 +157,27 @@ const DECKS = [
       'possible with fixed rules, call Claude only for the "what matters" step) and ' +
       'the laptop catch-up check (a missed scheduled run fires on next wake).',
   },
+  {
+    dir: 'dashboard',
+    title: 'Lightning Lesson: Build a Dashboard That Thinks Like You with Claude Code',
+    standing:
+      'A FREE 45-minute standalone Maven lightning lesson, not part of the paid ' +
+      'series. Assume the attendee has NOTHING installed except the Claude desktop ' +
+      'app on a paid plan. No terminal, no VS Code, no GitHub, no database, no ' +
+      'analytics connection. CRITICAL: this session is LECTURE AND DEMONSTRATION ' +
+      'only — the attendee watches, they do NOT build along, and you should never ' +
+      'imply they were supposed to. Eric demos one build on his own machine from a ' +
+      'single sample CSV, producing a local dashboard.html opened in a browser. ' +
+      'The teachable spine is (1) standard reports are built for everyone so they ' +
+      'fit no one, (2) build a decision tool, not a report, and (3) the number you ' +
+      'actually run on is COMPUTED from two or three raw ones, so no export ' +
+      'contains it. The honest limit, stated plainly on the slides: a local HTML ' +
+      'file does NOT refresh itself — you hand it a fresh export and ask, and it ' +
+      'updates. Do not blur that. Someone reading this deck afterwards most likely ' +
+      'wants to redo the build with their OWN export: help them do exactly that, ' +
+      'starting from the prompt on slide 4. Close routes to the paid six-class ' +
+      'course starting September 29 (code FOUNDER400).',
+  },
 ];
 
 // ---- tiny HTML helpers (no DOM lib; the decks are hand-authored, regular HTML) ----

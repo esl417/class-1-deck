@@ -42,6 +42,9 @@ const BOT_VIEWS = {
 
   '/aivisibility': '/aivisibility/llm.md',
   '/aivisibility/': '/aivisibility/llm.md',
+
+  '/dashboard': '/dashboard/llm.md',
+  '/dashboard/': '/dashboard/llm.md',
 };
 
 export default {

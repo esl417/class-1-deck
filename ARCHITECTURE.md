@@ -24,13 +24,40 @@ class-2-dashboard-build/ index.html  prereqs.html   ...
 class-3-seo-geo/        index.html   prereqs.html   ...   build-reference/  cloudflare-student-kit/
 class-4-automations/    index.html                  ...   (no prereqs deck)
 aivisibility/           index.html                  ...   (free Maven lightning lesson)
+dashboard/              index.html                  ...   (free Maven lightning lesson)
 index.html              (landing page linking to all decks)
 ```
 
-`aivisibility/` is not part of the paid six-class series — it's a free 45-minute
-Maven lightning lesson used as a lead magnet, and it assumes the attendee has
-nothing installed but the Claude desktop app. Its slug is deliberately topic-named
-rather than `lightning-lesson`, so additional lightning lessons can sit beside it.
+`aivisibility/` and `dashboard/` are not part of the paid six-class series — they
+are free 45-minute Maven lightning lessons used as lead magnets, and both assume
+the attendee has nothing installed but the Claude desktop app. Their slugs are
+deliberately topic-named rather than `lightning-lesson`, so further lightning
+lessons can sit beside them. Neither is linked from the landing page; they are
+reached through Maven.
+
+The two are **not** the same format, and the difference is load-bearing:
+
+- `aivisibility/` is **follow-along**. Attendees install a plugin and run one
+  long command on their own machine at ~minute 12, then ignore it while the
+  teaching happens over the top. That fire-and-forget property is what stops a
+  room of a hundred diverging machines from stalling the session.
+- `dashboard/` is **lecture and demonstration**. Nobody builds along. A dashboard
+  build is conversational, so every attendee's session would diverge within
+  ninety seconds and there would be no shared reconvergence point. Instead Eric
+  demos one build from a sample CSV, kicking it off at ~minute 12 (slide 4) and
+  returning to it on slide 7, so the same fire-and-forget shape is preserved with
+  one machine instead of many. Its only engagement beat is the slide 6 chat
+  question, which therefore carries all the interaction weight that
+  `aivisibility/` spreads across three moments.
+
+A free lightning lesson must not depend on anything from the paid prereqs. For
+`dashboard/` specifically that rules out Supabase, GA4, and deploying: GA reads
+zero for ~48h after tag install, the Supabase MCP restart is the single worst
+stuck-point in the Class 2 prereqs, and a first deploy needs several browser auth
+round-trips. The demo is a local `dashboard.html` built from a flat sample CSV,
+opened in the browser, and nothing else. The honest limit (a local file does not
+refresh itself) is stated on its own slide and deliberately left unclosed there;
+the course-facing answer lives two slides later.
 
 A **slide** is `<section class="slide">` (or `slide dense`) inside `<div class="deck">`.
 Each carries a `<div class="slide-num" data-label="…">`; at runtime the deck's inline
@@ -65,6 +92,14 @@ shared stylesheet.
   work across the boundary (`.zone.is-private` / `.is-public`, `.zone-gate`).
   Built for Class 1's local-vs-push rule; the dashed private side and accented
   public side carry the stakes.
+- `.anatomy` / `.anat` — a set of parts making up one screen, in a tinted band so
+  it reads as a single object rather than a header row over the content below.
+  `.anat.is-hero` marks the dominant part. Built for the dashboard lesson's
+  "four things on the screen" beat.
+- `.derive` — two raw inputs on the left, an arrow, and the number computed from
+  them on the right (`.raw-num` muted, `.derived-num` accented and much larger).
+  The size gap IS the argument: the small grey numbers were in the file, the big
+  teal one never was. Built for the dashboard lesson's synthetic-metric reveal.
 - `.flow-cycle` — a scheduled run plus its recovery branch (`.cycle-node`
   `.is-run` / `.is-missed`, `.cycle-branches`, `.catchup-return`). Built for the
   Class 4 scheduler, where the failure case and its catch-up are the point.

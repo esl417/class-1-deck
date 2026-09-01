@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Lightning Lesson: Build a Dashboard That Thinks Like You</title>
+<style>
+
+  /* ============================================================
+     Class 3 deck — warm "patient teacher's whiteboard" system
+     Headings: Hanken Grotesk (self-hosted). Body: system sans.
+     ============================================================ */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;            /* variable axis */
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+
+  :root {
+    /* palette */
+    --paper-top: #fdfcf9;
+    --paper-bot: #f2eee6;            /* lifted lighter so the teal accent separates cleanly, still clearly warm */
+    --ink:        #15140f;           /* near-black warm ink, slightly warmer than #1a1a1a */
+    --body:       #2c2a24;           /* workhorse reading color, clears AA on paper */
+    --muted:      #6a665c;           /* secondary; do not go lighter on paper */
+    --faint:      #7c776c;           /* captions / slide marker only (AA-large on paper) */
+    --accent:      #0f8a80;
+    --accent-deep: #0c6f67;
+    --accent-ink:  #0a5952;           /* text-safe deepest teal for fine print on tint */
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;           /* warm near-white card, opaque (no timid translucency) */
+    /* type */
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    /* layout */
+    --pad-x: clamp(48px, 7vw, 104px);
+    --pad-top: clamp(48px, 7vh, 76px);
+    --nav-safe: 116px;               /* bottom safe-area so content never hits the nav */
+    --col: 1180px;                   /* content measure */
+    /* z-index scale */
+    --z-progress: 200;
+    --z-nav: 100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--paper-bot);
+    color: var(--body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  /* ---- Shared slide skeleton -------------------------------------------
+     Every slide is the same frame: a centered max-width content column,
+     consistent padding, and a guaranteed bottom safe-area above the nav.
+     Vertical centering is the default; the column never collides w/ nav. */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    padding: var(--pad-top) var(--pad-x) var(--nav-safe);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(15,138,128,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    overflow-y: auto;
+  }
+  .slide.active { display: flex; flex-direction: column; }
+  /* center the content column vertically + cap its width consistently */
+  .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
+  /* Every slide centers vertically for one consistent read. `safe` is the guard:
+     when a slide's content is taller than 100vh, plain centering would push the
+     headline off the top edge — `safe center` falls back to top-alignment in
+     exactly that case, so the eyebrow/headline are never clipped. */
+  .slide.active { justify-content: safe center; }
+  /* dense slides: same centered alignment as every other slide; the type
+     ramp below is tightened so content-heavy slides still clear the nav */
+  .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
+  .slide.dense p,
+  .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
+  .slide.dense li { line-height: 1.42; }
+  .slide.dense .small-note { margin-top: 12px; }
+  .slide.dense .card .eyebrow { margin-bottom: 8px; }
+  /* dense cards: tighten internal list rhythm so an at-a-glance summary clears the nav */
+  .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
+  .slide.dense .card ul li:last-child { margin-bottom: 0; }
+
+  /* ---- Short-viewport fit -----------------------------------------------
+     Slides are a hard 100vh, so on laptop-height screens (<=900px) the dense
+     slides need the chrome and type pulled in or the tallest ones (4, 5, 11)
+     overflow the frame. Scales the frame, not the copy — nothing gets cut. */
+  @media (max-height: 900px) {
+    :root { --pad-top: clamp(30px, 4.4vh, 48px); --nav-safe: 84px; }
+    .slide.dense h2 { font-size: clamp(26px, 2.9vw, 33px); margin-bottom: 12px; }
+    .slide.dense p,
+    .slide.dense li { font-size: clamp(15px, 1.4vw, 17px); margin-bottom: 8px; }
+    .slide.dense .card ul li { font-size: clamp(14px, 1.25vw, 15.5px); margin-bottom: 6px; }
+    .slide.dense .card { padding: clamp(16px, 1.7vw, 22px); }
+    .slide.dense .eyebrow { margin-bottom: 10px; }
+    .slide.dense .small-note { margin-top: 8px; font-size: clamp(13px, 1.2vw, 14.5px); }
+    .slide.dense .prompt-box { padding: 12px 16px; font-size: clamp(13px, 1.25vw, 14.5px); }
+    .slide.dense .grid-2 { gap: clamp(16px, 1.9vw, 26px); }
+  }
+
+  /* ---- Title slide: one dominant title, witty promise, warm note ----
+     Hierarchy by role, not just size: ink title → teal promise →
+     quiet aspirational note. Stays one calm column. */
+  .title-slide { gap: clamp(28px, 4.2vh, 52px); text-align: center; }
+  .title-slide.active > *:not(.slide-num) { max-width: 1340px; }
+  .title-slide.active > .title-head { max-width: none; }
+
+  .title-head { display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 1.8vh, 20px); }
+  .title-kicker {
+    font-family: var(--sans);
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--accent-deep);
+    margin-bottom: clamp(2px, 0.6vh, 6px);
+  }
+  .title-main em { font-style: normal; color: var(--accent); }
+  .title-main {
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  /* the <br> sets a clean 2-line break on desktop; below the breakpoint it drops
+     out and the headline wraps naturally so the long first sentence never clips */
+  @media (max-width: 860px) {
+    .title-main { font-size: clamp(28px, 6vw, 44px); white-space: normal; }
+    .title-main .hero-break { display: none; }
+  }
+  .title-sub {
+    font-family: var(--display);
+    font-size: clamp(19px, 2.1vw, 27px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  /* ---- Slide marker (top-right): the deck's single deliberate kicker ---- */
+  .slide-num {
+    position: absolute;
+    top: clamp(26px, 4vh, 40px);
+    right: clamp(28px, 4vw, 52px);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    z-index: 3;
+  }
+
+  /* ---- Eyebrow: tied to the accent with a tick, not a floating reflex --- */
+  .eyebrow {
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-deep);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  /* nested eyebrows inside cards are sub-labels, not the slide kicker: no tick */
+  .card .eyebrow { margin-bottom: 10px; }
+  .card .eyebrow::before { display: none; }
+
+  /* ---- Headings: Hanken, real modular scale -------------------------- */
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(46px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.4vw, 50px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 em { font-style: normal; color: var(--accent); }
+  /* one-line headline on wide screens: sized so the full string fits the
+     content column at every width down to the breakpoint (no clip/overflow),
+     then wraps normally on small screens. */
+  h2.nowrap-lg { white-space: nowrap; font-size: clamp(30px, 3.5vw, 46px); }
+  @media (max-width: 820px) { h2.nowrap-lg { white-space: normal; font-size: clamp(28px, 5vw, 40px); } }
+  h3 {
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  p {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--body);
+    margin-bottom: 16px;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  ul { list-style: none; padding: 0; max-width: var(--col); }
+  li {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.5;
+    color: var(--body);
+    margin-bottom: 14px;
+    padding-left: 30px;
+    position: relative;
+  }
+  li::before {
+    content: "→";
+    font-family: var(--sans);
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  li.check::before { content: "☐"; color: var(--green); }
+  li.done-check::before { content: "✓"; color: var(--green); font-weight: 800; }
+  /* numbered sequence: the leading number IS the marker; drop the arrow */
+  ul.numbered li { padding-left: 0; }
+  ul.numbered li::before { content: none; }
+  ul.numbered li strong { color: var(--accent-deep); }
+  li strong { color: var(--ink); font-weight: 700; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(20px, 2.4vw, 36px);
+    max-width: var(--col);
+  }
+
+  /* ---- Cards: opaque warm surface, intentional, not timid glass ------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .card h3 { color: var(--accent-deep); margin-bottom: 12px; }
+  .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
+  .card p + p { margin-top: 10px; }
+
+  code, .mono {
+    font-family: var(--mono);
+    background: rgba(15,138,128,0.10);
+    color: var(--accent-ink);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.88em;
+    font-weight: 500;
+  }
+
+  .pill {
+    display: inline-block;
+    background: rgba(15,138,128,0.12);
+    color: var(--accent-ink);
+    padding: 5px 13px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* Homework eyebrow — solid badge so "your homework" reads as an
+     assignment, not just another section label. Built from .pill's shape. */
+  .eyebrow.eyebrow-hw {
+    background: var(--accent);
+    color: #fff;
+    padding: 7px 16px;
+    border-radius: 30px;
+    letter-spacing: 0.13em;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px -4px rgba(15,138,128,0.7);
+  }
+
+  /* ---- Quote: framed block, no thin side-stripe reflex --------------- */
+  .quote {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--accent-deep);
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--accent);
+    margin: 28px 0;
+    max-width: var(--col);
+    text-wrap: balance;
+  }
+
+  /* ---- Floating nav (the one intentional glass moment) --------------- */
+  .nav {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: rgba(255,253,249,0.82);
+    padding: 9px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--hair);
+    box-shadow: 0 6px 20px -6px rgba(20,18,12,0.18);
+    z-index: var(--z-nav);
+  }
+  .nav button {
+    background: transparent;
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 7px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav button:hover { background: rgba(15,138,128,0.08); border-color: rgba(15,138,128,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), #14a89b);
+    z-index: var(--z-progress);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ---- Flow chips ---------------------------------------------------- */
+  .arrow-flow {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    margin-top: clamp(28px, 4vh, 48px);
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid rgba(15,138,128,0.35);
+    padding: 15px 24px;
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+
+  /* ---- Fork: one input, a decision point, two different destinations -----
+     The mirror of a converge. For "either/or" concepts that a straight chain
+     turns into a misleading "then/then". */
+  .flow-fork {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) auto auto clamp(46px, 5vw, 72px) minmax(0, 1.1fr);
+    align-items: center;
+    gap: 0 clamp(8px, 1vw, 14px);
+    margin-top: clamp(18px, 2.6vh, 30px);
+    max-width: var(--col);
+  }
+  /* the decision node — heavier than a plain chip, it's where the choice happens */
+  .fork-gate {
+    background: rgba(15,138,128,0.10);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: clamp(16px, 1.8vw, 24px) clamp(14px, 1.6vw, 20px);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
+  }
+  .fork-gate .gate-title {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .fork-gate .gate-sub {
+    font-size: clamp(12px, 1.15vw, 14px);
+    color: var(--accent-ink);
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+  /* the split: a bracket whose arms reach the two output rows' centerlines */
+  /* arms span the two destination rows' centerlines; the right margin leaves
+     clear space for the branch arrowheads so they don't touch the cards */
+  .flow-split {
+    position: relative;
+    /* height = distance between the two destination centerlines: half a card
+       plus half the row gap, top and bottom */
+    height: calc(50% + clamp(7px, 0.9vh, 11px));
+    margin: 0 clamp(14px, 1.6vw, 22px) 0 clamp(18px, 2vw, 28px);
+    border: 2px solid var(--accent);
+    border-right: none;
+    border-radius: 14px 0 0 14px;
+  }
+  /* horizontal run INTO the split, from the gate */
+  .flow-split .split-in {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(18px, 2vw, 28px);
+    height: 14px;
+    overflow: visible;
+  }
+  /* the two runs OUT of the split, to each destination */
+  .flow-split .split-out {
+    position: absolute;
+    left: 100%;
+    width: clamp(10px, 1.2vw, 16px);
+    height: 14px;
+    overflow: visible;
+    transform: translateY(-50%);
+  }
+  .flow-split .split-out.to-top { top: 0; }
+  .flow-split .split-out.to-bot { top: 100%; }
+  .flow-outs { display: flex; flex-direction: column; gap: clamp(14px, 1.8vh, 22px); }
+  /* destination cards: one per branch, tinted by outcome */
+  .fork-dest {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: clamp(12px, 1.4vw, 18px) clamp(14px, 1.6vw, 20px);
+  }
+  .fork-dest .dest-who {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .fork-dest .dest-gets {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.45vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  /* a straight run between two nodes, same arrowhead as every other connector */
+  .flow-wire {
+    width: clamp(30px, 3.4vw, 46px);
+    height: 14px;
+    flex: 0 0 auto;
+  }
+  /* connectors: 1:1 coordinate space so arrowheads are never distorted */
+  .split-in, .split-out, .flow-wire { display: block; }
+  .split-in path, .split-out path, .flow-wire path {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+  .split-in path.flow-arrowhead,
+  .split-out path.flow-arrowhead,
+  .flow-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* stacked: the bracket can't span one column — drop it, keep reading order */
+  @media (max-width: 860px) {
+    .flow-fork { grid-template-columns: 1fr; gap: clamp(12px, 1.6vh, 18px) 0; }
+    .flow-fork > .flow-split { display: none; }
+    .flow-fork > .flow-wire { display: none; }
+  }
+
+  /* ---- Position stack: what sits in FRONT of what ---------------------
+     For architecture where the concept is ordering in space, not time.
+     Reads left-to-right as "the request passes through these in order". */
+  .flow-stack {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(8px, 1vw, 14px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .stack-layer {
+    flex: 1 1 0;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .stack-layer.is-front { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .stack-layer .layer-pos {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+  }
+  .stack-layer.is-front .layer-pos { color: var(--accent-deep); }
+  .stack-layer .layer-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.55vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .stack-layer .layer-role {
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.4;
+    color: var(--body);
+    margin: 0;
+    max-width: none;
+  }
+  @media (max-width: 860px) { .flow-stack { flex-direction: column; } }
+
+  /* ---- Canonical pair: two twins, one openly pointing home ------------
+     The back-arrow IS the point — it's what separates this from cloaking. */
+  .flow-canon {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0 clamp(10px, 1.2vw, 18px);
+    margin-top: clamp(16px, 2.2vh, 26px);
+    max-width: var(--col);
+  }
+  .canon-page {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    text-align: center;
+  }
+  .canon-page.is-origin { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .canon-page .page-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .canon-page .page-who {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin-bottom: 3px;
+    display: block;
+  }
+  .canon-page.is-origin .page-who { color: var(--accent-deep); }
+  /* the canonical link, labelled — a back-arrow pointing at the original */
+  .canon-link { text-align: center; }
+  .canon-link svg { width: clamp(56px, 7vw, 104px); height: 14px; display: block; }
+  .canon-link path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .canon-link path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  /* plain language, not the raw HTML attribute — this audience doesn't
+     write markup, so a code-looking tag reads as jargon they can't act on */
+  .canon-link .link-tag {
+    display: block;
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.15vw, 14px);
+    font-style: italic;
+    color: var(--accent-ink);
+    margin-top: 7px;
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .flow-canon { grid-template-columns: 1fr; gap: clamp(10px, 1.4vh, 14px) 0; }
+    .canon-link svg { transform: rotate(90deg); margin: 0 auto; }
+  }
+
+  .small-note {
+    font-size: clamp(15px, 1.35vw, 16px);
+    color: var(--muted);
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 72ch;
+  }
+
+  /* ---- Prompt box (signature "type this" component) ------------------ */
+  .prompt-box {
+    background: var(--surface);
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--accent);
+    padding: 16px 22px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--accent-ink);
+    margin: 12px 0;
+    max-width: var(--col);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
+  }
+
+  /* ---- 3-across sequence: steps must read left-to-right --------------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    gap: clamp(16px, 1.8vw, 26px);
+    max-width: var(--col);
+    margin-top: 4px;
+    align-items: stretch;
+  }
+  .grid-3 .card { display: flex; flex-direction: column; }
+  .grid-3 .card p { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.45; }
+  .grid-3 .card p code { font-size: 0.95em; }
+  .card-hero { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .card-hero .prompt-box {
+    margin: 6px 0 0;
+    max-width: none;
+    font-size: clamp(11.5px, 0.98vw, 13.5px);
+    line-height: 1.42;
+    padding: 12px 14px;
+    box-shadow: none;
+  }
+  @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+  /* ---- Step tags: mark which steps only report vs. actually edit ------ */
+  .tag-report, .tag-write {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.78em;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    vertical-align: middle;
+  }
+  .tag-report { background: #efeade; color: var(--muted); }
+  .tag-write { background: var(--accent); color: #fff; }
+
+  @media (max-width: 760px) {
+    .step-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* Troubleshooting cheat sheet: 2x2 of parallel options, not a stacked wall */
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2vw, 30px) clamp(24px, 3vw, 44px);
+    max-width: var(--col);
+    margin-top: 6px;
+  }
+  .cheat p { font-size: clamp(16px, 1.45vw, 18px); margin-bottom: 8px; }
+  .cheat .prompt-box { margin: 0; }
+  @media (max-width: 760px) { .cheat-grid { grid-template-columns: 1fr; } }
+
+  .label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 3px 11px;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  a { color: var(--accent-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+    .nav button { transition: none; }
+  }
+
+  /* ---- Doc link: a solid, primary "go to the official guide" action ---- */
+  .doclink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 17px);
+    letter-spacing: 0.01em;
+    padding: 11px 20px;
+    border-radius: 9px;
+    box-shadow: 0 6px 18px -6px rgba(15,138,128,0.5);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .doclink:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 9px 22px -7px rgba(15,138,128,0.55); }
+  .doclink::after { content: "↗"; font-weight: 700; }
+  /* the row of platform doc buttons (secondary, outlined) */
+  .doclink-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+  /* tidy 2-up grid of platform buttons; each fills its cell so they align */
+  .doclink-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .doclink-grid .doclink { justify-content: center; }
+  @media (max-width: 520px) { .doclink-grid { grid-template-columns: 1fr; } }
+  .doclink.alt {
+    background: var(--surface);
+    color: var(--accent-ink);
+    border: 1px solid rgba(15,138,128,0.4);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+    font-size: clamp(14px, 1.3vw, 16px);
+    padding: 9px 16px;
+  }
+  .doclink.alt:hover { background: rgba(15,138,128,0.08); color: var(--accent-ink); }
+
+  /* ---- Success strip: a slim "you're done" banner, lighter than a card ---- */
+  .done-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 14px 20px;
+    background: rgba(22,163,74,0.08);
+    border: 1px solid rgba(22,163,74,0.30);
+    border-radius: 12px;
+  }
+  .done-strip .done-mark { font-size: clamp(20px, 2vw, 26px); flex: 0 0 auto; line-height: 1; }
+  .done-strip p { margin: 0; font-size: clamp(15px, 1.4vw, 17px); max-width: none; }
+  .done-strip strong { color: #15803d; }
+
+  /* ---- Heads-up strip: a prominent "expect this" callout in the accent ---- */
+  .heads-up {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 15px 22px;
+    background: rgba(15,138,128,0.09);
+    border: 1px solid rgba(15,138,128,0.38);
+    border-radius: 12px;
+  }
+  .heads-up-mark { font-size: clamp(22px, 2.2vw, 28px); flex: 0 0 auto; line-height: 1; }
+  .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
+  .heads-up strong { color: var(--accent-deep); }
+
+  /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
+  /* Height-capped, not width-driven: the shot is a wide 2:1 crop, so sizing it
+     by width blows past the slide's vertical budget and pushes it below the
+     fold. Cap the height and let width follow the aspect ratio. */
+  .ui-shot {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 300px;
+    margin: 12px auto 0;
+    border-radius: 9px;
+    border: 1px solid var(--hair);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
+  }
+
+  /* Plan-mode slide: two text cards + the UI shot. Was an inline
+     grid-template-columns, which no media query could override. */
+  .plan-mode-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 1.35fr;
+    gap: clamp(16px, 2vw, 28px);
+    align-items: center;
+    margin-top: 4px;
+  }
+  /* Below this the third column is too narrow to read the shot in: drop to two
+     cards side by side with the shot spanning underneath. */
+  @media (max-width: 1100px) {
+    .plan-mode-grid { grid-template-columns: 1fr 1fr; }
+    .plan-mode-grid .ui-shot { grid-column: 1 / -1; }
+  }
+
+  /* keep the slide column readable on smaller laptop widths */
+  @media (max-width: 760px) {
+    .slide { padding: 40px 28px var(--nav-safe); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .plan-mode-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---- Lightning-lesson additions -------------------------------------- */
+
+  /* Screenshot frame: real UI shots are dark; they sit ON the warm paper as
+     objects, never bleeding to the edge. Rounded, hairline, gentle shadow. */
+  .shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--hair);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.06), 0 16px 40px -24px rgba(20,18,12,0.5);
+    background: #1c1c1c;
+  }
+  .shot-cap {
+    font-family: var(--sans);
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+  /* Placeholder frame for a screenshot not yet dropped in. Same footprint as
+     .shot so the layout is final before the image arrives. */
+  .shot-slot {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border: 2px dashed rgba(15,138,128,0.45);
+    border-radius: 12px;
+    background: rgba(15,138,128,0.04);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .shot-slot p { font-family: var(--sans); font-size: clamp(14px, 1.3vw, 16px); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep); margin: 0; }
+  .shot-slot p span { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
+  .shot-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(16px, 2vw, 28px); }
+
+  /* Numbered click-steps for the install flow */
+  .steps { display: grid; gap: 10px; margin-top: 4px; counter-reset: stepn; }
+  .steps .step {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 11px;
+    padding: 13px 18px;
+  }
+  .steps .step::before {
+    counter-increment: stepn;
+    content: counter(stepn);
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .steps .step p { margin: 0; font-size: clamp(16px, 1.45vw, 18px); }
+
+  /* Warning callout — honest, calm, not alarming. Warm amber on paper. */
+  .warn {
+    display: flex; align-items: flex-start; gap: 14px;
+    margin-top: 16px; padding: 15px 22px;
+    background: rgba(180,83,9,0.07);
+    border: 1px solid rgba(180,83,9,0.32);
+    border-radius: 12px;
+  }
+  .warn-mark { font-size: clamp(20px, 2vw, 26px); flex: 0 0 auto; line-height: 1.15; }
+  .warn p { margin: 0; font-size: clamp(15px, 1.4vw, 17px); max-width: none; }
+  .warn strong { color: #9a4a08; }
+
+  /* Three-tab compare */
+  .tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(14px, 1.8vw, 24px); }
+  .tabs .card.is-here { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .tab-name { font-family: var(--display); font-weight: 800; font-size: clamp(21px, 2vw, 26px); color: var(--ink); margin-bottom: 6px; }
+  .tabs .card.is-here .tab-name { color: var(--accent-deep); }
+  .tab-flag { display: inline-block; background: var(--accent); color: #fff; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; margin-bottom: 10px; }
+
+  /* Old-habit vs new-habit two-column contrast */
+  .contrast { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(18px, 2.2vw, 32px); }
+  .contrast .card.old { background: rgba(20,18,12,0.025); border-style: dashed; }
+  .contrast .card.old .eyebrow { color: var(--muted); }
+  .contrast ul { margin: 0; }
+  .contrast li { font-size: clamp(16px, 1.45vw, 18px); margin-bottom: 10px; padding-left: 26px; }
+  .contrast li:last-child { margin-bottom: 0; }
+  .contrast .card.old li::before { content: "×"; color: var(--muted); font-weight: 700; }
+
+  /* The chain: rank -> found -> read -> cited */
+  .chain { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin-top: 6px; }
+  .chain-link {
+    flex: 1 1 190px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: clamp(14px, 1.6vw, 20px);
+    text-align: center;
+  }
+  .chain-arrow { flex: 0 0 auto; align-self: center; color: var(--accent); font-weight: 800; font-size: clamp(20px, 2vw, 26px); padding: 0 clamp(6px, 0.9vw, 14px); }
+  .chain-num { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 6px; }
+  .chain-link p { font-size: clamp(15px, 1.35vw, 17px); margin: 0; }
+  @media (max-width: 900px) { .chain-arrow { transform: rotate(90deg); padding: 4px 0; } .chain { flex-direction: column; } }
+
+  /* Score readout — mimics the terminal scorecard, warm not techy */
+  .score { background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--accent); border-radius: 10px; padding: clamp(16px, 1.8vw, 24px); }
+  .score-row { display: grid; grid-template-columns: minmax(150px, 1.1fr) 46px 1fr; align-items: center; gap: 12px; margin-bottom: 9px; }
+  .score-row:last-child { margin-bottom: 0; }
+  .score-label { font-family: var(--sans); font-size: clamp(14px, 1.3vw, 16px); font-weight: 600; color: var(--body); }
+  .score-val { font-family: var(--mono); font-size: clamp(14px, 1.3vw, 16px); color: var(--accent-ink); text-align: right; }
+  .score-bar { height: 10px; border-radius: 6px; background: rgba(20,18,12,0.07); overflow: hidden; }
+  .score-bar span { display: block; height: 100%; border-radius: 6px; background: var(--accent); }
+
+  /* Platform table */
+  .ptable { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+  .ptable th, .ptable td { text-align: left; padding: clamp(11px, 1.2vw, 15px) clamp(12px, 1.4vw, 20px); border-bottom: 1px solid var(--hair); }
+  .ptable th { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent-deep); background: rgba(15,138,128,0.06); }
+  .ptable td { font-size: clamp(15px, 1.4vw, 17px); color: var(--body); }
+  .ptable tr:last-child td { border-bottom: none; }
+  .ptable .num { font-family: var(--mono); font-weight: 600; color: var(--accent-ink); }
+
+  /* Problem / solution pairing */
+  /* the slide's direct-child rule forces width:100%; ps-tag must hug its text */
+  .slide.active > .ps-tag { width: auto; margin-left: 0; margin-right: auto; }
+  .ps-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 13px; border-radius: 20px; margin-bottom: 16px; }
+  .ps-tag.problem { background: rgba(180,83,9,0.12); color: #9a4a08; }
+  .ps-tag.solution { background: rgba(15,138,128,0.14); color: var(--accent-ink); }
+
+  /* QR block */
+  .qr-wrap { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 60px); flex-wrap: wrap; }
+  .qr-box { width: clamp(180px, 20vw, 250px); height: clamp(180px, 20vw, 250px); border: 2px dashed var(--accent); border-radius: 16px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; background: var(--surface); }
+  .qr-box p { font-family: var(--sans); font-size: clamp(13px, 1.2vw, 15px); color: var(--accent-ink); font-weight: 600; margin: 0; }
+  .qr-side { flex: 1 1 340px; max-width: 520px; }
+
+  /* Big statement line for the spine slide */
+  .spine p { font-size: clamp(20px, 1.95vw, 26px); line-height: 1.5; margin-bottom: 16px; }
+  .spine p:last-child { margin-bottom: 0; }
+  .spine strong { color: var(--accent-deep); }
+
+
+  /* ---- Dashboard-lesson additions ------------------------------------- */
+
+  /* The four-part anatomy of the screen we build. Sized to its content and
+     centered in a tinted band so it reads as one object, not a header row. */
+  .anatomy {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: clamp(12px, 1.5vw, 20px);
+    background: rgba(15,138,128,0.055);
+    border: 1px solid rgba(15,138,128,0.22);
+    border-radius: 14px;
+    padding: clamp(16px, 2vw, 26px);
+    margin-top: 6px;
+  }
+  .anat {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 11px;
+    padding: clamp(13px, 1.5vw, 18px);
+  }
+  .anat.is-hero { border: 2px solid var(--accent); background: rgba(15,138,128,0.09); }
+  .anat-role {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .anat.is-hero .anat-role { color: var(--accent-deep); }
+  .anat-what {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.45vw, 18px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .anat p { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.4; margin: 6px 0 0; max-width: none; color: var(--body); }
+
+  /* The reveal: two raw counts, then the number you divide out of them.
+     The point is visual — the headline sits apart from what fed it. */
+  .derive {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto minmax(0,1.15fr);
+    align-items: center;
+    gap: 0 clamp(12px, 1.6vw, 24px);
+    margin-top: 8px;
+  }
+  .derive-raw { display: grid; gap: clamp(10px, 1.2vh, 14px); }
+  .raw-num {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-left: 4px solid rgba(20,18,12,0.18);
+    border-radius: 11px;
+    padding: clamp(12px, 1.4vw, 17px) clamp(14px, 1.6vw, 20px);
+  }
+  .raw-num .rn-val { font-family: var(--display); font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; color: var(--muted); letter-spacing: -0.02em; line-height: 1; }
+  .raw-num .rn-lab { font-family: var(--sans); font-size: clamp(12px, 1.15vw, 14px); color: var(--muted); margin-top: 4px; }
+  .derive-op { font-family: var(--display); font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--accent); text-align: center; }
+  .derived-num {
+    background: rgba(15,138,128,0.09);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: clamp(16px, 2vw, 26px);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55);
+  }
+  .derived-num .dn-val { font-family: var(--display); font-size: clamp(38px, 5vw, 62px); font-weight: 800; color: var(--accent-deep); letter-spacing: -0.03em; line-height: 1; }
+  .derived-num .dn-lab { font-family: var(--display); font-size: clamp(15px, 1.5vw, 19px); font-weight: 700; color: var(--ink); margin-top: 8px; }
+  .derived-num .dn-note { font-family: var(--sans); font-size: clamp(12px, 1.2vw, 14px); color: var(--accent-ink); margin-top: 6px; }
+  @media (max-width: 860px) {
+    .derive { grid-template-columns: 1fr; gap: clamp(10px, 1.4vh, 14px) 0; }
+    .derive-op { transform: rotate(90deg); }
+  }
+
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck">
+<!-- ============================================================
+     SECTION 0 — OPEN  (slides 1-3, ~9 min)
+     ============================================================ -->
+
+<!-- TITLE -->
+<section class="slide active title-slide">
+  <div class="slide-num" data-label=""></div>
+  <div class="title-head">
+    <div class="title-kicker">Free Lightning Lesson</div>
+    <h1 class="title-main">The one number you <em>run</em><br class="hero-break"> your business on.</h1>
+    <p class="title-sub">In the next 45 minutes you'll watch a dashboard get built from one ordinary export. Every prompt shown as typed.</p>
+  </div>
+</section>
+
+<!-- 2. THE FILE -->
+<section class="slide">
+  <div class="slide-num" data-label="Where we start"></div>
+  <div class="eyebrow">Where we start</div>
+  <h2>One file. The kind you <em>already have.</em></h2>
+  <p>Everything today comes out of a single export, the sort of thing any tool you use will hand you: a date, and a few columns of counts. Nothing else. No database, no setup, no connecting anything.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div class="card card-hero">
+      <div class="eyebrow">What's in it</div>
+      <p>Ninety-odd rows, one per day. A handful of columns. Perfectly ordinary numbers.</p>
+      <p>This is sample data for a made-up business, so nothing on screen today is anyone's real numbers.</p>
+    </div>
+    <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
+      <div class="eyebrow">What is <em>not</em> in it</div>
+      <p>The number that actually matters. It isn't a column. Nothing exported it, because no tool thought to.</p>
+      <p>By the end of the session it will be the biggest thing on the screen.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">👀</span>
+    <p><strong>You're watching today, not building.</strong> Every prompt I type goes on screen and into the recording, so you can do this with your own file afterwards without remembering a thing.</p>
+  </div>
+</section>
+
+<!-- 3. WHY REPORTS DON'T FIT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Why reports never fit"></div>
+  <div class="eyebrow">Why reports never fit</div>
+  <h2>Built for everyone. So they fit <em>no one.</em></h2>
+  <p>It isn't that your reporting tools are bad. It's that they were built for every business at once, and yours is one business.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div class="card">
+      <div class="eyebrow">Three things they all do</div>
+      <ul>
+        <li><strong>Standard for everybody.</strong> The same screens ship to a florist and a law firm.</li>
+        <li><strong>A learning curve first.</strong> You climb the menus before you get the view you wanted.</li>
+        <li><strong>Their words, not yours.</strong> Sessions, channels, events. You translate in your head every time.</li>
+      </ul>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">And the real problem underneath</div>
+      <p>The number you actually run on is usually <strong>computed</strong> from two or three others.</p>
+      <p>No tool ships it, because no tool knows which two you'd pick. So you do the arithmetic in your head, or in a spreadsheet on a Sunday, or you don't do it at all.</p>
+    </div>
+  </div>
+  <p class="small-note">You have almost certainly done this: exported a report, then immediately started dividing one column by another to get the thing you actually wanted.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 1 — START THE BUILD, THEN TEACH  (slides 4-6, ~13 min)
+     ============================================================ -->
+
+<!-- 4. THE PROMPT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Start the build"></div>
+  <div class="eyebrow">Start the build</div>
+  <h2>Here is the whole thing I type.</h2>
+  <p>One prompt, in plain English, describing what I want the screen to <em>do</em>. Then I leave it alone and we keep talking while it works.</p>
+  <div class="prompt-box">Here's a CSV of my last 90 days. Build me a single-page dashboard.html I can open in my browser. Don't just chart the columns. Work out the one number that tells me whether this business is healthy, compute it from the columns I do have, and make it the biggest thing on the screen. Underneath it, show the raw numbers it came from, a simple trend line, and one plain-English sentence telling me what to do about it.</div>
+  <div class="grid-2" style="margin-top:6px;">
+    <div class="card">
+      <div class="eyebrow">What I did not do</div>
+      <p>I didn't name the metric. I didn't say which columns. I didn't describe a layout or pick a chart type.</p>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">What I asked for instead</div>
+      <p>A <strong>decision</strong>. "Tell me whether this is healthy, and what to do." The screen is whatever answers that.</p>
+    </div>
+  </div>
+  <div class="heads-up" style="margin-top:12px;">
+    <span class="heads-up-mark">⏳</span>
+    <p><strong>That's running now, and it takes a few minutes.</strong> We are not waiting on it. Everything in the next two slides is the reason the prompt was worded that way, and we'll come back to the screen when it's done.</p>
+  </div>
+</section>
+
+<!-- 5. DECISION TOOL -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Decision tool"></div>
+  <div class="eyebrow">The idea</div>
+  <h2>Don't build a report. Build a <em>decision tool.</em></h2>
+  <p>A report tells you what happened. A decision tool tells you whether that's good, and what to do next. Almost every dashboard ever made is the first kind.</p>
+  <div class="contrast" style="margin-top:8px;">
+    <div class="card old">
+      <div class="eyebrow">A report says</div>
+      <ul>
+        <li>"You served 240 covers."</li>
+        <li>"You were open 60 hours."</li>
+        <li>"Here are nine more charts."</li>
+      </ul>
+      <p style="margin-top:12px;color:var(--muted);">All true. None of it tells you whether to do anything differently on Monday.</p>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">A decision tool says</div>
+      <ul>
+        <li>"You're serving 4 covers an hour."</li>
+        <li>"Tuesday nights run at half that."</li>
+        <li>"You're paying a full kitchen for a quiet room. Close Tuesdays or fill them."</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Every number carries a verdict.</strong></p>
+    </div>
+  </div>
+  <p class="small-note">If you don't know which decisions you make, that's normal and it isn't a problem. Ask Claude to propose the metrics worth watching for a business like yours, then pick from the list. Choosing is easier than inventing.</p>
+</section>
+
+<!-- 6. CHAT BEAT -->
+<section class="slide">
+  <div class="slide-num" data-label="Your turn"></div>
+  <div class="eyebrow">Your turn</div>
+  <h2>What's the one decision you make <em>every week?</em></h2>
+  <p>Not a number. A decision. The thing you sit down and weigh up on a Monday, with whatever information you happen to have.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div class="card card-hero">
+      <div class="eyebrow">Put it in the chat</div>
+      <p>A few words is plenty. "Do I spend more on ads." "Do I chase the quiet clients." "Do I need to hire."</p>
+      <p>I'll read them out and we'll work out what each one would actually need on screen.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Why this is the whole skill</div>
+      <p>The decision comes first. The dashboard is built backwards from it.</p>
+      <p>Start from the data you happen to have and you get a chart dump. Start from the Monday decision and you get something you'll actually open.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 — THE PAYOFF  (slides 7-8, ~10 min)
+     ============================================================ -->
+
+<!-- 7. COME BACK TO IT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="What got built"></div>
+  <div class="eyebrow">What got built</div>
+  <h2>Let's go and look at it.</h2>
+  <p>It finished while we were talking. One file, sitting on my desktop, that opens in a browser like any other page. Four things on it, and that's deliberate.</p>
+  <div class="anatomy">
+    <div class="anat is-hero">
+      <div class="anat-role">The headline</div>
+      <div class="anat-what">One number</div>
+      <p>The verdict on the whole business, in one figure.</p>
+    </div>
+    <div class="anat">
+      <div class="anat-role">Underneath it</div>
+      <div class="anat-what">What it came from</div>
+      <p>The two raw counts, so the number is never a mystery.</p>
+    </div>
+    <div class="anat">
+      <div class="anat-role">Behind it</div>
+      <div class="anat-what">A trend line</div>
+      <p>The same number over time. Direction beats a snapshot.</p>
+    </div>
+    <div class="anat">
+      <div class="anat-role">At the bottom</div>
+      <div class="anat-what">One sentence</div>
+      <p>Plain English. What this means and what to do.</p>
+    </div>
+  </div>
+  <p class="small-note">Four things, not forty. A screen you can read in three seconds is a screen you'll actually open on a Monday. Everything I left off was a deliberate choice, and I can add any of it later by asking.</p>
+</section>
+
+<!-- 8. THE REVEAL -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The number"></div>
+  <div class="eyebrow">The number</div>
+  <h2>That headline figure is in <em>no report you own.</em></h2>
+  <p>Look at where it came from. Both of the numbers feeding it were sitting in the file all along. The one that matters was not.</p>
+  <div class="derive">
+    <div class="derive-raw">
+      <div class="raw-num">
+        <div class="rn-val">412</div>
+        <div class="rn-lab">visits &nbsp;·&nbsp; a column in the file</div>
+      </div>
+      <div class="raw-num">
+        <div class="rn-val">18</div>
+        <div class="rn-lab">enquiries &nbsp;·&nbsp; a column in the file</div>
+      </div>
+    </div>
+    <div class="derive-op">→</div>
+    <div class="derived-num">
+      <div class="dn-val">4.4%</div>
+      <div class="dn-lab">Enquiry rate</div>
+      <div class="dn-note">In no export. Nobody's column. Computed.</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <div class="eyebrow">A raw count says</div>
+      <p>What happened. 412 is a fact with no opinion attached.</p>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">A computed number says</div>
+      <p>Whether it's good, and whether it's getting better. <strong>That's the difference between reporting and deciding.</strong></p>
+    </div>
+  </div>
+  <p class="small-note">The move that transfers: ask Claude to propose the numbers worth building out of your raw ones, each with a line saying what decision it drives. Then you pick. It generates, you choose.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — CLOSE  (slides 9-13, ~13 min)
+     ============================================================ -->
+
+<!-- 9. THE CEILING -->
+<section class="slide">
+  <div class="slide-num" data-label="The limits"></div>
+  <div class="eyebrow">The limits</div>
+  <h2>It shows the day you <em>built it.</em></h2>
+  <p>What we built is a real, useful thing. It's also a file on a computer, and it's worth being precise about what that means.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div class="card card-hero">
+      <div class="eyebrow">What you have</div>
+      <p>A dashboard shaped around one decision, showing a number no tool of yours reports. It lives on your machine, it costs nothing to keep, and you update it by handing over a fresh file and asking.</p>
+      <p><strong>Genuinely useful. Go and do it.</strong></p>
+    </div>
+    <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
+      <div class="eyebrow">What it doesn't do</div>
+      <p>It doesn't refresh itself. Nothing in that file reaches out for new numbers, so it shows what the export showed on the day you handed it over.</p>
+      <p>Feed it a new file and it updates. Leave it alone and it sits there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. THE REAL LESSON -->
+<section class="slide spine">
+  <div class="slide-num" data-label="The real lesson"></div>
+  <div class="eyebrow">The real lesson</div>
+  <h2>This was never about <em>dashboards.</em></h2>
+  <p>You watched a number get built that nobody's software would have handed you, because it only exists once someone decides it matters.</p>
+  <p>That's the skill. Not charts. <strong>Working out what actually tells you how you're doing, and then making the thing that shows it to you.</strong></p>
+  <p>Once you can do that, you stop taking whatever screen you're given.</p>
+</section>
+
+<!-- 11. WHAT'S NEXT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="What's next"></div>
+  <div class="eyebrow">What's next</div>
+  <h2>Run your whole business <em>this way.</em></h2>
+  <p>Six classes. In each one you build something real for your business, and you learn a skill that goes well beyond it. Today was a short version of one.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div>
+      <table class="ptable" style="table-layout:fixed;">
+        <tr><th style="width:42%;">You build</th><th>You learn</th></tr>
+        <tr><td>Your website, custom built</td><td>Delegating to Claude like a person</td></tr>
+        <tr><td>A dashboard</td><td>Tracking performance the way you interpret information</td></tr>
+        <tr><td>The dual web</td><td>Being found by AI and search</td></tr>
+        <tr><td>Automations</td><td>Making work happen without you</td></tr>
+        <tr><td>An agent</td><td>Software that decides on its own</td></tr>
+        <tr><td>A GTM strategy</td><td>Getting customers in the door</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card card-hero">
+        <div class="eyebrow">The dashboard class</div>
+        <p>Real numbers flowing in on their own, a screen that's always current, on a private URL with a password on it. <strong>The refresh disappears.</strong></p>
+      </div>
+      <div class="card" style="margin-top:14px;">
+        <div class="eyebrow">Or do it alone, free</div>
+        <p>The whole course is on YouTube, same material, at your own pace.</p>
+        <div class="prompt-box" style="margin-top:10px;">ericgrows.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. THE OFFER -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The offer"></div>
+  <div class="eyebrow">Run Your Whole Business with AI</div>
+  <h2>Six weeks, starting <em>September 29.</em></h2>
+  <div class="qr-wrap" style="margin-top:10px;">
+    <div class="qr-box" style="border-style:solid;border-width:1px;border-color:var(--hair);padding:14px;">
+      <img src="course-qr.svg" alt="QR code linking to the course page at maven.com/ericgrows/run-your-whole-business-with-ai" style="width:100%;height:100%;display:block;">
+    </div>
+    <div class="qr-side">
+      <div class="card card-hero">
+        <div class="eyebrow">Your code · FOUNDER400</div>
+        <p style="font-size:clamp(17px,1.6vw,20px);"><span style="text-decoration:line-through;color:var(--muted);">$1,795</span> &nbsp;<strong style="color:var(--accent-deep);">$1,395</strong></p>
+        <p><strong>10 founding seats at that price.</strong> Live sessions, the recordings for good, and three months of StratEngine included.</p>
+      </div>
+      <div class="prompt-box" style="margin-top:12px;">maven.com/ericgrows/run-your-whole-business-with-ai</div>
+    </div>
+  </div>
+  <p class="small-note" style="margin-top:14px;">Still free on YouTube if you'd rather do it alone, at <strong>ericgrows.com</strong>. Same material, no help.</p>
+</section>
+
+<!-- 13. Q&A -->
+<section class="slide">
+  <div class="slide-num" data-label="Questions"></div>
+  <div class="eyebrow">Questions</div>
+  <h2>What do you want to ask?</h2>
+  <p>Drop questions in the chat and give a thumbs up to the ones you want answered. I'll take the most-wanted first.</p>
+  <div class="grid-2" style="margin-top:8px;">
+    <div class="card card-hero">
+      <div class="eyebrow">This week, if you do nothing else</div>
+      <ul>
+        <li>Export one file from a tool you already use.</li>
+        <li>Ask Claude for the one number that says whether it's healthy.</li>
+        <li>Ask it what decision that number should change.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="eyebrow">The prompt is in the recording</div>
+      <p>Maven sends the recording to everyone who registered, and the prompt I typed is in it word for word. Nothing today depends on you having written anything down.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">← Prev</button>
+  <span id="counter" style="color:#5f5b52; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <button onclick="next()">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  function show(i) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides[current].classList.add('active');
+    const _m = slides[current].querySelector('.slide-num');
+    if (_m) _m.textContent = _m.dataset.label ? (current + 1) + ' · ' + _m.dataset.label : String(current + 1);
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
