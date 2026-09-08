@@ -131,16 +131,26 @@ const DECKS = [
       'A FREE 45-minute standalone Maven lightning lesson, not part of the paid ' +
       'series. Assume the attendee has NOTHING installed except the Claude desktop ' +
       'app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website ' +
-      'project. They install the claude-seo plugin entirely through the desktop ' +
-      "Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo " +
-      '-> Sync -> install; no restart needed) and run ONE command, `/seo geo ' +
-      'yourdomain.com`, against their own site. Two gotchas dominate: (1) it MUST be ' +
-      'the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; ' +
-      '(2) a red "not made by Anthropic" warning appears during install and is ' +
-      'expected and correct. The run takes several minutes and nothing waits on it. ' +
-      'The teaching (SEO vs GEO, what you control vs what you do not, being the ' +
-      'answer, the readable-twin idea) is the spine; the audit is the proof. Close ' +
-      'routes to a WAITLIST for a course opening early October, not to enrollment.',
+      'project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the ' +
+      'attendee watches, they do NOT build along, and you should never imply they ' +
+      'were supposed to. Eric installs the plugin and runs the audit on ONE website ' +
+      'on his own screen, reading the report live. So someone reading this deck ' +
+      'afterwards has almost certainly done NONE of it yet and wants to reproduce it ' +
+      'on their OWN domain: help them do exactly that, walking the install and the ' +
+      'run from wherever they actually are. The sequence is: Code tab -> install the ' +
+      'claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from ' +
+      'a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; ' +
+      'no restart needed) -> run ONE command, `/seo geo theirdomain.com` -> wait ' +
+      'several minutes -> read the report. Three gotchas dominate and are the most ' +
+      'likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or ' +
+      'Cowork, because the plugin fails to sync in Cowork; (2) the repo string is ' +
+      'case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone ' +
+      'does NOT install it — the Claude seo card that appears must be clicked and ' +
+      'install clicked inside it. A red "not made by Anthropic" warning during ' +
+      'install is expected and correct. The teaching (SEO vs GEO, what you control ' +
+      'vs what you do not, being the answer, the dual-web idea) is the spine; the ' +
+      'audit is the proof. Close routes to the paid six-class course starting ' +
+      'September 29 (code FOUNDER400), which is open and enrolling.',
   },
   {
     dir: 'class-4-automations',

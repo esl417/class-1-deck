@@ -944,11 +944,20 @@
   .ptable .num { font-family: var(--mono); font-weight: 600; color: var(--accent-ink); }
 
   /* Problem / solution pairing */
-  /* the slide's direct-child rule forces width:100%; ps-tag must hug its text */
-  .slide.active > .ps-tag { width: auto; margin-left: 0; margin-right: auto; }
-  .ps-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 13px; border-radius: 20px; margin-bottom: 16px; }
-  .ps-tag.problem { background: rgba(180,83,9,0.12); color: #9a4a08; }
-  .ps-tag.solution { background: rgba(15,138,128,0.14); color: var(--accent-ink); }
+  /* Two-part pill. The slide's direct-child rule stretches every child to the
+     content column, so the OUTER span holds that column box (which is what keeps
+     the pill flush with the headline) and the INNER span hugs the text and paints
+     the background. Painting the outer span instead would smear the pill's colour
+     across the full column width. Each variant sets its background on .ps-tag-in
+     and its text colour on the outer span, which the inner one inherits. */
+  .ps-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px; }
+  .ps-tag > .ps-tag-in { display: inline-block; padding: 5px 13px; border-radius: 20px; }
+  .ps-tag.problem { color: #9a4a08; }
+  .ps-tag.problem > .ps-tag-in { background: rgba(180,83,9,0.12); }
+  .ps-tag.fix { color: #57534a; }
+  .ps-tag.fix > .ps-tag-in { background: rgba(20,18,12,0.07); }
+  .ps-tag.solution { color: var(--accent-ink); }
+  .ps-tag.solution > .ps-tag-in { background: rgba(15,138,128,0.14); }
 
   /* QR block */
   .qr-wrap { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 60px); flex-wrap: wrap; }
@@ -976,7 +985,7 @@
   <div class="title-head">
     <div class="title-kicker">Free Lightning Lesson</div>
     <h1 class="title-main">Find out what AI <em>sees</em><br class="hero-break"> when it reads your website.</h1>
-    <p class="title-sub">In the next 45 minutes you'll run a real AI visibility audit on your own website. No code. No terminal.</p>
+    <p class="title-sub">In the next 45 minutes you'll watch a real AI visibility audit run on a real website, start to finish. No code. No terminal.</p>
   </div>
 </section>
 
@@ -984,21 +993,21 @@
 <section class="slide">
   <div class="slide-num" data-label="What you need"></div>
   <div class="eyebrow">What you need</div>
-  <h2>You already have <em>everything</em> you need.</h2>
-  <p>That's the whole list. There is nothing to download, no account to create, no card to enter. If you can open an app and type a sentence, you can do everything in this session.</p>
+  <h2>Nothing here is <em>out of reach.</em></h2>
+  <p>Everything I'm about to do, you already have what it takes to do. There is nothing to download, no account to create, no card to enter. If you can open an app and type a sentence, you can do all of it.</p>
   <div class="grid-2" style="margin-top:8px;">
     <div class="card card-hero">
       <div class="eyebrow">The only requirement</div>
-      <p><strong>The Claude desktop app, signed in, on a paid plan.</strong> That's it. If you're reading this, you almost certainly have it already.</p>
+      <p><strong>The Claude desktop app, signed in, on a paid plan.</strong> That's the whole list. If you're on this call, you almost certainly have it already.</p>
     </div>
     <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
       <div class="eyebrow">What you do <em>not</em> need</div>
-      <p>No terminal. No code editor. No GitHub account. No website login. No credit card. Nothing to install beyond the app you already opened.</p>
+      <p>No terminal. No code editor. No GitHub account. No website login. No credit card. Nothing beyond that one app.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🤝</span>
-    <p><strong>Don't have the app open yet?</strong> Grab it now while I talk. You'll catch up in two minutes, and nothing today depends on you being ahead.</p>
+    <p><strong>Just watch this one.</strong> Nothing today asks you to keep up or type along. You'll get the recording and every step is on the slides, so let it wash over you and do it tonight.</p>
   </div>
 </section>
 
@@ -1084,7 +1093,7 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Add it"></div>
   <div class="eyebrow">Installing it</div>
-  <h2>Follow along. Four steps and <em>one line.</em></h2>
+  <h2>Watch. Four steps and <em>one line.</em></h2>
   <div class="shot-row" style="margin-top:4px;">
     <div>
       <div class="steps">
@@ -1113,25 +1122,26 @@
     <span class="warn-mark">⚠️</span>
     <p><strong>That red warning is accurate.</strong> Anthropic didn't make this, so they can't vouch for it. It's open source, and the code is public.</p>
   </div>
+  <p class="small-note"><strong>These four steps are yours to keep.</strong> This slide is in the recording. Screenshot it now if you like, and do it on your own site tonight.</p>
 </section>
 
 <!-- 6. RUN IT -->
 <section class="slide">
   <div class="slide-num" data-label="Run it"></div>
   <div class="eyebrow">Running it</div>
-  <h2>Type this, swap in <em>your</em> website.</h2>
+  <h2>One line. Then we <em>let it work.</em></h2>
   <div class="prompt-box" style="font-size:clamp(17px,1.7vw,21px);">/seo geo yourwebsite.com</div>
   <div class="grid-2" style="margin-top:16px;">
     <div class="card">
       <div class="eyebrow">What happens now</div>
-      <p>It goes and reads your site the way ChatGPT, Perplexity, and Google's AI read it. <strong>This takes a few minutes.</strong> Start it, then leave it alone.</p>
+      <p>It goes and reads that site the way ChatGPT, Perplexity, and Google's AI read it. <strong>This takes a few minutes.</strong> I'll start it and leave it completely alone.</p>
     </div>
     <div class="card">
       <div class="eyebrow">What we'll do meanwhile</div>
-      <p>Keep going. By the time your report lands, you'll know exactly how to read it. <strong>Put questions in the chat as they come up</strong> and we'll hit them at the end.</p>
+      <p>Keep going. By the time the report lands, you'll know exactly how to read it. <strong>Put questions in the chat as they come up</strong> and we'll hit them at the end.</p>
     </div>
   </div>
-  <p class="small-note">Nothing here depends on your run finishing at any particular moment. If it's still going at the end, it'll be waiting for you when we're done.</p>
+  <p class="small-note">When you run this yourself, that's your own domain in place of the example. Same one line, same few minutes.</p>
 </section>
 
 <!-- ============================================================
@@ -1230,7 +1240,7 @@
 <!-- 13. THE PROBLEM -->
 <section class="slide dense">
   <div class="slide-num" data-label="The problem"></div>
-  <span class="ps-tag problem">The problem</span>
+  <span class="ps-tag problem"><span class="ps-tag-in">The problem</span></span>
   <h2>Your website is <em>expensive</em> to read.</h2>
   <p>Here's why AI quotes some businesses constantly and never mentions others, and it has almost nothing to do with how good your business is.</p>
   <div class="grid-2" style="margin-top:8px;">
@@ -1249,12 +1259,31 @@
   </div>
 </section>
 
+<!-- 13b. THE PLAIN FIX -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The plain fix"></div>
+  <span class="ps-tag fix"><span class="ps-tag-in">The plain fix</span></span>
+  <h2>Google's answer: <em>write it well.</em></h2>
+  <p>No secret file, no special markup, and nothing written for the machines. Their published guidance is to write clearly for people and organize the page so it is easy to follow.</p>
+  <div class="quote" style="margin-top:8px;font-size:clamp(17px,1.7vw,21px);font-weight:600;line-height:1.45;letter-spacing:-0.005em;">"Write content for your human audience and make sure the content is well written and easy to follow. People generally appreciate it when web pages are organized by paragraphs and sections, along with headings that provide a clear structure."<span style="display:block;margin-top:8px;font-size:14px;font-weight:500;color:var(--muted);">Google Search Central, optimizing for generative AI features</span></div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <div class="eyebrow">✍️ What that actually means</div>
+      <p>Answer the real questions in full sentences. What you do, who for, where, what it costs, what happens next. Most sites imply all of that in photographs and never actually say it.</p>
+    </div>
+    <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
+      <div class="eyebrow">😬 And here's the catch</div>
+      <p>Answer everything properly and the page gets long. <strong>Good for being quoted, and hard on the sale</strong>, because nobody wants to buy from a page that reads like a manual.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 14. THE SOLUTION -->
 <section class="slide dense">
   <div class="slide-num" data-label="The solution"></div>
-  <span class="ps-tag solution">The solution</span>
-  <h2>Give them a <em>dual web.</em></h2>
-  <p>You don't have to choose between a beautiful site and one AI can read. You run both, at the same address, and nobody ever sees the difference.</p>
+  <span class="ps-tag solution"><span class="ps-tag-in">The better version</span></span>
+  <h2>Or give them a <em>dual web.</em></h2>
+  <p>So you don't have to choose. One version answers everything in full, the other stays short and beautiful, and both live at the same address.</p>
   <div class="grid-2" style="margin-top:8px;">
     <div class="card">
       <div class="eyebrow">🚪 Something sits out front</div>
@@ -1267,7 +1296,7 @@
   </div>
   <div class="warn">
     <span class="warn-mark">⚠️</span>
-    <p><strong>And there's a right way and a wrong way to do it.</strong> Set this up carelessly and Google will penalize you for it. That's most of why so few businesses have done it, and it's a big part of what I teach in the full course.</p>
+    <p><strong>This is the part you cannot get wrong.</strong> Google has to be sent to the human page, every time. Send it to the machine version instead and that is cloaking, which gets you penalized. That is most of why so few businesses have done it, and it's a big part of what I teach in the full course.</p>
   </div>
 </section>
 
@@ -1278,25 +1307,26 @@
 <!-- 15. YOUR REPORT -->
 <section class="slide">
   <div class="slide-num" data-label="Your results"></div>
-  <div class="eyebrow">Your report</div>
-  <h2>Open yours. Start at the <em>top.</em></h2>
+  <div class="eyebrow">The report</div>
+  <h2>It's back. Start at the <em>top.</em></h2>
+  <p>I have not seen this either. Let's read it the way you'll read yours. Three moves, in this order, and they work on any report like this one.</p>
   <div class="grid-2" style="margin-top:8px;">
     <div>
       <div class="steps">
-        <div class="step"><p>Find your <strong>overall score</strong> and the categories under it.</p></div>
-        <div class="step"><p>Find your <strong>lowest</strong> one.</p></div>
+        <div class="step"><p>Find the <strong>overall score</strong> and the categories under it.</p></div>
+        <div class="step"><p>Find the <strong>lowest</strong> one. That's where the work is.</p></div>
+        <div class="step"><p>Ask what it would actually take to move it.</p></div>
       </div>
-      <p class="small-note" style="margin-top:14px;">You will not understand every line, and you don't have to. Nothing has to get fixed in the next five minutes.</p>
     </div>
     <div class="card card-hero">
-      <div class="eyebrow">💬 Then tell the room</div>
-      <p style="font-size:clamp(19px,1.9vw,23px);"><strong>Put your lowest category in the chat.</strong></p>
-      <p>One or two words is plenty. We'll go through what comes back together.</p>
+      <div class="eyebrow">🧭 The part that transfers</div>
+      <p><strong>You will not understand every line, and you don't have to.</strong></p>
+      <p>Find the number, find the weakest part, ask what moves it. That's how you read any diagnosis of your business, from anyone.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🏠</span>
-    <p><strong>Later, on your own time, go back and talk to it about all of this.</strong> It knows what it found and it will explain any of it in plain English. The one thing worth asking: <em>"what on my own site can I actually fix?"</em></p>
+    <p><strong>When it's your report, go back and talk to it about all of this.</strong> It knows what it found and it will explain any of it in plain English. The one thing worth asking: <em>"what on my own site can I actually fix?"</em></p>
   </div>
 </section>
 
@@ -1304,8 +1334,8 @@
 <section class="slide spine">
   <div class="slide-num" data-label="The real lesson"></div>
   <div class="eyebrow">The real lesson</div>
-  <h2>You installed an <em>expert.</em></h2>
-  <p>Today it was an SEO expert. You added it in four clicks, and it went and examined your actual business.</p>
+  <h2>What you watched was an <em>expert</em> being installed.</h2>
+  <p>Today it was an SEO expert. Four clicks, one line, and it went and examined a real business.</p>
   <p><strong>That was the skill, not the SEO.</strong> Whenever someone has written down how to do a job properly, you can hand that to Claude and put it to work on yours.</p>
   <p><strong>Every one of them installs exactly the way this one did.</strong></p>
 </section>
@@ -1344,7 +1374,7 @@
         <tr><th style="width:42%;">You build</th><th>You learn</th></tr>
         <tr><td>Your website, custom built</td><td>Delegating to Claude like a person</td></tr>
         <tr><td>A dashboard</td><td>Tracking performance the way you interpret information</td></tr>
-        <tr><td>The dual web</td><td>Being found by AI and search</td></tr>
+        <tr><td><strong>The dual web</strong></td><td><strong>Being found by AI and search</strong></td></tr>
         <tr><td>Automations</td><td>Making work happen without you</td></tr>
         <tr><td>An agent</td><td>Software that decides on its own</td></tr>
         <tr><td>A GTM strategy</td><td>Getting customers in the door</td></tr>
@@ -1396,17 +1426,15 @@
   <h2>What do you want to ask?</h2>
   <p>Drop questions in the chat and give a thumbs up to the ones you want answered. I'll take the most-wanted first.</p>
   <div class="grid-2" style="margin-top:8px;">
-    <div class="card">
+    <div class="card card-hero">
       <div class="eyebrow">Tonight, if you do nothing else</div>
-      <ul>
-        <li>Read your report with Claude, not alone.</li>
-        <li>Fix the top three it names.</li>
-        <li>Run it again in a month.</li>
-      </ul>
+      <p>Install <strong>AgriciDaniel/claude-seo</strong>, then run one line on your own site:</p>
+      <div class="prompt-box" style="margin:10px 0 0;">/seo geo yourwebsite.com</div>
+      <p class="small-note" style="margin-top:10px;">Then read it with Claude rather than alone, fix the top three it names, and run it again in a month.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Still running? Nothing's lost</div>
-      <p>Your report will be waiting in that window. Everything we covered applies whenever it lands, and the recording will be in your inbox.</p>
+      <div class="eyebrow">It takes about ten minutes</div>
+      <p>Four clicks to install, one line to run, and a few minutes while it works. <strong>The recording and every slide are in your inbox</strong>, so nothing you saw today is something you have to remember.</p>
     </div>
   </div>
 </section>

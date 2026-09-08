@@ -35,20 +35,33 @@ deliberately topic-named rather than `lightning-lesson`, so further lightning
 lessons can sit beside them. Neither is linked from the landing page; they are
 reached through Maven.
 
-The two are **not** the same format, and the difference is load-bearing:
+Both are **lecture and demonstration**. Nobody builds along in either one:
 
-- `aivisibility/` is **follow-along**. Attendees install a plugin and run one
-  long command on their own machine at ~minute 12, then ignore it while the
-  teaching happens over the top. That fire-and-forget property is what stops a
-  room of a hundred diverging machines from stalling the session.
-- `dashboard/` is **lecture and demonstration**. Nobody builds along. A dashboard
-  build is conversational, so every attendee's session would diverge within
-  ninety seconds and there would be no shared reconvergence point. Instead Eric
-  demos one build from a sample CSV, kicking it off at ~minute 12 (slide 4) and
-  returning to it on slide 7, so the same fire-and-forget shape is preserved with
-  one machine instead of many. Its only engagement beat is the slide 6 chat
-  question, which therefore carries all the interaction weight that
-  `aivisibility/` spreads across three moments.
+- `dashboard/` was designed that way. A dashboard build is conversational, so
+  every attendee's session would diverge within ninety seconds and there would be
+  no shared reconvergence point. Eric demos one build from a sample CSV, kicking
+  it off at ~minute 12 (slide 4) and returning to it on slide 7.
+- `aivisibility/` was **converted** to it after its first live run, in which
+  nobody actually followed along. It was originally built as follow-along, and
+  the deck's shape still carries that history: the audit kicks off at ~minute 12
+  and executes underneath the teaching section, which is why the pacing survived
+  the conversion unchanged. Eric now installs and runs on one site on his own
+  screen and reads the report live.
+
+Both therefore keep the same fire-and-forget shape with one machine instead of
+many, and both put the attendee's own doing in the close as homework rather than
+in the middle as an activity.
+
+Two consequences of the conversion worth knowing before editing `aivisibility/`:
+
+- **The single run is a single point of failure.** With a room of parallel runs
+  the session self-healed; now one dead run takes the payoff with it. The deck is
+  written so the teaching still stands if the report never lands.
+- **`teaching.md` serves one audience: the post-recording student.** It is the
+  only source of `llm.md`, so anything written there reaches a student who pastes
+  the deck link into Claude. Live stage directions were deliberately removed from
+  it rather than shipped to students. Keep it written to the person reproducing
+  the build, not to the presenter.
 
 A free lightning lesson must not depend on anything from the paid prereqs. For
 `dashboard/` specifically that rules out Supabase, GA4, and deploying: GA reads
