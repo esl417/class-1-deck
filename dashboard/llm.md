@@ -45,9 +45,9 @@ A FREE 45-minute standalone Maven lightning lesson, not part of the paid series.
 
 Free Lightning Lesson
 
-# The one number you run your business on.
+# The screen you'd actually open on a Monday.
 
-In the next 45 minutes you'll watch a dashboard get built from one ordinary export. Every prompt shown as typed.
+One ordinary export becomes the screen you check every week. Every prompt shown as typed.
 
 ## Slide 2 · Where we start
 
@@ -61,13 +61,13 @@ Everything today comes out of a single export, the sort of thing any tool you us
 
 _What's in it_
 
-Ninety-odd rows, one per day. A handful of columns. Perfectly ordinary numbers.
+Six months of orders, one row each. A date, a customer, a channel, what they paid, whether it came back. Perfectly ordinary numbers.
 
 This is sample data for a made-up business, so nothing on screen today is anyone's real numbers.
 
 _What is not in it_
 
-The number that actually matters. It isn't a column. Nothing exported it, because no tool thought to.
+The thing that actually limits this business. It isn't a column, and no tool can export it — because it only exists in the owner's head.
 
 By the end of the session it will be the biggest thing on the screen.
 
@@ -82,7 +82,9 @@ plant the thing that pays off on slide 8.
 
 The plant is the "what is NOT in it" card. Say it slowly and then move on
 without explaining it. Twenty minutes later that card is the reveal. Do not
-name the metric here; naming it now spends the payoff early.
+name the constraint here; naming it now spends the payoff early. The card says
+the limiting thing "only exists in the owner's head" -- that phrasing is the
+whole session in one line, so read it exactly and let it sit.
 
 Say the watching-not-building thing warmly and once. This audience is braced to
 be told they're behind, and "you don't have to keep up today" is a relief, not a
@@ -91,7 +93,83 @@ disappointment. The heads-up box does the work: every prompt is on a slide.
 If someone asks for the sample file in chat, say it's in the follow-up. Don't
 break stride hunting for a link.
 
-## Slide 3 · Why reports never fit
+## Slide 3 · The prompt
+
+**What the student sees on this slide:**
+
+_The prompt_
+
+## Here is the whole thing I sent it.
+
+One prompt, in plain English, describing what I want the screen to do . This is the entire input — no setup, no settings, no second conversation. Let's read it properly, because every choice in it matters.
+
+[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
+> Here are my orders and my ad spend for the last six weeks. Build me a single-page dashboard.html I can open in my browser. Don't just chart the columns. Here's what you can't see in the file: I have 2 customer service people , paid hourly, and I need them under 40 hours a week each — overtime is where my margin goes. Start to finish, a return takes us about 40 minutes : the email, the label, inspecting it, restocking, the refund, the follow-up. This is a screen I want to open every Monday, so build it to be re-run: I'll hand you a fresh export and it should still make sense. Show me every channel side by side — what each one costs me in money and in my team's hours — and how much of the team I have left. Flag the channel that's quietly eating the most, tell me which ones I can still afford to grow, and tell me whether that 40 minutes is what's really limiting me.
+
+_What I did not do_
+
+I didn't name the metric. I didn't say which columns. I didn't describe a layout or pick a chart type.
+
+_What I gave it that no tool has_
+
+My team size , my hourly problem , and how long a return takes us . Three facts that live in my head, not in any system.
+
+ ⏱️
+
+I ran this before we started, and it took about fifteen minutes. That's normal, and it's why we're not watching it happen — you'd be staring at a progress bar. We'll open exactly what it produced in a few minutes.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+**Nothing is built live. This slide is the whole demonstration of the input.**
+Everything on slide 8 came out of the paragraph on this screen, and since the
+room will not watch it happen, this slide has to carry the proof that it really
+is just a paragraph.
+
+Open by disclosing it, once and without apology: "I ran this before we started
+-- it takes about fifteen minutes, so I'm not going to make you watch a progress
+bar." Then move on. Do not imply anything is running now.
+
+Then read the prompt aloud, unhurried. That reading IS the teaching. The room
+needs to hear that it is plain English -- no syntax, no settings, no column
+names -- and that it is one paragraph a person could have dictated. Take your
+time; you have no clock underneath you any more.
+
+Three points off the left card:
+
+1. You did not name the metric.
+2. You did not name the columns.
+3. You did not describe a layout.
+
+Then the card on the right, which is the one that matters now: you handed over
+**three facts that are in no system anywhere** -- two CS people, the 40-hour
+ceiling, and how long a return actually takes. Say plainly that this is the
+part no software could have done for you, at any price. Your ad platform knows
+spend. Your store knows orders. Neither one knows how many people you employ or
+what overtime does to your month.
+
+Two more things in the prompt worth pointing at, in this order:
+
+**"A screen I want to open every Monday, so build it to be re-run."** This is
+not a one-off analysis of a quarterly budget question -- it is a standing view
+of every channel and of how much of the team is left. Say that out loud,
+because it is what makes the thing worth keeping. A one-time answer gets read
+once and closed. This is the difference between asking a question and having an
+instrument, and it is also what sets up slide 9: the file doesn't refresh
+itself, but it was built to accept a fresh export.
+
+**"Tell me whether that 40 minutes is what's really limiting me."** You are not
+asking for a number, you are asking what your options cost. That is the
+difference between a report and a decision tool, stated in the prompt itself.
+
+Then close by pointing forward: everything in the next three slides is the
+reason the prompt was worded this way, and then we open what it produced. A
+room that doesn't know a payoff is coming will wonder where this is going.
+
+**Do not open `dashboard.html` early**, however tempting -- not even a glance to
+prove it exists. The reveal is worth more whole on slide 8 than dribbled out
+here.
+
+## Slide 4 · Why reports never fit
 
 **What the student sees on this slide:**
 
@@ -133,60 +211,13 @@ Then the turn, which is the actual idea: the number they run on is usually
 criticism of the tools, it's a structural fact about tools built for everybody.
 
 The small-note at the bottom is the one to say out loud verbatim: they have
-exported a report and immediately started dividing one column by another. Ask
-for a show of hands if the room is warm. Almost everyone has done it.
+exported a report and immediately started dividing one column by another. Do
+NOT ask for a show of hands -- assume radio silence all session. Say it as a
+statement of fact about them and move on; the recognition happens whether or
+not anyone signals it.
 
 Do NOT get into a specific tool's flaws. The moment you say "Google Analytics
 is bad" you've lost the people who like it and taught nothing.
-
-## Slide 4 · Start the build
-
-**What the student sees on this slide:**
-
-_Start the build_
-
-## Here is the whole thing I type.
-
-One prompt, in plain English, describing what I want the screen to do . Then I leave it alone and we keep talking while it works.
-
-[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Here's a CSV of my last 90 days. Build me a single-page dashboard.html I can open in my browser. Don't just chart the columns. Work out the one number that tells me whether this business is healthy, compute it from the columns I do have, and make it the biggest thing on the screen. Underneath it, show the raw numbers it came from, a simple trend line, and one plain-English sentence telling me what to do about it.
-
-_What I did not do_
-
-I didn't name the metric. I didn't say which columns. I didn't describe a layout or pick a chart type.
-
-_What I asked for instead_
-
-A decision . "Tell me whether this is healthy, and what to do." The screen is whatever answers that.
-
- ⏳
-
-That's running now, and it takes a few minutes. We are not waiting on it. Everything in the next two slides is the reason the prompt was worded that way, and we'll come back to the screen when it's done.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-**This slide starts the clock. Type the prompt live, on screen, at real speed.**
-Do not paste it silently. The typing IS the teaching — they need to see it's a
-plain English paragraph, not a command.
-
-Read it aloud as you type, then stop and make three points off the two cards:
-
-1. You did not name the metric.
-2. You did not name the columns.
-3. You did not describe a layout.
-
-Then the card on the right: you asked for a **decision**, not a chart. "Tell me
-whether this is healthy and what to do about it." That's the whole method in one
-sentence and it's why the prompt is worded the way it is.
-
-Then hit go, and say the fire-and-forget line: it takes a few minutes, we are
-not waiting on it, the next two slides are the reason the prompt was worded that
-way. Be explicit that you'll come back to it. A room that doesn't know a payoff
-is coming will spend slides 5 and 6 wondering what happened to the build.
-
-If it finishes during slide 5 or 6, **do not interrupt to show it.** Let it sit.
-The reveal is better whole, on slide 7, than dribbled out early.
 
 ## Slide 5 · Decision tool
 
@@ -218,6 +249,8 @@ _A decision tool says_
 
 Every number carries a verdict.
 
+Every business runs on three or four of these. "Do I spend more on ads, or is that money better somewhere else." "Do I chase the quiet clients, or let them go." "Do I need to hire, or am I just badly organised." You don't answer them once — you answer them again every time something moves, which is why what you're building is a standing view , not a report on last month.
+
 If you don't know which decisions you make, that's normal and it isn't a problem. Ask Claude to propose the metrics worth watching for a business like yours, then pick from the list. Choosing is easier than inventing.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
@@ -231,8 +264,8 @@ on its own. "You're paying a full kitchen for a quiet room, close Tuesdays or
 fill them" is a sentence an owner can act on. "You served 240 covers" is not.
 
 **The example here is a restaurant on purpose, and it is NOT the demo's data.**
-Keep it that way. The numbers on the screen you open on slide 7 must be the first
-time the room sees the demo's figures, or slide 8's reveal lands as a repeat and
+Keep it that way. The numbers on the screen you open on slide 8 must be the first
+time the room sees the demo's figures, or the reveal lands as a repeat and
 your "I haven't seen this output either" line stops being believable. If you
 improvise a different example here, improvise one from a different business.
 
@@ -247,58 +280,203 @@ track" is a reason they can't do this.
 The invariant worth stating: whoever picks the metric, the screen has to explain
 itself. A number nobody can interpret is not a decision tool.
 
-## Slide 6 · Your turn
+## Slide 6 · Numbers you build
 
 **What the student sees on this slide:**
 
-_Your turn_
+_The move_
 
-## What's the one decision you make every week?
+## The number you run on is one nobody hands you.
 
-Not a number. A decision. The thing you sit down and weigh up on a Monday, with whatever information you happen to have.
+My file says I had 112 returns last week . That's a count, and every tool I own can show it to me. On its own it tells me nothing — I can't do anything differently on Monday because I saw the number 112.
 
-_Put it in the chat_
+_What the file gives me_
 
-A few words is plenty. "Do I spend more on ads." "Do I chase the quiet clients." "Do I need to hire."
+112 returns
 
-I'll read them out and we'll work out what each one would actually need on screen.
+A count. True, and useless on its own. Every reporting tool ever made is very good at handing me this.
 
-_Why this is the whole skill_
+_What I have to supply_
 
-The decision comes first. The dashboard is built backwards from it.
+40 minutes each
 
-Start from the data you happen to have and you get a chart dump. Start from the Monday decision and you get something you'll actually open.
+What one actually costs me to deal with. It's not a column anywhere. I know it because I do the job.
+
+Multiply one by the other and a number I can't act on becomes one I can. That's the whole move — and no tool ships the result, because half of it was never in a system. It was in my head.
+
+So what does 112 returns actually cost me? That's the number I asked for, and it's what we're about to go and look at.
+
+The move you can do this week: ask Claude to look at your raw columns, tell it the limit you work against, and have it propose what's worth building. It generates, you choose.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-**You are not lecturing here. You are running the room.** The slide is a
-backdrop. This is the only engagement beat in a lecture-format session, so it
-carries all the interaction weight that the previous lesson spread across three
-moments. Protect it.
+**This is the listing's central promise, so it has to be taught explicitly and
+not just implied.** The registration page says: "the number you actually run on
+is usually computed from two or three sources, so no tool ever shows it."
+Somebody in the room signed up for that sentence. This is where you deliver it.
 
-Shape, in order:
+It comes from Class 2, where it is called the pro move most people miss. If you
+are running long, this is the slide to compress -- but it teaches the listing's
+central promise, so compress it rather than cutting it.
 
-1. Ask the question once, and be precise that it's a *decision*, not a number.
-   A decision is much easier to answer, which is exactly why it's worded that
-   way. Everyone has a Monday decision. Not everyone has a metric.
-2. Wait. Genuinely wait. The first ten seconds of silence feel long and are
-   normal; people are typing. Don't rescue it by talking.
-3. Read them out as they come, by name, and cluster out loud: "a lot of you are
-   deciding where to spend." That moment is the point of the beat.
-4. Take three and work them, briefly: for that decision, what would have to be
-   on the screen? That's the backwards-build made concrete with the room's own
-   material, and it's teaching you could not have scripted.
+**Slide 6 sets up the move. It does NOT do the sum.** That is deliberate and it
+changed on 2026-09-08: slide 6 used to compute 112 x 40 = 74 hours, which meant
+slide 7 opened by announcing the reveal *after* the number had already been
+found. The reveal came before its own setup. Now slide 6 ends on the question
+and slide 7 answers it.
 
-**Five minutes, hard cap.** This expands to fill whatever you give it. If the
-build is still running you can afford a fourth answer, and that reads as
-generosity rather than stalling. If the build is done, still finish the beat
-properly. Don't cut the room off to get to the screen.
+Three beats here, and then stop:
 
-The card on the right is the takeaway to land before moving on: the decision
-comes first, the dashboard is built backwards from it. Start from the data you
-happen to have and you get a chart dump.
+1. **The count.** 112 returns last week. Every tool they own can show them that.
+   Say plainly that on its own it tells you nothing -- you cannot do anything
+   differently on Monday because you saw the number 112. Don't rush; the
+   flatness is the setup.
+2. **The half you supply.** Forty minutes to deal with one. Put your finger on
+   that card. Nobody sold you that number and no system stores it -- you know it
+   because you do the job.
+3. **The move, stated but not performed.** Multiply one by the other and a
+   number you can't act on becomes one you can. Say that it is the whole skill,
+   and that no tool ships the result because half of it was never in a system.
 
-## Slide 7 · What got built
+**Then stop on the question and leave it hanging: "so what does 112 returns
+actually cost me?"** Do not answer it. Do not say 74 hours, do not say 93%, do
+not do the multiplication out loud. The next slide is the answer and it is the
+one moment in the session where a number is supposed to land hard.
+
+**Keep every word on this slide concrete.** An earlier version used invented
+vocabulary -- "a count", "what it costs you", "the load" -- and it was opaque,
+because none of those are things an owner can picture. If you find yourself
+reaching for an abstraction here, use the number instead. This audience is
+already braced to feel stupid; a made-up term is the fastest way to confirm it.
+
+**Do not give away the asymmetry here.** No per-channel breakdown, no 13
+minutes, no 5.2x. Slide 6 ends on the question. When slide 7 answers it with
+93% and then splits those hours by channel, the reaction you want is "oh -- it's
+not spread evenly," and naming it early spends that.
+
+The small-note is homework they can do this week without anything new: ask
+Claude to look at your raw columns and propose the numbers worth building, each
+with the decision it drives. It generates, you choose. Same shape as the
+metric-selection branch on slide 5 -- worth naming as the same move so it
+registers as a pattern.
+
+**What this slide is NOT.** Do not turn it into a lesson about iterating on the
+build, first drafts being rough, or how to prompt. That is Class 2's build-loop
+material, it is tool-specific, and here it would set the room up to expect the
+slide-7 reveal to be a rough draft you then have to fix live. You are not
+rebuilding anything on stage.
+
+## Slide 7 · The verdict
+
+**What the student sees on this slide:**
+
+_The answer_
+
+## Here's the number nothing else could have told me.
+
+112 returns, at 40 minutes each. One half was sitting in the file all along; the other half came out of my head. That's why nothing I pay for could show me this — and here's what the two make together.
+
+ 112
+ returns a week · in the file
+
+ 40 min
+ to process one · only I know this
+
+ →
+
+ 93%
+ of my team's week, gone on returns
+ 74 of the 80 hours I have. Six hours of slack, and I never knew.
+
+That alone would be worth knowing. But the screen went further and split those hours by channel — and that's where it stopped agreeing with every other dashboard I own.
+
+_Every dashboard said_
+
+Fund paid search. It brings me the most customers and the most orders of any channel. Both are true.
+
+_My screen said_
+
+Each of its orders costs 13 minutes of my team against email's 2.5 . It's 62% of my whole returns load — grow it 20% and I'm in overtime.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+**The headline is "the number nothing else could have told me," and the wording
+is load-bearing.** It read "the number it was always going to find" until
+2026-09-08, which was wrong twice over: "it" had no referent on the slide, and
+"always going to find" claims inevitability when the entire session argues that
+no tool was ever going to find this. If you paraphrase this slide out loud, do
+not reintroduce inevitability -- the point is that the finding was *unavailable*
+to every tool they own, because half its input lives in the owner's head.
+
+**The eyebrows on 5, 6 and 7 read as a sequence** -- "The idea", "The move",
+"The answer" -- so slide 7's label is the payoff to the question slide 6 leaves
+hanging. Slide 7's eyebrow used to say "The number", which just restated the
+first two words of its own headline, and slide 6's said "Still running", which
+was a build-status note rather than a topic and tied the slide to timing the
+deck deliberately doesn't depend on. If you rewrite either headline, keep the
+question/answer pairing.
+
+Referents matter on this slide generally. "The screen" and "my screen" mean the
+thing you built today; "every dashboard I own" means the tools they already pay
+for. Keep those two straight when you talk over it, because the whole contrast
+collapses if the room loses track of which one you mean.
+
+**This comes BEFORE you open the screen, and that ordering is deliberate.** All
+the teaching in this session happens before the reveal; nothing after slide 8 is
+a lesson. So you explain the number here, in the abstract, and then the browser
+confirms it. The room should reach slide 8 already knowing what they are looking
+for.
+
+Do not open the file during this slide, however tempting. The moment you switch
+to the browser you have spent the reveal.
+
+Point at the diagram in this order, physically: the 88 returns, then the 40
+minutes, then the arrow, then 93%. The first number was a column in the file.
+**The second one came out of your head** -- put your finger on that card and say
+so. It is the same shape you drew abstractly on slide 6, now with real figures
+in it, and saying "this is that" out loud is worth doing.
+
+**Two beats on this slide, in order, and don't merge them.** First the 93% --
+that is the answer to the question slide 6 left hanging, so let it land on its
+own before you say anything else. Six hours of slack in a whole week is the
+kind of number an owner feels in their stomach.
+
+Then the split, which is the actual finding: **13 minutes against 2.5.** Say
+both, slowly, and let the gap sit before you name the multiple. Two orders,
+same shop, same week, and one costs you five times the team time of the other.
+Nothing in any tool they own would have told them that, because the minutes are
+theirs.
+
+The claim to make is narrow and therefore airtight: not "no tool computed this"
+but **"no tool could."** There is software that does cohort analysis on
+channels. There is none that knows you employ two people and cannot afford
+overtime.
+
+Then the pair of cards. The left one concedes, genuinely, that every dashboard
+metric was TRUE -- paid search really is the cheapest and really does bring the
+most customers. You are not catching the tools in a lie. You are pointing out
+they were answering a question you never asked. The right card is the verdict,
+and it leaves two doors open: grow the channels that cost almost nothing to
+serve (email has room for 64% growth against paid search's 12%), or attack the
+33% return rate that makes paid search expensive in the first place. **Do not
+pick one for them** -- the whole point is that the screen prices the options
+and the owner chooses.
+
+**The ceiling genuinely does bite now, so you may say so plainly.** At 93% there
+are six spare hours in the whole week, and growing paid search 20% costs 83.6 --
+overtime. That is real in the data; the verifier checks it. (An earlier 180-day
+export put this at 74% with no squeeze at all, and the notes told you NOT to
+claim a breach. That changed when the export was cut to 45 days on 2026-09-08.
+If you ever regenerate the data, re-read `verify_deck_claims.py` output before
+trusting either version of this paragraph.)
+
+Tie back to slide 2's "what is not in it" card here, explicitly. That plant is
+now twenty minutes old and closing it is satisfying.
+
+Then the last line of the setup paragraph is your handoff to the reveal: "watch
+what it does to the obvious answer." Say it, then advance.
+
+## Slide 8 · What got built
 
 **What the student sees on this slide:**
 
@@ -306,144 +484,148 @@ _What got built_
 
 ## Let's go and look at it.
 
-It finished while we were talking. One file, sitting on my desktop, that opens in a browser like any other page. Four things on it, and that's deliberate.
+One file, sitting on my desktop, that opens in a browser like any other page. Nothing is connected to anything. Here's what came back from that one paragraph.
 
- The headline
- One number
+ Top of the page
+ How much team I have left
 
-The verdict on the whole business, in one figure.
+93% — 74.4 of my 80 hours, and 5.6 spare. The one figure I'd check every Monday, and the thing that decides what I'm allowed to grow.
 
- Underneath it
- What it came from
+ Then
+ Every channel, money beside hours
 
-The two raw counts, so the number is never a mystery.
+One row each: orders, ad spend, return rate, and the hours they cost me. The two things nobody ever puts on the same table.
 
- Behind it
- A trend line
+ Then
+ The one quietly eating the most
 
-The same number over time. Direction beats a snapshot.
+Paid search: 13 minutes of my team per order against email's 2.5 . Named, not implied.
 
- At the bottom
- One sentence
+ And
+ What I can still afford to grow
 
-Plain English. What this means and what to do.
+My 5.6 spare hours buy 136 more email orders a week — or 26 of paid search. Same hours, very different answers.
 
-Four things, not forty. A screen you can read in three seconds is a screen you'll actually open on a Monday. Everything I left off was a deliberate choice, and I can add any of it later by asking.
+And the part that makes it an instrument rather than a report: none of those conclusions are written down. The four numbers at the top are boxes I can type in — change 40 minutes to 35 and every figure re-reads. Hand it next month's export and it re-reads again: if email becomes my problem channel, the screen says email , and tells me to grow the one that used to be the villain.
+
+That's the difference between a report and an instrument. A report is the answer to one Monday's question. This asks the question again every week, and it's allowed to change its mind.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Open the real thing. Screen-share the actual file in the browser, not a
-screenshot. Say out loud that you haven't seen it either.
+Open the real thing. Screen-share `dashboard.html` in the browser, not a
+screenshot. **Do not say "I haven't seen this either"** -- you have, you ran it
+beforehand, and the room already knows because you told them on slide 3. The
+honest line is the better one: *everything here came out of that one paragraph.*
 
-Then walk the four parts using the anatomy strip, in order, top to bottom. The
-strip on the slide is the map; the browser is the territory. Go back and forth
-once so they can see the mapping, then stay in the browser.
+**This is the last slide before the close, and there is no teaching left after
+it.** The room has already been told what the number is and why it matters --
+slide 7 did that. This slide is confirmation: they see it on a real screen, in a
+real browser, and it matches what you promised. That is a much stronger ending
+than explaining something new.
 
-**Defend the smallness explicitly.** Four things is a choice, not a limitation,
-and someone in the room is thinking "that's it?" Get ahead of it: a screen you
-can read in three seconds is a screen you'll open on a Monday. Everything left
-off was deliberate and any of it can be added later by asking. This also happens
-to be why the build was quick, but lead with the design reason, not the speed.
+Walk the four parts using the anatomy strip, in order. The strip on the slide is
+the map; the browser is the territory. Go back and forth once so they can see
+the mapping, then stay in the browser.
+
+The order matters. Lead with the 93% and let the room register that 5.6 spare
+hours is the whole margin, before you say which channel is spending it. Then the
+channel table, then the hidden-cost section, then the growth room. If you name
+paid search too early the rest of the screen is just confirmation.
+
+**The live controls are the most important thing on the page, so save them for
+last and actually use them.** The four boxes at the top -- minutes per return,
+CS people, hours each, hourly wage -- are editable, and every figure below
+re-reads. Change 40 to 35 on screen and let the room watch the numbers move.
+That is the difference between a report and an instrument, demonstrated rather
+than claimed, and it lands harder than any sentence you could say about it.
+Change it back before you move on.
+
+**Then answer the question the whole deck has been dodging: what happens when
+the data changes?** This session sells a *standing* instrument, not one Monday's
+finding, and until this moment the room has only ever seen one dataset produce
+one verdict. So say plainly that none of the conclusions are written into the
+page -- the villain channel, the one to grow, the whole narrative paragraph are
+all computed from whatever file it is handed.
+
+It is worth being able to say this with total confidence, because it was
+actually tested (2026-09-08): feeding the same page a file where email had a
+41% return rate and paid search 6% flipped the headline to **108% -- already
+in overtime**, and rewrote the prose to *"email is eating 73% of your
+customer-service team"*, recommending growth into paid search. Same file, same
+code, opposite verdict. Nothing is hardcoded.
+
+**If you want the strongest possible version of this beat, keep a second
+`dashboard.html` built from an altered export and open it for fifteen seconds.**
+Two tabs, opposite conclusions, no edits in between. That single comparison
+proves "standing instrument" better than the rest of the session combined --
+and it is the thing that makes the course's "always current" promise land as
+obviously valuable rather than as a nice-to-have.
+
+**This screen is bigger than "four things", and that is fine -- do not
+apologise for it.** An earlier version of this slide defended the smallness of
+the output; the real file has six sections and a control panel, so that defense
+now reads as false modesty. What to say instead if someone looks overwhelmed:
+every section answers one question an owner actually asks, and the top of the
+page alone is enough for a Monday.
 
 Do not tour the code. Nobody wants it and it re-triggers the fear the whole
 session is draining.
 
-If the output is ugly, say so cheerfully and move on. First passes are rough,
-that's expected, and the number is right even when the styling isn't. Do not
-apologize for it and do not start fixing it live.
+**One honest snag, in case anyone is reading closely.** The page's own prose
+says paid search is "eating 58% of your customer-service team". That is
+46.4 hours against the 80-hour ceiling. The deck says 62%, which is the same
+46.4 hours against the 74.4 hours of *return-handling load*. Both are correct
+and they answer different questions. If nobody asks, say nothing. If someone
+does, that one sentence is the answer, and it is a good look rather than a bad
+one: you know your own numbers.
 
-## Slide 8 · The number
-
-**What the student sees on this slide:**
-
-_The number_
-
-## That headline figure is in no report you own.
-
-Look at where it came from. Both of the numbers feeding it were sitting in the file all along. The one that matters was not.
-
- 412
- visits · a column in the file
-
- 18
- enquiries · a column in the file
-
- →
-
- 4.4%
- Enquiry rate
- In no export. Nobody's column. Computed.
-
-_A raw count says_
-
-What happened. 412 is a fact with no opinion attached.
-
-_A computed number says_
-
-Whether it's good, and whether it's getting better. That's the difference between reporting and deciding.
-
-The move that transfers: ask Claude to propose the numbers worth building out of your raw ones, each with a line saying what decision it drives. Then you pick. It generates, you choose.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The payoff, and the promise from the listing copy made literal: the number you
-run on is in none of your reports.
-
-Point at the diagram in this order, physically: the two grey raw counts, then the
-arrow, then the big teal one. Both grey numbers were columns in the file. The
-teal one was not. Nobody exported it because no tool knew it mattered.
-
-Then the pair of cards, which is the transferable distinction: a raw count says
-what happened, a computed number says whether it's good and whether it's
-improving. That is the line between reporting and deciding.
-
-**The small-note is the thing they can actually take home,** so say it as a
-recipe: ask Claude to propose the numbers worth building out of your raw ones,
-each with a line saying what decision it drives, then you pick. It generates,
-you choose. Same shape as the metric-selection branch on slide 5, and worth
-naming as the same move so it registers as a pattern rather than two tips.
-
-Tie back to slide 2's "what is not in it" card here, explicitly. That plant is
-now twenty minutes old and closing it is satisfying.
-
-## Slide 9 · The limits
+## Slide 9 · What you own
 
 **What the student sees on this slide:**
 
-_The limits_
+_What you own_
 
-## It shows the day you built it.
+## It's yours. No subscription, no analyst.
 
-What we built is a real, useful thing. It's also a file on a computer, and it's worth being precise about what that means.
+What we built is a real thing you own outright. It's also a file on a computer, and it's worth being precise about both halves of that.
 
-_What you have_
+_What you own_
 
-A dashboard shaped around one decision, showing a number no tool of yours reports. It lives on your machine, it costs nothing to keep, and you update it by handing over a fresh file and asking.
+A standing view of every channel, built on a limit only you knew about. It lives on your machine. Nothing to subscribe to, nobody to ask, no seat to pay for.
 
-Genuinely useful. Go and do it.
+New numbers? Hand Claude the fresh export, say refresh, and the screen updates. Go and do it.
 
-_What it doesn't do_
+_Where it stops_
 
-It doesn't refresh itself. Nothing in that file reaches out for new numbers, so it shows what the export showed on the day you handed it over.
+You have to hand it the new file. Nothing in there reaches out for numbers on its own, so between exports it shows the day you built it.
 
-Feed it a new file and it updates. Leave it alone and it sits there.
+That's the one thing standing between this and a screen that's just always right.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-**Name the gap and stop there.** Do not explain how it gets closed. Do not say
-"and in the course you'd connect a live source." That converts a reason to
-enroll into a free tip, and slide 11 is ninety seconds away and does that job
-properly.
+**Lead with ownership, name the gap second, and stop there.** Do not explain how
+the gap gets closed. Do not say "and in the course you'd connect a live source."
+That converts a reason to enroll into a free tip, and slide 11 is ninety seconds
+away and does that job properly.
 
-The honest limit is in the headline, so let it do the work: it shows the day you
-built it. Nothing in the file reaches out for new numbers. Feed it a fresh export
-and ask, and it updates; leave it alone and it sits there.
+**The order here changed on purpose, and it matters.** The listing sells this as
+a feature they own -- "a dashboard you own and update by asking... it lives on
+your computer, no subscription, no analyst." Somebody registered for that
+sentence. If the first thing they hear is what it can't do, you have handed
+their selling point back to them as a shortcoming. So: what they own first, said
+warmly and meant, and the ceiling second.
 
-Say this plainly and without embarrassment. It is a real limitation and the
-audience will respect you naming it before they discover it. **Do not oversell
-the limitation and do not undersell what they got** — the left-hand card is
-genuinely useful and "go and do it" is sincere. Someone who only ever does the
-free version should still be better off, and you should mean that.
+The ownership half is genuinely strong, so sell it properly: no subscription, no
+seat, nobody to ask, and it does not stop working if they cancel something. New
+numbers, hand it the file, say refresh. **"Go and do it" is sincere** -- someone
+who only ever does the free version should still be better off, and you should
+mean that.
+
+Then the ceiling, plainly and without embarrassment: you have to hand it the new
+file. It is a real limit and the audience will respect you naming it before they
+discover it. The last line on that card -- "that's the one thing standing between
+this and a screen that's just always right" -- is doing the setup work, so read
+it and then move on. Do not elaborate.
 
 This is also the slide that protects the honesty of the whole session. The seam
 between "a dashboard you refresh by asking" and "a dashboard that refreshes
@@ -456,11 +638,11 @@ it sells itself.
 
 _The real lesson_
 
-## This was never about dashboards.
+## This was never about charts.
 
-You watched a number get built that nobody's software would have handed you, because it only exists once someone decides it matters.
+We built a screen that watches every channel and every hour my team has, and tells me each week where the business is actually being decided.
 
-That's the skill. Not charts. Working out what actually tells you how you're doing, and then making the thing that shows it to you.
+That's the skill. Not charts. Knowing what you're really running against, and building the one view that keeps that in front of you.
 
 Once you can do that, you stop taking whatever screen you're given.
 
@@ -472,10 +654,16 @@ The spine. A teaching slide, not a pitch, and the pitch does not start here.
 between them. Do not fill the gaps. Read the last line, then stop talking for a
 full two seconds before advancing.
 
-The turn: it was never about dashboards. What they watched was a number getting
-built that no software would have handed over, because it only exists once
-somebody decides it matters. That's the skill, and it transfers to anything they
-measure.
+The turn, and say it close to the slide wording because it is the thesis: **we
+built a screen that watches every channel and every hour the team has, and
+tells us each week where the business is actually being decided.** It is not a
+report on last quarter and it is not a chart dump. It is an instrument you run
+against.
+
+Then the skill, stated as a method they can repeat: know what you are really
+running against, and build the one view that keeps it in front of you. That is
+what you did on slide 3, and it is why the prompt contained your headcount
+instead of a chart type.
 
 The line to land, in your own words: once you can do that, you stop taking
 whatever screen you're given. That's the durable takeaway and it's true whether
@@ -582,9 +770,9 @@ _This week, if you do nothing else_
 
 - Export one file from a tool you already use.
 
-- Ask Claude for the one number that says whether it's healthy.
+- Write down the limit you're actually working against — people, hours, cash, space.
 
-- Ask it what decision that number should change.
+- Ask Claude for a screen you'd open every Monday that shows your numbers against that limit .
 
 _The prompt is in the recording_
 
@@ -594,19 +782,39 @@ Maven sends the recording to everyone who registered, and the prompt I typed is 
 
 Five minutes. Chat questions with emoji upvoting, most-upvoted first.
 
-Land the homework card before you take the first question, and keep it small:
-export one file, ask for the one number, ask what decision it should change.
-Three steps, all doable this week, none requiring anything they don't have.
+Land the homework card before you take the first question, and keep it small.
+The middle step is the one that matters and the one nobody would think of on
+their own: **write down the limit you are actually working against** -- people,
+hours, cash, space. Everyone can do step one. Step two is the whole lesson, and
+step three is just asking for it. Three steps, all doable this week, none
+requiring anything they don't have.
 
 Likely questions and short answers:
 
 - **"Can I do this with my Stripe/Shopify/QuickBooks export?"** Yes, that's
-  exactly the point. Any export with a date and some counts.
+  exactly the point. Any export with a date and some counts. What makes it
+  yours isn't the export, it's the constraint you tell it about.
 - **"What if my file is messy?"** Better. Say so. Messy is the normal case and
   Claude handles it; describe the mess rather than cleaning it first.
+- **"How long does that take to build?"** About fifteen minutes for this one,
+  and it varies. Say it plainly -- you already disclosed it on slide 3. Worth
+  adding: you don't sit and watch it, you go and do something else, which is
+  also why it wasn't worth doing live in front of them.
+- **"Did you edit it afterwards?"** No. What they are looking at is what came
+  back. If you ever DO tweak the file before a session, change this answer --
+  do not let a rehearsed edit pass as a first pass.
 - **"Does it update by itself?"** No, and that's slide 9. Fresh file, ask, it
   updates. The course makes the refresh disappear. Don't go further than that.
-- **"Do I need to be technical?"** No. Point back at slide 4: that prompt is a
+- **"Doesn't Triple Whale / Northbeam already do this?"** Worth being straight:
+  they do the cohort half, and they cost more than this course and need to have
+  been watching for 90 days. They do not do the capacity half, because they
+  cannot know your headcount or your overtime problem. That's the honest line
+  and it lands better than pretending the category doesn't exist.
+- **"Where did the 40 minutes come from?"** The owner. That's the point. It's an
+  estimate, and a rough estimate is enough here: the finding is a *ratio*
+  between channels, so being off by five minutes moves both sides at once and
+  paid search stays ~5x email either way.
+- **"Do I need to be technical?"** No. Point back at slide 3: that prompt is a
   paragraph of plain English, and it's the whole skill.
 - **"Which Claude plan?"** The desktop app on a paid plan, Code tab.
 - **"Can I share the dashboard with my team?"** Not usefully as a local file,
@@ -615,5 +823,7 @@ Likely questions and short answers:
   for them they should keep it. The difference is you describe what you want
   once instead of maintaining formulas forever.
 
-If it goes quiet, go back to the chat beat from slide 6 and answer one you
-didn't get to. You will have more than you had time for.
+If it goes quiet, answer one of the likely questions above as though someone
+had asked it -- "one that comes up every time is..." -- rather than waiting.
+This room has been silent for forty minutes and will not suddenly start
+talking; carrying it yourself is the plan, not the fallback.
