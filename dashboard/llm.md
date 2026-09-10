@@ -61,7 +61,7 @@ Everything today comes out of a single export, the sort of thing any tool you us
 
 _What's in it_
 
-Six months of orders, one row each. A date, a customer, a channel, what they paid, whether it came back. Perfectly ordinary numbers.
+Six weeks of orders, one row each. A date, a customer, a channel, what they paid, whether it came back. Perfectly ordinary numbers.
 
 This is sample data for a made-up business, so nothing on screen today is anyone's real numbers.
 
