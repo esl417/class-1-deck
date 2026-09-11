@@ -45,6 +45,9 @@ const BOT_VIEWS = {
 
   '/dashboard': '/dashboard/llm.md',
   '/dashboard/': '/dashboard/llm.md',
+
+  '/agents': '/agents/llm.md',
+  '/agents/': '/agents/llm.md',
 };
 
 export default {

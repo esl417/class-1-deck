@@ -29,17 +29,18 @@ dashboard/              index.html                  ...   (free Maven lightning 
                         build_dashboard.py  rebuilds it from a data dir
                         sample-data/        generate.py, orders.csv, ad-spend.csv,
                                             verify_deck_claims.py
+agents/                 index.html                  ...   (free Maven lightning lesson)
 index.html              (landing page linking to all decks)
 ```
 
-`aivisibility/` and `dashboard/` are not part of the paid six-class series — they
-are free 45-minute Maven lightning lessons used as lead magnets, and both assume
-the attendee has nothing installed but the Claude desktop app. Their slugs are
-deliberately topic-named rather than `lightning-lesson`, so further lightning
-lessons can sit beside them. Neither is linked from the landing page; they are
-reached through Maven.
+`aivisibility/`, `dashboard/` and `agents/` are not part of the paid six-class
+series — they are free Maven lightning lessons used as lead magnets (the first
+two 45 minutes, `agents/` 60), and all three assume the attendee has nothing
+installed but the Claude desktop app. Their slugs are deliberately topic-named
+rather than `lightning-lesson`, so further lightning lessons can sit beside them.
+None is linked from the landing page; they are reached through Maven.
 
-Both are **lecture and demonstration**. Nobody builds along in either one:
+All three are **lecture and demonstration**. Nobody builds along:
 
 - `dashboard/` was designed that way. A dashboard build is conversational, so
   every attendee's session would diverge within ninety seconds and there would be
@@ -53,10 +54,16 @@ Both are **lecture and demonstration**. Nobody builds along in either one:
   and executes underneath the teaching section, which is why the pacing survived
   the conversion unchanged. Eric now installs and runs on one site on his own
   screen and reads the report live.
+- `agents/` follows `aivisibility/`'s fire-and-forget shape deliberately. The
+  standing instruction is handed over on slide 8 and the agent works underneath
+  the three teaching slides that follow (what an agent is, where the judgment
+  sits, safety), with the check-in on slide 12. Those three slides are written to
+  teach on their own merits, so an early or a slow finish costs nothing. It runs
+  in **Cowork**, not Code — the one navigational gotcha in the deck.
 
-Both therefore keep the same fire-and-forget shape with one machine instead of
-many, and both put the attendee's own doing in the close as homework rather than
-in the middle as an activity.
+All three therefore keep the same fire-and-forget shape with one machine instead
+of many, and all put the attendee's own doing in the close as homework rather
+than in the middle as an activity.
 
 Two consequences of the conversion worth knowing before editing `aivisibility/`:
 

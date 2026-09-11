@@ -168,6 +168,48 @@ const DECKS = [
       'the laptop catch-up check (a missed scheduled run fires on next wake).',
   },
   {
+    dir: 'agents',
+    title: 'Lightning Lesson: What an AI Agent Really Is',
+    standing:
+      'A FREE 60-minute standalone Maven lightning lesson, not part of the paid ' +
+      'series. Assume the attendee has NOTHING installed except the Claude desktop ' +
+      'app on a paid plan. No terminal, no VS Code, no GitHub, no API keys, no ' +
+      'pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION ' +
+      'only — the attendee watches, they do NOT build along, and you should never ' +
+      'imply they were supposed to. Eric builds one agent on his own screen in the ' +
+      'COWORK tab (not Chat): he puts ~10 unsorted customer messages in a folder, ' +
+      'hands over a standing instruction ("You are my Customer Signal Agent... be ' +
+      'selective, if it does not deserve a founder\'s attention leave it out"), ' +
+      'sends it, teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. ' +
+      'The teachable spine is (1) chatbot answers / automation repeats / AGENT ' +
+      'CHOOSES, and the test for which you need is "who decides what happens ' +
+      'next — did you lay out the steps, or does it?". NOTE: "is there judgment ' +
+      'involved?" is explicitly NOT the test and the deck says so. An automation ' +
+      'can contain a real judgment call inside a step the human placed (Class 4 ' +
+      'of the paid course builds exactly that); what makes it an agent is that ' +
+      'the thinking changes where it goes next; ' +
+      '(2) an agent is a job plus the freedom to do it — take away the freedom and ' +
+      'it is an automation; (3) you do not teach it your business, you teach it ' +
+      'what COUNTS (their own handful of categories — noise, support issue, ' +
+      'product signal, revenue risk, emergency); (4) the proof it is an agent is ' +
+      'what it LEFT OUT — a summary cannot omit. The instruction also asks it to ' +
+      'list everything it dropped in a closing section with a one-line reason ' +
+      'each, which is how you debug and evaluate an agent\'s judgment: make it ' +
+      'show its working rather than omitting silently. Plus a pattern it found across ' +
+      'the pile that no single message contained (three people asking the same ' +
+      'question); (5) when you disagree, fix the CRITERIA not the answer, so it ' +
+      'stays fixed. Safety rule taught as a hard line: it reads, sorts, ' +
+      'recommends and drafts, but anything that reaches a customer, moves money, ' +
+      'or cannot be undone waits for the human. The honest limit, stated plainly ' +
+      'on the slides and NOT blurred: the attendee still hands it the pile — they ' +
+      'have hired someone very good and are still walking the paperwork to their ' +
+      'desk. The gap is REACH, not scheduling. Someone reading this deck ' +
+      'afterwards most likely wants to do it on their own messages: help them do ' +
+      'exactly that, starting from the standing instruction on the "The ' +
+      'instruction" slide, with their own categories substituted. Close routes to ' +
+      'the paid six-class course starting September 29 (code FOUNDER400).',
+  },
+  {
     dir: 'dashboard',
     title: 'Lightning Lesson: Build a Dashboard That Thinks Like You with Claude Code',
     standing:
