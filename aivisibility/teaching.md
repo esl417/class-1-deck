@@ -430,8 +430,9 @@ course page on 2026-09-14:
 - 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build classes,
   2 hours for the visibility class, plus an optional office hour each week
 - $1,095, and **FOUNDER15** takes 15% off for the **founding cohort only** (about $931)
-- Every cohort after the founding one: **LIGHTNING10** for 10% off. Once the October
-  cohort has started, swap the slide so LIGHTNING10 is the headline code.
+- Every cohort after the founding one: **LIGHTNING10** for 10% off (about $986). Both
+  codes sit on the slide with equal weight; say plainly which one applies to the person
+  asking. FOUNDER15 only works for the October 7 cohort.
 - Lifetime access to recordings, office hours after every class, certificate, Maven
   guarantee
 - Extra costs a student will ask about: a paid Claude plan, and a one-time $50 credit
