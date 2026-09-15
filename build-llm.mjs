@@ -149,8 +149,10 @@ const DECKS = [
       'install clicked inside it. A red "not made by Anthropic" warning during ' +
       'install is expected and correct. The teaching (SEO vs GEO, what you control ' +
       'vs what you do not, being the answer, the dual-web idea) is the spine; the ' +
-      'audit is the proof. Close routes to the paid six-class course starting ' +
-      'September 29 (code FOUNDER400), which is open and enrolling.',
+      'audit is the proof. Close routes to the paid three-week mini course "Build ' +
+      'Your Website for AI Visibility with Claude Code" (founding cohort October 7 ' +
+      'to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% ' +
+      'off), which is open and enrolling.',
   },
   {
     dir: 'class-4-automations',

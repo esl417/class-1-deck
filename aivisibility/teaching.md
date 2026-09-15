@@ -402,13 +402,17 @@ is early.
 
 ## What's next
 
-Six classes. Each builds one real thing, and the point is always the skill underneath it.
-A student just saw the short version: they came for a website audit and left knowing how
-to install an expert.
+Three classes, one a week. Each builds one real thing, and the point is always the skill
+underneath it. A student just saw the short version of the third: they came for a website
+audit and left knowing how to install an expert.
 
-The rows worth naming: the dashboard class is not about dashboards, it is about getting
-at your own data. The automation class is not about a morning briefing, it is about work
-happening without you.
+The rows worth naming: the website class is not about a website, it is about delegating to
+Claude like a person. The dashboard class is not about dashboards, it is about getting at
+your own data. The third class is the one today's audit was a preview of.
+
+This mini course is the first three classes of the six-class course, sold on their own.
+If a student later takes the full course, what they paid here comes off the price. Say
+that only if asked; the slide sells three classes, not six.
 
 **The framing that matters: they run their business, AI is the instrument.** Never "AI
 runs it for you" and never builder or engineer language.
@@ -419,18 +423,24 @@ Routing someone to the free version who would be unhappy paying is a good outcom
 
 ## The offer
 
-**Run Your Whole Business with AI**, verified against the live course page:
+**Build Your Website for AI Visibility with Claude Code**, verified against the live
+course page on 2026-09-14:
 
-- Six weeks, September 29 to November 3
-- 11 live sessions, 6 lessons, 6 projects
-- 2 to 4 hours a week live, plus project time
-- $1,795, and **FOUNDER400** takes it to **$1,395**
-- **10 founding seats** at that price
-- Lifetime access to recordings, 3 months of StratEngine AI Professional, Maven guarantee
-- maven.com/ericgrows/run-your-whole-business-with-ai
+- Three weeks, October 7 to 23 (the founding cohort)
+- 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build classes,
+  2 hours for the visibility class, plus an optional office hour each week
+- $1,095, and **FOUNDER15** takes 15% off for the **founding cohort only** (about $931)
+- Every cohort after the founding one: **LIGHTNING10** for 10% off. Once the October
+  cohort has started, swap the slide so LIGHTNING10 is the headline code.
+- Lifetime access to recordings, office hours after every class, certificate, Maven
+  guarantee
+- Extra costs a student will ask about: a paid Claude plan, and a one-time $50 credit
+  with the SEO data service used in class
+- maven.com/ericgrows/build-your-website-for-ai-visibility
 
-**The scarcity is real and should be stated flatly.** Ten seats is ten seats. No
-countdown theater, no "spots are going fast." This audience detects that instantly.
+**The scarcity is the code, and it is real.** FOUNDER15 stops working after this cohort.
+The page states no seat cap, so do not invent one. No countdown theater, no "spots are
+going fast." This audience detects that instantly.
 
 The competitive-advantage point is technical, not scarcity: competitors are not doing
 this yet because almost nobody teaches it and the penalty for getting it wrong is real.
