@@ -842,7 +842,7 @@ _Build Your Website for AI Visibility with Claude Code_
 
 Six live sessions, office hours after every class, and the recordings for good.
 
-_Founding cohort · starts October 7_
+_Founding cohort · Oct 7_
 
  FOUNDER15
 

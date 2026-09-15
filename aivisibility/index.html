@@ -964,7 +964,9 @@
   .qr-box { width: clamp(180px, 20vw, 250px); height: clamp(180px, 20vw, 250px); border: 2px dashed var(--accent); border-radius: 16px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; background: var(--surface); }
   .qr-box p { font-family: var(--sans); font-size: clamp(13px, 1.2vw, 15px); color: var(--accent-ink); font-weight: 600; margin: 0; }
   .qr-side { flex: 1 1 340px; max-width: 520px; }
-  .promo-code { font-family: var(--mono); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; color: var(--accent-deep); letter-spacing: 0.02em; margin: 2px 0 8px; }
+  .promo-code { font-family: var(--mono); font-weight: 700; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.1; color: var(--accent-deep); letter-spacing: 0.02em; margin: 0 0 6px; }
+  .promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 1000px) { .promo-grid { grid-template-columns: 1fr; } }
 
   /* Big statement line for the spine slide */
   .spine p { font-size: clamp(20px, 1.95vw, 26px); line-height: 1.5; margin-bottom: 16px; }
@@ -1402,16 +1404,18 @@
     <div class="qr-box" style="border-style:solid;border-width:1px;border-color:var(--hair);padding:14px;">
       <img src="course-qr.svg" alt="QR code linking to the course page at maven.com/ericgrows/build-your-website-for-ai-visibility" style="width:100%;height:100%;display:block;">
     </div>
-    <div class="qr-side">
-      <div class="card card-hero">
-        <div class="eyebrow">Founding cohort · starts October 7</div>
-        <div class="promo-code">FOUNDER15</div>
-        <p style="font-size:clamp(16px,1.5vw,19px);"><strong>15% off.</strong> <span style="text-decoration:line-through;color:var(--muted);">$1,095</span> &nbsp;<strong style="color:var(--accent-deep);">$931</strong></p>
-      </div>
-      <div class="card card-hero" style="margin-top:12px;">
-        <div class="eyebrow">Every cohort after</div>
-        <div class="promo-code">LIGHTNING10</div>
-        <p style="font-size:clamp(16px,1.5vw,19px);"><strong>10% off.</strong> <span style="text-decoration:line-through;color:var(--muted);">$1,095</span> &nbsp;<strong style="color:var(--accent-deep);">$986</strong></p>
+    <div class="qr-side" style="max-width:640px;">
+      <div class="promo-grid">
+        <div class="card card-hero">
+          <div class="eyebrow">Founding cohort · Oct 7</div>
+          <div class="promo-code">FOUNDER15</div>
+          <p><strong>15% off.</strong> <span style="text-decoration:line-through;color:var(--muted);">$1,095</span> <strong style="color:var(--accent-deep);">$931</strong></p>
+        </div>
+        <div class="card card-hero">
+          <div class="eyebrow">Every cohort after</div>
+          <div class="promo-code">LIGHTNING10</div>
+          <p><strong>10% off.</strong> <span style="text-decoration:line-through;color:var(--muted);">$1,095</span> <strong style="color:var(--accent-deep);">$986</strong></p>
+        </div>
       </div>
       <div class="prompt-box" style="margin-top:12px;">maven.com/ericgrows/build-your-website-for-ai-visibility</div>
     </div>
