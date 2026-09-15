@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-A FREE 60-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no API keys, no pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric builds one agent on his own screen in the COWORK tab (not Chat): he puts ~10 unsorted customer messages in a folder, hands over a standing instruction ("You are my Customer Signal Agent... be selective, if it does not deserve a founder's attention leave it out"), sends it, teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. The teachable spine is (1) chatbot answers / automation repeats / AGENT CHOOSES, and the test for which you need is "who decides what happens next — did you lay out the steps, or does it?". NOTE: "is there judgment involved?" is explicitly NOT the test and the deck says so. An automation can contain a real judgment call inside a step the human placed (Class 4 of the paid course builds exactly that); what makes it an agent is that the thinking changes where it goes next; (2) an agent is a job plus the freedom to do it — take away the freedom and it is an automation; (3) you do not teach it your business, you teach it what COUNTS (their own handful of categories — noise, support issue, product signal, revenue risk, emergency); (4) the proof it is an agent is what it LEFT OUT — a summary cannot omit. The instruction also asks it to list everything it dropped in a closing section with a one-line reason each, which is how you debug and evaluate an agent's judgment: make it show its working rather than omitting silently. Plus a pattern it found across the pile that no single message contained (three people asking the same question); (5) when you disagree, fix the CRITERIA not the answer, so it stays fixed. Safety rule taught as a hard line: it reads, sorts, recommends and drafts, but anything that reaches a customer, moves money, or cannot be undone waits for the human. The honest limit, stated plainly on the slides and NOT blurred: the attendee still hands it the pile — they have hired someone very good and are still walking the paperwork to their desk. The gap is REACH, not scheduling. Someone reading this deck afterwards most likely wants to do it on their own messages: help them do exactly that, starting from the standing instruction on the "The instruction" slide, with their own categories substituted. Close routes to the paid three-week mini course "Build an AI Agent for Your Busywork with Claude Code" (Oct 15-31, $1,095, code LL15 for 15% off, maven.com/ericgrows/build-an-ai-agent-for-your-busywork). It is the back half of the six-class course sold on its own: Class 1 builds the morning briefing (the readers), Class 2 gives it a brain (today's agent with its own key and schedule), Class 3 is the handoff (it acts on safe jobs, asks before anything irreversible, runs with the laptop closed).
+A FREE 60-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no API keys, no pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric builds one agent on his own screen in the CODE tab (not Chat, not Cowork) as a LOCAL ROUTINE: Code tab -> Routines -> New routine -> Local; name it; paste the standing instruction ("You are my Customer Signal Agent... be selective, if it does not deserve a founder's attention leave it out; list what you dropped with a reason") into Instructions; pick a folder holding ONE file, a week of customer messages exported as a spreadsheet (16 rows); permission mode Accept edits; schedule Daily; save; click Run now. He teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. The schedule does NOT make it an automation: the timer only decides when it wakes; it decides everything after (the "who decides what happens next" test). A routine persists as a card in the Routines list and as a file under ~/.claude/scheduled-tasks/, and Edit on it changes every future run — that is what "fix the criteria, not the answer" means physically. Nobody writes code; the tab is called Code because it can act on the student's machine. The teachable spine is (1) chatbot answers / automation repeats / AGENT CHOOSES, and the test for which you need is "who decides what happens next — did you lay out the steps, or does it?". NOTE: "is there judgment involved?" is explicitly NOT the test and the deck says so. An automation can contain a real judgment call inside a step the human placed (Class 4 of the paid course builds exactly that); what makes it an agent is that the thinking changes where it goes next; (2) an agent is a job plus the freedom to do it — take away the freedom and it is an automation; (3) you do not teach it your business, you teach it what COUNTS (their own handful of categories — noise, support issue, product signal, revenue risk, emergency); (4) the proof it is an agent is what it LEFT OUT — a summary cannot omit. The instruction also asks it to list everything it dropped in a closing section with a one-line reason each, which is how you debug and evaluate an agent's judgment: make it show its working rather than omitting silently. Plus a pattern it found across the pile that no single message contained (three people asking the same question); (5) when you disagree, fix the CRITERIA not the answer, so it stays fixed. Safety rule taught as a hard line: it reads, sorts, recommends and drafts, but anything that reaches a customer, moves money, or cannot be undone waits for the human. The honest limit, stated plainly on the slides and NOT blurred: the attendee still hands it the pile — they have hired someone very good and are still walking the paperwork to their desk. The gap is REACH, not scheduling. Someone reading this deck afterwards most likely wants to do it on their own messages: help them do exactly that, starting from the standing instruction on the "The instruction" slide, with their own categories substituted. Close routes to the paid three-week mini course "Build an AI Agent for Your Busywork with Claude Code" (Oct 15-31, $1,095, code LL15 for 15% off, maven.com/ericgrows/build-an-ai-agent-for-your-busywork). It is the back half of the six-class course sold on its own: Class 1 builds the morning briefing (the readers), Class 2 gives it a brain (today's agent with those readers and a schedule), Class 3 is the handoff (an always-on home so it reacts when something happens rather than on a timer; it acts on safe jobs and asks before anything irreversible). The transferable lesson: which jobs belong in a routine (wake, think, write, stop) and which need a home (listen, remember, do real work on files). Costs do not vanish — the thinking bills against their Claude plan either way and the home is about $25/month.
 
 ---
 
@@ -76,8 +76,8 @@ Just watch this one. Nothing today asks you to keep up or type along. You'll get
 The only genuine prerequisite is the **Claude desktop app, signed in, on a paid
 plan**. No terminal, no code editor, no GitHub, no API key, no credit card.
 
-If a student is unsure whether they qualify: they need a paid plan, because Cowork
-is not on the free tier. That is the one thing that will stop them cold, so check
+If a student is unsure whether they qualify: they need a paid plan, because the
+Code tab and Routines are not on the free tier. That is the one thing that will stop them cold, so check
 it first if nothing is working.
 
 Nothing here requires technical background. If they are hesitating because it
@@ -139,7 +139,7 @@ explanation is the next three slides and it lands better against a thing they ha
 already seen.
 
 If someone asks "is this just a summary?" — that is the perfect question and the
-answer is on the "Read the brief" slide. Tell them to hold it.
+answer is what they watch for at the check-in: what it left out, and why.
 
 ## Slide 4 · Three words
 
@@ -263,81 +263,210 @@ hands over the route rather than the steps.
 
 _Claude Desktop_
 
-## Three tabs. Today we're in Cowork .
+## Three tabs. Today we're in Code .
 
  Chat
 
 You ask, it answers. The one you already use.
 
- We're here
  Cowork
 
-You hand it a job and walk away. It works through a pile of material on its own and comes back when it's done.
+You hand it one job and walk away. It works through the material and comes back when it's done.
 
+ We're here
  Code
 
-Works directly on your computer. It's where you install new abilities.
+Works directly on your computer. It's the one place you can set something up that keeps running after you close the window.
+
+ 😌
+
+Don't let the name put you off. You will not write a single line of code today. It's called Code because it can act on your machine, and an agent that runs on its own needs exactly that.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-**The likeliest silent failure of the whole session.** Skills, the agent loop and
-long-running work live in Cowork. Chat cannot do this.
+**The likeliest silent failure of the whole session.** Routines — a named agent
+with its own instructions, folder and schedule — live in the **Code** tab. Chat
+cannot do this, and Cowork's scheduled tasks now run in the cloud and cannot be
+tied to a folder on the student's computer.
 
 - **Chat** — the familiar one. You ask, it answers.
-- **Cowork** — you hand over a job and walk away. Where today happens.
-- **Code** — works directly on your own machine; where you install new abilities.
+- **Cowork** — you hand over one job and walk away. Good, but it is one job.
+- **Code** — works directly on the student's own machine. The only place you can
+  set something up that keeps running after the window is closed. Where today
+  happens.
 
-The rule of thumb worth giving them: **Chat is where you ask for things. Cowork is
-where you hand over a job.** That sentence is also the conceptual lesson, which is
-why this slide is not merely navigational.
+**The name puts people off, and the same reassurance from the AI visibility lesson
+applies:** nobody writes a line of code. It is called Code because it can act on
+your machine, and an agent that runs on its own needs exactly that.
 
-If a student says the agent will not run or cannot see their files, check the tab
-before anything else.
+**Why not Cowork, if a student asks:** it is where you hand Claude one job. Today
+we are setting up something with a name that stays in a list and runs on a
+schedule, and that lives in Code. Not a knock on Cowork; a different shape of
+thing.
 
-## Slide 7 · Set it up
+If a student says they cannot find Routines: it is in the Code tab sidebar, or
+under the sidebar's **More** menu, and needs a current desktop app. If it is
+genuinely absent after an update, that has happened to others; restarting the app
+or updating usually restores it.
+
+## Slide 7 · Local or cloud
 
 **What the student sees on this slide:**
 
-_Three clicks_
+_The first choice it asks you_
 
-## Point it at the folder.
+## Local if anything's on your computer.
 
-In the message box, choose Cowork .
+When you make a new routine, the first thing it asks is where it should run. There's one rule, and it's about where the work lives, not about you.
 
-In the prompt bar, click Work in a project or folder , and pick the folder your messages are in. Your computer will ask you to allow it.
+_Local · runs on your machine_
 
-Leave it on Ask before acting . It checks with you before anything leaves your machine.
+- Pick this if any input or output is a file on your computer.
 
- 📂
+- It can open your folders and write back into them.
 
-That folder is now its desk. It reads everything in there, and it writes its answer back to the same place. Nothing is uploaded anywhere and nothing leaves your computer.
+- Runs while your computer is on and the app is open. If it misses its time, it runs once when you wake the machine — you don't have to tell it to.
 
-A folder of files is the plainest way to hand work over. Anything you can drop in a folder, you can hand to an agent.
+_Cloud · runs on Anthropic's computers_
+
+- Pick this only if everything it touches already lives online: email, Drive, calendar, the tools you log into.
+
+- It can't see your computer at all.
+
+- Runs with the lid closed.
+
+ 💻
+
+Today is Local. The spreadsheet is a file on my desk, so the agent has to be where the desk is. That's the whole decision.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-**Three clicks, and this is the slide that was missing.** An earlier draft jumped
-straight from the concept to a running agent without ever saying where the work
-lives or what you click. A student watching that could not reproduce it.
+**The New routine form asks this first, so the deck answers it first.** One rule,
+and it is about where the work lives, not about the student:
 
-1. In the message box, choose **Cowork**.
-2. In the prompt bar, click **Work in a project or folder** and pick the folder
-   the messages are in. The operating system asks permission the first time.
-3. Leave the permission mode on **Ask before acting** (the default). Claude
-   pauses before anything touches the outside world — sending, posting, sharing.
-   Permanent deletion always prompts and that cannot be turned off.
+- **Local** if *any* input or output is a file on their computer. It can open
+  their folders and write back into them. It runs while the machine is on and the
+  app is open.
+- **Cloud** only if *everything* the agent touches already lives online — email,
+  Drive, calendar, the tools they log into. It cannot see their computer at all.
+  It runs with the lid closed.
 
-**The folder is the desk.** Claude reads every file in it and writes its output
-back to the same place. Nothing is uploaded and nothing leaves the machine, which
-is worth saying out loud to an audience nervous about handing over customer mail.
+Students will notice the two halves of the Local rule are the same statement
+("needs files on my computer" and "an input or output is on my computer"). They
+are. Say it once, as one rule.
 
-**The UI labels are current as of the build but Cowork moves fast.** If a button
-has been renamed, the shape still holds: enter Cowork, attach a folder, keep the
-cautious permission mode. Teach the shape, and read the current label off the
+**Today is Local, and say why in one sentence:** the spreadsheet is a file on the
+desk, so the agent has to be where the desk is. Stop there. Do not go on to
+explain that connecting the sources online is how it becomes a cloud routine
+that runs with the lid closed — that is the "What's next" slide's job, and
+saying it here gives the course away three slides before "What you own" has
+named the limit.
+
+**Do not overclaim what a cloud routine can connect to.** Anthropic's docs
+confirm cloud routines run on their computers on a schedule with no access to
+local files. Which online sources a non-technical student can hook to one is not
+something to assert from the stage; if asked, the honest answer is that it works
+when the sources are online and that connecting them is what the course does.
+
+If a student picked Cloud by mistake and it cannot find their folder, this slide
+is the diagnosis: it is on Anthropic's computers and their folder is not. Make a
+new routine and choose Local.
+
+**Missed runs catch up on their own, and say so, because everyone who has ever
+set a schedule assumes they don't.** Verified against the desktop scheduled-tasks
+doc on 2026-09-15: when the app starts or the computer wakes, it checks the last
+seven days and fires exactly one catch-up run for the most recently missed time,
+discarding anything older. A daily task that missed six days runs once. No
+setting to enable, nothing to add to the instructions. (This is the opposite of
+plain cron, which silently drops missed runs — anyone who has built their own
+automations will expect the cron behaviour.)
+
+Two honest caveats that go with it: the catch-up may fire at 11pm if the machine
+slept all day, so if timing matters the guardrail goes in the instructions — the
+doc's own example is "if it's after 5pm, skip the review and just summarize what
+was missed." And **Keep computer awake** (Settings → Desktop app → General) stops
+idle sleep but closing the lid still puts it to sleep.
+
+## Slide 8 · Set it up
+
+**What the student sees on this slide:**
+
+_Setting it up_
+
+## A name, a folder, a schedule.
+
+In the Code tab, click Routines in the sidebar, then New routine → Local .
+
+Give it a name. Paste the job into Instructions . Pick the folder your messages are in. Set permissions to Accept edits : it can write its brief into that folder, and anything beyond that asks you first.
+
+Set the schedule to Daily . Save. Then click Run now so we don't wait until tomorrow morning.
+
+ ⏰
+
+The schedule is an alarm clock, not a script. It wakes the agent up each morning. Everything after that is the judgment test from earlier: it decides what to read, what matters, and what to leave out. A timer doesn't change who's deciding.
+
+What you just made has a name, sits in a list, and can be edited later. That's the difference between an agent and a prompt. And the folder is its desk: it reads what's there and writes its answer back, and nothing leaves your computer.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+**This is the slide that makes it an agent rather than a prompt, and it was
+missing from an earlier draft.** A routine is a named thing with its own
+instructions, its own folder, its own schedule, that sits in a list and can be
+edited. A prompt in a chat window is none of those.
+
+1. **Code** tab → **Routines** in the sidebar (or under **More**) → **New routine**
+   → **Local**.
+2. **Name** it (something like "customer signal agent"). Paste the standing
+   instruction from the next slide into **Instructions**. Pick the folder the
+   export is in — a folder is required. Set the permission mode to **Accept
+   edits**: it can write its brief into that folder; anything beyond that asks
+   first. (Do not pick Auto or Bypass on stage; the Safety slide is three slides
+   away and this is where its rule gets applied.)
+3. **Schedule → Daily.** Save. Then **Run now**, because nobody is waiting until
+   9am. A session appears under **Scheduled** in the sidebar; that is where you
+   watch it work.
+
+**The alarm-clock line, and say it, because a sharp student will raise it:** a
+schedule does not make this an automation. The test from the previous slides is
+*who decides what happens next*. The timer decides only when it wakes up. Every
+decision after that — what to read, what matters, what to drop — is the agent's.
+Nothing about a cron changes who is deciding.
+
+**The folder is the desk.** It reads every file in it and writes its output back
+to the same place. Nothing is uploaded and nothing leaves the machine, which is
+worth saying out loud to an audience nervous about handing over customer mail.
+Honest limit, and it is the ceiling slide later: it runs only while the computer
+is on and the app is open. A missed run catches up once, automatically, when the
+machine wakes — the detail is in the "Local or cloud" notes.
+
+**What persists.** After saving, the routine is a card in the Routines list, and
+the instructions also exist as a real file on disk under
+`~/.claude/scheduled-tasks/`. **Edit** on the routine changes the instructions,
+schedule or folder for every future run. That is what "fix the criteria, not the
+answer" means physically, on the "When it's wrong" slide.
+
+**The UI labels are current as of 2026-09-15 but the app moves fast.** If a button
+has been renamed, the shape still holds: Code tab, a routine, a folder, a
+schedule, run it once by hand. Teach the shape, and read the current label off the
 screen.
 
-**What the messages should be.** The demo folder is ~10 short files, and the mix
-is deliberate:
+**What the messages are.** The demo folder holds ONE file: a week of support
+messages exported as a spreadsheet, 16 rows, one per message, with the columns a
+real helpdesk export carries (ticket, received, channel, name, email, plan,
+subject, message, status). That is the honest shape of rung one — no email
+integration, the owner exported last week and dropped the file in a folder. A
+folder of separate text files would be less true to how this actually works.
+
+The file is generated by `agents/sample-data/generate.py` and written into
+`agents/sample-data/inbox/`. **Point the routine at a folder holding only the
+export, never at `sample-data/`** — if Claude can see the generator it reads the
+seeded design and the demo is spoiled. A student reproducing this should export their own week from whatever
+holds their messages (helpdesk, contact form tool, shared inbox) and put that one
+file in a folder.
+
+The business in the sample is Bookable, a small scheduling and invoicing tool for
+service businesses, which is why a QuickBooks sync request is natural. The mix is
+deliberate:
 
 - **Two clear escalations** — a double charge (money, wrong right now) and a
   cancellation (revenue risk, with a *reason* attached).
@@ -351,7 +480,7 @@ is deliberate:
 brief" has nothing to find without it, and that beat is the strongest proof in
 the deck that this is judgment rather than sorting.
 
-## Slide 8 · The instruction
+## Slide 9 · The instruction
 
 **What the student sees on this slide:**
 
@@ -363,7 +492,7 @@ _A prompt asks for output_
 
 "Summarize these customer messages."
 
-You'd get all ten back, shorter. It did what you said. You still have to read it and decide.
+You'd get all sixteen back, shorter. It did what you said. You still have to read it and decide.
 
 _A job hands over the route_
 
@@ -371,7 +500,7 @@ _A job hands over the route_
 
  🚀
 
-Permission to leave things out is what makes it an agent. The last line is how I check its work: everything it dropped, and why. I'm sending this now, and we'll talk while it works.
+Permission to leave things out is what makes it an agent. The last line is how I check its work: everything it dropped, and why. This whole thing goes in the Instructions box. Then Run now , and we'll talk while it works.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -403,15 +532,19 @@ This is a habit to teach generally, not a trick for this demo: **whenever you
 hand judgment to software, make it show its working.** An agent that silently
 omits things is one you can never audit.
 
-**Send it here and let it run.** This is the aivisibility pattern: fire the work,
-teach through the wait, come back to it. The next three slides are written to fill
-that dead air and they teach things worth teaching regardless, so nothing is
-wasted if the run is fast.
+**This text is what goes in the routine's Instructions box.** Paste it, save,
+click **Run now**, and let it run. This is the aivisibility pattern: fire the
+work, teach through the wait, come back to it. The next three slides are written
+to fill that dead air and they teach things worth teaching regardless, so nothing
+is wasted if the run is fast.
+
+The left card says "all sixteen back" because the demo export has sixteen rows.
+If the export changes, change the number.
 
 If the run finishes early, do not skip the three teaching slides. They are the
 session, not filler.
 
-## Slide 9 · What it actually is
+## Slide 10 · What it actually is
 
 **What the student sees on this slide:**
 
@@ -446,7 +579,7 @@ The employee-versus-vending-machine comparison works well with this audience
 because it is about delegation, which they already understand, rather than about
 software, which they do not.
 
-## Slide 10 · The judgment
+## Slide 11 · The judgment
 
 **What the student sees on this slide:**
 
@@ -491,7 +624,7 @@ why a vendor's generic triage tool always feels wrong.
 Encourage them to change the five. A clinic sorts by "is this clinical." A shop
 sorts by "is this a refund." Their five will be different and should be.
 
-## Slide 11 · Safety
+## Slide 12 · Safety
 
 **What the student sees on this slide:**
 
@@ -537,7 +670,7 @@ The warning is the practical version: do not wire an agent into something that
 sends, deletes, or charges on day one. Start where the worst case is that you
 disagree with it. Every student who gets burned on this got burned here.
 
-## Slide 12 · Check in
+## Slide 13 · Check in
 
 **What the student sees on this slide:**
 
@@ -572,55 +705,6 @@ their own agent ask a question will otherwise read it as failure.
 If the run went badly or produced something thin, say so plainly and work with what
 is there. The audience forgives a live build going sideways; they do not forgive
 being told something worked when it visibly did not.
-
-## Slide 13 · Read the brief
-
-**What the student sees on this slide:**
-
-_The result_
-
-## It threw away the thank-you note.
-
-A summary can't leave anything out. That's what makes it a summary. This one dropped things, and told us why.
-
- "Your checkout charged me twice." Needs you now
- "Cancelling — can't export my data." Revenue risk
- Three people asked about QuickBooks Pattern · not in any one message
- "I can't log into my account." Support · handled, not escalated
- "You guys rock." Dropped
- "URGENT: claim your listing" Dropped
-
- 🔍
-
-The QuickBooks line is the one to look at. No single message said "you have a QuickBooks problem." It only exists across the pile, which means it had to be noticed rather than read.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-**The payoff, and the proof is what it threw away.** A summary cannot leave
-anything out. That is what makes it a summary.
-
-**Read the "didn't need you" section out loud — that is the demo.** The dropped
-items are not absent from the file; they are listed at the end with a reason
-each, because the instruction asked for that. This is better than silent omission
-in every way that matters: the room sees the judgment rather than inferring it,
-and you can point at a single line and ask whether you agree. Do not describe the
-drops as missing — they are shown, deliberately, as the agent's working.
-
-Walk the verdicts, not the messages. The shape to show is the full range: two
-escalated, one handled but not escalated, two dropped, one pattern.
-
-**Spend the time on the QuickBooks line.** No single message said "you have a
-QuickBooks problem." The finding exists only across the pile, which means it had to
-be *noticed* rather than read. That is the difference between judgment and sorting,
-made visible in their own output.
-
-It also sets up a genuinely useful business move that costs nothing: three people
-asking the same question is a FAQ entry waiting to be written. Answer it once,
-publicly, and it stops arriving. Mention it; do not build it.
-
-**Have a real disagreement ready.** If the brief comes out clean, the next slide is
-hypothetical and loses its force. Something ranked lower than you would have ranked
-it is enough.
 
 ## Slide 14 · When it's wrong
 
@@ -799,11 +883,11 @@ Three classes, one a week. In each one you build something real for your busines
  You build You learn
  Your morning briefing Reaching the places your work actually lives
  An agent, with your judgment in it Software that decides what to look at
- The handoff Letting it act on the safe jobs, off your laptop
+ The handoff Which jobs need a home that's always on, and which don't
 
 _Live cohort · October 15 to 31_
 
-Today's agent waits for a folder. In the course it reads your inbox, your calendar, your tasks — gets its own key and a schedule, acts on the safe jobs, and runs with your laptop closed. The paperwork stops being carried.
+Today's agent waits for a folder and runs while your laptop is awake. The course gives it senses — your inbox, calendar, tasks, payments — a home that's always on , so it can react when something happens rather than when a timer fires, and hands for the safe jobs, asking before anything it can't undo. The paperwork stops being carried.
 
 _Or do it alone, free_
 
@@ -819,14 +903,35 @@ slide away, and doing it here spends it early.
 
 Three classes, one a week. Read the rows as a progression, not a list: first the
 briefing, which is the readers — the agent's senses, built as a fixed routine.
-Then the agent itself, which is today's build given those readers, its own key, and
-a schedule. Then the handoff, where it starts acting on the safe jobs and moves off
-the laptop. Today was a short version of the second class.
+Then the agent itself, which is today's build given those readers and a schedule.
+Then the handoff, where it starts acting on the safe jobs and moves off the
+laptop. Today was a short version of the second class.
 
 **The card on the right is where today's ceiling gets closed, and this is the only
-place it should be closed.** Today's agent waits for a folder. In the course it
-reads where the work actually lives — inbox, calendar, tasks — and runs with the
-laptop closed. **The paperwork stops being carried.** That is the sentence.
+place it should be closed.** Frame it as three things the course gives the agent
+they built today:
+
+- **Senses.** It reads where the work actually lives — inbox, calendar, tasks,
+  payments — instead of a folder they fill.
+- **A home that's always on.** A machine that is up when the laptop isn't,
+  remembers between runs, and can be reached — so it reacts when something
+  happens, not only when a timer fires. A routine is "wake up, do one job, write a
+  result, stop"; a home is what lets it listen and remember.
+- **Hands, carefully.** It drafts and files the safe jobs and asks before anything
+  it cannot undo.
+
+**The paperwork stops being carried.** That is the sentence.
+
+**The third table row is the transferable lesson, and worth reading aloud:** which
+jobs belong in a routine and which need a home. If it can be done by waking,
+thinking and writing, it is a routine. If it has to listen, remember, or do real
+work on files, it needs the machine. Knowing the difference outlasts any one tool.
+
+**What does not change, if anyone asks about cost:** the thinking costs money
+either way — a routine bills against the Claude plan they already have, and the
+course's agent bills the same way — and any outside tool they connect keeps its
+own bill. The course does not make it free. It moves it off their laptop and into
+the business. Say this plainly; this audience respects it.
 
 This mini course is the back half of the six-class course, sold on its own, with a
 third class that goes further on agents than the six-class version does. If a
@@ -874,9 +979,8 @@ course page on 2026-09-15:
   this lesson. Do not attach a cohort restriction to it that the slide does not
   make.
 - Lifetime access to recordings, office hours after every class, Maven guarantee
-- Extra costs a student will ask about: a paid Claude plan; in Class 2 the agent
-  gets its own API key, billed by usage with a spending cap set before it runs;
-  and the always-on home it moves to in Class 3 is about $25 a month
+- Extra costs a student will ask about: a paid Claude plan, and the always-on
+  home the agent moves to in Class 3, about $25 a month
 - maven.com/ericgrows/build-an-ai-agent-for-your-busywork
 
 **Say the safety line if anyone hesitates, because the course page makes the same
@@ -927,14 +1031,21 @@ Common questions and honest answers:
 - **"Isn't this just a summary?"** No, and the proof is what it left out. A
   summary cannot omit. Point back at the dropped items and the pattern it found
   across messages.
-- **"Why Cowork and not Chat?"** Chat answers questions. Cowork takes a job and
-  works through material on its own. This needs the second one.
+- **"Why the Code tab and not Chat or Cowork?"** Chat answers questions. Cowork
+  takes one job and does it. A routine is a named thing with its own folder and
+  schedule that keeps running after you close the window, and that only lives in
+  Code. Nobody writes code.
+- **"If it runs on a timer, isn't it just an automation?"** No. The timer decides
+  when it wakes up. It decides everything after that — what to read, what
+  matters, what to drop. The test was never about the trigger; it was about who
+  chooses the route.
 - **"What if it gets it wrong?"** Expected, especially at first. Fix the criteria
   rather than the answer, and it stays fixed.
 - **"Can it just reply to the customers for me?"** It can draft. Let it send only
   once you have watched it be right for a while, and only where being wrong is
   cheap. See the Safety notes.
-- **"Do I need a paid plan?"** Yes, for Cowork. That is the one hard requirement.
+- **"Do I need a paid plan?"** Yes, for the Code tab and Routines. That is the one
+  hard requirement.
 - **"Can it read my real inbox instead of a folder?"** That is exactly the next
   rung, and it is what the course covers. Be honest that it is a real step up and
   not something they will click into tonight.

@@ -30,6 +30,10 @@ dashboard/              index.html                  ...   (free Maven lightning 
                         sample-data/        generate.py, orders.csv, ad-spend.csv,
                                             verify_deck_claims.py
 agents/                 index.html                  ...   (free Maven lightning lesson)
+                        sample-data/        generate.py writes the demo export into
+                                            inbox/ — point the routine at a folder holding
+                                            only the export, never at sample-data/
+                                            (the script spoils the demo)
 index.html              (landing page linking to all decks)
 ```
 
@@ -55,11 +59,16 @@ All three are **lecture and demonstration**. Nobody builds along:
   the conversion unchanged. Eric now installs and runs on one site on his own
   screen and reads the report live.
 - `agents/` follows `aivisibility/`'s fire-and-forget shape deliberately. The
-  standing instruction is handed over on slide 8 and the agent works underneath
+  standing instruction is handed over on slide 9 and the agent works underneath
   the three teaching slides that follow (what an agent is, where the judgment
-  sits, safety), with the check-in on slide 12. Those three slides are written to
-  teach on their own merits, so an early or a slow finish costs nothing. It runs
-  in **Cowork**, not Code — the one navigational gotcha in the deck.
+  sits, safety), with the check-in on slide 13. Those three slides are written to
+  teach on their own merits, so an early or a slow finish costs nothing. The agent
+  is a **Code-tab Local routine** (Routines → New routine → Local: name,
+  instructions, folder, Daily schedule, Run now), not a Cowork task — a routine is
+  the only thing in the desktop app that persists as a named object with its own
+  folder and schedule. Cowork's scheduled tasks moved to the cloud in July 2026
+  and cannot be tied to a local folder. The Code tab is the one navigational
+  gotcha in the deck. Decided 2026-09-15.
 
 All three therefore keep the same fire-and-forget shape with one machine instead
 of many, and all put the attendee's own doing in the close as homework rather

@@ -500,37 +500,6 @@
 
   /* ---- Agents-lesson additions -------------------------------------------- */
 
-  /* The inbox: the messy stream of inputs, shown as what it is — a pile.
-     Each slip is a real message; the point is that they are NOT the same kind
-     of thing, which is what makes sorting them a judgment call. */
-  .inbox { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(9px, 1vw, 13px); margin-top: 6px; max-width: var(--col); }
-  .slip {
-    background: var(--surface);
-    border: 1px solid var(--hair);
-    border-radius: 10px;
-    padding: clamp(11px, 1.2vw, 15px) clamp(13px, 1.4vw, 17px);
-    font-size: clamp(14px, 1.3vw, 16px);
-    line-height: 1.4;
-    color: var(--body);
-    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
-  }
-  /* the verdict tag that appears once the agent has ruled on a slip */
-  .slip .verdict {
-    display: block;
-    font-family: var(--sans);
-    font-size: clamp(10.5px, 1vw, 11.5px);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 8px;
-  }
-  .slip.keep { border-left: 4px solid var(--accent); }
-  .slip.keep .verdict { color: var(--accent-deep); }
-  .slip.drop { background: rgba(20,18,12,0.03); border-style: dashed; color: var(--muted); }
-  .slip.drop .verdict { color: var(--muted); }
-  .slip.pattern { border-left: 4px solid var(--green); }
-  .slip.pattern .verdict { color: #15803d; }
-
   /* The ladder: four rungs, each one carrying less by hand than the last.
      Reads bottom-up as a climb; the first rung is the one they just did. */
   .ladder { display: grid; gap: clamp(9px, 1.1vh, 13px); margin-top: 8px; max-width: var(--col); }
@@ -721,46 +690,80 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Which tab"></div>
   <div class="eyebrow">Claude Desktop</div>
-  <h2>Three tabs. Today we're in <em>Cowork</em>.</h2>
+  <h2>Three tabs. Today we're in <em>Code</em>.</h2>
   <div class="tabs" style="margin-top:4px;">
     <div class="card">
       <div class="tab-name">Chat</div>
       <p>You ask, it answers. The one you already use.</p>
     </div>
+    <div class="card">
+      <div class="tab-name">Cowork</div>
+      <p>You hand it one job and walk away. It works through the material and comes back when it's done.</p>
+    </div>
     <div class="card is-here">
       <span class="tab-flag">We're here</span>
-      <div class="tab-name">Cowork</div>
-      <p>You hand it a job and walk away. It works through a pile of material on its own and comes back when it's done.</p>
-    </div>
-    <div class="card">
       <div class="tab-name">Code</div>
-      <p>Works directly on your computer. It's where you install new abilities.</p>
+      <p>Works directly on <strong>your</strong> computer. It's the one place you can set something up that keeps running after you close the window.</p>
     </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">😌</span>
+    <p><strong>Don't let the name put you off.</strong> You will not write a single line of code today. It's called Code because it can act on your machine, and an agent that runs on its own needs exactly that.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     SECTION 2 — SET IT UP AND SEND IT  (slides 7-8)
+     SECTION 2 — SET IT UP AND SEND IT  (slides 7-9)
      ============================================================ -->
 
-<!-- 7. SET IT UP -->
+<!-- 7. LOCAL OR CLOUD -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Set it up"></div>
-  <div class="eyebrow">Three clicks</div>
-  <h2>Point it at the <em>folder.</em></h2>
-  <div class="steps" style="margin-top:4px;">
-    <div class="step"><p>In the message box, choose <strong>Cowork</strong>.</p></div>
-    <div class="step"><p>In the prompt bar, click <strong>Work in a project or folder</strong>, and pick the folder your messages are in. Your computer will ask you to allow it.</p></div>
-    <div class="step"><p>Leave it on <strong>Ask before acting</strong>. It checks with you before anything leaves your machine.</p></div>
+  <div class="slide-num" data-label="Local or cloud"></div>
+  <div class="eyebrow">The first choice it asks you</div>
+  <h2>Local if anything's <em>on your computer.</em></h2>
+  <p>When you make a new routine, the first thing it asks is where it should run. There's one rule, and it's about where the work lives, not about you.</p>
+  <div class="contrast" style="margin-top:4px;">
+    <div class="card card-hero">
+      <div class="eyebrow">Local · runs on your machine</div>
+      <ul>
+        <li>Pick this if <strong>any</strong> input or output is a file on your computer.</li>
+        <li>It can open your folders and write back into them.</li>
+        <li>Runs while your computer is on and the app is open. <strong>If it misses its time, it runs once when you wake the machine</strong> — you don't have to tell it to.</li>
+      </ul>
+    </div>
+    <div class="card old">
+      <div class="eyebrow">Cloud · runs on Anthropic's computers</div>
+      <ul>
+        <li>Pick this only if <strong>everything</strong> it touches already lives online: email, Drive, calendar, the tools you log into.</li>
+        <li>It can't see your computer at all.</li>
+        <li>Runs with the lid closed.</li>
+      </ul>
+    </div>
   </div>
   <div class="heads-up">
-    <span class="heads-up-mark">📂</span>
-    <p><strong>That folder is now its desk.</strong> It reads everything in there, and it writes its answer back to the same place. Nothing is uploaded anywhere and nothing leaves your computer.</p>
+    <span class="heads-up-mark">💻</span>
+    <p><strong>Today is Local.</strong> The spreadsheet is a file on my desk, so the agent has to be where the desk is. That's the whole decision.</p>
   </div>
-  <p class="small-note">A folder of files is the plainest way to hand work over. Anything you can drop in a folder, you can hand to an agent.</p>
 </section>
 
-<!-- 8. THE STANDING INSTRUCTION -->
+<!-- 8. SET IT UP -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Set it up"></div>
+  <div class="eyebrow">Setting it up</div>
+  <h2>A name, a folder, <em>a schedule.</em></h2>
+  <div class="steps" style="margin-top:4px;">
+    <div class="step"><p>In the <strong>Code</strong> tab, click <strong>Routines</strong> in the sidebar, then <strong>New routine → Local</strong>.</p></div>
+    <div class="step"><p>Give it a name. Paste the job into <strong>Instructions</strong>. Pick the folder your messages are in. Set permissions to <strong>Accept edits</strong>: it can write its brief into that folder, and anything beyond that asks you first.</p></div>
+    <div class="step"><p>Set the schedule to <strong>Daily</strong>. Save. Then click <strong>Run now</strong> so we don't wait until tomorrow morning.</p></div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">⏰</span>
+    <p><strong>The schedule is an alarm clock, not a script.</strong> It wakes the agent up each morning. Everything after that is the judgment test from earlier: it decides what to read, what matters, and what to leave out. A timer doesn't change who's deciding.</p>
+  </div>
+  <p class="small-note">What you just made has a name, sits in a list, and can be edited later. That's the difference between an agent and a prompt. And the folder is its desk: it reads what's there and writes its answer back, and nothing leaves your computer.</p>
+</section>
+
+<!-- 9. THE STANDING INSTRUCTION -->
 <section class="slide dense">
   <div class="slide-num" data-label="The instruction"></div>
   <div class="eyebrow">The job</div>
@@ -769,7 +772,7 @@
     <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
       <div class="eyebrow">A prompt asks for output</div>
       <p style="font-family:var(--mono);font-size:clamp(14px,1.3vw,15.5px);color:var(--muted);">"Summarize these customer messages."</p>
-      <p style="margin-top:12px;">You'd get all ten back, shorter. It did what you said. <strong>You still have to read it and decide.</strong></p>
+      <p style="margin-top:12px;">You'd get all sixteen back, shorter. It did what you said. <strong>You still have to read it and decide.</strong></p>
     </div>
     <div class="card card-hero">
       <div class="eyebrow">A job hands over the route</div>
@@ -778,15 +781,15 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🚀</span>
-    <p><strong>Permission to leave things out is what makes it an agent.</strong> The last line is how I check its work: everything it dropped, and why. I'm sending this now, and we'll talk while it works.</p>
+    <p><strong>Permission to leave things out is what makes it an agent.</strong> The last line is how I check its work: everything it dropped, and why. This whole thing goes in the Instructions box. Then <strong>Run now</strong>, and we'll talk while it works.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     SECTION 3 — THE CLASS (agent running underneath)  (slides 9-11)
+     SECTION 3 — THE CLASS (agent running underneath)  (slides 10-12)
      ============================================================ -->
 
-<!-- 9. WHAT AN AGENT ACTUALLY IS -->
+<!-- 10. WHAT AN AGENT ACTUALLY IS -->
 <section class="slide">
   <div class="slide-num" data-label="What it actually is"></div>
   <div class="eyebrow">While it works</div>
@@ -802,7 +805,7 @@
   <p class="small-note" style="text-align:center;max-width:none;">Take away the third one and you have an automation, however much thinking it does along the way. Take away the first and you have a chatbot.</p>
 </section>
 
-<!-- 10. WHERE THE JUDGMENT SITS -->
+<!-- 11. WHERE THE JUDGMENT SITS -->
 <section class="slide dense">
   <div class="slide-num" data-label="The judgment"></div>
   <div class="eyebrow">While it works</div>
@@ -824,7 +827,7 @@
   </div>
 </section>
 
-<!-- 11. SAFETY -->
+<!-- 12. SAFETY -->
 <section class="slide dense">
   <div class="slide-num" data-label="Safety"></div>
   <div class="eyebrow">While it works</div>
@@ -851,10 +854,10 @@
 </section>
 
 <!-- ============================================================
-     SECTION 4 — THE RESULT  (slides 12-14)
+     SECTION 4 — THE RESULT  (slides 13-14)
      ============================================================ -->
 
-<!-- 12. CHECK IN -->
+<!-- 13. CHECK IN -->
 <section class="slide">
   <div class="slide-num" data-label="Check in"></div>
   <div class="eyebrow">Back to it</div>
@@ -871,26 +874,6 @@
     </div>
   </div>
   <p class="small-note">Questions in the chat as they come to you. We'll take them at the end, most-upvoted first.</p>
-</section>
-
-<!-- 13. READ THE BRIEF -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Read the brief"></div>
-  <div class="eyebrow">The result</div>
-  <h2>It threw away the <em>thank-you note.</em></h2>
-  <p>A summary can't leave anything out. That's what makes it a summary. This one dropped things, and told us why.</p>
-  <div class="inbox" style="margin-top:4px;">
-    <div class="slip keep">"Your checkout charged me twice."<span class="verdict">Needs you now</span></div>
-    <div class="slip keep">"Cancelling — can't export my data."<span class="verdict">Revenue risk</span></div>
-    <div class="slip pattern">Three people asked about QuickBooks<span class="verdict">Pattern · not in any one message</span></div>
-    <div class="slip">"I can't log into my account."<span class="verdict" style="color:var(--muted);">Support · handled, not escalated</span></div>
-    <div class="slip drop">"You guys rock."<span class="verdict">Dropped</span></div>
-    <div class="slip drop">"URGENT: claim your listing"<span class="verdict">Dropped</span></div>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🔍</span>
-    <p><strong>The QuickBooks line is the one to look at.</strong> No single message said "you have a QuickBooks problem." It only exists across the pile, which means it had to be noticed rather than read.</p>
-  </div>
 </section>
 
 <!-- 14. WHEN IT'S WRONG -->
@@ -996,13 +979,13 @@
         <tr><th style="width:42%;">You build</th><th>You learn</th></tr>
         <tr><td>Your morning briefing</td><td>Reaching the places your work actually lives</td></tr>
         <tr><td><strong>An agent, with your judgment in it</strong></td><td><strong>Software that decides what to look at</strong></td></tr>
-        <tr><td>The handoff</td><td>Letting it act on the safe jobs, off your laptop</td></tr>
+        <tr><td>The handoff</td><td>Which jobs need a home that's always on, and which don't</td></tr>
       </table>
     </div>
     <div>
       <div class="card card-hero">
         <div class="eyebrow">Live cohort · October 15 to 31</div>
-        <p>Today's agent waits for a folder. In the course it reads your inbox, your calendar, your tasks — gets its own key and a schedule, acts on the safe jobs, and runs with your laptop closed. <strong>The paperwork stops being carried.</strong></p>
+        <p>Today's agent waits for a folder and runs while your laptop is awake. The course gives it <strong>senses</strong> — your inbox, calendar, tasks, payments — a <strong>home that's always on</strong>, so it can react when something happens rather than when a timer fires, and <strong>hands</strong> for the safe jobs, asking before anything it can't undo. <strong>The paperwork stops being carried.</strong></p>
       </div>
       <div class="card" style="margin-top:14px;">
         <div class="eyebrow">Or do it alone, free</div>

@@ -179,10 +179,20 @@ const DECKS = [
       'pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION ' +
       'only — the attendee watches, they do NOT build along, and you should never ' +
       'imply they were supposed to. Eric builds one agent on his own screen in the ' +
-      'COWORK tab (not Chat): he puts ~10 unsorted customer messages in a folder, ' +
-      'hands over a standing instruction ("You are my Customer Signal Agent... be ' +
-      'selective, if it does not deserve a founder\'s attention leave it out"), ' +
-      'sends it, teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. ' +
+      'CODE tab (not Chat, not Cowork) as a LOCAL ROUTINE: Code tab -> Routines -> ' +
+      'New routine -> Local; name it; paste the standing instruction ("You are my ' +
+      'Customer Signal Agent... be selective, if it does not deserve a founder\'s ' +
+      'attention leave it out; list what you dropped with a reason") into ' +
+      'Instructions; pick a folder holding ONE file, a week of customer messages ' +
+      'exported as a spreadsheet (16 rows); permission mode Accept edits; schedule ' +
+      'Daily; save; click Run now. He teaches while it runs, then reads the ' +
+      'FOUNDER_BRIEF.md it wrote. The schedule does NOT make it an automation: the ' +
+      'timer only decides when it wakes; it decides everything after (the "who ' +
+      'decides what happens next" test). A routine persists as a card in the ' +
+      'Routines list and as a file under ~/.claude/scheduled-tasks/, and Edit on it ' +
+      'changes every future run — that is what "fix the criteria, not the answer" ' +
+      'means physically. Nobody writes code; the tab is called Code because it can ' +
+      'act on the student\'s machine. ' +
       'The teachable spine is (1) chatbot answers / automation repeats / AGENT ' +
       'CHOOSES, and the test for which you need is "who decides what happens ' +
       'next — did you lay out the steps, or does it?". NOTE: "is there judgment ' +
@@ -213,9 +223,14 @@ const DECKS = [
       'Claude Code" (Oct 15-31, $1,095, code LL15 for 15% off, ' +
       'maven.com/ericgrows/build-an-ai-agent-for-your-busywork). It is the back ' +
       'half of the six-class course sold on its own: Class 1 builds the morning ' +
-      'briefing (the readers), Class 2 gives it a brain (today\'s agent with its ' +
-      'own key and schedule), Class 3 is the handoff (it acts on safe jobs, asks ' +
-      'before anything irreversible, runs with the laptop closed).',
+      'briefing (the readers), Class 2 gives it a brain (today\'s agent with those ' +
+      'readers and a schedule), Class 3 is the handoff (an always-on home so it ' +
+      'reacts when something happens rather than on a timer; it acts on safe jobs ' +
+      'and asks before anything irreversible). The transferable lesson: which jobs ' +
+      'belong in a routine (wake, think, write, stop) and which need a home ' +
+      '(listen, remember, do real work on files). Costs do not vanish — the ' +
+      'thinking bills against their Claude plan either way and the home is about ' +
+      '$25/month.',
   },
   {
     dir: 'dashboard',
