@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-A FREE 60-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no API keys, no pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric builds one agent on his own screen in the COWORK tab (not Chat): he puts ~10 unsorted customer messages in a folder, hands over a standing instruction ("You are my Customer Signal Agent... be selective, if it does not deserve a founder's attention leave it out"), sends it, teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. The teachable spine is (1) chatbot answers / automation repeats / AGENT CHOOSES, and the test for which you need is "who decides what happens next — did you lay out the steps, or does it?". NOTE: "is there judgment involved?" is explicitly NOT the test and the deck says so. An automation can contain a real judgment call inside a step the human placed (Class 4 of the paid course builds exactly that); what makes it an agent is that the thinking changes where it goes next; (2) an agent is a job plus the freedom to do it — take away the freedom and it is an automation; (3) you do not teach it your business, you teach it what COUNTS (their own handful of categories — noise, support issue, product signal, revenue risk, emergency); (4) the proof it is an agent is what it LEFT OUT — a summary cannot omit. The instruction also asks it to list everything it dropped in a closing section with a one-line reason each, which is how you debug and evaluate an agent's judgment: make it show its working rather than omitting silently. Plus a pattern it found across the pile that no single message contained (three people asking the same question); (5) when you disagree, fix the CRITERIA not the answer, so it stays fixed. Safety rule taught as a hard line: it reads, sorts, recommends and drafts, but anything that reaches a customer, moves money, or cannot be undone waits for the human. The honest limit, stated plainly on the slides and NOT blurred: the attendee still hands it the pile — they have hired someone very good and are still walking the paperwork to their desk. The gap is REACH, not scheduling. Someone reading this deck afterwards most likely wants to do it on their own messages: help them do exactly that, starting from the standing instruction on the "The instruction" slide, with their own categories substituted. Close routes to the paid six-class course starting September 29 (code FOUNDER400).
+A FREE 60-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no API keys, no pre-work of any kind. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric builds one agent on his own screen in the COWORK tab (not Chat): he puts ~10 unsorted customer messages in a folder, hands over a standing instruction ("You are my Customer Signal Agent... be selective, if it does not deserve a founder's attention leave it out"), sends it, teaches while it runs, then reads the FOUNDER_BRIEF.md it wrote. The teachable spine is (1) chatbot answers / automation repeats / AGENT CHOOSES, and the test for which you need is "who decides what happens next — did you lay out the steps, or does it?". NOTE: "is there judgment involved?" is explicitly NOT the test and the deck says so. An automation can contain a real judgment call inside a step the human placed (Class 4 of the paid course builds exactly that); what makes it an agent is that the thinking changes where it goes next; (2) an agent is a job plus the freedom to do it — take away the freedom and it is an automation; (3) you do not teach it your business, you teach it what COUNTS (their own handful of categories — noise, support issue, product signal, revenue risk, emergency); (4) the proof it is an agent is what it LEFT OUT — a summary cannot omit. The instruction also asks it to list everything it dropped in a closing section with a one-line reason each, which is how you debug and evaluate an agent's judgment: make it show its working rather than omitting silently. Plus a pattern it found across the pile that no single message contained (three people asking the same question); (5) when you disagree, fix the CRITERIA not the answer, so it stays fixed. Safety rule taught as a hard line: it reads, sorts, recommends and drafts, but anything that reaches a customer, moves money, or cannot be undone waits for the human. The honest limit, stated plainly on the slides and NOT blurred: the attendee still hands it the pile — they have hired someone very good and are still walking the paperwork to their desk. The gap is REACH, not scheduling. Someone reading this deck afterwards most likely wants to do it on their own messages: help them do exactly that, starting from the standing instruction on the "The instruction" slide, with their own categories substituted. Close routes to the paid three-week mini course "Build an AI Agent for Your Busywork with Claude Code" (Oct 15-31, $1,095, code LL15 for 15% off, maven.com/ericgrows/build-an-ai-agent-for-your-busywork). It is the back half of the six-class course sold on its own: Class 1 builds the morning briefing (the readers), Class 2 gives it a brain (today's agent with its own key and schedule), Class 3 is the handoff (it acts on safe jobs, asks before anything irreversible, runs with the laptop closed).
 
 ---
 
@@ -792,21 +792,18 @@ durable takeaway and it is true whether or not anyone buys anything.
 
 _What's next_
 
-## Run your whole business this way.
+## Now let it go and look.
 
-Six classes. In each one you build something real for your business, and you learn a skill that goes well beyond it. Today was a short version of one of them.
+Three classes, one a week. In each one you build something real for your business, and you learn a skill that goes well beyond it. Today was a short version of the second.
 
  You build You learn
- Your website, custom built Delegating to Claude like a person
- A dashboard Getting at your own data
- The dual web Being found by AI and search
- Automations Reaching the places your work lives
- An agent Software that decides on its own
- A GTM strategy Getting customers in the door
+ Your morning briefing Reaching the places your work actually lives
+ An agent, with your judgment in it Software that decides what to look at
+ The handoff Letting it act on the safe jobs, off your laptop
 
-_Where today's ceiling gets closed_
+_Live cohort · October 15 to 31_
 
-The automations class is how the agent stops waiting for a folder. It goes and reads the places your work actually lives — your inbox, your tools, your numbers. Then the agent class gives that a brain.
+Today's agent waits for a folder. In the course it reads your inbox, your calendar, your tasks — gets its own key and a schedule, acts on the safe jobs, and runs with your laptop closed. The paperwork stops being carried.
 
 _Or do it alone, free_
 
@@ -820,15 +817,21 @@ The whole course is on YouTube, same material, at your own pace.
 Sets up the ask without making it. **Don't do the pitch twice** — the offer is one
 slide away, and doing it here spends it early.
 
-Read two rows across the table, not all six. The agent row is the obvious one. Pick
-one other and read it the same way. That is enough for the shape to register: every
-class builds one real thing and the point is always the skill underneath it.
+Three classes, one a week. Read the rows as a progression, not a list: first the
+briefing, which is the readers — the agent's senses, built as a fixed routine.
+Then the agent itself, which is today's build given those readers, its own key, and
+a schedule. Then the handoff, where it starts acting on the safe jobs and moves off
+the laptop. Today was a short version of the second class.
 
 **The card on the right is where today's ceiling gets closed, and this is the only
-place it should be closed.** The automations class is how the agent stops waiting
-for a folder — it reaches into the places the work actually lives. Then the agent
-class gives that a brain. **The paperwork stops being carried.** That is the
-sentence.
+place it should be closed.** Today's agent waits for a folder. In the course it
+reads where the work actually lives — inbox, calendar, tasks — and runs with the
+laptop closed. **The paperwork stops being carried.** That is the sentence.
+
+This mini course is the back half of the six-class course, sold on its own, with a
+third class that goes further on agents than the six-class version does. If a
+student later takes the website course, what they paid here comes off the price.
+Say that only if asked; the slide sells three classes.
 
 Both doors are genuinely real. The whole course is free on YouTube at
 **ericgrows.com**, same material, at their own pace. The paid cohort adds live help
@@ -839,32 +842,50 @@ paying is a good outcome.
 
 **What the student sees on this slide:**
 
-_Run Your Whole Business with AI_
+_Build an AI Agent for Your Busywork with Claude Code_
 
-## Six weeks, starting September 29.
+## Three weeks, starting October 15.
 
-_Your code · FOUNDER400_
+Six live sessions, office hours after every class, and the recordings for good.
 
-$1,795 $1,395
+_Your code, from today_
 
-10 founding seats at that price. Live sessions, the recordings for good, and three months of StratEngine included.
+ LL15
+
+15% off. $1,095 $931
+
+Everything you build is yours: a briefing that runs on its own, an agent with your judgment written into it, and the skill to point it at the next chore.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> maven.com/ericgrows/run-your-whole-business-with-ai
+> maven.com/ericgrows/build-an-ai-agent-for-your-busywork
 
 Still free on YouTube if you'd rather do it alone, at ericgrows.com . Same material, no help.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-**Run Your Whole Business with AI:**
+**Build an AI Agent for Your Busywork with Claude Code**, verified against the live
+course page on 2026-09-15:
 
-- Six weeks, starting September 29
-- $1,795, and **FOUNDER400** takes it to **$1,395**
-- **10 founding seats** at that price
-- Lifetime access to recordings, 3 months of StratEngine AI Professional
-- maven.com/ericgrows/run-your-whole-business-with-ai
+- Three weeks, October 15 to 31 (the next cohort)
+- 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build
+  classes, 2 hours for the handoff class, plus an optional office hour each week
+  and an optional bonus hour on strategy at the end
+- $1,095, and **LL15** takes 15% off (about $931). One code, given to the people in
+  this lesson. Do not attach a cohort restriction to it that the slide does not
+  make.
+- Lifetime access to recordings, office hours after every class, Maven guarantee
+- Extra costs a student will ask about: a paid Claude plan; in Class 2 the agent
+  gets its own API key, billed by usage with a spending cap set before it runs;
+  and the always-on home it moves to in Class 3 is about $25 a month
+- maven.com/ericgrows/build-an-ai-agent-for-your-busywork
 
-**The scarcity is real and should be stated flatly.** Ten seats is ten seats. No
+**Say the safety line if anyone hesitates, because the course page makes the same
+promise:** it reads their real accounts and never sends, deletes, or moves anything
+on its own. In Class 3 it starts acting on the safe jobs they choose — drafting and
+filing — and asks before anything it cannot undo. That is the same rule as the
+Safety slide, carried through.
+
+**No invented scarcity.** The page states no seat cap, so do not name one. No
 countdown theater, no "spots are going fast." This audience detects that instantly.
 
 Still free on YouTube at ericgrows.com for anyone who would rather do it alone.

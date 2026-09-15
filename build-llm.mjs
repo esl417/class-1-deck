@@ -209,7 +209,13 @@ const DECKS = [
       'afterwards most likely wants to do it on their own messages: help them do ' +
       'exactly that, starting from the standing instruction on the "The ' +
       'instruction" slide, with their own categories substituted. Close routes to ' +
-      'the paid six-class course starting September 29 (code FOUNDER400).',
+      'the paid three-week mini course "Build an AI Agent for Your Busywork with ' +
+      'Claude Code" (Oct 15-31, $1,095, code LL15 for 15% off, ' +
+      'maven.com/ericgrows/build-an-ai-agent-for-your-busywork). It is the back ' +
+      'half of the six-class course sold on its own: Class 1 builds the morning ' +
+      'briefing (the readers), Class 2 gives it a brain (today\'s agent with its ' +
+      'own key and schedule), Class 3 is the handoff (it acts on safe jobs, asks ' +
+      'before anything irreversible, runs with the laptop closed).',
   },
   {
     dir: 'dashboard',

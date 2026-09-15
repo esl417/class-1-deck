@@ -414,15 +414,21 @@ durable takeaway and it is true whether or not anyone buys anything.
 Sets up the ask without making it. **Don't do the pitch twice** — the offer is one
 slide away, and doing it here spends it early.
 
-Read two rows across the table, not all six. The agent row is the obvious one. Pick
-one other and read it the same way. That is enough for the shape to register: every
-class builds one real thing and the point is always the skill underneath it.
+Three classes, one a week. Read the rows as a progression, not a list: first the
+briefing, which is the readers — the agent's senses, built as a fixed routine.
+Then the agent itself, which is today's build given those readers, its own key, and
+a schedule. Then the handoff, where it starts acting on the safe jobs and moves off
+the laptop. Today was a short version of the second class.
 
 **The card on the right is where today's ceiling gets closed, and this is the only
-place it should be closed.** The automations class is how the agent stops waiting
-for a folder — it reaches into the places the work actually lives. Then the agent
-class gives that a brain. **The paperwork stops being carried.** That is the
-sentence.
+place it should be closed.** Today's agent waits for a folder. In the course it
+reads where the work actually lives — inbox, calendar, tasks — and runs with the
+laptop closed. **The paperwork stops being carried.** That is the sentence.
+
+This mini course is the back half of the six-class course, sold on its own, with a
+third class that goes further on agents than the six-class version does. If a
+student later takes the website course, what they paid here comes off the price.
+Say that only if asked; the slide sells three classes.
 
 Both doors are genuinely real. The whole course is free on YouTube at
 **ericgrows.com**, same material, at their own pace. The paid cohort adds live help
@@ -431,15 +437,29 @@ paying is a good outcome.
 
 ## The offer
 
-**Run Your Whole Business with AI:**
+**Build an AI Agent for Your Busywork with Claude Code**, verified against the live
+course page on 2026-09-15:
 
-- Six weeks, starting September 29
-- $1,795, and **FOUNDER400** takes it to **$1,395**
-- **10 founding seats** at that price
-- Lifetime access to recordings, 3 months of StratEngine AI Professional
-- maven.com/ericgrows/run-your-whole-business-with-ai
+- Three weeks, October 15 to 31 (the next cohort)
+- 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build
+  classes, 2 hours for the handoff class, plus an optional office hour each week
+  and an optional bonus hour on strategy at the end
+- $1,095, and **LL15** takes 15% off (about $931). One code, given to the people in
+  this lesson. Do not attach a cohort restriction to it that the slide does not
+  make.
+- Lifetime access to recordings, office hours after every class, Maven guarantee
+- Extra costs a student will ask about: a paid Claude plan; in Class 2 the agent
+  gets its own API key, billed by usage with a spending cap set before it runs;
+  and the always-on home it moves to in Class 3 is about $25 a month
+- maven.com/ericgrows/build-an-ai-agent-for-your-busywork
 
-**The scarcity is real and should be stated flatly.** Ten seats is ten seats. No
+**Say the safety line if anyone hesitates, because the course page makes the same
+promise:** it reads their real accounts and never sends, deletes, or moves anything
+on its own. In Class 3 it starts acting on the safe jobs they choose — drafting and
+filing — and asks before anything it cannot undo. That is the same rule as the
+Safety slide, carried through.
+
+**No invented scarcity.** The page states no seat cap, so do not name one. No
 countdown theater, no "spots are going fast." This audience detects that instantly.
 
 Still free on YouTube at ericgrows.com for anyone who would rather do it alone.
