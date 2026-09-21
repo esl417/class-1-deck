@@ -133,7 +133,10 @@ promise, "what a finished strategy does on Monday", is this job at small scale.
 The heads-up gives two reasons the money is worth it, and both matter:
 
 - **A wrong choice stays expensive for years.** The Nike line below.
-- **A clear choice keeps everyone rowing the same way.** HBR 2007 lists
+- **A clear choice pulls everyone the same way.** The Nike half of this is
+  from the Q1 FY26 earnings call (30 September 2025): about 8,000 employees
+  were realigned to the new "sport offense" structure, the reorganization of
+  the company around sports rather than product lines. HBR 2007 lists
   "engendering commitment to strategic plans" as the CSO's first job. Porter's
   1996 argument is that a strategy is "fit among a company's activities", and
   Rumelt's third element is actions "coordinated with one another". For a
