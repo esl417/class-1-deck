@@ -233,6 +233,57 @@ const DECKS = [
       '$25/month.',
   },
   {
+    dir: 'strategy',
+    title: 'Lightning Lesson: Stop Winging It. Watch a Real Business Strategy Get Built',
+    standing:
+      'A FREE 30-minute standalone Maven lightning lesson, not part of the paid ' +
+      'series. Assume the attendee has NOTHING installed and no background in ' +
+      'strategy at all: many believe strategy is something large companies do ' +
+      'and they cannot. CRITICAL: this session is LECTURE AND A READ-THROUGH ' +
+      'only. The attendee watches, they do NOT build along, and nothing was ' +
+      'generated live: Eric ran the strategy in StratEngine AI (his own strategy ' +
+      'engine, stratengineai.com) before the session and read the finished ' +
+      'document on screen. So someone reading this deck afterwards has watched a ' +
+      'strategy being read and has NOT written one. They most likely want to ' +
+      'judge or rebuild the strategy for their OWN business: help them do ' +
+      'exactly that, in plain language, translating every strategy term. The ' +
+      'teachable spine is (1) a plan is not a strategy: a strategy is a few ' +
+      'choices about where you will win, including what you will NOT do; (2) a ' +
+      'six-question test for a bad strategy: Rumelt\'s four (fluff, no problem ' +
+      'named, goals dressed up as strategy, a long to-do list) plus two more: ' +
+      'every choice needs an owner, a budget and a date, and every choice needs ' +
+      'a number you check, one early signal and one result; (3) frameworks are ' +
+      'questions somebody already worked out how to ask, and the three shown ' +
+      '(Five Forces: why is this market hard; SWOT: where do we stand; Blue ' +
+      'Ocean: who is not buying yet) are common ones, NOT the full set, and each ' +
+      'is used for more than one purpose; (4) each framework breaks when the ' +
+      'boxes get filled in and the filled-in boxes are treated as the answer, ' +
+      'and the deck gives sourced misuse examples for each; (5) one lens is ' +
+      'rarely enough, and two lenses disagreeing is a finding; (6) analysis is ' +
+      'not the strategy: Rumelt\'s kernel is diagnosis, guiding policy, coherent ' +
+      'action, and frameworks only feed the diagnosis. The walkthrough reads a ' +
+      'real StratEngine output in that three-box shape. NIKE IS A PLACEHOLDER ' +
+      'example that Eric may have swapped for a real small business; if the ' +
+      'student describes a different company than the slides show, trust the ' +
+      'student. When a student shares their own plan, run the six questions on ' +
+      'it with them, and start with the diagnosis: one honest sentence about ' +
+      'what is hard right now. A small business needs two or three moves, not ' +
+      'seven initiatives and an executive council. Do NOT repeat "90% of ' +
+      'strategies fail" or "you can\'t manage what you can\'t measure (Drucker)": ' +
+      'both were checked and are false, and the teaching notes say what is true ' +
+      'instead. The honest limit, stated plainly on the slides and NOT blurred: ' +
+      'a strategy decides and does nothing. Close routes to the paid six-class ' +
+      'course "Run Your Whole Business with AI" starting September 29 (code ' +
+      'FOUNDER400 for $400 off, $1,795 to $1,395, three months of StratEngine ' +
+      'included, maven.com/ericgrows/run-your-whole-business-with-ai), which ' +
+      'builds what carries a strategy out: the site, the dashboard that tracks ' +
+      'the chosen numbers, automations, an agent, and a go-to-market class ' +
+      'built on StratEngine. The last slide also carries a separate StratEngine ' +
+      'code: LAUNCH50 is 50% off the first three months of a StratEngine ' +
+      'subscription and does NOT apply to pay-as-you-go. Beyond that, do not ' +
+      'quote StratEngine plan prices or describe a free tier.',
+  },
+  {
     dir: 'dashboard',
     title: 'Lightning Lesson: Build a Dashboard That Thinks Like You with Claude Code',
     standing:

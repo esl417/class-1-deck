@@ -34,6 +34,9 @@ agents/                 index.html                  ...   (free Maven lightning 
                                             inbox/ — point the routine at a folder holding
                                             only the export, never at sample-data/
                                             (the script spoils the demo)
+strategy/               index.html                  ...   (free Maven lightning lesson)
+                        no demo artifact: the walkthrough reads a finished
+                        StratEngine strategy in the product itself
 index.html              (landing page linking to all decks)
 ```
 
@@ -69,6 +72,16 @@ All three are **lecture and demonstration**. Nobody builds along:
   folder and schedule. Cowork's scheduled tasks moved to the cloud in July 2026
   and cannot be tied to a local folder. The Code tab is the one navigational
   gotcha in the deck. Decided 2026-09-15.
+
+- `strategy/` (30 minutes, added 2026-09-21) is a fourth free lightning lesson and
+  the only one with no Claude Code in it: it teaches what a strategy is, three
+  common frameworks and how they get misused, then reads a finished StratEngine
+  strategy. Nothing is generated live. **Nike is a placeholder** for the
+  walkthrough (taken from `stratengine-analEng/nike_strategy_brief_sample.md`);
+  every slide to swap carries a `PLACEHOLDER (Nike)` comment. Every factual claim
+  was sourced, and `teaching.md` ends with the well-known strategy "facts" that
+  were checked and found false, so they do not creep back in. It sells the
+  six-class course (FOUNDER400) and reuses `dashboard/`'s QR.
 
 All three therefore keep the same fire-and-forget shape with one machine instead
 of many, and all put the attendee's own doing in the close as homework rather
