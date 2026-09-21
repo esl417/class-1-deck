@@ -56,45 +56,56 @@ listed at the end under "Things this deck does not say".
 
 ---
 
-## The drawer plan
+## Goals and lists
 
-**This is now the first slide after the title, and it opens the session.** Two
+**This is the first slide after the title, and it opens the session.** Two
 slides were cut from the open on 2026-09-21: a "just watch" reassurance slide,
 and a finish-line slide that previewed the finished strategy. The second was cut
-because it talked about a strategy nobody had seen yet, and because its headline
-("three decisions, then a plan") contradicted this slide's "a plan is not a
-strategy". So the deck no longer shows the destination before explaining it: the
-document is not on screen until the walkthrough, and the definition has to carry
-the opening on its own.
+because it talked about a strategy nobody had seen yet. So the deck does not
+show the destination first: the document is not on screen until the
+walkthrough, and this definition has to carry the opening on its own.
 
 Two things the cut slides carried, to say out loud here in one breath before you
 start: nobody needs to build along or take notes, and they should run the test on
 their own business as they watch. Both take ten seconds, and this audience tenses
 up without them.
 
-The registration page promised this slide: "The plan in your drawer was never a
-strategy." The relief matters more than the definition. They were right not to
-open the plan again, and nobody taught them the difference.
+**Why the contrast is a goal and a list, not "a plan".** An earlier draft of
+this slide said "a plan is not a strategy", and it confused even Eric: "plan"
+read as this year's set of actions, while the paragraph was about the business
+plan in a drawer. Neither is the thing owners actually mistake for strategy. The
+literature is consistent on what that is. Rumelt's most common hallmark of bad
+strategy is "mistaking goals for strategy" (his example is a CEO's "20/20 plan":
+20% growth, 20% margin, and no answer to what has to happen for it). His next is
+the list: "A long list of things to do, often mislabeled as strategies or
+objectives, is not a strategy. It is just a list of things to do." Martin
+describes the corporate version the same way: a list of initiatives whose
+length is "generally constrained only by affordability", converted into
+financials. The left card is those three things. The word "plan" is now reserved
+in this deck for the implementation plan on "Plan and measure", where it means
+what people expect it to mean.
 
-The left card is Roger Martin's description of a typical strategic plan: a
-vision or mission statement, a list of initiatives whose length is "generally
-constrained only by affordability", and the conversion of those initiatives into
-financials. His point is that such a plan "isn't explicit about what the
-organization chooses not to do and why."
+**If someone brings up the business plan they wrote for a bank or at founding**
+(the registration page's "plan in your drawer" line), the answer is that it is
+the same three things in a longer document: a description of the business, a
+list, and projections. It was written for a lender, and it was right to leave it
+in the drawer.
 
 The right card is the working definition for the whole session: a few choices
 about where you will win, what you will not do, and a bet you could be wrong
 about. Martin: "True strategy is about placing bets and making hard choices."
+And: planning "isn't explicit about what the organization chooses not to do and
+why."
 
 The quote is verbatim from Michael Porter, "What Is Strategy?", Harvard Business
 Review, November 1996. The sentence before it in the original is "Strategy is
 making trade-offs in competing."
 
-If someone says "but I do have goals": goals are fine, and they are the
-destination. The test two slides on covers this. Do not pre-empt it here.
+This slide names the two substitutes; "The test" three slides on gives the full
+four-part test with Rumelt's examples. Do not run the test here.
 
-Sources: Martin, "The Big Lie of Strategic Planning", HBR Jan 2014. Porter, HBR
-Nov 1996.
+Sources: Rumelt, "The Perils of Bad Strategy", McKinsey Quarterly, June 2011.
+Martin, "The Big Lie of Strategic Planning", HBR Jan 2014. Porter, HBR Nov 1996.
 
 ## Why they pay for it
 

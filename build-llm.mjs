@@ -247,8 +247,9 @@ const DECKS = [
       'strategy being read and has NOT written one. They most likely want to ' +
       'judge or rebuild the strategy for their OWN business: help them do ' +
       'exactly that, in plain language, translating every strategy term. The ' +
-      'teachable spine is (1) a plan is not a strategy: a strategy is a few ' +
-      'choices about where you will win, including what you will NOT do; (2) a ' +
+      'teachable spine is (1) a goal and a to-do list are not a strategy: a ' +
+      'strategy is a few choices about where you will win, including what you ' +
+      'will NOT do; (2) a ' +
       'six-question test for a bad strategy: Rumelt\'s four (fluff, no problem ' +
       'named, goals dressed up as strategy, a long to-do list) plus two more: ' +
       'every choice needs an owner, a budget and a date, and every choice needs ' +
