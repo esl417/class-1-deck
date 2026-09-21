@@ -156,7 +156,7 @@ Big companies pay for a strategy team for two reasons.
 
 A wrong choice stays expensive for years. Nike bet on selling direct in 2020, revenue fell 10% by fiscal 2025, and the new CEO's first job was undoing it.
 
-A clear choice pulls everyone the same way. His reset put sport first and reorganized around 8,000 people behind it.
+A clear choice pulls everyone the same way. The new CEO's reset put sport first and reorganized around 8,000 people behind it.
 
 You make the same kind of choice they do, with far less room to be wrong. Figures: BCG survey of chief strategy officers.
 
@@ -285,7 +285,7 @@ Every choice has a number you check. One early signal that shows up in weeks, an
 
  📉
 
-This is where it breaks, even at big companies. In a survey of 7,600 managers, only 55% of middle managers could name even one of their company's top five priorities. Only 11% said every priority had the people and money it needed.
+This is where strategies break, even at big companies. In a survey of 7,600 managers, only 55% of middle managers could name even one of their company's top five priorities. Only 11% said every priority had the people and money it needed.
 
 Sull, Homkes and Sull, Harvard Business Review, 2015.
 
@@ -440,7 +440,7 @@ _Lens two · Stanford Research Institute, 1960s_
  Opportunities Changes you could use.
  Threats Changes that could hurt.
 
-It's a fit check. Does what you're good at line up with what's happening around you?
+SWOT is a fit check. Does what you're good at line up with what's happening around you?
 
 _What it's for_
 
@@ -542,7 +542,7 @@ A smaller pond is still the same fight. So is getting there first. The authors m
 
  🧩
 
-It's the same mistake three times: filling in the boxes and treating the filled-in boxes as the answer.
+All three are the same mistake: filling in the boxes and treating the filled-in boxes as the answer.
 
 Porter, HBR 2008. Hill and Westbrook, Long Range Planning, 1997. Kim and Mauborgne.
 
@@ -814,7 +814,7 @@ Seven initiatives in three priority tiers, and every one is written in the same 
 
  🗓️
 
-Then it sequences all seven: the first 3 months, 3 to 9, 9 to 18, and beyond, with named executives owning the results. That's the two extra test questions, answered.
+Then it sequences all seven: the first 3 months, 3 to 9, 9 to 18, and beyond, with named executives owning the results. That answers the two extra test questions: someone is doing it, and you can see it moving.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
