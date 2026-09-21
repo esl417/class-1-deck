@@ -148,11 +148,13 @@ Which bets get funded, which get cut, and what to buy or sell. 82% run planning 
 
 _What's changing_
 
-Watching the shifts nobody in a single department is paid to watch, and whether the strategy is working. Adjusting as the numbers come in.
+Watching the shifts nobody in a single department is paid to watch, and whether the strategy is working.
 
  💸
 
-Two reasons it's worth the money. A wrong choice stays expensive for years: Nike bet on selling direct in 2020, revenue fell 10% by fiscal 2025, and the new CEO's first job was undoing it. A clear choice pulls everyone the same way: his reset put sport first and reorganized around 8,000 people behind it.
+A wrong choice stays expensive for years. Nike bet on selling direct in 2020, revenue fell 10% by fiscal 2025, and the new CEO's first job was undoing it.
+
+A clear choice pulls everyone the same way. His reset put sport first and reorganized around 8,000 people behind it.
 
 You make the same kind of choice they do, with far less room to be wrong. Figures: BCG survey of chief strategy officers.
 
