@@ -146,13 +146,13 @@ _Where the money goes_
 
 Which bets get funded, which get cut, and what to buy or sell. 82% run planning and deals.
 
-_What's coming_
+_What's shifting, and what's working_
 
-Watching competitors and long-term shifts that nobody inside a single department is paid to watch.
+Watching the market moves nobody inside a single department is paid to watch, and checking whether the strategy is working as the numbers come in, then adjusting it.
 
  💸
 
-They pay because a wrong choice stays expensive for years. In 2020 Nike bet on selling direct and pulled back from retailers. In fiscal 2025 revenue fell 10%, and the new CEO's first job was undoing it.
+They pay because a wrong choice stays expensive for years, and a clear one keeps thousands of people rowing the same way. In 2020 Nike bet on selling direct and pulled back from retailers. In fiscal 2025 revenue fell 10%, and the new CEO's first job was undoing it.
 
 You make the same kind of choice they do, with far less room to be wrong. Figures: BCG survey of chief strategy officers.
 
@@ -170,6 +170,24 @@ median of seven. Say "about ten" and do not be more precise than that.
 
 HBR's 2007 piece on the chief strategy officer gives the plainest reason the job
 exists: CEOs "are too overloaded to stay on top of strategy implementation."
+
+The third card covers two jobs on purpose. BCG's survey sorts CSO
+responsibilities into "strategy development, resource allocation, and strategy
+execution", and lists "monitoring long-term trends and outlook" and "gathering
+competitive intelligence" among the common ones. The execution half is checking
+whether the strategy is working as the numbers arrive and adjusting it, which is
+where the measures from "Plan and measure" get used. The registration-page
+promise, "what a finished strategy does on Monday", is this job at small scale.
+
+The heads-up gives two reasons the money is worth it, and both matter:
+
+- **A wrong choice stays expensive for years.** The Nike line below.
+- **A clear choice keeps everyone rowing the same way.** HBR 2007 lists
+  "engendering commitment to strategic plans" as the CSO's first job. Porter's
+  1996 argument is that a strategy is "fit among a company's activities", and
+  Rumelt's third element is actions "coordinated with one another". For a
+  business of five people the unifying force is the same: a strategy is what
+  lets the person answering the phone make the same call the owner would.
 
 **Do not quote a percentage of companies that have a chief strategy officer.**
 "About half the Fortune 500" circulates widely and could not be traced to a
