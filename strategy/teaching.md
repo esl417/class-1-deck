@@ -42,9 +42,8 @@ own" how the gap gets closed.
 
 **Nike is a placeholder.** Eric intends to swap in a real small business before
 the session. Every Nike reference is marked in `index.html` with a
-`PLACEHOLDER (Nike)` comment: "The finish line", "Why they pay for it" (the
-heads-up), "Read a real one", "Diagnosis to decisions", "Every move has a
-number", and "Monday". The Nike content on the walkthrough slides comes from a
+`PLACEHOLDER (Nike)` comment: "Why they pay for it" (the heads-up), "Read a real
+one", "Diagnosis to decisions", "Every move has a number", and "Monday". The Nike content on the walkthrough slides comes from a
 real StratEngine output,
 `stratengine-analEng/nike_strategy_brief_sample.md` (April 2026). The Nike
 facts on "Why they pay for it" and "Monday" come from Nike's own earnings
@@ -57,32 +56,21 @@ listed at the end under "Things this deck does not say".
 
 ---
 
-## The finish line
-
-**This is now slide 2, and it opens the session.** The "just watch" reassurance
-slide was cut on 2026-09-21 as unnecessary, so say the two things it carried
-out loud here instead, in one breath before the document goes up: nobody needs
-to build along or take notes, and they should run the test on their own
-business as they watch. Both take ten seconds and this audience tenses up
-without them.
-
-**Show the destination before explaining anything.** The finished strategy is on
-screen in the first two minutes so every abstract idea afterwards has
-somewhere to land.
-
-The beat that matters is the last section: **what it chose not to chase.** In
-the Nike sample that is growth in Greater China, where the document says to run
-a "lean and localized" model "with minimal new capital-intensive investments."
-A to-do list cannot contain a line like that. Point at it and move on. Do not
-explain frameworks yet.
-
-The headline says "three decisions, then a plan" because that is the real shape
-of a StratEngine document: an executive summary carrying a few decisions, then
-prioritized initiatives, a phased roadmap and governance. The registration page
-says "one page." The full document is much longer than a page. The decisions fit
-on one. If anyone asks, that is the honest answer.
-
 ## The drawer plan
+
+**This is now the first slide after the title, and it opens the session.** Two
+slides were cut from the open on 2026-09-21: a "just watch" reassurance slide,
+and a finish-line slide that previewed the finished strategy. The second was cut
+because it talked about a strategy nobody had seen yet, and because its headline
+("three decisions, then a plan") contradicted this slide's "a plan is not a
+strategy". So the deck no longer shows the destination before explaining it: the
+document is not on screen until the walkthrough, and the definition has to carry
+the opening on its own.
+
+Two things the cut slides carried, to say out loud here in one breath before you
+start: nobody needs to build along or take notes, and they should run the test on
+their own business as they watch. Both take ten seconds, and this audience tenses
+up without them.
 
 The registration page promised this slide: "The plan in your drawer was never a
 strategy." The relief matters more than the definition. They were right not to
@@ -398,6 +386,12 @@ finished. A completed SWOT is, at best, part of a diagnosis.
 
 **PLACEHOLDER: Nike.** Swap "Today's example" and check "The lens it used"
 against the real run.
+
+**This is the room's first sight of a real strategy**, now that the finish-line
+slide is cut. Everything before it was definition and lens; this is the payoff,
+so do not rush the transition into it. The registration page sold exactly this
+moment: "A real small business goes in, a finished strategy comes out, and we
+read it together."
 
 The four steps mirror StratEngine's real screens: the strategy builder (describe
 the business), the research report, the framework screen (choose a framework and

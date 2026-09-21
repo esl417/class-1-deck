@@ -49,59 +49,7 @@ Free Lightning Lesson
 
 In the next 30 minutes: what a strategy really is, how big companies build one, and a real one read start to finish.
 
-## Slide 2 · The finish line
-
-**What the student sees on this slide:**
-
-_Where we're going_
-
-## Three decisions, then a plan.
-
-This is what a finished strategy looks like. We'll read the whole thing later. For now, notice how little of it is a list of things to do.
-
- Nike, Inc. · Strategic Blueprint for the Performance-First Reset
- The three decisions
-
-Sell through retail partners and direct, where it had been betting on direct alone. Put the innovation money into performance sport. Grow North America hard and run Greater China lean.
-
- The first move
-
-Rebuild athlete-led product. $600M over 24 months. It counts as working when new performance products add 20% more to revenue by fiscal 2027.
-
- What it chose not to chase
-
-Growth in Greater China. The plan there is "lean and localized": protect the brand, run for profit, and put almost no new capital in.
-
- 👀
-
-Look at that last section. A strategy names what it will stop chasing, and that one line is how you tell it from a to-do list.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-**This is now slide 2, and it opens the session.** The "just watch" reassurance
-slide was cut on 2026-09-21 as unnecessary, so say the two things it carried
-out loud here instead, in one breath before the document goes up: nobody needs
-to build along or take notes, and they should run the test on their own
-business as they watch. Both take ten seconds and this audience tenses up
-without them.
-
-**Show the destination before explaining anything.** The finished strategy is on
-screen in the first two minutes so every abstract idea afterwards has
-somewhere to land.
-
-The beat that matters is the last section: **what it chose not to chase.** In
-the Nike sample that is growth in Greater China, where the document says to run
-a "lean and localized" model "with minimal new capital-intensive investments."
-A to-do list cannot contain a line like that. Point at it and move on. Do not
-explain frameworks yet.
-
-The headline says "three decisions, then a plan" because that is the real shape
-of a StratEngine document: an executive summary carrying a few decisions, then
-prioritized initiatives, a phased roadmap and governance. The registration page
-says "one page." The full document is much longer than a page. The decisions fit
-on one. If anyone asks, that is the honest answer.
-
-## Slide 3 · The drawer plan
+## Slide 2 · The drawer plan
 
 **What the student sees on this slide:**
 
@@ -131,6 +79,20 @@ _What a strategy is_
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
+**This is now the first slide after the title, and it opens the session.** Two
+slides were cut from the open on 2026-09-21: a "just watch" reassurance slide,
+and a finish-line slide that previewed the finished strategy. The second was cut
+because it talked about a strategy nobody had seen yet, and because its headline
+("three decisions, then a plan") contradicted this slide's "a plan is not a
+strategy". So the deck no longer shows the destination before explaining it: the
+document is not on screen until the walkthrough, and the definition has to carry
+the opening on its own.
+
+Two things the cut slides carried, to say out loud here in one breath before you
+start: nobody needs to build along or take notes, and they should run the test on
+their own business as they watch. Both take ten seconds, and this audience tenses
+up without them.
+
 The registration page promised this slide: "The plan in your drawer was never a
 strategy." The relief matters more than the definition. They were right not to
 open the plan again, and nobody taught them the difference.
@@ -155,7 +117,7 @@ destination. The test two slides on covers this. Do not pre-empt it here.
 Sources: Martin, "The Big Lie of Strategic Planning", HBR Jan 2014. Porter, HBR
 Nov 1996.
 
-## Slide 4 · Why they pay for it
+## Slide 3 · Why they pay for it
 
 **What the student sees on this slide:**
 
@@ -213,7 +175,7 @@ The registration page says "Not a McDonald's case study." This slide uses big
 companies as evidence the work is real, then turns straight back to the room:
 same kind of choice, less room to be wrong. Keep that turn. It is the point.
 
-## Slide 5 · The test
+## Slide 4 · The test
 
 **What the student sees on this slide:**
 
@@ -267,7 +229,7 @@ named" first, because naming the difficulty feels like admitting weakness.
 Reassure them: large companies fail it just as often, which is why Rumelt wrote
 the book.
 
-## Slide 6 · Plan and measure
+## Slide 5 · Plan and measure
 
 **What the student sees on this slide:**
 
@@ -331,7 +293,7 @@ everywhere:
   Institute says he never said it, and Deming called the idea "a costly myth."
   What Kaplan and Norton did write is "What you measure is what you get."
 
-## Slide 7 · Three lenses
+## Slide 6 · Three lenses
 
 **What the student sees on this slide:**
 
@@ -377,7 +339,7 @@ itself.
 Do not teach the lenses as boxes to fill in. The pitfalls slide is about exactly
 that failure.
 
-## Slide 8 · Five Forces
+## Slide 7 · Five Forces
 
 **What the student sees on this slide:**
 
@@ -424,7 +386,7 @@ industry boundary sensibly. Porter names "defining the industry too broadly or
 too narrowly" as the first pitfall. "Food and beverage" is too broad for a cafe.
 "Pour-over cafes on my street" is too narrow.
 
-## Slide 9 · SWOT
+## Slide 8 · SWOT
 
 **What the student sees on this slide:**
 
@@ -476,7 +438,7 @@ about.
 The evidence requirement is the hook into the next slide but one. Land it and
 move on.
 
-## Slide 10 · Blue Ocean
+## Slide 9 · Blue Ocean
 
 **What the student sees on this slide:**
 
@@ -522,7 +484,7 @@ proves nothing about whether a given option will work.
 For a small business the useful question is the noncustomer one: who needs what
 you do and currently buys from nobody like you, and what is putting them off?
 
-## Slide 11 · Where they break
+## Slide 10 · Where they break
 
 **What the student sees on this slide:**
 
@@ -598,7 +560,7 @@ When a student shows you a SWOT, check three things: is each item backed by
 evidence, is each strength measured against a named competitor, and does the
 list end in a decision. If the answer to the last one is no, it is a list.
 
-## Slide 12 · More than one lens
+## Slide 11 · More than one lens
 
 **What the student sees on this slide:**
 
@@ -645,7 +607,7 @@ of the book, not its text, so it stays in these notes and off the slide.
 Practical guidance for a student: pick one outward lens and one inward lens as a
 minimum.
 
-## Slide 13 · Analysis to strategy
+## Slide 12 · Analysis to strategy
 
 **What the student sees on this slide:**
 
@@ -685,7 +647,7 @@ heavy investment in simulation.
 The commonest student mistake is doing a framework and believing they are
 finished. A completed SWOT is, at best, part of a diagnosis.
 
-## Slide 14 · Read a real one
+## Slide 13 · Read a real one
 
 **What the student sees on this slide:**
 
@@ -718,6 +680,12 @@ stratengineai.com
 **PLACEHOLDER: Nike.** Swap "Today's example" and check "The lens it used"
 against the real run.
 
+**This is the room's first sight of a real strategy**, now that the finish-line
+slide is cut. Everything before it was definition and lens; this is the payoff,
+so do not rush the transition into it. The registration page sold exactly this
+moment: "A real small business goes in, a finished strategy comes out, and we
+read it together."
+
 The four steps mirror StratEngine's real screens: the strategy builder (describe
 the business), the research report, the framework screen (choose a framework and
 depth), and the document viewer. If the product flow has changed, fix the chips.
@@ -735,7 +703,7 @@ should watch a progress bar. This is now the deck's only pre-built disclosure,
 so do not skip it. Do not be cagey and do not imply it is running in the
 background.
 
-## Slide 15 · Diagnosis to decisions
+## Slide 14 · Diagnosis to decisions
 
 **What the student sees on this slide:**
 
@@ -791,7 +759,7 @@ earnings call (December 2024) Elliott Hill said "We lost our obsession with
 sport," that Nike had "become far too promotional," and that "being premium also
 means full price."
 
-## Slide 16 · Every move has a number
+## Slide 15 · Every move has a number
 
 **What the student sees on this slide:**
 
@@ -837,7 +805,7 @@ If a student is building their own: a small business does not need seven
 initiatives or an executive council. Two or three moves, each with those five
 parts, is a complete strategy.
 
-## Slide 17 · Monday
+## Slide 16 · Monday
 
 **What the student sees on this slide:**
 
@@ -883,7 +851,7 @@ time in four years. The early numbers moved first. That is what they are for.
 it is unresolved, and that makes it a better example: a strategy with measures
 lets you tell "not working" from "not yet," and one without measures cannot.
 
-## Slide 18 · What you own
+## Slide 17 · What you own
 
 **What the student sees on this slide:**
 
@@ -921,7 +889,7 @@ Do not quote StratEngine plan prices or describe a free tier, on this slide or i
 answers. The one pricing fact in this deck is the LAUNCH50 code on the last
 slide. For anything else, point people to stratengineai.com.
 
-## Slide 19 · What's next
+## Slide 18 · What's next
 
 **What the student sees on this slide:**
 
@@ -961,7 +929,7 @@ Class 6 is go-to-market, built on StratEngine, which is why that row is bold.
 Three months of StratEngine is included in the course. That is the literal
 answer to "how do I get a strategy like the one you showed."
 
-## Slide 20 · The offer
+## Slide 19 · The offer
 
 **What the student sees on this slide:**
 
@@ -992,7 +960,7 @@ by decoding it.
 If a student asks after September 29 whether they can still join, do not guess.
 Send them to the Maven page.
 
-## Slide 21 · Questions
+## Slide 20 · Questions
 
 **What the student sees on this slide:**
 
