@@ -156,7 +156,7 @@ Big companies pay for a strategy team for two reasons.
 
 A wrong choice stays expensive for years. Nike bet on selling direct in 2020, revenue fell 10% by fiscal 2025, and the new CEO's first job was undoing it.
 
-A clear choice pulls everyone the same way. The new CEO's reset put sport first and reorganized around 8,000 people behind it.
+A company strategy pulls everyone the same way. Every department's goals, and every person's incentives, line up with what the company is trying to do at the top.
 
 You make the same kind of choice they do, with far less room to be wrong. Figures: BCG survey of chief strategy officers.
 
@@ -186,10 +186,11 @@ promise, "what a finished strategy does on Monday", is this job at small scale.
 The heads-up gives two reasons the money is worth it, and both matter:
 
 - **A wrong choice stays expensive for years.** The Nike line below.
-- **A clear choice pulls everyone the same way.** The Nike half of this is
-  from the Q1 FY26 earnings call (30 September 2025): about 8,000 employees
-  were realigned to the new "sport offense" structure, the reorganization of
-  the company around sports rather than product lines. HBR 2007 lists
+- **A company strategy pulls everyone the same way.** This one is about
+  operations, not Nike: with a strategy at the top, each department's goals and
+  each person's incentives can be set to serve it, so people in different
+  rooms make the same call without checking. Without one, every department
+  optimizes for itself. HBR 2007 lists
   "engendering commitment to strategic plans" as the CSO's first job. Porter's
   1996 argument is that a strategy is "fit among a company's activities", and
   Rumelt's third element is actions "coordinated with one another". For a
