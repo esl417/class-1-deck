@@ -582,8 +582,6 @@
   }
   .cell .cell-name { font-family: var(--display); font-weight: 800; font-size: clamp(15px, 1.4vw, 18px); color: var(--ink); letter-spacing: -0.01em; line-height: 1.2; }
   .cell .cell-eg { font-size: clamp(13px, 1.15vw, 14.5px); line-height: 1.35; color: var(--muted); margin-top: 4px; }
-  .cell.is-core { border: 2px solid var(--accent); background: rgba(15,138,128,0.08); }
-  .cell.is-core .cell-name { color: var(--accent-deep); }
 
   /* Five Forces: four pressures around the rivalry in the middle. */
   .forces { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto auto; gap: clamp(8px, 1vw, 12px); align-items: center; }
@@ -614,6 +612,10 @@
   .anatomy td:first-child { width: 24%; font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent-deep); padding-top: clamp(11px, 1.15vw, 15px); }
   .anatomy tr.is-key td { background: rgba(15,138,128,0.07); }
   .anatomy tr.is-key td:last-child { color: var(--ink); font-weight: 600; }
+  @media (max-height: 900px) {
+    .anatomy td { padding: 6px clamp(10px, 1.2vw, 16px); font-size: clamp(13.5px, 1.2vw, 15px); }
+    .anatomy td:first-child { padding-top: 8px; font-size: 11.5px; }
+  }
 
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
@@ -674,7 +676,7 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Why they pay for it"></div>
   <div class="eyebrow">The value</div>
-  <h2>Why big companies <em>pay for this.</em></h2>
+  <h2>Why big companies <em>pay for a strategy team.</em></h2>
   <p>Large companies keep a full-time strategy team, usually about ten people working next to the CEO. This is what they spend their days on.</p>
   <div class="grid-3 even" style="margin-top:4px;">
     <div class="card">
@@ -705,15 +707,27 @@
 <section class="slide dense">
   <div class="slide-num" data-label="The test"></div>
   <div class="eyebrow">The one-minute test</div>
-  <h2>Spot a bad one <em>in one minute.</em></h2>
-  <p>Richard Rumelt spent a career reading corporate strategies and found the bad ones fail in the same four ways.</p>
-  <div class="card" style="margin-top:4px;">
-    <ul style="margin:0;">
-      <li><strong>Fluff.</strong> Big words restating the obvious. One bank's strategy was "customer-centric intermediation." Translation: we're a bank.</li>
-      <li><strong>No problem named.</strong> A strategy is a way through a difficulty. If it never says what's hard, it's a wish.</li>
-      <li><strong>Goals dressed up as strategy.</strong> "Grow 20% this year" is a destination with no route.</li>
-      <li><strong>A long to-do list.</strong> One city's plan had 47 strategies and 178 action items. Number 122 was "create a strategic plan."</li>
-    </ul>
+  <h2>Spot a bad strategy <em>in one minute.</em></h2>
+  <p>Richard Rumelt spent a career reading corporate strategies. The bad ones fail in the same four ways, and the good ones fix each one.</p>
+  <div class="contrast" style="margin-top:4px;">
+    <div class="card old">
+      <div class="eyebrow">A bad one has</div>
+      <ul>
+        <li><strong>Fluff.</strong> Big words restating the obvious. One bank's strategy: "customer-centric intermediation." Translation: we're a bank.</li>
+        <li><strong>No problem named.</strong> If it never says what's hard, it's a wish.</li>
+        <li><strong>Goals dressed up as strategy.</strong> "Grow 20%" is a destination with no route.</li>
+        <li><strong>A long to-do list.</strong> One city's plan had 47 strategies and 178 action items. Number 122 was "create a strategic plan."</li>
+      </ul>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">A good one has</div>
+      <ul>
+        <li><strong>Plain words.</strong> Anyone in the company could repeat it, and it would still mean something.</li>
+        <li><strong>The problem, named.</strong> The one or two things that are actually hard right now.</li>
+        <li><strong>A route.</strong> Where you'll win, and the analysis that backs it up.</li>
+        <li><strong>Initiatives that tie back, and are prioritized.</strong> Each one exists to carry out the strategy at the top.</li>
+      </ul>
+    </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">⏱️</span>
@@ -725,16 +739,16 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Plan and measure"></div>
   <div class="eyebrow">The other half of the test</div>
-  <h2>No plan, no measure, <em>no strategy.</em></h2>
-  <p>Pass those four and you have good choices. A strategy is only as good as its implementation plan, so two more things have to be true.</p>
+  <h2 class="nowrap-lg">A strategy is only as good as <em>its implementation plan.</em></h2>
+  <p>Pass those four and you have good choices. Two more things have to be true before they count.</p>
   <div class="grid-2" style="margin-top:4px;">
     <div class="card card-hero">
       <div class="eyebrow">Someone is doing it</div>
-      <p>Every choice has <strong>an owner, a budget and a date.</strong> A choice nobody is funded to carry out is an opinion.</p>
+      <p>Every choice has <strong>an owner, a budget and a measurable goal.</strong> A strategy the company can't execute is a thought experiment.</p>
     </div>
     <div class="card card-hero">
-      <div class="eyebrow">You can see it moving</div>
-      <p>Every choice has <strong>a number you check.</strong> One early signal that shows up in weeks, and one result that shows up in quarters.</p>
+      <div class="eyebrow">It has buy-in</div>
+      <p><strong>Every team can measure its own contribution.</strong> A strategy has buy-in when you can ask anyone in the company what the priorities are, and they name them cold.</p>
     </div>
   </div>
   <div class="heads-up">
@@ -745,25 +759,25 @@
 </section>
 
 <!-- ============================================================
-     SECTION 2 — THE FRAMEWORKS  (slides 6-12)
+     SECTION 2 — THE FRAMEWORKS  (slides 6-11)
      ============================================================ -->
 
 <!-- 6. THREE LENSES -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Three lenses"></div>
+  <div class="slide-num" data-label="Three frameworks"></div>
   <div class="eyebrow">The frameworks</div>
-  <h2>Three lenses, <em>three questions.</em></h2>
-  <p>A framework is a question somebody smart already worked out how to ask. There are dozens, and each one gets used for more than one job. These are three you'll meet most often.</p>
+  <h2>Three common frameworks, <em>three questions.</em></h2>
+  <p>A framework is a method for looking at every side of a problem that matters, so you get the most complete picture of how to tackle it. There are dozens, and each one gets used for more than one job. These are three you'll meet most often.</p>
   <div class="grid-3 even" style="margin-top:4px;">
-    <div class="card">
-      <div class="tab-name">Five Forces</div>
-      <p><strong>"Why is this market hard?"</strong></p>
-      <p>Looks outward, at the whole industry you're in.</p>
-    </div>
     <div class="card">
       <div class="tab-name">SWOT</div>
       <p><strong>"Where do we stand?"</strong></p>
       <p>Looks at you and your surroundings, side by side.</p>
+    </div>
+    <div class="card">
+      <div class="tab-name">Five Forces</div>
+      <p><strong>"Why is this market hard?"</strong></p>
+      <p>Looks outward, at the whole industry you're in.</p>
     </div>
     <div class="card">
       <div class="tab-name">Blue Ocean</div>
@@ -777,40 +791,16 @@
   </div>
 </section>
 
-<!-- 7. FIVE FORCES -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Five Forces"></div>
-  <div class="eyebrow">Lens one · Michael Porter</div>
-  <h2>Five Forces: <em>why is this hard?</em></h2>
-  <div class="lens">
-    <div class="forces">
-      <div class="cell f-top"><div class="cell-name">New entrants</div><div class="cell-eg">How easily can someone open next door?</div></div>
-      <div class="cell f-left"><div class="cell-name">Suppliers</div><div class="cell-eg">Can they raise your costs?</div></div>
-      <div class="cell is-core f-mid"><div class="cell-name">Rivals</div><div class="cell-eg">How hard do they fight on price?</div></div>
-      <div class="cell f-right"><div class="cell-name">Buyers</div><div class="cell-eg">Can they push your price down?</div></div>
-      <div class="cell f-bottom"><div class="cell-name">Substitutes</div><div class="cell-eg">What else does the same job?</div></div>
-    </div>
-    <div>
-      <p>There's profit in your industry. Five pressures decide who keeps it. The lens shows you where it leaks out, and to whom.</p>
-      <div class="card">
-        <div class="eyebrow">For a neighborhood coffee shop</div>
-        <p>Anyone can open a cafe. Customers switch for fifty cents. The substitute is the machine on their own counter. <strong>That's three strong forces, and it explains the margins better than "we need more marketing."</strong></p>
-      </div>
-      <p class="small-note" style="margin-top:12px;">Use it to decide whether to enter a market, where to position inside one, and what you need to defend against.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 8. SWOT -->
+<!-- 7. SWOT -->
 <section class="slide dense">
   <div class="slide-num" data-label="SWOT"></div>
-  <div class="eyebrow">Lens two · Stanford Research Institute, 1960s</div>
+  <div class="eyebrow">Framework one · Stanford Research Institute, 1960s</div>
   <h2>SWOT: <em>where do we stand?</em></h2>
   <div class="lens">
     <div>
       <div class="quad-axis">Inside the business</div>
       <div class="quad">
-        <div class="cell is-core"><div class="cell-name">Strengths</div><div class="cell-eg">What you do better than a named rival.</div></div>
+        <div class="cell"><div class="cell-name">Strengths</div><div class="cell-eg">What you do better than a named rival.</div></div>
         <div class="cell"><div class="cell-name">Weaknesses</div><div class="cell-eg">Where that rival beats you.</div></div>
       </div>
       <div class="quad-axis">Outside it</div>
@@ -823,12 +813,40 @@
       <p>SWOT is a fit check. Does what you're good at line up with what's happening around you?</p>
       <div class="card">
         <div class="eyebrow">What it's for</div>
-        <p>A fast, shared read of the situation before a decision. It's the lens most teams reach for first, because everyone can fill it in.</p>
+        <p>A fast, shared read of the situation before a decision. It's the framework most teams reach for first, because everyone can fill it in.</p>
       </div>
-      <div class="heads-up">
-        <span class="heads-up-mark">🧾</span>
-        <p><strong>The original made every manager back each item with evidence.</strong> That part got lost, and you'll see what it cost in a minute.</p>
+      <div class="warn">
+        <span class="warn-mark">⚠️</span>
+        <p><strong>Where it goes wrong: four lists instead of a fit check.</strong> SWOT only works when the boxes are read against each other: a strength counts if it meets an opportunity or blunts a threat. Fill in four separate lists and stop, and nothing comes out.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FIVE FORCES -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Five Forces"></div>
+  <div class="eyebrow">Framework two · Michael Porter</div>
+  <h2>Five Forces: <em>why is this market hard?</em></h2>
+  <div class="lens">
+    <div class="forces">
+      <div class="cell f-top"><div class="cell-name">New entrants</div><div class="cell-eg">How easily can someone open next door?</div></div>
+      <div class="cell f-left"><div class="cell-name">Suppliers</div><div class="cell-eg">Can they raise your costs?</div></div>
+      <div class="cell f-mid"><div class="cell-name">Rivals</div><div class="cell-eg">How hard do they fight on price?</div></div>
+      <div class="cell f-right"><div class="cell-name">Buyers</div><div class="cell-eg">Can they push your price down?</div></div>
+      <div class="cell f-bottom"><div class="cell-name">Substitutes</div><div class="cell-eg">What else does the same job?</div></div>
+    </div>
+    <div>
+      <p>There's profit in your industry. Five pressures decide who keeps it. The framework shows you where it leaks out, and to whom.</p>
+      <div class="card">
+        <div class="eyebrow">For a neighborhood coffee shop</div>
+        <p>Anyone can open a cafe. Customers switch for fifty cents. The substitute is the machine on their own counter. <strong>That's three strong forces, and it explains the margins better than "we need more marketing."</strong></p>
+      </div>
+      <div class="warn">
+        <span class="warn-mark">⚠️</span>
+        <p><strong>Where it goes wrong: grading instead of choosing.</strong> You rate all five forces, they all come out "high," and you conclude it's a tough industry and stop. Porter says that's backwards: the point is to find the one or two forces you can actually do something about, and position against those.</p>
+      </div>
+      <p class="small-note" style="margin-top:12px;">Use it to decide whether to enter a market, where to position inside one, and what you need to defend against. Porter, HBR 2008.</p>
     </div>
   </div>
 </section>
@@ -836,68 +854,46 @@
 <!-- 9. BLUE OCEAN -->
 <section class="slide dense">
   <div class="slide-num" data-label="Blue Ocean"></div>
-  <div class="eyebrow">Lens three · W. Chan Kim and Renée Mauborgne</div>
-  <h2>Blue Ocean: <em>who isn't buying?</em></h2>
+  <div class="eyebrow">Framework three · W. Chan Kim and Renée Mauborgne</div>
+  <h2>Blue Ocean: <em>who isn't buying yet?</em></h2>
   <div class="lens">
     <div>
       <div class="quad">
         <div class="cell"><div class="cell-name">Eliminate</div><div class="cell-eg">What does the industry assume that customers don't need?</div></div>
         <div class="cell"><div class="cell-name">Reduce</div><div class="cell-eg">What's overbuilt?</div></div>
         <div class="cell"><div class="cell-name">Raise</div><div class="cell-eg">What should be far better than standard?</div></div>
-        <div class="cell is-core"><div class="cell-name">Create</div><div class="cell-eg">What has nobody offered?</div></div>
+        <div class="cell"><div class="cell-name">Create</div><div class="cell-eg">What has nobody offered?</div></div>
       </div>
     </div>
     <div>
-      <p>The first two lenses help you compete. This one asks whether you could stop competing, by serving people your whole industry ignores.</p>
+      <p>The first two frameworks help you compete. Blue Ocean asks whether you could stop competing, by serving people your whole industry ignores.</p>
       <div class="card">
         <div class="eyebrow">Yellow Tail wine</div>
         <p>It dropped the tannins, the aging and the jargon. It added easy drinking and easy choosing, for people who found wine intimidating. <strong>It sold nine times its first-year forecast.</strong></p>
+      </div>
+      <div class="warn">
+        <span class="warn-mark">⚠️</span>
+        <p><strong>Where it goes wrong: calling a niche an ocean.</strong> A smaller pond is still the same fight. So is getting there first. The authors mean people who buy from nobody in your industry today.</p>
       </div>
       <p class="small-note" style="margin-top:12px;">The authors' definition: pursuing differentiation and low cost at the same time. Cutting things is what pays for the new thing. Sales figure from Kim and Mauborgne.</p>
     </div>
   </div>
 </section>
 
-<!-- 10. WHERE THEY BREAK -->
+<!-- 10. MORE THAN ONE LENS -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Where they break"></div>
-  <div class="eyebrow">Common misuse</div>
-  <h2>Where people <em>break them.</em></h2>
-  <div class="grid-3 even" style="margin-top:4px;">
-    <div class="card">
-      <div class="eyebrow">Five Forces · chasing growth</div>
-      <p>"It's booming, so it's attractive." A fast-growing market with nothing keeping people out pulls everyone in. <strong>Porter's own example: personal computers grew fast and were among the least profitable industries around.</strong></p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">SWOT · the list nobody uses</div>
-      <p>A study of 20 companies found lists averaging over 40 items, most three or four words long. Only 3 ever used the result again. <strong>One listed its biggest customer as a strength, and depending on that customer as a weakness. Nobody connected the two.</strong></p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Blue Ocean · just a niche</div>
-      <p>A smaller pond is still the same fight. So is getting there first. <strong>The authors mean people who buy from nobody in your industry today.</strong></p>
-    </div>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🧩</span>
-    <p><strong>All three are the same mistake:</strong> filling in the boxes and treating the filled-in boxes as the answer.</p>
-  </div>
-  <p class="small-note">Porter, HBR 2008. Hill and Westbrook, Long Range Planning, 1997. Kim and Mauborgne.</p>
-</section>
-
-<!-- 11. MORE THAN ONE LENS -->
-<section class="slide dense">
-  <div class="slide-num" data-label="More than one lens"></div>
+  <div class="slide-num" data-label="More than one framework"></div>
   <div class="eyebrow">Using them together</div>
-  <h2>One lens <em>isn't enough.</em></h2>
-  <p>Every lens has a blind spot, and it sits exactly where another one looks.</p>
+  <h2>One framework <em>isn't enough.</em></h2>
+  <p>Every framework has a blind spot, and it sits exactly where another one looks.</p>
   <div class="ladder" style="margin-top:4px;">
-    <div class="rung">
-      <div class="rung-when">Five Forces</div>
-      <div class="rung-what">Sees the whole market, and knows nothing about you.</div>
-    </div>
     <div class="rung">
       <div class="rung-when">SWOT</div>
       <div class="rung-what">Sees you, as of today, competing the way you already compete.</div>
+    </div>
+    <div class="rung">
+      <div class="rung-when">Five Forces</div>
+      <div class="rung-what">Sees the whole market, and knows nothing about you.</div>
     </div>
     <div class="rung">
       <div class="rung-when">Blue Ocean</div>
@@ -906,15 +902,15 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">⚖️</span>
-    <p><strong>When two lenses disagree, you've found something.</strong> A strength on your SWOT that Five Forces says any rival can copy was never a strength.</p>
+    <p><strong>When two frameworks disagree, you've found something.</strong> A strength on your SWOT that Five Forces says any rival can copy was never a strength.</p>
   </div>
 </section>
 
-<!-- 12. THE KERNEL -->
+<!-- 11. THE KERNEL -->
 <section class="slide">
   <div class="slide-num" data-label="Analysis to strategy"></div>
   <div class="eyebrow">From frameworks to a strategy</div>
-  <h2>Analysis <em>isn't the strategy.</em></h2>
+  <h2 class="nowrap-lg">The frameworks are the input, <em>not the strategy.</em></h2>
   <p>Everything so far feeds one box. Rumelt's shape for a whole strategy has three, and this is the shape to look for in the one we're about to read.</p>
   <div class="arrow-flow">
     <div class="flow-step">Diagnosis<br><span style="font-weight:500;color:var(--muted);font-size:0.88em;">what's really hard</span></div>
@@ -923,26 +919,26 @@
     <div class="flow-arrow">→</div>
     <div class="flow-step">Coherent action<br><span style="font-weight:500;color:var(--muted);font-size:0.88em;">who does what, by when</span></div>
   </div>
-  <p class="small-note" style="text-align:center;max-width:none;">The lenses fill in the first box. The strategy is the other two. Rumelt: strategy is "coherent action backed by an argument."</p>
+  <p class="small-note" style="text-align:center;max-width:none;">The frameworks fill in the first box. The strategy is the other two. Rumelt: strategy is "coherent action backed by an argument."</p>
 </section>
 
 <!-- ============================================================
-     SECTION 3 — THE WALKTHROUGH  (slides 13-15)
+     SECTION 3 — THE WALKTHROUGH  (slides 12-14)
      PLACEHOLDER (Nike) throughout: swap for the real business before class.
      ============================================================ -->
 
-<!-- 13. READ A REAL ONE -->
+<!-- 12. READ A REAL ONE -->
 <section class="slide dense">
   <div class="slide-num" data-label="Read a real one"></div>
   <div class="eyebrow">StratEngine AI</div>
-  <h2>Now let's <em>read a real one.</em></h2>
+  <h2>Now let's <em>read a real strategy.</em></h2>
   <p>This is StratEngine, the strategy engine I built. I ran this one before we started, so we can spend the time reading. Here is everything I did.</p>
   <div class="arrow-flow four" style="margin-top:clamp(14px,2vh,24px);">
     <div class="flow-step">Describe the business</div>
     <div class="flow-arrow">→</div>
     <div class="flow-step">It researches</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-step">Choose a lens</div>
+    <div class="flow-step">Choose a framework</div>
     <div class="flow-arrow">→</div>
     <div class="flow-step">Read the strategy</div>
   </div>
@@ -952,18 +948,25 @@
       <p><strong>Nike.</strong> A company you already know, in the middle of a turnaround you can check against the news.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">The lens it used</div>
-      <p><strong>Playing to Win,</strong> a fourth framework. Its question is "where will we play, and how will we win?" A different lens doing the same job: feeding the diagnosis.</p>
+      <div class="eyebrow">The framework it used</div>
+      <p><strong>Play to Win,</strong> a fourth framework, and a good example of why you need the others. Five questions, and what answers each:</p>
+      <ul style="margin:10px 0 0;">
+        <li><strong>What is our winning aspiration?</strong> Leadership decides.</li>
+        <li><strong>Where will we play?</strong> A SWOT feeds this one.</li>
+        <li><strong>How will we win?</strong> Five Forces feeds this one.</li>
+        <li><strong>What capabilities do we need?</strong> Leadership plans it.</li>
+        <li><strong>What management systems keep it running?</strong> Leadership plans it.</li>
+      </ul>
     </div>
   </div>
   <p class="small-note">stratengineai.com</p>
 </section>
 
-<!-- 14. DIAGNOSIS TO DECISIONS -->
+<!-- 13. DIAGNOSIS TO DECISIONS -->
 <section class="slide dense">
   <div class="slide-num" data-label="Diagnosis to decisions"></div>
-  <div class="eyebrow">Reading it · boxes one and two</div>
-  <h2>What's hard, <em>then what it chose.</em></h2>
+  <div class="eyebrow">Reading it · the diagnosis and the decisions</div>
+  <h2>The diagnosis, <em>then the decisions.</em></h2>
   <div class="grid-2" style="margin-top:4px;">
     <div class="card">
       <div class="eyebrow">Diagnosis · what it found</div>
@@ -989,35 +992,38 @@
   </div>
 </section>
 
-<!-- 15. EVERY MOVE HAS A NUMBER -->
+<!-- 14. EVERY MOVE HAS A NUMBER -->
+<!-- PLACEHOLDER (Nike): the table is Nike's real, disclosed version of the brief's initiative 1.2.
+     Sources are in teaching.md. Swap for the real business before class. -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Every move has a number"></div>
-  <div class="eyebrow">Reading it · box three</div>
-  <h2>Every move has <em>a number on it.</em></h2>
-  <p>Seven initiatives in three priority tiers, and every one is written in the same five parts. This is the second one.</p>
+  <div class="slide-num" data-label="Every initiative has a number"></div>
+  <div class="eyebrow">Reading it · the initiatives</div>
+  <h2>Every initiative has <em>a number on it.</em></h2>
+  <p>The brief's second initiative is rebuilding the retail partnerships. Nike is actually doing it, so here it is in five parts, with Nike's own reported numbers.</p>
   <table class="anatomy" style="margin-top:4px;">
-    <tr><td>The move</td><td><strong>Rebuild the retail partnerships.</strong></td></tr>
-    <tr><td>Why</td><td>Selling direct alone left gaps in reach and hurt the margin.</td></tr>
-    <tr><td>How</td><td>Formal agreements with Dick's, JD Sports and Nordstrom, with agreed product allocation and shared marketing.</td></tr>
-    <tr class="is-key"><td>It's working when</td><td>Wholesale revenue grows 10% a year by the end of fiscal 2027, and retailer sentiment and inventory turns improve before that.</td></tr>
-    <tr><td>It costs</td><td>$175M a year, and a dedicated channel team.</td></tr>
-    <tr><td>What could go wrong</td><td>The brand gets diluted. So partners and Nike's own stores carry different product.</td></tr>
+    <tr><td>The initiative</td><td><strong>Rebuild the retail partnerships.</strong></td></tr>
+    <tr><td>Why</td><td>"Some partners feel we've turned our back on them." Chasing online sales had left the brand "far too promotional."</td></tr>
+    <tr><td>How</td><td>Re-engage Dick's, JD Sports and Foot Locker. Return to Amazon. Cut the supply of Air Force 1, Dunk and Air Jordan 1 so partners get scarce product. Drop 50-plus days of site-wide sales.</td></tr>
+    <tr class="is-key"><td>It's working when</td><td>Wholesale grows and partners' own sales turn. So far: wholesale up 8% in the December quarter and 4% in the June quarter, and Foot Locker's sales up for the first time in four years.</td></tr>
+    <tr><td>It costs</td><td>No published budget line. It shows up as Nike's own direct sales down 7 to 8% and gross margin down three points while the classics are cut back.</td></tr>
+    <tr><td>What could go wrong</td><td>The classics get cut too far and the brand loses heat, or the margin squeeze outlasts the wholesale recovery.</td></tr>
   </table>
   <div class="heads-up">
     <span class="heads-up-mark">🗓️</span>
-    <p><strong>Then it sequences all seven:</strong> the first 3 months, 3 to 9, 9 to 18, and beyond, with named executives owning the results. That answers the two extra test questions: someone is doing it, and you can see it moving.</p>
+    <p><strong>The brief writes all seven initiatives this way, then sequences them</strong> across 18 months with a named owner for each. That answers the two extra test questions: an owner and a measurable goal for every initiative, and a part for every team.</p>
   </div>
+  <p class="small-note">Nike earnings calls, Dec 2024 to Jun 2026. Amazon: Bloomberg, May 2025.</p>
 </section>
 
 <!-- ============================================================
-     SECTION 4 — CLOSE  (slides 16-20)
+     SECTION 4 — CLOSE  (slides 15-18)
      ============================================================ -->
 
-<!-- 16. MONDAY -->
+<!-- 15. MONDAY -->
 <section class="slide dense">
   <div class="slide-num" data-label="Monday"></div>
   <div class="eyebrow">What it's for</div>
-  <h2>What it does <em>on Monday.</em></h2>
+  <h2>What a strategy does <em>on Monday.</em></h2>
   <p>A finished strategy earns its keep on an ordinary Monday, when something lands on your desk and you have to choose.</p>
   <div class="grid-3 even" style="margin-top:4px;">
     <div class="card">
@@ -1039,26 +1045,7 @@
   </div>
 </section>
 
-<!-- 17. WHAT YOU OWN -->
-<section class="slide dense">
-  <div class="slide-num" data-label="What you own"></div>
-  <div class="eyebrow">What you walk out with</div>
-  <h2>The test is <em>yours to keep.</em></h2>
-  <div class="grid-2" style="margin-top:4px;">
-    <div class="card card-hero">
-      <div class="eyebrow">Genuinely yours</div>
-      <p>Six questions that sort a real strategy from a wish list. Three lenses, and the question each one asks. The three-box shape to look for. <strong>Go and run them on your own plan tonight.</strong></p>
-    </div>
-    <div class="card old" style="background:rgba(20,18,12,0.025);border-style:dashed;">
-      <div class="eyebrow">And one honest limit</div>
-      <p>A strategy decides, and then it sits there until somebody acts on it.</p>
-      <p style="margin-top:10px;"><strong>On Tuesday your website still says what it said last week, nobody is tracking the numbers you just chose, and the work is still on you.</strong></p>
-    </div>
-  </div>
-  <p class="small-note">That's the real gap, and it's worth naming plainly before you find it on your own.</p>
-</section>
-
-<!-- 18. WHAT'S NEXT -->
+<!-- 16. WHAT'S NEXT -->
 <section class="slide dense">
   <div class="slide-num" data-label="What's next"></div>
   <div class="eyebrow">What's next</div>
@@ -1090,7 +1077,7 @@
   </div>
 </section>
 
-<!-- 19. THE OFFER -->
+<!-- 17. THE OFFER -->
 <section class="slide dense">
   <div class="slide-num" data-label="The offer"></div>
   <div class="eyebrow">Run Your Whole Business with AI</div>
@@ -1107,12 +1094,17 @@
         <p>Live sessions, the recordings for good, and three months of StratEngine included.</p>
       </div>
       <div class="prompt-box" style="margin-top:12px;">maven.com/ericgrows/run-your-whole-business-with-ai</div>
+      <div class="card" style="margin-top:12px;">
+        <div class="eyebrow">Or run your own strategy first</div>
+        <div class="promo-code">LAUNCH50</div>
+        <p><strong>50% off your first 3 months of StratEngine</strong> at stratengineai.com. Subscriptions only, not pay-as-you-go.</p>
+      </div>
     </div>
   </div>
   <p class="small-note" style="margin-top:14px;">Still free on YouTube if you'd rather do it alone, at <strong>ericgrows.com</strong>. Same material, no help.</p>
 </section>
 
-<!-- 20. Q&A -->
+<!-- 18. Q&A -->
 <section class="slide">
   <div class="slide-num" data-label="Questions"></div>
   <div class="eyebrow">Questions</div>
@@ -1129,12 +1121,8 @@
     </div>
     <div class="card">
       <div class="eyebrow">It's all in the recording</div>
-      <p>Maven sends the recording to everyone who registered, and the test and the three lenses are on the slides. <strong>Nothing today depends on you having written anything down.</strong></p>
+      <p>Maven sends the recording to everyone who registered, and the test and the three frameworks are on the slides. <strong>Nothing today depends on you having written anything down.</strong></p>
     </div>
-  </div>
-  <div class="heads-up">
-    <span class="promo-code" style="margin:0;flex:0 0 auto;font-size:clamp(20px,2vw,27px);">LAUNCH50</span>
-    <p><strong>Want to run your own strategy? 50% off your first 3 months of StratEngine</strong> at stratengineai.com. It applies to subscriptions, not pay-as-you-go.</p>
   </div>
 </section>
 

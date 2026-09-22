@@ -259,8 +259,8 @@ const DECKS = [
       'Ocean: who is not buying yet) are common ones, NOT the full set, and each ' +
       'is used for more than one purpose; (4) each framework breaks when the ' +
       'boxes get filled in and the filled-in boxes are treated as the answer, ' +
-      'and the deck gives sourced misuse examples for each; (5) one lens is ' +
-      'rarely enough, and two lenses disagreeing is a finding; (6) analysis is ' +
+      'and the deck gives sourced misuse examples for each; (5) one framework is ' +
+      'rarely enough, and two frameworks disagreeing is a finding; (6) analysis is ' +
       'not the strategy: Rumelt\'s kernel is diagnosis, guiding policy, coherent ' +
       'action, and frameworks only feed the diagnosis. The walkthrough reads a ' +
       'real StratEngine output in that three-box shape. NIKE IS A PLACEHOLDER ' +
@@ -272,14 +272,14 @@ const DECKS = [
       'seven initiatives and an executive council. Do NOT repeat "90% of ' +
       'strategies fail" or "you can\'t manage what you can\'t measure (Drucker)": ' +
       'both were checked and are false, and the teaching notes say what is true ' +
-      'instead. The honest limit, stated plainly on the slides and NOT blurred: ' +
-      'a strategy decides and does nothing. Close routes to the paid six-class ' +
+      'instead. The honest limit, named on the "What\'s next" slide and NOT ' +
+      'blurred: a strategy decides and does nothing. Close routes to the paid six-class ' +
       'course "Run Your Whole Business with AI" starting September 29 (code ' +
       'FOUNDER400 for $400 off, $1,795 to $1,395, three months of StratEngine ' +
       'included, maven.com/ericgrows/run-your-whole-business-with-ai), which ' +
       'builds what carries a strategy out: the site, the dashboard that tracks ' +
       'the chosen numbers, automations, an agent, and a go-to-market class ' +
-      'built on StratEngine. The last slide also carries a separate StratEngine ' +
+      'built on StratEngine. The offer slide also carries a separate StratEngine ' +
       'code: LAUNCH50 is 50% off the first three months of a StratEngine ' +
       'subscription and does NOT apply to pay-as-you-go. Beyond that, do not ' +
       'quote StratEngine plan prices or describe a free tier.',

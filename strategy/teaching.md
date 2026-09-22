@@ -36,9 +36,9 @@ you use a word like "positioning" or "wholesale", say what it means in a shop.
 > know what goes into one.* The course sells *the business that carries the
 > strategy out.*
 
-The limit is that **a strategy decides and does nothing.** Name that once, on
-"What you own", and close it once, on "What's next". Do not explain on "What you
-own" how the gap gets closed.
+The limit is that **a strategy decides and does nothing.** It is named once, on
+"What's next", in the same breath as what closes it. (A separate "What you own"
+slide that named the limit on its own was cut on 2026-09-21 as unnecessary.)
 
 **Nike is a placeholder.** Eric intends to swap in a real small business before
 the session. Every Nike reference is marked in `index.html` with a
@@ -182,6 +182,23 @@ mistaking goals for strategy, bad strategic objectives, and fluff."
   and 178 action items, where action item 122 was "create a strategic plan", is
   his real example.
 
+**The right card is the positive of each tell, and it is Rumelt's too.** He
+defines good strategy as one where a leader "has identified the one or two
+critical issues in a situation, the pivot points that can multiply the
+effectiveness of effort, and then focused and concentrated action and
+resources on them"; it "honestly acknowledges the challenges we face and
+provides an approach to overcoming them." So: plain words (the opposite of
+fluff), the problem named (the diagnosis), a route (the guiding policy, with the
+analysis that backs it), and initiatives that tie back (his "coherent actions",
+"coordinated with one another to support the accomplishment of the guiding
+policy"). That last one is the direct answer to the to-do list: the difference
+between 178 action items and a real set of initiatives is that every initiative
+exists to carry out the strategy above it, and the StratEngine walkthrough shows
+exactly that shape, with initiatives in priority tiers that reference the
+decisions. The right card is the kernel from "Analysis to strategy" in plain
+clothes, seven slides early. Do not name the kernel here; let the shape arrive
+twice.
+
 The heads-up line ("adjectives where the choices should be") echoes the
 registration page: "Goals with adjectives and a list of hopes are the tells."
 
@@ -211,12 +228,20 @@ name even one of their company's top five priorities." And: "Only 11% of the
 managers we have surveyed believe that all their company's strategic priorities
 have the financial and human resources needed for success."
 
-"One early signal, one result" is leading versus lagging measures. Kaplan and
-Norton: "Outcome measures without performance drivers do not communicate how the
-outcomes are to be achieved. They also do not provide an early indication about
-whether the strategy is being implemented successfully." For a small business:
-the result might be monthly revenue from a new customer type, and the early
-signal might be how many of them booked a first call this week.
+The two cards, in Eric's words: a strategy the company can't execute is a
+thought experiment, and a strategy has buy-in when you can ask anyone in the
+company what the priorities are and they name them cold. The Sull figure in the
+heads-up (55% of middle managers could not name one of the top five) is the
+buy-in test failing at scale, which is why it sits directly under that card.
+
+"A measurable goal" for every choice: if a student asks what a good one looks
+like, Kaplan and Norton's distinction is the useful one. "Outcome measures
+without performance drivers do not communicate how the outcomes are to be
+achieved. They also do not provide an early indication about whether the
+strategy is being implemented successfully." So pair a result (monthly revenue
+from a new customer type) with an early signal (how many of them booked a
+first call this week). The "Monday" slide uses Nike's running growth as the
+early signal that moved before revenue did.
 
 **Two things never to say here**, because both are false and both are
 everywhere:
@@ -231,10 +256,13 @@ everywhere:
   Institute says he never said it, and Deming called the idea "a costly myth."
   What Kaplan and Norton did write is "What you measure is what you get."
 
-## Three lenses
+## Three frameworks
 
-Frame a framework as **a question somebody already worked out how to ask.**
-That one sentence removes most of the intimidation.
+Frame a framework as **a method for looking at every side of a problem that
+matters, so you get the most complete picture of how to tackle it.** The point
+of the definition is completeness: on your own you look where you already
+look, and a framework forces the sides you would skip. Each card's question
+is then the side that framework forces.
 
 Eric's two caveats are both on the slide and both matter: there are dozens of
 frameworks, and each one is used for more than one purpose. These three are the
@@ -242,8 +270,11 @@ most common, and nobody should leave thinking they are the full set. The
 walkthrough later uses a fourth (Playing to Win), which makes the point by
 itself.
 
-Do not teach the lenses as boxes to fill in. The pitfalls slide is about exactly
-that failure.
+Do not teach the frameworks as boxes to fill in. Each framework slide ends with
+a "where it goes wrong" callout, and all three are the same failure: filling in
+the boxes and treating the filled-in boxes as the answer. That synthesis is this
+deck's; it is supported by Porter's "making lists instead of engaging in rigorous
+analysis" and Hill and Westbrook's "do not go beyond description."
 
 ## Five Forces
 
@@ -258,9 +289,9 @@ substitutes, rivalry among existing competitors. A substitute "performs the same
 or a similar function as an industry's product by a different means." His
 examples: videoconferencing for travel, plastic for aluminum.
 
-**The lens is about the industry, never about the business.** That is the single
-most common confusion, and it is why this slide says "knows nothing about you"
-two slides later. If a student starts listing their own strengths inside a Five
+**The framework is about the industry, never about the business.** That is the
+single most common confusion, and it is why "More than one framework" says Five
+Forces "knows nothing about you." If a student starts listing their own strengths inside a Five
 Forces analysis, they have switched to SWOT without noticing.
 
 The coffee shop is an illustration written for this deck, not a Porter example,
@@ -269,6 +300,29 @@ Starbucks. When helping a student apply it, the first job is drawing the
 industry boundary sensibly. Porter names "defining the industry too broadly or
 too narrowly" as the first pitfall. "Food and beverage" is too broad for a cafe.
 "Pour-over cafes on my street" is too narrow.
+
+**The misuse callout.** Porter's 2008 article has a "Common Pitfalls" sidebar.
+His full list: defining the industry too broadly or too narrowly; making lists
+instead of engaging in rigorous analysis; paying equal attention to all of the
+forces rather than digging deeply into the most important ones; confusing
+effect (price sensitivity) with cause (buyer economics); using static analysis
+that ignores industry trends; confusing cyclical or transient changes with true
+structural changes; and using the framework to declare an industry attractive
+or unattractive rather than to guide strategic choices. The callout on the
+slide combines two items from that list, because in practice they are one
+mistake: "paying equal attention to all of the forces rather than digging
+deeply into the most important ones" and "using the framework to declare an
+industry attractive or unattractive rather than using it to guide strategic
+choices." The bad result is a page of five "high" ratings and the conclusion
+"tough industry," which tells the owner nothing they can act on. The right
+output is the one or two forces the business can position against. For the
+coffee shop: switching is the force it can touch (a reason to come back), and
+entry is the one it cannot.
+
+An earlier draft used Porter's growth trap here ("fast-growing industries are
+always attractive"; his PC example). It was cut on 2026-09-21 because it is a
+bad strategy decision, not a misuse of the framework: you can make it without
+ever drawing the five boxes.
 
 ## SWOT
 
@@ -288,11 +342,39 @@ characteristics (strengths and weaknesses)."
 
 The cell text says "better than a named rival" on purpose. A strength only means
 something against a specific competitor and a specific goal. "Great customer
-service" with no comparison is the three-word phrase the pitfalls slide warns
-about.
+service" with no comparison is exactly the three-word phrase the misuse callout
+warns about.
 
-The evidence requirement is the hook into the next slide but one. Land it and
-move on.
+**The misuse callout.** The misapplication is structural, and the slide must
+not read as "these people were careless." SWOT's logic is fit between inside
+and outside, which means the four boxes are inputs to a second step: reading
+each strength against the opportunities and threats, each weakness the same
+way. The common misuse is to treat the grid as the output, fill in four
+separate lists, and stop. Nothing can come out of that, because the step that
+produces a conclusion was never run. The study and the customer example were cut from the slide on 2026-09-21 (the
+example read as "these people were careless"), but both stay here as backing if
+a student asks whether this really happens. Hill and Westbrook, "SWOT Analysis:
+It's Time for a Product Recall," *Long Range Planning*, 1997: of 20 companies
+that had done a SWOT, only 3 ever used the result again. One had "the value of
+our contract with X" as a strength and "over-reliance on company X" as a
+weakness, the same fact in two boxes, and nobody read them together. They studied 50 UK manufacturers,
+20 of which had done a SWOT, most with paid consultants. Findings, verbatim:
+"long lists (over 40 factors on average), general (often meaningless)
+descriptions, a failure to prioritize and no attempt to verify any points. But
+the most worrying general characteristic was that no-one subsequently used the
+outputs within the later stages of the strategy process." Items were "often
+only three- or four-word phrases" such as "poor quality" and "not innovative
+enough." "In only three instances was the SWOT output used" afterwards, and one
+company could no longer find its SWOT at all. The customer example is theirs: a
+food company with one customer taking more than half its output listed "the
+value of our contract with X" as a strength and "over-reliance on company X" as
+a weakness, and neither the client nor the consultant asked what followed.
+Their conclusion: this "does not constitute analysis at all," because it does
+"not go beyond description."
+
+When a student shows you a SWOT, check three things: is each item backed by
+evidence, is each strength measured against a named competitor, and does the
+list end in a decision. If the answer to the last one is no, it is a list.
 
 ## Blue Ocean
 
@@ -319,59 +401,16 @@ proves nothing about whether a given option will work.
 For a small business the useful question is the noncustomer one: who needs what
 you do and currently buys from nobody like you, and what is putting them off?
 
-## Where they break
-
-The slide Eric asked for: concrete misapplications, from the people who made or
-studied each framework.
-
-**Five Forces.** Porter's 2008 article has a "Common Pitfalls" sidebar. His full
-list: defining the industry too broadly or too narrowly; making lists instead of
-engaging in rigorous analysis; paying equal attention to all of the forces
-rather than digging deeply into the most important ones; confusing effect (price
-sensitivity) with cause (buyer economics); using static analysis that ignores
-industry trends; confusing cyclical or transient changes with true structural
-changes; and using the framework to declare an industry attractive or
-unattractive rather than to guide strategic choices. The growth trap on the
-slide is from the body text: "A common mistake is to assume that fast-growing
-industries are always attractive... some fast-growth businesses, such as
-personal computers, have been among the least profitable industries in recent
-years. A narrow focus on growth is one of the major causes of bad strategy
-decisions." The small-business version: picking a business because the category
-is booming, when nothing stops fifty others from doing the same.
-
-**SWOT.** Hill and Westbrook, "SWOT Analysis: It's Time for a Product Recall,"
-*Long Range Planning*, 1997. They studied 50 UK manufacturers, 20 of which had
-done a SWOT, most with paid consultants. Findings, verbatim: "long lists (over
-40 factors on average), general (often meaningless) descriptions, a failure to
-prioritize and no attempt to verify any points. But the most worrying general
-characteristic was that no-one subsequently used the outputs within the later
-stages of the strategy process." Items were "often only three- or four-word
-phrases" such as "poor quality" and "not innovative enough." "In only three
-instances was the SWOT output used" afterwards, and one company could no longer
-find its SWOT at all. The customer example is theirs: a food company with one
-customer taking more than half its output listed "the value of our contract with
-X" as a strength and "over-reliance on company X" as a weakness, and neither the
-client nor the consultant asked what followed. Their conclusion: this "does not
-constitute analysis at all," because it does "not go beyond description."
-
-**Blue Ocean.** From the authors' own FAQ: "Blue ocean strategy is not about
-being first to market. Rather it is about being first to get it right by linking
-innovation to value." And from Michael Olenick of the INSEAD Blue Ocean Strategy
-Institute: "Segmentation of a niche, focusing on a small group of as-is
+**The misuse callout.** From the authors' own FAQ: "Blue ocean strategy is not
+about being first to market. Rather it is about being first to get it right by
+linking innovation to value." And from Michael Olenick of the INSEAD Blue Ocean
+Strategy Institute: "Segmentation of a niche, focusing on a small group of as-is
 customers, is the opposite of blue ocean strategy."
 
-The unifying line on the slide, filling in the boxes and treating that as the
-answer, is this deck's synthesis. It is supported by Porter's "making lists
-instead of engaging in rigorous analysis" and Hill and Westbrook's "do not go
-beyond description."
+## More than one framework
 
-When a student shows you a SWOT, check three things: is each item backed by
-evidence, is each strength measured against a named competitor, and does the
-list end in a decision. If the answer to the last one is no, it is a list.
-
-## More than one lens
-
-Eric's point that one framework is rarely enough, earned by the pitfalls slide.
+Eric's point that one framework is rarely enough, earned by the three misuse
+callouts that came before it.
 
 Each blind spot is real and follows from what the lens is for. Five Forces is an
 industry tool and says nothing about one company's capabilities. SWOT is a
@@ -417,7 +456,7 @@ finished. A completed SWOT is, at best, part of a diagnosis.
 
 ## Read a real one
 
-**PLACEHOLDER: Nike.** Swap "Today's example" and check "The lens it used"
+**PLACEHOLDER: Nike.** Swap "Today's example" and check "The framework it used"
 against the real run.
 
 **This is the room's first sight of a real strategy**, now that the finish-line
@@ -430,12 +469,27 @@ The four steps mirror StratEngine's real screens: the strategy builder (describe
 the business), the research report, the framework screen (choose a framework and
 depth), and the document viewer. If the product flow has changed, fix the chips.
 
-The Nike sample was generated with **Playing to Win** (Lafley and Martin), which
-is none of the three lenses just taught. The slide turns that into a feature: it
-proves "these are the common ones, not the only ones." Playing to Win's five
-questions, in Martin's words: what is our winning aspiration, where will we
-play, how will we win, what capabilities must be in place, and what management
-systems are required. **If the real business is run with Five Forces, SWOT or
+The Nike sample was generated with **Play to Win**, which is StratEngine's name
+for the framework from Lafley and Martin's book *Playing to Win* (2013). Use the
+product's name on stage, since that is what the room will see on screen. It is
+none of the three frameworks just taught, and the slide turns that into a
+feature: it proves "these are the common ones, not the only ones." The five
+questions on the card are the five choices in the book, in Martin's words: what
+is our winning aspiration, where will we play, how will we win, what
+capabilities must be in place, and what management systems are required. The
+Nike brief's "Strategic Analysis Foundation" section answers all five by name,
+so if a student asks where each answer is, it is that section.
+
+**The card also does the "more than one framework" job in miniature.** Play to
+Win is a spine of five questions, and it does not answer them by itself. Two of
+the five borrow from the frameworks just taught: "where will we play" is
+answered by a SWOT (where your strengths meet an opening), and "how will we win"
+by Five Forces (which pressure you can position against). Blue Ocean can feed
+"where to play" too, when the answer is new demand rather than a segment. The
+other three (aspiration, capabilities, management systems) are not framework
+questions at all; they are leadership decisions and planning, made in the room.
+Say that plainly: not every question needs a framework, and the ones that do
+borrow one. **If the real business is run with Five Forces, SWOT or
 Blue Ocean instead, rewrite that card.** That would be a tidier story anyway.
 
 Say once, plainly, that it was run beforehand: it takes a while, and nobody
@@ -469,26 +523,64 @@ earnings call (December 2024) Elliott Hill said "We lost our obsession with
 sport," that Nike had "become far too promotional," and that "being premium also
 means full price."
 
-## Every move has a number
+## Every initiative has a number
 
-**PLACEHOLDER: Nike.** This is initiative 1.2 of the sample, "Optimize
-Multi-Channel Marketplace Strategy," shown in the five parts every StratEngine
-initiative carries: strategic rationale, implementation approach, success
-metrics, resource requirements, risk mitigation.
+**PLACEHOLDER: Nike.** The brief's initiative 1.2 is "Optimize Multi-Channel
+Marketplace Strategy," written in the five parts every StratEngine initiative
+carries: strategic rationale, implementation approach, success metrics,
+resource requirements, risk mitigation. Its numbers ($175M a year, wholesale
+revenue up 10% a year by fiscal 2027, agreements with Dick's, JD Sports and
+Nordstrom) are **targets the AI set, not Nike's disclosed plan.** An earlier
+draft of this slide quoted them as if they were facts, and a room that follows
+Nike could have called that out. Cut on 2026-09-21.
+
+**What is on the slide now is Nike's real version of the same initiative,**
+from its own earnings calls, so every line can be checked. That the brief and
+the company landed on the same move is the best thing you can say about the
+brief: say it. Sources:
+
+- **Why.** Elliott Hill, first earnings call as CEO (Q2 FY25, 19 December
+  2024): "Some partners and channels feel we've turned our back on them...
+  building back and earning the trust of our key wholesale partners." Same
+  call: "Prioritizing NIKE Digital revenue has impacted the health of our
+  marketplaces" and "we become far too promotional."
+- **How.** Partners named on that call: Dick's, JD, Foot Locker, Deichmann,
+  Sports Direct, Topsports, Pou Sheng. Amazon return as a first-party vendor:
+  Bloomberg, 21 May 2025. Rightsizing Air Force 1, Dunk and AJ1: Q4 FY25 call,
+  26 June 2025 ("aggressively rightsize 3 very important franchises"), with
+  North America classics cut "near 40%". Promo days: Q1 FY26 call, 30
+  September 2025, site-wide promotional days cut by more than 50.
+- **It's working when.** Wholesale $7.5B, up 8%, in Q2 FY26 (18 December
+  2025). Wholesale $6.6B, up 4%, in Q4 FY26 (30 June 2026). Foot Locker
+  comparable sales "positive for the first time in 4 years," Q4 FY26 call. Nike
+  has not published a numeric wholesale target, so the slide names the
+  measures rather than a goal number.
+- **It costs.** Nike does not disclose a budget for this. Nike Direct was down
+  8% in Q2 FY26 and 7% in Q4 FY26; gross margin fell 300 basis points to 40.6%
+  in Q2 FY26 (the Q4 FY26 headline margin of 49.2% includes a one-time $986M
+  tariff refund; underlying was about 40.2%). Classic-franchise revenue has
+  been reduced by more than $2 billion (Q4 FY26 call).
+- **What could go wrong.** Simeon Siegel, BMO (Retail Dive, March 2025): the
+  classics "are important and will have a recurring place." Margin pressure and
+  a Q1 FY27 guide of low-to-mid single-digit decline are in the Q4 FY26 release.
 
 The highlighted row is the point of the slide and the payoff for "Plan and
-measure." Note that it holds both kinds of number: wholesale revenue growth (a
-result, slow) and retailer sentiment and inventory turns (early signals, fast).
+measure." Note it holds both kinds of number: wholesale growth (a result, slow)
+and a partner's own sales turning (an early signal, fast).
 
-The sample has seven initiatives in three tiers: three Priority 1, two Priority
-2, two Priority 3. The roadmap runs in four phases (0 to 3 months, 3 to 9, 9 to
+The brief has seven initiatives in three tiers: three Priority 1, two Priority
+2, two Priority 3. Its roadmap runs in four phases (0 to 3 months, 3 to 9, 9 to
 18, 18 and beyond) and references initiatives by number. Governance names
 executive owners by area, a review rhythm (weekly, monthly, quarterly, annual)
 and a communication plan. Scroll to the roadmap and the governance section in
-the product while this slide is up.
+the product while the heads-up is up.
 
-The numbers in the document are targets the strategy sets. They are not facts
-about Nike. Say "this is what the strategy commits to."
+**The same caveat applies to "Diagnosis to decisions."** Its three decision
+names (Performance first, Balanced channels, Prioritized markets) are the
+brief's labels, not Nike's. They match what Hill has said publicly ("we lost
+our obsession with sport"; premium means full price; rebuild wholesale; five
+sports, three countries, five cities) but the wording is the AI's. If that
+slide should also be Nike's own words, say so.
 
 If a student is building their own: a small business does not need seven
 initiatives or an executive council. Two or three moves, each with those five
@@ -514,24 +606,6 @@ time in four years. The early numbers moved first. That is what they are for.
 it is unresolved, and that makes it a better example: a strategy with measures
 lets you tell "not working" from "not yet," and one without measures cannot.
 
-## What you own
-
-Name what is theirs, name the limit, and **stop.**
-
-Theirs: the six questions (four plus two), the three lenses as questions, and
-the three-box shape. All of it works on a plan they already have, tonight, with
-no tool.
-
-The limit: a strategy decides and does nothing. On Tuesday the website still
-says what it said, nobody is tracking the numbers they chose, and the work is
-still on them.
-
-Do not explain how that gets closed here. That is the next slide's job.
-
-Do not quote StratEngine plan prices or describe a free tier, on this slide or in
-answers. The one pricing fact in this deck is the LAUNCH50 code on the last
-slide. For anything else, point people to stratengineai.com.
-
 ## What's next
 
 The bridge: the strategy is the decision, and the course builds what carries the
@@ -543,6 +617,15 @@ Class 6 is go-to-market, built on StratEngine, which is why that row is bold.
 Three months of StratEngine is included in the course. That is the literal
 answer to "how do I get a strategy like the one you showed."
 
+This slide follows "Monday" directly now, so it also carries the limit: a
+strategy decides and does nothing. On Tuesday the website still says what it
+said, nobody is tracking the numbers just chosen, and the work is still on the
+owner. Say that in one sentence before the table, then the table is the answer.
+
+Do not quote StratEngine plan prices or describe a free tier, on this slide or
+in answers. The one pricing fact in this deck is the LAUNCH50 code on "The
+offer". For anything else, point people to stratengineai.com.
+
 ## The offer
 
 "Run Your Whole Business with AI," six weeks starting September 29, 2026. Code
@@ -553,6 +636,11 @@ by decoding it.
 If a student asks after September 29 whether they can still join, do not guess.
 Send them to the Maven page.
 
+The second card is LAUNCH50: 50% off the first three months of a StratEngine
+subscription, not pay-as-you-go. It is for someone who wants their own strategy
+before (or instead of) the course. The course already includes three months of
+StratEngine, so a student enrolling in the course does not need it.
+
 ## Questions
 
 The three "this week" actions are the real homework, and they cover the first
@@ -560,8 +648,9 @@ two boxes of the kernel: run the test, write the diagnosis sentence, name one
 thing to stop. If a student does only the middle one, that is still the most
 valuable ten minutes available to them.
 
-**The StratEngine code.** LAUNCH50 takes 50% off the first three months of a
-StratEngine subscription at stratengineai.com. It does **not** apply to
+**The StratEngine code.** LAUNCH50, on "The offer" beside the course code, takes
+50% off the first three months of a StratEngine subscription at
+stratengineai.com. It does **not** apply to
 pay-as-you-go. It is separate from the course code (FOUNDER400), and the course
 already includes three months of StratEngine, so someone enrolling in the course
 does not need it. That is everything known about StratEngine pricing here: do not
