@@ -712,7 +712,7 @@
       <p>One script reads all of it, decides what's worth your attention, and delivers a single triaged brief — <strong>done before you open your laptop</strong>.</p>
     </div>
   </div>
-  <p class="small-note">Same muscle as always: you describe what you want, Claude writes and wires it, you check the result. Today we point it at your own repetitive work.</p>
+  <p class="small-note">Here's how it works: you describe what you want, Claude writes and wires it, you check the result. Today we point it at your own repetitive work.</p>
 </section>
 
 <!-- 2. WHAT AN AUTOMATION IS -->
@@ -815,20 +815,20 @@
   <div class="slide-num" data-label="Pluggable"></div>
   <div class="eyebrow">You choose what it watches</div>
   <h2>Wire in the places your work actually <em>lives</em>.</h2>
-  <p>Each source is its own small, separate reader — so you connect whatever's relevant to <em>you</em>. Most are one copy-paste key. <strong>Pick about three to start</strong> so we get your briefing running today; add the rest whenever you want.</p>
+  <p>Each app gets its own small, separate connection — so you connect whatever's relevant to <em>you</em>. Most are one copy-paste key. <strong>Pick about three to start</strong> so we get your briefing running today; add the rest whenever you want.</p>
   <div class="connect-grid">
     <div class="connect"><span class="connect-ico">📧</span><div><strong>Email</strong> <span class="connect-tag">read-only</span><p>Your unread inbox — so the brief flags what's urgent.</p></div></div>
     <div class="connect"><span class="connect-ico">💬</span><div><strong>Slack</strong><p>Recent messages and mentions from a workspace you own.</p></div></div>
     <div class="connect"><span class="connect-ico">✅</span><div><strong>Task manager</strong><p>Todoist, or similar — today's and overdue tasks.</p></div></div>
     <div class="connect"><span class="connect-ico">📝</span><div><strong>Notion</strong><p>A page or database you keep your work in.</p></div></div>
     <div class="connect"><span class="connect-ico">📅</span><div><strong>Calendar</strong><p>Today's events, via a private link — no sign-in.</p></div></div>
-    <div class="connect"><span class="connect-ico">📊</span><div><strong>Your dashboard</strong><p>Yesterday's key numbers from what you built in Class 2.</p></div></div>
+    <div class="connect"><span class="connect-ico">📊</span><div><strong>Your dashboard</strong><p>Yesterday's key numbers, from whatever you track them in.</p></div></div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🔌</span>
     <p><strong>These six are just a start — you can wire in almost anything.</strong> The one requirement: the tool has to offer a way in, either an <strong>API</strong> (a key you copy) or an <strong>MCP server</strong> (a ready-made connector). If a service has either, Claude can read from it. Everything stays <strong>read-only</strong> — it never sends or changes anything.</p>
   </div>
-  <p class="small-note">Why separate pieces? You can add a source without touching the others — and <strong>next class, these same readers become the tools your agent uses</strong>. Today you're quietly building its senses.</p>
+  <p class="small-note">Why separate pieces? You can add a source without touching the others — and <strong>next class, this whole briefing becomes a tool your agent can use</strong>.</p>
 </section>
 
 <!-- 6. IT RUNS WITHOUT YOU -->
@@ -896,9 +896,9 @@
 <!-- 7. PLAN MODE -->
 <section class="slide dense">
   <div class="slide-num" data-label="Plan mode"></div>
-  <div class="eyebrow">A habit you know — use it again</div>
+  <div class="eyebrow">Before you build anything big</div>
   <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
-  <p>Same habit from Class 3. For a job with this many moving parts — several readers, a judgment step, delivery, a schedule — don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve <em>before</em> a single file is written.</p>
+  <p>For a job with this many moving parts — several connections, a judgment step, delivery, a schedule — don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve <em>before</em> a single file is written.</p>
   <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">How to turn it on</div>
@@ -912,7 +912,7 @@
   </div>
   <div class="heads-up" style="margin-top: 12px;">
     <span class="heads-up-mark">📖</span>
-    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> so every plan is readable before you approve.</p>
+    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> (a file of standing instructions Claude reads every session — more on it in a few slides) so every plan is readable before you approve.</p>
   </div>
 </section>
 
@@ -921,7 +921,7 @@
   <div class="slide-num" data-label="Reference documents"></div>
   <div class="eyebrow">Your project's knowledge base</div>
   <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
-  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that record how it works — what each reader does, how it's scheduled, why it's built that way. So you (or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
+  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that record how it works — what each connection does, how it's scheduled, why it's built that way. So you (or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">During the build → the plan doc</div>
@@ -929,12 +929,12 @@
     </div>
     <div class="card">
       <div class="eyebrow">At the very end → the architecture doc</div>
-      <p>When it's built, have Claude write an <strong>architecture doc</strong>: what each reader pulls, where the judgment step lives, how it's scheduled. This is the one doc worth asking for explicitly.</p>
+      <p>When it's built, have Claude write an <strong>architecture doc</strong>: what each connection pulls, where the judgment step lives, how it's scheduled. This is the one doc worth asking for explicitly.</p>
     </div>
   </div>
   <div class="heads-up" style="margin-top: 14px;">
     <span class="heads-up-mark">💡</span>
-    <p><strong>Why it matters here especially:</strong> next class you'll re-open this project and turn these readers into an agent's tools. A good architecture doc means Claude instantly knows how everything fits — instead of relearning your script from scratch.</p>
+    <p><strong>Why it matters here especially:</strong> next class you'll re-open this project and hand this whole briefing to an agent as a tool. A good architecture doc means Claude instantly knows how everything fits — instead of relearning your script from scratch.</p>
   </div>
 </section>
 
@@ -952,7 +952,7 @@
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ Before you say "go" — these four stages (re-plan if any's missing)</div>
     <ul>
-      <li><strong>1. The readers</strong> — a <em>separate</em> function per source (this matters — it's what next class reuses).</li>
+      <li><strong>1. The connections</strong> — a <em>separate</em> piece of code for each app (this matters — it's what next class reuses).</li>
       <li><strong>2. The judgment step</strong> — one call to Claude that sorts what matters from noise.</li>
       <li><strong>3. Deliver + schedule</strong> — save the brief and pop it open on screen, and set it to run every morning.</li>
       <li><strong>4. Prove it</strong> — run it once, live, and watch the brief appear.</li>
@@ -969,7 +969,7 @@
   <div class="slide-num" data-label="A new habit · Keys"></div>
   <div class="eyebrow">Something we haven't dealt with before</div>
   <h2>Your keys are passwords — keep them in a <em>.env</em>.</h2>
-  <p>Connecting your own accounts means handling <strong>API keys</strong> — a first for this series. Treat a key like a password: anyone who has it can read what it unlocks. So it never gets typed into the script and it never leaves your machine. The tool for that is a <code>.env</code> file.</p>
+  <p>Connecting your own accounts means handling <strong>API keys</strong>. Treat a key like a password: anyone who has it can read what it unlocks. So it never gets typed into the script and it never leaves your machine. The tool for that is a <code>.env</code> file.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📄 What a <code>.env</code> is</div>
@@ -986,23 +986,23 @@
   </div>
 </section>
 
-<!-- 10. STEP 1 — THE READERS -->
+<!-- 10. STEP 1 — THE CONNECTIONS -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Plan step 1 · The readers"></div>
-  <div class="eyebrow">What the plan does first — no prompt to paste</div>
-  <h2>Step 1 — build a <em>reader</em> for each source.</h2>
-  <p>You approved the plan, so Claude works through it — you don't paste anything more. First it builds a reader for each source you picked: a small, separate function that fetches its thing and hands back clean results. Connecting almost always comes down to one of two easy moves:</p>
+  <div class="slide-num" data-label="Plan step 1 · The connections"></div>
+  <div class="eyebrow">Claude builds this part — you just hand over access</div>
+  <h2>Step 1 — Claude <em>connects</em> each app you picked.</h2>
+  <p>You approved the plan, so Claude starts building. First it connects each app you picked — your calendar, your tasks, and so on. How it gets in is Claude's call, not yours. Each <strong>connection</strong> has one job: go get today's stuff from that app and bring it back.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">🔗 A private link (no key)</div>
-      <p>Some sources hand you a <strong>secret web address</strong> to your own data — your Google Calendar's private link, for example. The script just fetches it. Copy the link once into your <code>.env</code>, done.</p>
+      <div class="eyebrow">🙋 Your only job</div>
+      <p>When Claude reaches an app, it tells you what it needs — usually a <strong>key</strong> from that app's settings (Todoist, Slack, Notion, your dashboard), or for Google Calendar a <strong>private link</strong>. You paste it into your <code>.env</code>, exactly as on the last slide.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🔑 A copy-paste key</div>
-      <p>Most others (Todoist, Slack, your dashboard) give you an <strong>API token</strong> in their settings — one click to copy. Paste it into your <code>.env</code> and the reader uses it. No sign-in flow, no setup project.</p>
+      <div class="eyebrow">🧩 Why one per app</div>
+      <p>If your Slack connection breaks, your calendar still works. Adding an app later means adding one more connection — nothing else changes.</p>
     </div>
   </div>
-  <p class="small-note">Notice the pattern: each source is <em>its own function</em> — a clean reader you can test on its own, add to, and (next class) hand to an agent as a tool. Claude walks you through getting each link or key as it builds.</p>
+  <p class="small-note">Email can take an extra step or two — Gmail, for example, needs an app password rather than a simple key. Claude walks you through it.</p>
 </section>
 
 <!-- 11. STEP 2 — THE JUDGMENT STEP + AUTH -->
@@ -1010,7 +1010,7 @@
   <div class="slide-num" data-label="Plan step 2 · The judgment"></div>
   <div class="eyebrow">The one step that needs a brain</div>
   <h2>Step 2 — a <em>CLAUDE.md</em> tells it what "matters" means.</h2>
-  <p>How does Claude know what to sort <em>toward</em>? The same way it always has — a <code>CLAUDE.md</code>, exactly like the one from Class 1. You keep it in the script's folder, and every morning Claude reads your instructions from it before it sorts — automatically, just like in a normal session. It's the one thing you truly shape here.</p>
+  <p>How does Claude know what to sort <em>toward</em>? With a <code>CLAUDE.md</code>: a plain file of instructions that Claude reads automatically before it starts work. You keep it in the script's folder, and every morning Claude reads it before it sorts. It's the one thing you truly shape here.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📄 Your <code>CLAUDE.md</code> — what it should care about</div>
@@ -1023,7 +1023,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">💡</span>
-    <p><strong>That <code>CLAUDE.md</code> is the seed of an agent.</strong> Today it's a short file doing one job — sorting your brief. Next class, a bigger version of that same file becomes an agent's whole personality: what it's for, what it's allowed to do, how it decides. You already know how to write one.</p>
+    <p><strong>That <code>CLAUDE.md</code> is the seed of an agent.</strong> Today it's a short file doing one job — sorting your brief. Next class, a bigger version of that same file becomes an agent's whole personality: what it's for, what it's allowed to do, how it decides.</p>
   </div>
 </section>
 
@@ -1052,7 +1052,7 @@
   <h2>Step 4 — run it once, live, right now.</h2>
   <p>The plan's last step: don't wait until tomorrow morning to find out if it works. Run the script by hand, in the room, and watch the brief pop open on your screen. Then confirm the schedule is set so it fires on its own from now on.</p>
   <ul class="numbered">
-    <li><strong>1.</strong> Run it now → the readers fetch, Claude sorts, the brief <strong>opens on your screen</strong>.</li>
+    <li><strong>1.</strong> Run it now → the connections fetch, Claude sorts, the brief <strong>opens on your screen</strong>.</li>
     <li><strong>2.</strong> Read it → does the "needs you today" list actually look right? Tell Claude what to tune.</li>
     <li><strong>3.</strong> Confirm the schedule → ask Claude to show it's set for every morning at your time.</li>
   </ul>
@@ -1060,7 +1060,7 @@
     <span class="done-mark">✅</span>
     <p><strong>A real brief on your screen, and a schedule that runs tomorrow without you</strong> — that's a working automation, live on your own machine.</p>
   </div>
-  <p class="small-note">Something off — brief empty, didn't pop open, a reader errored? Tell Claude exactly what you saw; it diagnoses and re-runs. Same "describe it to Claude" habit from every class.</p>
+  <p class="small-note">Something off — brief empty, didn't pop open, a connection errored? Tell Claude exactly what you saw; it diagnoses and re-runs. That's the habit for anything you build: describe what you see, and let Claude fix it.</p>
 </section>
 
 <!-- ============================================================
@@ -1098,7 +1098,7 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📣 It tells you when it fails</div>
-      <p>If a reader errors or Claude can't be reached, the script pops up a plain <strong>"your briefing broke — here's why"</strong> notification instead of just going dark. You always know it's alive.</p>
+      <p>If a connection errors or Claude can't be reached, the script pops up a plain <strong>"your briefing broke — here's why"</strong> notification instead of just going dark. You always know it's alive.</p>
     </div>
     <div class="card">
       <div class="eyebrow">☀️ Silence never means "fine"</div>
@@ -1113,24 +1113,24 @@
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework · do it this week</div>
   <h2>Plug in one more source — one that's <em>yours</em>.</h2>
-  <p>You built the machine with three starter readers. Your homework: add <strong>one source that's specific to your work</strong> — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.</p>
+  <p>You built the machine with three starter connections. Your homework: add <strong>one source that's specific to your work</strong> — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Pick the one that fits you</div>
       <ul>
         <li><strong>Todoist</strong> — copy one API token, and your real tasks join the brief.</li>
         <li><strong>Slack</strong> — messages that mention you, from a workspace you own.</li>
-        <li><strong>Your Class 2 dashboard</strong> — pull yesterday's key numbers into the brief.</li>
+        <li><strong>Your dashboard</strong> — pull yesterday's key numbers into the brief.</li>
       </ul>
     </div>
     <div class="card">
       <div class="eyebrow">You know how</div>
-      <p>Same pattern as today: tell Claude the source, have it build a <strong>new separate reader</strong>, test it on its own, then add it to the brief. Plan mode, a copy-paste key in your <code>.env</code>, done.</p>
+      <p>Same pattern as today: tell Claude the source, have it build a <strong>new separate connection</strong>, test it on its own, then add it to the brief. Plan mode, a copy-paste key in your <code>.env</code>, done.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🎓</span>
-    <p><strong>No step-by-step this time.</strong> You know plan mode, reference docs, keys in a <code>.env</code>, and the reader pattern. Adding a source is the same move you made three times today — now do it once for something only you would think to track.</p>
+    <p><strong>No step-by-step this time.</strong> You know plan mode, reference docs, keys in a <code>.env</code>, and one connection per app. Adding a source is the same move you made three times today — now do it once for something only you would think to track.</p>
   </div>
 </section>
 
@@ -1147,9 +1147,9 @@
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🧠</span>
-    <p><strong>Next class, we give it a brain.</strong> Those separate readers you built become an agent's <em>tools</em> — and instead of running the same fixed steps every morning, the agent gets its own key, decides <em>when</em> to act and <em>which</em> tools to use, and starts making the judgment calls itself.</p>
+    <p><strong>Next class, we give it a brain.</strong> The briefing you built becomes one of an agent's <em>tools</em> — and instead of running on a fixed schedule, the agent gets its own key, decides <em>when</em> to use it, and starts making the judgment calls itself.</p>
   </div>
-  <p class="small-note">Automation was fixed rules doing a chore for you. Agents are judgment deciding what to do. Same tools you built today — a driver that can think. That's Class 5.</p>
+  <p class="small-note">Automation was fixed rules doing a chore for you. Agents are judgment deciding what to do. Same briefing you built today — now with a driver that can think. That's Class 5.</p>
 </section>
 
 </div>
