@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: Claude (in the Claude app) interviews them and writes a custom skill (SKILL.md plus a script); they upload it to the Console, put every login and key in a credential vault, create the agent with Quickstart (system prompt = what matters to them), set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); exact tool calls reach the apps, a script does the counting/dates/formatting, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. COST CONTROL is a thread through every Advanced class: before anything runs, spend is capped per run (deployment budget), per month (workspace spend limit) and by prepaid credits with auto-reload off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
+ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: in the Console's Quickstart they paste a prompt; Quickstart interviews them and drafts the agent plus a custom skill (dictated steps plus a script) and a system prompt (what matters to them); they check its fields, set tool permissions, put every login and key in a credential vault, set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); exact tool calls reach the apps, a script does the counting/dates/formatting, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. COST CONTROL is a thread through every Advanced class: before anything runs, spend is capped per run (deployment budget), per month (workspace spend limit) and by prepaid credits with auto-reload off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
 
 ---
 
@@ -286,7 +286,7 @@ People really do wake up to four-figure API bills. It's rarely one expensive run
 
 _⏱️ Per run_
 
-The deployment budget: $1 . At the cap, the run pauses. You set it in Step 7.
+The deployment budget: $1 . At the cap, the run pauses. You set it in Step 6.
 
 _📅 Per month_
 
@@ -306,82 +306,60 @@ One more reason to start simple: Cowork runs on your Claude subscription, not th
 
 Cost control is a thread through every Advanced class; this is where it starts, before anything runs. The fear is real: people do wake up to four-figure API bills. The cause is almost never one expensive run; it's a cheap run multiplied: a cron typo, an agent retrying in a loop, a leaked key. Three levels of limits, set before the first run: per run (the deployment budget, $1, which pauses the run at the cap), per month (a spend limit on the Console workspace), and the hard ceiling (prepaid credits with auto-reload off, so nothing can spend money that wasn't loaded). Walk them through finding the workspace spend limit and the auto-reload setting in the current Console; search the docs if the screens have moved. The concrete trap: `* 7 * * 1-5` is every minute from 7:00 to 7:59, sixty runs a morning; `0 7 * * 1-5` is once at 7:00. Always read the upcoming runs the Console lists. Close on the through-line of the Advanced track, simplicity and cost control: Cowork runs on the Claude subscription, not the API, so it has no usage bill to cap. If a Cowork project can do a job, that is the better home; Managed Agents is for when they need what only it offers (exact schedules, per-run caps, any API, inspectable runs). The same rule carries to Class 6: use the simplest deployment that does the job. Other cost levers worth naming if asked: a Sonnet model instead of Opus, scripts instead of model reasoning for fixed steps, pulling only what the brief needs, web searches ($10 per 1,000), and scheduling no more often than the job needs.
 
-## Slide 10 · Step 1 · Write the skill
+## Slide 10 · Step 1 · Describe it
 
 **What the student sees on this slide:**
 
-_Claude maps it with you, then writes it_
+_Quickstart maps it with you, then drafts it_
 
-## Step 1: Claude writes your skill .
+## Step 1: Describe your brief to Quickstart .
 
-The skill is where the dictated steps live. In the Claude app, in Chat or Cowork, paste:
+Managed Agents → Quickstart . It drafts the agent and its skill , the file where the dictated steps live. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning. Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token. The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated. Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.
+> Help me build a skill called morning-briefing, and an agent that runs it. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning. Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token. The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated. Write the skill's steps in order, with the script alongside. Then list every MCP server, API token, package, and website it needs.
 
 _✋ You should end up with four things_
 
-- SKILL.md , with every step dictated and only one judgment step.
+- The skill , with every step dictated and only one judgment step.
 
 - The script , doing the counting, dates and formatting.
 
-- The list : servers, tokens, packages, websites. You'll use it in Steps 3 to 5.
+- A system prompt that says what matters to you.
 
-- The zip , ready to upload.
+- The list : servers, tokens, packages, websites. You'll use it in Steps 3 and 4.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The student maps their morning with Claude in the Claude app (Chat or Cowork) and Claude writes the skill. Coach the interview, not the code: which three sources, and exactly what to pull from each so it's the same every morning. Push for exact rules ("unread from clients, last 24 hours"), not vague ones ("check my email"). Check the output: SKILL.md with `name` (lowercase, hyphens, no "claude" or "anthropic") and `description` frontmatter, steps in order with every step tagged exact tool call / script / judgment and only one judgment step (tool calls for reaching apps, the script for counting, dates and formatting); a script in a scripts folder; the list of MCP server URLs, API tokens, packages and websites; a zip. The honesty rules (say what failed at the top; write "all clear" on a quiet day) belong in the skill. Source choice is where most trouble starts: Google's official Gmail, Calendar and Drive MCP servers are a Developer Preview that needs a Google Cloud project and an OAuth client, which is heavy for this audience. Services with simple OAuth MCP servers (Slack, Notion, and others) or personal API tokens (Todoist and similar) are much easier. Search for the service's current remote MCP server before promising one. Start with three sources or fewer.
+The whole build starts in the Console: Managed Agents → Quickstart, where the student pastes the prompt and Quickstart interviews them and drafts the agent and its skill. Coach the interview, not the code: which three sources, and exactly what to pull from each so it's the same every morning. Push for exact rules ("unread from clients, last 24 hours"), not vague ones ("check my email"). Check the output: a skill named morning-briefing (lowercase, hyphens, no "claude" or "anthropic") with every step in order, tagged exact tool call / script / judgment, and only one judgment step (tool calls to reach apps, the script for counting, dates and formatting); the script alongside it; a system prompt saying what matters to them; and the list of MCP servers, API tokens, packages and websites, used in the vault and environment steps. The honesty rules (say what failed at the top; write "all clear" on a quiet day) belong in the skill. If Quickstart doesn't produce the skill and script itself in their Console, check the current docs for how to add a custom skill to the workspace (custom skills can be uploaded as a zip or files) and attach it to the agent. Source choice is where most trouble starts: Google's official Gmail, Calendar and Drive MCP servers are a Developer Preview that needs a Google Cloud project and an OAuth client, which is heavy for this audience. Services with simple OAuth MCP servers (Slack, Notion, and others) are much easier. Search for the service's current remote MCP server before promising one. Start with three sources or fewer.
 
-## Slide 11 · Step 2 · Upload the skill
+## Slide 11 · Step 2 · The agent
 
 **What the student sees on this slide:**
 
-_Put it where your agents can use it_
+_Quickstart fills in the fields; you check them_
 
-## Step 2: Upload the skill to the Console .
+## Step 2: Check every field Quickstart filled in.
 
-In the Console, upload the zip as a custom skill. Skills from the Claude app don't carry over: the Console keeps its own library, and every agent in your workspace can use what's in it.
+- Model : a Sonnet model is plenty for a daily brief, at about half the cost of Opus.
 
-_🧩 Why a skill, not a long prompt_
+- System prompt : what "matters" means to you. "Flag anything from a client or due today. Skip newsletters." This is the judgment step's rulebook.
 
-The agent loads it only when it's needed, and the script runs as code: only its output reaches Claude . Fewer words to interpret, fewer ways to drift.
+- MCP servers : every server on the list.
 
-_✏️ Changing it later_
+- Skills : morning-briefing is attached, with its script.
 
-Want a different brief? Ask Claude to edit the skill, then upload the new version. The agent and the schedule don't change.
+ 🧩
 
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+Why a skill, not a long prompt: the agent loads it only when it's needed, and the script runs as code, so only its output reaches Claude . Want a different brief later? Change the skill; the agent and the schedule stay.
 
-Custom skills are uploaded to the Console workspace as a zip (or files) and shared by every agent in it. Skills uploaded on claude.ai do not sync to the Console. Confirm the current upload location in the docs before directing them. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later = ask Claude to edit the skill, upload the new version; the agent and deployment stay.
-
-## Slide 12 · Step 3 · The vault
-
-**What the student sees on this slide:**
-
-_Access to your apps, kept out of sight_
-
-## Step 3: Put every login in the vault .
-
-Your script and your tool calls need access to your apps. That access lives in a credential vault : Managed Agents → Credential vaults → new vault, then add one credential for each item on Claude's list.
-
-_🔌 For an MCP server_
-
-Pick the service and sign in through its own page, or paste the server's address and its token.
-
-_🔑 For an app with no MCP server_
-
-Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. The agent never sees it.
-
- 🛡️
-
-Keys go in the vault, and nowhere else. Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.
+Next class you'll build an agent through Create agent , field by field. Today, Quickstart is enough.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Credential vaults hold every login and key: OAuth or a bearer token for each MCP server (matched to the server URL), and environment-variable secrets for the script. The mechanism to explain: the run holds only a placeholder, and the real secret is substituted as the request leaves the sandbox, so the agent never sees it. Practical consequences if a script fails auth: the script must send the token as-is in a request header; credentials created in the Console inject into headers only unless body injection is enabled on the form; and the credential's allowed hosts and the environment's networking must both allow the host. Vaults are shared across the workspace. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are the next slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
-## Slide 13 · No one's watching
+## Slide 12 · No one's watching
 
 **What the student sees on this slide:**
 
@@ -407,39 +385,41 @@ Turning a tool off is the lock. The agent can't call it at all. "Don't send anyt
 
 The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
 
-## Slide 14 · Step 4 · The agent
+## Slide 13 · Step 3 · The vault
 
 **What the student sees on this slide:**
 
-_Quickstart fills in the fields; you check them_
+_Access to your apps, kept out of sight_
 
-## Step 4: Create the agent with Quickstart .
+## Step 3: Put every login in the vault .
 
-Managed Agents → Quickstart . Describe it: "Runs my morning-briefing skill every weekday and saves the brief to my Drive." Then check each field it filled in:
+Your tool calls and your script need access to your apps. That access lives in a credential vault : Managed Agents → Credential vaults → new vault, then add one credential for each item on the list.
 
-- Model : a Sonnet model is plenty for a daily brief, at about half the cost of Opus.
+_🔌 For an MCP server_
 
-- System prompt : what "matters" means to you. "Flag anything from a client or due today. Skip newsletters." This is the judgment step's rulebook.
+Pick the service and sign in through its own page, or paste the server's address and its token.
 
-- MCP servers : every server on Claude's list, with permissions set as on the last slide.
+_🔑 For an app with no MCP server_
 
-- Skills : attach morning-briefing .
+Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. The agent never sees it.
 
-Next class you'll build an agent through Create agent , field by field. Today, Quickstart is enough.
+ 🛡️
+
+Keys go in the vault, and nowhere else. Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Quickstart (Managed Agents → Quickstart) builds an agent from a description and shows each field; it includes a test session. Have them check the fields rather than trust the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; this is the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers with permissions set as on the previous slide, and the morning-briefing skill attached. If Quickstart doesn't attach a custom skill or an MCP server correctly, they can edit the agent afterwards. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Credential vaults hold every login and key: OAuth or a bearer token for each MCP server (matched to the server URL), and environment-variable secrets for the script. The mechanism to explain: the run holds only a placeholder, and the real secret is substituted as the request leaves the sandbox, so the agent never sees it. Practical consequences if a script fails auth: the script must send the token as-is in a request header; credentials created in the Console inject into headers only unless body injection is enabled on the form; and the credential's allowed hosts and the environment's networking must both allow the host. Vaults are shared across the workspace. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
 
-## Slide 15 · Step 5 · The environment
+## Slide 14 · Step 4 · The environment
 
 **What the student sees on this slide:**
 
 _The computer each run borrows_
 
-## Step 5: Set the packages and websites each run gets.
+## Step 4: Set the packages and websites each run gets.
 
-Every run gets a fresh cloud computer, called the environment . Two settings matter, and both come straight from Claude's list:
+Every run gets a fresh cloud computer, called the environment . Two settings matter, and both come straight from the list:
 
 _📦 Packages_
 
@@ -455,13 +435,13 @@ Nothing on that computer survives the run. That's why the brief is saved to Driv
 
 Each run gets a fresh cloud sandbox configured by the environment. Two settings: packages (pip and others) the script needs, installed before the run and cached; networking, where limited means only listed hosts plus an allow-MCP-servers switch and an allow-package-managers switch. Environments made in the Console may default to limited, which is the usual cause of "host blocked" errors: add the host, or enable MCP server access. Nothing in the sandbox survives the run, which is why the brief is saved to Drive or Dropbox.
 
-## Slide 16 · Step 6 · Prove it
+## Slide 15 · Step 5 · Prove it
 
 **What the student sees on this slide:**
 
 _Don't assume: run it and read the record_
 
-## Step 6: Run it once and read the transcript .
+## Step 5: Run it once and read the transcript .
 
 In Quickstart's test session, send "Run the morning-briefing skill." Then read what happened. This is the part Cowork doesn't show you.
 
@@ -481,13 +461,13 @@ A brief in your folder, and a transcript that shows every step. Now put it on a 
 
 Run it once in the test session and read the transcript: the skill loading, the script running, each tool call and result. Four checks: the transcript shows the dictated steps in order; "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox; and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. Name the principle: a tool call that says "saved" isn't the same as a file existing. If something fails, read the failing step in the transcript and describe it to Claude; common causes are a tool left on always ask, a blocked host, a missing package, or a vault credential that doesn't match the server URL.
 
-## Slide 17 · Step 7 · Schedule it
+## Slide 16 · Step 6 · Schedule it
 
 **What the student sees on this slide:**
 
 _The timer that pulls the trigger_
 
-## Step 7: Deploy it on a schedule, with a cap .
+## Step 6: Deploy it on a schedule, with a cap .
 
 Managed Agents → Deployments → new deployment. Fill it in:
 
@@ -507,7 +487,7 @@ Click Run now once, and check the upcoming runs are the ones you meant. The Cons
 
 Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Run now tests the deployment immediately; insist on it, and have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Confirm the current form fields in the Console before directing them.
 
-## Slide 18 · When it breaks
+## Slide 17 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -537,7 +517,7 @@ This is the upgrade over Cowork: when the brief looks wrong, you don't guess why
 
 Four layers of honesty: the brief names any source it couldn't reach at the top; it writes "all clear" on quiet days so a missing brief means breakage; every run is a session under Managed Agents → Sessions with status, cost and full transcript; the budget pauses a runaway run, and a deployment whose run can't start (for example an archived vault or environment) pauses itself, and missed runs aren't made up. The upgrade over Cowork: diagnose by reading the run, not by guessing.
 
-## Slide 19 · Homework
+## Slide 18 · Homework
 
 **What the student sees on this slide:**
 
@@ -551,7 +531,7 @@ The one that would make the brief genuinely yours. Same pattern as today: a cred
 
 _⚙️ One sentence becomes code_
 
-Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Upload the new version and run it once.
+Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Update the skill and run it once.
 
  🎓
 
@@ -559,9 +539,9 @@ The calls are yours: which source makes the brief worth reading, and which step 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find something Claude still works out on every run (sorting, counting, formatting) and ask whether a script can do it instead, then upload and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
+Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find something Claude still works out on every run (sorting, counting, formatting) and ask whether a script can do it instead, then update the skill and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
 
-## Slide 20 · You shipped it
+## Slide 19 · You shipped it
 
 **What the student sees on this slide:**
 

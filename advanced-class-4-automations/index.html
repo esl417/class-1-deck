@@ -860,7 +860,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⏱️ Per run</div>
-      <p>The deployment budget: <strong>$1</strong>. At the cap, the run pauses. You set it in Step 7.</p>
+      <p>The deployment budget: <strong>$1</strong>. At the cap, the run pauses. You set it in Step 6.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📅 Per month</div>
@@ -878,62 +878,42 @@
   <p class="small-note">One more reason to start simple: <strong>Cowork runs on your Claude subscription, not the API</strong>, so there's no bill to cap. If a Cowork project can do the job, run it there. Reach for Managed Agents when you need what only it gives you.</p>
 </section>
 
-<!-- 7. STEP 1 — WRITE THE SKILL -->
+<!-- 7. STEP 1 — DESCRIBE IT IN QUICKSTART -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 1 · Write the skill"></div>
-  <div class="eyebrow">Claude maps it with you, then writes it</div>
-  <h2>Step 1: Claude writes your <em>skill</em>.</h2>
-  <p>The skill is where the dictated steps live. In the Claude app, in Chat or Cowork, paste:</p>
-  <div class="prompt-box">Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning.<br><br>Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token.<br><br>The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated.<br><br>Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.</div>
+  <div class="slide-num" data-label="Step 1 · Describe it"></div>
+  <div class="eyebrow">Quickstart maps it with you, then drafts it</div>
+  <h2>Step 1: Describe your brief to <em>Quickstart</em>.</h2>
+  <p>Managed Agents → <strong>Quickstart</strong>. It drafts the agent and its <strong>skill</strong>, the file where the dictated steps live. Paste:</p>
+  <div class="prompt-box">Help me build a skill called morning-briefing, and an agent that runs it. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning.<br><br>Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token.<br><br>The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated.<br><br>Write the skill's steps in order, with the script alongside. Then list every MCP server, API token, package, and website it needs.</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ You should end up with four things</div>
     <ul>
-      <li><strong>SKILL.md</strong>, with every step dictated and only one judgment step.</li>
+      <li><strong>The skill</strong>, with every step dictated and only one judgment step.</li>
       <li><strong>The script</strong>, doing the counting, dates and formatting.</li>
-      <li><strong>The list</strong>: servers, tokens, packages, websites. You'll use it in Steps 3 to 5.</li>
-      <li><strong>The zip</strong>, ready to upload.</li>
+      <li><strong>A system prompt</strong> that says what matters to you.</li>
+      <li><strong>The list</strong>: servers, tokens, packages, websites. You'll use it in Steps 3 and 4.</li>
     </ul>
   </div>
 </section>
 
-<!-- 8. STEP 2 — UPLOAD IT -->
-<section class="slide">
-  <div class="slide-num" data-label="Step 2 · Upload the skill"></div>
-  <div class="eyebrow">Put it where your agents can use it</div>
-  <h2>Step 2: Upload the skill to the <em>Console</em>.</h2>
-  <p>In the Console, upload the zip as a custom skill. Skills from the Claude app don't carry over: the Console keeps its own library, and every agent in your workspace can use what's in it.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">🧩 Why a skill, not a long prompt</div>
-      <p>The agent loads it only when it's needed, and the script runs as code: <strong>only its output reaches Claude</strong>. Fewer words to interpret, fewer ways to drift.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">✏️ Changing it later</div>
-      <p>Want a different brief? Ask Claude to edit the skill, then upload the new version. The agent and the schedule don't change.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 9. STEP 3 — THE VAULT -->
+<!-- 8. STEP 2 — CHECK THE AGENT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 3 · The vault"></div>
-  <div class="eyebrow">Access to your apps, kept out of sight</div>
-  <h2>Step 3: Put every login in the <em>vault</em>.</h2>
-  <p>Your script and your tool calls need access to your apps. That access lives in a <strong>credential vault</strong>: Managed Agents → <strong>Credential vaults</strong> → new vault, then add one credential for each item on Claude's list.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">🔌 For an MCP server</div>
-      <p>Pick the service and sign in through its own page, or paste the server's address and its token.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">🔑 For an app with no MCP server</div>
-      <p>Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. <strong>The agent never sees it.</strong></p>
-    </div>
+  <div class="slide-num" data-label="Step 2 · The agent"></div>
+  <div class="eyebrow">Quickstart fills in the fields; you check them</div>
+  <h2>Step 2: Check every field Quickstart filled in.</h2>
+  <div class="card" style="margin-top: 4px;">
+    <ul>
+      <li><strong>Model</strong>: a Sonnet model is plenty for a daily brief, at about half the cost of Opus.</li>
+      <li><strong>System prompt</strong>: what "matters" means to you. <em>"Flag anything from a client or due today. Skip newsletters."</em> This is the judgment step's rulebook.</li>
+      <li><strong>MCP servers</strong>: every server on the list.</li>
+      <li><strong>Skills</strong>: <em>morning-briefing</em> is attached, with its script.</li>
+    </ul>
   </div>
   <div class="heads-up">
-    <span class="heads-up-mark">🛡️</span>
-    <p><strong>Keys go in the vault, and nowhere else.</strong> Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.</p>
+    <span class="heads-up-mark">🧩</span>
+    <p><strong>Why a skill, not a long prompt:</strong> the agent loads it only when it's needed, and the script runs as code, so <strong>only its output reaches Claude</strong>. Want a different brief later? Change the skill; the agent and the schedule stay.</p>
   </div>
+  <p class="small-note">Next class you'll build an agent through <strong>Create agent</strong>, field by field. Today, Quickstart is enough.</p>
 </section>
 
 <!-- 10. NO ONE WATCHING -->
@@ -958,29 +938,34 @@
   </div>
 </section>
 
-<!-- 11. STEP 4 — THE AGENT -->
+<!-- 9. STEP 3 — THE VAULT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 4 · The agent"></div>
-  <div class="eyebrow">Quickstart fills in the fields; you check them</div>
-  <h2>Step 4: Create the agent with <em>Quickstart</em>.</h2>
-  <p>Managed Agents → <strong>Quickstart</strong>. Describe it: <em>"Runs my morning-briefing skill every weekday and saves the brief to my Drive."</em> Then check each field it filled in:</p>
-  <div class="card" style="margin-top: 4px;">
-    <ul>
-      <li><strong>Model</strong>: a Sonnet model is plenty for a daily brief, at about half the cost of Opus.</li>
-      <li><strong>System prompt</strong>: what "matters" means to you. <em>"Flag anything from a client or due today. Skip newsletters."</em> This is the judgment step's rulebook.</li>
-      <li><strong>MCP servers</strong>: every server on Claude's list, with permissions set as on the last slide.</li>
-      <li><strong>Skills</strong>: attach <em>morning-briefing</em>.</li>
-    </ul>
+  <div class="slide-num" data-label="Step 3 · The vault"></div>
+  <div class="eyebrow">Access to your apps, kept out of sight</div>
+  <h2>Step 3: Put every login in the <em>vault</em>.</h2>
+  <p>Your tool calls and your script need access to your apps. That access lives in a <strong>credential vault</strong>: Managed Agents → <strong>Credential vaults</strong> → new vault, then add one credential for each item on the list.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🔌 For an MCP server</div>
+      <p>Pick the service and sign in through its own page, or paste the server's address and its token.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔑 For an app with no MCP server</div>
+      <p>Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. <strong>The agent never sees it.</strong></p>
+    </div>
   </div>
-  <p class="small-note">Next class you'll build an agent through <strong>Create agent</strong>, field by field. Today, Quickstart is enough.</p>
+  <div class="heads-up">
+    <span class="heads-up-mark">🛡️</span>
+    <p><strong>Keys go in the vault, and nowhere else.</strong> Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.</p>
+  </div>
 </section>
 
-<!-- 12. STEP 5 — THE ENVIRONMENT -->
+<!-- 12. STEP 4 — THE ENVIRONMENT -->
 <section class="slide">
-  <div class="slide-num" data-label="Step 5 · The environment"></div>
+  <div class="slide-num" data-label="Step 4 · The environment"></div>
   <div class="eyebrow">The computer each run borrows</div>
-  <h2>Step 5: Set the packages and websites each run gets.</h2>
-  <p>Every run gets a fresh cloud computer, called the <strong>environment</strong>. Two settings matter, and both come straight from Claude's list:</p>
+  <h2>Step 4: Set the packages and websites each run gets.</h2>
+  <p>Every run gets a fresh cloud computer, called the <strong>environment</strong>. Two settings matter, and both come straight from the list:</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📦 Packages</div>
@@ -994,11 +979,11 @@
   <p class="small-note">Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.</p>
 </section>
 
-<!-- 13. STEP 6 — PROVE IT -->
+<!-- 13. STEP 5 — PROVE IT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Prove it"></div>
+  <div class="slide-num" data-label="Step 5 · Prove it"></div>
   <div class="eyebrow">Don't assume: run it and read the record</div>
-  <h2>Step 6: Run it once and read the <em>transcript</em>.</h2>
+  <h2>Step 5: Run it once and read the <em>transcript</em>.</h2>
   <p>In Quickstart's test session, send <em>"Run the morning-briefing skill."</em> Then read what happened. This is the part Cowork doesn't show you.</p>
   <ul class="numbered">
     <li><strong>1.</strong> Watch the transcript → the skill loads, the script runs, each tool call goes out and comes back.</li>
@@ -1012,11 +997,11 @@
   </div>
 </section>
 
-<!-- 14. STEP 7 — SCHEDULE IT -->
+<!-- 14. STEP 6 — SCHEDULE IT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 7 · Schedule it"></div>
+  <div class="slide-num" data-label="Step 6 · Schedule it"></div>
   <div class="eyebrow">The timer that pulls the trigger</div>
-  <h2>Step 7: Deploy it on a schedule, with a <em>cap</em>.</h2>
+  <h2>Step 6: Deploy it on a schedule, with a <em>cap</em>.</h2>
   <p>Managed Agents → <strong>Deployments</strong> → new deployment. Fill it in:</p>
   <div class="card" style="margin-top: 4px;">
     <ul>
@@ -1074,7 +1059,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">⚙️ One sentence becomes code</div>
-      <p>Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Upload the new version and run it once.</p>
+      <p>Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Update the skill and run it once.</p>
     </div>
   </div>
   <div class="heads-up">

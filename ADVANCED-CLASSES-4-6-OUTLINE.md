@@ -68,12 +68,12 @@ sentence Claude executes. Here every fixed step is dictated, split by who carrie
 pure computing (counting, dates, formatting), same result every run for almost nothing;
 **judgment** only for "what needs me today." Not "code wherever possible": reaching an app
 from a script needs its own token and setup, so a script calling an API is the fallback for
-an app with no MCP server. Claude (in Cowork or chat) writes the script; the student
-doesn't.
+an app with no MCP server. Quickstart writes the skill and script; the student doesn't.
 
 **Build: the morning brief, done the robust way.** Conceptually simple, but the value is in
 coding it, plugging in every source they want, and tailoring it.
-- The fixed steps are a **skill** (SKILL.md plus a script) the student uploads.
+- The student describes the brief in **Quickstart**, which drafts the agent and a
+  **skill** (dictated steps plus a script). No separate app, no upload.
 - A **deployment** runs it on a schedule with a per-run budget. Its prompt says: run the
   briefing skill, exactly these steps.
 - Sources come in through MCP servers, credentials through a vault. Never in a prompt.

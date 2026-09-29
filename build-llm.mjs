@@ -181,10 +181,11 @@ const DECKS = [
       'already run small agents there) but has not written code. This track does ' +
       'NOT use Cowork for the build: today they rebuild the morning brief in Claude ' +
       'Managed Agents in the Claude Console (platform.claude.com), a separate ' +
-      'account billed by usage. The build: Claude (in the Claude app) interviews ' +
-      'them and writes a custom skill (SKILL.md plus a script); they upload it to ' +
-      'the Console, put every login and key in a credential vault, create the agent ' +
-      'with Quickstart (system prompt = what matters to them), set the environment ' +
+      'account billed by usage. The build: in the Console\'s Quickstart they paste ' +
+      'a prompt; Quickstart interviews them and drafts the agent plus a custom skill ' +
+      '(dictated steps plus a script) and a system prompt (what matters to them); ' +
+      'they check its fields, set tool permissions, put every login and key in a ' +
+      'credential vault, set the environment ' +
       '(packages, limited networking), test it in a session, then schedule it as a ' +
       'deployment (cron, time zone, prompt, per-run budget). The brief lands in ' +
       'Google Drive or Dropbox. Core idea: an automation has its steps DICTATED ' +
