@@ -45,7 +45,7 @@ ADVANCED track. The student is comfortable with Claude and Cowork (they may alre
 
 Class 4 · Advanced · Automations in Managed Agents
 
-# Your morning brief, built the robust way.
+# Your morning brief, rebuilt in Managed Agents.
 
 Script the fixed steps, give Claude the one judgment call, and run it on a schedule you can inspect and cap.
 
@@ -91,7 +91,7 @@ The map of the whole Advanced mini course, so the student sees how the three cla
 
 _Let's look at the end first_
 
-## By the end of today, your brief runs itself .
+## Today: a brief that runs on a schedule, capped .
 
 Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. A script pulls your sources the same way every time, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.
 
@@ -115,7 +115,7 @@ Show the destination: the same morning brief they may already have in Cowork, re
 
 _Before we build: where everything lives_
 
-## Which Claude surface is for what .
+## Six Claude surfaces, and the job each one does.
 
 Claude comes in six shapes. Knowing which one a job belongs in is half the skill.
 
@@ -157,7 +157,7 @@ This slide answers a question advanced students ask: which Claude surface is for
 
 _Same brief, more control_
 
-## Why build it here instead of Cowork .
+## Managed Agents shows every part Cowork hides.
 
 Cowork hides the machinery so you don't have to think about it. Managed Agents lays every part out as a field you set. The brief is the same idea; what changes is that you can see and control every piece.
 
@@ -257,7 +257,7 @@ Map each Managed Agents object to what they know from Cowork, so nothing feels f
 
 _One-time setup_
 
-## Set up the account it runs on.
+## Open a Claude Console account, separate from your plan.
 
 - 1. Sign in at platform.claude.com , the Claude Console. It's a separate account from your Claude app plan.
 
@@ -336,7 +336,7 @@ The student maps their morning with Claude in the Claude app (Chat or Cowork) an
 
 _Put it where your agents can use it_
 
-## Step 2: Add the skill to your workspace .
+## Step 2: Upload the skill to the Console .
 
 In the Console, upload the zip as a custom skill. Skills from the Claude app don't carry over: the Console keeps its own library, and every agent in your workspace can use what's in it.
 
@@ -434,7 +434,7 @@ Quickstart (Managed Agents → Quickstart) builds an agent from a description an
 
 _The computer each run borrows_
 
-## Step 5: Give each run the computer it needs.
+## Step 5: Set the packages and websites each run gets.
 
 Every run gets a fresh cloud computer, called the environment . Two settings matter, and both come straight from Claude's list:
 
@@ -458,7 +458,7 @@ Each run gets a fresh cloud sandbox configured by the environment. Two settings:
 
 _Don't assume: run it and read the record_
 
-## Step 6: Run it once and read the record .
+## Step 6: Run it once and read the transcript .
 
 In Quickstart's test session, send "Run the morning-briefing skill." Then read what happened. This is the part Cowork doesn't show you.
 
@@ -510,7 +510,7 @@ Deployments (Managed Agents → Deployments) bind agent, environment and vault t
 
 _A machine you trust has to be honest_
 
-## Every run leaves a record. Read it .
+## When a brief looks wrong, read that run's transcript .
 
 _📣 It says what failed_
 
@@ -564,7 +564,7 @@ Two tasks. Add one source that makes the brief theirs (vault credential, server 
 
 _That's the class — here's what now runs_
 
-## Your brief now runs on rails you set.
+## Your brief: dictated, scheduled, capped, on the record.
 
 - A skill : dictated steps, code where it can be, one judgment call.
 
