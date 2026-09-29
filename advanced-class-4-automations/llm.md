@@ -286,7 +286,7 @@ People really do wake up to four-figure API bills. It's rarely one expensive run
 
 _⏱️ Per run_
 
-The deployment budget: $1 . At the cap, the run pauses. You set it in Step 6.
+Quickstart sets $5 ; lower it to $1 on the deployment's page. At the cap, the run pauses. You do it in Step 6.
 
 _📅 Per month_
 
@@ -304,7 +304,7 @@ One more reason to start simple: Cowork runs on your Claude subscription, not th
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Cost control is a thread through every Advanced class; this is where it starts, before anything runs. The fear is real: people do wake up to four-figure API bills. The cause is almost never one expensive run; it's a cheap run multiplied: a cron typo, an agent retrying in a loop, a leaked key. Three levels of limits, set before the first run: per run (the deployment budget, $1, which pauses the run at the cap), per month (a spend limit on the Console workspace), and the hard ceiling (prepaid credits with auto-reload off, so nothing can spend money that wasn't loaded). Walk them through finding the workspace spend limit and the auto-reload setting in the current Console; search the docs if the screens have moved. The concrete trap: `* 7 * * 1-5` is every minute from 7:00 to 7:59, sixty runs a morning; `0 7 * * 1-5` is once at 7:00. Always read the upcoming runs the Console lists. Close on the through-line of the Advanced track, simplicity and cost control: Cowork runs on the Claude subscription, not the API, so it has no usage bill to cap. If a Cowork project can do a job, that is the better home; Managed Agents is for when they need what only it offers (exact schedules, per-run caps, any API, inspectable runs). The same rule carries to Class 6: use the simplest deployment that does the job. Other cost levers worth naming if asked: a Sonnet model instead of Opus, scripts instead of model reasoning for fixed steps, pulling only what the brief needs, web searches ($10 per 1,000), and scheduling no more often than the job needs.
+Cost control is a thread through every Advanced class; this is where it starts, before anything runs. The fear is real: people do wake up to four-figure API bills. The cause is almost never one expensive run; it's a cheap run multiplied: a cron typo, an agent retrying in a loop, a leaked key. Three levels of limits, set before the first run: per run (the deployment budget: Quickstart sets it at $5; they lower it to $1 on the deployment's page in the Console; it pauses the run at the cap), per month (a spend limit on the Console workspace), and the hard ceiling (prepaid credits with auto-reload off, so nothing can spend money that wasn't loaded). Walk them through finding the workspace spend limit and the auto-reload setting in the current Console; search the docs if the screens have moved. The concrete trap: `* 7 * * 1-5` is every minute from 7:00 to 7:59, sixty runs a morning; `0 7 * * 1-5` is once at 7:00. Always read the upcoming runs the Console lists. Close on the through-line of the Advanced track, simplicity and cost control: Cowork runs on the Claude subscription, not the API, so it has no usage bill to cap. If a Cowork project can do a job, that is the better home; Managed Agents is for when they need what only it offers (exact schedules, per-run caps, any API, inspectable runs). The same rule carries to Class 6: use the simplest deployment that does the job. Other cost levers worth naming if asked: a Sonnet model instead of Opus, scripts instead of model reasoning for fixed steps, pulling only what the brief needs, web searches ($10 per 1,000), and scheduling no more often than the job needs.
 
 ## Slide 10 · Step 1 · Describe it
 
@@ -455,7 +455,7 @@ Managed Agents → Deployments → new deployment. Fill it in:
 
 - Prompt : "Run the morning-briefing skill exactly as written."
 
-- Budget : $1 per run. At the cap, the run pauses instead of spending more.
+- Budget : Quickstart sets $5 per run. Lower it to $1 on the deployment's page. At the cap, the run pauses instead of spending more.
 
  ▶️
 
@@ -463,7 +463,7 @@ Check the upcoming runs are the ones you meant. The Console shows the next few; 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Hold Run now until the next slide: with MCP tools still on always ask, an unattended run would pause and never finish. Confirm the current form fields in the Console before directing them.
+Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Quickstart sets the per-run budget at $5.00; have them lower it to $1 on the deployment's page. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Hold Run now until the next slide: with MCP tools still on always ask, an unattended run would pause and never finish. Confirm the current form fields in the Console before directing them.
 
 ## Slide 16 · Step 7 · Permissions
 
