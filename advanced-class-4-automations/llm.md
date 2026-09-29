@@ -357,7 +357,7 @@ Next class you'll build an agent through Create agent , field by field. Today, Q
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the environment and vault, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the test run, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
 ## Slide 12 · Step 3 · The environment
 
@@ -413,7 +413,33 @@ The vault is shared across your workspace. Anyone with an API key for it can use
 
 When an agent has an MCP server that needs a login, the Console shows "Authorization required to use this MCP · Add credential for [app]" with two OPTIONAL sections, Access token and OAuth client credentials (Client ID, Client secret), a workspace-sharing warning with an acknowledgment checkbox, and Connect / Skip for now. The default path: leave both fields empty, tick the acknowledgment, click Connect, and sign in on the app's own page; Anthropic stores the result in a credential vault (also reachable under Managed Agents → Credential vaults) and refreshes OAuth tokens. Only if Connect fails: an access token is one issued by the app itself, pasted in, and it expires, so it's a stopgap; OAuth client credentials come from registering your own OAuth app with the provider (for Google: Google Cloud Console → APIs & Services → Credentials → OAuth client ID, with the relevant APIs enabled; Google's Workspace MCP servers are a Developer Preview and may require this). Walk them through it step by step if needed, searching the provider's current docs. For an app with no MCP server, the script's API token is added as an environment-variable secret under the name the script expects; the run holds only a placeholder and the real secret is substituted as the request leaves the sandbox, so the agent never sees it (the script must send the token as-is in a header; Console-created credentials inject into headers only unless body injection is enabled; the credential's allowed hosts and the environment's networking must both allow the host). The warning matters: credentials are shared across the workspace, and anyone with an API key for that workspace can use them to read data and act as the credential owner. Advise a workspace only they use, and never sharing its API keys. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
 
-## Slide 14 · No one's watching
+## Slide 14 · Step 5 · Prove it
+
+**What the student sees on this slide:**
+
+_Don't assume: run it, read it, fix it_
+
+## Step 5: Test-run it in the panel and debug it.
+
+Once the logins are in, a test run opens in the panel next to your agent. Watch it, change the config where something's off, and run it again until it's right. This is the part Cowork doesn't show you.
+
+- 1. Watch the transcript → the skill loads, the script runs, each tool call goes out and comes back.
+
+- 2. Check the judgment → does "needs you today" look right? Fix the system prompt, not the brief.
+
+- 3. Open Drive or Dropbox → is today's brief really there? "Saved" in a transcript isn't a file you can open.
+
+- 4. Read the cost → the session shows what this run cost. Multiply by 22 weekdays: that's your monthly bill.
+
+ ✅
+
+A brief in your folder, and a transcript that shows every step. One setting left before it can run alone.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+After the logins are added in Step 4, a test run opens in the panel beside the agent's configuration: they can watch it live, change the config (system prompt, tools, skill, permissions) and run it again. Treat it as a debugging loop, not a one-shot check. Four checks: the transcript shows the dictated steps in order (skill loads, script runs, each tool call goes out and comes back); "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox (a tool call that says "saved" isn't the same as a file existing); and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. MCP tools still on always ask will pause the test run for approval; that's fine while they're watching, and the next slide sets them so an unattended run never pauses. Common failures to read for in the transcript: a blocked host, a missing package, or a vault credential that doesn't match the server URL.
+
+## Slide 15 · No one's watching
 
 **What the student sees on this slide:**
 
@@ -421,7 +447,7 @@ _Permissions for a run nobody attends_
 
 ## At 7am, there's no one to click Allow .
 
-Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives.
+Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives. In the test run you were there to approve each one; at 7am you won't be.
 
 _🔒 The three policies_
 
@@ -438,32 +464,6 @@ Turning a tool off is the lock. The agent can't call it at all. "Don't send anyt
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
-
-## Slide 15 · Step 5 · Prove it
-
-**What the student sees on this slide:**
-
-_Don't assume: run it and read the record_
-
-## Step 5: Run it once and read the transcript .
-
-In Quickstart's test session, send "Run the morning-briefing skill." Then read what happened. This is the part Cowork doesn't show you.
-
-- 1. Watch the transcript → the skill loads, the script runs, each tool call goes out and comes back.
-
-- 2. Check the judgment → does "needs you today" look right? Fix the system prompt, not the brief.
-
-- 3. Open Drive or Dropbox → is today's brief really there? "Saved" in a transcript isn't a file you can open.
-
-- 4. Read the cost → the session shows what this run cost. Multiply by 22 weekdays: that's your monthly bill.
-
- ✅
-
-A brief in your folder, and a transcript that shows every step. Now put it on a schedule.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Run it once in the test session and read the transcript: the skill loading, the script running, each tool call and result. Four checks: the transcript shows the dictated steps in order; "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox; and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. Name the principle: a tool call that says "saved" isn't the same as a file existing. If something fails, read the failing step in the transcript and describe it to Claude; common causes are a tool left on always ask, a blocked host, a missing package, or a vault credential that doesn't match the server URL.
 
 ## Slide 16 · Step 6 · Schedule it
 
