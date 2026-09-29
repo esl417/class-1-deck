@@ -154,9 +154,12 @@ shared stylesheet.
   them on the right (`.raw-num` muted, `.derived-num` accented and much larger).
   The size gap IS the argument: the small grey numbers were in the file, the big
   teal one never was. Built for the dashboard lesson's synthetic-metric reveal.
-- `.flow-cycle` — a scheduled run plus its recovery branch (`.cycle-node`
-  `.is-run` / `.is-missed`, `.cycle-branches`, `.catchup-return`). Built for the
-  Class 4 scheduler, where the failure case and its catch-up are the point.
+- `.flow-cycle` — a scheduled run branching into outcomes (`.cycle-node`
+  `.is-run`, `.cycle-branches`). Built for the Class 4 scheduler; since the
+  2026-09-28 Cowork rewrite it shows laptop open vs closed with the same outcome
+  (the task runs in the cloud), so the missed-run and catch-up states were removed.
+  Class 4 now builds a Cowork scheduled task on connectors, not a local script;
+  CLASSES-5-6-OUTLINE.md holds the current agent-class design.
 
 Before adding a diagram, read the slide's **markup**, not the deck outline. Some
 slides already contain hand-rolled diagrams built from inline styles (Class 1's

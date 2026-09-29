@@ -368,10 +368,11 @@
   }
   .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
 
-  /* ---- Daily cycle: the scheduled run, plus the catch-up branch ---------
-     A schedule is cyclical, and the "laptop was asleep" case is a branch off
-     it — both invisible when described in prose. Set in a tinted band so it
-     reads as one self-contained object, not headers for the cards below. */
+  /* ---- Daily cycle: the scheduled run, laptop open vs closed -----------
+     A schedule is cyclical, and "what if my laptop is closed?" is the
+     question every student asks — shown as a branch with the same outcome.
+     Set in a tinted band so it reads as one self-contained object, not
+     headers for the cards below. */
   .flow-cycle {
     display: flex;
     align-items: center;
@@ -397,8 +398,6 @@
     gap: 2px;
   }
   .cycle-node.is-run { border: 2px solid var(--accent); background: rgba(15,138,128,0.10); }
-  /* the missed-run case: dashed, to read as "didn't happen" */
-  .cycle-node.is-missed { border-style: dashed; border-color: rgba(20,18,12,0.25); background: transparent; }
   .cycle-node .node-name {
     font-family: var(--display);
     font-size: clamp(15px, 1.45vw, 18px);
@@ -406,7 +405,6 @@
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .cycle-node.is-missed .node-name { color: var(--muted); }
   .cycle-node .node-sub {
     font-family: var(--sans);
     font-size: clamp(12px, 1.15vw, 13px);
@@ -418,9 +416,6 @@
   .cycle-wire { width: clamp(24px, 2.8vw, 40px); height: 14px; flex: 0 0 auto; display: block; }
   .cycle-wire path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
   .cycle-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
-  /* the catch-up path is the recovery route, drawn to read as secondary */
-  .cycle-wire.is-catchup path { stroke: var(--accent-deep); stroke-dasharray: 5 4; }
-  .cycle-wire.is-catchup path.flow-arrowhead { fill: var(--accent-deep); stroke-dasharray: none; }
   .cycle-split { flex: 0 0 auto; display: flex; align-items: center; }
   /* the two outcomes of 7am, stacked — this is a branch, not a chain */
   .cycle-branches {
@@ -441,22 +436,11 @@
     min-width: 9ch;
     text-align: right;
   }
-  /* the recovery path back up to the successful run */
-  .catchup-return { display: flex; align-items: center; gap: 7px; }
-  .catchup-return .return-label {
-    font-family: var(--sans);
-    font-size: clamp(11px, 1.05vw, 12.5px);
-    font-weight: 600;
-    font-style: italic;
-    color: var(--accent-deep);
-    white-space: nowrap;
-  }
   @media (max-width: 860px) {
     .flow-cycle { flex-direction: column; }
     .cycle-split .cycle-wire { transform: rotate(90deg); }
     .cycle-branch { flex-direction: column; align-items: stretch; text-align: center; }
     .cycle-branch .branch-when { text-align: center; min-width: 0; }
-    .catchup-return { justify-content: center; }
   }
 
   /* ---- Process map: mapped steps, each tagged deterministic vs judgment ---- */
@@ -634,15 +618,6 @@
     .nav button { transition: none; }
   }
 
-  .ui-shot {
-    display: block;
-    width: 100%;
-    margin-top: 12px;
-    border-radius: 9px;
-    border: 1px solid var(--hair);
-    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
-  }
-
   .done-strip {
     display: flex;
     align-items: center;
@@ -688,7 +663,7 @@
   <div class="title-head">
     <div class="title-kicker">Class 4 · Making work happen without you</div>
     <h1 class="title-main">The work you do by hand, <br class="hero-break">done without you.</h1>
-    <p class="title-sub">Automations: teach your own computer to run the repetitive parts of your day, so you don't have to.</p>
+    <p class="title-sub">Automations: set Claude to run the repetitive parts of your day on a schedule, so you don't have to.</p>
   </div>
 </section>
 
@@ -700,8 +675,8 @@
 <section class="slide">
   <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
-  <h2>By the end of today, a script runs your <em>morning</em> for you.</h2>
-  <p>Every morning you open the same handful of things and piece together "what actually needs me today." By the end of class, a small program on your own computer does that — at a time you set, before you sit down — and hands you one short brief of what matters.</p>
+  <h2>By the end of today, your <em>morning</em> runs itself.</h2>
+  <p>Every morning you open the same handful of things and piece together "what actually needs me today." By the end of class, a scheduled task in Claude does that — at a time you set, before you sit down, even with your laptop closed — and hands you one short brief of what matters.</p>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">What you do by hand now</div>
@@ -709,10 +684,10 @@
     </div>
     <div class="card">
       <div class="eyebrow">What runs for you after today</div>
-      <p>One script reads all of it, decides what's worth your attention, and delivers a single triaged brief — <strong>done before you open your laptop</strong>.</p>
+      <p>One task reads all of it, decides what's worth your attention, and writes a single triaged brief — <strong>done before you open your laptop</strong>.</p>
     </div>
   </div>
-  <p class="small-note">Here's how it works: you describe what you want, Claude writes and wires it, you check the result. Today we point it at your own repetitive work.</p>
+  <p class="small-note">Here's how it works: you describe what you want, Claude sets it up, you check the result. Today we point it at your own repetitive work.</p>
 </section>
 
 <!-- 2. WHAT AN AUTOMATION IS -->
@@ -747,17 +722,18 @@
   <div class="slide-num" data-label="The thing itself"></div>
   <div class="eyebrow">What lands in front of you</div>
   <h2>The morning briefing — one screen, already sorted.</h2>
-  <p>Here's what the script produces. It pulls from the places your day actually lives, and instead of dumping raw lists, it <strong>uses judgment</strong> to sort the signal from the noise — because reading everything is the chore we're removing.</p>
+  <p>Here's what the task produces. It pulls from the places your day actually lives, and instead of dumping raw lists, it <strong>uses judgment</strong> to sort the signal from the noise — because reading everything is the chore we're removing.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">☀️ Your brief, 7:00am</div>
       <p><strong>Needs you today:</strong> the two calendar events that actually matter, the one task that's overdue, the client email worth a reply.</p>
       <p><strong>Worth a glance:</strong> a headline about your industry, three tasks that can wait.</p>
       <p><strong>Handled / noise:</strong> everything it decided you can safely ignore.</p>
+      <p>Every item links to the email, meeting, or task it came from.</p>
     </div>
     <div class="card">
       <div class="eyebrow">Why it feels different</div>
-      <p>It's not a raw feed — it's a <strong>decision</strong>. Something read all of it and told you where to look first. That "what matters" call is the part only judgment can do, and it's why the script calls in Claude at exactly that step.</p>
+      <p>It's not a raw feed — it's a <strong>decision</strong>. Something read all of it and told you where to look first. That "what matters" call is the part only judgment can do, and it's the one step you leave to Claude's judgment.</p>
     </div>
   </div>
   <p class="small-note">It reads, but never touches: it never sends, deletes, or moves anything in your accounts. It briefs you — you stay in control of every action.</p>
@@ -784,7 +760,7 @@
     <span class="heads-up-mark">🤝</span>
     <p><strong>You don't have to map it perfectly alone — Claude helps you map it.</strong> Describe your routine roughly and it fills in the steps you skipped, asks about the cases you forgot, and makes sure nothing's missing before it builds. The mapping is a conversation, not a test.</p>
   </div>
-  <p class="small-note">That's your morning, mapped. Hand it to Claude and it builds a script that does those steps for you — but first, one question sorts every step, and it changes how Claude builds each one. That's the next slide.</p>
+  <p class="small-note">That's your morning, mapped. Hand it to Claude and it sets up a task that does those steps for you — but first, one question sorts every step, and it changes how you write each one. That's the next slide.</p>
 </section>
 
 <!-- 4b. JUDGMENT vs DETERMINISM -->
@@ -795,18 +771,18 @@
   <p>The same three-step process, filled in with real sources. Sort each step: most are <strong>deterministic</strong> — a fixed rule, one right answer — and only where a rule can't decide do you spend a <strong>judgment</strong> call. Watch how few need it:</p>
   <div class="proc-map" style="margin-top: 4px;">
     <div class="proc-phase">1 · Open your sources</div>
-    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull today's calendar events</span> <span class="proc-why">— fetch a link. One right answer.</span></div>
-    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull your unread emails</span> <span class="proc-why">— grab the list. Mechanical.</span></div>
-    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull today's + overdue tasks</span> <span class="proc-why">— read your task list. Mechanical.</span></div>
+    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull today's calendar events</span> <span class="proc-why">— the same request every morning. One right answer.</span></div>
+    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull your unread emails</span> <span class="proc-why">— unread, last 24 hours. Mechanical.</span></div>
+    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull today's + overdue tasks</span> <span class="proc-why">— due today or overdue. Mechanical.</span></div>
     <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Pull yesterday's dashboard numbers</span> <span class="proc-why">— read the data. Same every run.</span></div>
     <div class="proc-phase">2 · Decide what matters</div>
     <div class="proc-step judge-row"><span class="proc-tag judge">🧠 Judgment</span> <span class="proc-do">Pick the urgent emails + what else matters</span> <span class="proc-why">— no rule tells urgent from noise. <strong>This is the AI call.</strong></span></div>
     <div class="proc-phase">3 · Write the short version</div>
-    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Save the brief + pop it open</span> <span class="proc-why">— write a file, show it. Mechanical.</span></div>
+    <div class="proc-step"><span class="proc-tag det">⚙️ Fixed rule</span> <span class="proc-do">Save the brief</span> <span class="proc-why">— same format, same place. Mechanical.</span></div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🎯</span>
-    <p><strong>Five of six steps are plain code — only "what matters" goes to Claude.</strong> Do everything you can deterministically, call Claude only where you can't. Two reasons: <strong>cost</strong> (fixed rules are free; Claude calls add up as the task grows) and <strong>consistency</strong> (fixed rules give the same answer every run; Claude may vary).</p>
+    <p><strong>Five of six steps are fixed rules. Only "what matters" needs judgment.</strong> Write every fixed step as an exact instruction (which emails, which calendar, what format) and leave Claude to decide only what no rule can. That's what makes it an automation: <em>you</em> decide the steps, in advance, and they're the same every morning. Two reasons: <strong>consistency</strong> (exact steps give you the same brief every run; vague ones let it wander) and <strong>cost</strong> (the less it has to figure out, the less of your plan each run uses).</p>
   </div>
 </section>
 
@@ -815,32 +791,32 @@
   <div class="slide-num" data-label="Pluggable"></div>
   <div class="eyebrow">You choose what it watches</div>
   <h2>Wire in the places your work actually <em>lives</em>.</h2>
-  <p>Each app gets its own small, separate connection — so you connect whatever's relevant to <em>you</em>. Most are one copy-paste key. <strong>Pick about three to start</strong> so we get your briefing running today; add the rest whenever you want.</p>
+  <p>Each app gets its own <strong>connector</strong> — a ready-made link inside the Claude app. One sign-in per app, no keys to copy, no code. <strong>Pick about three to start</strong> so we get your briefing running today; add the rest whenever you want.</p>
   <div class="connect-grid">
     <div class="connect"><span class="connect-ico">📧</span><div><strong>Email</strong> <span class="connect-tag">read-only</span><p>Your unread inbox — so the brief flags what's urgent.</p></div></div>
-    <div class="connect"><span class="connect-ico">💬</span><div><strong>Slack</strong><p>Recent messages and mentions from a workspace you own.</p></div></div>
+    <div class="connect"><span class="connect-ico">📅</span><div><strong>Calendar</strong><p>Today's meetings, and what they need from you.</p></div></div>
     <div class="connect"><span class="connect-ico">✅</span><div><strong>Task manager</strong><p>Todoist, or similar — today's and overdue tasks.</p></div></div>
     <div class="connect"><span class="connect-ico">📝</span><div><strong>Notion</strong><p>A page or database you keep your work in.</p></div></div>
-    <div class="connect"><span class="connect-ico">📅</span><div><strong>Calendar</strong><p>Today's events, via a private link — no sign-in.</p></div></div>
-    <div class="connect"><span class="connect-ico">📊</span><div><strong>Your dashboard</strong><p>Yesterday's key numbers, from whatever you track them in.</p></div></div>
+    <div class="connect"><span class="connect-ico">📁</span><div><strong>Google Drive</strong><p>A doc or sheet you keep plans or numbers in.</p></div></div>
+    <div class="connect"><span class="connect-ico">📊</span><div><strong>Your dashboard</strong><p>Yesterday's key numbers, if the tool you track them in has a connector.</p></div></div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🔌</span>
-    <p><strong>These six are just a start — you can wire in almost anything.</strong> The one requirement: the tool has to offer a way in, either an <strong>API</strong> (a key you copy) or an <strong>MCP server</strong> (a ready-made connector). If a service has either, Claude can read from it. Everything stays <strong>read-only</strong> — it never sends or changes anything.</p>
+    <p><strong>These six are just a start.</strong> The Claude app has a directory of connectors — if your tool is in it, connecting it is one sign-in. Everything stays <strong>read-only</strong>, and in a few slides you'll lock that in as a setting.</p>
   </div>
-  <p class="small-note">Why separate pieces? You can add a source without touching the others — and <strong>next class, this whole briefing becomes a tool your agent can use</strong>.</p>
+  <p class="small-note">Why one connector per app? If one breaks, the others keep working, and adding a source never touches the rest. <strong>Next class, an agent uses these same connectors to act on your brief.</strong></p>
 </section>
 
 <!-- 6. IT RUNS WITHOUT YOU -->
 <section class="slide">
   <div class="slide-num" data-label="Runs without you"></div>
   <div class="eyebrow">The part that makes it an automation</div>
-  <h2>It runs on a schedule — on your own computer.</h2>
-  <p>No website, no cloud service to rent. The script lives on <strong>your Mac (or PC)</strong>, and your computer's own built-in scheduler runs it at the time you choose — you set it once and it happens each morning.</p>
+  <h2>It runs on a schedule — even with your laptop <em>closed</em>.</h2>
+  <p>Nothing to install, no server to rent. Your briefing is a <strong>scheduled task</strong>: you set the time once, and Claude runs it in the cloud every morning — whether your computer is on, asleep, or packed in a bag.</p>
   <div class="flow-cycle">
     <div class="cycle-node">
       <span class="node-name">⏰ 7:00am</span>
-      <span class="node-sub">The alarm goes off</span>
+      <span class="node-sub">The task starts</span>
     </div>
     <div class="cycle-split" aria-hidden="true">
       <svg class="cycle-wire" viewBox="0 0 40 14">
@@ -850,7 +826,7 @@
     </div>
     <div class="cycle-branches">
       <div class="cycle-branch">
-        <span class="branch-when">Laptop awake</span>
+        <span class="branch-when">Laptop open</span>
         <div class="cycle-node is-run">
           <span class="node-name">Your brief runs</span>
           <span class="node-sub">Waiting when you sit down</span>
@@ -858,83 +834,48 @@
       </div>
       <div class="cycle-branch">
         <span class="branch-when">Laptop closed</span>
-        <div class="cycle-node is-missed">
-          <span class="node-name">Run missed</span>
-          <span class="node-sub">The scheduler won't wake it</span>
-        </div>
-        <div class="catchup-return">
-          <span class="return-label">On wake</span>
-          <svg class="cycle-wire is-catchup" viewBox="0 0 40 14">
-            <path d="M0 7 H27" />
-            <path class="flow-arrowhead" d="M40 7 L26 1.5 L26 12.5 z" />
-          </svg>
-          <div class="cycle-node is-run">
-            <span class="node-name">It catches up</span>
-            <span class="node-sub">Runs as soon as you open it</span>
-          </div>
+        <div class="cycle-node is-run">
+          <span class="node-name">Your brief still runs</span>
+          <span class="node-sub">It runs in the cloud, not on your laptop</span>
         </div>
       </div>
     </div>
   </div>
   <div class="grid-2" style="margin-top: 14px;">
     <div class="card">
-      <div class="eyebrow">⏰ The built-in scheduler</div>
-      <p>Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up: "run this at 7am every day." On Mac it's <strong>launchd</strong>; on Windows, <strong>Task Scheduler</strong>. You never touch the details.</p>
+      <div class="eyebrow">☁️ Runs in the cloud</div>
+      <p>The task lives in your Claude account, not on your machine. Read it from your laptop or the <strong>Claude app on your phone</strong> — wherever you are when the morning starts.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">😴 How catch-up works</div>
-      <p>A missed run isn't recovered for free. Every time the machine wakes, the script checks <em>"did I already run today?"</em> — if not, it runs now.</p>
+      <div class="eyebrow">💻 The one exception</div>
+      <p>If your brief needs a file that only exists on your computer, turn on <strong>Require this computer</strong>. Then it only runs while your computer is awake. Everyone else leaves it off.</p>
     </div>
   </div>
-  <p class="small-note">Ask Claude for the catch-up check explicitly — it's what makes a laptop automation you can trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)</p>
 </section>
 
 <!-- ============================================================
-     PART 1.5 — TWO WORK HABITS
+     PART 1.5 — THE HOME FOR THE BUILD
      ============================================================ -->
 
-<!-- 7. PLAN MODE -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Plan mode"></div>
-  <div class="eyebrow">Before you build anything big</div>
-  <h2>Use <em>plan mode</em> — let Claude plan before it builds.</h2>
-  <p>For a job with this many moving parts — several connections, a judgment step, delivery, a schedule — don't let Claude charge straight in. Switch to <strong>plan mode</strong> first: it thinks the whole thing through and hands you a plan to approve <em>before</em> a single file is written.</p>
-  <div style="display:grid; grid-template-columns: 0.9fr 0.9fr 1.35fr; gap: clamp(16px, 2vw, 28px); align-items: center; margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">How to turn it on</div>
-      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Why it's worth it</div>
-      <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
-    </div>
-    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
-  </div>
-  <div class="heads-up" style="margin-top: 12px;">
-    <span class="heads-up-mark">📖</span>
-    <p><strong>Plans come out technical by default — make Claude write them in plain English.</strong> Add <em>"explain it like I'm not technical"</em> to your request, or set that rule once in your <code>CLAUDE.md</code> (a file of standing instructions Claude reads every session — more on it in a few slides) so every plan is readable before you approve.</p>
-  </div>
-</section>
-
-<!-- 8. REFERENCE DOCS -->
+<!-- 8. THE PROJECT -->
 <section class="slide">
-  <div class="slide-num" data-label="Reference documents"></div>
-  <div class="eyebrow">Your project's knowledge base</div>
-  <h2><em>Reference documents</em> — a Wikipedia for your project.</h2>
-  <p>Claude doesn't remember yesterday's chat. <strong>Reference documents</strong> are plain files in your project that record how it works — what each connection does, how it's scheduled, why it's built that way. So you (or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.</p>
+  <div class="slide-num" data-label="The project"></div>
+  <div class="eyebrow">One home for everything</div>
+  <h2>Build it inside a <em>project</em> — one home for it all.</h2>
+  <p>In the Claude app, a <strong>project</strong> keeps everything for one job in one place. Start a new project for your briefing — everything you build today, and next class, lives there.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">During the build → the plan doc</div>
-      <p>The plan from plan mode <strong>is</strong> a reference doc. Claude saves it and works against it to stay on task. <strong>No extra effort from you</strong> — approving the plan already created it.</p>
+      <div class="eyebrow">What a project holds</div>
+      <p>Your <strong>instructions</strong> (what matters to you), the <strong>scheduled task</strong> that writes your brief, and <strong>every brief</strong> it has written.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">At the very end → the architecture doc</div>
-      <p>When it's built, have Claude write an <strong>architecture doc</strong>: what each connection pulls, where the judgment step lives, how it's scheduled. This is the one doc worth asking for explicitly.</p>
+      <div class="eyebrow">Why it beats a plain chat</div>
+      <p>Claude doesn't remember yesterday's chat — but a project keeps its instructions. Every task in it reads them before it starts, every morning, so you <strong>set them once</strong>.</p>
     </div>
   </div>
   <div class="heads-up" style="margin-top: 14px;">
     <span class="heads-up-mark">💡</span>
-    <p><strong>Why it matters here especially:</strong> next class you'll re-open this project and hand this whole briefing to an agent as a tool. A good architecture doc means Claude instantly knows how everything fits — instead of relearning your script from scratch.</p>
+    <p><strong>Why it matters here especially:</strong> next class, an agent joins this same project. It reads the same briefs and follows the same instructions — so nothing you build today gets rebuilt.</p>
   </div>
 </section>
 
@@ -942,88 +883,84 @@
      PART 2 — BUILD IT LIVE
      ============================================================ -->
 
-<!-- 9. PLAN THE BUILD -->
+<!-- 9. SET UP THE BUILD -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Plan the build"></div>
-  <div class="eyebrow">One prompt plans the whole build — you review it</div>
-  <h2>Plan the whole build with <em>one</em> prompt.</h2>
-  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, describe the whole job once and it hands back a plan covering everything. Open Claude Code in a new folder for this project, switch to plan mode (<strong>Shift+Tab</strong>), and paste:</p>
-  <div class="prompt-box">Build me a "morning briefing" — a Python script on my computer that reads three sources I'll choose (help me pick from my email, calendar, tasks, Slack, Notion, and my dashboard), then asks Claude to sort what actually matters and writes me one short brief. Everything stays read-only — it never sends or changes anything in my accounts; it just reads them and saves the brief as a file on my computer that pops open on my screen when it's done. I want to be able to add more sources later, and it should run on its own every morning. I'm not technical — keep the plan in plain English. Make a plan and show it to me before building anything.</div>
+  <div class="slide-num" data-label="Set up the build"></div>
+  <div class="eyebrow">One prompt sets up the whole build — you check it</div>
+  <h2>Set up the whole build with <em>one</em> prompt.</h2>
+  <p>In the Claude app, start a new project called <em>Morning Briefing</em>. In its message box, switch from Chat to <strong>Cowork</strong>, then paste:</p>
+  <div class="prompt-box">Set up my morning briefing as a scheduled task in this project, running every weekday at 7:00am.<br><br>First, ask me which tools I want it to read (my email, my calendar, my task list, or anything else I use) and help me pick three to start. For each one, agree with me on exactly what to pull, so it's the same every morning. For example: unread emails from the last 24 hours, today's calendar, tasks due today or overdue.<br><br>Each morning, pull those, decide what actually needs me using this project's instructions, and write one short brief: what needs me today and why, my day in order, who's waiting on me, and what you skipped, with one line on why for each. Every item links to where it came from. Keep each day's brief so I have a history.<br><br>It's read-only: never send, reply, delete, or change anything in my accounts. Use this app's connectors to reach my accounts. If one isn't connected, walk me through connecting it. Don't require my computer unless a source only exists there.</div>
   <div class="card" style="margin-top:6px;">
-    <div class="eyebrow">✋ Before you say "go" — these four stages (re-plan if any's missing)</div>
+    <div class="eyebrow">✋ Once it's set up — check it covered these four stages</div>
     <ul>
-      <li><strong>1. The connections</strong> — a <em>separate</em> piece of code for each app (this matters — it's what next class reuses).</li>
-      <li><strong>2. The judgment step</strong> — one call to Claude that sorts what matters from noise.</li>
-      <li><strong>3. Deliver + schedule</strong> — save the brief and pop it open on screen, and set it to run every morning.</li>
-      <li><strong>4. Prove it</strong> — run it once, live, and watch the brief appear.</li>
+      <li><strong>1. The connectors</strong> — one for each app you picked, each connected before it runs.</li>
+      <li><strong>2. The fixed steps</strong> — exactly which emails, which days, what format. The same every morning.</li>
+      <li><strong>3. The judgment step</strong> — one step that decides what matters, using your project's instructions.</li>
+      <li><strong>4. Schedule + prove it</strong> — the time you chose, and one run right now so you see the brief.</li>
     </ul>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🧱</span>
-    <p><strong>Start with three sources or fewer.</strong> Get the whole pipeline working end-to-end first — read, sort, deliver — <em>then</em> pile on more. It's the rule for anything you build: get the core working, then add. Ten sources at once means debugging ten things before you ever see it run.</p>
   </div>
 </section>
 
-<!-- 9b. KEYS + .env (new territory) -->
+<!-- 9b. CONNECTOR PERMISSIONS (new territory) -->
 <section class="slide dense">
-  <div class="slide-num" data-label="A new habit · Keys"></div>
-  <div class="eyebrow">Something we haven't dealt with before</div>
-  <h2>Your keys are passwords — keep them in a <em>.env</em>.</h2>
-  <p>Connecting your own accounts means handling <strong>API keys</strong>. Treat a key like a password: anyone who has it can read what it unlocks. So it never gets typed into the script and it never leaves your machine. The tool for that is a <code>.env</code> file.</p>
+  <div class="slide-num" data-label="A new habit · Permissions"></div>
+  <div class="eyebrow">Before it touches your accounts</div>
+  <h2>Read-only is a <em>setting</em>, not a promise.</h2>
+  <p>Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and in <strong>Customize → Connectors</strong> you give each one a permission.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">📄 What a <code>.env</code> is</div>
-      <p>A plain, private file that holds your keys — one per line, like <code>TODOIST_KEY=abc123</code>. The script reads from it, so the keys live in <strong>one place</strong>, separate from the code, never pasted into the script itself.</p>
+      <div class="eyebrow">🔒 The three settings</div>
+      <p><strong>Always allow</strong> — it just does it. <strong>Needs approval</strong> — it asks you first. <strong>Blocked</strong> — it can't, even if it tried.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🚫 The one rule that matters</div>
-      <p>The <code>.env</code> <strong>never goes to GitHub.</strong> Claude adds it to a <code>.gitignore</code> list so it's skipped on every push — because a key pushed to a public repo is a key the whole internet can grab.</p>
+      <div class="eyebrow">✋ What to set today</div>
+      <p>Allow the reading actions. Set <strong>send, delete, and anything that changes your accounts</strong> to Blocked. Your briefing only reads — so reading is all it's allowed to do.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🛡️</span>
-    <p><strong>Never paste a key into the Claude Code chat — you put it in the <code>.env</code> yourself.</strong> Have Claude create the empty <code>.env</code> and tell you exactly where each key goes; then <em>you</em> open the file and paste the real key in. Anything you type into the chat leaves your machine — the whole point is that the secret never does.</p>
+    <p><strong>Never type a password into the chat.</strong> Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; <strong>Blocked</strong> is a lock.</p>
   </div>
 </section>
 
-<!-- 10. STEP 1 — THE CONNECTIONS -->
+<!-- 10. STEP 1 — THE CONNECTORS -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Plan step 1 · The connections"></div>
-  <div class="eyebrow">Claude builds this part — you just hand over access</div>
-  <h2>Step 1 — Claude <em>connects</em> each app you picked.</h2>
-  <p>You approved the plan, so Claude starts building. First it connects each app you picked — your calendar, your tasks, and so on. How it gets in is Claude's call, not yours. Each <strong>connection</strong> has one job: go get today's stuff from that app and bring it back.</p>
+  <div class="slide-num" data-label="Plan step 1 · The connectors"></div>
+  <div class="eyebrow">Claude sets this part up — you just sign in</div>
+  <h2>Step 1 — <em>connect</em> each app you picked.</h2>
+  <p>You approved the plan, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each <strong>connector</strong> has one job in this task: go get today's stuff from that app and bring it back.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🙋 Your only job</div>
-      <p>When Claude reaches an app, it tells you what it needs — usually a <strong>key</strong> from that app's settings (Todoist, Slack, Notion, your dashboard), or for Google Calendar a <strong>private link</strong>. You paste it into your <code>.env</code>, exactly as on the last slide.</p>
+      <p>When Claude reaches an app that isn't connected, open <strong>Customize → Connectors</strong>, find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧩 Why one per app</div>
-      <p>If your Slack connection breaks, your calendar still works. Adding an app later means adding one more connection — nothing else changes.</p>
+      <p>If your task manager's connector breaks, your calendar still works. Adding an app later means adding one more connector — nothing else changes.</p>
     </div>
   </div>
-  <p class="small-note">Email can take an extra step or two — Gmail, for example, needs an app password rather than a simple key. Claude walks you through it.</p>
+  <p class="small-note">If your tool isn't in the connector directory, leave it for now — start with the ones that are, and get the brief running first.</p>
 </section>
 
-<!-- 11. STEP 2 — THE JUDGMENT STEP + AUTH -->
+<!-- 11. STEP 2 — THE JUDGMENT STEP (PROJECT INSTRUCTIONS) -->
 <section class="slide dense">
   <div class="slide-num" data-label="Plan step 2 · The judgment"></div>
   <div class="eyebrow">The one step that needs a brain</div>
-  <h2>Step 2 — a <em>CLAUDE.md</em> tells it what "matters" means.</h2>
-  <p>How does Claude know what to sort <em>toward</em>? With a <code>CLAUDE.md</code>: a plain file of instructions that Claude reads automatically before it starts work. You keep it in the script's folder, and every morning Claude reads it before it sorts. It's the one thing you truly shape here.</p>
+  <h2>Step 2 — your <em>instructions</em> say what "matters" means.</h2>
+  <p>How does Claude know what to sort <em>toward</em>? From your project's <strong>instructions</strong>: a box of plain-English rules that every task in the project reads before it starts. Every morning, the task reads them before it sorts. It's the one thing you truly shape here.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">📄 Your <code>CLAUDE.md</code> — what it should care about</div>
-      <p>Write what urgent means <em>to you</em>: <em>"Flag anything from a client, or with a deadline today. Skip newsletters. Keep it to five lines."</em> Change that file and the whole brief changes — no code touched. Tune it over the first few mornings until it thinks like you.</p>
+      <div class="eyebrow">📄 Your instructions — what it should care about</div>
+      <p>Write what urgent means <em>to you</em>: <em>"Flag anything from a client, or with a deadline today. Skip newsletters. Keep it to five lines."</em> Change them and tomorrow's brief changes — nothing else touched. Tune them over the first few mornings until it thinks like you.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🔌 How the script reaches Claude</div>
-      <p>Run <code>claude setup-token</code> once — a <strong>one-year pass</strong> that lets the script use the Claude you already pay for. Free, no extra bill. (An <strong>API key</strong> is the other way — pennies a month; you don't need it today, but remember it: next class your agent gets its own.)</p>
+      <div class="eyebrow">✍️ Only you edit them</div>
+      <p>The task reads your instructions every morning but never changes them. What matters stays <strong>your call</strong> — written down once, applied every day.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">💡</span>
-    <p><strong>That <code>CLAUDE.md</code> is the seed of an agent.</strong> Today it's a short file doing one job — sorting your brief. Next class, a bigger version of that same file becomes an agent's whole personality: what it's for, what it's allowed to do, how it decides.</p>
+    <p><strong>Those instructions are the seed of an agent.</strong> Today they do one job — sorting your brief. Next class, an agent in this same project follows them too, and starts keeping its own memory of what it learns from you.</p>
   </div>
 </section>
 
@@ -1031,16 +968,16 @@
 <section class="slide">
   <div class="slide-num" data-label="Plan step 3 · Deliver + schedule"></div>
   <div class="eyebrow">Send it, and set it loose</div>
-  <h2>Step 3 — show you the brief, then set the alarm.</h2>
-  <p>Two small pieces to finish. Claude wires both — you just approve when it asks.</p>
+  <h2>Step 3 — save the brief, then set the alarm.</h2>
+  <p>Two small pieces to finish. Claude sets up both — you just approve when it asks.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">🖥️ Deliver it to your screen</div>
-      <p>The script <strong>saves the brief as a file and pops it open</strong> when it finishes — it's waiting on your screen when you sit down. No email, no accounts, nothing sent: it only reads your sources and writes to your own machine. (Later, send it to email or Slack instead — same brief, different doorway.)</p>
+      <div class="eyebrow">📄 Where the brief lands</div>
+      <p>Each morning's brief is <strong>saved in your project</strong>, dated, so you keep a history. Open it from your laptop or the Claude app on your phone. Nothing is sent anywhere: it only reads your sources and writes the brief.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">⏰ Schedule it + catch-up</div>
-      <p>Claude sets the built-in scheduler to run it every morning at your time — <em>and</em> writes in the <strong>catch-up check</strong> so a missed run (laptop asleep) fires on the next wake. Tell it the time; that's your only input.</p>
+      <div class="eyebrow">⏰ The schedule</div>
+      <p>Pick the time — say, weekdays at 7:00am. Leave <strong>Require this computer</strong> off unless a source lives only on your computer. The time is your only input.</p>
     </div>
   </div>
 </section>
@@ -1050,42 +987,42 @@
   <div class="slide-num" data-label="Plan step 4 · Prove it"></div>
   <div class="eyebrow">Don't assume — run it</div>
   <h2>Step 4 — run it once, live, right now.</h2>
-  <p>The plan's last step: don't wait until tomorrow morning to find out if it works. Run the script by hand, in the room, and watch the brief pop open on your screen. Then confirm the schedule is set so it fires on its own from now on.</p>
+  <p>The plan's last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.</p>
   <ul class="numbered">
-    <li><strong>1.</strong> Run it now → the connections fetch, Claude sorts, the brief <strong>opens on your screen</strong>.</li>
-    <li><strong>2.</strong> Read it → does the "needs you today" list actually look right? Tell Claude what to tune.</li>
-    <li><strong>3.</strong> Confirm the schedule → ask Claude to show it's set for every morning at your time.</li>
+    <li><strong>1.</strong> Run it now → ask Claude to run the task once: it pulls your sources, sorts, and <strong>writes the brief</strong>.</li>
+    <li><strong>2.</strong> Read it → does the "needs you today" list actually look right? Change your instructions, not the brief.</li>
+    <li><strong>3.</strong> Confirm the schedule → the task shows when it runs next: tomorrow, at your time.</li>
   </ul>
   <div class="done-strip">
     <span class="done-mark">✅</span>
-    <p><strong>A real brief on your screen, and a schedule that runs tomorrow without you</strong> — that's a working automation, live on your own machine.</p>
+    <p><strong>A real brief in your project, and a schedule that runs tomorrow without you</strong> — laptop open or closed. That's a working automation.</p>
   </div>
-  <p class="small-note">Something off — brief empty, didn't pop open, a connection errored? Tell Claude exactly what you saw; it diagnoses and re-runs. That's the habit for anything you build: describe what you see, and let Claude fix it.</p>
+  <p class="small-note">Something off — brief empty, a source missing, a connector errored? Tell Claude exactly what you saw; it diagnoses and re-runs. That's the habit for anything you build: describe what you see, and let Claude fix it.</p>
 </section>
 
 <!-- ============================================================
      PART 3 — EXTEND, RELIABILITY, RECAP
      ============================================================ -->
 
-<!-- 14. THE TWO SAFE ACTIONS + THE FRONTIER -->
+<!-- 14. MORE FIXED JOBS + THE LINE TO CLASS 5 -->
 <section class="slide dense">
   <div class="slide-num" data-label="Extend it"></div>
   <div class="eyebrow">Same automation — a few more jobs</div>
   <h2>Things you can extend this automation to do.</h2>
-  <p>Your briefing is one routine, running on fixed rules. Once it works, you can add more fixed jobs to that same routine — still predictable, still on your schedule, still nothing sent without you. Two easy, useful additions:</p>
+  <p>Your briefing is one task, running on fixed steps. Once it works, you can add more fixed jobs — still predictable, still on your schedule, still read-only. Two easy, useful additions:</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">✍️ Draft your replies</div>
-      <p>For the emails you answer the same way, have it <strong>write the drafts</strong> — waiting for you to read and send. The hard part (the writing) is done; you keep the final click. It never sends on its own.</p>
+      <div class="eyebrow">📅 A weekly wrap-up</div>
+      <p>A second task for Friday afternoon: <strong>what got done this week, what slipped, what's coming Monday</strong>. Same sources, same instructions, different schedule.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">✅ File your to-dos</div>
-      <p>Have it turn the day's action items into <strong>actual tasks in Todoist</strong> — on your list, ready, before you sat down. One more fixed job added to the same morning run.</p>
+      <div class="eyebrow">📰 Watch a topic</div>
+      <p>Add a step that searches the news for your industry or a competitor, and puts <strong>the one headline worth knowing</strong> in your brief.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🧩</span>
-    <p><strong>These are still the automation — fixed jobs you set once.</strong> It's not deciding for itself, it's doing the same things every morning. The leap to software that <em>chooses</em> what to do — and acts on your accounts — is a different thing entirely. That's Class 5.</p>
+    <p><strong>These are still the automation — fixed steps you wrote.</strong> It reads and reports; it doesn't act. The leap to something that <em>does</em> things for you — drafts the reply, files the task, preps the meeting — is a different thing entirely. That's Class 5.</p>
   </div>
 </section>
 
@@ -1094,18 +1031,18 @@
   <div class="slide-num" data-label="When it breaks"></div>
   <div class="eyebrow">A machine you trust has to be honest</div>
   <h2>Make it tell you when it <em>breaks</em>.</h2>
-  <p>An automation you rely on has one real danger: it stops working and you don't notice. A briefing that silently dies is worse than no briefing, because you've stopped checking by hand. So the last thing worth building is a script that's honest about its own health.</p>
+  <p>An automation you rely on has one real danger: it stops working and you don't notice. A briefing that silently dies is worse than no briefing, because you've stopped checking by hand. So the last thing worth building is a brief that's honest about its own health.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📣 It tells you when it fails</div>
-      <p>If a connection errors or Claude can't be reached, the script pops up a plain <strong>"your briefing broke — here's why"</strong> notification instead of just going dark. You always know it's alive.</p>
+      <p>If a connector is disconnected or a source can't be reached, the brief says so <strong>at the top</strong> — <em>"couldn't reach your calendar this morning"</em> — instead of quietly leaving it out.</p>
     </div>
     <div class="card">
       <div class="eyebrow">☀️ Silence never means "fine"</div>
-      <p>It still shows a brief on a quiet day — <em>"all clear, nothing urgent"</em> — so <strong>nothing on your screen</strong> means something's wrong, never "all good." Ask Claude to build in both.</p>
+      <p>It still writes a brief on a quiet day — <em>"all clear, nothing urgent"</em> — so <strong>no brief</strong> means something's wrong, never "all good." Add both to your project's instructions.</p>
     </div>
   </div>
-  <p class="small-note">This is the difference between a toy and a tool: logging what it did, and never lying to you by staying silent. It's a small ask of Claude and it's what makes the thing trustworthy enough to actually rely on.</p>
+  <p class="small-note">This is the difference between a toy and a tool: saying what it couldn't do, and never lying to you by staying silent. It's two lines in your instructions, and it's what makes the thing trustworthy enough to actually rely on.</p>
 </section>
 
 <!-- 16. HOMEWORK -->
@@ -1113,24 +1050,24 @@
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework · do it this week</div>
   <h2>Plug in one more source — one that's <em>yours</em>.</h2>
-  <p>You built the machine with three starter connections. Your homework: add <strong>one source that's specific to your work</strong> — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.</p>
+  <p>You built it with three starter sources. Your homework: add <strong>one source that's specific to your work</strong> — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Pick the one that fits you</div>
       <ul>
-        <li><strong>Todoist</strong> — copy one API token, and your real tasks join the brief.</li>
-        <li><strong>Slack</strong> — messages that mention you, from a workspace you own.</li>
-        <li><strong>Your dashboard</strong> — pull yesterday's key numbers into the brief.</li>
+        <li><strong>The one you skipped</strong> — whichever of email, calendar, or tasks didn't make your first three.</li>
+        <li><strong>Notion</strong> — the page where you plan your week.</li>
+        <li><strong>Google Drive</strong> — the sheet where you track your numbers.</li>
       </ul>
     </div>
     <div class="card">
       <div class="eyebrow">You know how</div>
-      <p>Same pattern as today: tell Claude the source, have it build a <strong>new separate connection</strong>, test it on its own, then add it to the brief. Plan mode, a copy-paste key in your <code>.env</code>, done.</p>
+      <p>Same pattern as today: connect the app, <strong>set its permissions</strong>, add one step to the task, then run it once to check. Read-only, done.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🎓</span>
-    <p><strong>No step-by-step this time.</strong> You know plan mode, reference docs, keys in a <code>.env</code>, and one connection per app. Adding a source is the same move you made three times today — now do it once for something only you would think to track.</p>
+    <p><strong>No step-by-step this time.</strong> You know projects, connectors, permissions, and instructions. Adding a source is the same move you made three times today — now do it once for something only you would think to track.</p>
   </div>
 </section>
 
@@ -1140,16 +1077,16 @@
   <div class="eyebrow">That's the class — here's what now runs</div>
   <h2>You built something that works while you sleep.</h2>
   <ul>
-    <li class="done-check">A <strong>script on your own computer</strong> that reads your sources and briefs you every morning.</li>
-    <li class="done-check">A <strong>judgment step</strong> — Claude sorting signal from noise — running on the plan you already pay for.</li>
-    <li class="done-check">A <strong>schedule</strong> that runs it without you, and catches up when your machine wakes.</li>
-    <li class="done-check">The habit of a tool that <strong>tells you when it breaks</strong> instead of dying quietly.</li>
+    <li class="done-check">A <strong>scheduled task</strong> that reads your sources and briefs you every morning — laptop open or closed.</li>
+    <li class="done-check"><strong>Fixed steps you wrote</strong>, with one judgment step that follows instructions only you edit.</li>
+    <li class="done-check">Connectors <strong>locked to read-only</strong> by a setting, not a promise.</li>
+    <li class="done-check">The habit of a tool that <strong>tells you when it breaks</strong> instead of going quiet.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🧠</span>
-    <p><strong>Next class, we give it a brain.</strong> The briefing you built becomes one of an agent's <em>tools</em> — and instead of running on a fixed schedule, the agent gets its own key, decides <em>when</em> to use it, and starts making the judgment calls itself.</p>
+    <p><strong>Next class, you get someone to hand the work to.</strong> An agent joins this same project. It reads your brief, you tell it what to handle — <em>"prep me for the 2pm," "draft the reply to #2"</em> — and it does the work.</p>
   </div>
-  <p class="small-note">Automation was fixed rules doing a chore for you. Agents are judgment deciding what to do. Same briefing you built today — now with a driver that can think. That's Class 5.</p>
+  <p class="small-note">An automation follows steps you wrote, on a schedule. An agent decides its own steps toward what you ask. Same project, same brief — now with someone to hand the work to. That's Class 5.</p>
 </section>
 
 </div>

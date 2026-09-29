@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-The student has completed Classes 1-3 (live site, dashboard, dual-web). Today they build a "morning briefing" — a Python script on their own computer that reads a few sources (email/calendar/tasks/Slack/etc, all read-only), asks Claude to judge what matters, and writes one brief, on a schedule. NEW territory this class: API keys and .env files. The critical safety rule: secrets go in .env (never in the Claude chat, never to GitHub via .gitignore) — the student pastes the real key into the .env file themselves. Also teach the deterministic-vs-judgment split (do everything possible with fixed rules, call Claude only for the "what matters" step) and the laptop catch-up check (a missed scheduled run fires on next wake).
+This deck stands alone: do not assume the student took any earlier class. They have the Claude app on a paid plan. Today they build a "morning briefing" inside a Cowork project in the Claude app: a scheduled task that runs in the cloud (laptop open or closed), reads a few sources through connectors (email/calendar/tasks, all read-only), decides what matters using the project instructions, and writes one brief. No code, no keys, no terminal. NEW territory this class: connecting real accounts. The critical safety rules: read-only is a SETTING (connector permissions: send, delete and anything that changes an account set to Blocked), and no password or key is ever typed into the chat. Also teach the fixed-rule-vs-judgment split (write every fixed step as an exact instruction; only "what matters" is judgment) and the "Require this computer" toggle (only for sources that live on the computer).
 
 ---
 
@@ -47,7 +47,7 @@ Class 4 · Making work happen without you
 
 # The work you do by hand, done without you.
 
-Automations: teach your own computer to run the repetitive parts of your day, so you don't have to.
+Automations: set Claude to run the repetitive parts of your day on a schedule, so you don't have to.
 
 ## Slide 2 · The finish line
 
@@ -55,9 +55,9 @@ Automations: teach your own computer to run the repetitive parts of your day, so
 
 _Let's look at the end first_
 
-## By the end of today, a script runs your morning for you.
+## By the end of today, your morning runs itself.
 
-Every morning you open the same handful of things and piece together "what actually needs me today." By the end of class, a small program on your own computer does that — at a time you set, before you sit down — and hands you one short brief of what matters.
+Every morning you open the same handful of things and piece together "what actually needs me today." By the end of class, a scheduled task in Claude does that — at a time you set, before you sit down, even with your laptop closed — and hands you one short brief of what matters.
 
 _What you do by hand now_
 
@@ -65,9 +65,9 @@ Open your calendar, your task list, the news, your inbox — and reassemble the 
 
 _What runs for you after today_
 
-One script reads all of it, decides what's worth your attention, and delivers a single triaged brief — done before you open your laptop .
+One task reads all of it, decides what's worth your attention, and writes a single triaged brief — done before you open your laptop .
 
-Here's how it works: you describe what you want, Claude writes and wires it, you check the result. Today we point it at your own repetitive work.
+Here's how it works: you describe what you want, Claude sets it up, you check the result. Today we point it at your own repetitive work.
 
 ## Slide 3 · What this is
 
@@ -99,7 +99,7 @@ Notice what they share: each one reads something and makes a small judgment — 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the category so the whole class clicks: an automation does the busywork so the student doesn't. The examples (sort my inbox, draft the reply, summarize the thread, chase follow-ups) share one thing worth naming — each READS something and makes a small JUDGMENT (what's urgent, how to reply, what matters). That "deciding" is the interesting part and exactly what today's build hands to Claude. If a student thinks automation means "rigid robotic macros," reframe it: the value is the judgment step, not just moving data around.
+Teach the category so the whole class clicks: an automation does the busywork so the student doesn't. The examples (sort my inbox, draft the reply, summarize the thread, chase follow-ups) share one thing worth naming — each READS something and makes a small JUDGMENT (what's urgent, how to reply, what matters). That "deciding" is the interesting part and exactly the one step today's build leaves to Claude. If a student thinks automation means "rigid robotic macros," reframe it: the value is the judgment step, not just moving data around.
 
 ## Slide 4 · The thing itself
 
@@ -109,7 +109,7 @@ _What lands in front of you_
 
 ## The morning briefing — one screen, already sorted.
 
-Here's what the script produces. It pulls from the places your day actually lives, and instead of dumping raw lists, it uses judgment to sort the signal from the noise — because reading everything is the chore we're removing.
+Here's what the task produces. It pulls from the places your day actually lives, and instead of dumping raw lists, it uses judgment to sort the signal from the noise — because reading everything is the chore we're removing.
 
 _☀️ Your brief, 7:00am_
 
@@ -119,15 +119,17 @@ Worth a glance: a headline about your industry, three tasks that can wait.
 
 Handled / noise: everything it decided you can safely ignore.
 
+Every item links to the email, meeting, or task it came from.
+
 _Why it feels different_
 
-It's not a raw feed — it's a decision . Something read all of it and told you where to look first. That "what matters" call is the part only judgment can do, and it's why the script calls in Claude at exactly that step.
+It's not a raw feed — it's a decision . Something read all of it and told you where to look first. That "what matters" call is the part only judgment can do, and it's the one step you leave to Claude's judgment.
 
 It reads, but never touches: it never sends, deletes, or moves anything in your accounts. It briefs you — you stay in control of every action.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The morning briefing, shown — teach why it feels different from a raw feed. It pulls from where their day actually lives and, instead of dumping lists, USES JUDGMENT to sort signal from noise (needs-you-today / worth-a-glance / handled-noise). Something read all of it and told them where to look first — that's the part only judgment can do, and why the script calls Claude at exactly that step. Reinforce the safety framing that recurs all class: it READS but never touches — never sends, deletes, or moves anything in their accounts. It briefs; they stay in control of every action. A worried student needs to hear that clearly.
+The morning briefing, shown — teach why it feels different from a raw feed. It pulls from where their day actually lives and, instead of dumping lists, USES JUDGMENT to sort signal from noise (needs-you-today / worth-a-glance / handled-noise). Something read all of it and told them where to look first — that's the part only judgment can do, and the one step they leave to Claude. Every item links back to the email, meeting or task it came from; mention it, because next class an agent works from those links. Reinforce the safety framing that recurs all class: it READS but never touches — never sends, deletes, or moves anything in their accounts. It briefs; they stay in control of every action. A worried student needs to hear that clearly.
 
 ## Slide 5 · The method
 
@@ -149,11 +151,11 @@ This is the skill you'll reuse for anything you automate, and it's the only real
 
 You don't have to map it perfectly alone — Claude helps you map it. Describe your routine roughly and it fills in the steps you skipped, asks about the cases you forgot, and makes sure nothing's missing before it builds. The mapping is a conversation, not a test.
 
-That's your morning, mapped. Hand it to Claude and it builds a script that does those steps for you — but first, one question sorts every step, and it changes how Claude builds each one. That's the next slide.
+That's your morning, mapped. Hand it to Claude and it sets up a task that does those steps for you — but first, one question sorts every step, and it changes how you write each one. That's the next slide.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The skill they'll reuse for ANYTHING they automate, and the only real work they do: map the process the way they actually do it, step by step, then hand the map to Claude — Claude builds the automation around it. They're not writing code, they're describing a routine. The reassurance to give: they don't have to map it perfectly alone — Claude helps map it, filling in skipped steps and asking about forgotten cases. Mapping is a conversation, not a test. If a student freezes on "I don't know how to describe my process," tell them to describe it roughly and let Claude interrogate it into completeness.
+The skill they'll reuse for ANYTHING they automate, and the only real work they do: map the process the way they actually do it, step by step, then hand the map to Claude — Claude sets up the automation around it. They're not writing code, they're describing a routine. The reassurance to give: they don't have to map it perfectly alone — Claude helps map it, filling in skipped steps and asking about forgotten cases. Mapping is a conversation, not a test. If a student freezes on "I don't know how to describe my process," tell them to describe it roughly and let Claude interrogate it into completeness.
 
 ## Slide 6 · The key question
 
@@ -166,22 +168,22 @@ _Ask this of every step you mapped_
 The same three-step process, filled in with real sources. Sort each step: most are deterministic — a fixed rule, one right answer — and only where a rule can't decide do you spend a judgment call. Watch how few need it:
 
  1 · Open your sources
- ⚙️ Fixed rule Pull today's calendar events — fetch a link. One right answer.
- ⚙️ Fixed rule Pull your unread emails — grab the list. Mechanical.
- ⚙️ Fixed rule Pull today's + overdue tasks — read your task list. Mechanical.
+ ⚙️ Fixed rule Pull today's calendar events — the same request every morning. One right answer.
+ ⚙️ Fixed rule Pull your unread emails — unread, last 24 hours. Mechanical.
+ ⚙️ Fixed rule Pull today's + overdue tasks — due today or overdue. Mechanical.
  ⚙️ Fixed rule Pull yesterday's dashboard numbers — read the data. Same every run.
  2 · Decide what matters
  🧠 Judgment Pick the urgent emails + what else matters — no rule tells urgent from noise. This is the AI call.
  3 · Write the short version
- ⚙️ Fixed rule Save the brief + pop it open — write a file, show it. Mechanical.
+ ⚙️ Fixed rule Save the brief — same format, same place. Mechanical.
 
  🎯
 
-Five of six steps are plain code — only "what matters" goes to Claude. Do everything you can deterministically, call Claude only where you can't. Two reasons: cost (fixed rules are free; Claude calls add up as the task grows) and consistency (fixed rules give the same answer every run; Claude may vary).
+Five of six steps are fixed rules. Only "what matters" needs judgment. Write every fixed step as an exact instruction (which emails, which calendar, what format) and leave Claude to decide only what no rule can. That's what makes it an automation: you decide the steps, in advance, and they're the same every morning. Two reasons: consistency (exact steps give you the same brief every run; vague ones let it wander) and cost (the less it has to figure out, the less of your plan each run uses).
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The concept that makes automations cheap and reliable — teach it well. Ask of every mapped step: can a FIXED RULE do it (deterministic — one right answer) or does it need JUDGMENT? Most steps are deterministic (fetch the calendar, pull unread emails, read the task list — mechanical, same every run); only where a rule can't decide (what's urgent vs noise) do you spend a judgment call to Claude. The discipline: do everything you can deterministically, call Claude only where you can't. Two reasons, both worth stating — COST (fixed rules are free; Claude calls add up as the task grows) and CONSISTENCY (fixed rules give the same answer every run; Claude may vary). If a student wants to "just let Claude do all of it," this is the pushback: that's slower, pricier, and less predictable than it needs to be.
+The concept that makes automations reliable — teach it well. Ask of every mapped step: can a FIXED RULE do it (one right answer, same every run) or does it need JUDGMENT? Most steps are fixed (pull today's calendar, unread email from the last 24 hours, tasks due today); only "what's urgent vs noise" needs judgment. The discipline: write every fixed step as an exact instruction, and leave Claude to decide only what no rule can. That is the line between an automation and an agent: in an automation, the student decides the steps in advance and they never change; an agent (next class) decides its own steps. Two reasons — CONSISTENCY (exact instructions give the same brief every morning; vague ones let it wander) and COST (the less it has to figure out, the less plan usage each run takes). If a student wants to just say "give me a morning brief," this is the pushback: a vague instruction hands Claude the steps, which makes it an agent, and the brief will drift from morning to morning.
 
 ## Slide 7 · Pluggable
 
@@ -191,15 +193,15 @@ _You choose what it watches_
 
 ## Wire in the places your work actually lives .
 
-Each app gets its own small, separate connection — so you connect whatever's relevant to you . Most are one copy-paste key. Pick about three to start so we get your briefing running today; add the rest whenever you want.
+Each app gets its own connector — a ready-made link inside the Claude app. One sign-in per app, no keys to copy, no code. Pick about three to start so we get your briefing running today; add the rest whenever you want.
 
  📧 Email read-only
 
 Your unread inbox — so the brief flags what's urgent.
 
- 💬 Slack
+ 📅 Calendar
 
-Recent messages and mentions from a workspace you own.
+Today's meetings, and what they need from you.
 
  ✅ Task manager
 
@@ -209,25 +211,25 @@ Todoist, or similar — today's and overdue tasks.
 
 A page or database you keep your work in.
 
- 📅 Calendar
+ 📁 Google Drive
 
-Today's events, via a private link — no sign-in.
+A doc or sheet you keep plans or numbers in.
 
  📊 Your dashboard
 
-Yesterday's key numbers, from whatever you track them in.
+Yesterday's key numbers, if the tool you track them in has a connector.
 
  🔌
 
-These six are just a start — you can wire in almost anything. The one requirement: the tool has to offer a way in, either an API (a key you copy) or an MCP server (a ready-made connector). If a service has either, Claude can read from it. Everything stays read-only — it never sends or changes anything.
+These six are just a start. The Claude app has a directory of connectors — if your tool is in it, connecting it is one sign-in. Everything stays read-only , and in a few slides you'll lock that in as a setting.
 
-Why separate pieces? You can add a source without touching the others — and next class, this whole briefing becomes a tool your agent can use .
+Why one connector per app? If one breaks, the others keep working, and adding a source never touches the rest. Next class, an agent uses these same connectors to act on your brief.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the architecture idea and the one requirement. Each app gets its own small separate connection, so they wire in whatever's relevant to THEM — pick ~3 to start so the briefing runs today, add more later. The one requirement for any source: it must offer a way in — an API (a key you copy) or an MCP server (a ready-made connector). If a service has either, Claude can read it; everything stays read-only. Why separate pieces matters (say it — it pays off next class): you can add a source without touching the others, AND next class this whole briefing becomes a tool an AGENT can use.
+Teach the architecture idea and the one requirement. Each app gets its own connector — a ready-made link inside the Claude app, one sign-in, no keys to copy — so they plug in whatever's relevant to THEM. Pick ~3 to start so the briefing runs today, add more later. The one requirement for any source: it has to be in the Claude app's connector directory. If it isn't, leave it for now rather than improvising a workaround. Everything stays read-only, and a few slides later they lock that in as a setting. Why one connector per app matters (say it — it pays off next class): if one breaks the others keep working, adding a source never touches the rest, AND next class an agent uses these same connectors to act on the brief.
 
-The bigger principle to extrapolate — teach it, because it applies to EVERYTHING they build, not just source-picking: start narrow and small, prove it works end-to-end, THEN tack things on. "Pick three sources" is one instance of a general rule. If a student tries to do too much at the start — every source, every feature, all at once — they create a huge debug backlog: many things broken simultaneously, and it becomes near-impossible to deploy or fix, because you can't tell which piece failed or isolate a problem. Whereas a narrow first version that actually runs gives you a working baseline to add to one piece at a time, testing each. So if a student wants to connect ten things at once, or pile on features before the core runs, steer them back: get the smallest working version live first, then grow it. This is the same "core first, then extend" idea as the Plan-the-build note — this is the WHY behind it: incremental building keeps problems isolated and fixable; big-bang building buries them.
+The bigger principle to extrapolate — teach it, because it applies to EVERYTHING they build, not just source-picking: start narrow and small, prove it works end-to-end, THEN tack things on. "Pick three sources" is one instance of a general rule. If a student tries to do too much at the start — every source, every feature, all at once — they create a huge fix-it backlog: many things broken simultaneously, and it becomes near-impossible to tell which piece failed. Whereas a narrow first version that actually runs gives them a working baseline to add to one piece at a time, testing each. So if a student wants to connect ten things at once, or pile on features before the core runs, steer them back: get the smallest working version running first, then grow it. This is the same "core first, then extend" idea as the Set-up-the-build note — this is the WHY behind it.
 
 ## Slide 8 · Runs without you
 
@@ -235,228 +237,189 @@ The bigger principle to extrapolate — teach it, because it applies to EVERYTHI
 
 _The part that makes it an automation_
 
-## It runs on a schedule — on your own computer.
+## It runs on a schedule — even with your laptop closed .
 
-No website, no cloud service to rent. The script lives on your Mac (or PC) , and your computer's own built-in scheduler runs it at the time you choose — you set it once and it happens each morning.
+Nothing to install, no server to rent. Your briefing is a scheduled task : you set the time once, and Claude runs it in the cloud every morning — whether your computer is on, asleep, or packed in a bag.
 
  ⏰ 7:00am
- The alarm goes off
+ The task starts
 
-Laptop awake
+Laptop open
 
  Your brief runs
  Waiting when you sit down
 
  Laptop closed
 
- Run missed
- The scheduler won't wake it
+ Your brief still runs
+ It runs in the cloud, not on your laptop
 
- On wake
+_☁️ Runs in the cloud_
 
- It catches up
- Runs as soon as you open it
+ The task lives in your Claude account, not on your machine. Read it from your laptop or the Claude app on your phone — wherever you are when the morning starts.
 
-_⏰ The built-in scheduler_
+_💻 The one exception_
 
- Every Mac and PC ships with one — a quiet clock that runs programs at set times. Claude sets it up: "run this at 7am every day." On Mac it's launchd ; on Windows, Task Scheduler . You never touch the details.
-
-_😴 How catch-up works_
-
-A missed run isn't recovered for free. Every time the machine wakes, the script checks "did I already run today?" — if not, it runs now.
-
-Ask Claude for the catch-up check explicitly — it's what makes a laptop automation you can trust. (Off all weekend is the one gap it can't cover — a good reason later work moves off your laptop.)
+If your brief needs a file that only exists on your computer, turn on Require this computer . Then it only runs while your computer is awake. Everyone else leaves it off.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach what makes it an automation, and the catch. The script lives on THEIR computer (no cloud to rent), and the computer's built-in scheduler runs it at a set time — launchd on Mac, Task Scheduler on Windows; Claude sets it up, they never touch the details. The catch worth understanding: it's a laptop, so if it's asleep/closed at the scheduled time, that run is simply MISSED — the scheduler won't wake it. The fix Claude BUILDS IN: a catch-up check — every time the machine wakes, the script asks "did I already run today?" and if not, runs now. Emphasize this is a real coded step, not something the scheduler does for free — it's what makes a laptop automation trustworthy. (Off all weekend is the one gap it can't cover — a reason later work moves off the laptop.)
+Teach what makes it an automation, and the one exception. The briefing is a SCHEDULED TASK: they set the time once and Claude runs it in the cloud every morning, whether their computer is on, asleep or closed. Nothing to install, no server. They can read the brief from their laptop or from the Claude app on their phone. The exception worth understanding: the "Require this computer" toggle. If a source is a file that only exists on their computer, they turn it on, and then the task only runs while that computer is awake. Everyone else leaves it off. If a student asks "what if my laptop is closed?", this slide is the answer: it still runs.
 
-## Slide 9 · Plan mode
-
-**What the student sees on this slide:**
-
-_Before you build anything big_
-
-## Use plan mode — let Claude plan before it builds.
-
-For a job with this many moving parts — several connections, a judgment step, delivery, a schedule — don't let Claude charge straight in. Switch to plan mode first: it thinks the whole thing through and hands you a plan to approve before a single file is written.
-
-_How to turn it on_
-
-Press Shift+Tab to cycle the modes and stop on Plan mode . Describe what you want — Claude proposes, you approve or push back.
-
-_Why it's worth it_
-
-Build on the fly and Claude guesses at each step — more mistakes, more debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.
-
- 📖
-
-Plans come out technical by default — make Claude write them in plain English. Add "explain it like I'm not technical" to your request, or set that rule once in your CLAUDE.md (a file of standing instructions Claude reads every session — more on it in a few slides) so every plan is readable before you approve.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Teach plan mode from scratch — assume they've never used it. For a job with this many moving parts (several connections, a judgment step, delivery, a schedule), don't let Claude charge in: Shift+Tab to Plan mode, describe the whole job, approve the plan before any file is written. Building on the fly means Claude guesses at each step; planning first catches wrong turns while they're still words. Non-technical add-on that matters: make Claude write the plan in plain English ("explain it like I'm not technical," or set it in CLAUDE.md) so they can actually judge it before approving.
-
-## Slide 10 · Reference documents
+## Slide 9 · The project
 
 **What the student sees on this slide:**
 
-_Your project's knowledge base_
+_One home for everything_
 
-## Reference documents — a Wikipedia for your project.
+## Build it inside a project — one home for it all.
 
-Claude doesn't remember yesterday's chat. Reference documents are plain files in your project that record how it works — what each connection does, how it's scheduled, why it's built that way. So you (or Claude in a fresh session) can read up and get the full picture — and you get most of them for free.
+In the Claude app, a project keeps everything for one job in one place. Start a new project for your briefing — everything you build today, and next class, lives there.
 
-_During the build → the plan doc_
+_What a project holds_
 
-The plan from plan mode is a reference doc. Claude saves it and works against it to stay on task. No extra effort from you — approving the plan already created it.
+Your instructions (what matters to you), the scheduled task that writes your brief, and every brief it has written.
 
-_At the very end → the architecture doc_
+_Why it beats a plain chat_
 
-When it's built, have Claude write an architecture doc : what each connection pulls, where the judgment step lives, how it's scheduled. This is the one doc worth asking for explicitly.
+Claude doesn't remember yesterday's chat — but a project keeps its instructions. Every task in it reads them before it starts, every morning, so you set them once .
 
  💡
 
-Why it matters here especially: next class you'll re-open this project and hand this whole briefing to an agent as a tool. A good architecture doc means Claude instantly knows how everything fits — instead of relearning your script from scratch.
+Why it matters here especially: next class, an agent joins this same project. It reads the same briefs and follows the same instructions — so nothing you build today gets rebuilt.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach reference docs from scratch — assume they've never used them. Claude doesn't remember yesterday's chat; reference docs are plain files recording how the project works (what each connection does, how it's scheduled, why). They get the PLAN doc for free (approving the plan created it) and should ask for an ARCHITECTURE doc at the end. Why it matters ESPECIALLY here: next class they reopen this project and hand this whole briefing to an agent as a tool — a good architecture doc means Claude instantly knows how everything fits instead of relearning the script from scratch. Worth setting the "update the doc before every push" CLAUDE.md rule.
+Teach the project as the home for the whole build. In the Claude app, a project keeps everything for one job in one place: their instructions (what matters to them), the scheduled task, and every brief it writes. Claude doesn't remember yesterday's chat, but a project keeps its instructions, and every task in it reads them before it starts, so they set them once. Why it matters especially here: next class an agent joins this SAME project, reads the same briefs and follows the same instructions. Nothing built today gets rebuilt. Make sure they create a new project for the briefing rather than working in a loose chat.
 
-## Slide 11 · Plan the build
+## Slide 10 · Set up the build
 
 **What the student sees on this slide:**
 
-_One prompt plans the whole build — you review it_
+_One prompt sets up the whole build — you check it_
 
-## Plan the whole build with one prompt.
+## Set up the whole build with one prompt.
 
-Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, describe the whole job once and it hands back a plan covering everything. Open Claude Code in a new folder for this project, switch to plan mode ( Shift+Tab ), and paste:
+In the Claude app, start a new project called Morning Briefing . In its message box, switch from Chat to Cowork , then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Build me a "morning briefing" — a Python script on my computer that reads three sources I'll choose (help me pick from my email, calendar, tasks, Slack, Notion, and my dashboard), then asks Claude to sort what actually matters and writes me one short brief. Everything stays read-only — it never sends or changes anything in my accounts; it just reads them and saves the brief as a file on my computer that pops open on my screen when it's done. I want to be able to add more sources later, and it should run on its own every morning. I'm not technical — keep the plan in plain English. Make a plan and show it to me before building anything.
+> Set up my morning briefing as a scheduled task in this project, running every weekday at 7:00am. First, ask me which tools I want it to read (my email, my calendar, my task list, or anything else I use) and help me pick three to start. For each one, agree with me on exactly what to pull, so it's the same every morning. For example: unread emails from the last 24 hours, today's calendar, tasks due today or overdue. Each morning, pull those, decide what actually needs me using this project's instructions, and write one short brief: what needs me today and why, my day in order, who's waiting on me, and what you skipped, with one line on why for each. Every item links to where it came from. Keep each day's brief so I have a history. It's read-only: never send, reply, delete, or change anything in my accounts. Use this app's connectors to reach my accounts. If one isn't connected, walk me through connecting it. Don't require my computer unless a source only exists there.
 
-_✋ Before you say "go" — these four stages (re-plan if any's missing)_
+_✋ Once it's set up — check it covered these four stages_
 
-- 1. The connections — a separate piece of code for each app (this matters — it's what next class reuses).
+- 1. The connectors — one for each app you picked, each connected before it runs.
 
-- 2. The judgment step — one call to Claude that sorts what matters from noise.
+- 2. The fixed steps — exactly which emails, which days, what format. The same every morning.
 
-- 3. Deliver + schedule — save the brief and pop it open on screen, and set it to run every morning.
+- 3. The judgment step — one step that decides what matters, using your project's instructions.
 
-- 4. Prove it — run it once, live, and watch the brief appear.
-
- 🧱
-
-Start with three sources or fewer. Get the whole pipeline working end-to-end first — read, sort, deliver — then pile on more. It's the rule for anything you build: get the core working, then add. Ten sources at once means debugging ten things before you ever see it run.
+- 4. Schedule + prove it — the time you chose, and one run right now so you see the brief.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-One prompt plans the whole automation; the student REVIEWS, doesn't paste more steps. Coach them to check the plan covers four stages: 1 the connections (a SEPARATE piece of code per app — this matters, it's what next class reuses), 2 the judgment step (one Claude call sorting what matters), 3 deliver + schedule (save the brief, pop it open, run every morning), 4 prove it (run once live, watch the brief appear). If any stage is missing, re-plan before approving. The discipline to reinforce hard: START WITH THREE SOURCES OR FEWER. Get the whole pipeline working end-to-end first, THEN add more — ten sources at once means debugging ten things before you ever see it run. This "core first, then extend" rule applies to everything they build.
+One prompt sets up the whole automation; the student answers its questions and checks the result, and doesn't paste more steps. They create a new project called Morning Briefing, switch its message box from Chat to Cowork (the toggle under the box), and paste the prompt there. If they paste it with Chat selected, have them switch to Cowork and paste again. The prompt has Claude ask which tools they want it to read (any tool with a connector, not just email, calendar and tasks), help them pick three to start, and agree, for each one, on exactly what to pull so it's the same every morning (the email/calendar/tasks rules in it are examples, not a fixed choice). That agreement is the key-question slide in practice: "check my email" is vague; "unread email from the last 24 hours" is a fixed rule. There is no separate plan step: after they paste it, Claude asks which tools to connect and what to pull from each, then sets it up. Once it's set up, coach them to check it covers four stages: 1 the connectors (one per app they picked, each connected before it runs), 2 the fixed steps (exactly which emails, which days, what format — the same every morning; this is the key-question slide made real), 3 the judgment step (one step that decides what matters, using the project's instructions), 4 schedule + prove it (their time, plus one run now so they see the brief). If any stage is missing, or the steps are vague ("check my email"), tell Claude what to fix. If it set the task to need their computer, ask why: it should only need it when a source lives only on that computer. The discipline to reinforce hard: START WITH THREE SOURCES OR FEWER. Get the whole thing working end-to-end first, THEN add more. This "core first, then extend" rule applies to everything they build.
 
-## Slide 12 · A new habit · Keys
+## Slide 11 · A new habit · Permissions
 
 **What the student sees on this slide:**
 
-_Something we haven't dealt with before_
+_Before it touches your accounts_
 
-## Your keys are passwords — keep them in a .env .
+## Read-only is a setting , not a promise.
 
-Connecting your own accounts means handling API keys . Treat a key like a password: anyone who has it can read what it unlocks. So it never gets typed into the script and it never leaves your machine. The tool for that is a .env file.
+Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and in Customize → Connectors you give each one a permission.
 
-_📄 What a .env is_
+_🔒 The three settings_
 
-A plain, private file that holds your keys — one per line, like TODOIST_KEY=abc123 . The script reads from it, so the keys live in one place , separate from the code, never pasted into the script itself.
+Always allow — it just does it. Needs approval — it asks you first. Blocked — it can't, even if it tried.
 
-_🚫 The one rule that matters_
+_✋ What to set today_
 
-The .env never goes to GitHub. Claude adds it to a .gitignore list so it's skipped on every push — because a key pushed to a public repo is a key the whole internet can grab.
+Allow the reading actions. Set send, delete, and anything that changes your accounts to Blocked. Your briefing only reads — so reading is all it's allowed to do.
 
  🛡️
 
-Never paste a key into the Claude Code chat — you put it in the .env yourself. Have Claude create the empty .env and tell you exactly where each key goes; then you open the file and paste the real key in. Anything you type into the chat leaves your machine — the whole point is that the secret never does.
+Never type a password into the chat. Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; Blocked is a lock.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-CRITICAL SECURITY TEACH — this is the most important note in the class. Connecting their own accounts means handling API keys, a first for the series. Teach: a key is a PASSWORD — anyone who has it can read what it unlocks. So two absolute rules: (1) the key goes in a .env file (a plain private file holding keys one per line, e.g. TODOIST_KEY=abc123 — the script reads from it, keys live in one place separate from the code); (2) the .env NEVER goes to GitHub — Claude adds it to .gitignore so it's skipped on every push, because a key in a public repo is a key the whole internet can grab.
+CRITICAL SAFETY TEACH — this is the most important note in the class. Connecting real accounts means Claude can reach them, so before the first run they decide exactly what it may do there. In Customize → Connectors every connector lists its actions (read, search, draft, send, delete…) and each gets one of three settings: Always allow (it just does it), Needs approval (it asks first), Blocked (it can't, even if it tried). Today's rule: allow the reading actions; set send, delete and anything that changes their accounts to Blocked. The briefing only reads, so reading is all it may do. Make the distinction land: "never send" written in the instructions is a request; Blocked is a lock. Next class they will loosen one or two of these on purpose, for drafting; today everything that writes is locked.
 
-The rule you must enforce every single time: NEVER have the student paste a real key into the Claude Code chat. Anything typed into the chat leaves their machine — the whole point is the secret never does. The correct flow: Claude creates the empty .env and tells them exactly where each key goes; then THEY open the .env file themselves and paste the real key in. If a student starts to paste a key to you in chat, STOP them and redirect to the .env file. This is the one place in the whole course where a wrong move has a real security cost — hold the line firmly and explain why.
+The second rule, enforced every time: NEVER have the student type a password or key into the chat. Connectors sign in through each app's own sign-in page, so Claude never needs one. If anything asks them to paste a password or key into the chat, they stop. If a student starts to paste one to you, STOP them and redirect to the connector's own sign-in. This is the one place in the class where a wrong move has a real security cost — hold the line firmly and explain why.
 
-## Slide 13 · Plan step 1 · The connections
+## Slide 12 · Plan step 1 · The connectors
 
 **What the student sees on this slide:**
 
-_Claude builds this part — you just hand over access_
+_Claude sets this part up — you just sign in_
 
-## Step 1 — Claude connects each app you picked.
+## Step 1 — connect each app you picked.
 
-You approved the plan, so Claude starts building. First it connects each app you picked — your calendar, your tasks, and so on. How it gets in is Claude's call, not yours. Each connection has one job: go get today's stuff from that app and bring it back.
+You approved the plan, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each connector has one job in this task: go get today's stuff from that app and bring it back.
 
 _🙋 Your only job_
 
-When Claude reaches an app, it tells you what it needs — usually a key from that app's settings (Todoist, Slack, Notion, your dashboard), or for Google Calendar a private link . You paste it into your .env , exactly as on the last slide.
+When Claude reaches an app that isn't connected, open Customize → Connectors , find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.
 
 _🧩 Why one per app_
 
-If your Slack connection breaks, your calendar still works. Adding an app later means adding one more connection — nothing else changes.
+If your task manager's connector breaks, your calendar still works. Adding an app later means adding one more connector — nothing else changes.
 
-Email can take an extra step or two — Gmail, for example, needs an app password rather than a simple key. Claude walks you through it.
+If your tool isn't in the connector directory, leave it for now — start with the ones that are, and get the brief running first.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the one-connection-per-app idea in plain words — never call these "readers" or "functions" to the student. Claude now writes a small piece of code for each app they picked; each has one job: go get today's stuff from that app and bring it back. We call these connections. Don't steer the student toward an API or an MCP server; Claude picks the way in for each app. The student's only job: when Claude reaches an app, get what it asks for — usually a key from the app's settings (Todoist, Slack, Notion, the dashboard), or for Google Calendar a private link — and paste it into the .env themselves (never into the chat). Email is the exception that takes extra steps (Gmail needs an app password, which needs 2-step verification on); walk them through it patiently. Why one per app: if one breaks the others keep working, adding an app later means adding one more connection and nothing else changes. If a connection fails, test that one connection on its own — that's why they're separate.
+Teach the one-connector-per-app idea in plain words. Claude checks each app they picked; if one isn't connected yet, it tells them. Their only job: open Customize → Connectors, find the app, sign in with that app's own sign-in page, then set its permissions as on the Permissions slide. Why one per app: if one breaks the others keep working, and adding an app later means adding one more connector with nothing else changing. If a connector fails, test that one on its own. If their tool isn't in the connector directory, leave it for now and get the brief running with the ones that are.
 
-## Slide 14 · Plan step 2 · The judgment
+## Slide 13 · Plan step 2 · The judgment
 
 **What the student sees on this slide:**
 
 _The one step that needs a brain_
 
-## Step 2 — a CLAUDE.md tells it what "matters" means.
+## Step 2 — your instructions say what "matters" means.
 
-How does Claude know what to sort toward ? With a CLAUDE.md : a plain file of instructions that Claude reads automatically before it starts work. You keep it in the script's folder, and every morning Claude reads it before it sorts. It's the one thing you truly shape here.
+How does Claude know what to sort toward ? From your project's instructions : a box of plain-English rules that every task in the project reads before it starts. Every morning, the task reads them before it sorts. It's the one thing you truly shape here.
 
-_📄 Your CLAUDE.md — what it should care about_
+_📄 Your instructions — what it should care about_
 
-Write what urgent means to you : "Flag anything from a client, or with a deadline today. Skip newsletters. Keep it to five lines." Change that file and the whole brief changes — no code touched. Tune it over the first few mornings until it thinks like you.
+Write what urgent means to you : "Flag anything from a client, or with a deadline today. Skip newsletters. Keep it to five lines." Change them and tomorrow's brief changes — nothing else touched. Tune them over the first few mornings until it thinks like you.
 
-_🔌 How the script reaches Claude_
+_✍️ Only you edit them_
 
-Run claude setup-token once — a one-year pass that lets the script use the Claude you already pay for. Free, no extra bill. (An API key is the other way — pennies a month; you don't need it today, but remember it: next class your agent gets its own.)
+The task reads your instructions every morning but never changes them. What matters stays your call — written down once, applied every day.
 
  💡
 
-That CLAUDE.md is the seed of an agent. Today it's a short file doing one job — sorting your brief. Next class, a bigger version of that same file becomes an agent's whole personality: what it's for, what it's allowed to do, how it decides.
+Those instructions are the seed of an agent. Today they do one job — sorting your brief. Next class, an agent in this same project follows them too, and starts keeping its own memory of what it learns from you.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach how the automation knows what "matters" — via a CLAUDE.md — teach it from scratch, assume they've never written one: a plain file of instructions Claude reads automatically before it starts work. It sits in the script's folder; every morning Claude reads their instructions from it before sorting, automatically. This is the ONE thing they truly shape. Teach them to write what urgent means TO THEM ("Flag anything from a client or with a deadline today. Skip newsletters. Keep it to five lines."). Change that file and the whole brief changes — no code touched; tune it over the first few mornings until it thinks like them.
+Teach how the automation knows what "matters" — via the project's INSTRUCTIONS. Teach it from scratch, assume they've never written any: a box of plain-English rules that every task in the project reads before it starts. Every morning the task reads them before sorting. This is the ONE thing they truly shape. Teach them to write what urgent means TO THEM ("Flag anything from a client or with a deadline today. Skip newsletters. Keep it to five lines."). Change the instructions and tomorrow's brief changes — nothing else touched; tune them over the first few mornings until it thinks like them. Only they edit the instructions; the task reads them but never changes them, so what matters stays their call. The big idea to plant: these instructions are the SEED OF AN AGENT — next class an agent in this same project follows them too, and starts keeping its own memory of what it learns from them.
 
-Also the connection method: run `claude setup-token` once — a one-year pass that lets the script use the Claude they already pay for (free, no extra bill). (An API key is the other way — pennies a month; not needed today, but foreshadow it: next class the agent gets its own.) The big idea to plant: this CLAUDE.md is the SEED OF AN AGENT — next class a bigger version of this same file becomes an agent's whole personality.
-
-## Slide 15 · Plan step 3 · Deliver + schedule
+## Slide 14 · Plan step 3 · Deliver + schedule
 
 **What the student sees on this slide:**
 
 _Send it, and set it loose_
 
-## Step 3 — show you the brief, then set the alarm.
+## Step 3 — save the brief, then set the alarm.
 
-Two small pieces to finish. Claude wires both — you just approve when it asks.
+Two small pieces to finish. Claude sets up both — you just approve when it asks.
 
-_🖥️ Deliver it to your screen_
+_📄 Where the brief lands_
 
-The script saves the brief as a file and pops it open when it finishes — it's waiting on your screen when you sit down. No email, no accounts, nothing sent: it only reads your sources and writes to your own machine. (Later, send it to email or Slack instead — same brief, different doorway.)
+Each morning's brief is saved in your project , dated, so you keep a history. Open it from your laptop or the Claude app on your phone. Nothing is sent anywhere: it only reads your sources and writes the brief.
 
-_⏰ Schedule it + catch-up_
+_⏰ The schedule_
 
-Claude sets the built-in scheduler to run it every morning at your time — and writes in the catch-up check so a missed run (laptop asleep) fires on the next wake. Tell it the time; that's your only input.
+Pick the time — say, weekdays at 7:00am. Leave Require this computer off unless a source lives only on your computer. The time is your only input.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two small pieces, Claude wires both, student approves. (1) Deliver: the script saves the brief as a file and POPS IT OPEN when done — waiting on their screen when they sit down; no email, no accounts, nothing sent — it only reads sources and writes to their own machine. (Later they can route it to email/Slack — same brief, different doorway.) (2) Schedule + catch-up: Claude sets the built-in scheduler for their chosen time AND writes in the catch-up check so a missed run (laptop asleep) fires on next wake. Their only input is the time. Nothing tricky to teach here; just confirm both halves (deliver AND the catch-up) are in.
+Two small pieces, Claude sets up both, student approves. (1) Where the brief lands: each morning's brief is saved in their project, dated, so they keep a history; they can open it from the laptop or the Claude app on their phone. Nothing is sent anywhere — it only reads sources and writes the brief. (2) The schedule: they pick the time (weekdays at 7:00am is a good default) and leave "Require this computer" off unless a source lives only on their computer. Their only input is the time.
 
-## Slide 16 · Plan step 4 · Prove it
+## Slide 15 · Plan step 4 · Prove it
 
 **What the student sees on this slide:**
 
@@ -464,25 +427,25 @@ _Don't assume — run it_
 
 ## Step 4 — run it once, live, right now.
 
-The plan's last step: don't wait until tomorrow morning to find out if it works. Run the script by hand, in the room, and watch the brief pop open on your screen. Then confirm the schedule is set so it fires on its own from now on.
+The plan's last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.
 
-- 1. Run it now → the connections fetch, Claude sorts, the brief opens on your screen .
+- 1. Run it now → ask Claude to run the task once: it pulls your sources, sorts, and writes the brief .
 
-- 2. Read it → does the "needs you today" list actually look right? Tell Claude what to tune.
+- 2. Read it → does the "needs you today" list actually look right? Change your instructions, not the brief.
 
-- 3. Confirm the schedule → ask Claude to show it's set for every morning at your time.
+- 3. Confirm the schedule → the task shows when it runs next: tomorrow, at your time.
 
  ✅
 
-A real brief on your screen, and a schedule that runs tomorrow without you — that's a working automation, live on your own machine.
+A real brief in your project, and a schedule that runs tomorrow without you — laptop open or closed. That's a working automation.
 
-Something off — brief empty, didn't pop open, a connection errored? Tell Claude exactly what you saw; it diagnoses and re-runs. That's the habit for anything you build: describe what you see, and let Claude fix it.
+Something off — brief empty, a source missing, a connector errored? Tell Claude exactly what you saw; it diagnoses and re-runs. That's the habit for anything you build: describe what you see, and let Claude fix it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Don't wait until tomorrow morning to find out if it works — run it now, live, in the room. Three checks: (1) run it → connections fetch, Claude sorts, brief opens on screen; (2) read it → does "needs you today" actually look right? tell Claude what to tune; (3) confirm the schedule is set for every morning. "A real brief on screen + a schedule that runs tomorrow without you" = a working automation. If something's off (brief empty, didn't open, a connection errored), describe exactly what they saw to Claude — that's the habit for anything they build. Push back on any urge to "trust it'll work tomorrow" — prove it live now, because a scheduled thing that silently fails is worse than none.
+Don't wait until tomorrow morning to find out if it works — run it now, live, in the room. Three checks: (1) ask Claude to run the task once → it pulls the sources, sorts, and writes the brief; (2) read it → does "needs you today" actually look right? If not, change the instructions, not the brief, so the fix sticks for every morning after; (3) confirm the schedule shows its next run at their time. "A real brief in the project + a schedule that runs tomorrow without you, laptop open or closed" = a working automation. If something's off (brief empty, a source missing, a connector errored), describe exactly what they saw to Claude — that's the habit for anything they build. Push back on any urge to "trust it'll work tomorrow" — prove it live now, because a scheduled thing that silently fails is worse than none.
 
-## Slide 17 · Extend it
+## Slide 16 · Extend it
 
 **What the student sees on this slide:**
 
@@ -490,25 +453,25 @@ _Same automation — a few more jobs_
 
 ## Things you can extend this automation to do.
 
-Your briefing is one routine, running on fixed rules. Once it works, you can add more fixed jobs to that same routine — still predictable, still on your schedule, still nothing sent without you. Two easy, useful additions:
+Your briefing is one task, running on fixed steps. Once it works, you can add more fixed jobs — still predictable, still on your schedule, still read-only. Two easy, useful additions:
 
-_✍️ Draft your replies_
+_📅 A weekly wrap-up_
 
-For the emails you answer the same way, have it write the drafts — waiting for you to read and send. The hard part (the writing) is done; you keep the final click. It never sends on its own.
+A second task for Friday afternoon: what got done this week, what slipped, what's coming Monday . Same sources, same instructions, different schedule.
 
-_✅ File your to-dos_
+_📰 Watch a topic_
 
-Have it turn the day's action items into actual tasks in Todoist — on your list, ready, before you sat down. One more fixed job added to the same morning run.
+Add a step that searches the news for your industry or a competitor, and puts the one headline worth knowing in your brief.
 
  🧩
 
-These are still the automation — fixed jobs you set once. It's not deciding for itself, it's doing the same things every morning. The leap to software that chooses what to do — and acts on your accounts — is a different thing entirely. That's Class 5.
+These are still the automation — fixed steps you wrote. It reads and reports; it doesn't act. The leap to something that does things for you — drafts the reply, files the task, preps the meeting — is a different thing entirely. That's Class 5.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Once the briefing works, they can add more FIXED jobs to the same routine — still predictable, still scheduled, still nothing sent without them. Two easy adds: draft replies for repetitive emails (waiting for them to read and send — the writing's done, they keep the final click, it never sends on its own), and file the day's action items as actual Todoist tasks. The crucial boundary to teach: these are still THE AUTOMATION — fixed jobs set once, doing the same things every morning. It is NOT deciding for itself. The leap to software that CHOOSES what to do and acts on their accounts is a different thing entirely — that's Class 5. If a student wants it to start taking actions autonomously, that's the line: today's tool is trustworthy precisely because it's fixed and read-only.
+Once the briefing works, they can add more FIXED jobs — still predictable, still scheduled, still read-only. Two easy adds: a weekly wrap-up task for Friday afternoon (what got done, what slipped, what's coming Monday — same sources and instructions, different schedule), and a step that searches the news for their industry or a competitor and puts the one headline worth knowing in the brief. The crucial boundary to teach: these are still THE AUTOMATION — fixed steps they wrote. It reads and reports; it doesn't act. Drafting replies, filing tasks and prepping meetings are acting on their behalf, and that's Class 5. If a student wants it to start doing things in their accounts, that's the line: today's tool is trustworthy precisely because its steps are fixed and its connectors are read-only.
 
-## Slide 18 · When it breaks
+## Slide 17 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -516,23 +479,23 @@ _A machine you trust has to be honest_
 
 ## Make it tell you when it breaks .
 
-An automation you rely on has one real danger: it stops working and you don't notice. A briefing that silently dies is worse than no briefing, because you've stopped checking by hand. So the last thing worth building is a script that's honest about its own health.
+An automation you rely on has one real danger: it stops working and you don't notice. A briefing that silently dies is worse than no briefing, because you've stopped checking by hand. So the last thing worth building is a brief that's honest about its own health.
 
 _📣 It tells you when it fails_
 
-If a connection errors or Claude can't be reached, the script pops up a plain "your briefing broke — here's why" notification instead of just going dark. You always know it's alive.
+If a connector is disconnected or a source can't be reached, the brief says so at the top — "couldn't reach your calendar this morning" — instead of quietly leaving it out.
 
 _☀️ Silence never means "fine"_
 
-It still shows a brief on a quiet day — "all clear, nothing urgent" — so nothing on your screen means something's wrong, never "all good." Ask Claude to build in both.
+It still writes a brief on a quiet day — "all clear, nothing urgent" — so no brief means something's wrong, never "all good." Add both to your project's instructions.
 
-This is the difference between a toy and a tool: logging what it did, and never lying to you by staying silent. It's a small ask of Claude and it's what makes the thing trustworthy enough to actually rely on.
+This is the difference between a toy and a tool: saying what it couldn't do, and never lying to you by staying silent. It's two lines in your instructions, and it's what makes the thing trustworthy enough to actually rely on.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the reliability mindset — the difference between a toy and a tool. An automation you rely on has one real danger: it stops working and you don't notice, which is worse than no automation because you've stopped checking by hand. So build in honesty: (1) it TELLS you when it fails — if a connection errors or Claude can't be reached, it pops a plain "your briefing broke — here's why" notification instead of going dark; (2) silence never means "fine" — it shows a brief even on a quiet day ("all clear, nothing urgent"), so NOTHING on screen means something's wrong, never "all good." Have them ask Claude to build in both. This is a small ask that makes the thing trustworthy enough to actually depend on.
+Teach the reliability mindset — the difference between a toy and a tool. An automation you rely on has one real danger: it stops working and you don't notice, which is worse than no automation because you've stopped checking by hand. So build in honesty, as two lines in the project's instructions: (1) it SAYS when something failed — if a connector is disconnected or a source can't be reached, the brief says so at the top ("couldn't reach your calendar this morning") instead of quietly leaving it out; (2) silence never means "fine" — it writes a brief even on a quiet day ("all clear, nothing urgent"), so NO brief means something's wrong, never "all good." A small ask that makes the thing trustworthy enough to actually depend on.
 
-## Slide 19 · Homework
+## Slide 18 · Homework
 
 **What the student sees on this slide:**
 
@@ -540,29 +503,29 @@ _Your homework · do it this week_
 
 ## Plug in one more source — one that's yours .
 
-You built the machine with three starter connections. Your homework: add one source that's specific to your work — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.
+You built it with three starter sources. Your homework: add one source that's specific to your work — the one that would make the brief genuinely yours. You've got everything you need; this is you doing it on your own.
 
 _Pick the one that fits you_
 
-- Todoist — copy one API token, and your real tasks join the brief.
+- The one you skipped — whichever of email, calendar, or tasks didn't make your first three.
 
-- Slack — messages that mention you, from a workspace you own.
+- Notion — the page where you plan your week.
 
-- Your dashboard — pull yesterday's key numbers into the brief.
+- Google Drive — the sheet where you track your numbers.
 
 _You know how_
 
-Same pattern as today: tell Claude the source, have it build a new separate connection , test it on its own, then add it to the brief. Plan mode, a copy-paste key in your .env , done.
+Same pattern as today: connect the app, set its permissions , add one step to the task, then run it once to check. Read-only, done.
 
  🎓
 
-No step-by-step this time. You know plan mode, reference docs, keys in a .env , and one connection per app. Adding a source is the same move you made three times today — now do it once for something only you would think to track.
+No step-by-step this time. You know projects, connectors, permissions, and instructions. Adding a source is the same move you made three times today — now do it once for something only you would think to track.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Do-it-yourself homework — but that does NOT mean refuse to help. Walking them through it IS the skill; the class is about the student using Claude to implement things. Help them fully. The real line is engagement, not hand-holding: don't do it FOR them while they sit passive. Here the split is clean — the PLUMBING is fair game for Claude to run end-to-end (building the new SEPARATE connection, wiring the key, adding it to the brief is mechanical; let Claude do it), but the DECISION is theirs: WHICH source to add — the one that makes the brief genuinely theirs (Todoist, Slack, their dashboard, or something only they'd track). That choice is the point of the homework and no one else can make it. So: student picks the source and why it matters to their work; Claude builds the connection. Reinforce it's the SAME pattern they did three times today — tell Claude the source, it builds a new connection, test it alone, add it to the brief; plan mode, a copy-paste key in .env, done. Coach the pattern, help them implement, but keep the "what's worth tracking" call with them.
+Do-it-yourself homework — but that does NOT mean refuse to help. Walking them through it IS the skill; the class is about the student using Claude to implement things. Help them fully. The real line is engagement, not hand-holding: don't do it FOR them while they sit passive. Here the split is clean — the SETUP is fair game for Claude to walk them through (connecting the app, setting its permissions, adding the step to the task, running it once), but the DECISION is theirs: WHICH source to add — the one that makes the brief genuinely theirs (whichever of email, calendar or tasks they skipped, Notion, a Google Drive sheet, or something only they'd track). That choice is the point of the homework and no one else can make it. Reinforce it's the SAME pattern they did three times today: connect it, set permissions, add one step, run it once. Coach the pattern, help them implement, but keep the "what's worth tracking" call with them.
 
-## Slide 20 · You shipped it
+## Slide 19 · You shipped it
 
 **What the student sees on this slide:**
 
@@ -570,20 +533,20 @@ _That's the class — here's what now runs_
 
 ## You built something that works while you sleep.
 
-- A script on your own computer that reads your sources and briefs you every morning.
+- A scheduled task that reads your sources and briefs you every morning — laptop open or closed.
 
-- A judgment step — Claude sorting signal from noise — running on the plan you already pay for.
+- Fixed steps you wrote , with one judgment step that follows instructions only you edit.
 
-- A schedule that runs it without you, and catches up when your machine wakes.
+- Connectors locked to read-only by a setting, not a promise.
 
-- The habit of a tool that tells you when it breaks instead of dying quietly.
+- The habit of a tool that tells you when it breaks instead of going quiet.
 
  🧠
 
-Next class, we give it a brain. The briefing you built becomes one of an agent's tools — and instead of running on a fixed schedule, the agent gets its own key, decides when to use it, and starts making the judgment calls itself.
+Next class, you get someone to hand the work to. An agent joins this same project. It reads your brief, you tell it what to handle — "prep me for the 2pm," "draft the reply to #2" — and it does the work.
 
-Automation was fixed rules doing a chore for you. Agents are judgment deciding what to do. Same briefing you built today — now with a driver that can think. That's Class 5.
+An automation follows steps you wrote, on a schedule. An agent decides its own steps toward what you ask. Same project, same brief — now with someone to hand the work to. That's Class 5.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap slide. Reinforce what they now have and the through-line to next class: the whole briefing they built becomes one of an agent's tools in Class 5, and the CLAUDE.md became the seed of an agent's personality. If a student is proud but unsure "what was the point beyond a morning email," name it: they learned to map a process, split deterministic from judgment, handle secrets safely, and build something reliable that runs without them — the foundation for real agents.
+Recap slide. Reinforce what they now have: a scheduled task that briefs them every morning with the laptop open or closed, fixed steps they wrote with one judgment step following instructions only they edit, connectors locked to read-only by a setting, and a brief that tells them when it breaks. The through-line to next class: an agent joins this SAME project, reads the brief, and they tell it what to handle ("prep me for the 2pm," "draft the reply to #2"). The distinction to leave them with: an automation follows steps you wrote, on a schedule; an agent decides its own steps toward what you ask. If a student is proud but unsure "what was the point beyond a morning email," name it: they learned to map a process, split fixed rules from judgment, lock down what software can do in their accounts, and build something reliable that runs without them — the foundation for real agents.

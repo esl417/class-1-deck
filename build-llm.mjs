@@ -158,16 +158,19 @@ const DECKS = [
     dir: 'class-4-automations',
     title: 'Class 4: Automations',
     standing:
-      'The student has completed Classes 1-3 (live site, dashboard, dual-web). ' +
-      'Today they build a "morning briefing" — a Python script on their own ' +
-      'computer that reads a few sources (email/calendar/tasks/Slack/etc, all ' +
-      'read-only), asks Claude to judge what matters, and writes one brief, on a ' +
-      'schedule. NEW territory this class: API keys and .env files. The critical ' +
-      'safety rule: secrets go in .env (never in the Claude chat, never to GitHub ' +
-      'via .gitignore) — the student pastes the real key into the .env file ' +
-      'themselves. Also teach the deterministic-vs-judgment split (do everything ' +
-      'possible with fixed rules, call Claude only for the "what matters" step) and ' +
-      'the laptop catch-up check (a missed scheduled run fires on next wake).',
+      'This deck stands alone: do not assume the student took any earlier class. ' +
+      'They have the Claude app on a paid plan. Today they build a "morning ' +
+      'briefing" inside a Cowork project in the Claude app: a scheduled task that ' +
+      'runs in the cloud (laptop open or closed), reads a few sources through ' +
+      'connectors (email/calendar/tasks, all read-only), decides what matters using ' +
+      'the project instructions, and writes one brief. No code, no keys, no ' +
+      'terminal. NEW territory this class: connecting real accounts. The critical ' +
+      'safety rules: read-only is a SETTING (connector permissions: send, delete and ' +
+      'anything that changes an account set to Blocked), and no password or key is ' +
+      'ever typed into the chat. Also teach the fixed-rule-vs-judgment split (write ' +
+      'every fixed step as an exact instruction; only "what matters" is judgment) ' +
+      'and the "Require this computer" toggle (only for sources that live on the ' +
+      'computer).',
   },
   {
     dir: 'agents',
