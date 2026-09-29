@@ -357,7 +357,7 @@ Next class you'll build an agent through Create agent , field by field. Today, Q
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the test run, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the test run, on Step 7 (permissions)), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
 ## Slide 12 · Step 3 · The environment
 
@@ -437,7 +437,7 @@ A brief in your folder, and a transcript that shows every step. Now put it on a 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-After the logins are added in Step 4, a test run opens in the panel beside the agent's configuration: they can watch it live, change the config (system prompt, tools, skill, permissions) and run it again. Treat it as a debugging loop, not a one-shot check. Four checks: the transcript shows the dictated steps in order (skill loads, script runs, each tool call goes out and comes back); "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox (a tool call that says "saved" isn't the same as a file existing); and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. MCP tools still on always ask will pause the test run for approval; that's fine while they're watching. After scheduling, the "No one's watching" slide sets them so an unattended run never pauses. Common failures to read for in the transcript: a blocked host, a missing package, or a vault credential that doesn't match the server URL.
+After the logins are added in Step 4, a test run opens in the panel beside the agent's configuration: they can watch it live, change the config (system prompt, tools, skill, permissions) and run it again. Treat it as a debugging loop, not a one-shot check. Four checks: the transcript shows the dictated steps in order (skill loads, script runs, each tool call goes out and comes back); "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox (a tool call that says "saved" isn't the same as a file existing); and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. MCP tools still on always ask will pause the test run for approval; that's fine while they're watching. After scheduling, Step 7 (permissions) sets them so an unattended run never pauses. Common failures to read for in the transcript: a blocked host, a missing package, or a vault credential that doesn't match the server URL.
 
 ## Slide 15 · Step 6 · Schedule it
 
@@ -465,13 +465,13 @@ Check the upcoming runs are the ones you meant. The Console shows the next few; 
 
 Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Hold Run now until the next slide: with MCP tools still on always ask, an unattended run would pause and never finish. Confirm the current form fields in the Console before directing them.
 
-## Slide 16 · No one's watching
+## Slide 16 · Step 7 · Permissions
 
 **What the student sees on this slide:**
 
 _Permissions for a run nobody attends_
 
-## At 7am, there's no one to click Allow .
+## Step 7: Set the permissions for unattended runs.
 
 Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives. In the test run you were there to approve each one; at 7am you won't be.
 
