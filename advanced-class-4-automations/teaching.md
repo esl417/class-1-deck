@@ -39,7 +39,7 @@ Map each Managed Agents object to what they know from Cowork, so nothing feels f
 
 ## Before you start
 
-The Console is a separate account from the Claude app plan: platform.claude.com, a card on file, $10 of prepaid credits with auto-reload left off (the hard ceiling from the next slide). Managed Agents is enabled by default for API accounts (it's beta, no waitlist). Pricing: model tokens at API rates plus $0.08 per session-hour, counted only while a run is working. Viewing session transcripts needs the Developer or Admin role in the workspace; on a personal account they are the admin. If a student handles sensitive client data, mention that Managed Agents isn't covered by zero-data-retention agreements, and let them decide what to connect.
+This slide is the class PREREQUISITE: students do it before class (it is listed on the course page). In class, only confirm it: they can sign in to the Console, credits are loaded, and Managed Agents shows in the sidebar. If a student arrives without it, get the account and credits done first; nothing else in the build works without it. The Console is a separate account from the Claude app plan: platform.claude.com, a card on file, $10 of prepaid credits with auto-reload left off (the hard ceiling from the next slide). Managed Agents is enabled by default for API accounts (it's beta, no waitlist). Pricing: model tokens at API rates plus $0.08 per session-hour, counted only while a run is working. Viewing session transcripts needs the Developer or Admin role in the workspace; on a personal account they are the admin. If a student handles sensitive client data, mention that Managed Agents isn't covered by zero-data-retention agreements, and let them decide what to connect.
 
 ## Cost control
 
