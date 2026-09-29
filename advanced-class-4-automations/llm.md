@@ -89,11 +89,11 @@ Conversations that can search your past chats and build memory over time. It mak
 
  📁 Projects
 
-"Self-contained workspaces with their own chat histories and knowledge bases."
+Self-contained workspaces with their own chat histories and knowledge bases.
 
  🖼️ Artifacts
 
-"Anything Claude makes for you that you'd put in front of someone": a deck, a document, a dashboard, a small tool.
+Anything Claude makes for you that you'd put in front of someone: a deck, a document, a dashboard, a small tool.
 
  🤝 Cowork
 
@@ -101,7 +101,7 @@ Takes on multi-step tasks and carries them out for you: reads and writes your re
 
  ⌨️ Claude Code
 
-"An agentic coding tool that reads your codebase, edits files, runs commands." Class 6.
+An agentic coding tool that reads your codebase, edits files, and runs commands. Class 6.
 
  ⚙️ Managed Agents
 
