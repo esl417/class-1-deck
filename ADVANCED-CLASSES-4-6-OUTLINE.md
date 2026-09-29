@@ -96,11 +96,10 @@ the build.
 - **Custom tools become real:** a script the agent calls as a tool, running where they now
   control the code.
 - Messaging the agent in the cloud.
-- **Resend:** the agent gets its own sending address on a domain the student owns, so it
-  sends as itself, never as them. Keys go in `.env` via Claude Code, never in a chat.
 - **Webhooks:** outside events that wake the agent.
-- Code lives in **GitHub**. Putting it in the cloud from a GitHub deploy is explained at the
-  end, not taught hands-on.
+- Keys go in `.env` via Claude Code, never in a chat.
+- Code lives in **GitHub**. **Render** (hosting) picks up the GitHub repo and runs the
+  agent in the cloud; explained at the end, not taught hands-on.
 - **Branching in GitHub (taught hands-on):** main is the agent that runs; every change
   happens on a branch, gets reviewed (the second-AI review lands here), then merges. Ties
   to the cloud step: a deploy that picks up main only ever gets reviewed code.
@@ -112,13 +111,10 @@ The hub's single "Coming soon" card becomes three cards.
 
 ## Open
 
-1. **"Resend picks up the GitHub deploy."** Resend is the email API; the service that
-   deploys from a GitHub repo is likely Render. Confirm which one the end-of-class cloud
-   step names, and that Resend stays in for email.
-2. **Class 4 build, hands-on checks in the Console:** Quickstart output for a briefing
+1. **Class 4 build, hands-on checks in the Console:** Quickstart output for a briefing
    agent; uploading a custom skill with a script and having a deployment run it; the Drive
    / Dropbox MCP path and vault setup; per-run budget on a deployment.
-3. **Class 5:** the agent calling the Class 4 skill on its own; where the three-section
+2. **Class 5:** the agent calling the Class 4 skill on its own; where the three-section
    report and the log persist between sessions (memory store vs Drive file).
-4. **Cost:** separate API account billed by usage ($0.08 per running session-hour plus
+3. **Cost:** separate API account billed by usage ($0.08 per running session-hour plus
    tokens); needs a prerequisite step and a rough monthly estimate for a daily brief.
