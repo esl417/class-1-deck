@@ -188,8 +188,8 @@ const DECKS = [
       '(packages, limited networking), test it in a session, then schedule it as a ' +
       'deployment (cron, time zone, prompt, per-run budget). The brief lands in ' +
       'Google Drive or Dropbox. Core idea: an automation has its steps DICTATED ' +
-      '(its autonomy is removed); code where possible, an exact tool call where ' +
-      'not, judgment only for "what needs me today". Critical rules: keys only in ' +
+      '(its autonomy is removed); exact tool calls reach the apps, a script does ' +
+      'the counting/dates/formatting, judgment only for "what needs me today". Critical rules: keys only in ' +
       'the vault; MCP tools default to always ask, which hangs an unattended run, ' +
       'so the tools it uses are set to always allow and every other write/send/' +
       'delete tool is turned off. COST CONTROL is a thread through every Advanced ' +

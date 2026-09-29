@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: Claude (in the Claude app) interviews them and writes a custom skill (SKILL.md plus a script); they upload it to the Console, put every login and key in a credential vault, create the agent with Quickstart (system prompt = what matters to them), set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); code where possible, an exact tool call where not, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. COST CONTROL is a thread through every Advanced class: before anything runs, spend is capped per run (deployment budget), per month (workspace spend limit) and by prepaid credits with auto-reload off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
+ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: Claude (in the Claude app) interviews them and writes a custom skill (SKILL.md plus a script); they upload it to the Console, put every login and key in a credential vault, create the agent with Quickstart (system prompt = what matters to them), set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); exact tool calls reach the apps, a script does the counting/dates/formatting, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. COST CONTROL is a thread through every Advanced class: before anything runs, spend is capped per run (deployment budget), per month (workspace spend limit) and by prepaid credits with auto-reload off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
 
 ---
 
@@ -47,7 +47,7 @@ Class 4 · Advanced · Automations in Managed Agents
 
 # Your morning brief, rebuilt in Managed Agents.
 
-Script the fixed steps, give Claude the one judgment call, and run it on a schedule you can inspect and cap.
+Dictate every fixed step, give Claude the one judgment call, and run it on a schedule you can inspect and cap.
 
 ## Slide 2 · The arc
 
@@ -61,7 +61,7 @@ Each class keeps what the last one built and adds one layer. By the end, the bri
 
 _Class 4 · Today · Automation_
 
-The steps are dictated. A script and one judgment call write your morning brief. A timer pulls the trigger.
+The steps are dictated. Fixed steps and one judgment call write your morning brief. A timer pulls the trigger.
 
 Managed Agents
 
@@ -93,7 +93,7 @@ _Let's look at the end first_
 
 ## Today: your morning brief, running on a schedule .
 
-Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. A script pulls your sources the same way every time, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.
+Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. Named tool calls pull your sources the same way every time, a script does the counting and formatting, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.
 
 _What a Cowork task gives you_
 
@@ -196,9 +196,10 @@ _What makes it an automation_
 An automation's steps are dictated : the agent follows them and doesn't choose. You've taken its autonomy away, on purpose. And here each fixed step can take a stronger form than a sentence:
 
  1 · Pull your sources
- ⚙️ Script Pull tasks due today or overdue — an API call in code. Same result every run.
+ 🎯 Exact tool call Pull tasks due today or overdue — one named tool, a fixed filter.
  🎯 Exact tool call Pull today's calendar — one named tool, today's date. Nothing to choose.
  🎯 Exact tool call Read unread client email, last 24 hours — one named tool, the exact search.
+ ⚙️ Script Count what's overdue, and by how many days — math in code. Same answer every run.
  2 · Decide what matters
  🧠 Judgment Decide what needs you today — no rule tells urgent from noise. This is the AI call.
  3 · Write the brief
@@ -207,11 +208,11 @@ An automation's steps are dictated : the agent follows them and doesn't choose. 
 
  🎯
 
-Code where you can, an exact tool call where you can't, judgment only where no rule decides. A script gives the same result every run, costs almost nothing, and can be tested. You won't write it: Claude does.
+Tool calls reach your apps, a script does the computing, judgment decides only what no rule can. Counting, dates and formatting belong in code: the same result every run, for almost nothing. You won't write it: Claude does.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The core concept, taught one level deeper than the Beginner track. An automation's steps are DICTATED: the agent follows them and doesn't choose, so its autonomy is taken away on purpose. (Not "the steps are taken away"; the steps are fully specified and the agency is removed.) Three forms a step can take, strongest first: a script (code; same result every run, near-free, testable), an exact tool call (one named MCP tool with fixed inputs, carried out by Claude but with nothing to decide), and judgment (only where no rule can decide, which is "what needs me today"). Why prefer code: consistency and cost, and a script's output is all that reaches Claude. The student does not write code; Claude writes the script. Which steps can be scripts depends on the service: one that offers a personal API token sent in a header works well from a script; Google's OAuth-based services generally don't, so those stay exact tool calls through an MCP server.
+The core concept, taught one level deeper than the Beginner track. An automation's steps are DICTATED: the agent follows them and doesn't choose, so its autonomy is taken away on purpose. (Not "the steps are taken away"; the steps are fully specified and the agency is removed.) Every fixed step is dictated; what differs is who carries it out. Exact tool calls reach the apps: one named MCP tool with fixed inputs, to read a source or save the brief; Claude makes the call, but there is nothing to decide. A script does the pure computing: counting, date math, formatting, where code gives the same answer every run for almost nothing and can be tested. Judgment is used only where no rule can decide, which is "what needs me today." The student does not write code; Claude writes the script. Don't frame code as always better than a tool call: a script reaching an app needs its own API token and access set up (see the vault), while an MCP tool call is the normal way to reach an app. A script calling an API is the fallback for an app with no MCP server.
 
 ## Slide 7 · The parts
 
@@ -314,13 +315,13 @@ _Claude maps it with you, then writes it_
 The skill is where the dictated steps live. In the Claude app, in Chat or Cowork, paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning. Then sort every step: script (code, same result every run), exact tool call (one named MCP tool with fixed inputs), or judgment. Only "what needs me today" is judgment. Use a script where the service offers a personal API token; use an MCP server where it doesn't. The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated. Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.
+> Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning. Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token. The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated. Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.
 
 _✋ You should end up with four things_
 
 - SKILL.md , with every step dictated and only one judgment step.
 
-- The script , doing every step code can do.
+- The script , doing the counting, dates and formatting.
 
 - The list : servers, tokens, packages, websites. You'll use it in Steps 3 to 5.
 
@@ -328,7 +329,7 @@ _✋ You should end up with four things_
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The student maps their morning with Claude in the Claude app (Chat or Cowork) and Claude writes the skill. Coach the interview, not the code: which three sources, and exactly what to pull from each so it's the same every morning. Push for exact rules ("unread from clients, last 24 hours"), not vague ones ("check my email"). Check the output: SKILL.md with `name` (lowercase, hyphens, no "claude" or "anthropic") and `description` frontmatter, steps in order with every step tagged script / exact tool call / judgment and only one judgment step; a script in a scripts folder; the list of MCP server URLs, API tokens, packages and websites; a zip. The honesty rules (say what failed at the top; write "all clear" on a quiet day) belong in the skill. Source choice is where most trouble starts: Google's official Gmail, Calendar and Drive MCP servers are a Developer Preview that needs a Google Cloud project and an OAuth client, which is heavy for this audience. Services with simple OAuth MCP servers (Slack, Notion, and others) or personal API tokens (Todoist and similar) are much easier. Search for the service's current remote MCP server before promising one. Start with three sources or fewer.
+The student maps their morning with Claude in the Claude app (Chat or Cowork) and Claude writes the skill. Coach the interview, not the code: which three sources, and exactly what to pull from each so it's the same every morning. Push for exact rules ("unread from clients, last 24 hours"), not vague ones ("check my email"). Check the output: SKILL.md with `name` (lowercase, hyphens, no "claude" or "anthropic") and `description` frontmatter, steps in order with every step tagged exact tool call / script / judgment and only one judgment step (tool calls for reaching apps, the script for counting, dates and formatting); a script in a scripts folder; the list of MCP server URLs, API tokens, packages and websites; a zip. The honesty rules (say what failed at the top; write "all clear" on a quiet day) belong in the skill. Source choice is where most trouble starts: Google's official Gmail, Calendar and Drive MCP servers are a Developer Preview that needs a Google Cloud project and an OAuth client, which is heavy for this audience. Services with simple OAuth MCP servers (Slack, Notion, and others) or personal API tokens (Todoist and similar) are much easier. Search for the service's current remote MCP server before promising one. Start with three sources or fewer.
 
 ## Slide 11 · Step 2 · Upload the skill
 
@@ -366,9 +367,9 @@ _🔌 For an MCP server_
 
 Pick the service and sign in through its own page, or paste the server's address and its token.
 
-_🔑 For the script's API token_
+_🔑 For an app with no MCP server_
 
-Add it as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. The agent never sees it.
+Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. The agent never sees it.
 
  🛡️
 
@@ -548,7 +549,7 @@ The one that would make the brief genuinely yours. Same pattern as today: a cred
 
 _⚙️ One sentence becomes code_
 
-Find a step that's still an exact tool call and ask Claude whether a script can do it instead. Upload the new version and run it once.
+Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Upload the new version and run it once.
 
  🎓
 
@@ -556,7 +557,7 @@ The calls are yours: which source makes the brief worth reading, and which step 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find an exact tool call and ask Claude whether a script can do it instead, then upload and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
+Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find something Claude still works out on every run (sorting, counting, formatting) and ask whether a script can do it instead, then upload and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
 
 ## Slide 20 · You shipped it
 
@@ -566,7 +567,7 @@ _That's the class — here's what now runs_
 
 ## Your brief: dictated, scheduled, capped, on the record.
 
-- A skill : dictated steps, code where it can be, one judgment call.
+- A skill : dictated steps, code for the computing, one judgment call.
 
 - Logins in a vault the agent uses but never sees.
 
@@ -584,4 +585,4 @@ An automation has its steps dictated. An agent chooses its own. Same skill, new 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: a skill with dictated steps (code where possible, one judgment call), logins in a vault the agent never sees, tools set to always allow or turned off so unattended runs never stall, a deployment with an exact schedule and a record of every run, and spend capped at three levels: per run, per month on the workspace, and by the prepaid credits. The bridge to Class 5: the trigger moves. They build an agent with Create agent, attach this same skill, and the agent decides when to run it instead of the clock, then acts on what it finds. The line to leave them with: an automation has its steps dictated; an agent chooses its own.
+Recap: a skill with dictated steps (tool calls to reach apps, code for the computing, one judgment call), logins in a vault the agent never sees, tools set to always allow or turned off so unattended runs never stall, a deployment with an exact schedule and a record of every run, and spend capped at three levels: per run, per month on the workspace, and by the prepaid credits. The bridge to Class 5: the trigger moves. They build an agent with Create agent, attach this same skill, and the agent decides when to run it instead of the clock, then acts on what it finds. The line to leave them with: an automation has its steps dictated; an agent chooses its own.

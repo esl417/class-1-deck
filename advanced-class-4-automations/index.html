@@ -681,7 +681,7 @@
   <div class="title-head">
     <div class="title-kicker">Class 4 · Advanced · Automations in Managed Agents</div>
     <h1 class="title-main">Your morning brief, <br class="hero-break">rebuilt in Managed Agents.</h1>
-    <p class="title-sub">Script the fixed steps, give Claude the one judgment call, and run it on a schedule you can inspect and cap.</p>
+    <p class="title-sub">Dictate every fixed step, give Claude the one judgment call, and run it on a schedule you can inspect and cap.</p>
   </div>
 </section>
 
@@ -698,7 +698,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card card-hero">
       <div class="eyebrow">Class 4 · Today · Automation</div>
-      <p><strong>The steps are dictated.</strong> A script and one judgment call write your morning brief. A timer pulls the trigger.</p>
+      <p><strong>The steps are dictated.</strong> Fixed steps and one judgment call write your morning brief. A timer pulls the trigger.</p>
       <p><em>Managed Agents</em></p>
     </div>
     <div class="card">
@@ -723,7 +723,7 @@
   <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
   <h2>Today: your morning brief, running on a <em>schedule</em>.</h2>
-  <p>Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. A script pulls your sources the same way every time, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.</p>
+  <p>Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. Named tool calls pull your sources the same way every time, a script does the counting and formatting, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.</p>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">What a Cowork task gives you</div>
@@ -799,9 +799,10 @@
   <p>An automation's steps are <strong>dictated</strong>: the agent follows them and doesn't choose. You've taken its autonomy away, on purpose. And here each fixed step can take a stronger form than a sentence:</p>
   <div class="proc-map" style="margin-top: 4px;">
     <div class="proc-phase">1 · Pull your sources</div>
-    <div class="proc-step"><span class="proc-tag script">⚙️ Script</span> <span class="proc-do">Pull tasks due today or overdue</span> <span class="proc-why">— an API call in code. Same result every run.</span></div>
+    <div class="proc-step"><span class="proc-tag call">🎯 Exact tool call</span> <span class="proc-do">Pull tasks due today or overdue</span> <span class="proc-why">— one named tool, a fixed filter.</span></div>
     <div class="proc-step"><span class="proc-tag call">🎯 Exact tool call</span> <span class="proc-do">Pull today's calendar</span> <span class="proc-why">— one named tool, today's date. Nothing to choose.</span></div>
     <div class="proc-step"><span class="proc-tag call">🎯 Exact tool call</span> <span class="proc-do">Read unread client email, last 24 hours</span> <span class="proc-why">— one named tool, the exact search.</span></div>
+    <div class="proc-step"><span class="proc-tag script">⚙️ Script</span> <span class="proc-do">Count what's overdue, and by how many days</span> <span class="proc-why">— math in code. Same answer every run.</span></div>
     <div class="proc-phase">2 · Decide what matters</div>
     <div class="proc-step judge-row"><span class="proc-tag judge">🧠 Judgment</span> <span class="proc-do">Decide what needs you today</span> <span class="proc-why">— no rule tells urgent from noise. <strong>This is the AI call.</strong></span></div>
     <div class="proc-phase">3 · Write the brief</div>
@@ -810,7 +811,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🎯</span>
-    <p><strong>Code where you can, an exact tool call where you can't, judgment only where no rule decides.</strong> A script gives the same result every run, costs almost nothing, and can be tested. You won't write it: Claude does.</p>
+    <p><strong>Tool calls reach your apps, a script does the computing, judgment decides only what no rule can.</strong> Counting, dates and formatting belong in code: the same result every run, for almost nothing. You won't write it: Claude does.</p>
   </div>
 </section>
 
@@ -882,12 +883,12 @@
   <div class="eyebrow">Claude maps it with you, then writes it</div>
   <h2>Step 1: Claude writes your <em>skill</em>.</h2>
   <p>The skill is where the dictated steps live. In the Claude app, in Chat or Cowork, paste:</p>
-  <div class="prompt-box">Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning.<br><br>Then sort every step: script (code, same result every run), exact tool call (one named MCP tool with fixed inputs), or judgment. Only "what needs me today" is judgment. Use a script where the service offers a personal API token; use an MCP server where it doesn't.<br><br>The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated.<br><br>Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.</div>
+  <div class="prompt-box">Help me build a skill for Claude Managed Agents called morning-briefing. First interview me: which tools I want it to read (help me pick three to start) and, for each, exactly what to pull so it's the same every morning.<br><br>Then sort every step: exact tool call (one named MCP tool with fixed inputs, to read from or save to my apps), script (code for counting, dates and formatting), or judgment. Only "what needs me today" is judgment. If an app has no MCP server, a script can call its API with a personal token.<br><br>The brief: what needs me today and why, my day in order, who's waiting on me, what you skipped, each item linked to its source. Say at the top if a source failed; on a quiet day, write "all clear." Save it to my [Google Drive / Dropbox] folder, dated.<br><br>Write SKILL.md (name and description frontmatter, steps in order) and the script in a scripts folder. Then list every MCP server URL, API token, package, and website it needs, and give me the folder as a zip.</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ You should end up with four things</div>
     <ul>
       <li><strong>SKILL.md</strong>, with every step dictated and only one judgment step.</li>
-      <li><strong>The script</strong>, doing every step code can do.</li>
+      <li><strong>The script</strong>, doing the counting, dates and formatting.</li>
       <li><strong>The list</strong>: servers, tokens, packages, websites. You'll use it in Steps 3 to 5.</li>
       <li><strong>The zip</strong>, ready to upload.</li>
     </ul>
@@ -924,8 +925,8 @@
       <p>Pick the service and sign in through its own page, or paste the server's address and its token.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🔑 For the script's API token</div>
-      <p>Add it as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. <strong>The agent never sees it.</strong></p>
+      <div class="eyebrow">🔑 For an app with no MCP server</div>
+      <p>Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. <strong>The agent never sees it.</strong></p>
     </div>
   </div>
   <div class="heads-up">
@@ -1072,7 +1073,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">⚙️ One sentence becomes code</div>
-      <p>Find a step that's still an exact tool call and ask Claude whether a script can do it instead. Upload the new version and run it once.</p>
+      <p>Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Upload the new version and run it once.</p>
     </div>
   </div>
   <div class="heads-up">
@@ -1087,7 +1088,7 @@
   <div class="eyebrow">That's the class — here's what now runs</div>
   <h2>Your brief: dictated, scheduled, capped, on the record.</h2>
   <ul>
-    <li class="done-check">A <strong>skill</strong>: dictated steps, code where it can be, one judgment call.</li>
+    <li class="done-check">A <strong>skill</strong>: dictated steps, code for the computing, one judgment call.</li>
     <li class="done-check">Logins in a <strong>vault</strong> the agent uses but never sees.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>, so no run waits on a click.</li>
     <li class="done-check">A <strong>deployment</strong> on an exact schedule, with a record of every run.</li>

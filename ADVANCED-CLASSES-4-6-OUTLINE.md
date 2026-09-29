@@ -60,9 +60,13 @@ server, a real sandbox, and every run kept as an inspectable session.
 
 **Core teach, deterministic vs judgment:** an automation's steps are *dictated* for the
 agent to follow; its autonomy is taken away. In Cowork a "fixed step" is still an English
-sentence Claude executes. Here the fixed steps can be a **script**: same result every run,
-near-free, and Claude does only the judgment step. Push everything that can be code into
-code. Claude (in Cowork or chat) writes the script; the student doesn't.
+sentence Claude executes. Here every fixed step is dictated, split by who carries it out:
+**exact tool calls** (one named MCP tool, fixed inputs) reach the apps; a **script** does the
+pure computing (counting, dates, formatting), same result every run for almost nothing;
+**judgment** only for "what needs me today." Not "code wherever possible": reaching an app
+from a script needs its own token and setup, so a script calling an API is the fallback for
+an app with no MCP server. Claude (in Cowork or chat) writes the script; the student
+doesn't.
 
 **Build: the morning brief, done the robust way.** Conceptually simple, but the value is in
 coding it, plugging in every source they want, and tailoring it.
