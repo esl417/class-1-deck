@@ -91,7 +91,7 @@ The map of the whole Advanced mini course, so the student sees how the three cla
 
 _Let's look at the end first_
 
-## Today: a brief that runs on a schedule, capped .
+## Today: your morning brief, running on a schedule .
 
 Every weekday at a time you pick, an agent in Anthropic's cloud runs your briefing. A script pulls your sources the same way every time, Claude decides what matters, and the brief lands in your Google Drive or Dropbox before you sit down.
 
