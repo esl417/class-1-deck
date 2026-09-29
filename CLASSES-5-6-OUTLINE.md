@@ -26,7 +26,7 @@ owner's hands.
   No code, no API keys, no terminal.
 - **Project instructions** hold what matters to the owner; only the owner edits them.
   **Memory** is what the agent records from corrections.
-- **Connector permissions** (Always allow / Needs approval / Blocked) are the safety
+- **Connector permissions** (per action: allow / ask / never) are the safety
   layer: limits are settings, not promises.
 - "Require this computer" is only for sources that live on the owner's computer.
 - Phone access is the Claude app. There are no event triggers in Cowork, so "during the
@@ -85,7 +85,7 @@ I updated your prep note and flagged the conflict it creates at 3:30."*
 - **A trigger starts the loop; it doesn't dictate the work.** "Every morning" or "every
   hour" says when to look. What it does depends on what it finds.
 - **Give it authority, not a script.** For each kind of item, decide whether it may
-  handle it, prepare it, needs approval, or must leave it alone.
+  handle it, prepare it, bring it to you, or must leave it alone.
 - **The agent needs state:** what it already handled, what is still waiting, what
   changed since the last run. Otherwise it rediscovers the world every time.
 - **Act, then verify.** Check that the result really happened; a tool call is not the

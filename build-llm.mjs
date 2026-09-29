@@ -191,6 +191,22 @@ const DECKS = [
       'can read and delete it).',
   },
   {
+    dir: 'class-6-the-loop',
+    title: 'Class 6: The Loop',
+    standing:
+      'The student finished Classes 4 and 5: a Cowork project with a scheduled ' +
+      'task that writes a morning brief, directions in the project instructions, ' +
+      'and connector settings that let the agent draft in Gmail and file tasks ' +
+      '(Gmail send email set to never). Today the agent stops waiting to be asked: ' +
+      'a second scheduled task at 7:30 reads the brief first, acts within authority ' +
+      'the student writes down (handle / prepare / bring to me / leave alone), ' +
+      'checks its own work, keeps a Handoff log in the project, and writes a ' +
+      'morning handoff. No code, no keys. For unattended runs, connector actions ' +
+      'are set to allow or never, not ask. Send stays never; the student sends ' +
+      'their own drafts. Promise: delegating vigilance. The daytime hourly check ' +
+      'is optional and uses plan usage.',
+  },
+  {
     dir: 'agents',
     title: 'Lightning Lesson: What an AI Agent Really Is',
     standing:
