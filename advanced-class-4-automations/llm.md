@@ -365,25 +365,29 @@ Quickstart fills in the agent's fields; the student checks each rather than trus
 
 _Access to your apps, kept out of sight_
 
-## Step 3: Put every login in the vault .
+## Step 3: Connect each app; the vault holds its login.
 
-Your tool calls and your script need access to your apps. That access lives in a credential vault : Managed Agents → Credential vaults → new vault, then add one credential for each item on the list.
+For each MCP server, the Console asks: Authorization required · Add credential for [app] . The login is saved in a credential vault (Managed Agents → Credential vaults), where the agent can use it without ever seeing it.
 
-_🔌 For an MCP server_
+_✅ Most apps: just Connect_
 
-Pick the service and sign in through its own page, or paste the server's address and its token.
+Both fields are optional . Leave them empty, tick the acknowledgment, click Connect , and sign in on the app's own page.
 
-_🔑 For an app with no MCP server_
+_🔧 Only if Connect fails_
 
-Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. The agent never sees it.
+Access token: one you get from the app; it expires, so it's a stopgap. Client ID and secret: from an app you register with the provider (for Google, in Google Cloud Console). Ask Claude to walk you through it.
+
+_🔑 An app with no MCP server_
+
+Add its API token as a secret, under the name the script expects. The real key is swapped in only as the request leaves.
 
  🛡️
 
-Keys go in the vault, and nowhere else. Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.
+The vault is shared across your workspace. Anyone with an API key for it can use these logins, so keep the workspace to yourself. And keys go in the vault only: never in a chat, a skill, or a prompt.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Credential vaults hold every login and key: OAuth or a bearer token for each MCP server (matched to the server URL), and environment-variable secrets for the script. The mechanism to explain: the run holds only a placeholder, and the real secret is substituted as the request leaves the sandbox, so the agent never sees it. Practical consequences if a script fails auth: the script must send the token as-is in a request header; credentials created in the Console inject into headers only unless body injection is enabled on the form; and the credential's allowed hosts and the environment's networking must both allow the host. Vaults are shared across the workspace. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
+When an agent has an MCP server that needs a login, the Console shows "Authorization required to use this MCP · Add credential for [app]" with two OPTIONAL sections, Access token and OAuth client credentials (Client ID, Client secret), a workspace-sharing warning with an acknowledgment checkbox, and Connect / Skip for now. The default path: leave both fields empty, tick the acknowledgment, click Connect, and sign in on the app's own page; Anthropic stores the result in a credential vault (also reachable under Managed Agents → Credential vaults) and refreshes OAuth tokens. Only if Connect fails: an access token is one issued by the app itself, pasted in, and it expires, so it's a stopgap; OAuth client credentials come from registering your own OAuth app with the provider (for Google: Google Cloud Console → APIs & Services → Credentials → OAuth client ID, with the relevant APIs enabled; Google's Workspace MCP servers are a Developer Preview and may require this). Walk them through it step by step if needed, searching the provider's current docs. For an app with no MCP server, the script's API token is added as an environment-variable secret under the name the script expects; the run holds only a placeholder and the real secret is substituted as the request leaves the sandbox, so the agent never sees it (the script must send the token as-is in a header; Console-created credentials inject into headers only unless body injection is enabled; the credential's allowed hosts and the environment's networking must both allow the host). The warning matters: credentials are shared across the workspace, and anyone with an API key for that workspace can use them to read data and act as the credential owner. Advise a workspace only they use, and never sharing its API keys. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
 
 ## Slide 13 · Step 4 · The environment
 

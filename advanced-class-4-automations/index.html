@@ -920,21 +920,25 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Step 3 · The vault"></div>
   <div class="eyebrow">Access to your apps, kept out of sight</div>
-  <h2>Step 3: Put every login in the <em>vault</em>.</h2>
-  <p>Your tool calls and your script need access to your apps. That access lives in a <strong>credential vault</strong>: Managed Agents → <strong>Credential vaults</strong> → new vault, then add one credential for each item on the list.</p>
-  <div class="grid-2" style="margin-top: 4px;">
+  <h2>Step 3: Connect each app; the <em>vault</em> holds its login.</h2>
+  <p>For each MCP server, the Console asks: <strong>Authorization required · Add credential for [app]</strong>. The login is saved in a <strong>credential vault</strong> (Managed Agents → Credential vaults), where the agent can use it without ever seeing it.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">🔌 For an MCP server</div>
-      <p>Pick the service and sign in through its own page, or paste the server's address and its token.</p>
+      <div class="eyebrow">✅ Most apps: just Connect</div>
+      <p>Both fields are <strong>optional</strong>. Leave them empty, tick the acknowledgment, click <strong>Connect</strong>, and sign in on the app's own page.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🔑 For an app with no MCP server</div>
-      <p>Add its API token as a secret, under the name the script expects. The run only ever holds a stand-in; the real key is swapped in as the request leaves. <strong>The agent never sees it.</strong></p>
+      <div class="eyebrow">🔧 Only if Connect fails</div>
+      <p><strong>Access token:</strong> one you get from the app; it expires, so it's a stopgap. <strong>Client ID and secret:</strong> from an app you register with the provider (for Google, in Google Cloud Console). Ask Claude to walk you through it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔑 An app with no MCP server</div>
+      <p>Add its API token as a secret, under the name the script expects. The real key is swapped in only as the request leaves.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🛡️</span>
-    <p><strong>Keys go in the vault, and nowhere else.</strong> Not in a chat, not in the skill, not in a prompt. If anything asks you to paste a key into a conversation, stop.</p>
+    <p><strong>The vault is shared across your workspace.</strong> Anyone with an API key for it can use these logins, so keep the workspace to yourself. And keys go in the vault only: never in a chat, a skill, or a prompt.</p>
   </div>
 </section>
 
