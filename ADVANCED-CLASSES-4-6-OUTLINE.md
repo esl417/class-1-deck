@@ -1,7 +1,8 @@
 # Advanced Classes 4 to 6: Outline (working draft)
 
 Status as of 2026-09-29. Class 4 deck done (advanced-class-4-automations/, built alongside
-Eric's own run in the Console). Class 5 and 6 decks not built; a Class 6 prereqs draft exists.
+Eric's own run in the Console). Class 5 deck built 2026-09-29 (advanced-class-5-agents/), awaiting Eric's build-along review.
+Class 6 deck not built; a Class 6 prereqs draft exists (unlinked).
 Open from Class 4: Eric noted Python tools can't be built in the Console, but the deck still
 teaches a script inside the skill; left as is when he called the deck done. The
 Beginner track (class-4-automations, class-5-agents-beginner, class-6-the-loop-beginner,

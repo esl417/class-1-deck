@@ -201,6 +201,27 @@ const DECKS = [
       'Class 6 moves to Claude Code and OpenClaw.',
   },
   {
+    dir: 'advanced-class-5-agents',
+    title: 'Class 5: Agents (Advanced)',
+    standing:
+      'ADVANCED track. The student finished Advanced Class 4 in Claude Managed ' +
+      'Agents (Claude Console, billed by API usage): a morning-briefing skill, a ' +
+      'Quickstart agent, an environment, a credential vault, and a capped scheduled ' +
+      'deployment saving a brief to Drive or Dropbox. Today they build a new agent ' +
+      'in Create agent (General, Tools, Skills, Multiagent), attach the same skill ' +
+      'so the agent decides when to run it (the trigger moves), write four ' +
+      'authority lists (handle / prepare / bring to me / leave alone) into the ' +
+      'system prompt, add a memory store as its handoff log, test-run it, pause the ' +
+      'Class 4 deployment, and deploy the agent with a goal prompt ("Handle my ' +
+      'morning") and a per-run budget. Output: the brief rewritten as Taken care of ' +
+      '/ Needs your action / FYI. Custom tools are concept only: their code must run ' +
+      'in the user\'s own app, which the Console cannot host (Class 6 fixes this). ' +
+      'Rules: send and delete tools turned off (it drafts, they send); tools used ' +
+      'unattended set to always allow; keys only in the vault; cap every run; ' +
+      'Cowork is cheaper if it can do the job. Managed Agents is beta: check ' +
+      'current docs before directing clicks.',
+  },
+  {
     dir: 'advanced-class-6-openclaw',
     file: 'prereqs.html',
     out: 'prereqs-llm.md',
