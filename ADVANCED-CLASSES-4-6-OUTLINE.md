@@ -101,6 +101,9 @@ the build.
 - **Webhooks:** outside events that wake the agent.
 - Code lives in **GitHub**. Putting it in the cloud from a GitHub deploy is explained at the
   end, not taught hands-on.
+- **Branching in GitHub (taught hands-on):** main is the agent that runs; every change
+  happens on a branch, gets reviewed (the second-AI review lands here), then merges. Ties
+  to the cloud step: a deploy that picks up main only ever gets reviewed code.
 
 ## Folders
 
