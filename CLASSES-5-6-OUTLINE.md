@@ -53,10 +53,12 @@ notes.
 - **Memory:** it records what it learns from your corrections. Instructions are yours;
   memories are its own.
 - **Draft, don't send.** It acts only when you tell it to, and nothing leaves without
-  you. **Constraint found 2026-09-28:** in Gmail's connector permissions, creating a draft
-  and sending are one paired permission, so drafts can't be allowed while send stays
-  Blocked. The lock for Gmail drafts has to be **Needs approval** (you see each action
-  and approve drafts, deny sends), not a Blocked setting.
+  you. Decided 2026-09-28: connector settings are per action (+ → Connectors → Manage
+  connectors → the connector: allow / ask / never). Gmail **send email is set to never**
+  and drafting is allowed, so the control is the send button (the owner reads each draft
+  and sends it). Deletes are never; everything else is the owner's call. Connector
+  settings are what an app connection may do; the approval setting under the message box
+  is Claude asking before it acts, a separate thing.
 - **From your phone:** direct it from the Claude app.
 
 ## Class 6: The loop (it does it) — proposed
@@ -102,13 +104,11 @@ I updated your prep note and flagged the conflict it creates at 3:30."*
 - **Must ship:** the morning loop, meaning one run a day that produces the handoff.
 - **Demo and homework:** the hourly check during the day.
 
-**Approval design:** the original idea was that "prepare" means creating a Gmail draft
-and the owner approves by sending it. That doesn't hold: Gmail's draft and send are one
-paired permission, so an unattended run allowed to draft is also allowed to send. Options
-for unattended runs: (a) the handoff contains the drafted reply text and the owner creates
-the draft or sends it themselves, so the Gmail write permission stays Blocked; (b) the
-paired permission is set to Needs approval and approvals reach the phone, which depends on
-open test 7. Leaning (a) until (b) is proven.
+**Approval design:** "prepare" means creating a Gmail draft, and the owner approves by
+sending it. This holds: send email can be set to never on its own while drafting stays
+allowed, so an unattended run can draft but cannot send. Nothing depends on an approval
+prompt reaching a task that runs with nobody watching. (An earlier note here said draft
+and send were one paired permission; that was wrong.)
 
 **The alternative still on the table:** Class 6 expands to more of the business (a
 second job or a second agent) instead. The current view is to use it as closing
@@ -122,8 +122,8 @@ Ordered by what breaks the most:
    Class 6 depends on it.
 2. **Pro accounts:** do cloud Cowork projects and scheduled tasks work there?
    Everything seen so far is on Max.
-3. **Gmail:** answered. Creating a draft and sending are one paired permission; there is
-   no draft-only setting.
+3. **Gmail:** answered. Settings are per action; send email can be set to never while
+   drafting is allowed.
 4. **Brief → agent:** can a conversation in the project read what the scheduled task
    produced?
 5. **Steadiness:** does the same inbox give the same brief across three runs?

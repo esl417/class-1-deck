@@ -23,6 +23,7 @@ class-1-website-build/  index.html   prereqs.html   fonts/  *.png   (+ student k
 class-2-dashboard-build/ index.html  prereqs.html   ...
 class-3-seo-geo/        index.html   prereqs.html   ...   build-reference/  cloudflare-student-kit/
 class-4-automations/    index.html                  ...   (no prereqs deck)
+class-5-agents/         index.html                  ...   (no prereqs deck; design in CLASSES-5-6-OUTLINE.md)
 aivisibility/           index.html                  ...   (free Maven lightning lesson)
 dashboard/              index.html                  ...   (free Maven lightning lesson)
                         dashboard.html      the demo artifact, opened on slide 8

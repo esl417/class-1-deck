@@ -173,6 +173,24 @@ const DECKS = [
       'computer).',
   },
   {
+    dir: 'class-5-agents',
+    title: 'Class 5: Agents',
+    standing:
+      'The student finished Class 4: a Cowork project in the Claude app with a ' +
+      'scheduled task that reads their accounts through connectors and writes a ' +
+      'morning brief whose items link to their sources. Today the same project ' +
+      'gets an agent they direct: they point at brief items ("prep me for the 2pm", ' +
+      '"handle #2") and it looks things up and acts — drafts in Gmail, tasks filed, ' +
+      'prep notes written. No code, no keys, no terminal. Safety rules: the agent ' +
+      'never sends anything: in the Gmail connector settings (+ > Connectors > ' +
+      'Manage connectors) send email is set to never and drafting is allowed, so ' +
+      'the control is that the student reads each draft and sends it themselves. ' +
+      'Deletes are set to never; every other action is the student\'s call. Teach: automation follows steps written in ' +
+      'advance, an agent decides its own steps; project instructions are the ' +
+      'student\'s (only they edit them), memory is the agent\'s (it writes it, they ' +
+      'can read and delete it).',
+  },
+  {
     dir: 'agents',
     title: 'Lightning Lesson: What an AI Agent Really Is',
     standing:
