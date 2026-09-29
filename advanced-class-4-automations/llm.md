@@ -298,7 +298,7 @@ Prepaid credits, auto-reload off. When they run out, everything stops. Nothing c
 
  ⚠️
 
-The typo that costs you: * 7 * * 1-5 doesn't mean 7:00. It means every minute from 7:00 to 7:59: 60 runs a morning . Always read the upcoming runs the Console shows you.
+The typo that costs you: * 7 * * 1-5 means every minute from 7:00 to 7:59: 60 runs a morning . Once at 7:00 is 0 7 * * 1-5 . Always read the upcoming runs the Console shows you.
 
 One more reason to start simple: Cowork runs on your Claude subscription, not the API , so there's no bill to cap. If a Cowork project can do the job, run it there. Reach for Managed Agents when you need what only it gives you.
 
