@@ -110,8 +110,13 @@ upgrade everyone should take. Choose the lightest option that can do the job:
 - **Managed Agents** for a simple agent with little customization. Anthropic hosts it
   and it's easier to maintain.
 - **OpenClaw** only for an agent that needs a lot of customization (its own code and
-  custom tools, its own channels, webhooks), because you now own the code, the hosting
-  and the upkeep.
+  custom tools, its own channels, webhooks, **any model you want**), because you now own
+  the code, the hosting and the upkeep.
+
+**Any model:** Managed Agents runs Claude only; OpenClaw can swap to whatever model fits
+the job (Eric runs Kimi 3). Worth teaching both as flexibility and as a cost lever (a
+cheaper model for routine runs), with the cost beat's caveat that each provider bills and
+caps spend separately.
 The class teaches OpenClaw so they can go there when a job needs it, not as the default.
 
 **Scope: config and getting it off the ground, not the full agent.** Homework is finishing
