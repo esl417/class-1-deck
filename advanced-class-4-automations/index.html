@@ -916,11 +916,30 @@
   <p class="small-note">Next class you'll build an agent through <strong>Create agent</strong>, field by field. Today, Quickstart is enough.</p>
 </section>
 
-<!-- 9. STEP 3 — THE VAULT -->
+<!-- 12. STEP 3 — THE ENVIRONMENT -->
+<section class="slide">
+  <div class="slide-num" data-label="Step 3 · The environment"></div>
+  <div class="eyebrow">The computer each run borrows</div>
+  <h2>Step 3: Set the packages and websites each run gets.</h2>
+  <p>Every run gets a fresh cloud computer, called the <strong>environment</strong>. Two settings matter, and both come straight from the list:</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📦 Packages</div>
+      <p>Add the ones the script needs. They're installed before the run starts, and kept ready for the next one.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🌐 Networking</div>
+      <p>Choose <strong>limited</strong>, add only the websites on the list, and allow access to your MCP servers. The script can reach what you named and nothing else.</p>
+    </div>
+  </div>
+  <p class="small-note">Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.</p>
+</section>
+
+<!-- 9. STEP 4 — THE VAULT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 3 · The vault"></div>
+  <div class="slide-num" data-label="Step 4 · The vault"></div>
   <div class="eyebrow">Access to your apps, kept out of sight</div>
-  <h2>Step 3: Connect each app; the <em>vault</em> holds its login.</h2>
+  <h2>Step 4: Connect each app; the <em>vault</em> holds its login.</h2>
   <p>For each MCP server, the Console asks: <strong>Authorization required · Add credential for [app]</strong>. The login is saved in a <strong>credential vault</strong> (Managed Agents → Credential vaults), where the agent can use it without ever seeing it.</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
@@ -940,25 +959,6 @@
     <span class="heads-up-mark">🛡️</span>
     <p><strong>The vault is shared across your workspace.</strong> Anyone with an API key for it can use these logins, so keep the workspace to yourself. And keys go in the vault only: never in a chat, a skill, or a prompt.</p>
   </div>
-</section>
-
-<!-- 12. STEP 4 — THE ENVIRONMENT -->
-<section class="slide">
-  <div class="slide-num" data-label="Step 4 · The environment"></div>
-  <div class="eyebrow">The computer each run borrows</div>
-  <h2>Step 4: Set the packages and websites each run gets.</h2>
-  <p>Every run gets a fresh cloud computer, called the <strong>environment</strong>. Two settings matter, and both come straight from the list:</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">📦 Packages</div>
-      <p>Add the ones the script needs. They're installed before the run starts, and kept ready for the next one.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">🌐 Networking</div>
-      <p>Choose <strong>limited</strong>, add only the websites on the list, and allow access to your MCP servers. The script can reach what you named and nothing else.</p>
-    </div>
-  </div>
-  <p class="small-note">Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.</p>
 </section>
 
 <!-- 10. NO ONE WATCHING -->

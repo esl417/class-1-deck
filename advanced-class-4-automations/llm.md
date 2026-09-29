@@ -357,15 +357,39 @@ Next class you'll build an agent through Create agent , field by field. Today, Q
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the vault and environment, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the environment and vault, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
-## Slide 12 · Step 3 · The vault
+## Slide 12 · Step 3 · The environment
+
+**What the student sees on this slide:**
+
+_The computer each run borrows_
+
+## Step 3: Set the packages and websites each run gets.
+
+Every run gets a fresh cloud computer, called the environment . Two settings matter, and both come straight from the list:
+
+_📦 Packages_
+
+Add the ones the script needs. They're installed before the run starts, and kept ready for the next one.
+
+_🌐 Networking_
+
+Choose limited , add only the websites on the list, and allow access to your MCP servers. The script can reach what you named and nothing else.
+
+Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Each run gets a fresh cloud sandbox configured by the environment. Two settings: packages (pip and others) the script needs, installed before the run and cached; networking, where limited means only listed hosts plus an allow-MCP-servers switch and an allow-package-managers switch. Environments made in the Console may default to limited, which is the usual cause of "host blocked" errors: add the host, or enable MCP server access. Nothing in the sandbox survives the run, which is why the brief is saved to Drive or Dropbox.
+
+## Slide 13 · Step 4 · The vault
 
 **What the student sees on this slide:**
 
 _Access to your apps, kept out of sight_
 
-## Step 3: Connect each app; the vault holds its login.
+## Step 4: Connect each app; the vault holds its login.
 
 For each MCP server, the Console asks: Authorization required · Add credential for [app] . The login is saved in a credential vault (Managed Agents → Credential vaults), where the agent can use it without ever seeing it.
 
@@ -388,30 +412,6 @@ The vault is shared across your workspace. Anyone with an API key for it can use
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 When an agent has an MCP server that needs a login, the Console shows "Authorization required to use this MCP · Add credential for [app]" with two OPTIONAL sections, Access token and OAuth client credentials (Client ID, Client secret), a workspace-sharing warning with an acknowledgment checkbox, and Connect / Skip for now. The default path: leave both fields empty, tick the acknowledgment, click Connect, and sign in on the app's own page; Anthropic stores the result in a credential vault (also reachable under Managed Agents → Credential vaults) and refreshes OAuth tokens. Only if Connect fails: an access token is one issued by the app itself, pasted in, and it expires, so it's a stopgap; OAuth client credentials come from registering your own OAuth app with the provider (for Google: Google Cloud Console → APIs & Services → Credentials → OAuth client ID, with the relevant APIs enabled; Google's Workspace MCP servers are a Developer Preview and may require this). Walk them through it step by step if needed, searching the provider's current docs. For an app with no MCP server, the script's API token is added as an environment-variable secret under the name the script expects; the run holds only a placeholder and the real secret is substituted as the request leaves the sandbox, so the agent never sees it (the script must send the token as-is in a header; Console-created credentials inject into headers only unless body injection is enabled; the credential's allowed hosts and the environment's networking must both allow the host). The warning matters: credentials are shared across the workspace, and anyone with an API key for that workspace can use them to read data and act as the credential owner. Advise a workspace only they use, and never sharing its API keys. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
-
-## Slide 13 · Step 4 · The environment
-
-**What the student sees on this slide:**
-
-_The computer each run borrows_
-
-## Step 4: Set the packages and websites each run gets.
-
-Every run gets a fresh cloud computer, called the environment . Two settings matter, and both come straight from the list:
-
-_📦 Packages_
-
-Add the ones the script needs. They're installed before the run starts, and kept ready for the next one.
-
-_🌐 Networking_
-
-Choose limited , add only the websites on the list, and allow access to your MCP servers. The script can reach what you named and nothing else.
-
-Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Each run gets a fresh cloud sandbox configured by the environment. Two settings: packages (pip and others) the script needs, installed before the run and cached; networking, where limited means only listed hosts plus an allow-MCP-servers switch and an allow-package-managers switch. Environments made in the Console may default to limited, which is the usual cause of "host blocked" errors: add the host, or enable MCP server access. Nothing in the sandbox survives the run, which is why the brief is saved to Drive or Dropbox.
 
 ## Slide 14 · No one's watching
 
