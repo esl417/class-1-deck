@@ -230,9 +230,9 @@ Your dictated steps: instructions plus the script. Cowork: the task's steps.
 
 The model, what matters to you, and the tools it may use. Cowork: the project and its instructions.
 
- 🔌 MCP servers
+ 🔌 MCP servers & APIs
 
-The connections to your apps. Cowork: connectors.
+The connections to your apps: an MCP server, or the app's API through a script. Cowork: connectors.
 
  🔐 Credential vault
 
@@ -250,7 +250,7 @@ Every run creates a session : the record of that run, which you can open and rea
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Map each Managed Agents object to what they know from Cowork, so nothing feels foreign: skill = the task's steps; agent = the project and its instructions (model, system prompt, tools); MCP servers = connectors; credential vault = signing in to a connector; environment = the cloud computer each run gets (Cowork handles this invisibly); deployment = the scheduled task. A session is the record of one run. If a student wants to know where memory stores fit, say they come in Class 5.
+Map each Managed Agents object to what they know from Cowork, so nothing feels foreign: skill = the task's steps; agent = the project and its instructions (model, system prompt, tools); MCP servers and APIs = connectors (an MCP server is the usual connection; an app with no MCP server is reached through its API from the script, with its token in the vault); credential vault = signing in to a connector; environment = the cloud computer each run gets (Cowork handles this invisibly); deployment = the scheduled task. A session is the record of one run. If a student wants to know where memory stores fit, say they come in Class 5.
 
 ## Slide 8 · Before you start
 

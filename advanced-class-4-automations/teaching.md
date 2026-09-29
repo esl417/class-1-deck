@@ -35,7 +35,7 @@ The core concept, taught one level deeper than the Beginner track. An automation
 
 ## The parts
 
-Map each Managed Agents object to what they know from Cowork, so nothing feels foreign: skill = the task's steps; agent = the project and its instructions (model, system prompt, tools); MCP servers = connectors; credential vault = signing in to a connector; environment = the cloud computer each run gets (Cowork handles this invisibly); deployment = the scheduled task. A session is the record of one run. If a student wants to know where memory stores fit, say they come in Class 5.
+Map each Managed Agents object to what they know from Cowork, so nothing feels foreign: skill = the task's steps; agent = the project and its instructions (model, system prompt, tools); MCP servers and APIs = connectors (an MCP server is the usual connection; an app with no MCP server is reached through its API from the script, with its token in the vault); credential vault = signing in to a connector; environment = the cloud computer each run gets (Cowork handles this invisibly); deployment = the scheduled task. A session is the record of one run. If a student wants to know where memory stores fit, say they come in Class 5.
 
 ## Before you start
 
