@@ -144,13 +144,22 @@ cheaper model for routine runs), with the cost beat's caveat that each provider 
 caps spend separately.
 The class teaches OpenClaw so they can go there when a job needs it, not as the default.
 
-**Start from the working agent, as files.** First move in Class 6: in the Console, use
-"Manage this agent as code" to download the Class 5 agent (config, system prompt, skill,
-script) as files into the project folder; `ant apply` keeps them in sync. That gives Claude
-a working example to rebuild from in OpenClaw instead of starting from a description, and
-the files go into GitHub with everything else. Needs the `ant` CLI and an API key, so add
-both to the Class 6 prereqs draft (key into `.env`, never a chat). Confirm the exact
-download flow in the Console when building the deck.
+**Start from the working agent, as files.** First move in Class 6: pull the Class 5 agent
+into the project folder so Claude has a working example to rebuild from in OpenClaw instead
+of a description; the files go into GitHub with everything else.
+- The Console's **Raw** view is only the agent definition (model, system prompt, tools, MCP
+  servers). Skills appear as references (a skill ID), not their contents.
+- The whole agent is several separate resources: the agent, its skill (SKILL.md + script),
+  the environment, the deployment, and the vault. Vault credentials are never exported
+  (correctly).
+- The docs' route is **Export as code** in the Console ("Manage this agent as code"), whose
+  download includes a `claude-lock.json` so `ant apply` updates the same resources.
+  Unverified: whether the download includes the skill folder, environment and deployment
+  files. Eric to click it and check.
+- Fallback that always works: Claude Code uses the `ant` CLI (`brew install
+  anthropics/tap/ant`, then `ant auth login` in the browser, no key to paste) to fetch the
+  agent (`ant beta:agents retrieve`) and download the skill
+  (`ant beta:skills:versions download`). Add `ant` to the Class 6 prereqs draft.
 
 **Scope: config and getting it off the ground, not the full agent.** Homework is finishing
 the build.

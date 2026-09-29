@@ -495,31 +495,35 @@ The permission teach, specific to unattended runs. Built-in tools default to alw
 
 **What the student sees on this slide:**
 
-_A machine you trust has to be honest_
+_Your best debugging tool_
 
-## When a brief looks wrong, read that run's transcript .
+## When a brief breaks, the session shows you where.
 
-_📣 It says what failed_
+Managed Agents → Sessions keeps every run: its status, its cost, and a full transcript, step by step. Every tool call with what went in and what came back, every error, and Claude's reasoning in between. It's a stack trace for your agent: find the step that went wrong, and you know what to edit.
 
-A source it couldn't reach goes at the top of the brief, not quietly left out.
+_❌ A tool call errored_
 
-_☀️ Silence never means fine_
+Check the vault login for that app, or a website the environment is blocking.
 
-On a quiet day it still writes "all clear," so no brief means something broke.
+_⏳ A tool call is waiting_
 
-_🔍 Every run is a session_
+That tool is still on always ask. Set it in Step 7 .
 
-Managed Agents → Sessions : status, cost, and the full transcript of every run.
+_🧠 Right data, wrong call_
 
-_💵 The cap holds_
+The judgment was off. Edit the system prompt , not the brief.
 
-At your budget the run pauses. If a run can't start at all, the deployment pauses itself.
+_🧩 A step skipped or done differently_
 
-This is the upgrade over Cowork: when the brief looks wrong, you don't guess why. You open the run and read it.
+The skill wasn't exact enough. Tighten that step, or move it into the script.
+
+ 📣
+
+The brief points you there: it names any source it couldn't reach at the top, and writes "all clear" on quiet days, so no brief means open Sessions. A run that hits its cap pauses; raise the cap to resume it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Four layers of honesty: the brief names any source it couldn't reach at the top; it writes "all clear" on quiet days so a missing brief means breakage; every run is a session under Managed Agents → Sessions with status, cost and full transcript; the budget pauses a runaway run, and a deployment whose run can't start (for example an archived vault or environment) pauses itself, and missed runs aren't made up. The upgrade over Cowork: diagnose by reading the run, not by guessing.
+Sessions are the most useful debugging tool in Managed Agents, so make this land. Managed Agents → Sessions lists every run with its status, agent, token usage, cost and creation time; opening one shows a timeline and the full transcript, including Claude's thinking, every tool call with its inputs and results, errors, and message text, with an inspector for cost and budget, events, tools and resources (downloadable as JSON). It works like a stack trace: find the step where it went wrong, and that tells you which part to edit. Map symptoms to fixes: a tool call that errored → the vault credential for that app (expired, or not matching the server URL) or a host the environment's networking blocks; a tool call waiting on approval → that tool is still always ask, fix in Step 7; the right data but the wrong call about what matters → the system prompt; a step skipped or done differently → the skill wasn't exact enough, so tighten the step or move it into the script. Coach them to read the run before changing anything, and to change one thing and run again. The brief's own honesty rules point them to Sessions: a source it couldn't reach is named at the top, and it writes "all clear" on quiet days, so a missing brief means something broke. A run that hits its budget pauses (budget reached) and resumes if the cap is raised; a deployment whose run can't start (for example an archived vault or environment) pauses itself, and missed runs aren't made up. Viewing sessions needs the Developer or Admin role in the workspace.
 
 ## Slide 18 · Homework
 

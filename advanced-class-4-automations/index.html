@@ -1028,27 +1028,31 @@
 <!-- 15. WHEN IT BREAKS -->
 <section class="slide dense">
   <div class="slide-num" data-label="When it breaks"></div>
-  <div class="eyebrow">A machine you trust has to be honest</div>
-  <h2>When a brief looks wrong, read that run's <em>transcript</em>.</h2>
+  <div class="eyebrow">Your best debugging tool</div>
+  <h2>When a brief breaks, the <em>session</em> shows you where.</h2>
+  <p>Managed Agents → <strong>Sessions</strong> keeps every run: its status, its cost, and a full transcript, step by step. Every tool call with what went in and what came back, every error, and Claude's reasoning in between. It's a stack trace for your agent: <strong>find the step that went wrong, and you know what to edit.</strong></p>
   <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
     <div class="card">
-      <div class="eyebrow">📣 It says what failed</div>
-      <p>A source it couldn't reach goes <strong>at the top</strong> of the brief, not quietly left out.</p>
+      <div class="eyebrow">❌ A tool call errored</div>
+      <p>Check the <strong>vault</strong> login for that app, or a website the <strong>environment</strong> is blocking.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">☀️ Silence never means fine</div>
-      <p>On a quiet day it still writes "all clear," so <strong>no brief</strong> means something broke.</p>
+      <div class="eyebrow">⏳ A tool call is waiting</div>
+      <p>That tool is still on always ask. Set it in <strong>Step 7</strong>.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🔍 Every run is a session</div>
-      <p>Managed Agents → <strong>Sessions</strong>: status, cost, and the full transcript of every run.</p>
+      <div class="eyebrow">🧠 Right data, wrong call</div>
+      <p>The judgment was off. Edit the <strong>system prompt</strong>, not the brief.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">💵 The cap holds</div>
-      <p>At your budget the run pauses. If a run can't start at all, the deployment pauses itself.</p>
+      <div class="eyebrow">🧩 A step skipped or done differently</div>
+      <p>The <strong>skill</strong> wasn't exact enough. Tighten that step, or move it into the script.</p>
     </div>
   </div>
-  <p class="small-note">This is the upgrade over Cowork: when the brief looks wrong, you don't guess why. You open the run and read it.</p>
+  <div class="heads-up">
+    <span class="heads-up-mark">📣</span>
+    <p><strong>The brief points you there:</strong> it names any source it couldn't reach at the top, and writes "all clear" on quiet days, so no brief means open Sessions. A run that hits its cap pauses; raise the cap to resume it.</p>
+  </div>
 </section>
 
 <!-- 16. HOMEWORK -->
