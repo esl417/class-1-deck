@@ -40,6 +40,12 @@ const BOT_VIEWS = {
   '/class-4-automations': '/class-4-automations/llm.md',
   '/class-4-automations/': '/class-4-automations/llm.md',
 
+  '/class-5-agents-beginner': '/class-5-agents-beginner/llm.md',
+  '/class-5-agents-beginner/': '/class-5-agents-beginner/llm.md',
+
+  '/class-6-the-loop-beginner': '/class-6-the-loop-beginner/llm.md',
+  '/class-6-the-loop-beginner/': '/class-6-the-loop-beginner/llm.md',
+
   '/aivisibility': '/aivisibility/llm.md',
   '/aivisibility/': '/aivisibility/llm.md',
 

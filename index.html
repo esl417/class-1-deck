@@ -48,6 +48,9 @@
     max-width: 640px;
   }
   .class-list { display: flex; flex-direction: column; gap: 20px; }
+  .track-heading { margin: 28px 0 -4px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .track-heading h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 800; color: #0f8a80; margin: 0; }
+  .track-heading p { font-size: 15px; color: #777; margin: 0; }
   .class-card {
     display: flex;
     align-items: center;
@@ -126,6 +129,7 @@
     border-color: rgba(0,0,0,0.06);
   }
   .upcoming .class-num { background: #ddd6cc; color: #fff; }
+  .class-num-range { font-size: 16px; letter-spacing: -0.5px; }
   .upcoming .class-arrow { color: #bbb; }
   .badge {
     display: inline-block;
@@ -206,6 +210,11 @@
         </a>
       </div>
 
+      <div class="track-heading">
+        <h2>Beginner</h2>
+        <p>New to AI? Automations and agents, start here.</p>
+      </div>
+
       <div class="class-entry">
         <a class="class-card" href="/class-4-automations/">
           <div class="class-num">4</div>
@@ -218,7 +227,7 @@
       </div>
 
       <div class="class-entry">
-        <a class="class-card" href="/class-5-agents/">
+        <a class="class-card" href="/class-5-agents-beginner/">
           <div class="class-num">5</div>
           <div class="class-body">
             <div class="class-title">Agents</div>
@@ -229,7 +238,7 @@
       </div>
 
       <div class="class-entry">
-        <a class="class-card" href="/class-6-the-loop/">
+        <a class="class-card" href="/class-6-the-loop-beginner/">
           <div class="class-num">6</div>
           <div class="class-body">
             <div class="class-title">The Loop</div>
@@ -237,6 +246,22 @@
           </div>
           <div class="class-arrow">→</div>
         </a>
+      </div>
+
+      <div class="track-heading">
+        <h2>Advanced</h2>
+        <p>Already comfortable with Claude? Automations and agents, going further.</p>
+      </div>
+
+      <div class="class-entry">
+        <div class="class-card upcoming">
+          <div class="class-num class-num-range">4–6</div>
+          <div class="class-body">
+            <div class="class-title">Automations, Agents, The Loop</div>
+            <div class="class-desc">Advanced versions of Classes 4–6. Coming soon.</div>
+          </div>
+          <div class="class-arrow">→</div>
+        </div>
       </div>
     </div>
 

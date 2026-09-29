@@ -156,7 +156,7 @@ const DECKS = [
   },
   {
     dir: 'class-4-automations',
-    title: 'Class 4: Automations',
+    title: 'Class 4: Automations (Beginner)',
     standing:
       'This deck stands alone: do not assume the student took any earlier class. ' +
       'They have the Claude app on a paid plan. Today they build a "morning ' +
@@ -174,8 +174,8 @@ const DECKS = [
       'computer).',
   },
   {
-    dir: 'class-5-agents',
-    title: 'Class 5: Agents',
+    dir: 'class-5-agents-beginner',
+    title: 'Class 5: Agents (Beginner)',
     standing:
       'The student finished Class 4: a Cowork project in the Claude app with a ' +
       'scheduled task that reads their accounts through connectors and writes a ' +
@@ -192,8 +192,8 @@ const DECKS = [
       'can read and delete it).',
   },
   {
-    dir: 'class-6-the-loop',
-    title: 'Class 6: The Loop',
+    dir: 'class-6-the-loop-beginner',
+    title: 'Class 6: The Loop (Beginner)',
     standing:
       'The student finished Classes 4 and 5: a Cowork project with a scheduled ' +
       'task that writes a morning brief, directions in the project instructions, ' +
