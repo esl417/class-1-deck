@@ -112,8 +112,15 @@ Claude's code for bugs: the author shouldn't grade its own work.
 VS Code + Claude Code installed and signed in, GitHub (and Vercel) accounts, CLIs logged in,
 terminal check, fewer approvals, review agents, CLAUDE.md. The Class 5 deck's homework or
 close should point students to it, and the hub card for Class 6 should carry the same
-"Do first" link the Classes 1–3 cards use. Vercel isn't used in Class 6; decide whether to
-say "skip the Vercel steps" or leave it.
+"Do first" link the Classes 1–3 cards use.
+
+**Class 6 prereqs deck: drafted, not yet reviewed or linked** (2026-09-29):
+`advanced-class-6-openclaw/prereqs.html` + `prereqs-teaching.md`, a copy of the Class 1
+prereqs with Vercel and Impeccable removed, "website" → "agent", a "skip to the Terminal
+check if you did Class 1" note, the review-agents handout pointed at
+`/class-1-website-build/agents.html`, and the Claude Console login from Class 4 mentioned.
+To do when Class 6 is built: Eric reviews it, add the hub "Do first" link, deploy the
+Worker (its BOT_VIEWS route is already in `infra/worker.js`).
 
 **Disclaimer, up front: use the simplest deployment you can.** OpenClaw is not the
 upgrade everyone should take. Choose the lightest option that can do the job:

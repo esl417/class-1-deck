@@ -200,6 +200,23 @@ const DECKS = [
       'Class 6 moves to Claude Code and OpenClaw.',
   },
   {
+    dir: 'advanced-class-6-openclaw',
+    file: 'prereqs.html',
+    out: 'prereqs-llm.md',
+    teaching: 'prereqs-teaching.md',
+    title: 'Class 6 Prerequisites & Setup (Advanced)',
+    standing:
+      'This is the BEFORE-CLASS setup deck for Advanced Class 6, adapted from the ' +
+      'Class 1 prereqs. The student built in Claude Managed Agents in Classes 4 and ' +
+      '5 and may never have used VS Code, a terminal, or GitHub. They are installing ' +
+      'VS Code, the Claude Code extension, git, Node.js, and the GitHub and Claude ' +
+      'Code CLIs, creating a GitHub account, logging in, adding review agents and a ' +
+      'CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already ' +
+      'did the Class 1 setup, only the Terminal check is needed. Most often you are ' +
+      'consulted because an install, login, or terminal command failed: read the ' +
+      'actual error, fix the real cause, keep them moving.',
+  },
+  {
     dir: 'class-5-agents-beginner',
     title: 'Class 5: Agents (Beginner)',
     standing:
