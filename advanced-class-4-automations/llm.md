@@ -531,23 +531,23 @@ Sessions are the most useful debugging tool in Managed Agents, so make this land
 
 _Your homework · do it this week_
 
-## Add one source, and move one step into code .
+## Add a source, and tune the brief until you'd read it daily.
 
-_➕ A source that's yours_
+_➕ Add at least one source_
 
-The one that would make the brief genuinely yours. Same pattern as today: a credential in the vault, the server or token, one step in the skill, then run it once.
+The one that makes the brief genuinely yours. Same pattern as today: add its MCP server to the agent, connect it in the vault, add its step to the skill, set its permission, then test-run it.
 
-_⚙️ One sentence becomes code_
+_🎯 Make it useful_
 
-Find a step Claude still works out each run, like sorting, counting or formatting, and ask Claude whether a script can do it instead. Update the skill and run it once.
+Read it every morning. When it flags the wrong thing, fix the system prompt . When it misses something or reads badly, fix the skill . Check the session first so you fix the right part.
 
  🎓
 
-The calls are yours: which source makes the brief worth reading, and which step is worth hardening. Claude handles the how.
+Next class, an agent acts on this brief, so it's worth getting right. The calls are yours: which sources matter, and what "needs me today" means. Claude handles the how.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find something Claude still works out on every run (sorting, counting, formatting) and ask whether a script can do it instead, then update the skill and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
+Two goals for the week, both about making the brief genuinely useful to them. Add at least one source that makes it theirs, using the same pattern as class: add its MCP server to the agent, connect it in the vault (Connect, sign in), add its step to the skill, set its tool permission to always allow, then test-run it. And tune it by reading it every morning: when it flags the wrong things, the fix is the system prompt (what matters); when it misses something, pulls the wrong thing or reads badly, the fix is the skill (what it pulls, the brief's sections and format). Have them open the session before changing anything, so they fix the right part. Why it matters: in Class 5 an agent acts on this brief, so a brief they trust is the foundation. Help fully with the mechanics; the choices (which sources, what "needs me today" means) are theirs.
 
 ## Slide 19 · You shipped it
 

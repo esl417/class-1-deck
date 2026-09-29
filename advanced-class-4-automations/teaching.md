@@ -79,7 +79,7 @@ Sessions are the most useful debugging tool in Managed Agents, so make this land
 
 ## Homework
 
-Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find something Claude still works out on every run (sorting, counting, formatting) and ask whether a script can do it instead, then update the skill and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
+Two goals for the week, both about making the brief genuinely useful to them. Add at least one source that makes it theirs, using the same pattern as class: add its MCP server to the agent, connect it in the vault (Connect, sign in), add its step to the skill, set its tool permission to always allow, then test-run it. And tune it by reading it every morning: when it flags the wrong things, the fix is the system prompt (what matters); when it misses something, pulls the wrong thing or reads badly, the fix is the skill (what it pulls, the brief's sections and format). Have them open the session before changing anything, so they fix the right part. Why it matters: in Class 5 an agent acts on this brief, so a brief they trust is the foundation. Help fully with the mechanics; the choices (which sources, what "needs me today" means) are theirs.
 
 ## You shipped it
 
