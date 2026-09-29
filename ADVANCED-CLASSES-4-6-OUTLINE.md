@@ -144,6 +144,14 @@ cheaper model for routine runs), with the cost beat's caveat that each provider 
 caps spend separately.
 The class teaches OpenClaw so they can go there when a job needs it, not as the default.
 
+**Start from the working agent, as files.** First move in Class 6: in the Console, use
+"Manage this agent as code" to download the Class 5 agent (config, system prompt, skill,
+script) as files into the project folder; `ant apply` keeps them in sync. That gives Claude
+a working example to rebuild from in OpenClaw instead of starting from a description, and
+the files go into GitHub with everything else. Needs the `ant` CLI and an API key, so add
+both to the Class 6 prereqs draft (key into `.env`, never a chat). Confirm the exact
+download flow in the Console when building the deck.
+
 **Scope: config and getting it off the ground, not the full agent.** Homework is finishing
 the build.
 - Same concepts, new home: system prompt → SOUL/AGENTS.md, tools → skills and scripts,
