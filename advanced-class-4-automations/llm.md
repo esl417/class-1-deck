@@ -357,35 +357,9 @@ Next class you'll build an agent through Create agent , field by field. Today, Q
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are the next slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the vault and environment, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
-## Slide 12 · No one's watching
-
-**What the student sees on this slide:**
-
-_Permissions for a run nobody attends_
-
-## At 7am, there's no one to click Allow .
-
-Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives.
-
-_🔒 The three policies_
-
-Always allow: it just runs. Always ask: it pauses for you. Auto: Claude decides call by call, and can still pause.
-
-_✋ What to set today_
-
-Always allow for the reading tools your skill names, plus the one tool that saves the brief. Turn off every other tool that writes, sends, or deletes.
-
- 🛡️
-
-Turning a tool off is the lock. The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
-
-## Slide 13 · Step 3 · The vault
+## Slide 12 · Step 3 · The vault
 
 **What the student sees on this slide:**
 
@@ -411,7 +385,7 @@ Keys go in the vault, and nowhere else. Not in a chat, not in the skill, not in 
 
 Credential vaults hold every login and key: OAuth or a bearer token for each MCP server (matched to the server URL), and environment-variable secrets for the script. The mechanism to explain: the run holds only a placeholder, and the real secret is substituted as the request leaves the sandbox, so the agent never sees it. Practical consequences if a script fails auth: the script must send the token as-is in a request header; credentials created in the Console inject into headers only unless body injection is enabled on the form; and the credential's allowed hosts and the environment's networking must both allow the host. Vaults are shared across the workspace. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
 
-## Slide 14 · Step 4 · The environment
+## Slide 13 · Step 4 · The environment
 
 **What the student sees on this slide:**
 
@@ -434,6 +408,32 @@ Nothing on that computer survives the run. That's why the brief is saved to Driv
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Each run gets a fresh cloud sandbox configured by the environment. Two settings: packages (pip and others) the script needs, installed before the run and cached; networking, where limited means only listed hosts plus an allow-MCP-servers switch and an allow-package-managers switch. Environments made in the Console may default to limited, which is the usual cause of "host blocked" errors: add the host, or enable MCP server access. Nothing in the sandbox survives the run, which is why the brief is saved to Drive or Dropbox.
+
+## Slide 14 · No one's watching
+
+**What the student sees on this slide:**
+
+_Permissions for a run nobody attends_
+
+## At 7am, there's no one to click Allow .
+
+Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives.
+
+_🔒 The three policies_
+
+Always allow: it just runs. Always ask: it pauses for you. Auto: Claude decides call by call, and can still pause.
+
+_✋ What to set today_
+
+Always allow for the reading tools your skill names, plus the one tool that saves the brief. Turn off every other tool that writes, sends, or deletes.
+
+ 🛡️
+
+Turning a tool off is the lock. The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
 
 ## Slide 15 · Step 5 · Prove it
 

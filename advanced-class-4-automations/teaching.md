@@ -51,7 +51,7 @@ The whole build starts in the Console: Managed Agents → Quickstart, where the 
 
 ## Step 2 · The agent
 
-Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are the next slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
+Quickstart fills in the agent's fields; the student checks each rather than trusting the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers (every one on the list; their permissions are set after the vault and environment, on the "No one's watching" slide), and the morning-briefing skill attached with its script. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later means changing the skill; the agent and deployment stay. If a field is wrong, they edit the agent. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
 ## Step 3 · The vault
 

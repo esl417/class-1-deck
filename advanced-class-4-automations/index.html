@@ -916,28 +916,6 @@
   <p class="small-note">Next class you'll build an agent through <strong>Create agent</strong>, field by field. Today, Quickstart is enough.</p>
 </section>
 
-<!-- 10. NO ONE WATCHING -->
-<section class="slide dense">
-  <div class="slide-num" data-label="No one's watching"></div>
-  <div class="eyebrow">Permissions for a run nobody attends</div>
-  <h2>At 7am, there's no one to click <em>Allow</em>.</h2>
-  <p>Every tool the agent can use gets a permission policy. Built-in tools start at <strong>always allow</strong>. Tools from your MCP servers start at <strong>always ask</strong>, and a scheduled run that asks waits forever. The brief never arrives.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">🔒 The three policies</div>
-      <p><strong>Always allow:</strong> it just runs. <strong>Always ask:</strong> it pauses for you. <strong>Auto:</strong> Claude decides call by call, and can still pause.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">✋ What to set today</div>
-      <p><strong>Always allow</strong> for the reading tools your skill names, plus the one tool that saves the brief. <strong>Turn off</strong> every other tool that writes, sends, or deletes.</p>
-    </div>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🛡️</span>
-    <p><strong>Turning a tool off is the lock.</strong> The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.</p>
-  </div>
-</section>
-
 <!-- 9. STEP 3 — THE VAULT -->
 <section class="slide dense">
   <div class="slide-num" data-label="Step 3 · The vault"></div>
@@ -977,6 +955,28 @@
     </div>
   </div>
   <p class="small-note">Nothing on that computer survives the run. That's why the brief is saved to Drive or Dropbox, not left behind.</p>
+</section>
+
+<!-- 10. NO ONE WATCHING -->
+<section class="slide dense">
+  <div class="slide-num" data-label="No one's watching"></div>
+  <div class="eyebrow">Permissions for a run nobody attends</div>
+  <h2>At 7am, there's no one to click <em>Allow</em>.</h2>
+  <p>Every tool the agent can use gets a permission policy. Built-in tools start at <strong>always allow</strong>. Tools from your MCP servers start at <strong>always ask</strong>, and a scheduled run that asks waits forever. The brief never arrives.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🔒 The three policies</div>
+      <p><strong>Always allow:</strong> it just runs. <strong>Always ask:</strong> it pauses for you. <strong>Auto:</strong> Claude decides call by call, and can still pause.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">✋ What to set today</div>
+      <p><strong>Always allow</strong> for the reading tools your skill names, plus the one tool that saves the brief. <strong>Turn off</strong> every other tool that writes, sends, or deletes.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🛡️</span>
+    <p><strong>Turning a tool off is the lock.</strong> The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.</p>
+  </div>
 </section>
 
 <!-- 13. STEP 5 — PROVE IT -->
