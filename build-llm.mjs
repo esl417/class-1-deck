@@ -166,7 +166,8 @@ const DECKS = [
       'the project instructions, and writes one brief. No code, no keys, no ' +
       'terminal. NEW territory this class: connecting real accounts. The critical ' +
       'safety rules: read-only is a SETTING (connector permissions: send, delete and ' +
-      'anything that changes an account set to Blocked), and no password or key is ' +
+      'anything that changes an account set to never, via + > Connectors > Manage ' +
+      'connectors), and no password or key is ' +
       'ever typed into the chat. Also teach the fixed-rule-vs-judgment split (write ' +
       'every fixed step as an exact instruction; only "what matters" is judgment) ' +
       'and the "Require this computer" toggle (only for sources that live on the ' +

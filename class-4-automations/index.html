@@ -711,7 +711,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔔 Chase the follow-ups</div>
-      <p>It remembers who never replied and <strong>sends the nudge</strong>, so you're not keeping a mental list of loose ends.</p>
+      <p>It remembers who never replied and <strong>drafts the nudge</strong>, so you're not keeping a mental list of loose ends.</p>
     </div>
   </div>
   <p class="small-note">Notice what they share: each one <strong>reads something and makes a small judgment</strong> — what's urgent, how to reply, what matters. That "deciding" is the interesting part, and it's exactly what today's build does.</p>
@@ -906,20 +906,20 @@
   <div class="slide-num" data-label="A new habit · Permissions"></div>
   <div class="eyebrow">Before it touches your accounts</div>
   <h2>Read-only is a <em>setting</em>, not a promise.</h2>
-  <p>Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and in <strong>Customize → Connectors</strong> you give each one a permission.</p>
+  <p>Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and each one gets its own setting: in the message box, click <strong>+</strong> → <strong>Connectors</strong> → <strong>Manage connectors</strong>, then click a connector.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🔒 The three settings</div>
-      <p><strong>Always allow</strong> — it just does it. <strong>Needs approval</strong> — it asks you first. <strong>Blocked</strong> — it can't, even if it tried.</p>
+      <p><strong>Allow it</strong> — it just does it. <strong>Ask you first</strong> — it checks with you. <strong>Never</strong> — it can't, even if it tried.</p>
     </div>
     <div class="card">
       <div class="eyebrow">✋ What to set today</div>
-      <p>Allow the reading actions. Set <strong>send, delete, and anything that changes your accounts</strong> to Blocked. Your briefing only reads — so reading is all it's allowed to do.</p>
+      <p>Allow the reading actions. Set <strong>send, delete, and anything that changes your accounts</strong> to never. Your briefing only reads — so reading is all it's allowed to do.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🛡️</span>
-    <p><strong>Never type a password into the chat.</strong> Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; <strong>Blocked</strong> is a lock.</p>
+    <p><strong>Never type a password into the chat.</strong> Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; the <strong>never</strong> setting is a lock.</p>
   </div>
 </section>
 
@@ -928,11 +928,11 @@
   <div class="slide-num" data-label="Plan step 1 · The connectors"></div>
   <div class="eyebrow">Claude sets this part up — you just sign in</div>
   <h2>Step 1 — <em>connect</em> each app you picked.</h2>
-  <p>You approved the plan, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each <strong>connector</strong> has one job in this task: go get today's stuff from that app and bring it back.</p>
+  <p>You pasted the prompt, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each <strong>connector</strong> has one job in this task: go get today's stuff from that app and bring it back.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🙋 Your only job</div>
-      <p>When Claude reaches an app that isn't connected, open <strong>Customize → Connectors</strong>, find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.</p>
+      <p>When Claude reaches an app that isn't connected, click <strong>+</strong> → <strong>Connectors</strong> in the message box, find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧩 Why one per app</div>
@@ -987,7 +987,7 @@
   <div class="slide-num" data-label="Plan step 4 · Prove it"></div>
   <div class="eyebrow">Don't assume — run it</div>
   <h2>Step 4 — run it once, live, right now.</h2>
-  <p>The plan's last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.</p>
+  <p>The last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.</p>
   <ul class="numbered">
     <li><strong>1.</strong> Run it now → ask Claude to run the task once: it pulls your sources, sorts, and <strong>writes the brief</strong>.</li>
     <li><strong>2.</strong> Read it → does the "needs you today" list actually look right? Change your instructions, not the brief.</li>

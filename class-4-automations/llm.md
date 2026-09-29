@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-This deck stands alone: do not assume the student took any earlier class. They have the Claude app on a paid plan. Today they build a "morning briefing" inside a Cowork project in the Claude app: a scheduled task that runs in the cloud (laptop open or closed), reads a few sources through connectors (email/calendar/tasks, all read-only), decides what matters using the project instructions, and writes one brief. No code, no keys, no terminal. NEW territory this class: connecting real accounts. The critical safety rules: read-only is a SETTING (connector permissions: send, delete and anything that changes an account set to Blocked), and no password or key is ever typed into the chat. Also teach the fixed-rule-vs-judgment split (write every fixed step as an exact instruction; only "what matters" is judgment) and the "Require this computer" toggle (only for sources that live on the computer).
+This deck stands alone: do not assume the student took any earlier class. They have the Claude app on a paid plan. Today they build a "morning briefing" inside a Cowork project in the Claude app: a scheduled task that runs in the cloud (laptop open or closed), reads a few sources through connectors (email/calendar/tasks, all read-only), decides what matters using the project instructions, and writes one brief. No code, no keys, no terminal. NEW territory this class: connecting real accounts. The critical safety rules: read-only is a SETTING (connector permissions: send, delete and anything that changes an account set to never, via + > Connectors > Manage connectors), and no password or key is ever typed into the chat. Also teach the fixed-rule-vs-judgment split (write every fixed step as an exact instruction; only "what matters" is judgment) and the "Require this computer" toggle (only for sources that live on the computer).
 
 ---
 
@@ -93,7 +93,7 @@ A 20-message back-and-forth becomes three lines: what was decided, and what's ne
 
 _🔔 Chase the follow-ups_
 
-It remembers who never replied and sends the nudge , so you're not keeping a mental list of loose ends.
+It remembers who never replied and drafts the nudge , so you're not keeping a mental list of loose ends.
 
 Notice what they share: each one reads something and makes a small judgment — what's urgent, how to reply, what matters. That "deciding" is the interesting part, and it's exactly what today's build does.
 
@@ -327,23 +327,23 @@ _Before it touches your accounts_
 
 ## Read-only is a setting , not a promise.
 
-Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and in Customize → Connectors you give each one a permission.
+Connecting your accounts means Claude can reach them. So before the first run, decide exactly what it's allowed to do there. Every connector lists its actions — read, search, draft, send, delete — and each one gets its own setting: in the message box, click + → Connectors → Manage connectors , then click a connector.
 
 _🔒 The three settings_
 
-Always allow — it just does it. Needs approval — it asks you first. Blocked — it can't, even if it tried.
+Allow it — it just does it. Ask you first — it checks with you. Never — it can't, even if it tried.
 
 _✋ What to set today_
 
-Allow the reading actions. Set send, delete, and anything that changes your accounts to Blocked. Your briefing only reads — so reading is all it's allowed to do.
+Allow the reading actions. Set send, delete, and anything that changes your accounts to never. Your briefing only reads — so reading is all it's allowed to do.
 
  🛡️
 
-Never type a password into the chat. Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; Blocked is a lock.
+Never type a password into the chat. Connectors sign in through each app's own sign-in page — you never hand Claude a password. If anything ever asks you to paste a password or key into the chat, stop. And "never send" in your instructions is a request; the never setting is a lock.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-CRITICAL SAFETY TEACH — this is the most important note in the class. Connecting real accounts means Claude can reach them, so before the first run they decide exactly what it may do there. In Customize → Connectors every connector lists its actions (read, search, draft, send, delete…) and each gets one of three settings: Always allow (it just does it), Needs approval (it asks first), Blocked (it can't, even if it tried). Today's rule: allow the reading actions; set send, delete and anything that changes their accounts to Blocked. The briefing only reads, so reading is all it may do. Make the distinction land: "never send" written in the instructions is a request; Blocked is a lock. Next class they will loosen one or two of these on purpose, for drafting; today everything that writes is locked.
+CRITICAL SAFETY TEACH — this is the most important note in the class. Connecting real accounts means Claude can reach them, so before the first run they decide exactly what it may do there. In the message box they click + → Connectors → Manage connectors, then a connector: every connector lists its actions (read, search, draft, send, delete…) and each gets one of three settings: allow it (it just does it), ask you first (it checks with you), never (it can't, even if it tried). Today's rule: allow the reading actions; set send, delete and anything that changes their accounts to never. The briefing only reads, so reading is all it may do. Make the distinction land: "never send" written in the instructions is a request; the never setting is a lock. Keep these connector settings separate from the approval setting under the message box, which is about Claude asking before it acts. Next class they will loosen one or two of these on purpose, for drafting; today everything that writes is locked.
 
 The second rule, enforced every time: NEVER have the student type a password or key into the chat. Connectors sign in through each app's own sign-in page, so Claude never needs one. If anything asks them to paste a password or key into the chat, they stop. If a student starts to paste one to you, STOP them and redirect to the connector's own sign-in. This is the one place in the class where a wrong move has a real security cost — hold the line firmly and explain why.
 
@@ -355,11 +355,11 @@ _Claude sets this part up — you just sign in_
 
 ## Step 1 — connect each app you picked.
 
-You approved the plan, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each connector has one job in this task: go get today's stuff from that app and bring it back.
+You pasted the prompt, so Claude starts setting up. First it checks each app you picked — your email, your calendar, your tasks. If one isn't connected yet, it tells you. Each connector has one job in this task: go get today's stuff from that app and bring it back.
 
 _🙋 Your only job_
 
-When Claude reaches an app that isn't connected, open Customize → Connectors , find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.
+When Claude reaches an app that isn't connected, click + → Connectors in the message box, find the app, and sign in with that app's own sign-in page. Then set its permissions, exactly as on the last slide.
 
 _🧩 Why one per app_
 
@@ -369,7 +369,7 @@ If your tool isn't in the connector directory, leave it for now — start with t
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the one-connector-per-app idea in plain words. Claude checks each app they picked; if one isn't connected yet, it tells them. Their only job: open Customize → Connectors, find the app, sign in with that app's own sign-in page, then set its permissions as on the Permissions slide. Why one per app: if one breaks the others keep working, and adding an app later means adding one more connector with nothing else changing. If a connector fails, test that one on its own. If their tool isn't in the connector directory, leave it for now and get the brief running with the ones that are.
+Teach the one-connector-per-app idea in plain words. Claude checks each app they picked; if one isn't connected yet, it tells them. Their only job: click + → Connectors in the message box, find the app, sign in with that app's own sign-in page, then set its permissions as on the Permissions slide. Why one per app: if one breaks the others keep working, and adding an app later means adding one more connector with nothing else changing. If a connector fails, test that one on its own. If their tool isn't in the connector directory, leave it for now and get the brief running with the ones that are.
 
 ## Slide 13 · Plan step 2 · The judgment
 
@@ -427,7 +427,7 @@ _Don't assume — run it_
 
 ## Step 4 — run it once, live, right now.
 
-The plan's last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.
+The last step: don't wait until tomorrow morning to find out if it works. Run the task once now, in the room, and watch the brief appear. Then confirm the schedule so it runs on its own from now on.
 
 - 1. Run it now → ask Claude to run the task once: it pulls your sources, sorts, and writes the brief .
 

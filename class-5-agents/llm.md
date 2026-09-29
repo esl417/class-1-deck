@@ -131,15 +131,15 @@ Make the test concrete. Three items from one morning each need a different thing
 
 **What the student sees on this slide:**
 
-_No new software — half of it is already built_
+_No new software — you built most of it last class_
 
-## An agent is four things. You built two last class.
+## An agent is four things. You have three already.
 
 There's nothing to install. Your agent lives in the same project as your brief, and it's made of four parts:
 
- 📄 Instructions new today
+ 📄 Instructions you have
 
-Who it is, how it uses your brief, and what it may do — written by you.
+Today you swap them out: who it is, how it uses your brief, and what it may do.
 
  🔌 Tools you have
 
@@ -159,7 +159,7 @@ The instructions are yours; the memory is its own. You write and edit the instru
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Demystify: an agent is instructions + tools + limits + memory, and they built two of the four last class (the connectors and their permissions). Instructions are new today: who it is, how it uses the brief, and what it may do, written by the student in Step 1. Tools are the connectors; the agent picks which one each job needs. Limits are the connector permissions; today they loosen one or two on purpose. Memory is new: what it learns from corrections, kept between conversations. The distinction to plant now because it matters all class: the instructions are theirs (only they edit them); the memory is its own (it writes it, they can read and delete it).
+Demystify: an agent is instructions + tools + limits + memory, and they have three of the four from last class (instructions, connectors, and their permissions). Today they swap the instructions out in Step 1: who it is, how it uses the brief, and what it may do. Tools are the connectors; the agent picks which one each job needs. Limits are the connector permissions; today they loosen one or two on purpose. Memory is new: what it learns from corrections, kept between conversations. The distinction to plant now because it matters all class: the instructions are theirs (only they edit them); the memory is its own (it writes it, they can read and delete it).
 
 ## Slide 6 · The to-do list
 
@@ -189,11 +189,11 @@ The brief becomes the agent's to-do list, and the links on each item are what ma
 
 **What the student sees on this slide:**
 
-_Right now the project's instructions are empty_
+_Swap out last class's instructions_
 
 ## Step 1 — give it its directions .
 
-Last class built the brief, but the project's instructions are still blank — so there's no agent yet. Open your Morning Briefing project's instructions, paste this in, and fill in the brackets:
+Last class, your project's instructions only said what matters for the brief. Today they become the agent's directions. Open your Morning Briefing project's instructions, replace what's there with this, and fill in the brackets:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Who you are: my assistant for [my business: what I do and who my customers are]. My morning brief: each morning a brief is saved in this project. Before you act, read the newest one. When I say "#2," I mean item 2 in today's brief. Follow each item's link to the original email, meeting, or task before you act on it. What you can do: draft email replies for me to approve, file tasks, and write prep notes in our conversation. Never send an email. Never delete anything. If you're not sure, ask me. How I work: [how I sound when I write, e.g. short and friendly, signed with my first name]. [Who gets priority, e.g. clients get a same-day reply]. [What always comes to me, e.g. anything about money or contracts].
@@ -206,13 +206,13 @@ Then check it took: with Cowork selected in the message box, ask "Which item in 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-After Class 4 the project's instructions are empty: the scheduled task holds the brief's steps, so there is no agent yet. Step 1 creates it. The student opens the Morning Briefing project's instructions, pastes the template, and fills in the brackets. Most of the template is the same for everyone and should stay: how it uses the brief (read the newest one first, "#2" means item 2 of today's brief, follow each item's link before acting) and what it may do (draft replies for approval, file tasks, prep notes in the conversation; never send, never delete, ask when unsure). The bracketed parts are theirs: what the business is, how they sound, who gets priority, what always comes to them. Push for specifics, the way they would brief a new hire; vague answers produce a generic assistant. The slide says to edit freely, and mean it: add rules, cut ones that don't apply, change what it's allowed to do, as long as "never send" and "never delete" stay unless they understand what removing them means. Only the student edits the instructions. Then the check: with Cowork selected, ask which brief item to deal with first and why. A good answer names a real item and a reason they'd agree with; if it can't find the brief, have it look for where the scheduled task saves briefs and read the newest one.
+After Class 4 the project's instructions only say what matters for the brief. Step 1 swaps them out for the agent's directions: the student opens the Morning Briefing project's instructions, replaces what's there with the template, and fills in the brackets. The brief's scheduled task still reads these instructions to decide what matters, so if they had rules they still want the brief to follow ("anything from a client is urgent"), have them carry those over into the "How I work" part. Most of the template is the same for everyone and should stay: how it uses the brief (read the newest one first, "#2" means item 2 of today's brief, follow each item's link before acting) and what it may do (draft replies for approval, file tasks, prep notes in the conversation; never send, never delete, ask when unsure). The bracketed parts are theirs: what the business is, how they sound, who gets priority, what always comes to them. Push for specifics, the way they would brief a new hire; vague answers produce a generic assistant. The slide says to edit freely, and mean it: add rules, cut ones that don't apply, change what it's allowed to do, as long as "never send" and "never delete" stay unless they understand what removing them means. Only the student edits the instructions. Then the check: with Cowork selected, ask which brief item to deal with first and why. A good answer names a real item and a reason they'd agree with; if it can't find the brief, have it look for where the scheduled task saves briefs and read the newest one.
 
 ## Slide 8 · Step 2 · Loosen its limits
 
 **What the student sees on this slide:**
 
-_Last class, everything that writes was Blocked_
+_Last class, everything that writes was set to never_
 
 ## Step 2 — loosen its limits , on purpose.
 
@@ -232,7 +232,7 @@ The control is the send button. It can write the draft, but it can't send it —
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Last class everything that writes was Blocked. The directions from Step 1 say what it may do; the connector settings make sure it can't do more. Where they live: in the message box, click + → Connectors → Manage connectors, then click a connector. Every action the connector offers has its own setting: allow it, ask first, or never. The one fixed rule: in Gmail, send email is set to never. Creating drafts is allowed, so it can write replies. Anything that deletes stays never. Everything else is the student's call, connector by connector: allow what they're comfortable with, ask for anything they want to see first, never for anything they don't want it doing. The control to name: the send button. The agent can write a draft but cannot send it; the draft waits in Gmail until the student reads it and presses send. These connector settings decide what an app connection may do; keep them separate from the approval setting under the message box, which is about Claude asking before it acts.
+Last class everything that writes was set to never. The directions from Step 1 say what it may do; the connector settings make sure it can't do more. Where they live: in the message box, click + → Connectors → Manage connectors, then click a connector. Every action the connector offers has its own setting: allow it, ask first, or never. The one fixed rule: in Gmail, send email is set to never. Creating drafts is allowed, so it can write replies. Anything that deletes stays never. Everything else is the student's call, connector by connector: allow what they're comfortable with, ask for anything they want to see first, never for anything they don't want it doing. The control to name: the send button. The agent can write a draft but cannot send it; the draft waits in Gmail until the student reads it and presses send. These connector settings decide what an app connection may do; keep them separate from the approval setting under the message box, which is about Claude asking before it acts.
 
 ## Slide 9 · Step 3 · Hand it work
 

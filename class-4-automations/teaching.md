@@ -5,7 +5,7 @@ perform the build. The build lives in the Claude app: a Cowork project with a sc
 task that reaches the student's accounts through connectors. New territory this class:
 connecting real accounts, so the rule you must never let slide is that read-only is a
 SETTING (connector permissions: send, delete and anything that changes an account set to
-Blocked), and that no password or key is ever typed into the chat. Also teach the
+never), and that no password or key is ever typed into the chat. Also teach the
 fixed-rule-vs-judgment split, one connector per app, and a brief that is honest when it
 fails.
 
@@ -45,13 +45,13 @@ One prompt sets up the whole automation; the student answers its questions and c
 
 ## A new habit · Permissions
 
-CRITICAL SAFETY TEACH — this is the most important note in the class. Connecting real accounts means Claude can reach them, so before the first run they decide exactly what it may do there. In Customize → Connectors every connector lists its actions (read, search, draft, send, delete…) and each gets one of three settings: Always allow (it just does it), Needs approval (it asks first), Blocked (it can't, even if it tried). Today's rule: allow the reading actions; set send, delete and anything that changes their accounts to Blocked. The briefing only reads, so reading is all it may do. Make the distinction land: "never send" written in the instructions is a request; Blocked is a lock. Next class they will loosen one or two of these on purpose, for drafting; today everything that writes is locked.
+CRITICAL SAFETY TEACH — this is the most important note in the class. Connecting real accounts means Claude can reach them, so before the first run they decide exactly what it may do there. In the message box they click + → Connectors → Manage connectors, then a connector: every connector lists its actions (read, search, draft, send, delete…) and each gets one of three settings: allow it (it just does it), ask you first (it checks with you), never (it can't, even if it tried). Today's rule: allow the reading actions; set send, delete and anything that changes their accounts to never. The briefing only reads, so reading is all it may do. Make the distinction land: "never send" written in the instructions is a request; the never setting is a lock. Keep these connector settings separate from the approval setting under the message box, which is about Claude asking before it acts. Next class they will loosen one or two of these on purpose, for drafting; today everything that writes is locked.
 
 The second rule, enforced every time: NEVER have the student type a password or key into the chat. Connectors sign in through each app's own sign-in page, so Claude never needs one. If anything asks them to paste a password or key into the chat, they stop. If a student starts to paste one to you, STOP them and redirect to the connector's own sign-in. This is the one place in the class where a wrong move has a real security cost — hold the line firmly and explain why.
 
 ## Plan step 1 · The connectors
 
-Teach the one-connector-per-app idea in plain words. Claude checks each app they picked; if one isn't connected yet, it tells them. Their only job: open Customize → Connectors, find the app, sign in with that app's own sign-in page, then set its permissions as on the Permissions slide. Why one per app: if one breaks the others keep working, and adding an app later means adding one more connector with nothing else changing. If a connector fails, test that one on its own. If their tool isn't in the connector directory, leave it for now and get the brief running with the ones that are.
+Teach the one-connector-per-app idea in plain words. Claude checks each app they picked; if one isn't connected yet, it tells them. Their only job: click + → Connectors in the message box, find the app, sign in with that app's own sign-in page, then set its permissions as on the Permissions slide. Why one per app: if one breaks the others keep working, and adding an app later means adding one more connector with nothing else changing. If a connector fails, test that one on its own. If their tool isn't in the connector directory, leave it for now and get the brief running with the ones that are.
 
 ## Plan step 2 · The judgment
 
