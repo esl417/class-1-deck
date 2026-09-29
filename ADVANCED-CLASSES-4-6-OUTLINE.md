@@ -33,6 +33,9 @@ vaults, memory), so the concepts are visible rather than hidden behind an app. I
 
 Only the Advanced track bills by API usage, and surprise bills are the fear ("woke up to a
 $2,100 API bill"); few competitors teach it. Every Advanced class has a cost beat.
+- **Tied to simplicity:** Cowork runs on the Claude subscription, not the API, so it has
+  no usage bill. Another reason to run agentic work in a Cowork project when it can do the
+  job. Keep driving simplicity and cost control together in every class.
 - **Class 4:** its own slide before anything runs. Three levels: per run (deployment
   budget), per month (workspace spend limit), the hard ceiling (prepaid credits,
   auto-reload off). The cron typo (`* 7 * * 1-5` = 60 runs a morning). Read each run's
