@@ -108,6 +108,13 @@ nothing sent as the student without them.
 Code keeps visible, and because VS Code lets a second AI (Codex or another model) review
 Claude's code for bugs: the author shouldn't grade its own work.
 
+**Prerequisite: the Class 1 prereqs, done before class** (`class-1-website-build/prereqs.html`):
+VS Code + Claude Code installed and signed in, GitHub (and Vercel) accounts, CLIs logged in,
+terminal check, fewer approvals, review agents, CLAUDE.md. The Class 5 deck's homework or
+close should point students to it, and the hub card for Class 6 should carry the same
+"Do first" link the Classes 1–3 cards use. Vercel isn't used in Class 6; decide whether to
+say "skip the Vercel steps" or leave it.
+
 **Disclaimer, up front: use the simplest deployment you can.** OpenClaw is not the
 upgrade everyone should take. Choose the lightest option that can do the job:
 - **Cowork project** if the job can be run from there. Least to maintain.
