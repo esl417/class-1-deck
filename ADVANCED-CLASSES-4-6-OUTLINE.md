@@ -104,6 +104,16 @@ nothing sent as the student without them.
 Code keeps visible, and because VS Code lets a second AI (Codex or another model) review
 Claude's code for bugs: the author shouldn't grade its own work.
 
+**Disclaimer, up front: use the simplest deployment you can.** OpenClaw is not the
+upgrade everyone should take. Choose the lightest option that can do the job:
+- **Cowork project** if the job can be run from there. Least to maintain.
+- **Managed Agents** for a simple agent with little customization. Anthropic hosts it
+  and it's easier to maintain.
+- **OpenClaw** only for an agent that needs a lot of customization (its own code and
+  custom tools, its own channels, webhooks), because you now own the code, the hosting
+  and the upkeep.
+The class teaches OpenClaw so they can go there when a job needs it, not as the default.
+
 **Scope: config and getting it off the ground, not the full agent.** Homework is finishing
 the build.
 - Same concepts, new home: system prompt → SOUL/AGENTS.md, tools → skills and scripts,
