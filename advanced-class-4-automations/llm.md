@@ -85,35 +85,35 @@ Claude comes in six shapes. Knowing which one a job belongs in is half the skill
 
  💬 Chat
 
-Ask, think, write. One conversation at a time; nothing carries over unless you bring it.
+Conversations that can search your past chats and build memory over time. It makes files for you to download, but can't touch the files on your computer.
 
  📁 Projects
 
-A home for one job: files and instructions every chat inside it reads.
+"Self-contained workspaces with their own chat histories and knowledge bases."
 
  🖼️ Artifacts
 
-Something Claude makes for you to use or share: a doc, a page, a small app.
+"Anything Claude makes for you that you'd put in front of someone": a deck, a document, a dashboard, a small tool.
 
  🤝 Cowork
 
-Claude working in your files and accounts, with connectors and scheduled tasks. No code.
+Takes on multi-step tasks and carries them out for you: reads and writes your real files, uses connectors, runs scheduled tasks.
 
  ⌨️ Claude Code
 
-Claude building software in a folder of files, in VS Code or the desktop app. Class 6.
+"An agentic coding tool that reads your codebase, edits files, runs commands." Class 6.
 
  ⚙️ Managed Agents
 
-Agents you set up field by field, running in Anthropic's cloud. Today and Class 5.
+A ready-made, configurable agent that runs on Anthropic's infrastructure. Today and Class 5.
 
  🧭
 
-Projects vs. artifacts: a project is where the work lives; an artifact is something the work produces. You'll often make artifacts inside a project.
+Projects vs. artifacts: a project is a workspace that keeps its chats and files together; an artifact is a finished thing Claude makes for you to share. And Chat makes things for you; Cowork works on your actual files.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This slide answers a question advanced students ask: which Claude surface is for what. Chat is one conversation. A project is a home for one job (files and instructions every chat in it reads). An artifact is a thing Claude produces for you to use or share (a doc, a page, a small app); it is output, not a workspace. Cowork is Claude working in your files and accounts with connectors and scheduled tasks, no code. Claude Code builds software in a folder of files (Class 6). Managed Agents are agents configured field by field and run in Anthropic's cloud (Classes 4 and 5). The one-line distinction to land: a project is where the work lives; an artifact is something the work produces. Don't turn this into a feature tour; the point is choosing the right home for a job.
+This slide answers a question advanced students ask: which Claude surface is for what. Use Anthropic's own definitions (quoted from support.claude.com and the docs). Chat: conversations that can "search through your previous conversations" and "remember context from your chats" (the "Search and reference chats" and "Generate memory from chats" settings; memory is on by default on Free, Pro and Max, excludes chats inside projects). Chat works in an isolated sandbox: it creates files and artifacts you download, but can't read or edit files on your computer. Projects: "self-contained workspaces with their own chat histories and knowledge bases." Artifacts: "anything Claude makes for you that you'd put in front of someone: a design, a deck, a document, a dashboard, or a small interactive tool." Cowork: "the same agentic architecture that powers Claude Code, with no terminal required"; it takes on multi-step tasks and executes them, reading and writing local files, with connectors and scheduled tasks. Claude Code: "an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools" (Class 6). Managed Agents: a "pre-built, configurable agent harness that runs in managed infrastructure" (today and Class 5). The distinctions to land: a project is a workspace; an artifact is a finished thing Claude produces for you to share; Chat makes things for you, Cowork works on your actual files. Anthropic is rolling out a merged Chat-and-Cowork experience, so a student may see them as one conversation; if so, explain the difference as "making things for you" versus "working in your files and accounts," which still holds. Don't turn this into a feature tour; the point is choosing the right home for a job.
 
 ## Slide 4 · Why Managed Agents
 
