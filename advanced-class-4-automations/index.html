@@ -975,7 +975,27 @@
   </ul>
   <div class="done-strip">
     <span class="done-mark">✅</span>
-    <p><strong>A brief in your folder, and a transcript that shows every step.</strong> One setting left before it can run alone.</p>
+    <p><strong>A brief in your folder, and a transcript that shows every step.</strong> Now put it on a schedule.</p>
+  </div>
+</section>
+
+<!-- 14. STEP 6 — SCHEDULE IT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 6 · Schedule it"></div>
+  <div class="eyebrow">The timer that pulls the trigger</div>
+  <h2>Step 6: Deploy it on a schedule, with a <em>cap</em>.</h2>
+  <p>Managed Agents → <strong>Deployments</strong> → new deployment. Fill it in:</p>
+  <div class="card" style="margin-top: 4px;">
+    <ul>
+      <li><strong>Agent, environment, vault</strong>: the ones you just made.</li>
+      <li><strong>Schedule</strong>: <span class="cron">0 7 * * 1-5</span> (weekdays at 7:00) and your time zone.</li>
+      <li><strong>Prompt</strong>: <em>"Run the morning-briefing skill exactly as written."</em></li>
+      <li><strong>Budget</strong>: $1 per run. At the cap, the run pauses instead of spending more.</li>
+    </ul>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">▶️</span>
+    <p><strong>Check the upcoming runs are the ones you meant.</strong> The Console shows the next few; a scheduled run can start up to 9 minutes late. Don't click Run now yet: one setting first.</p>
   </div>
 </section>
 
@@ -997,27 +1017,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🛡️</span>
-    <p><strong>Turning a tool off is the lock.</strong> The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.</p>
-  </div>
-</section>
-
-<!-- 14. STEP 6 — SCHEDULE IT -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Schedule it"></div>
-  <div class="eyebrow">The timer that pulls the trigger</div>
-  <h2>Step 6: Deploy it on a schedule, with a <em>cap</em>.</h2>
-  <p>Managed Agents → <strong>Deployments</strong> → new deployment. Fill it in:</p>
-  <div class="card" style="margin-top: 4px;">
-    <ul>
-      <li><strong>Agent, environment, vault</strong>: the ones you just made.</li>
-      <li><strong>Schedule</strong>: <span class="cron">0 7 * * 1-5</span> (weekdays at 7:00) and your time zone.</li>
-      <li><strong>Prompt</strong>: <em>"Run the morning-briefing skill exactly as written."</em></li>
-      <li><strong>Budget</strong>: $1 per run. At the cap, the run pauses instead of spending more.</li>
-    </ul>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">▶️</span>
-    <p><strong>Click Run now once, and check the upcoming runs are the ones you meant.</strong> The Console shows the next few; a scheduled run can start up to 9 minutes late.</p>
+    <p><strong>Turning a tool off is the lock:</strong> the agent can't call it at all. Then go back to your deployment and click <strong>Run now</strong> once, to prove a run finishes with nobody watching.</p>
   </div>
 </section>
 

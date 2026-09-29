@@ -433,39 +433,13 @@ Once the logins are in, a test run opens in the panel next to your agent. Watch 
 
  ✅
 
-A brief in your folder, and a transcript that shows every step. One setting left before it can run alone.
+A brief in your folder, and a transcript that shows every step. Now put it on a schedule.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-After the logins are added in Step 4, a test run opens in the panel beside the agent's configuration: they can watch it live, change the config (system prompt, tools, skill, permissions) and run it again. Treat it as a debugging loop, not a one-shot check. Four checks: the transcript shows the dictated steps in order (skill loads, script runs, each tool call goes out and comes back); "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox (a tool call that says "saved" isn't the same as a file existing); and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. MCP tools still on always ask will pause the test run for approval; that's fine while they're watching, and the next slide sets them so an unattended run never pauses. Common failures to read for in the transcript: a blocked host, a missing package, or a vault credential that doesn't match the server URL.
+After the logins are added in Step 4, a test run opens in the panel beside the agent's configuration: they can watch it live, change the config (system prompt, tools, skill, permissions) and run it again. Treat it as a debugging loop, not a one-shot check. Four checks: the transcript shows the dictated steps in order (skill loads, script runs, each tool call goes out and comes back); "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox (a tool call that says "saved" isn't the same as a file existing); and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. MCP tools still on always ask will pause the test run for approval; that's fine while they're watching. After scheduling, the "No one's watching" slide sets them so an unattended run never pauses. Common failures to read for in the transcript: a blocked host, a missing package, or a vault credential that doesn't match the server URL.
 
-## Slide 15 · No one's watching
-
-**What the student sees on this slide:**
-
-_Permissions for a run nobody attends_
-
-## At 7am, there's no one to click Allow .
-
-Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives. In the test run you were there to approve each one; at 7am you won't be.
-
-_🔒 The three policies_
-
-Always allow: it just runs. Always ask: it pauses for you. Auto: Claude decides call by call, and can still pause.
-
-_✋ What to set today_
-
-Always allow for the reading tools your skill names, plus the one tool that saves the brief. Turn off every other tool that writes, sends, or deletes.
-
- 🛡️
-
-Turning a tool off is the lock. The agent can't call it at all. "Don't send anything" in a prompt is a request; a tool that's turned off can't be used.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
-
-## Slide 16 · Step 6 · Schedule it
+## Slide 15 · Step 6 · Schedule it
 
 **What the student sees on this slide:**
 
@@ -485,11 +459,37 @@ Managed Agents → Deployments → new deployment. Fill it in:
 
  ▶️
 
-Click Run now once, and check the upcoming runs are the ones you meant. The Console shows the next few; a scheduled run can start up to 9 minutes late.
+Check the upcoming runs are the ones you meant. The Console shows the next few; a scheduled run can start up to 9 minutes late. Don't click Run now yet: one setting first.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Run now tests the deployment immediately; insist on it, and have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Confirm the current form fields in the Console before directing them.
+Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Hold Run now until the next slide: with MCP tools still on always ask, an unattended run would pause and never finish. Confirm the current form fields in the Console before directing them.
+
+## Slide 16 · No one's watching
+
+**What the student sees on this slide:**
+
+_Permissions for a run nobody attends_
+
+## At 7am, there's no one to click Allow .
+
+Every tool the agent can use gets a permission policy. Built-in tools start at always allow . Tools from your MCP servers start at always ask , and a scheduled run that asks waits forever. The brief never arrives. In the test run you were there to approve each one; at 7am you won't be.
+
+_🔒 The three policies_
+
+Always allow: it just runs. Always ask: it pauses for you. Auto: Claude decides call by call, and can still pause.
+
+_✋ What to set today_
+
+Always allow for the reading tools your skill names, plus the one tool that saves the brief. Turn off every other tool that writes, sends, or deletes.
+
+ 🛡️
+
+Turning a tool off is the lock: the agent can't call it at all. Then go back to your deployment and click Run now once, to prove a run finishes with nobody watching.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request. Finish with Run now on the deployment: the first run with nobody approving anything, which proves the settings hold. If it stalls, look in the session for a tool call waiting on approval.
 
 ## Slide 17 · When it breaks
 
