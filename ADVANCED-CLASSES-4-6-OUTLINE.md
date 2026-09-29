@@ -29,6 +29,21 @@ system prompt, tools, MCP, permission policy per tool, skills, subagents, deploy
 vaults, memory), so the concepts are visible rather than hidden behind an app. Its limits
 (no custom tool code of your own in the cloud) are what motivate Class 6.
 
+## Cost control: a thread through every class
+
+Only the Advanced track bills by API usage, and surprise bills are the fear ("woke up to a
+$2,100 API bill"); few competitors teach it. Every Advanced class has a cost beat.
+- **Class 4:** its own slide before anything runs. Three levels: per run (deployment
+  budget), per month (workspace spend limit), the hard ceiling (prepaid credits,
+  auto-reload off). The cron typo (`* 7 * * 1-5` = 60 runs a morning). Read each run's
+  cost in its session; x22 weekdays = the monthly bill.
+- **Class 5:** agents cost more than automations: they choose steps, retry, search, and
+  spawn subagents (which multiply cost). Every session gets a budget.
+- **Class 6:** OpenClaw runs on your own key with no Anthropic-side per-run cap, so the
+  workspace limit and prepaid credits carry the weight. Heartbeat frequency is a cost
+  setting. A key committed to GitHub is the classic surprise bill: `.env` in `.gitignore`
+  before the first commit (ties to branching). Render bills separately.
+
 ## Class 4 Advanced: Automations
 
 **Where:** Console → Quickstart ("describe what you need") to create the agent. Create
@@ -116,5 +131,5 @@ The hub's single "Coming soon" card becomes three cards.
    / Dropbox MCP path and vault setup; per-run budget on a deployment.
 2. **Class 5:** the agent calling the Class 4 skill on its own; where the three-section
    report and the log persist between sessions (memory store vs Drive file).
-3. **Cost:** separate API account billed by usage ($0.08 per running session-hour plus
-   tokens); needs a prerequisite step and a rough monthly estimate for a daily brief.
+3. **Cost screens:** confirm the Console's workspace spend limit and the auto-reload
+   toggle exist where the Class 4 cost slide says.

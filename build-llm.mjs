@@ -192,7 +192,10 @@ const DECKS = [
       'not, judgment only for "what needs me today". Critical rules: keys only in ' +
       'the vault; MCP tools default to always ask, which hangs an unattended run, ' +
       'so the tools it uses are set to always allow and every other write/send/' +
-      'delete tool is turned off. Managed Agents is beta: check current docs ' +
+      'delete tool is turned off. COST CONTROL is a thread through every Advanced ' +
+      'class: before anything runs, spend is capped per run (deployment budget), ' +
+      'per month (workspace spend limit) and by prepaid credits with auto-reload ' +
+      'off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs ' +
       'before directing clicks. Class 5 attaches this same skill to an agent; ' +
       'Class 6 moves to Claude Code and OpenClaw.',
   },

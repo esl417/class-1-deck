@@ -655,6 +655,8 @@
   /* ---- Advanced additions: two more step tags, inline bold in cards, cron text ---- */
   .proc-tag.script { background: rgba(15,138,128,0.16); color: var(--accent-ink); }
   .proc-tag.call { background: #e6eef0; color: #3d5a60; }
+  .grid-2.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .grid-2.cols-3 { grid-template-columns: 1fr; } }
   .connect p strong { font-family: var(--sans); font-size: inherit; letter-spacing: 0; }
   .proc-step { grid-template-columns: 160px minmax(0, auto) 1fr; }
   @media (max-width: 760px) { .proc-step { grid-template-columns: 1fr; gap: 4px; } }
@@ -810,12 +812,38 @@
   <h2>Set up the account it runs on.</h2>
   <ul class="numbered">
     <li><strong>1.</strong> Sign in at <strong>platform.claude.com</strong>, the Claude Console. It's a separate account from your Claude app plan.</li>
-    <li><strong>2.</strong> Add a card and buy a small amount of credits. $10 covers a month or more of daily briefs.</li>
+    <li><strong>2.</strong> Add a card, buy <strong>$10</strong> of credits, and <strong>leave auto-reload off</strong>. $10 covers a month or more of daily briefs.</li>
     <li><strong>3.</strong> Find <strong>Managed Agents</strong> in the sidebar. It's on for every account.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">💵</span>
-    <p><strong>You pay for what runs:</strong> the model's usage plus $0.08 for every hour a run is working. A brief takes a few minutes, so it's a few dollars a month, and in Step 7 you put a hard cap on every run.</p>
+    <p><strong>You pay for what runs:</strong> the model's usage plus $0.08 for every hour a run is working. A brief takes a few minutes, so it's a few dollars a month.</p>
+  </div>
+</section>
+
+<!-- 6b. COST CONTROL -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Cost control"></div>
+  <div class="eyebrow">Read this before anything runs</div>
+  <h2>Cap the spend before the <em>first run</em>.</h2>
+  <p>People really do wake up to four-figure API bills. It's rarely one expensive run. It's a cheap run repeated thousands of times: a schedule typed wrong, an agent stuck retrying, a key someone else found. So you set limits at three levels before anything runs.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">⏱️ Per run</div>
+      <p>The deployment budget: <strong>$1</strong>. At the cap, the run pauses. You set it in Step 7.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📅 Per month</div>
+      <p>A <strong>spend limit on your workspace</strong>. Hit it and the workspace stops.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧱 The hard ceiling</div>
+      <p><strong>Prepaid credits, auto-reload off.</strong> When they run out, everything stops. Nothing can spend money you haven't put in.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">⚠️</span>
+    <p><strong>The typo that costs you:</strong> <span class="cron">* 7 * * 1-5</span> doesn't mean 7:00. It means every minute from 7:00 to 7:59: <strong>60 runs a morning</strong>. Always read the upcoming runs the Console shows you.</p>
   </div>
 </section>
 
@@ -945,6 +973,7 @@
     <li><strong>1.</strong> Watch the transcript → the skill loads, the script runs, each tool call goes out and comes back.</li>
     <li><strong>2.</strong> Check the judgment → does "needs you today" look right? Fix the system prompt, not the brief.</li>
     <li><strong>3.</strong> Open Drive or Dropbox → is today's brief really there? "Saved" in a transcript isn't a file you can open.</li>
+    <li><strong>4.</strong> Read the cost → the session shows what this run cost. Multiply by 22 weekdays: that's your monthly bill.</li>
   </ul>
   <div class="done-strip">
     <span class="done-mark">✅</span>
@@ -968,7 +997,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">▶️</span>
-    <p><strong>Click Run now once.</strong> Don't wait for tomorrow to find out. The Console checks your schedule and shows the next few runs; a scheduled run can start up to 9 minutes late.</p>
+    <p><strong>Click Run now once, and check the upcoming runs are the ones you meant.</strong> The Console shows the next few; a scheduled run can start up to 9 minutes late.</p>
   </div>
 </section>
 
@@ -1032,7 +1061,8 @@
     <li class="done-check">A <strong>skill</strong>: dictated steps, code where it can be, one judgment call.</li>
     <li class="done-check">Logins in a <strong>vault</strong> the agent uses but never sees.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>, so no run waits on a click.</li>
-    <li class="done-check">A <strong>deployment</strong> on an exact schedule, a hard cap, and a record of every run.</li>
+    <li class="done-check">A <strong>deployment</strong> on an exact schedule, with a record of every run.</li>
+    <li class="done-check">Spend capped <strong>per run, per month, and by the credits you loaded</strong>.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🧠</span>

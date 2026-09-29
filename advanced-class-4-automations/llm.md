@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: Claude (in the Claude app) interviews them and writes a custom skill (SKILL.md plus a script); they upload it to the Console, put every login and key in a credential vault, create the agent with Quickstart (system prompt = what matters to them), set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); code where possible, an exact tool call where not, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
+ADVANCED track. The student is comfortable with Claude and Cowork (they may already run small agents there) but has not written code. This track does NOT use Cowork for the build: today they rebuild the morning brief in Claude Managed Agents in the Claude Console (platform.claude.com), a separate account billed by usage. The build: Claude (in the Claude app) interviews them and writes a custom skill (SKILL.md plus a script); they upload it to the Console, put every login and key in a credential vault, create the agent with Quickstart (system prompt = what matters to them), set the environment (packages, limited networking), test it in a session, then schedule it as a deployment (cron, time zone, prompt, per-run budget). The brief lands in Google Drive or Dropbox. Core idea: an automation has its steps DICTATED (its autonomy is removed); code where possible, an exact tool call where not, judgment only for "what needs me today". Critical rules: keys only in the vault; MCP tools default to always ask, which hangs an unattended run, so the tools it uses are set to always allow and every other write/send/delete tool is turned off. COST CONTROL is a thread through every Advanced class: before anything runs, spend is capped per run (deployment budget), per month (workspace spend limit) and by prepaid credits with auto-reload off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs before directing clicks. Class 5 attaches this same skill to an agent; Class 6 moves to Claude Code and OpenClaw.
 
 ---
 
@@ -225,19 +225,49 @@ _One-time setup_
 
 - 1. Sign in at platform.claude.com , the Claude Console. It's a separate account from your Claude app plan.
 
-- 2. Add a card and buy a small amount of credits. $10 covers a month or more of daily briefs.
+- 2. Add a card, buy $10 of credits, and leave auto-reload off . $10 covers a month or more of daily briefs.
 
 - 3. Find Managed Agents in the sidebar. It's on for every account.
 
  💵
 
-You pay for what runs: the model's usage plus $0.08 for every hour a run is working. A brief takes a few minutes, so it's a few dollars a month, and in Step 7 you put a hard cap on every run.
+You pay for what runs: the model's usage plus $0.08 for every hour a run is working. A brief takes a few minutes, so it's a few dollars a month.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The Console is a separate account from the Claude app plan: platform.claude.com, a card on file, a small credit purchase. Managed Agents is enabled by default for API accounts (it's beta, no waitlist). Pricing: model tokens at API rates plus $0.08 per session-hour, counted only while a run is working. Viewing session transcripts needs the Developer or Admin role in the workspace; on a personal account they are the admin. If a student handles sensitive client data, mention that Managed Agents isn't covered by zero-data-retention agreements, and let them decide what to connect.
+The Console is a separate account from the Claude app plan: platform.claude.com, a card on file, $10 of prepaid credits with auto-reload left off (the hard ceiling from the next slide). Managed Agents is enabled by default for API accounts (it's beta, no waitlist). Pricing: model tokens at API rates plus $0.08 per session-hour, counted only while a run is working. Viewing session transcripts needs the Developer or Admin role in the workspace; on a personal account they are the admin. If a student handles sensitive client data, mention that Managed Agents isn't covered by zero-data-retention agreements, and let them decide what to connect.
 
-## Slide 8 · Step 1 · Write the skill
+## Slide 8 · Cost control
+
+**What the student sees on this slide:**
+
+_Read this before anything runs_
+
+## Cap the spend before the first run .
+
+People really do wake up to four-figure API bills. It's rarely one expensive run. It's a cheap run repeated thousands of times: a schedule typed wrong, an agent stuck retrying, a key someone else found. So you set limits at three levels before anything runs.
+
+_⏱️ Per run_
+
+The deployment budget: $1 . At the cap, the run pauses. You set it in Step 7.
+
+_📅 Per month_
+
+A spend limit on your workspace . Hit it and the workspace stops.
+
+_🧱 The hard ceiling_
+
+Prepaid credits, auto-reload off. When they run out, everything stops. Nothing can spend money you haven't put in.
+
+ ⚠️
+
+The typo that costs you: * 7 * * 1-5 doesn't mean 7:00. It means every minute from 7:00 to 7:59: 60 runs a morning . Always read the upcoming runs the Console shows you.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Cost control is a thread through every Advanced class; this is where it starts, before anything runs. The fear is real: people do wake up to four-figure API bills. The cause is almost never one expensive run; it's a cheap run multiplied: a cron typo, an agent retrying in a loop, a leaked key. Three levels of limits, set before the first run: per run (the deployment budget, $1, which pauses the run at the cap), per month (a spend limit on the Console workspace), and the hard ceiling (prepaid credits with auto-reload off, so nothing can spend money that wasn't loaded). Walk them through finding the workspace spend limit and the auto-reload setting in the current Console; search the docs if the screens have moved. The concrete trap: `* 7 * * 1-5` is every minute from 7:00 to 7:59, sixty runs a morning; `0 7 * * 1-5` is once at 7:00. Always read the upcoming runs the Console lists. Other cost levers worth naming if asked: a Sonnet model instead of Opus, scripts instead of model reasoning for fixed steps, pulling only what the brief needs, web searches ($10 per 1,000), and scheduling no more often than the job needs.
+
+## Slide 9 · Step 1 · Write the skill
 
 **What the student sees on this slide:**
 
@@ -264,7 +294,7 @@ _✋ You should end up with four things_
 
 The student maps their morning with Claude in the Claude app (Chat or Cowork) and Claude writes the skill. Coach the interview, not the code: which three sources, and exactly what to pull from each so it's the same every morning. Push for exact rules ("unread from clients, last 24 hours"), not vague ones ("check my email"). Check the output: SKILL.md with `name` (lowercase, hyphens, no "claude" or "anthropic") and `description` frontmatter, steps in order with every step tagged script / exact tool call / judgment and only one judgment step; a script in a scripts folder; the list of MCP server URLs, API tokens, packages and websites; a zip. The honesty rules (say what failed at the top; write "all clear" on a quiet day) belong in the skill. Source choice is where most trouble starts: Google's official Gmail, Calendar and Drive MCP servers are a Developer Preview that needs a Google Cloud project and an OAuth client, which is heavy for this audience. Services with simple OAuth MCP servers (Slack, Notion, and others) or personal API tokens (Todoist and similar) are much easier. Search for the service's current remote MCP server before promising one. Start with three sources or fewer.
 
-## Slide 9 · Step 2 · Upload the skill
+## Slide 10 · Step 2 · Upload the skill
 
 **What the student sees on this slide:**
 
@@ -286,7 +316,7 @@ Want a different brief? Ask Claude to edit the skill, then upload the new versio
 
 Custom skills are uploaded to the Console workspace as a zip (or files) and shared by every agent in it. Skills uploaded on claude.ai do not sync to the Console. Confirm the current upload location in the docs before directing them. Why a skill rather than a long prompt: it loads only when needed, and the script runs as code with only its output entering context. Changing the brief later = ask Claude to edit the skill, upload the new version; the agent and deployment stay.
 
-## Slide 10 · Step 3 · The vault
+## Slide 11 · Step 3 · The vault
 
 **What the student sees on this slide:**
 
@@ -312,7 +342,7 @@ Keys go in the vault, and nowhere else. Not in a chat, not in the skill, not in 
 
 Credential vaults hold every login and key: OAuth or a bearer token for each MCP server (matched to the server URL), and environment-variable secrets for the script. The mechanism to explain: the run holds only a placeholder, and the real secret is substituted as the request leaves the sandbox, so the agent never sees it. Practical consequences if a script fails auth: the script must send the token as-is in a request header; credentials created in the Console inject into headers only unless body injection is enabled on the form; and the credential's allowed hosts and the environment's networking must both allow the host. Vaults are shared across the workspace. Hold the line firmly: keys go only in the vault. If a student starts to paste a key into a chat (including to you), stop them and redirect to the vault.
 
-## Slide 11 · No one's watching
+## Slide 12 · No one's watching
 
 **What the student sees on this slide:**
 
@@ -338,7 +368,7 @@ Turning a tool off is the lock. The agent can't call it at all. "Don't send anyt
 
 The permission teach, specific to unattended runs. Built-in tools default to always allow; MCP toolsets default to always ask; an always-ask call in a scheduled run pauses the session indefinitely (idle, requires action), so the brief never arrives. Auto lets the server decide per call and can still pause, so it isn't safe unattended either. What to set: always allow for the reading tools the skill names and the one save tool; turn off every other write, send or delete tool. There is no "never" policy: turning a tool off (disabling it on the agent) is the lock, and the agent can't call it at all. Contrast with a prompt instruction, which is a request.
 
-## Slide 12 · Step 4 · The agent
+## Slide 13 · Step 4 · The agent
 
 **What the student sees on this slide:**
 
@@ -362,7 +392,7 @@ Next class you'll build an agent through Create agent , field by field. Today, Q
 
 Quickstart (Managed Agents → Quickstart) builds an agent from a description and shows each field; it includes a test session. Have them check the fields rather than trust the draft: model (a Sonnet model is plenty and cheaper than Opus), system prompt (what "matters" means to them; this is the judgment step's rulebook, equivalent to Cowork project instructions), MCP servers with permissions set as on the previous slide, and the morning-briefing skill attached. If Quickstart doesn't attach a custom skill or an MCP server correctly, they can edit the agent afterwards. Create agent, the field-by-field form, is Class 5's opener; don't teach it in depth today.
 
-## Slide 13 · Step 5 · The environment
+## Slide 14 · Step 5 · The environment
 
 **What the student sees on this slide:**
 
@@ -386,7 +416,7 @@ Nothing on that computer survives the run. That's why the brief is saved to Driv
 
 Each run gets a fresh cloud sandbox configured by the environment. Two settings: packages (pip and others) the script needs, installed before the run and cached; networking, where limited means only listed hosts plus an allow-MCP-servers switch and an allow-package-managers switch. Environments made in the Console may default to limited, which is the usual cause of "host blocked" errors: add the host, or enable MCP server access. Nothing in the sandbox survives the run, which is why the brief is saved to Drive or Dropbox.
 
-## Slide 14 · Step 6 · Prove it
+## Slide 15 · Step 6 · Prove it
 
 **What the student sees on this slide:**
 
@@ -402,15 +432,17 @@ In Quickstart's test session, send "Run the morning-briefing skill." Then read w
 
 - 3. Open Drive or Dropbox → is today's brief really there? "Saved" in a transcript isn't a file you can open.
 
+- 4. Read the cost → the session shows what this run cost. Multiply by 22 weekdays: that's your monthly bill.
+
  ✅
 
 A brief in your folder, and a transcript that shows every step. Now put it on a schedule.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Run it once in the test session and read the transcript: the skill loading, the script running, each tool call and result. Three checks: the transcript shows the dictated steps in order; "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox. Name the principle: a tool call that says "saved" isn't the same as a file existing. If something fails, read the failing step in the transcript and describe it to Claude; common causes are a tool left on always ask, a blocked host, a missing package, or a vault credential that doesn't match the server URL.
+Run it once in the test session and read the transcript: the skill loading, the script running, each tool call and result. Four checks: the transcript shows the dictated steps in order; "needs you today" looks right (fix the system prompt, not the brief); the file is really in Drive or Dropbox; and the run's cost, shown on the session, times about 22 weekdays is roughly their monthly bill. If that number surprises them, fix it now (model, how much it reads) before it's on a schedule. Name the principle: a tool call that says "saved" isn't the same as a file existing. If something fails, read the failing step in the transcript and describe it to Claude; common causes are a tool left on always ask, a blocked host, a missing package, or a vault credential that doesn't match the server URL.
 
-## Slide 15 · Step 7 · Schedule it
+## Slide 16 · Step 7 · Schedule it
 
 **What the student sees on this slide:**
 
@@ -430,13 +462,13 @@ Managed Agents → Deployments → new deployment. Fill it in:
 
  ▶️
 
-Click Run now once. Don't wait for tomorrow to find out. The Console checks your schedule and shows the next few runs; a scheduled run can start up to 9 minutes late.
+Click Run now once, and check the upcoming runs are the ones you meant. The Console shows the next few; a scheduled run can start up to 9 minutes late.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Run now tests the deployment immediately; insist on it. Confirm the current form fields in the Console before directing them.
+Deployments (Managed Agents → Deployments) bind agent, environment and vault to a cron schedule and time zone, with a prompt sent at each run and an optional budget copied onto every run. Cron is five fields: minute, hour, day of month, month, day of week; `0 7 * * 1-5` is weekdays at 7:00. The Console validates it and shows upcoming runs. Runs can start up to 9 minutes late (jitter). Avoid 1 to 3am because of daylight-saving changes. The budget is a hard cap: at the cap the run pauses (budget reached) rather than being killed, and raising the cap resumes it. Run now tests the deployment immediately; insist on it, and have them read the upcoming runs to confirm the schedule means what they think (the cost-control slide's cron typo). Confirm the current form fields in the Console before directing them.
 
-## Slide 16 · When it breaks
+## Slide 17 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -466,7 +498,7 @@ This is the upgrade over Cowork: when the brief looks wrong, you don't guess why
 
 Four layers of honesty: the brief names any source it couldn't reach at the top; it writes "all clear" on quiet days so a missing brief means breakage; every run is a session under Managed Agents → Sessions with status, cost and full transcript; the budget pauses a runaway run, and a deployment whose run can't start (for example an archived vault or environment) pauses itself, and missed runs aren't made up. The upgrade over Cowork: diagnose by reading the run, not by guessing.
 
-## Slide 17 · Homework
+## Slide 18 · Homework
 
 **What the student sees on this slide:**
 
@@ -490,7 +522,7 @@ The calls are yours: which source makes the brief worth reading, and which step 
 
 Two tasks. Add one source that makes the brief theirs (vault credential, server or token, one step in the skill, run once). Harden one step: find an exact tool call and ask Claude whether a script can do it instead, then upload and run once. Help fully with the mechanics; the choices (which source, which step to harden) are theirs.
 
-## Slide 18 · You shipped it
+## Slide 19 · You shipped it
 
 **What the student sees on this slide:**
 
@@ -504,7 +536,9 @@ _That's the class — here's what now runs_
 
 - Tools allowed or turned off , so no run waits on a click.
 
-- A deployment on an exact schedule, a hard cap, and a record of every run.
+- A deployment on an exact schedule, with a record of every run.
+
+- Spend capped per run, per month, and by the credits you loaded .
 
  🧠
 
@@ -514,4 +548,4 @@ An automation has its steps dictated. An agent chooses its own. Same skill, new 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: a skill with dictated steps (code where possible, one judgment call), logins in a vault the agent never sees, tools set to always allow or turned off so unattended runs never stall, and a deployment with an exact schedule, a hard cap and a record of every run. The bridge to Class 5: the trigger moves. They build an agent with Create agent, attach this same skill, and the agent decides when to run it instead of the clock, then acts on what it finds. The line to leave them with: an automation has its steps dictated; an agent chooses its own.
+Recap: a skill with dictated steps (code where possible, one judgment call), logins in a vault the agent never sees, tools set to always allow or turned off so unattended runs never stall, a deployment with an exact schedule and a record of every run, and spend capped at three levels: per run, per month on the workspace, and by the prepaid credits. The bridge to Class 5: the trigger moves. They build an agent with Create agent, attach this same skill, and the agent decides when to run it instead of the clock, then acts on what it finds. The line to leave them with: an automation has its steps dictated; an agent chooses its own.
