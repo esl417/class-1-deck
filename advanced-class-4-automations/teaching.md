@@ -13,6 +13,10 @@ scheduled run uses must be set to always allow (MCP tools default to always ask,
 unattended run that asks waits forever); every tool that writes, sends or deletes, other
 than the one that saves the brief, is turned off.
 
+## The arc
+
+The map of the whole Advanced mini course, so the student sees how the three classes stack before starting. Class 4 (today, Managed Agents): an automation, with dictated steps (a script plus one judgment call) writing the morning brief, triggered by a schedule. Class 5 (Managed Agents): an agent built field by field in Create agent; the same skill is attached, but now the agent decides when to run it, acts on what it finds, and rewrites the brief into Taken care of / Needs your action / FYI. Class 6 (VS Code with Claude Code): the agent rebuilt in OpenClaw, where they own the code: custom tools that run their own code, any model, and webhooks that wake it up; class covers setup and getting it running, and homework finishes it. Nothing is thrown away between classes. Two rules run through all three: cap spend before anything runs, and use the simplest deployment that does the job (a Cowork project if it can run there, Managed Agents for simple agents, OpenClaw only when an agent needs heavy customization). If a student asks whether they need Class 6, the honest answer is that most agents don't; it's for when they do.
+
 ## The finish line
 
 Show the destination: the same morning brief they may already have in Cowork, rebuilt so every part is visible and controllable. The pitch is control, not novelty: fixed steps in code, one judgment step, a spend cap per run, and a transcript of every run. If a student asks "why rebuild something that works?", the answer is that Cowork's task is a black box that does its best with sentences; this version is one they can inspect, cap and harden, and it's the foundation Class 5's agent is built on.
