@@ -39,8 +39,12 @@ $2,100 API bill"); few competitors teach it. Every Advanced class has a cost bea
   cost in its session; x22 weekdays = the monthly bill.
 - **Class 5:** agents cost more than automations: they choose steps, retry, search, and
   spawn subagents (which multiply cost). Every session gets a budget.
-- **Class 6:** OpenClaw runs on your own key with no Anthropic-side per-run cap, so the
-  workspace limit and prepaid credits carry the weight. Heartbeat frequency is a cost
+- **Class 6:** **first thing after installing OpenClaw: clean it out.** Strip the default
+  junk that adds overhead (boilerplate in the workspace files, bundled skills and
+  plugins it doesn't need), because whatever is loaded rides along on every call and
+  costs tokens every time. Exact list to decide when building the deck. OpenClaw runs on
+  your own key with no Anthropic-side per-run cap, so the workspace limit and prepaid
+  credits carry the weight. Heartbeat frequency is a cost
   setting. A key committed to GitHub is the classic surprise bill: `.env` in `.gitignore`
   before the first commit (ties to branching). Render bills separately.
 
