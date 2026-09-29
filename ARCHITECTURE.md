@@ -25,6 +25,7 @@ class-3-seo-geo/        index.html   prereqs.html   ...   build-reference/  clou
 class-4-automations/    index.html                  ...   (Beginner track; no prereqs deck)
 class-5-agents-beginner/   index.html               ...   (Beginner track; design in CLASSES-5-6-OUTLINE.md)
 class-6-the-loop-beginner/ index.html               ...   (Beginner track; design in CLASSES-5-6-OUTLINE.md)
+advanced-class-4-automations/ index.html            ...   (Advanced track; Managed Agents; design in ADVANCED-CLASSES-4-6-OUTLINE.md)
 aivisibility/           index.html                  ...   (free Maven lightning lesson)
 dashboard/              index.html                  ...   (free Maven lightning lesson)
                         dashboard.html      the demo artifact, opened on slide 8

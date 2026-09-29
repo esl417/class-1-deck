@@ -174,6 +174,29 @@ const DECKS = [
       'computer).',
   },
   {
+    dir: 'advanced-class-4-automations',
+    title: 'Class 4: Automations (Advanced)',
+    standing:
+      'ADVANCED track. The student is comfortable with Claude and Cowork (they may ' +
+      'already run small agents there) but has not written code. This track does ' +
+      'NOT use Cowork for the build: today they rebuild the morning brief in Claude ' +
+      'Managed Agents in the Claude Console (platform.claude.com), a separate ' +
+      'account billed by usage. The build: Claude (in the Claude app) interviews ' +
+      'them and writes a custom skill (SKILL.md plus a script); they upload it to ' +
+      'the Console, put every login and key in a credential vault, create the agent ' +
+      'with Quickstart (system prompt = what matters to them), set the environment ' +
+      '(packages, limited networking), test it in a session, then schedule it as a ' +
+      'deployment (cron, time zone, prompt, per-run budget). The brief lands in ' +
+      'Google Drive or Dropbox. Core idea: an automation has its steps DICTATED ' +
+      '(its autonomy is removed); code where possible, an exact tool call where ' +
+      'not, judgment only for "what needs me today". Critical rules: keys only in ' +
+      'the vault; MCP tools default to always ask, which hangs an unattended run, ' +
+      'so the tools it uses are set to always allow and every other write/send/' +
+      'delete tool is turned off. Managed Agents is beta: check current docs ' +
+      'before directing clicks. Class 5 attaches this same skill to an agent; ' +
+      'Class 6 moves to Claude Code and OpenClaw.',
+  },
+  {
     dir: 'class-5-agents-beginner',
     title: 'Class 5: Agents (Beginner)',
     standing:
