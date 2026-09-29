@@ -100,23 +100,19 @@ This is what we'll have built by the end. A pile of unsorted customer messages w
  FOUNDER_BRIEF.md
  Needs you now
 
-A customer was charged twice. That's their money, and it's sitting wrong right now.
+A customer billed twice on the 8th, and probably not just him. Your top-tier customer is leaving because she can't export her data, and says she'd come back. Three people asked about QuickBooks this week, and one won't buy annual without an answer.
 
- Worth knowing
+ Decide
 
-Someone is cancelling, and the reason they gave is a missing feature, not the price.
+QuickBooks: build it, not this year, or never? That one answer unblocks four tickets and an upgrade.
 
- Your call
+ Ignored
 
-Three separate people asked the same question this week. Answer it once, publicly, or keep answering it forever?
-
- Didn't need you
-
-Four others, each with a line on why. A thank-you note. A piece of spam. Two it handled without you.
+Seven others, each with a line on why. A thank-you note. An out-of-office. A "claim your listing" email it flagged as phishing. A $500 ad sale dressed as a feature.
 
  👀
 
-Look at that last section. The spam, the thank-you note, two it handled itself. It read those and decided you didn't need them, and it says why. Nothing told it which ones to drop.
+Look at that last section. It read those seven and decided you didn't need them, and it says why for each one. Nothing told it which ones to drop.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -124,10 +120,19 @@ Look at that last section. The spam, the thank-you note, two it handled itself. 
 first three minutes so that every abstract idea afterwards has somewhere to land.
 
 The beat that matters is the second one: **point at the last section.** The spam,
-the thank-you note and the two it handled itself are not in the brief proper —
-they are listed at the end with a line each on why. Nothing told it which ones to
-drop. That decision, made visible, is the entire lesson, delivered before the
-word "agent" has been defined.
+the thank-you note, the out-of-office and the vendor pitch are not in the brief
+proper — they are listed at the end with a line each on why. Nothing told it which
+ones to drop. That decision, made visible, is the entire lesson, delivered before
+the word "agent" has been defined.
+
+**The mock on this slide is a condensed version of a real run** (the 2026-09-15 dry
+run against the sample export), so its headings — Needs you now / Decide /
+Ignored — are the ones the agent actually chose, and the live brief at the
+check-in should look like it. Two things that run did which are worth knowing
+before you narrate: it escalated the login lockout (six days with no reply, three
+missed jobs — correct, because every row in the export is still marked Open), and
+it flagged the "claim your listing" spam as phishing that impersonates the team.
+Both are judgment calls the room can argue with, which is the point.
 
 **Do not say the dropped items are missing.** An earlier draft of this deck taught
 absence, and it is now wrong: the instruction asks the agent to show its working,
@@ -471,8 +476,12 @@ deliberate:
 - **Two clear escalations** — a double charge (money, wrong right now) and a
   cancellation (revenue risk, with a *reason* attached).
 - **Two clear drops** — spam and a compliment. These prove exclusion.
-- **One ordinary support issue** — a login problem. Handled, not escalated, so
-  the room sees the middle of the range rather than only the extremes.
+- **One ordinary-looking support issue** — a login lockout. In the dry run the
+  agent escalated it, and rightly: every row in the export is `Status: Open`, so
+  by the time the agent reads it the customer has been locked out for six days
+  with no reply. The Status column is doing real work here — it tells the agent
+  nobody answered anything all week. Keep it; it is realistic and it gives the
+  room something to argue about.
 - **Three versions of the same question, worded differently** (QuickBooks in the
   demo). This is the one that makes the session.
 

@@ -65,10 +65,19 @@ moment they think they have to keep pace. Say it early and mean it.
 first three minutes so that every abstract idea afterwards has somewhere to land.
 
 The beat that matters is the second one: **point at the last section.** The spam,
-the thank-you note and the two it handled itself are not in the brief proper —
-they are listed at the end with a line each on why. Nothing told it which ones to
-drop. That decision, made visible, is the entire lesson, delivered before the
-word "agent" has been defined.
+the thank-you note, the out-of-office and the vendor pitch are not in the brief
+proper — they are listed at the end with a line each on why. Nothing told it which
+ones to drop. That decision, made visible, is the entire lesson, delivered before
+the word "agent" has been defined.
+
+**The mock on this slide is a condensed version of a real run** (the 2026-09-15 dry
+run against the sample export), so its headings — Needs you now / Decide /
+Ignored — are the ones the agent actually chose, and the live brief at the
+check-in should look like it. Two things that run did which are worth knowing
+before you narrate: it escalated the login lockout (six days with no reply, three
+missed jobs — correct, because every row in the export is still marked Open), and
+it flagged the "claim your listing" spam as phishing that impersonates the team.
+Both are judgment calls the room can argue with, which is the point.
 
 **Do not say the dropped items are missing.** An earlier draft of this deck taught
 absence, and it is now wrong: the instruction asks the agent to show its working,
@@ -286,8 +295,12 @@ deliberate:
 - **Two clear escalations** — a double charge (money, wrong right now) and a
   cancellation (revenue risk, with a *reason* attached).
 - **Two clear drops** — spam and a compliment. These prove exclusion.
-- **One ordinary support issue** — a login problem. Handled, not escalated, so
-  the room sees the middle of the range rather than only the extremes.
+- **One ordinary-looking support issue** — a login lockout. In the dry run the
+  agent escalated it, and rightly: every row in the export is `Status: Open`, so
+  by the time the agent reads it the customer has been locked out for six days
+  with no reply. The Status column is doing real work here — it tells the agent
+  nobody answered anything all week. Keep it; it is realistic and it gives the
+  room something to argue about.
 - **Three versions of the same question, worded differently** (QuickBooks in the
   demo). This is the one that makes the session.
 

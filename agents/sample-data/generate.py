@@ -21,9 +21,11 @@ THE SEEDED SET (the deck depends on these -- keep them if you regenerate)
   CANCELLATION on the top plan whose stated reason is a missing feature (data
   export), not price.
 - Two clear drops: SPAM and a THANK-YOU note.
-- One ordinary support issue: a LOGIN problem. Handled, not escalated. Do NOT
-  add a follow-up from the same customer -- that would push the agent to
-  escalate it and contradict the "Read the brief" slide.
+- One ordinary-looking support issue: a LOGIN lockout. Note that every row is
+  Status=Open, so by read time the customer has waited six days with no reply;
+  in the 2026-09-15 dry run the agent escalated it for exactly that reason,
+  and the deck now expects that. The Status column is a real signal -- if you
+  mark some rows Replied/Closed, the agent's urgency calls will change.
 - THREE versions of the same question, worded differently, from three
   different customers: does it work with QuickBooks. No single row contains
   the finding; it only exists across the sheet. This is the beat that makes
