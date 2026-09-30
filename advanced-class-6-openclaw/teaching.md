@@ -263,9 +263,13 @@ CLI login, `openclaw onboard` can be rerun or the auth changed later (check the 
 the command).
 
 
-Where the key is stored (fresh 2026.9.7 onboarding asks "Where is this API key stored?"):
-Environment variable, OpenClaw secret store, or Configured secret provider. Choose Environment
-variable. It keeps the key out of openclaw.json (the plain-text warning doctor flagged) and
+Where the key is stored. With the Install prompt's setup, fresh 2026.9.7 onboarding detects the
+variable and asks "Use existing ANTHROPIC_API_KEY (env: ANTHROPIC_API_KEY, sk-a…)?": choose Yes,
+then keep the default model and run the live AI access test (it should pass in a few seconds;
+confirmed in Eric's run 2026-09-30). If the variable isn't visible, onboarding instead asks "Where
+is this API key stored?" (Environment variable, OpenClaw secret store, Configured secret
+provider); the answer is Environment variable, but seeing that screen means the Install prompt's
+key check didn't take, so go back to Claude Code rather than pasting the key into the wizard. It keeps the key out of openclaw.json (the plain-text warning doctor flagged) and
 matches Render, where keys are dashboard environment variables. The secret store is not encrypted
 ("Store values are not encrypted at rest", a SQLite file under ~/.openclaw) and needs the key
 pre-seeded; a configured provider means 1Password, Bitwarden or Vault, too much for this class.
@@ -291,8 +295,13 @@ why the real protection is the key itself: a new key just for this agent, with a
 the Claude Console, revocable on its own if it leaks.
 ## Finish onboarding
 
-The rest of the wizard, from Eric's run of OpenClaw 2026.9.7 on 2026-09-30 (QuickStart mode; it keeps
-the gateway on loopback, port 18789, a generated gateway secret, Tailscale off). Channel setup is
+The full fresh-install sequence, from Eric's run of OpenClaw 2026.9.7 on 2026-09-30: a security
+disclaimer (personal-by-default, one operator; "A bad prompt can trick it into doing unsafe
+things"; recommends pairing, minimal tool permissions, secrets outside the agent's reach, and
+`openclaw security audit --deep`) → Yes; "Help make OpenClaw better?" (feature-usage telemetry,
+no messages) → their call, No is fine; Setup mode → QuickStart (keeps the gateway on loopback,
+port 18789, a generated gateway secret, Tailscale off); agent name; provider and key (previous
+slide); then the screens below. Channel setup is
 part of onboarding, so students connect their chat app here rather than in a separate step.
 Select channel: the wizard lists every channel (Telegram "simplest way to get started", Slack
 "supported (Socket Mode)", Discord, WhatsApp "recommend a separate phone + eSIM", Microsoft Teams,
