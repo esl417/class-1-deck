@@ -632,11 +632,11 @@ _Before Step 1 · in VS Code_
 Make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that excludes .env. Then tell me exactly how to run openclaw onboard myself in the VS Code terminal, using this folder as the workspace. When I'm done, run openclaw doctor and openclaw gateway status and explain the results.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Then tell me exactly how to run openclaw onboard myself in the VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
 
 _⌨️ You run onboarding yourself_
 
-In the VS Code terminal, so your model key goes into the terminal, never into the chat . It's a wizard: choose QuickStart and keep its gateway defaults.
+In the VS Code terminal, so your model key goes into the terminal, never into the chat . It's a wizard: name the agent carefully (the name sticks), choose QuickStart , and keep its gateway defaults.
 
 _🧭 The screens that matter_
 
@@ -654,6 +654,26 @@ provider and model; this folder as the workspace (if onboarding doesn't offer it
 OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
+
+After onboarding, from Eric's run of 2026.9.7 (2026-09-30), what the prompt's "fix the warnings
+worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
+gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
+text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then
+`openclaw secrets audit --check`. Legacy browser relay login and browser cookie import are on by
+default; they only matter for the Chrome extension, so turn both off if unused. Keep the loopback
+bind: doctor lists it as a warning, but it's the safe default. No command owner is set until a chat
+channel is connected; connecting one in onboarding (or `openclaw channels add`) sets it, so the
+student can run admin commands from chat. Informational, leave alone: "N skills unusable" (missing
+tools or keys; Step 1 turns bundled skills off anyway, and `openclaw doctor --fix` would hide them),
+Codex or other tools' assets found, heap/desktop/GitHub token/speech notes. No backup yet: run
+`openclaw backup create` once the setup works (homework). Workspace: onboarding writes AGENTS.md,
+IDENTITY.md, SOUL.md and USER.md into the folder; the --workspace setting lands on the agent itself
+(agents.defaults.workspace stays empty, which is fine). Commit the instruction files (the repo is
+private, and hosting later deploys from it; USER.md holds personal context, so look it over first);
+MEMORY.md and memory/ stay out via .gitignore because the agent writes them. Name the agent
+carefully at the first onboarding question: the name shows up in paths and sessions (renaming is
+possible but fiddly).
 
 ## Slide 18 · How it signs in
 

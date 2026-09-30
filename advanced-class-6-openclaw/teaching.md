@@ -214,6 +214,26 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
+
+After onboarding, from Eric's run of 2026.9.7 (2026-09-30), what the prompt's "fix the warnings
+worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
+gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
+text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then
+`openclaw secrets audit --check`. Legacy browser relay login and browser cookie import are on by
+default; they only matter for the Chrome extension, so turn both off if unused. Keep the loopback
+bind: doctor lists it as a warning, but it's the safe default. No command owner is set until a chat
+channel is connected; connecting one in onboarding (or `openclaw channels add`) sets it, so the
+student can run admin commands from chat. Informational, leave alone: "N skills unusable" (missing
+tools or keys; Step 1 turns bundled skills off anyway, and `openclaw doctor --fix` would hide them),
+Codex or other tools' assets found, heap/desktop/GitHub token/speech notes. No backup yet: run
+`openclaw backup create` once the setup works (homework). Workspace: onboarding writes AGENTS.md,
+IDENTITY.md, SOUL.md and USER.md into the folder; the --workspace setting lands on the agent itself
+(agents.defaults.workspace stays empty, which is fine). Commit the instruction files (the repo is
+private, and hosting later deploys from it; USER.md holds personal context, so look it over first);
+MEMORY.md and memory/ stay out via .gitignore because the agent writes them. Name the agent
+carefully at the first onboarding question: the name shows up in paths and sessions (renaming is
+possible but fiddly).
 ## How it signs in
 
 Onboarding asks for an auth method after the provider. For Anthropic: "Anthropic Claude CLI (Keep
