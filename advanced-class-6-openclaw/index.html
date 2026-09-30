@@ -1271,27 +1271,6 @@
   </div>
 </section>
 
-<!-- WHEN IT BREAKS -->
-<section class="slide dense">
-  <div class="slide-num" data-label="When it breaks"></div>
-  <div class="eyebrow">There's no Sessions page doing this for you</div>
-  <h2>When it breaks, you and Claude Code are the support team.</h2>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">🩺 Health</div>
-      <p>First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">📜 What happened</div>
-      <p><code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
-    </div>
-  </div>
-  <div class="heads-up">
-    <span class="heads-up-mark">🔍</span>
-    <p><strong>Describe the symptom and let Claude Code dig:</strong> <em>"My 7:30 run didn't come. Check OpenClaw's status and logs and tell me why."</em> Then fix the cause on a branch, like any other change.</p>
-  </div>
-</section>
-
 <!-- TO THE CLOUD -->
 <section class="slide dense">
   <div class="slide-num" data-label="To the cloud"></div>
@@ -1313,6 +1292,27 @@
     </div>
   </div>
   <p class="small-note">Once it's in the cloud, it can take webhooks, and 7:30 runs whether your laptop is open or not.</p>
+</section>
+
+<!-- WHEN IT BREAKS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="When it breaks"></div>
+  <div class="eyebrow">There's no Sessions page doing this for you</div>
+  <h2>When it breaks, you and Claude Code are the support team.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🩺 Health</div>
+      <p>First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📜 What happened</div>
+      <p><code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🔍</span>
+    <p><strong>Describe the symptom and let Claude Code dig:</strong> <em>"My 7:30 run didn't come. Check OpenClaw's status and logs and tell me why."</em> Then fix the cause on a branch, like any other change.</p>
+  </div>
 </section>
 
 <!-- ============================================================

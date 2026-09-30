@@ -827,38 +827,7 @@ and getting summarized with its dates flagged, anything Zapier or Make can see. 
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
-## Slide 23 · When it breaks
-
-**What the student sees on this slide:**
-
-_There's no Sessions page doing this for you_
-
-## When it breaks, you and Claude Code are the support team.
-
-_🩺 Health_
-
-First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
-
-_📜 What happened_
-
-openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
-
- 🔍
-
-Describe the symptom and let Claude Code dig: "My 7:30 run didn't come. Check OpenClaw's status and logs and tell me why." Then fix the cause on a branch, like any other change.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-No Sessions page does this for them. First check: is the Gateway running (`openclaw gateway
-status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
-Then `openclaw status` (channels, sessions, usage), `openclaw
-doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
-move from the Class 1 prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
-come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
-causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
-limited, a config typo `doctor` catches, a tool call waiting on an approval.
-
-## Slide 24 · To the cloud
+## Slide 23 · To the cloud
 
 **What the student sees on this slide:**
 
@@ -893,6 +862,37 @@ settings, never the repo. The Gateway stays private: reach the Control UI over a
 Tailscale, not a public port. One more bill to cap. On Render the brief becomes a cron job (Render has
 them) and the agent a running service. Once hosted, both run with the laptop closed and webhooks
 become possible.
+
+## Slide 24 · When it breaks
+
+**What the student sees on this slide:**
+
+_There's no Sessions page doing this for you_
+
+## When it breaks, you and Claude Code are the support team.
+
+_🩺 Health_
+
+First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
+
+_📜 What happened_
+
+openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
+
+ 🔍
+
+Describe the symptom and let Claude Code dig: "My 7:30 run didn't come. Check OpenClaw's status and logs and tell me why." Then fix the cause on a branch, like any other change.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+No Sessions page does this for them. First check: is the Gateway running (`openclaw gateway
+status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
+Then `openclaw status` (channels, sessions, usage), `openclaw
+doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
+move from the Class 1 prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
+come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
+causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
+limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
 ## Slide 25 · Homework
 
