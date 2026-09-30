@@ -993,7 +993,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⚙️ The Gateway</div>
-      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open with <code>openclaw dashboard</code>.</p>
+      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open by running <code>openclaw dashboard</code> in a new VS Code terminal.</p>
     </div>
     <div class="card">
       <div class="eyebrow">💬 Channels</div>
@@ -1066,7 +1066,7 @@
   <div class="slide-num" data-label="Any model"></div>
   <div class="eyebrow">The one thing no Anthropic surface does</div>
   <h2>Switch models with one command, and set a fallback.</h2>
-  <p>OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. <code>openclaw models set</code> changes it; <code>/model</code> changes it mid-chat.</p>
+  <p>OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. <code>openclaw models set</code>, run in a new VS Code terminal, changes it; <code>/model</code>, typed in a chat with your agent, changes it mid-chat.</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🎯 Fit the model to the job</div>
@@ -1096,7 +1096,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔒 Keep the Gateway private</div>
-      <p><strong>Whoever can reach the Gateway controls your agent.</strong> By default only your own machine can: keep it that way. <code>openclaw security audit</code> checks your setup.</p>
+      <p><strong>Whoever can reach the Gateway controls your agent.</strong> By default only your own machine can: keep it that way. <code>openclaw security audit</code>, run in a new VS Code terminal, checks your setup.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🔑 Keys in .env, never in a chat</div>
@@ -1229,11 +1229,11 @@
   <div class="slide-num" data-label="Step 1 · Clean it out"></div>
   <div class="eyebrow">The control Managed Agents never gave you</div>
   <h2>Step 1: Clean it out before it costs you on every call.</h2>
-  <p>Open the Control UI (<code>openclaw dashboard</code>) and send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
+  <p>Open a new VS Code terminal and run <code>openclaw dashboard</code>: the Control UI opens in your browser. In its chat, send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
   <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Keep its tools to the minimum; I'll add what it needs later. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.</div>
   <div class="heads-up">
     <span class="heads-up-mark">📉</span>
-    <p><strong>Send <code>/context detail</code> again and compare.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>
+    <p><strong>Send <code>/context detail</code> in the Control UI chat again and compare.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>
   </div>
 </section>
 
@@ -1380,11 +1380,11 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🩺 Health</div>
-      <p>First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
+      <p>Run these in a new VS Code terminal. First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📜 What happened</div>
-      <p><code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
+      <p>In a new VS Code terminal, <code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
     </div>
   </div>
   <div class="heads-up">

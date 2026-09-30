@@ -377,7 +377,7 @@ _The engine room_
 
 _⚙️ The Gateway_
 
-Runs in the background on your computer. Only your own machine can reach it, and it serves the Control UI , a dashboard you open with openclaw dashboard .
+Runs in the background on your computer. Only your own machine can reach it, and it serves the Control UI , a dashboard you open by running openclaw dashboard in a new VS Code terminal.
 
 _💬 Channels_
 
@@ -484,7 +484,7 @@ _The one thing no Anthropic surface does_
 
 ## Switch models with one command, and set a fallback.
 
-OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. openclaw models set changes it; /model changes it mid-chat.
+OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. openclaw models set , run in a new VS Code terminal, changes it; /model , typed in a chat with your agent, changes it mid-chat.
 
 _🎯 Fit the model to the job_
 
@@ -524,7 +524,7 @@ In February 2026, researchers found 341 malicious skills on ClawHub that stole d
 
 _🔒 Keep the Gateway private_
 
-Whoever can reach the Gateway controls your agent. By default only your own machine can: keep it that way. openclaw security audit checks your setup.
+Whoever can reach the Gateway controls your agent. By default only your own machine can: keep it that way. openclaw security audit , run in a new VS Code terminal, checks your setup.
 
 _🔑 Keys in .env, never in a chat_
 
@@ -817,14 +817,14 @@ _The control Managed Agents never gave you_
 
 ## Step 1: Clean it out before it costs you on every call.
 
-Open the Control UI ( openclaw dashboard ) and send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
+Open a new VS Code terminal and run openclaw dashboard : the Control UI opens in your browser. In its chat, send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Keep its tools to the minimum; I'll add what it needs later. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.
 
  📉
 
-Send /context detail again and compare. That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.
+Send /context detail in the Control UI chat again and compare. That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -1124,11 +1124,11 @@ _There's no Sessions page doing this for you_
 
 _🩺 Health_
 
-First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
+Run these in a new VS Code terminal. First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
 
 _📜 What happened_
 
-openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
+In a new VS Code terminal, openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
 
  🔍
 
