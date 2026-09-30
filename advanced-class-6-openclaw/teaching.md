@@ -24,7 +24,7 @@ second rule: OpenClaw is not an upgrade everyone should take.
 ## The finish line
 
 What works by the end of class: the Class 5 agent running in OpenClaw on their computer,
-reachable in Telegram, calling one Python script as a tool (built on a branch, reviewed by a
+reachable in the chat app they choose (Slack, Telegram, WhatsApp and more), calling one Python script as a tool (built on a branch, reviewed by a
 second AI), and scheduled at 7:30. Be clear about scope: today is the setup and a first working
 version; finishing the agent (every app connected, the handoff as good as Class 5's) is
 homework, and cloud hosting (Render) is explained at the end, not done.
@@ -209,14 +209,19 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 pastes keys themselves. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Step 4 · Connect Telegram
+## Step 4 · Connect a chat app
 
-Telegram because it's built in and needs only the student; a company Slack usually needs a
-workspace admin to approve a new app. Steps: @BotFather, `/newbot`, name it, copy the bot token
-into `.env`; Claude connects the channel from that token with DM policy on pairing; the student
-messages the bot, gets a pairing code, and Claude approves it (`openclaw pairing approve telegram
-<CODE>`); then a real job, and they check the answer against the source (act-then-verify from
-Class 5). Slack works the same way as an official plugin; it's on the homework.
+The student picks the chat app they already live in (this student lives in Slack). Telegram and
+WebChat ship with OpenClaw; Slack, WhatsApp, Microsoft Teams, Discord, Signal, iMessage and more
+are official plugins (check docs.openclaw.ai/channels for the current list and each one's setup).
+Claude Code walks them through creating the bot or app for that platform (Telegram: @BotFather,
+`/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
+channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
+approves it (`openclaw pairing approve <channel> <CODE>`). Then a real job, and they check the
+answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
+workspace usually needs an admin to approve a new app; if that won't happen today, start with
+Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
+QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
 ## Step 5 · A tool, on a branch
 
@@ -241,7 +246,7 @@ is what runs, so only reviewed code reaches it.
 ## Step 7 · Schedule it
 
 The deployment rebuilt as an automation: weekdays at 7:30 in their time zone, isolated session,
-prompt "Handle my morning.", handoff saved to the folder and sent on Telegram; Claude shows the
+prompt "Handle my morning.", handoff saved to the folder and sent in their chat app; Claude shows the
 next five run times to catch cron typos (Class 4's lesson). Heartbeat stays off; when wanted, a
 short HEARTBEAT.md, isolated light session, and activeHours keep each wake to a few thousand
 tokens. The double-act risk: the Class 5 deployment also runs at 7:30, and two agents on one
@@ -281,8 +286,8 @@ and webhooks become possible.
 ## Homework
 
 Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
-a trusted plugin or skill (read before installing), else a script tool. Add Slack if their admin
-approves the app. Watch cost daily for a week at each provider and trim anything that grew back.
+a trusted plugin or skill (read before installing), else a script tool. Add a second chat app
+if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.

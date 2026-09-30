@@ -798,12 +798,12 @@
 <section class="slide dense">
   <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
-  <h2>Today: your agent answers you in Telegram.</h2>
+  <h2>Today: your agent answers you in your chat app.</h2>
   <p>By the end of class, your Class 5 agent runs in OpenClaw on your computer, and three things work that Managed Agents couldn't do:</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">💬 You can message it</div>
-      <p>From your phone: <em>"Prep me for the 2pm."</em> It answers in the same chat.</p>
+      <p>From your phone, in Slack, Telegram, WhatsApp or another app: <em>"Prep me for the 2pm."</em> It answers in the same chat.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🐍 It runs your own tool</div>
@@ -1001,7 +1001,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">💬 Channels</div>
-      <p>The chat apps it listens on. <strong>Telegram</strong> comes built in. Slack, WhatsApp, Discord and Teams are plugins you add.</p>
+      <p>The chat apps it listens on. <strong>Telegram</strong> comes built in. Slack, WhatsApp, Teams, Discord, Signal and iMessage are plugins you add.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🔐 Pairing</div>
@@ -1047,7 +1047,7 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">💬 A message</div>
-      <p>You, in Telegram or Slack. It answers in the same chat.</p>
+      <p>You, in Slack, Telegram or any chat app you connect. It answers in the same chat.</p>
     </div>
     <div class="card">
       <div class="eyebrow">💓 A heartbeat</div>
@@ -1190,20 +1190,20 @@
   </div>
 </section>
 
-<!-- STEP 4 — TELEGRAM -->
+<!-- STEP 4 — CHAT APP -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 4 · Connect Telegram"></div>
+  <div class="slide-num" data-label="Step 4 · Connect a chat app"></div>
   <div class="eyebrow">The thing Managed Agents couldn't do</div>
-  <h2>Step 4: Connect Telegram so you can message it.</h2>
+  <h2>Step 4: Connect the chat app you already live in.</h2>
   <ul class="numbered">
-    <li><strong>1.</strong> In Telegram, message <strong>@BotFather</strong>, send <code>/newbot</code>, and name it. It gives you a bot token: paste it into .env.</li>
-    <li><strong>2.</strong> Tell Claude Code: <em>"Connect my Telegram bot to OpenClaw using the token in .env. Keep DMs on pairing."</em></li>
-    <li><strong>3.</strong> Message your bot. It replies with a pairing code. Tell Claude Code: <em>"Approve Telegram pairing code [code]."</em></li>
+    <li><strong>1.</strong> Pick one. <strong>Telegram</strong> comes built in. <strong>Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage</strong> are official plugins, and there are more.</li>
+    <li><strong>2.</strong> Tell Claude Code: <em>"Connect OpenClaw to [app]. Walk me through creating its bot, put any token in .env, and keep DMs on pairing."</em></li>
+    <li><strong>3.</strong> Message your bot. It replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
     <li><strong>4.</strong> Send it a job: <em>"What's on my calendar tomorrow?"</em> Then check the answer is real.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">💼</span>
-    <p><strong>Slack works the same way, as a plugin.</strong> A company Slack usually needs an admin to approve a new app, so we start with Telegram, which only needs you. Slack is on the homework.</p>
+    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and add Slack when it does.</p>
   </div>
 </section>
 
@@ -1248,7 +1248,7 @@
   <div class="slide-num" data-label="Step 7 · Schedule it"></div>
   <div class="eyebrow">Your deployment, rebuilt</div>
   <h2>Step 7: Schedule the 7:30 run, and decide on the heartbeat.</h2>
-  <div class="prompt-box">Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me on Telegram. Then show me the next five run times.</div>
+  <div class="prompt-box">Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me in my chat app. Then show me the next five run times.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">💓 The heartbeat stays off for now</div>
@@ -1347,8 +1347,8 @@
       <p>One at a time, each on its own branch: a plugin or skill if a trusted one exists, otherwise a script tool.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">💼 Add Slack</div>
-      <p>If your workspace admin approves the app, so it lives where you already work.</p>
+      <div class="eyebrow">💼 Add a second chat app</div>
+      <p>Slack at work once your admin approves it, or any other app you'd rather message it from.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📉 Watch the cost for a week</div>

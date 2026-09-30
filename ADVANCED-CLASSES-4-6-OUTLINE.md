@@ -190,8 +190,8 @@ consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map from Managed A
 workspace files, Gateway and channels, tools/skills/permissions, what wakes it, any model,
 security. Build: Install (onboarding run by the student in the VS Code terminal), Step 1
 clean it out (measured with `/context detail`), 2 pull in the Class 5 agent via `ant`, 3 model
-+ fallback + `.env`, 4 Telegram with pairing (Slack is a plugin needing admin approval, so
-homework), 5 a Python script tool on a branch, 6 second-AI review and merge, 7 schedule 7:30
++ fallback + `.env`, 4 connect the chat app they live in, with pairing (Telegram built in;
+Slack, WhatsApp, Teams, Discord, Signal, iMessage as plugins; a work Slack may need admin approval), 5 a Python script tool on a branch, 6 second-AI review and merge, 7 schedule 7:30
 as an automation (pause Class 5 or OpenClaw once both run, or drafts double). Then webhooks
 (concept), when it breaks, Render (explained), homework, recap.
 Corrections from research against docs.openclaw.ai: TOOLS.md and HEARTBEAT.md are NOT

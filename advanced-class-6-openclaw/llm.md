@@ -94,13 +94,13 @@ second rule: OpenClaw is not an upgrade everyone should take.
 
 _Let's look at the end first_
 
-## Today: your agent answers you in Telegram.
+## Today: your agent answers you in your chat app.
 
 By the end of class, your Class 5 agent runs in OpenClaw on your computer, and three things work that Managed Agents couldn't do:
 
 _💬 You can message it_
 
-From your phone: "Prep me for the 2pm." It answers in the same chat.
+From your phone, in Slack, Telegram, WhatsApp or another app: "Prep me for the 2pm." It answers in the same chat.
 
 _🐍 It runs your own tool_
 
@@ -115,7 +115,7 @@ Today is the setup and the first working version. Finishing the agent is homewor
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 What works by the end of class: the Class 5 agent running in OpenClaw on their computer,
-reachable in Telegram, calling one Python script as a tool (built on a branch, reviewed by a
+reachable in the chat app they choose (Slack, Telegram, WhatsApp and more), calling one Python script as a tool (built on a branch, reviewed by a
 second AI), and scheduled at 7:30. Be clear about scope: today is the setup and a first working
 version; finishing the agent (every app connected, the handoff as good as Class 5's) is
 homework, and cloud hosting (Render) is explained at the end, not done.
@@ -377,7 +377,7 @@ Runs in the background on your computer. Only your own machine can reach it, and
 
 _💬 Channels_
 
-The chat apps it listens on. Telegram comes built in. Slack, WhatsApp, Discord and Teams are plugins you add.
+The chat apps it listens on. Telegram comes built in. Slack, WhatsApp, Teams, Discord, Signal and iMessage are plugins you add.
 
 _🔐 Pairing_
 
@@ -442,7 +442,7 @@ _Managed Agents had a schedule and you. OpenClaw has four._
 
 _💬 A message_
 
-You, in Telegram or Slack. It answers in the same chat.
+You, in Slack, Telegram or any chat app you connect. It answers in the same chat.
 
 _💓 A heartbeat_
 
@@ -664,34 +664,39 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 pastes keys themselves. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Slide 19 · Step 4 · Connect Telegram
+## Slide 19 · Step 4 · Connect a chat app
 
 **What the student sees on this slide:**
 
 _The thing Managed Agents couldn't do_
 
-## Step 4: Connect Telegram so you can message it.
+## Step 4: Connect the chat app you already live in.
 
-- 1. In Telegram, message @BotFather , send /newbot , and name it. It gives you a bot token: paste it into .env.
+- 1. Pick one. Telegram comes built in. Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage are official plugins, and there are more.
 
-- 2. Tell Claude Code: "Connect my Telegram bot to OpenClaw using the token in .env. Keep DMs on pairing."
+- 2. Tell Claude Code: "Connect OpenClaw to [app]. Walk me through creating its bot, put any token in .env, and keep DMs on pairing."
 
-- 3. Message your bot. It replies with a pairing code. Tell Claude Code: "Approve Telegram pairing code [code]."
+- 3. Message your bot. It replies with a pairing code. Tell Claude Code: "Approve pairing code [code]."
 
 - 4. Send it a job: "What's on my calendar tomorrow?" Then check the answer is real.
 
  💼
 
-Slack works the same way, as a plugin. A company Slack usually needs an admin to approve a new app, so we start with Telegram, which only needs you. Slack is on the homework.
+Slack at work usually needs an admin to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and add Slack when it does.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Telegram because it's built in and needs only the student; a company Slack usually needs a
-workspace admin to approve a new app. Steps: @BotFather, `/newbot`, name it, copy the bot token
-into `.env`; Claude connects the channel from that token with DM policy on pairing; the student
-messages the bot, gets a pairing code, and Claude approves it (`openclaw pairing approve telegram
-<CODE>`); then a real job, and they check the answer against the source (act-then-verify from
-Class 5). Slack works the same way as an official plugin; it's on the homework.
+The student picks the chat app they already live in (this student lives in Slack). Telegram and
+WebChat ship with OpenClaw; Slack, WhatsApp, Microsoft Teams, Discord, Signal, iMessage and more
+are official plugins (check docs.openclaw.ai/channels for the current list and each one's setup).
+Claude Code walks them through creating the bot or app for that platform (Telegram: @BotFather,
+`/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
+channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
+approves it (`openclaw pairing approve <channel> <CODE>`). Then a real job, and they check the
+answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
+workspace usually needs an admin to approve a new app; if that won't happen today, start with
+Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
+QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
 ## Slide 20 · Step 5 · A tool, on a branch
 
@@ -763,7 +768,7 @@ _Your deployment, rebuilt_
 ## Step 7: Schedule the 7:30 run, and decide on the heartbeat.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me on Telegram. Then show me the next five run times.
+> Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me in my chat app. Then show me the next five run times.
 
 _💓 The heartbeat stays off for now_
 
@@ -778,7 +783,7 @@ The chain now crosses surfaces: the brief still runs in Managed Agents at 7:00, 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 The deployment rebuilt as an automation: weekdays at 7:30 in their time zone, isolated session,
-prompt "Handle my morning.", handoff saved to the folder and sent on Telegram; Claude shows the
+prompt "Handle my morning.", handoff saved to the folder and sent in their chat app; Claude shows the
 next five run times to catch cron typos (Class 4's lesson). Heartbeat stays off; when wanted, a
 short HEARTBEAT.md, isolated light session, and activeHours keep each wake to a few thousand
 tokens. The double-act risk: the Class 5 deployment also runs at 7:30, and two agents on one
@@ -897,9 +902,9 @@ _🔌 Connect every app it needs_
 
 One at a time, each on its own branch: a plugin or skill if a trusted one exists, otherwise a script tool.
 
-_💼 Add Slack_
+_💼 Add a second chat app_
 
-If your workspace admin approves the app, so it lives where you already work.
+Slack at work once your admin approves it, or any other app you'd rather message it from.
 
 _📉 Watch the cost for a week_
 
@@ -916,8 +921,8 @@ The calls are yours: what it may do, what model it runs on, and whether it's wor
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
-a trusted plugin or skill (read before installing), else a script tool. Add Slack if their admin
-approves the app. Watch cost daily for a week at each provider and trim anything that grew back.
+a trusted plugin or skill (read before installing), else a script tool. Add a second chat app
+if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
