@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). The system prompt dictates the DELIVERABLE, not steps: the handoff's three sections with a definition of done for each, plus limits (draft never send, leave alone named kinds). They add a memory store as its handoff log, test-run it, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
+ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). The system prompt dictates the DELIVERABLE, not steps: the handoff's three sections with a definition of done for each, plus limits (draft never send, leave alone named kinds). It reads yesterday's handoff as its memory (no memory store), they test-run it, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
 
 ---
 
@@ -207,7 +207,7 @@ An automation runs the same steps every time. An agent chooses its own: it looks
 
 _⏱️ A budget on the deployment_
 
-Set a per-run cap in Step 6, and compare a run's cost to Class 4's in the session.
+Set a per-run cap in Step 5, and compare a run's cost to Class 4's in the session.
 
 _🧾 Two parts, two bills_
 
@@ -223,7 +223,7 @@ Your monthly limit and prepaid credits from Class 4 still hold. And if a Cowork 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The Class 5 cost beat. Agents cost more than automations because they choose their own steps: more tool calls, retries, web searches, and possibly subagents (each its own thread, billed against the same session budget, at its own model's rates; advisor consultations too). Controls: a per-run budget on the agent's deployment (set in Step 6, a little above the test run's cost), and leaving Multiagent empty for now. The brief and the agent are separate deployments with separate caps and separate costs in Sessions, which makes it easy to see which part costs what. The Class 4 workspace monthly limit and prepaid credits with auto-reload off still hold. The simplicity reminder: Cowork runs on the Claude subscription with no usage bill, so if a Cowork project can do the job, that's the better home.
+The Class 5 cost beat. Agents cost more than automations because they choose their own steps: more tool calls, retries, web searches, and possibly subagents (each its own thread, billed against the same session budget, at its own model's rates; advisor consultations too). Controls: a per-run budget on the agent's deployment (set in Step 5, a little above the test run's cost), and leaving Multiagent empty for now. The brief and the agent are separate deployments with separate caps and separate costs in Sessions, which makes it easy to see which part costs what. The Class 4 workspace monthly limit and prepaid credits with auto-reload off still hold. The simplicity reminder: Cowork runs on the Claude subscription with no usage bill, so if a Cowork project can do the job, that's the better home.
 
 ## Slide 8 · The chain
 
@@ -311,13 +311,13 @@ _Create agent, top to bottom_
 Managed Agents → Agents → Create agent . Fill in General : a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff. The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each. Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read the handoff log first and update it last.
+> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff. The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each. Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read yesterday's handoff first, so you don't redo work or drop what's still waiting.
 
 Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and the handoff log (read first, update last). Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 4 brief agent only sorts, so they can move it to a lighter model for a direct saving.
+Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and "read yesterday's handoff first" so it doesn't redo work or drop what's still waiting. Each session starts with fresh context, so the previous handoff in the folder is its memory; no separate log or memory store is needed. The Console's sessions are the student's record of every run (for debugging), not something the agent reads. Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 4 brief agent only sorts, so they can move it to a lighter model for a direct saving.
 
 ## Slide 11 · Step 2 · Tools
 
@@ -367,35 +367,13 @@ Subagents aren't the chain from slide 8: they run inside this agent's run and sh
 
 The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 4 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Distinguish them from the chain on slide 8: subagents run inside one session under one shared budget, while each link in a chain is its own deployment with its own model, cap and sessions. Then Create agent.
 
-## Slide 13 · Step 4 · Memory
-
-**What the student sees on this slide:**
-
-_So it doesn't rediscover the world every run_
-
-## Step 4: Give it a memory store for its log.
-
-Every run starts fresh. Without a record, it would draft the same reply twice and forget what's waiting on you. A memory store fixes that: Managed Agents → Memory stores → new store, called handoff-log .
-
-_📒 What goes in the log_
-
-What it handled, what it prepared, what's waiting on you, and what changed since the last run. It reads the log first and updates it last.
-
-_🔎 Yours to read_
-
-You can open the store in the Console and read or fix any entry. You'll attach it to the deployment in Step 6.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Each session starts with fresh context, so without a record it would redo work and lose track of what's waiting. A memory store is a workspace-scoped set of text documents mounted into the session's sandbox; the agent reads and writes it with its file tools (the agent toolset must be enabled), and a note about the mount is added to its system prompt automatically. Create one under Managed Agents → Memory stores (name it handoff-log). Memory stores are attached when a session is created, so they attach it on the deployment in Step 6 (and in the test run's session if the form allows). Contents: what it handled, what it prepared, what's waiting, what changed. They can read and edit entries in the Console; if an entry is wrong, fix it. Stores attach read-write by default; because this agent reads untrusted email, a prompt injection could write into the log, which is one more reason for the weekly skim.
-
-## Slide 14 · Step 5 · Test run
+## Slide 13 · Step 4 · Test run
 
 **What the student sees on this slide:**
 
 _Run it, read it, fix it_
 
-## Step 5: Test-run it and check it really acted.
+## Step 4: Test-run it and check it really acted.
 
 Make sure today's brief is in your folder (if not, click Run now on the Class 4 deployment). Then start a test run: "Handle my morning." Watch the session, change the config where something's off, and run it again.
 
@@ -411,19 +389,17 @@ Make sure today's brief is in your folder (if not, click Run now on the Class 4 
 
 A debugging loop, as in Class 4. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 4 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
-## Slide 15 · Step 6 · Schedule it
+## Slide 14 · Step 5 · Schedule it
 
 **What the student sees on this slide:**
 
 _The timer wakes it; the agent decides the rest_
 
-## Step 6: Deploy the agent at 7:30, after the brief.
+## Step 5: Deploy the agent at 7:30, after the brief.
 
 Managed Agents → Deployments . Leave the Class 4 deployment as it is, and create a second one:
 
 - Agent : the one you just built. Environment and vault : the ones from Class 4.
-
-- Memory store : handoff-log .
 
 - Schedule : 30 7 * * 1-5 (weekdays at 7:30) and your time zone. If the brief sometimes lands late, move this later, not earlier.
 
@@ -437,9 +413,9 @@ Click Run now once, and read the session. It's the first run with nobody approvi
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Leave the Class 4 deployment running as it is; this is a second deployment. Fields: the new agent, Class 4's environment and vault, the handoff-log memory store, `30 7 * * 1-5` in their time zone (after the 7:00 brief; scheduled runs can start up to 9 minutes late, so if the brief sometimes lands late, move the agent later, not earlier), the prompt "Handle my morning." (a goal, not steps), and a per-run budget a little above the test run's cost. At the cap a run pauses rather than being killed. Then Run now once and read the session: it's the first run with nobody to approve anything, so it proves the permissions hold. If it stalls, look for a tool call waiting on approval. Confirm the current form fields in the Console.
+Leave the Class 4 deployment running as it is; this is a second deployment. Fields: the new agent, Class 4's environment and vault, `30 7 * * 1-5` in their time zone (after the 7:00 brief; scheduled runs can start up to 9 minutes late, so if the brief sometimes lands late, move the agent later, not earlier), the prompt "Handle my morning." (a goal, not steps), and a per-run budget a little above the test run's cost. At the cap a run pauses rather than being killed. Then Run now once and read the session: it's the first run with nobody to approve anything, so it proves the permissions hold. If it stalls, look for a tool call waiting on approval. Confirm the current form fields in the Console.
 
-## Slide 16 · Direct it
+## Slide 15 · Direct it
 
 **What the student sees on this slide:**
 
@@ -461,7 +437,7 @@ It wasn't in the meeting. "We agreed on the 15th and a revised quote" belongs in
 
 Besides the schedule, they can start a session with the agent any time and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
 
-## Slide 17 · Tune what reaches you
+## Slide 16 · Tune what reaches you
 
 **What the student sees on this slide:**
 
@@ -479,13 +455,13 @@ It handled something you wanted to see. Say that kind of item belongs in Needs y
 
  🔍
 
-Surprised by something it did? Open that run's session and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or a wrong entry in the log.
+Surprised by something it did? Open that run's session and read why. Then fix the cause: the deliverable in the system prompt, or a tool's permission.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable, a tool permission, or a wrong log entry.
+The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable or a tool permission.
 
-## Slide 18 · Homework
+## Slide 17 · Homework
 
 **What the student sees on this slide:**
 
@@ -509,7 +485,7 @@ The calls are yours: what counts as done, and what always comes to you. Claude c
 
 Two things before Class 6. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
 
-## Slide 19 · You shipped it
+## Slide 18 · You shipped it
 
 **What the student sees on this slide:**
 
@@ -523,7 +499,7 @@ _That's the class — here's what now runs_
 
 - Tools allowed or turned off ; it drafts, you send.
 
-- A log it reads and updates, and a capped run every weekday.
+- Yesterday's handoff as its memory, and a capped run every weekday.
 
  🧠
 
@@ -531,4 +507,4 @@ Next class, you own the code. You rebuild this agent in OpenClaw, where your own
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: a two-link chain (the Class 4 brief feeding the agent, each with its own model and cap), an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
+Recap: a two-link chain (the Class 4 brief feeding the agent, each with its own model and cap), an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), yesterday's handoff as its memory, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.

@@ -856,7 +856,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⏱️ A budget on the deployment</div>
-      <p>Set a per-run cap in Step 6, and compare a run's cost to Class 4's in the session.</p>
+      <p>Set a per-run cap in Step 5, and compare a run's cost to Class 4's in the session.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧾 Two parts, two bills</div>
@@ -948,7 +948,7 @@
   <div class="eyebrow">Create agent, top to bottom</div>
   <h2>Step 1: Name it, pick the model, dictate its <em>deliverable</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read the handoff log first and update it last.</div>
+  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read yesterday's handoff first, so you don't redo work or drop what's still waiting.</div>
   <p class="small-note">Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.</p>
 </section>
 
@@ -990,29 +990,11 @@
   <p class="small-note">Subagents aren't the chain from slide 8: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click <strong>Create agent</strong>.</p>
 </section>
 
-<!-- 11. STEP 4 — MEMORY -->
+<!-- 12. STEP 4 — TEST RUN -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 4 · Memory"></div>
-  <div class="eyebrow">So it doesn't rediscover the world every run</div>
-  <h2>Step 4: Give it a memory store for its log.</h2>
-  <p>Every run starts fresh. Without a record, it would draft the same reply twice and forget what's waiting on you. A <strong>memory store</strong> fixes that: Managed Agents → <strong>Memory stores</strong> → new store, called <em>handoff-log</em>.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">📒 What goes in the log</div>
-      <p>What it handled, what it prepared, what's waiting on you, and what changed since the last run. It reads the log first and updates it last.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">🔎 Yours to read</div>
-      <p>You can open the store in the Console and read or fix any entry. You'll attach it to the deployment in Step 6.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 12. STEP 5 — TEST RUN -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Step 5 · Test run"></div>
+  <div class="slide-num" data-label="Step 4 · Test run"></div>
   <div class="eyebrow">Run it, read it, fix it</div>
-  <h2>Step 5: Test-run it and check it really acted.</h2>
+  <h2>Step 4: Test-run it and check it really acted.</h2>
   <p>Make sure today's brief is in your folder (if not, click Run now on the Class 4 deployment). Then start a test run: <em>"Handle my morning."</em> Watch the session, change the config where something's off, and run it again.</p>
   <ul class="numbered">
     <li><strong>1.</strong> Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.</li>
@@ -1022,16 +1004,15 @@
   </ul>
 </section>
 
-<!-- 13. STEP 6 — SCHEDULE -->
+<!-- 13. STEP 5 — SCHEDULE -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Schedule it"></div>
+  <div class="slide-num" data-label="Step 5 · Schedule it"></div>
   <div class="eyebrow">The timer wakes it; the agent decides the rest</div>
-  <h2>Step 6: Deploy the agent at 7:30, after the brief.</h2>
+  <h2>Step 5: Deploy the agent at 7:30, after the brief.</h2>
   <p>Managed Agents → <strong>Deployments</strong>. Leave the Class 4 deployment as it is, and create a second one:</p>
   <div class="card" style="margin-top: 4px;">
     <ul>
       <li><strong>Agent</strong>: the one you just built. <strong>Environment and vault</strong>: the ones from Class 4.</li>
-      <li><strong>Memory store</strong>: <em>handoff-log</em>.</li>
       <li><strong>Schedule</strong>: <span class="cron">30 7 * * 1-5</span> (weekdays at 7:30) and your time zone. If the brief sometimes lands late, move this later, not earlier.</li>
       <li><strong>Prompt</strong>: <em>"Handle my morning."</em> A goal, not steps.</li>
       <li><strong>Budget</strong>: a per-run cap, a little above what your test run cost.</li>
@@ -1082,7 +1063,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🔍</span>
-    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or a wrong entry in the log.</p>
+    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: the deliverable in the system prompt, or a tool's permission.</p>
   </div>
 </section>
 
@@ -1116,7 +1097,7 @@
     <li class="done-check">An agent built field by field, with <strong>the deliverable it owes you</strong> dictated in its system prompt.</li>
     <li class="done-check">A <strong>two-link chain</strong>: your Class 4 brief feeding the agent, each with its own model and cap.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
-    <li class="done-check">A <strong>log</strong> it reads and updates, and a <strong>capped</strong> run every weekday.</li>
+    <li class="done-check">Yesterday's handoff as its memory, and a <strong>capped</strong> run every weekday.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🧠</span>
