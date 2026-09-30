@@ -375,7 +375,7 @@ _Run it, read it, fix it_
 
 ## Step 4: Test-run it and check it really acted.
 
-Make sure today's brief is in your folder (if not, click Run now on the Class 4 deployment). Then start a test run: "Handle my morning." Watch the session, change the config where something's off, and run it again.
+Make sure today's brief is in your folder (if not, click Run now on the Class 4 deployment). Then start a session with this agent, pick the same vault as your morning briefing , start it, and send "Handle my morning." Watch it, change the config where something's off, and run it again.
 
 - 1. Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.
 
@@ -387,7 +387,7 @@ Make sure today's brief is in your folder (if not, click Run now on the Class 4 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-A debugging loop, as in Class 4. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 4 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
+How to test: start a session with this agent, choose the same credential vault as the morning briefing (that's where the app logins live; without it the MCP tools can't authenticate), start the session, and send "Handle my morning." A debugging loop, as in Class 4. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 4 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
 ## Slide 14 · Step 5 · Schedule it
 
@@ -423,7 +423,7 @@ _It works on a schedule, and when you ask_
 
 ## Hand it work directly in a new session.
 
-Start a session with the agent any time and give it a job, phrased as the outcome you want: "Prep me for the 2pm: one page, open questions first." Same system prompt, same limits.
+Start a session with the agent any time (same vault as your briefing) and give it a job, phrased as the outcome you want: "Prep me for the 2pm: one page, open questions first." Same system prompt, same limits.
 
 _🧭 It decides the steps_
 
@@ -435,7 +435,7 @@ It wasn't in the meeting. "We agreed on the 15th and a revised quote" belongs in
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Besides the schedule, they can start a session with the agent any time and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
+Besides the schedule, they can start a session with the agent any time (choosing the same vault as the morning briefing) and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
 
 ## Slide 16 · Tune what reaches you
 
