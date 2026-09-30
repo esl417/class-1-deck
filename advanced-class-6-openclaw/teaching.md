@@ -269,10 +269,17 @@ variable. It keeps the key out of openclaw.json (the plain-text warning doctor f
 matches Render, where keys are dashboard environment variables. The secret store is not encrypted
 ("Store values are not encrypted at rest", a SQLite file under ~/.openclaw) and needs the key
 pre-seeded; a configured provider means 1Password, Bitwarden or Vault, too much for this class.
-Mechanics, done by Claude Code in the Install prompt so students never handle shell files: it
-adds an `export ANTHROPIC_API_KEY=` line to the shell profile (~/.zshrc on a Mac), opens that
-file in VS Code for the student to paste the key after the = sign, and has them open a new
-terminal before onboarding (onboarding checks the terminal's environment). Never typed as a
+Mechanics, done by Claude Code in the Install prompt so students never handle shell files. The
+gotcha (seen in Eric's test, 2026-09-30): onboarding's AI access test only sees variables loaded
+in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gateway reads at
+runtime) is not loaded into the terminal, so the test fails with "secret reference was not
+materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
+file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
+Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
+Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
+and report its length), then gives the exact `openclaw onboard --workspace "<folder>"` command
+and the choices: QuickStart, the agent name, Anthropic, API key, Environment variable,
+ANTHROPIC_API_KEY. Never typed as a
 terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
 the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
 plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own

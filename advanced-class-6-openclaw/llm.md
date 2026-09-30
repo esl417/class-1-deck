@@ -632,7 +632,7 @@ _Before Step 1 · in VS Code_
 First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Set up my Anthropic API key as an environment variable OpenClaw can use: open the right file in VS Code with a spot for me to paste the key myself, never in this chat. Then tell me exactly how to run openclaw onboard myself in a new VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the exact onboarding command, using this folder as the workspace, and the choices to make. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
 
 _⌨️ You run onboarding yourself_
 
@@ -737,10 +737,17 @@ variable. It keeps the key out of openclaw.json (the plain-text warning doctor f
 matches Render, where keys are dashboard environment variables. The secret store is not encrypted
 ("Store values are not encrypted at rest", a SQLite file under ~/.openclaw) and needs the key
 pre-seeded; a configured provider means 1Password, Bitwarden or Vault, too much for this class.
-Mechanics, done by Claude Code in the Install prompt so students never handle shell files: it
-adds an `export ANTHROPIC_API_KEY=` line to the shell profile (~/.zshrc on a Mac), opens that
-file in VS Code for the student to paste the key after the = sign, and has them open a new
-terminal before onboarding (onboarding checks the terminal's environment). Never typed as a
+Mechanics, done by Claude Code in the Install prompt so students never handle shell files. The
+gotcha (seen in Eric's test, 2026-09-30): onboarding's AI access test only sees variables loaded
+in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gateway reads at
+runtime) is not loaded into the terminal, so the test fails with "secret reference was not
+materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
+file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
+Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
+Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
+and report its length), then gives the exact `openclaw onboard --workspace "<folder>"` command
+and the choices: QuickStart, the agent name, Anthropic, API key, Environment variable,
+ANTHROPIC_API_KEY. Never typed as a
 terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
 the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
 plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own
