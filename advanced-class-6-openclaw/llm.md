@@ -682,11 +682,11 @@ before every commit: ask Claude whether anything secret is about to be committed
 
 **What the student sees on this slide:**
 
-_Branching, hands-on · no OpenClaw needed_
+_Branching, hands-on · your approval gates main_
 
-## Step 4: On a branch, rebuild your brief as plain Python.
+## Step 4: Rebuild the brief in Python; you approve the merge.
 
-main is the version that runs. A branch is a copy where you change things safely; nothing touches main until it's reviewed. Paste:
+main is the version that runs. A branch is a copy where you change things safely; nothing touches main until you approve it. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
@@ -699,7 +699,9 @@ _🦞 OpenClaw starts where the brief ends_
 
 The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.
 
-Read the test brief. Only when it's right, tell Claude Code: "Approved, merge it into main." Every change from now on goes this way: branch, test, your approval, merge.
+ ✋
+
+Nothing merges until you approve it. Read the test brief. Only when it's right, tell Claude Code: "Approved, merge it into main." Every change from now on goes this way: branch, test, your approval, merge.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
