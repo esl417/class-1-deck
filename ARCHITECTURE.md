@@ -27,7 +27,7 @@ class-5-agents-beginner/   index.html               ...   (Beginner track; desig
 class-6-the-loop-beginner/ index.html               ...   (Beginner track; design in CLASSES-5-6-OUTLINE.md)
 advanced-class-4-automations/ index.html            ...   (Advanced track; Managed Agents; design in ADVANCED-CLASSES-4-6-OUTLINE.md)
 advanced-class-5-agents/     index.html             ...   (Advanced track; Managed Agents Create agent; design in ADVANCED-CLASSES-4-6-OUTLINE.md)
-advanced-class-6-openclaw/   prereqs.html           ...   (Advanced track; Class 1 prereqs minus Vercel/Impeccable; deck not built yet)
+advanced-class-6-openclaw/   index.html prereqs.html ...   (Advanced track; OpenClaw in VS Code; prereqs = Class 1 prereqs minus Vercel/Impeccable, plus ant CLI)
 aivisibility/           index.html                  ...   (free Maven lightning lesson)
 dashboard/              index.html                  ...   (free Maven lightning lesson)
                         dashboard.html      the demo artifact, opened on slide 8

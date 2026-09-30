@@ -1,0 +1,289 @@
+# Teaching notes — Advanced Class 6 (OpenClaw in VS Code)
+
+Per-slide notes for the bot view. `##` = slide label. Private. Teach the skill, don't
+perform the build. The student finished Advanced Classes 4 and 5 in Claude Managed Agents: a
+7:00 brief automation saving to Drive or Dropbox, and a 7:30 agent that acts on it and writes a
+handoff (Taken care of / Needs your action / FYI), with its memory in handoff-log.md. They did
+the Class 6 prereqs (VS Code, Claude Code, git, Node, GitHub CLI, ant CLI, logged in). Today
+they compare Cowork, Managed Agents and OpenClaw, learn OpenClaw's parts, then install it,
+clean it out, and rebuild the Class 5 agent in a project folder that is a private GitHub repo.
+OpenClaw changes fast: check docs.openclaw.ai before giving any command or config key, and
+prefer `openclaw doctor` and the docs over memory. Rules that never slide: keys only in `.env`
+(in `.gitignore` before the first commit) or OpenClaw's own credential store, never pasted into
+a chat; the agent drafts, the student sends; no skill or plugin installed unread; the Gateway
+stays on loopback. Cost is a thread in every Advanced class: OpenClaw has no per-run budget, so
+the caps live at each model provider, and trimming overhead is the lever.
+
+## The arc
+
+Orientation. Class 4 dictated steps (automation), Class 5 dictated the deliverable (agent),
+Class 6 moves the same agent somewhere they own every part. Plant the two standing rules: cap
+spend before anything runs, and use the simplest setup that does the job. Today tests the
+second rule: OpenClaw is not an upgrade everyone should take.
+
+## The finish line
+
+What works by the end of class: the Class 5 agent running in OpenClaw on their computer,
+reachable in Telegram, calling one Python script as a tool (built on a branch, reviewed by a
+second AI), and scheduled at 7:30. Be clear about scope: today is the setup and a first working
+version; finishing the agent (every app connected, the handoff as good as Class 5's) is
+homework, and cloud hosting (Render) is explained at the end, not done.
+
+## What OpenClaw is
+
+OpenClaw is free, open-source, self-hosted agent software (formerly Clawdbot / Moltbot). It
+runs as a background program on their computer or a rented server and connects a model to
+files, tools and chat apps. Three differences that matter: it runs where they put it (laptop
+asleep = agent asleep), any model (60+ providers), and it lives in chat apps. The trade to say
+plainly: they can change everything, and they maintain everything: updates, uptime, security,
+debugging. Claude Code is their help desk for all of it.
+
+## Three ways to run an agent
+
+The comparison table. Walk it row by row, left to right, as a cost of ownership. Rows: who runs
+it; models (Claude only on both Anthropic surfaces; any on OpenClaw); payment (Cowork is the
+flat Claude plan with no usage bill; Managed Agents is prepaid API credits in the Console,
+charged per token plus $0.08 per session-hour; OpenClaw is an account and card at each model
+provider, plus hosting); token overhead (on Cowork and Managed Agents Anthropic decides what
+loads with each call and they can't trim it; in OpenClaw every file, skill and check-in is
+theirs to cut, which is Step 1); customization; how they reach it (Cowork via the Claude app on
+desktop and phone; Managed Agents only via the Console, as Class 5 showed; OpenClaw via
+Telegram, Slack, WhatsApp and more); what wakes it; deploy; maintain; debug (sessions in the
+Console trace every step; OpenClaw means logs, config files and health checks, which is slower);
+security (on OpenClaw the machine, keys and every installed skill are theirs to secure).
+
+## Which one to use
+
+The decision tree, the principle made operational. Q1: can a Cowork project do the job? Then
+Cowork: subscription, nothing to host. Q2: does it need something Managed Agents can't do (their
+own code as tools, a chat app they message, outside events that wake it via webhooks, or a
+non-Claude model)? If no, Managed Agents. Only if yes, OpenClaw. Also valid: needing control
+over token overhead for a high-volume agent. Consumer agents: big companies are shipping agents
+for everyone (xAI's Grok Bot, in early beta since August 2026 in its top tier; Meta's Muse, a
+personal agent app launched September 2026; OpenAI and Google have their own always-on agents),
+so a given job may soon be doable off the shelf and is worth watching. The point to land: once
+they can build in OpenClaw they don't have to wait for anyone; they can build anything. Product
+details here come from press coverage and change monthly; don't quote prices as fact.
+
+## Cost control
+
+This class's cost beat. Managed Agents capped every run but gave no control over the overhead
+riding on each call; OpenClaw flips both. No per-run budget field, so limits move to the model
+provider: a monthly spend limit, prepaid credits, auto-reload off, at every provider they use
+(each bills separately), and hosting bills separately too. Overhead: the injected workspace
+files (AGENTS.md, SOUL.md, IDENTITY.md, USER.md, MEMORY.md, BOOTSTRAP.md on a new workspace),
+the skill list and the tool list go out with every message. The default install is full of
+extras; Step 1 removes them. The heartbeat defaults to every 30 minutes (48 wakes a day), and a
+heartbeat in the main session can carry around 100,000 tokens; OpenClaw's docs say an isolated
+session cuts that to 2,000–5,000. Keep it off until it's set up lean. The classic surprise bill:
+a key pushed to GitHub, found by bots within minutes. `.env` goes in `.gitignore` before the
+first commit. Official page: docs.openclaw.ai/reference/token-use.
+
+## The parts
+
+The bridge from Managed Agents. Every Console part has an OpenClaw home: General (model, system
+prompt) → openclaw.json for the model and AGENTS.md / SOUL.md / USER.md as the prompt; tools and
+permission policies → tool allow and deny lists plus exec approvals; MCP servers and API calls →
+plugins, skills and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
+Class 4); environment → their computer (sandboxing is optional, off by default, Docker-based);
+credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
+deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
+Control UI and terminal; handoff-log.md → MEMORY.md plus daily notes in memory/. New: channels
+and webhooks, which Managed Agents couldn't do.
+
+## The workspace
+
+The agent is a folder of plain-text files, which is why VS Code: they can see and edit the agent
+directly. Injected into every call (per the current docs): AGENTS.md (operating rules; the
+biggest default file, about 8,000 characters of group-chat etiquette, emoji reactions, voice and
+platform formatting most agents don't need), SOUL.md (personality), USER.md (about them),
+IDENTITY.md (name, vibe), MEMORY.md (curated long-term memory, main session only, not in group
+chats), BOOTSTRAP.md (a first-run interview on a brand-new workspace; delete it after). Not
+injected: memory/YYYY-MM-DD.md (read as needed), HEARTBEAT.md (the heartbeat's checklist),
+TOOLS.md (setup notes). Caps: 20,000 characters per file, 60,000 total. The model, channels,
+schedules and permissions live outside the folder in ~/.openclaw/openclaw.json, with the logins
+in ~/.openclaw/credentials; that folder stays out of GitHub.
+
+## The Gateway and channels
+
+The Gateway is the always-on background program (port 18789, bound to loopback so only their
+own machine reaches it, token auth on by default). It serves the Control UI (`openclaw
+dashboard`). Channels: Telegram and WebChat ship with it; Slack, WhatsApp, Discord, Signal,
+Teams and more are official plugins. Pairing: a stranger who messages the bot gets an 8-character
+code that expires in an hour, and nothing happens until the owner approves it (`openclaw pairing
+approve telegram <CODE>`). The consequence to land: no Gateway, no agent; if the laptop sleeps
+at 7:30, the 7:30 run doesn't happen, which is what cloud hosting solves.
+
+## Tools, skills and permissions
+
+Tools: exec (run commands), read/write/edit files, web search and fetch, browser, message, cron,
+subagents. Skills: folders with a SKILL.md (name and description frontmatter); around 50 bundled
+(the repo's skills folder had 49 in September 2026) and thousands on ClawHub. The skill list is
+injected every call, so unused bundled skills cost tokens. Permissions: tools.allow / tools.deny
+/ tools.profile, and exec approvals with a security level (deny, allowlist, full) and an ask
+mode (off, on-miss, always); the stricter of config and approvals wins. The custom-tool payoff:
+a Python script in the folder, a skill that says when to run it, and exec runs it. No separate
+application needed, which removes the Class 5 limit.
+
+## What wakes it
+
+Four triggers against Managed Agents' two (a deployment, or them in a session). A message in a
+channel. The heartbeat (default every 30 minutes; reads HEARTBEAT.md and replies HEARTBEAT_OK
+unless something needs them; settings include isolatedSession, lightContext and activeHours).
+Automations: `openclaw automations` (alias `openclaw cron`), schedules at exact times, each able
+to run in an isolated session with its own model. Webhooks: another app posts to /hooks/agent
+with a bearer token. Rule of thumb from OpenClaw's own guidance: exact times in a schedule, loose
+periodic checks batched into the heartbeat.
+
+## Any model
+
+60+ providers including Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter and local
+models via Ollama. Set with `openclaw models set <provider/model>`, add fallbacks with `openclaw
+models fallbacks add`, switch mid-chat with `/model`. Three points: fit the model to the job
+(strong for judgment, cheap for routine checks, the chain idea inside one agent); a fallback
+takes over when the main model is down or rate-limited; test before trusting, because models
+follow instructions differently. Eric runs his on Kimi. Each provider is its own account, bill
+and spend limit.
+
+## Security
+
+They are the security team now. ClawHub: in February 2026 researchers (Koi Security, the
+"ClawHavoc" report) found 341 malicious skills out of about 2,857, mostly dropping a macOS
+password- and data-stealer. A skill is code running with the agent's access: install only what
+they or Claude Code have read. The Gateway stays on loopback; `openclaw security audit` checks
+the setup. Keys live in `.env` or OpenClaw's credential store, never in a chat, the agent's
+files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in January 2026,
+let one malicious link take over an install via the Control UI). Class 5 rules carry over: it
+drafts, they send, and anything it reads from strangers can try to give it orders.
+
+## Install
+
+Before Step 1. They make a folder (morning-agent), open it in VS Code, and have Claude Code
+install OpenClaw with the official installer (macOS/Linux: `curl -fsSL
+https://openclaw.ai/install.sh | bash`; Windows: the install.ps1 script; it handles Node) and
+make the folder a private GitHub repo with `.env` in `.gitignore` before any commit. They run
+`openclaw onboard --install-daemon` themselves in the VS Code terminal, because it's interactive
+and the model key goes in there, not in a chat. Choices: ask first rather than full access; their
+provider and model; this folder as the workspace (if onboarding doesn't offer it, Claude can set
+OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
+(overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
+MEMORY.md hold personal context, one reason the repo must be private.
+
+## Step 1 · Clean it out
+
+Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
+rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
+shows each file's and skill's size. Cleanup: delete BOOTSTRAP.md (onboarding may already have);
+cut AGENTS.md to what a morning agent needs (drop group chats, reactions, voice storytelling,
+platform formatting, the heartbeat check-in examples; keep memory rules and red lines); strip
+boilerplate from SOUL.md and TOOLS.md; turn off bundled skills in openclaw.json
+(`skills.allowBundled` is the allowlist for bundled skills; `skills.entries.<name>.enabled:
+false` for individual ones); heartbeat off (`every: "0m"`). Claude shows each change first.
+Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
+message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
+
+## Step 2 · Bring in your agent
+
+Rebuild from the working agent, not a description. They download handoff-log.md from the
+briefing folder into the project. Claude uses the ant CLI (logged in during prereqs) to pull the
+Class 5 agent's definition (`ant beta:agents retrieve`; the Console's Export as code is the other
+route) into class5-export/. The Raw definition holds model, system prompt, tools and MCP servers;
+skills appear only as IDs (the Class 5 agent has none). Translate: who they are → USER.md; the
+job, the three-section deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's
+standing notes → MEMORY.md. Keep files short (overhead). Vault credentials never export, which is
+correct; each app is reconnected one at a time. Claude lists the MCP servers the Console agent
+used and how each will be reached here (a plugin or skill if a trusted one exists, else a script).
+
+## Step 3 · Model and keys
+
+Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
+not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
+`.env`: Claude creates it and confirms it's in `.gitignore`; the student opens it in VS Code and
+pastes keys themselves. Scripts read from it; Claude never sees the keys in chat. The habit
+before every commit: ask Claude whether anything secret is about to be committed.
+
+## Step 4 · Connect Telegram
+
+Telegram because it's built in and needs only the student; a company Slack usually needs a
+workspace admin to approve a new app. Steps: @BotFather, `/newbot`, name it, copy the bot token
+into `.env`; Claude connects the channel from that token with DM policy on pairing; the student
+messages the bot, gets a pairing code, and Claude approves it (`openclaw pairing approve telegram
+<CODE>`); then a real job, and they check the answer against the source (act-then-verify from
+Class 5). Slack works the same way as an official plugin; it's on the homework.
+
+## Step 5 · A tool, on a branch
+
+Branching taught hands-on. main is the agent that runs; a branch is a copy where they change
+things safely, merged only after review. Claude creates add-brief-tool and, on it, writes a
+Python script in scripts/ that finds today's brief in the Drive or Dropbox folder and prints it,
+reading its key from `.env`, plus a skill telling the agent to run it first when handling the
+morning. Test, commit on the branch, don't merge. Why a script: same result every run for almost
+nothing, so the agent's tokens go to judgment (Class 4's split, now buildable). Why a skill: the
+agent doesn't know a script exists until a skill says when to use it; together they're a custom
+tool. Dropbox access tokens are simpler to set up than Google's OAuth for a first script.
+
+## Step 6 · Review and merge
+
+The author shouldn't grade its own work. Claude opens a pull request (the proposal to change
+main). A second AI reviews it: Codex in VS Code or another model, asked for bugs and security
+problems, especially key handling. The findings go back to Claude Code: fix what's real, say
+what it disagrees with. Then merge into main, restart the Gateway, and message the agent "Handle
+my morning." Every change from now on is branch, review, merge; once it runs in the cloud, main
+is what runs, so only reviewed code reaches it.
+
+## Step 7 · Schedule it
+
+The deployment rebuilt as an automation: weekdays at 7:30 in their time zone, isolated session,
+prompt "Handle my morning.", handoff saved to the folder and sent on Telegram; Claude shows the
+next five run times to catch cron typos (Class 4's lesson). Heartbeat stays off; when wanted, a
+short HEARTBEAT.md, isolated light session, and activeHours keep each wake to a few thousand
+tokens. The double-act risk: the Class 5 deployment also runs at 7:30, and two agents on one
+brief mean double drafts; once the OpenClaw handoff is right, pause one (the Class 4 brief keeps
+running). The chain now crosses surfaces: brief in Managed Agents at 7:00, action agent in
+OpenClaw. Each link lives where it suits. The laptop must be awake at 7:30 until it's hosted.
+
+## Webhooks
+
+Concept, not built today. hooks.enabled plus a hook token gives the Gateway endpoints
+(POST /hooks/wake, /hooks/agent, /hooks/<name>) with bearer-token auth; tokens in the query
+string are refused. Examples: a form submission drafting kickoff notes, the Class 4 brief landing
+and starting the agent right away, anything Zapier or Make can see. The catch: a webhook needs an
+address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
+hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
+
+## When it breaks
+
+No Sessions page does this for them. `openclaw status` (channels, sessions, usage), `openclaw
+doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
+move from the Class 1 prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
+come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
+causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
+limited, a config typo `doctor` catches, a tool call waiting on an approval.
+
+## To the cloud
+
+Explained, not done. Render is a hosting service with a documented OpenClaw setup
+(docs.openclaw.ai/install/render): a render.yaml blueprint running Docker, connected to their
+GitHub repo. It runs main, and every merge redeploys, which is why branch-review-merge matters.
+The free plan has no disk, so memory and state reset on every deploy; a paid plan with a disk
+(the blueprint defaults to Starter with 1GB at /data) keeps them. Keys go in Render's environment
+settings, never the repo. The Gateway stays private: reach the Control UI over an SSH tunnel or
+Tailscale, not a public port. One more bill to cap. Once hosted, 7:30 runs with the laptop closed
+and webhooks become possible.
+
+## Homework
+
+Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
+a trusted plugin or skill (read before installing), else a script tool. Add Slack if their admin
+approves the app. Watch cost daily for a week at each provider and trim anything that grew back.
+Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
+right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
+whether it's worth owning are their calls.
+
+## You shipped it
+
+Recap of the course's end state: the decision (Cowork first, Managed Agents next, OpenClaw only
+when a job needs it); an OpenClaw agent cleaned out and rebuilt from the Class 5 agent; a chat
+they can message it in and a Python script it calls as a tool; code in GitHub changed only by
+branch, review, merge, keys kept out. The rules that travel to any surface: dictate the
+deliverable, one job per agent, cap what it can spend, use the simplest setup that works.

@@ -46,6 +46,8 @@ const BOT_VIEWS = {
   '/advanced-class-5-agents': '/advanced-class-5-agents/llm.md',
   '/advanced-class-5-agents/': '/advanced-class-5-agents/llm.md',
 
+  '/advanced-class-6-openclaw': '/advanced-class-6-openclaw/llm.md',
+  '/advanced-class-6-openclaw/': '/advanced-class-6-openclaw/llm.md',
   '/advanced-class-6-openclaw/prereqs.html': '/advanced-class-6-openclaw/prereqs-llm.md',
 
   '/class-5-agents-beginner': '/class-5-agents-beginner/llm.md',

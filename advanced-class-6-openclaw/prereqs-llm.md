@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-This is the BEFORE-CLASS setup deck for Advanced Class 6, adapted from the Class 1 prereqs. The student built in Claude Managed Agents in Classes 4 and 5 and may never have used VS Code, a terminal, or GitHub. They are installing VS Code, the Claude Code extension, git, Node.js, and the GitHub and Claude Code CLIs, creating a GitHub account, logging in, adding review agents and a CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already did the Class 1 setup, only the Terminal check is needed. Most often you are consulted because an install, login, or terminal command failed: read the actual error, fix the real cause, keep them moving.
+This is the BEFORE-CLASS setup deck for Advanced Class 6, adapted from the Class 1 prereqs. The student built in Claude Managed Agents in Classes 4 and 5 and may never have used VS Code, a terminal, or GitHub. They are installing VS Code, the Claude Code extension, git, Node.js, the GitHub and Claude Code CLIs and the ant CLI (Anthropic's, logged in with their Console account), creating a GitHub account, logging in, adding review agents and a CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already did the Class 1 setup, only the Terminal check is needed. Most often you are consulted because an install, login, or terminal command failed: read the actual error, fix the real cause, keep them moving.
 
 ---
 
@@ -200,7 +200,7 @@ _Let Claude do the whole setup_
 Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Set up everything I need to build an agent in Claude Code: git, the current LTS version of Node.js (npm and npx must work), the GitHub CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; and install Git for Windows (Claude Code uses it to run terminal commands as Bash). Install anything missing, one at a time, then show me a checklist proving each one works.
+> Set up everything I need to build an agent in Claude Code: git, the current LTS version of Node.js (npm and npx must work), the GitHub CLI, the Claude Code CLI (@anthropic-ai/claude-code), and Anthropic's ant CLI (on a Mac: brew install anthropics/tap/ant) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; and install Git for Windows (Claude Code uses it to run terminal commands as Bash). Install anything missing, one at a time, then show me a checklist proving each one works.
 
 _What Claude will install_
 
@@ -213,6 +213,8 @@ _What Claude will install_
 - GitHub CLI — how Claude talks to your GitHub account.
 
 - Claude Code CLI — required before you can create agents (next section).
+
+- ant CLI — how Claude downloads your Class 5 agent from the Console as files.
 
 All free and standard — safe to say yes to each.
 
@@ -228,7 +230,7 @@ _Your only job_
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), and the GitHub and Claude Code CLIs, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub and Claude Code CLIs, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 5 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -278,7 +280,7 @@ We go deeper on how you'll actually use GitHub in class. For now, you just need 
 
 The trap here is subtle and worth catching: **the accounts must EXIST before the login step can log into them.** Students sometimes try to run the CLI login (next slide) before signing up at github.com, and it fails confusingly. If a login is failing, verify the account was actually created first.
 
-Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 6. Their Claude Console login from Class 4 is reused in class; nothing to set up for it here.
+Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 6. Their Claude Console login from Class 4 is reused for the ant CLI login; no new account needed.
 
 ## Slide 10 · Log into your CLIs
 
@@ -286,12 +288,12 @@ Tell them to pick a professional username — it's public and permanent. No Verc
 
 _Installed ≠ logged in_
 
-## Log Claude into GitHub, and into itself.
+## Log Claude into GitHub, the Console, and itself.
 
-The tools are installed, but they don't know who you are yet. One prompt logs you into both — Claude drives it and pauses when a browser window needs a click.
+The tools are installed, but they don't know who you are yet. One prompt logs you into all three — Claude drives it and pauses when a browser window needs a click.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Log me into the GitHub CLI and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
+> Log me into the GitHub CLI, the ant CLI (ant auth login, with my Claude Console account from Class 4), and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
 
  ✋
 
@@ -299,7 +301,7 @@ Expect a browser window (or a short code) for each login — that's normal, not 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub and Claude Code one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 4 and 5; no API key to paste), and Claude Code, one at a time.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 

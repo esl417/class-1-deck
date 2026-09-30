@@ -509,7 +509,7 @@ Sharpen the deliverable as you go. You've arrived when you send its drafts with 
 
 _🛠️ Do the Class 6 prerequisites_
 
-VS Code, Claude Code and GitHub, installed and logged in. About an hour, before class .
+VS Code, Claude Code and GitHub, installed and logged in. About an hour, before class . Follow the Class 6 prerequisites guide .
 
  🎓
 
@@ -537,7 +537,7 @@ _That's the class — here's what now runs_
 
  🧠
 
-Next class, you own the code. You rebuild this agent in OpenClaw, where your own tools run and any model can power it. If this agent already does the job, it's fine to stay here: use the simplest setup that works.
+Next class, you own the code. You rebuild this agent in OpenClaw, where your own tools run and any model can power it. If this agent already does the job, it's fine to stay here: use the simplest setup that works. Either way, do the Class 6 prerequisites before class.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

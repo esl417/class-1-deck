@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Class 6: OpenClaw (Advanced)</title>
+<style>
+  /* ============================================================
+     Advanced Class 6 deck — warm "patient teacher's whiteboard" system
+     (shared system with Class 3; do not drift the tokens)
+     Headings: Hanken Grotesk (self-hosted). Body: system sans.
+     ============================================================ */
+  @font-face {
+    font-family: "Hanken Grotesk";
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url("fonts/hanken-latin.woff2") format("woff2");
+  }
+
+  :root {
+    --paper-top: #fdfcf9;
+    --paper-bot: #f2eee6;
+    --ink:        #15140f;
+    --body:       #2c2a24;
+    --muted:      #6a665c;
+    --faint:      #7c776c;
+    --accent:      #0f8a80;
+    --accent-deep: #0c6f67;
+    --accent-ink:  #0a5952;
+    --green:      #16a34a;
+    --hair:       rgba(20,18,12,0.10);
+    --surface:    #fffdf9;
+    --display: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, monospace;
+    --pad-x: clamp(48px, 7vw, 104px);
+    --pad-top: clamp(48px, 7vh, 76px);
+    --nav-safe: 116px;
+    --col: 1180px;
+    --z-progress: 200;
+    --z-nav: 100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--paper-bot);
+    color: var(--body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    padding: var(--pad-top) var(--pad-x) var(--nav-safe);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(15,138,128,0.05), transparent 60%),
+      linear-gradient(135deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    overflow-y: auto;
+  }
+  .slide.active { display: flex; flex-direction: column; }
+  .slide.active > *:not(.slide-num) { width: 100%; max-width: var(--col); margin-left: auto; margin-right: auto; }
+  /* Center content by default; when a slide's content is taller than the
+     viewport, `safe` falls back to top-alignment so nothing clips (instead of
+     centering and cutting off the top/bottom). This keeps light slides visually
+     centered and only heavy slides pin to the top — no more jumping between
+     "centered" and "high" as you move through the deck. */
+  .slide.active { justify-content: safe center; }
+  .slide.dense h2 { font-size: clamp(30px, 3.4vw, 40px); margin-bottom: 18px; }
+  .slide.dense p,
+  .slide.dense li { font-size: clamp(17px, 1.55vw, 19px); margin-bottom: 11px; }
+  .slide.dense li { line-height: 1.42; }
+  .slide.dense .small-note { margin-top: 12px; }
+  .slide.dense .card .eyebrow { margin-bottom: 8px; }
+  .slide.dense .card ul li { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.4; margin-bottom: 9px; }
+  .slide.dense .card ul li:last-child { margin-bottom: 0; }
+
+  @media (max-height: 900px) {
+    :root { --pad-top: clamp(30px, 4.4vh, 48px); --nav-safe: 84px; }
+    .slide.dense h2 { font-size: clamp(26px, 2.9vw, 33px); margin-bottom: 12px; }
+    .slide.dense p,
+    .slide.dense li { font-size: clamp(15px, 1.4vw, 17px); margin-bottom: 8px; }
+    .slide.dense .card ul li { font-size: clamp(14px, 1.25vw, 15.5px); margin-bottom: 6px; }
+    .slide.dense .card { padding: clamp(16px, 1.7vw, 22px); }
+    .slide.dense .eyebrow { margin-bottom: 10px; }
+    .slide.dense .small-note { margin-top: 8px; font-size: clamp(13px, 1.2vw, 14.5px); }
+    .slide.dense .prompt-box { padding: 12px 16px; font-size: clamp(13px, 1.25vw, 14.5px); }
+    .slide.dense .grid-2 { gap: clamp(16px, 1.9vw, 26px); }
+  }
+
+  .title-slide { gap: clamp(28px, 4.2vh, 52px); text-align: center; }
+  .title-slide.active > *:not(.slide-num) { max-width: 1340px; }
+  .title-slide.active > .title-head { max-width: none; }
+
+  .title-head { display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 1.8vh, 20px); }
+  .title-kicker {
+    font-family: var(--sans);
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--accent-deep);
+    margin-bottom: clamp(2px, 0.6vh, 6px);
+  }
+  .title-main {
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  @media (max-width: 860px) {
+    .title-main { font-size: clamp(28px, 6vw, 44px); white-space: normal; }
+    .title-main .hero-break { display: none; }
+  }
+  .title-sub {
+    font-family: var(--display);
+    font-size: clamp(19px, 2.1vw, 27px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  .slide-num {
+    position: absolute;
+    top: clamp(26px, 4vh, 40px);
+    right: clamp(28px, 4vw, 52px);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    z-index: 3;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-deep);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+  .card .eyebrow { margin-bottom: 10px; }
+  .card .eyebrow::before { display: none; }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(46px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.4vw, 50px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 em { font-style: normal; color: var(--accent); }
+  h2.nowrap-lg { white-space: nowrap; font-size: clamp(30px, 3.5vw, 46px); }
+  @media (max-width: 820px) { h2.nowrap-lg { white-space: normal; font-size: clamp(28px, 5vw, 40px); } }
+
+  /* ---- Headlines fit ONE line -------------------------------------------
+     The content column is 1180px; headlines up to ~60 chars must sit on ONE
+     line inside it without clipping. Two things together make that safe:
+     (1) white-space: nowrap so it never wraps to 2, and
+     (2) a font size that SCALES DOWN with the viewport (vw-led clamp with a
+         modest cap) so the longest line still fits at laptop widths — nowrap
+         with too-big a font clips off the right edge (the recurring bug).
+     Below the phone breakpoint, release to normal wrapping. */
+  h2, .slide.dense h2 {
+    white-space: nowrap;
+    font-size: clamp(24px, 2.9vw, 40px);
+  }
+  @media (max-width: 760px) {
+    h2, .slide.dense h2 { white-space: normal; font-size: clamp(26px, 6vw, 34px); }
+  }
+  h3 {
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  p {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.55;
+    color: var(--body);
+    margin-bottom: 16px;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  ul { list-style: none; padding: 0; max-width: var(--col); }
+  li {
+    font-size: clamp(19px, 1.7vw, 22px);
+    line-height: 1.5;
+    color: var(--body);
+    margin-bottom: 14px;
+    padding-left: 30px;
+    position: relative;
+  }
+  li::before {
+    content: "→";
+    font-family: var(--sans);
+    position: absolute;
+    left: 0;
+    top: 0.02em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  li.check::before { content: "☐"; color: var(--green); }
+  li.done-check::before { content: "✓"; color: var(--green); font-weight: 800; }
+  ul.numbered li { padding-left: 0; }
+  ul.numbered li::before { content: none; }
+  ul.numbered li strong { color: var(--accent-deep); }
+  li strong { color: var(--ink); font-weight: 700; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(20px, 2.4vw, 36px);
+    max-width: var(--col);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .card h3 { color: var(--accent-deep); margin-bottom: 12px; }
+  .card p { font-size: clamp(16px, 1.5vw, 18px); margin-bottom: 0; color: var(--body); }
+  .card p + p { margin-top: 10px; }
+
+  code, .mono {
+    font-family: var(--mono);
+    background: rgba(15,138,128,0.10);
+    color: var(--accent-ink);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.88em;
+    font-weight: 500;
+  }
+
+  .pill {
+    display: inline-block;
+    background: rgba(15,138,128,0.12);
+    color: var(--accent-ink);
+    padding: 5px 13px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .quote {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--accent-deep);
+    padding: 4px 0 4px 30px;
+    border-left: 3px solid var(--accent);
+    margin: 28px 0;
+    max-width: var(--col);
+    text-wrap: balance;
+  }
+
+  .nav {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: rgba(255,253,249,0.82);
+    padding: 9px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--hair);
+    box-shadow: 0 6px 20px -6px rgba(20,18,12,0.18);
+    z-index: var(--z-nav);
+  }
+  .nav button {
+    background: transparent;
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 7px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav button:hover { background: rgba(15,138,128,0.08); border-color: rgba(15,138,128,0.35); }
+  .nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), #14a89b);
+    z-index: var(--z-progress);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .arrow-flow {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    margin-top: clamp(28px, 4vh, 48px);
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid rgba(15,138,128,0.35);
+    padding: 15px 24px;
+    border-radius: 12px;
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  .flow-arrow { color: var(--accent); font-size: clamp(24px, 3vw, 32px); font-weight: 700; }
+
+  /* ---- Daily cycle: the scheduled run, laptop open vs closed -----------
+     A schedule is cyclical, and "what if my laptop is closed?" is the
+     question every student asks — shown as a branch with the same outcome.
+     Set in a tinted band so it reads as one self-contained object, not
+     headers for the cards below. */
+  .flow-cycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(6px, 0.8vw, 12px);
+    margin-top: clamp(12px, 1.5vh, 18px);
+    padding: clamp(11px, 1.4vh, 15px) clamp(16px, 2vw, 26px);
+    background: rgba(15,138,128,0.055);
+    border: 1px solid rgba(15,138,128,0.22);
+    border-radius: 14px;
+    max-width: var(--col);
+  }
+  .cycle-node {
+    flex: 0 1 auto;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+    padding: clamp(8px, 0.95vw, 12px) clamp(12px, 1.4vw, 18px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cycle-node.is-run { border: 2px solid var(--accent); background: rgba(15,138,128,0.10); }
+  .cycle-node .node-name {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.45vw, 18px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cycle-node .node-sub {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.15vw, 13px);
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  /* connectors: 1:1 coordinate space so arrowheads are never distorted */
+  .cycle-wire { width: clamp(24px, 2.8vw, 40px); height: 14px; flex: 0 0 auto; display: block; }
+  .cycle-wire path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .cycle-wire path.flow-arrowhead { fill: var(--accent); stroke: none; }
+  .cycle-split { flex: 0 0 auto; display: flex; align-items: center; }
+  /* the two outcomes of 7am, stacked — this is a branch, not a chain */
+  .cycle-branches {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vh, 12px);
+    flex: 0 1 auto;
+  }
+  .cycle-branch { display: flex; align-items: center; gap: clamp(8px, 1vw, 12px); flex-wrap: wrap; }
+  .cycle-branch .branch-when {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.05vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 9ch;
+    text-align: right;
+  }
+  @media (max-width: 860px) {
+    .flow-cycle { flex-direction: column; }
+    .cycle-split .cycle-wire { transform: rotate(90deg); }
+    .cycle-branch { flex-direction: column; align-items: stretch; text-align: center; }
+    .cycle-branch .branch-when { text-align: center; min-width: 0; }
+  }
+
+  /* ---- Process map: mapped steps, each tagged deterministic vs judgment ---- */
+  .proc-map { display: flex; flex-direction: column; gap: 8px; max-width: var(--col); }
+  .proc-phase {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-deep);
+    margin: 8px 0 1px 2px;
+  }
+  .proc-phase:first-child { margin-top: 0; }
+  .proc-step {
+    display: grid;
+    grid-template-columns: 140px minmax(0, auto) 1fr;
+    align-items: baseline;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 10px;
+    padding: 9px 20px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04);
+  }
+  @media (max-height: 900px) {
+    .proc-map { gap: 6px; }
+    .proc-step { padding: 7px 18px; border-radius: 9px; }
+    .proc-phase { margin: 5px 0 0 2px; }
+  }
+  .proc-step.judge-row {
+    border-color: rgba(15,138,128,0.5);
+    background: rgba(15,138,128,0.055);
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.5);
+  }
+  .proc-tag {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .proc-tag.det { background: #efeade; color: var(--muted); }
+  .proc-tag.judge { background: var(--accent); color: #fff; }
+  .proc-do { font-family: var(--display); font-weight: 700; font-size: clamp(16px, 1.5vw, 19px); color: var(--ink); letter-spacing: -0.01em; }
+  .proc-why { font-size: clamp(14px, 1.3vw, 16px); color: var(--muted); }
+  .proc-why strong { color: var(--accent-deep); }
+  @media (max-width: 760px) {
+    .proc-step { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ---- Connector grid: the sources a student can wire in ---- */
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 1.6vw, 22px);
+    max-width: var(--col);
+    margin-top: 4px;
+  }
+  .connect {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -20px rgba(20,18,12,0.18);
+  }
+  .connect-ico { font-size: clamp(22px, 2vw, 26px); line-height: 1; flex: 0 0 auto; margin-top: 1px; }
+  .connect strong { font-family: var(--display); font-size: clamp(17px, 1.5vw, 19px); color: var(--ink); letter-spacing: -0.01em; }
+  .connect p { font-size: clamp(14px, 1.3vw, 15.5px); color: var(--muted); margin: 4px 0 0; line-height: 1.4; max-width: none; }
+  .connect-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: rgba(15,138,128,0.12);
+    padding: 2px 7px;
+    border-radius: 999px;
+    margin-left: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  @media (max-width: 900px) { .connect-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .connect-grid { grid-template-columns: 1fr; } }
+  @media (max-height: 900px) {
+    .connect { padding: 12px 15px; gap: 11px; }
+    .connect p { margin-top: 2px; }
+  }
+
+  .small-note {
+    font-size: clamp(15px, 1.35vw, 16px);
+    color: var(--muted);
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 72ch;
+  }
+
+  .prompt-box {
+    background: var(--surface);
+    border: 1px solid #e7e1d4;
+    border-left: 4px solid var(--accent);
+    padding: 16px 22px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--accent-ink);
+    margin: 12px 0;
+    max-width: 1000px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 26px -20px rgba(15,138,128,0.4);
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    gap: clamp(16px, 1.8vw, 26px);
+    max-width: var(--col);
+    margin-top: 4px;
+    align-items: stretch;
+  }
+  .grid-3 .card { display: flex; flex-direction: column; }
+  .grid-3 .card p { font-size: clamp(15px, 1.35vw, 17px); line-height: 1.45; }
+  .grid-3 .card p code { font-size: 0.95em; }
+  .card-hero { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .card-hero .prompt-box {
+    margin: 6px 0 0;
+    max-width: none;
+    font-size: clamp(11.5px, 0.98vw, 13.5px);
+    line-height: 1.42;
+    padding: 12px 14px;
+    box-shadow: none;
+  }
+  @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+  .tag-report, .tag-write {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.78em;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    vertical-align: middle;
+  }
+  .tag-report { background: #efeade; color: var(--muted); }
+  .tag-write { background: var(--accent); color: #fff; }
+
+  .label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 3px 11px;
+    border-radius: 5px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  a { color: var(--accent-deep); }
+  a:focus, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; text-decoration: underline; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
+    .nav button { transition: none; }
+  }
+
+  .done-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 14px 20px;
+    background: rgba(22,163,74,0.08);
+    border: 1px solid rgba(22,163,74,0.30);
+    border-radius: 12px;
+  }
+  .done-strip .done-mark { font-size: clamp(20px, 2vw, 26px); flex: 0 0 auto; line-height: 1; }
+  .done-strip p { margin: 0; font-size: clamp(15px, 1.4vw, 17px); max-width: none; }
+  .done-strip strong { color: #15803d; }
+
+  .heads-up {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 15px 22px;
+    background: rgba(15,138,128,0.09);
+    border: 1px solid rgba(15,138,128,0.38);
+    border-radius: 12px;
+  }
+  .heads-up-mark { font-size: clamp(22px, 2.2vw, 28px); flex: 0 0 auto; line-height: 1; }
+  .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
+  .heads-up strong { color: var(--accent-deep); }
+
+  @media (max-width: 760px) {
+    .slide { padding: 40px 28px var(--nav-safe); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* ---- Advanced additions: two more step tags, inline bold in cards, cron text ---- */
+  .proc-tag.script { background: rgba(15,138,128,0.16); color: var(--accent-ink); }
+  .proc-tag.call { background: #e6eef0; color: #3d5a60; }
+  .grid-2.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .grid-2.cols-3 { grid-template-columns: 1fr; } }
+  .connect p strong { font-family: var(--sans); font-size: inherit; letter-spacing: 0; }
+  .proc-step { grid-template-columns: 160px minmax(0, auto) 1fr; }
+  @media (max-width: 760px) { .proc-step { grid-template-columns: 1fr; gap: 4px; } }
+  .cron {
+    font-family: var(--mono);
+    background: rgba(15,138,128,0.10);
+    color: var(--accent-ink);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.88em;
+    white-space: nowrap;
+  }
+  /* ---- The chain: agents handing deliverables to each other ---- */
+  .chain { display: flex; align-items: stretch; max-width: var(--col); margin-top: 6px; }
+  .chain-node {
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(14px, 1.6vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .chain-node.is-today { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .chain-node.is-future { border: 1.5px dashed rgba(15,138,128,0.45); background: transparent; box-shadow: none; }
+  .chain-when { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-deep); }
+  .chain-name { font-family: var(--display); font-size: clamp(17px, 1.6vw, 20px); font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
+  .chain-job { font-size: clamp(14px, 1.3vw, 16px); line-height: 1.42; color: var(--body); margin: 0; max-width: none; }
+  .chain-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+  .chain-meta span { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--accent-ink); background: rgba(15,138,128,0.10); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .chain-hand { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 clamp(6px, 0.8vw, 12px); }
+  .chain-file { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); background: rgba(15,138,128,0.08); border: 1px solid rgba(15,138,128,0.3); border-radius: 8px; padding: 5px 9px; white-space: nowrap; }
+  .chain-arrow { width: 44px; height: 14px; display: block; }
+  .chain-arrow path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .chain-arrow path.head { fill: var(--accent); stroke: none; }
+  .chain-perks { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; max-width: var(--col); }
+  .chain-perks span { font-size: clamp(14px, 1.3vw, 16px); color: var(--body); }
+  .chain-perks strong { color: var(--ink); }
+  @media (max-width: 760px) {
+    .chain { flex-direction: column; }
+    .chain-hand { flex-direction: row; padding: 8px 0; }
+    .chain-arrow { transform: rotate(90deg); width: 32px; }
+  }
+  /* ---- Class 6 additions: comparison table, decision tree, parts map ---- */
+  .table-wrap { max-width: var(--col); overflow-x: auto; margin-top: 4px; border-radius: 14px; border: 1px solid var(--hair); background: var(--surface); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18); }
+  .compare { width: 100%; border-collapse: collapse; min-width: 760px; }
+  .compare th, .compare td { text-align: left; vertical-align: top; padding: clamp(7px, 0.9vh, 11px) clamp(10px, 1.2vw, 16px); border-bottom: 1px solid var(--hair); font-size: clamp(13.5px, 1.2vw, 15.5px); line-height: 1.38; color: var(--body); }
+  .compare tr:last-child td { border-bottom: 0; }
+  .compare thead th { font-family: var(--display); font-size: clamp(15px, 1.4vw, 18px); font-weight: 800; color: var(--ink); background: rgba(15,138,128,0.06); letter-spacing: -0.01em; }
+  .compare thead th.is-today { color: var(--accent-deep); background: rgba(15,138,128,0.13); }
+  .compare td.is-today { background: rgba(15,138,128,0.045); }
+  .compare tbody th { font-family: var(--sans); font-size: clamp(12px, 1.05vw, 13px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent-deep); white-space: nowrap; width: 1%; }
+  .compare td strong { color: var(--ink); }
+
+  .tree { display: flex; flex-direction: column; gap: 10px; max-width: var(--col); margin-top: 4px; }
+  .tree-row { display: grid; grid-template-columns: minmax(0, 1.35fr) 44px minmax(0, 1fr); align-items: center; gap: 0; }
+  .tree-q { background: var(--surface); border: 1px solid var(--hair); border-radius: 12px; padding: 12px 18px; box-shadow: 0 1px 2px rgba(20,18,12,0.04); }
+  .tree-q .tree-step { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 2px; }
+  .tree-q .tree-text { font-family: var(--display); font-weight: 700; font-size: clamp(16px, 1.5vw, 19px); color: var(--ink); letter-spacing: -0.01em; }
+  .tree-yes { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--accent-deep); text-align: center; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tree-a { border-radius: 12px; padding: 12px 18px; border: 2px solid var(--accent); background: rgba(15,138,128,0.08); }
+  .tree-a .tree-text { font-family: var(--display); font-weight: 800; font-size: clamp(16px, 1.5vw, 19px); color: var(--accent-ink); display: block; }
+  .tree-a .tree-sub { font-size: clamp(13px, 1.2vw, 14.5px); color: var(--body); display: block; margin-top: 2px; line-height: 1.35; }
+  .tree-no { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; padding-left: 22px; margin: -4px 0; }
+  @media (max-width: 760px) {
+    .tree-row { grid-template-columns: 1fr; gap: 6px; }
+    .tree-yes { text-align: left; padding-left: 4px; }
+  }
+
+  .map-row { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1.5fr); align-items: stretch; gap: 0; }
+  .map-list { display: flex; flex-direction: column; gap: 7px; max-width: var(--col); margin-top: 4px; }
+  .map-from, .map-to { background: var(--surface); border: 1px solid var(--hair); border-radius: 10px; padding: 8px 16px; font-size: clamp(14px, 1.3vw, 16px); line-height: 1.38; color: var(--body); }
+  .map-from { color: var(--muted); }
+  .map-to { border-color: rgba(15,138,128,0.4); }
+  .map-from strong, .map-to strong { font-family: var(--display); color: var(--ink); letter-spacing: -0.01em; }
+  .map-arrow { display: flex; align-items: center; justify-content: center; color: var(--accent); font-weight: 700; }
+  .map-head { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-deep); padding: 0 4px; }
+  @media (max-width: 760px) { .map-row { grid-template-columns: 1fr; } .map-arrow { transform: rotate(90deg); height: 22px; } }
+
+  .file-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px clamp(14px, 1.6vw, 22px); max-width: var(--col); margin-top: 4px; }
+  .file-item { display: flex; gap: 12px; align-items: baseline; background: var(--surface); border: 1px solid var(--hair); border-radius: 10px; padding: 8px 14px; }
+  .file-item code { flex: 0 0 auto; }
+  .file-item span { font-size: clamp(14px, 1.3vw, 15.5px); line-height: 1.38; color: var(--body); }
+  .file-item.is-trim { border-style: dashed; border-color: rgba(15,138,128,0.5); }
+  @media (max-width: 760px) { .file-list { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+<!-- TITLE -->
+<section class="slide active title-slide">
+  <div class="slide-num" data-label=""></div>
+  <div class="title-head">
+    <div class="title-kicker">Class 6 · Advanced · OpenClaw in VS Code</div>
+    <h1 class="title-main">Your agent, rebuilt on <br class="hero-break">code you own.</h1>
+    <p class="title-sub">Compare the three ways to run an agent, learn what's inside OpenClaw, then clean it out and rebuild your Class 5 agent so you can message it from your phone.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 0 — FRAMING
+     ============================================================ -->
+
+<!-- THE ARC -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The arc"></div>
+  <div class="eyebrow">Where today fits</div>
+  <h2>Three classes, one agent, built in <em>layers</em>.</h2>
+  <p>You built the brief, then an agent that acts on it. Today you rebuild that agent somewhere you control every part.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">Class 4 · Automation</div>
+      <p><strong>The steps are dictated.</strong> Fixed steps and one judgment call write your morning brief. A timer pulls the trigger.</p>
+      <p><em>Managed Agents</em></p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Class 5 · Agent</div>
+      <p><strong>The agent decides the steps.</strong> It works the brief and hands back taken care of, needs your action, FYI.</p>
+      <p><em>Managed Agents</em></p>
+    </div>
+    <div class="card card-hero">
+      <div class="eyebrow">Class 6 · Today · Your own agent</div>
+      <p><strong>You own the code.</strong> The same agent in OpenClaw: your own tools, any model, and you can message it.</p>
+      <p><em>VS Code + Claude Code</em></p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🧱</span>
+    <p><strong>The two rules still hold:</strong> cap what it can spend before anything runs, and use the simplest setup that does the job. Today we test that second rule hard.</p>
+  </div>
+</section>
+
+<!-- THE FINISH LINE -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The finish line"></div>
+  <div class="eyebrow">Let's look at the end first</div>
+  <h2>Today: your agent answers you in Telegram.</h2>
+  <p>By the end of class, your Class 5 agent runs in OpenClaw on your computer, and three things work that Managed Agents couldn't do:</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">💬 You can message it</div>
+      <p>From your phone: <em>"Prep me for the 2pm."</em> It answers in the same chat.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🐍 It runs your own tool</div>
+      <p>A Python script it calls as a tool, built on a branch and reviewed by a second AI.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">⏰ It still runs at 7:30</div>
+      <p>The same handoff as Class 5, now arriving as a message.</p>
+    </div>
+  </div>
+  <p class="small-note">Today is the setup and the first working version. Finishing the agent is homework, and moving it to the cloud comes at the end.</p>
+</section>
+
+<!-- ============================================================
+     PART 1 — WHICH SURFACE
+     ============================================================ -->
+
+<!-- WHAT OPENCLAW IS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="What OpenClaw is"></div>
+  <div class="eyebrow">Before we install anything</div>
+  <h2>OpenClaw is an agent you install, run, and <em>own</em>.</h2>
+  <p>It's free, open-source software. It runs on your computer or a server you rent, and connects a model to your files, your tools and your chat apps.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🏠 It runs where you put it</div>
+      <p>Nobody hosts it for you. When your computer sleeps, your agent sleeps.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧠 Any model</div>
+      <p>Claude, GPT, Gemini, Kimi, or a model on your own machine. Switch with one command.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💬 It lives in your chat apps</div>
+      <p>Telegram, Slack, WhatsApp and more. You message it like a person.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">⚖️</span>
+    <p><strong>The trade: you can change everything, and you maintain everything.</strong> Updates, uptime, security and debugging are yours now, with Claude Code as your help desk.</p>
+  </div>
+</section>
+
+<!-- THE COMPARISON -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Three ways to run an agent"></div>
+  <div class="eyebrow">Cowork vs Managed Agents vs OpenClaw</div>
+  <h2>More control means more to build and maintain.</h2>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr><th></th><th>Cowork project</th><th>Managed Agents</th><th class="is-today">OpenClaw</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Who runs it</th><td>Anthropic, in the Claude app</td><td>Anthropic, in the cloud</td><td class="is-today">You: your computer or a server you rent</td></tr>
+        <tr><th>Models</th><td>Claude</td><td>Claude</td><td class="is-today"><strong>Any:</strong> Claude, GPT, Gemini, Kimi, local</td></tr>
+        <tr><th>Payment</th><td>Your Claude plan, a flat monthly fee</td><td>Prepaid API credits in the Console, charged per use plus session hours</td><td class="is-today">An account and card at each model provider, plus a hosting bill</td></tr>
+        <tr><th>Token overhead</th><td>Set by Anthropic</td><td>Set by Anthropic: you can't trim what loads</td><td class="is-today"><strong>Yours to trim:</strong> every file, skill and check-in</td></tr>
+        <tr><th>Customize</th><td>Instructions, connectors, skills</td><td>Every field: tools, permissions, environment</td><td class="is-today"><strong>Everything,</strong> including your own code as tools</td></tr>
+        <tr><th>Reach it</th><td>The Claude app, desktop and phone</td><td>The Console only</td><td class="is-today">Telegram, Slack, WhatsApp and more</td></tr>
+        <tr><th>What wakes it</th><td>You, or a scheduled task</td><td>A deployment, or you in a session</td><td class="is-today">Messages, schedules, a heartbeat, webhooks</td></tr>
+        <tr><th>Deploy</th><td>Nothing to deploy</td><td>A deployment form</td><td class="is-today">You install it, then host it yourself</td></tr>
+        <tr><th>Maintain</th><td>Nothing</td><td>Little: Anthropic updates it</td><td class="is-today">Yours: updates, uptime, security fixes</td></tr>
+        <tr><th>Debug</th><td>Read the chat</td><td>Sessions trace every step</td><td class="is-today">Logs, config files, health checks: slower</td></tr>
+        <tr><th>Security</th><td>Anthropic's</td><td>Anthropic's sandbox, your permissions</td><td class="is-today">Yours: the machine, the keys, every skill</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small-note">Read the table left to right as a cost of ownership: each column gives you more, and asks more of you.</p>
+</section>
+
+<!-- DECISION TREE -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Which one to use"></div>
+  <div class="eyebrow">Use the simplest deployment that does the job</div>
+  <h2>Two questions decide where an agent should live.</h2>
+  <div class="tree" role="img" aria-label="Decision tree. First: can a Cowork project do the job? If yes, use Cowork. If no: does it need your own code as tools, a chat app you message, outside events that wake it, or a model other than Claude? If no, use Managed Agents. If yes, use OpenClaw.">
+    <div class="tree-row">
+      <div class="tree-q"><span class="tree-step">Question 1</span><span class="tree-text">Can a Cowork project do the job?</span></div>
+      <div class="tree-yes">Yes →</div>
+      <div class="tree-a"><span class="tree-text">Cowork project</span><span class="tree-sub">On your subscription. Nothing to host or maintain.</span></div>
+    </div>
+    <div class="tree-no">↓ No</div>
+    <div class="tree-row">
+      <div class="tree-q"><span class="tree-step">Question 2</span><span class="tree-text">Does it need your own code as tools, a chat app you message, outside events that wake it, or a model other than Claude?</span></div>
+      <div class="tree-yes">No →</div>
+      <div class="tree-a"><span class="tree-text">Managed Agents</span><span class="tree-sub">Anthropic hosts it. Every part is a field, and every run is capped.</span></div>
+    </div>
+    <div class="tree-no">↓ Yes</div>
+    <div class="tree-row">
+      <div class="tree-q"><span class="tree-step">Only then</span><span class="tree-text">It needs heavy customization.</span></div>
+      <div class="tree-yes">→</div>
+      <div class="tree-a"><span class="tree-text">OpenClaw</span><span class="tree-sub">You own the code, the hosting and the upkeep.</span></div>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">👀</span>
+    <p><strong>Keep an eye on consumer agents.</strong> The big companies are racing to ship agents for everyone, like xAI's Grok Bot and Meta's Muse, and one may soon do your job off the shelf. But once you can build in OpenClaw, you don't have to wait for anyone: you can build anything.</p>
+  </div>
+</section>
+
+<!-- COST -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Cost control"></div>
+  <div class="eyebrow">Read this before anything runs</div>
+  <h2>No per-run cap here: trim the overhead, cap the provider.</h2>
+  <p>Managed Agents capped every run, but you couldn't touch the overhead that rides along with each call. OpenClaw flips both: there's no per-run budget field, so the limits move to your model provider, and <strong>the overhead is yours to cut</strong>.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📦 Overhead rides every call</div>
+      <p>Its instruction files, skill list and tool list go out with <strong>every message</strong>. The default install is full of extras. Step 1 cleans them out.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💓 The heartbeat</div>
+      <p>By default it wakes every 30 minutes: 48 times a day, and each wake can carry around 100,000 tokens. It stays off until you set it up lean.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧾 The cap lives at the provider</div>
+      <p>A monthly limit, prepaid credits, auto-reload off, <strong>at each provider you use</strong>. Hosting bills separately.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🔑</span>
+    <p><strong>The classic surprise bill is a key pushed to GitHub,</strong> where bots find it within minutes. Keys go in a <code>.env</code> file that's in <code>.gitignore</code> before your first commit.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 2 — WHAT'S INSIDE OPENCLAW
+     ============================================================ -->
+
+<!-- THE PARTS MAP -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The parts"></div>
+  <div class="eyebrow">You already know these parts</div>
+  <h2>Every Managed Agents part has a home in OpenClaw.</h2>
+  <div class="map-list">
+    <div class="map-row"><span class="map-head">Managed Agents</span><span></span><span class="map-head">OpenClaw</span></div>
+    <div class="map-row"><div class="map-from"><strong>General:</strong> model, system prompt</div><div class="map-arrow">→</div><div class="map-to"><strong>openclaw.json</strong> picks the model; <strong>AGENTS.md, SOUL.md, USER.md</strong> are the prompt</div></div>
+    <div class="map-row"><div class="map-from"><strong>Tools</strong> and permission policies</div><div class="map-arrow">→</div><div class="map-to"><strong>Tools</strong> with allow and deny lists, plus approvals for commands</div></div>
+    <div class="map-row"><div class="map-from"><strong>MCP servers</strong> and API calls</div><div class="map-arrow">→</div><div class="map-to"><strong>Plugins, skills, and your own scripts</strong></div></div>
+    <div class="map-row"><div class="map-from"><strong>Skills</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>Skills:</strong> the same idea, a folder with a SKILL.md</div></div>
+    <div class="map-row"><div class="map-from"><strong>Environment</strong> (the sandbox)</div><div class="map-arrow">→</div><div class="map-to"><strong>Your computer.</strong> A sandbox is optional and off by default</div></div>
+    <div class="map-row"><div class="map-from"><strong>Credential vault</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>OpenClaw's credentials</strong> for the model, <strong>.env</strong> for your scripts</div></div>
+    <div class="map-row"><div class="map-from"><strong>Deployment</strong> (schedule)</div><div class="map-arrow">→</div><div class="map-to"><strong>Automations</strong> (schedules) and the <strong>heartbeat</strong></div></div>
+    <div class="map-row"><div class="map-from"><strong>Sessions</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>Sessions and logs,</strong> in the Control UI and the terminal</div></div>
+    <div class="map-row"><div class="map-from"><strong>handoff-log.md</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>MEMORY.md</strong> and daily notes in <strong>memory/</strong></div></div>
+    <div class="map-row"><div class="map-from">Not possible</div><div class="map-arrow">→</div><div class="map-to"><strong>Channels</strong> (chat apps) and <strong>webhooks</strong>: new today</div></div>
+  </div>
+</section>
+
+<!-- THE WORKSPACE FILES -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The workspace"></div>
+  <div class="eyebrow">Open the folder in VS Code and you're looking at the agent</div>
+  <h2>Your agent is a folder of plain-text files.</h2>
+  <p>No form to fill in: you, Claude Code, and the agent itself edit these files. The ones marked 📌 are loaded into <strong>every call</strong>.</p>
+  <div class="file-list">
+    <div class="file-item"><code>AGENTS.md</code><span>📌 Its operating rules: how it works, what's off-limits. The biggest file by default.</span></div>
+    <div class="file-item"><code>SOUL.md</code><span>📌 Its personality and values.</span></div>
+    <div class="file-item"><code>USER.md</code><span>📌 About you: role, time zone, what matters.</span></div>
+    <div class="file-item"><code>IDENTITY.md</code><span>📌 Its name, vibe and emoji.</span></div>
+    <div class="file-item"><code>MEMORY.md</code><span>📌 Long-term memory it curates. Only in your own chats.</span></div>
+    <div class="file-item"><code>memory/</code><span>A dated note per day. Read when needed, not every call.</span></div>
+    <div class="file-item"><code>HEARTBEAT.md</code><span>The checklist it follows each time the heartbeat wakes it.</span></div>
+    <div class="file-item"><code>TOOLS.md</code><span>Notes about your setup: device names, accounts.</span></div>
+    <div class="file-item is-trim"><code>BOOTSTRAP.md</code><span>📌 A first-run interview. Delete it once it's done.</span></div>
+    <div class="file-item"><code>skills/</code><span>Its skills, one folder each.</span></div>
+  </div>
+  <p class="small-note">The model, channels, schedules and permissions live outside the folder, in <code>~/.openclaw/openclaw.json</code>, along with its logins.</p>
+</section>
+
+<!-- THE GATEWAY AND CHANNELS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The Gateway and channels"></div>
+  <div class="eyebrow">The engine room</div>
+  <h2>The Gateway is the always-on program that runs everything.</h2>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">⚙️ The Gateway</div>
+      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open with <code>openclaw dashboard</code>.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💬 Channels</div>
+      <p>The chat apps it listens on. <strong>Telegram</strong> comes built in. Slack, WhatsApp, Discord and Teams are plugins you add.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔐 Pairing</div>
+      <p>Anyone can find a bot. When a stranger messages it, they get a code, and nothing happens until <strong>you approve</strong> it.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">😴</span>
+    <p><strong>No Gateway, no agent.</strong> If your laptop is asleep at 7:30, the 7:30 run doesn't happen. That's what hosting it in the cloud solves, at the end of class.</p>
+  </div>
+</section>
+
+<!-- SKILLS, TOOLS, PERMISSIONS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Tools, skills and permissions"></div>
+  <div class="eyebrow">What it can do, and what it's allowed to do</div>
+  <h2>Tools act, skills teach, and permissions limit both.</h2>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🧰 Tools</div>
+      <p>Built in: run commands, read and write files, web search and fetch, a browser, send messages, schedule jobs.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📘 Skills</div>
+      <p>A folder with a SKILL.md, like your Class 4 skill. <strong>About 50 come bundled</strong>, and thousands more are on ClawHub, the skill store.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🚦 Permissions</div>
+      <p>Allow and deny lists for tools, and approvals for commands: <strong>deny, allowlist or full</strong>, with or without asking you. The stricter setting wins.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🐍</span>
+    <p><strong>This is how a custom tool becomes real.</strong> Your Python script sits in the folder, a skill tells the agent when to run it, and the command tool runs it. No app of your own needed: the Class 5 limit is gone.</p>
+  </div>
+</section>
+
+<!-- WHAT WAKES IT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="What wakes it"></div>
+  <div class="eyebrow">Managed Agents had a schedule and you. OpenClaw has four.</div>
+  <h2>It wakes four ways: message, heartbeat, schedule, webhook.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">💬 A message</div>
+      <p>You, in Telegram or Slack. It answers in the same chat.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💓 A heartbeat</div>
+      <p>A regular check-in: it reads HEARTBEAT.md and messages you only if something needs you. Handy, and <strong>a cost setting</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">⏰ A schedule</div>
+      <p>An <strong>automation</strong> at exact times, like a deployment's cron. Each can run in its own clean session with its own model.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🪝 A webhook</div>
+      <p>Another app knocks on its door with a secret token: a new form response, a file landing, a payment. It wakes and handles it.</p>
+    </div>
+  </div>
+  <p class="small-note">Rule of thumb: exact times go in a schedule; loose "keep an eye on things" goes in the heartbeat.</p>
+</section>
+
+<!-- MODELS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Any model"></div>
+  <div class="eyebrow">The one thing no Anthropic surface does</div>
+  <h2>Switch models with one command, and set a fallback.</h2>
+  <p>OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. <code>openclaw models set</code> changes it; <code>/model</code> changes it mid-chat.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🎯 Fit the model to the job</div>
+      <p>A strong model for judgment calls, a cheap one for routine checks. The same idea as your chain, inside one agent.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🛟 A fallback</div>
+      <p>If the main model is down or rate-limited, it switches to the next one on your list.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧪 Test before you trust</div>
+      <p>Models follow instructions differently. After a switch, test-run it and read what it did.</p>
+    </div>
+  </div>
+  <p class="small-note">I run mine on Kimi. Each provider is its own account, its own bill and its own spend limit.</p>
+</section>
+
+<!-- SECURITY -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Security"></div>
+  <div class="eyebrow">Nobody else is watching this one</div>
+  <h2>You're the security team now.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🧩 Read every skill before you install it</div>
+      <p>In February 2026, researchers found <strong>341 malicious skills</strong> on ClawHub that stole data from Macs. A skill is code with your access. Install only what you or Claude Code have read.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔒 Keep the Gateway private</div>
+      <p>It only answers your own machine by default: keep it that way. <code>openclaw security audit</code> checks your setup.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔑 Keys in .env, never in a chat</div>
+      <p>Not in the chat with Claude, not in the agent's files, not in GitHub.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">⬆️ Keep it updated</div>
+      <p>Security fixes ship often. Early 2026 fixed a bug that let one bad link take over an install.</p>
+    </div>
+  </div>
+  <p class="small-note">The Class 5 rules carry over: it drafts, you send, and anything it reads from strangers can try to give it orders.</p>
+</section>
+
+<!-- ============================================================
+     PART 3 — BUILD IT
+     ============================================================ -->
+
+<!-- INSTALL -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Install"></div>
+  <div class="eyebrow">Before Step 1 · in VS Code</div>
+  <h2>Install OpenClaw, with your project folder as its home.</h2>
+  <p>Make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that excludes .env. Then tell me exactly how to run openclaw onboard myself in the VS Code terminal, using this folder as the workspace. When I'm done, run openclaw doctor and openclaw gateway status and explain the results.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">⌨️ You run onboarding yourself</div>
+      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. Pick <strong>ask first</strong> over full access, and your provider and model.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🙅 Say no to the extras</div>
+      <p>Skip the suggested skills and plugins, and the memory import. Each one adds overhead and risk. You add what you need later.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 1 — CLEAN IT OUT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 1 · Clean it out"></div>
+  <div class="eyebrow">The control Managed Agents never gave you</div>
+  <h2>Step 1: Clean it out before it costs you on every call.</h2>
+  <p>Open the Control UI (<code>openclaw dashboard</code>) and send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
+  <div class="prompt-box">Clean out my OpenClaw install to cut per-call overhead. Show me each change before you make it. 1) Delete BOOTSTRAP.md. 2) Cut AGENTS.md down to what a morning agent needs: remove group chats, emoji reactions, voice, platform formatting and the heartbeat examples; keep the memory rules and red lines. 3) Strip the boilerplate from SOUL.md and TOOLS.md. 4) In openclaw.json, turn off every bundled skill and turn the heartbeat off. 5) Restart the gateway and run openclaw doctor.</div>
+  <div class="heads-up">
+    <span class="heads-up-mark">📉</span>
+    <p><strong>Send <code>/context detail</code> again and compare.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>
+  </div>
+</section>
+
+<!-- STEP 2 — BRING IN THE CLASS 5 AGENT -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 2 · Bring in your agent"></div>
+  <div class="eyebrow">Rebuild from the working agent, not a description</div>
+  <h2>Step 2: Pull in your Class 5 agent and translate it.</h2>
+  <p>Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste:</p>
+  <div class="prompt-box">Use the ant CLI to download my Class 5 agent, [name], from the Claude Console into a class5-export folder. Rebuild it for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Then list the apps the Console agent reached through MCP servers, and how we'll reach each one here.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">📂 The export is your blueprint</div>
+      <p>Model, system prompt, tools. Commit it: it's the record of the version that worked.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔌 Logins don't come across</div>
+      <p>Your vault never leaves the Console, which is correct. Each app gets connected again here, one at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 3 — MODEL AND KEYS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 3 · Model and keys"></div>
+  <div class="eyebrow">The cost lever and the key rule</div>
+  <h2>Step 3: Set the model, a fallback, and your .env file.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🧠 Models</div>
+      <p>Tell Claude Code: <em>"Set my main model to [model] and add [model] as a fallback."</em> The main model makes this agent's judgment calls, so don't go cheapest here. Routine jobs can get a cheaper model of their own later.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔑 The .env file</div>
+      <p>Tell Claude Code: <em>"Create .env and confirm it's in .gitignore."</em> Then open .env in VS Code and <strong>paste each key there yourself</strong>. Your scripts read keys from it; Claude never sees them in the chat.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">✅</span>
+    <p><strong>Check before every commit:</strong> ask Claude <em>"Is anything secret about to be committed?"</em> One habit, and the classic surprise bill can't happen.</p>
+  </div>
+</section>
+
+<!-- STEP 4 — TELEGRAM -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 4 · Connect Telegram"></div>
+  <div class="eyebrow">The thing Managed Agents couldn't do</div>
+  <h2>Step 4: Connect Telegram so you can message it.</h2>
+  <ul class="numbered">
+    <li><strong>1.</strong> In Telegram, message <strong>@BotFather</strong>, send <code>/newbot</code>, and name it. It gives you a bot token: paste it into .env.</li>
+    <li><strong>2.</strong> Tell Claude Code: <em>"Connect my Telegram bot to OpenClaw using the token in .env. Keep DMs on pairing."</em></li>
+    <li><strong>3.</strong> Message your bot. It replies with a pairing code. Tell Claude Code: <em>"Approve Telegram pairing code [code]."</em></li>
+    <li><strong>4.</strong> Send it a job: <em>"What's on my calendar tomorrow?"</em> Then check the answer is real.</li>
+  </ul>
+  <div class="heads-up">
+    <span class="heads-up-mark">💼</span>
+    <p><strong>Slack works the same way, as a plugin.</strong> A company Slack usually needs an admin to approve a new app, so we start with Telegram, which only needs you. Slack is on the homework.</p>
+  </div>
+</section>
+
+<!-- STEP 5 — BRANCH + CUSTOM TOOL -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 5 · A tool, on a branch"></div>
+  <div class="eyebrow">Branching, hands-on</div>
+  <h2>Step 5: On a branch, give it a Python script as a tool.</h2>
+  <p><strong>main</strong> is the agent that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
+  <div class="prompt-box">Create a branch called add-brief-tool. On it, write a Python script in scripts/ that finds today's morning brief in my [Drive / Dropbox] briefing folder and prints its text, reading its key from .env. Then write a skill that tells the agent to run this script first when it handles my morning. Test it, commit it on the branch, and don't merge.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">🐍 The script does the fetching</div>
+      <p>Same result every run, for almost nothing. The agent spends its tokens on the judgment, not on finding a file.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📘 The skill says when</div>
+      <p>Without the skill, the agent doesn't know the script exists. Together, they're a custom tool.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 6 — REVIEW AND MERGE -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 6 · Review and merge"></div>
+  <div class="eyebrow">The author shouldn't grade its own work</div>
+  <h2>Step 6: A second AI reviews the branch, then you merge.</h2>
+  <ul class="numbered">
+    <li><strong>1.</strong> Tell Claude Code: <em>"Open a pull request for add-brief-tool."</em> That's the proposal to change main.</li>
+    <li><strong>2.</strong> Open <strong>Codex</strong> (or another AI) in VS Code: <em>"Review this pull request for bugs and security problems, especially how it handles keys."</em></li>
+    <li><strong>3.</strong> Paste the findings to Claude Code: <em>"Fix what's real, and tell me what you disagree with."</em></li>
+    <li><strong>4.</strong> <em>"Merge it into main and restart the gateway."</em> Then message the agent: <em>"Handle my morning."</em></li>
+  </ul>
+  <div class="heads-up">
+    <span class="heads-up-mark">🌿</span>
+    <p><strong>Every change from now on goes this way:</strong> branch, review, merge. When the agent runs in the cloud, main is what runs, so only reviewed code ever reaches it.</p>
+  </div>
+</section>
+
+<!-- STEP 7 — SCHEDULE -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 7 · Schedule it"></div>
+  <div class="eyebrow">Your deployment, rebuilt</div>
+  <h2>Step 7: Schedule the 7:30 run, and decide on the heartbeat.</h2>
+  <div class="prompt-box">Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me on Telegram. Then show me the next five run times.</div>
+  <div class="grid-2" style="margin-top: 8px;">
+    <div class="card">
+      <div class="eyebrow">💓 The heartbeat stays off for now</div>
+      <p>When you want check-ins, turn it on with a short HEARTBEAT.md, its own light session, and working hours only. That keeps each wake to a few thousand tokens.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">✌️ Two agents, one brief</div>
+      <p>Your Class 5 deployment also runs at 7:30. Two agents working one brief means double drafts: once this one's handoff is right, <strong>pause one of them</strong>.</p>
+    </div>
+  </div>
+  <p class="small-note">The chain now crosses surfaces: the brief still runs in Managed Agents at 7:00, and OpenClaw picks it up. Each link lives wherever suits it.</p>
+</section>
+
+<!-- WEBHOOKS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Webhooks"></div>
+  <div class="eyebrow">Outside events that wake it</div>
+  <h2>A webhook lets another app wake your agent.</h2>
+  <p>You turn on OpenClaw's hooks and it gets an address. Any app that can send a web request can knock on it, with a secret token, and the agent handles what arrives.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📝 A form is submitted</div>
+      <p>A new brief request from a client: it drafts the kickoff notes.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📂 A file lands</div>
+      <p>The Class 4 brief is saved: it starts right away instead of waiting for 7:30.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">⚡ A Zap fires</div>
+      <p>Anything Zapier or Make can see becomes something your agent can act on.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🌍</span>
+    <p><strong>Webhooks need an address the internet can reach,</strong> and your laptop isn't one. They come with cloud hosting, and the token is a key: it goes in .env.</p>
+  </div>
+</section>
+
+<!-- WHEN IT BREAKS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="When it breaks"></div>
+  <div class="eyebrow">There's no Sessions page doing this for you</div>
+  <h2>When it breaks, you and Claude Code are the support team.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🩺 Health</div>
+      <p><code>openclaw status</code> shows channels, sessions and usage. <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📜 What happened</div>
+      <p><code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🔍</span>
+    <p><strong>Describe the symptom and let Claude Code dig:</strong> <em>"My 7:30 run didn't come. Check OpenClaw's status and logs and tell me why."</em> Then fix the cause on a branch, like any other change.</p>
+  </div>
+</section>
+
+<!-- TO THE CLOUD -->
+<section class="slide dense">
+  <div class="slide-num" data-label="To the cloud"></div>
+  <div class="eyebrow">Explained today, done when you're ready</div>
+  <h2>Render runs your agent from GitHub, laptop open or not.</h2>
+  <p>Render is a hosting service, and OpenClaw's docs include a setup for it. You connect your GitHub repo, and Render runs the agent around the clock.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🌿 It runs main</div>
+      <p>Every merge to main redeploys it. That's why every change goes through a branch and a review first.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💾 Pay for a disk</div>
+      <p>On the free plan, the agent's memory is wiped on every deploy. A paid plan with a disk keeps it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔑 Keys go in Render</div>
+      <p>In Render's environment settings, never in the repo. And it's one more bill to cap.</p>
+    </div>
+  </div>
+  <p class="small-note">Once it's in the cloud, it can take webhooks, and 7:30 runs whether your laptop is open or not.</p>
+</section>
+
+<!-- ============================================================
+     PART 4 — HOMEWORK, RECAP
+     ============================================================ -->
+
+<!-- HOMEWORK -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Homework"></div>
+  <div class="eyebrow">Your homework</div>
+  <h2>Finish the agent until its handoff matches Class 5's.</h2>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">🔌 Connect every app it needs</div>
+      <p>One at a time, each on its own branch: a plugin or skill if a trusted one exists, otherwise a script tool.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💼 Add Slack</div>
+      <p>If your workspace admin approves the app, so it lives where you already work.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">📉 Watch the cost for a week</div>
+      <p>Check each provider's usage daily. Trim anything that grew back.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">☁️ Then decide</div>
+      <p>Move it to Render, or go back to Class 5 if that did the job. Either is the right call.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🎓</span>
+    <p><strong>The calls are yours:</strong> what it may do, what model it runs on, and whether it's worth owning. Claude Code can do every mechanical step with you.</p>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="slide">
+  <div class="slide-num" data-label="You shipped it"></div>
+  <div class="eyebrow">That's the course — here's what you can do now</div>
+  <h2>You can put an agent wherever the job needs it.</h2>
+  <ul>
+    <li class="done-check">The <strong>decision</strong>: Cowork first, Managed Agents next, OpenClaw only when a job needs it.</li>
+    <li class="done-check">An OpenClaw agent, <strong>cleaned out</strong> and rebuilt from your Class 5 agent.</li>
+    <li class="done-check">A chat you can <strong>message it in</strong>, and a Python script it calls as a <strong>tool</strong>.</li>
+    <li class="done-check">Code in GitHub, changed only by <strong>branch, review, merge</strong>, with keys kept out.</li>
+  </ul>
+  <div class="heads-up">
+    <span class="heads-up-mark">🧠</span>
+    <p><strong>Same rules, anywhere you build:</strong> dictate the deliverable, one job per agent, cap what it can spend, and use the simplest setup that works.</p>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">← Prev</button>
+  <span id="counter" style="color:#5f5b52; font-size:13px; align-self:center; min-width:60px; text-align:center;"></span>
+  <button onclick="next()">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  function show(i) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides[current].classList.add('active');
+    const _m = slides[current].querySelector('.slide-num');
+    if (_m) _m.textContent = _m.dataset.label ? (current + 1) + ' \u00b7 ' + _m.dataset.label : String(current + 1);
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

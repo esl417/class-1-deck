@@ -39,7 +39,7 @@ Also: once in, they should switch to Opus (`/model` → Opus). If their answers 
 
 ## Prerequisites
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), and the GitHub and Claude Code CLIs, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub and Claude Code CLIs, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 5 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -59,11 +59,11 @@ Concept slide — teach it if asked, don't drill it. The analogy on the slide is
 
 The trap here is subtle and worth catching: **the accounts must EXIST before the login step can log into them.** Students sometimes try to run the CLI login (next slide) before signing up at github.com, and it fails confusingly. If a login is failing, verify the account was actually created first.
 
-Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 6. Their Claude Console login from Class 4 is reused in class; nothing to set up for it here.
+Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 6. Their Claude Console login from Class 4 is reused for the ant CLI login; no new account needed.
 
 ## Log into your CLIs
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub and Claude Code one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 4 and 5; no API key to paste), and Claude Code, one at a time.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 

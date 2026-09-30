@@ -2,7 +2,8 @@
 
 Status as of 2026-09-29. Class 4 deck done (advanced-class-4-automations/, built alongside
 Eric's own run in the Console). Class 5 deck done 2026-09-30 (advanced-class-5-agents/), built alongside Eric's run.
-Class 6 deck not built; a Class 6 prereqs draft exists (unlinked).
+Class 6 deck built 2026-09-30 (advanced-class-6-openclaw/, 27 slides), awaiting Eric's review; the Class 6
+prereqs (ant CLI added) are linked from the hub and from Class 5's homework and close.
 Open from Class 4: Eric noted Python tools can't be built in the Console, but the deck still
 teaches a script inside the skill; left as is when he called the deck done. The
 Beginner track (class-4-automations, class-5-agents-beginner, class-6-the-loop-beginner,
@@ -139,7 +140,7 @@ terminal check, fewer approvals, review agents, CLAUDE.md. The Class 5 deck's ho
 close should point students to it, and the hub card for Class 6 should carry the same
 "Do first" link the Classes 1–3 cards use.
 
-**Class 6 prereqs deck: drafted, not yet reviewed or linked** (2026-09-29):
+**Class 6 prereqs deck** (drafted 2026-09-29; linked and `ant` CLI added 2026-09-30):
 `advanced-class-6-openclaw/prereqs.html` + `prereqs-teaching.md`, a copy of the Class 1
 prereqs with Vercel and Impeccable removed, "website" → "agent", a "skip to the Terminal
 check if you did Class 1" note, the review-agents handout pointed at
@@ -181,6 +182,23 @@ of a description; the files go into GitHub with everything else.
 
 **Scope: config and getting it off the ground, not the full agent.** Homework is finishing
 the build.
+
+**As built (2026-09-30).** First half is teaching: what OpenClaw is, the comparison table
+(who runs it, models, payment, token overhead, customize, reach, what wakes it, deploy,
+maintain, debug, security), the decision tree (Cowork → Managed Agents → OpenClaw, plus the
+consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map from Managed Agents, the
+workspace files, Gateway and channels, tools/skills/permissions, what wakes it, any model,
+security. Build: Install (onboarding run by the student in the VS Code terminal), Step 1
+clean it out (measured with `/context detail`), 2 pull in the Class 5 agent via `ant`, 3 model
++ fallback + `.env`, 4 Telegram with pairing (Slack is a plugin needing admin approval, so
+homework), 5 a Python script tool on a branch, 6 second-AI review and merge, 7 schedule 7:30
+as an automation (pause Class 5 or OpenClaw once both run, or drafts double). Then webhooks
+(concept), when it breaks, Render (explained), homework, recap.
+Corrections from research against docs.openclaw.ai: TOOLS.md and HEARTBEAT.md are NOT
+injected every call (AGENTS, SOUL, IDENTITY, USER, MEMORY, BOOTSTRAP are); the cron command is
+now `openclaw automations`; Telegram is built in, Slack is a plugin; Render is documented
+(render.yaml; free plan has no disk, so state resets). Unverified: whether onboarding asks for
+the workspace path; exact config keys should be checked in the docs during the build-along.
 - Same concepts, new home: system prompt → SOUL/AGENTS.md, tools → skills and scripts,
   permissions → allowlists, memory → memory files, deployment → heartbeat/cron.
 - **Custom tools become real:** a script the agent calls as a tool, running where they now

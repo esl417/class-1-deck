@@ -226,6 +226,29 @@ const DECKS = [
   },
   {
     dir: 'advanced-class-6-openclaw',
+    title: 'Class 6: OpenClaw (Advanced)',
+    standing:
+      'ADVANCED track, the last class. The student built a 7:00 brief automation and ' +
+      'a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the ' +
+      'Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, ' +
+      'Managed Agents and OpenClaw (payment, token overhead, customization, reach, ' +
+      'deploy, maintain, debug, security) and decide with the simplest-deployment ' +
+      'rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); ' +
+      'learn OpenClaw\'s parts mapped to Managed Agents (workspace files, Gateway, ' +
+      'channels, tools, skills, permissions, heartbeat, automations, webhooks, any ' +
+      'model); then install it into a project folder that is a private GitHub repo, ' +
+      'clean it out first (trim injected files, bundled skills off, heartbeat off, ' +
+      'measured with /context detail), rebuild the Class 5 agent from its ant export, ' +
+      'set model and fallback, connect Telegram with pairing, build a Python script ' +
+      'tool on a branch, have a second AI review it, merge, and schedule 7:30 as an ' +
+      'automation. Render hosting and webhooks are explained only; finishing the agent ' +
+      'is homework. Rules: keys only in .env (gitignored) or OpenClaw\'s credential ' +
+      'store, never in a chat; read every skill before installing (malicious ClawHub ' +
+      'skills exist); Gateway stays on loopback; caps live at each model provider. ' +
+      'OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.',
+  },
+  {
+    dir: 'advanced-class-6-openclaw',
     file: 'prereqs.html',
     out: 'prereqs-llm.md',
     teaching: 'prereqs-teaching.md',
@@ -234,8 +257,8 @@ const DECKS = [
       'This is the BEFORE-CLASS setup deck for Advanced Class 6, adapted from the ' +
       'Class 1 prereqs. The student built in Claude Managed Agents in Classes 4 and ' +
       '5 and may never have used VS Code, a terminal, or GitHub. They are installing ' +
-      'VS Code, the Claude Code extension, git, Node.js, and the GitHub and Claude ' +
-      'Code CLIs, creating a GitHub account, logging in, adding review agents and a ' +
+      'VS Code, the Claude Code extension, git, Node.js, the GitHub and Claude ' +
+      'Code CLIs and the ant CLI (Anthropic\'s, logged in with their Console account), creating a GitHub account, logging in, adding review agents and a ' +
       'CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already ' +
       'did the Class 1 setup, only the Terminal check is needed. Most often you are ' +
       'consulted because an install, login, or terminal command failed: read the ' +
