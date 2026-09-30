@@ -1124,11 +1124,11 @@
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
-      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. Pick <strong>ask first</strong> over full access, then your provider and how it signs in (next slide).</p>
+      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. It's a wizard: choose <strong>QuickStart</strong> and keep its gateway defaults.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🙅 Say no to the extras</div>
-      <p>Skip the suggested skills and plugins, and the memory import. Each one adds overhead and risk. You add what you need later.</p>
+      <div class="eyebrow">🧭 The screens that matter</div>
+      <p>How it signs in to your model, your chat app, and the extras to skip. The next two slides walk through them.</p>
     </div>
   </div>
 </section>
@@ -1156,6 +1156,23 @@
   <div class="heads-up">
     <span class="heads-up-mark">🔀</span>
     <p><strong>Using a different model?</strong> The menu will look different, but the same two choices usually exist: a <strong>CLI login</strong> that borrows your subscription, or an <strong>API key</strong> billed per use. Same rule: API key.</p>
+  </div>
+</section>
+
+<!-- FINISH ONBOARDING -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Finish onboarding"></div>
+  <div class="eyebrow">The rest of the wizard</div>
+  <h2>Finish onboarding: connect your chat app, skip the extras.</h2>
+  <ul class="numbered">
+    <li><strong>1. Select channel:</strong> pick the chat app you already live in and follow its steps. <strong>Telegram</strong> is the simplest (a bot from @BotFather); <strong>Slack</strong> works too. Then message your bot: it replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
+    <li><strong>2. Memories found:</strong> choose <strong>No</strong>. It offers to import memories from other AI tools: extra overhead and private context this agent doesn't need.</li>
+    <li><strong>3. Search provider:</strong> pick one that works without a key, or skip. You can add one later.</li>
+    <li><strong>4. Install missing skill dependencies:</strong> skip. Press <strong>Space</strong> to select <em>Skip for now</em>, then <strong>Enter</strong>. Step 1 turns those skills off anyway.</li>
+  </ul>
+  <div class="heads-up">
+    <span class="heads-up-mark">💼</span>
+    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, pick Telegram, which only needs you, and switch to Slack when it comes. One chat app per agent.</p>
   </div>
 </section>
 
@@ -1240,35 +1257,22 @@
   <div class="slide-num" data-label="Step 5 · Schedule the chain"></div>
   <div class="eyebrow">Your two deployments, rebuilt</div>
   <h2>Step 5: Schedule the brief at 7:00 and the agent at 7:30.</h2>
-  <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff, dated, to my [Drive / Dropbox] folder so I can open it from anywhere. Then list the next few times each one will run, so I can check both schedules are right.</div>
-  <div class="grid-2" style="margin-top: 8px;">
+  <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff, dated, to my [Drive / Dropbox] folder so I can open it from anywhere, and sends it to me in my chat app. Then list the next few times each one will run, so I can check both schedules are right.</div>
+  <div class="grid-2 cols-3" style="margin-top: 8px;">
     <div class="card">
-      <div class="eyebrow">⏸️ Then pause Classes 4 and 5</div>
+      <div class="eyebrow">⏸️ Pause Classes 4 and 5</div>
       <p>Once this chain's handoff is right, pause both Managed Agents deployments. Otherwise you get two briefs and double drafts.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">💓 The heartbeat stays off for now</div>
-      <p>When you want check-ins, turn it on with a short HEARTBEAT.md, its own light session, and working hours only. That keeps each wake to a few thousand tokens.</p>
+      <div class="eyebrow">💓 Heartbeat stays off</div>
+      <p>When you want check-ins, turn it on lean: a short HEARTBEAT.md, its own light session, working hours only.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧰 Test the tool</div>
+      <p>Message your agent <em>"Rerun my brief."</em> It should call its morning_briefing tool, not redo the steps, and send back a fresh brief.</p>
     </div>
   </div>
   <p class="small-note">Same chain as Class 5: an automation handing off to an agent. The automation is plain Python; OpenClaw is for the steps after the brief exists.</p>
-</section>
-
-<!-- STEP 6 — CHAT APP -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Connect a chat app"></div>
-  <div class="eyebrow">The thing Managed Agents couldn't do</div>
-  <h2>Step 6: Connect the chat app you already live in.</h2>
-  <ul class="numbered">
-    <li><strong>1.</strong> Pick one. <strong>Telegram</strong> comes built in. <strong>Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage</strong> are official plugins, and there are more.</li>
-    <li><strong>2.</strong> Tell Claude Code: <em>"Connect OpenClaw to [app]. Walk me through creating its bot, put any token in .env, and keep DMs on pairing."</em></li>
-    <li><strong>3.</strong> Message your bot. It replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
-    <li><strong>4.</strong> Tell Claude Code: <em>"Send the 7:30 handoff to me here too."</em> Then message it <em>"Rerun my brief."</em> It should call its morning_briefing tool, not redo the steps, and send back a fresh brief.</li>
-  </ul>
-  <div class="heads-up">
-    <span class="heads-up-mark">💼</span>
-    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and switch to Slack when it comes.</p>
-  </div>
 </section>
 
 <!-- WEBHOOKS -->

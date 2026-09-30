@@ -197,7 +197,8 @@ brief as plain Python with NO OpenClaw (Eric: an automation needs no agent; Open
 steps after the brief exists): code for dictated steps, one cheap model call for the judgment,
 brief saved to briefs/, reviewed by the prereqs review agents and merged; 5 schedule brief.py at
 7:00 on the system scheduler and the OpenClaw agent at 7:30 (handoff saved to handoffs/), then
-pause both Managed Agents deployments; 6 connect a chat app last (and send the handoff there).
+pause both Managed Agents deployments; chat app connected inside the onboarding wizard (slide 'Finish onboarding', from Eric's
+2026.9.7 run), not as its own step; the handoff is also sent there.
 Second-AI (Codex) review dropped 2026-09-30: Eric doesn't want students installing another AI
 coder. Then webhooks
 (concept), when it breaks, Render (explained), homework, recap.
