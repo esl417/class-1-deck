@@ -1094,7 +1094,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔒 Keep the Gateway private</div>
-      <p>It only answers your own machine by default: keep it that way. <code>openclaw security audit</code> checks your setup.</p>
+      <p><strong>Whoever can reach the Gateway controls your agent.</strong> By default only your own machine can: keep it that way. <code>openclaw security audit</code> checks your setup.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🔑 Keys in .env, never in a chat</div>
@@ -1290,7 +1290,7 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🩺 Health</div>
-      <p><code>openclaw status</code> shows channels, sessions and usage. <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it.</p>
+      <p>First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📜 What happened</div>

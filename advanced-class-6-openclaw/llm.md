@@ -518,7 +518,7 @@ In February 2026, researchers found 341 malicious skills on ClawHub that stole d
 
 _🔒 Keep the Gateway private_
 
-It only answers your own machine by default: keep it that way. openclaw security audit checks your setup.
+Whoever can reach the Gateway controls your agent. By default only your own machine can: keep it that way. openclaw security audit checks your setup.
 
 _🔑 Keys in .env, never in a chat_
 
@@ -535,7 +535,7 @@ The Class 5 rules carry over: it drafts, you send, and anything it reads from st
 They are the security team now. ClawHub: in February 2026 researchers (Koi Security, the
 "ClawHavoc" report) found 341 malicious skills out of about 2,857, mostly dropping a macOS
 password- and data-stealer. A skill is code running with the agent's access: install only what
-they or Claude Code have read. The Gateway stays on loopback; `openclaw security audit` checks
+they or Claude Code have read. Whoever can reach the Gateway controls the agent, so it stays on loopback; `openclaw security audit` checks
 the setup. Keys live in `.env` or OpenClaw's credential store, never in a chat, the agent's
 files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in January 2026,
 let one malicious link take over an install via the Control UI). Class 5 rules carry over: it
@@ -838,7 +838,7 @@ _There's no Sessions page doing this for you_
 
 _🩺 Health_
 
-openclaw status shows channels, sessions and usage. openclaw doctor finds broken config, and --fix repairs it.
+First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
 
 _📜 What happened_
 
@@ -850,7 +850,9 @@ Describe the symptom and let Claude Code dig: "My 7:30 run didn't come. Check Op
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-No Sessions page does this for them. `openclaw status` (channels, sessions, usage), `openclaw
+No Sessions page does this for them. First check: is the Gateway running (`openclaw gateway
+status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
+Then `openclaw status` (channels, sessions, usage), `openclaw
 doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
 move from the Class 1 prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
 come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
