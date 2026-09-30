@@ -277,7 +277,7 @@ materialized by the active runtime" (SecretSurfaceUnavailableError). So the key 
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
 Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
-and report its length), then gives the one command to start onboarding, briefly. The command that picks up the key
+and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
 (confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new VS Code terminal,
 `openclaw onboard --classic --workspace "$PWD"`. The
 choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment

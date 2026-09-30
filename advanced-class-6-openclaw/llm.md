@@ -632,7 +632,7 @@ _Before Step 1 · in VS Code_
 First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. When I tell you it's done, check OpenClaw's health, fix anything risky, and commit. Keep your answers short.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new VS Code terminal in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, and commit. Keep your answers short.
 
 _⌨️ You run onboarding yourself_
 
@@ -745,7 +745,7 @@ materialized by the active runtime" (SecretSurfaceUnavailableError). So the key 
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
 Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
-and report its length), then gives the one command to start onboarding, briefly. The command that picks up the key
+and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
 (confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new VS Code terminal,
 `openclaw onboard --classic --workspace "$PWD"`. The
 choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment
