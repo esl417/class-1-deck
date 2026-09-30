@@ -58,14 +58,11 @@ The decision tree, built from the comparison table's rows (each question is labe
 rows it comes from). Start at the top; the first yes decides. 1 (models): does it need a model
 other than Claude? Yes → OpenClaw. 2 (what wakes it, customize): does an event need to wake it (a webhook: a form
 submitted, a file landing, a payment), or does it need custom tools (their own scripts)? Yes →
-OpenClaw. 3 (payment): will it need more usage than their Claude plan
-allows? Cowork runs on the subscription, so a heavy agent (many runs a day, long sessions, several
-agents) eats the same usage limits as their own chats and can hit the plan's ceiling. Managed
-Agents bills per use from prepaid API credits with a cap on every run, so volume scales with
-money rather than stopping at a limit. Yes → Managed Agents. This is the honest separator:
-Cowork also has connectors, tool permissions and a sandbox, so features alone don't justify the
-move; the billing model does. (Managed Agents is also an API, so software they write can start
-sessions; that matters for developers, less for this student.) No to all three (payment,
+OpenClaw. 3 (customize): does it need a service Anthropic has no connector
+for? Cowork reaches apps through Anthropic's connector directory; Managed Agents can use any remote
+MCP server or call any API, with its tokens in a credential vault. Yes → Managed Agents. This is
+the clean separator: Cowork also has tool permissions and a sandbox, so those don't justify the
+move. No to all three (payment,
 maintain): a Cowork project on the flat Claude plan, nothing to host. Messaging is deliberately
 not a question: a Cowork project can be messaged from the Claude app on desktop and phone, so
 being reachable doesn't by itself justify OpenClaw (only Managed Agents lacks it). Any OpenClaw
