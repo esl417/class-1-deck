@@ -714,13 +714,13 @@
   .compare tbody th { font-family: var(--sans); font-size: clamp(12px, 1.05vw, 13px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent-deep); white-space: nowrap; width: 1%; }
   .compare td strong { color: var(--ink); }
 
-  .tree { display: flex; flex-direction: column; gap: 10px; max-width: var(--col); margin-top: 4px; }
+  .tree { display: flex; flex-direction: column; gap: 6px; max-width: var(--col); margin-top: 4px; }
   .tree-row { display: grid; grid-template-columns: minmax(0, 1.35fr) 44px minmax(0, 1fr); align-items: center; gap: 0; }
-  .tree-q { background: var(--surface); border: 1px solid var(--hair); border-radius: 12px; padding: 12px 18px; box-shadow: 0 1px 2px rgba(20,18,12,0.04); }
+  .tree-q { background: var(--surface); border: 1px solid var(--hair); border-radius: 12px; padding: 8px 16px; box-shadow: 0 1px 2px rgba(20,18,12,0.04); }
   .tree-q .tree-step { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 2px; }
   .tree-q .tree-text { font-family: var(--display); font-weight: 700; font-size: clamp(16px, 1.5vw, 19px); color: var(--ink); letter-spacing: -0.01em; }
   .tree-yes { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--accent-deep); text-align: center; letter-spacing: 0.06em; text-transform: uppercase; }
-  .tree-a { border-radius: 12px; padding: 12px 18px; border: 2px solid var(--accent); background: rgba(15,138,128,0.08); }
+  .tree-a { border-radius: 12px; padding: 8px 16px; border: 2px solid var(--accent); background: rgba(15,138,128,0.08); }
   .tree-a .tree-text { font-family: var(--display); font-weight: 800; font-size: clamp(16px, 1.5vw, 19px); color: var(--accent-ink); display: block; }
   .tree-a .tree-sub { font-size: clamp(13px, 1.2vw, 14.5px); color: var(--body); display: block; margin-top: 2px; line-height: 1.35; }
   .tree-no { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; padding-left: 22px; margin: -4px 0; }
@@ -878,30 +878,43 @@
 <!-- DECISION TREE -->
 <section class="slide dense">
   <div class="slide-num" data-label="Which one to use"></div>
-  <div class="eyebrow">Use the simplest deployment that does the job</div>
-  <h2>Two questions decide where an agent should live.</h2>
-  <div class="tree" role="img" aria-label="Decision tree. First: can a Cowork project do the job? If yes, use Cowork. If no: does it need your own code as tools, a chat app you message, outside events that wake it, or a model other than Claude? If no, use Managed Agents. If yes, use OpenClaw.">
+  <div class="eyebrow">Start at the top · the first yes decides</div>
+  <h2>Four questions from the table pick where it lives.</h2>
+  <div class="tree" role="img" aria-label="Decision tree built from the comparison table. 1, models and token overhead: does it need a non-Claude model, or overhead trimmed on every call? Yes: OpenClaw. 2, customize and what wakes it: does it need your own code as tools, or other apps waking it? Yes: OpenClaw. 3, reach it: must you message it in Slack, Telegram or WhatsApp? Yes: OpenClaw. 4, deploy and debug: must it run unattended, capped per run, every step traced? Yes: Managed Agents. No to all four: a Cowork project.">
     <div class="tree-row">
-      <div class="tree-q"><span class="tree-step">Question 1</span><span class="tree-text">Can a Cowork project do the job?</span></div>
+      <div class="tree-q"><span class="tree-step">1 · Models, token overhead</span><span class="tree-text">Does it need a non-Claude model, or overhead trimmed on every call?</span></div>
       <div class="tree-yes">Yes →</div>
-      <div class="tree-a"><span class="tree-text">Cowork project</span><span class="tree-sub">On your subscription. Nothing to host or maintain.</span></div>
+      <div class="tree-a"><span class="tree-text">OpenClaw</span><span class="tree-sub">Any model, and every file and skill is yours to cut.</span></div>
     </div>
     <div class="tree-no">↓ No</div>
     <div class="tree-row">
-      <div class="tree-q"><span class="tree-step">Question 2</span><span class="tree-text">Does it need your own code as tools, a chat app you message, outside events that wake it, or a model other than Claude?</span></div>
-      <div class="tree-yes">No →</div>
-      <div class="tree-a"><span class="tree-text">Managed Agents</span><span class="tree-sub">Anthropic hosts it. Every part is a field, and every run is capped.</span></div>
+      <div class="tree-q"><span class="tree-step">2 · Customize, what wakes it</span><span class="tree-text">Does it need your own code as tools, or other apps waking it?</span></div>
+      <div class="tree-yes">Yes →</div>
+      <div class="tree-a"><span class="tree-text">OpenClaw</span><span class="tree-sub">Scripts become tools; webhooks wake it.</span></div>
     </div>
-    <div class="tree-no">↓ Yes</div>
+    <div class="tree-no">↓ No</div>
     <div class="tree-row">
-      <div class="tree-q"><span class="tree-step">Only then</span><span class="tree-text">It needs heavy customization.</span></div>
+      <div class="tree-q"><span class="tree-step">3 · Reach it</span><span class="tree-text">Must you message it in Slack, Telegram or WhatsApp?</span></div>
+      <div class="tree-yes">Yes →</div>
+      <div class="tree-a"><span class="tree-text">OpenClaw</span><span class="tree-sub">The Claude app on your phone isn't enough.</span></div>
+    </div>
+    <div class="tree-no">↓ No</div>
+    <div class="tree-row">
+      <div class="tree-q"><span class="tree-step">4 · Deploy, debug</span><span class="tree-text">Must it run unattended, capped per run, every step traced?</span></div>
+      <div class="tree-yes">Yes →</div>
+      <div class="tree-a"><span class="tree-text">Managed Agents</span><span class="tree-sub">Anthropic hosts it; you read every session.</span></div>
+    </div>
+    <div class="tree-no">↓ No to all four</div>
+    <div class="tree-row">
+      <div class="tree-q"><span class="tree-step">Payment, maintain</span><span class="tree-text">Nothing here needs more than the simplest option.</span></div>
       <div class="tree-yes">→</div>
-      <div class="tree-a"><span class="tree-text">OpenClaw</span><span class="tree-sub">You own the code, the hosting and the upkeep.</span></div>
+      <div class="tree-a"><span class="tree-text">Cowork project</span><span class="tree-sub">Your flat Claude plan. Nothing to host or maintain.</span></div>
     </div>
   </div>
+  <p class="small-note" style="margin-top: 8px;">Any OpenClaw answer brings its Maintain and Security rows too: choose it only if you'll own the upkeep.</p>
   <div class="heads-up">
     <span class="heads-up-mark">👀</span>
-    <p><strong>Keep an eye on consumer agents.</strong> The big companies are racing to ship agents for everyone, like xAI's Grok Bot and Meta's Muse, and one may soon do your job off the shelf. But once you can build in OpenClaw, you don't have to wait for anyone: you can build anything.</p>
+    <p><strong>Keep an eye on consumer agents</strong> like xAI's Grok Bot and Meta's Muse: one may soon do your job off the shelf. But once you can build in OpenClaw, you don't wait for anyone: you can build anything.</p>
   </div>
 </section>
 

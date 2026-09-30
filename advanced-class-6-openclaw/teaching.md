@@ -54,16 +54,23 @@ security (on OpenClaw the machine, keys and every installed skill are theirs to 
 
 ## Which one to use
 
-The decision tree, the principle made operational. Q1: can a Cowork project do the job? Then
-Cowork: subscription, nothing to host. Q2: does it need something Managed Agents can't do (their
-own code as tools, a chat app they message, outside events that wake it via webhooks, or a
-non-Claude model)? If no, Managed Agents. Only if yes, OpenClaw. Also valid: needing control
-over token overhead for a high-volume agent. Consumer agents: big companies are shipping agents
-for everyone (xAI's Grok Bot, in early beta since August 2026 in its top tier; Meta's Muse, a
-personal agent app launched September 2026; OpenAI and Google have their own always-on agents),
-so a given job may soon be doable off the shelf and is worth watching. The point to land: once
-they can build in OpenClaw they don't have to wait for anyone; they can build anything. Product
-details here come from press coverage and change monthly; don't quote prices as fact.
+The decision tree, built from the comparison table's rows (each question is labeled with the
+rows it comes from). Start at the top; the first yes decides. 1 (models, token overhead): does
+it need a non-Claude model, or overhead trimmed on every call (a high-volume agent)? Yes →
+OpenClaw. 2 (customize, what wakes it): does it need their own code as tools, or other apps
+waking it via webhooks? Yes → OpenClaw. 3 (reach it): must they message it in Slack, Telegram or
+WhatsApp, where the Claude app on the phone isn't enough? Yes → OpenClaw. 4 (deploy, debug):
+must it run unattended with a hard cap on every run and every step traced in a session? Yes →
+Managed Agents. No to all four (payment, maintain): a Cowork project on the flat Claude plan,
+nothing to host. Any OpenClaw answer also brings the Maintain and Security rows: only choose it
+if they'll own the upkeep. Worked example: the Class 5 agent lands on OpenClaw only at question
+3 (Slack), and the student could equally decide that isn't worth the upkeep. Consumer agents:
+big companies are shipping agents for everyone (xAI's Grok Bot, in early beta since August 2026
+in its top tier; Meta's Muse, a personal agent app launched September 2026; OpenAI and Google
+have their own always-on agents), so a given job may soon be doable off the shelf and is worth
+watching. The point to land: once they can build in OpenClaw they don't have to wait for anyone;
+they can build anything. Product details here come from press coverage and change monthly;
+don't quote prices as fact.
 
 ## Cost control
 
