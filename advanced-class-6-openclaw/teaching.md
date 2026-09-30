@@ -312,8 +312,10 @@ a workspace admin to approve a new app; if not today, Telegram (needs only them)
 One chat app per agent. If they skipped the channel, rerun onboarding or have Claude Code add it.
 Memories found: the wizard detects other AI tools' memories (Eric's showed Claude with 556) and
 offers to import them; choose No (overhead, and private context the agent doesn't need; it can be
-done later from Settings → Import Memory). Search provider: some need an API key, some work
-key-free (docs.openclaw.ai/tools/web); pick a key-free one or skip. Skills status shows how many
+done later from Settings → Import Memory). Search provider: skip. Some need an API key, some work key-free
+(docs.openclaw.ai/tools/web). In Eric's run, Gemini showed as "configured" and asked for nothing only
+because a Gemini key already existed on his machine; a student without one would be asked for a
+key mid-wizard, so the deck says skip and add web search later. Skills status shows how many
 skills are eligible (Eric's: 151 eligible, 32 missing requirements); for "Install missing skill
 dependencies" choose Skip: press Space to select "Skip for now", then Enter (Enter alone doesn't
 select it). Step 1 turns bundled skills off anyway. If an older OpenClaw config exists on the
