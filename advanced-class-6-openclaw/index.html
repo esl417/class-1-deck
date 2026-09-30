@@ -1124,12 +1124,38 @@
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
-      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. Pick <strong>ask first</strong> over full access, and your provider and model.</p>
+      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. Pick <strong>ask first</strong> over full access, then your provider and how it signs in (next slide).</p>
     </div>
     <div class="card">
       <div class="eyebrow">🙅 Say no to the extras</div>
       <p>Skip the suggested skills and plugins, and the memory import. Each one adds overhead and risk. You add what you need later.</p>
     </div>
+  </div>
+</section>
+
+<!-- SIGN-IN METHOD -->
+<section class="slide dense">
+  <div class="slide-num" data-label="How it signs in"></div>
+  <div class="eyebrow">During onboarding · the auth method</div>
+  <h2>Sign in with an API key: it's paid, and it's guaranteed.</h2>
+  <p>Onboarding asks how OpenClaw signs in to your model. For Anthropic you'll see three choices, and each one means something different for your bill and your account.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
+    <div class="card card-hero">
+      <div class="eyebrow">🔑 API key · what we use</div>
+      <p>A key from the provider's developer console. <strong>Pay per use, with a spend cap you set.</strong> Works on your computer and on a server.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">💻 CLI login · computer-only</div>
+      <p>Reuses your Claude Code login, so it runs on your subscription. Fine to try if it will never leave your computer, but it <strong>eats into your plan's limits</strong> and the provider can block it.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🚫 Setup-token · never</div>
+      <p>Copies a long-lived subscription token into OpenClaw. That's what Anthropic's terms prohibit, and <strong>it puts your account at risk</strong>.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🔀</span>
+    <p><strong>Using a different model?</strong> The menu will look different, but the same two choices usually exist: a <strong>CLI login</strong> that borrows your subscription, or an <strong>API key</strong> billed per use. Same rule: API key.</p>
   </div>
 </section>
 

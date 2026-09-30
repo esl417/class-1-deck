@@ -562,7 +562,7 @@ Make a folder called morning-agent , open it in VS Code, and paste this into Cla
 
 _⌨️ You run onboarding yourself_
 
-In the VS Code terminal, so your model key goes into the terminal, never into the chat . Pick ask first over full access, and your provider and model.
+In the VS Code terminal, so your model key goes into the terminal, never into the chat . Pick ask first over full access, then your provider and how it signs in (next slide).
 
 _🙅 Say no to the extras_
 
@@ -581,7 +581,61 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
-## Slide 16 · Step 1 · Clean it out
+## Slide 16 · How it signs in
+
+**What the student sees on this slide:**
+
+_During onboarding · the auth method_
+
+## Sign in with an API key: it's paid, and it's guaranteed.
+
+Onboarding asks how OpenClaw signs in to your model. For Anthropic you'll see three choices, and each one means something different for your bill and your account.
+
+_🔑 API key · what we use_
+
+A key from the provider's developer console. Pay per use, with a spend cap you set. Works on your computer and on a server.
+
+_💻 CLI login · computer-only_
+
+Reuses your Claude Code login, so it runs on your subscription. Fine to try if it will never leave your computer, but it eats into your plan's limits and the provider can block it.
+
+_🚫 Setup-token · never_
+
+Copies a long-lived subscription token into OpenClaw. That's what Anthropic's terms prohibit, and it puts your account at risk .
+
+ 🔀
+
+Using a different model? The menu will look different, but the same two choices usually exist: a CLI login that borrows your subscription, or an API key billed per use. Same rule: API key.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Onboarding asks for an auth method after the provider. For Anthropic: "Anthropic Claude CLI (Keep
+using an existing Claude Code CLI login on this host)", "Anthropic API key", "Anthropic
+setup-token". Definitions, checked 2026-09-30:
+API key: a key from the provider's developer console (for Anthropic, the Claude Console they used
+in Classes 4 and 5). Pay-as-you-go, with spend limits at the provider; works locally and on a
+server. This is what the class teaches: the only option with clear policy and a spend cap, which
+the whole cost thread depends on. OpenClaw's own docs call API-key auth "preferable for shared
+automation or predictable production spend."
+CLI login: OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
+`claude -p`) as a subprocess under the user's login; it doesn't read or forward the token
+(docs.openclaw.ai/gateway/cli-backends). It only works on the machine where that CLI is logged in,
+so it can't go to Render. Anthropic allows an end user signing in to the unmodified Claude Code
+binary with their own subscription, but its usage limits assume "ordinary, individual usage" (an
+always-on agent isn't that), every run including heartbeats draws on the 5-hour and weekly
+limits, and Anthropic has changed the rules for third-party tools several times in 2026 (blocks in
+January, a terms update in February, a billing change for third-party harnesses in April). So:
+OK to experiment with on a computer-only agent, knowing it can eat the subscription or be
+blocked. OpenClaw sets the heartbeat default to 1h (not 30m) under subscription auth.
+Setup-token: `claude setup-token` prints a long-lived subscription OAuth token (sk-ant-oat01-...)
+that OpenClaw stores and sends itself. That's credentials routed through a third-party app, which
+Anthropic's terms prohibit (code.claude.com/docs/en/legal-and-compliance). Never.
+Other providers: the menu differs, but many offer the same split (a CLI or OAuth login on a
+consumer subscription vs a pay-per-use API key); same rule, API key. If a student already chose the
+CLI login, `openclaw onboard` can be rerun or the auth changed later (check the current docs for
+the command).
+
+## Slide 17 · Step 1 · Clean it out
 
 **What the student sees on this slide:**
 
@@ -613,7 +667,7 @@ later; heartbeat off (`every: "0m"`). Claude shows each change first.
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
-## Slide 17 · Step 2 · Bring in your agents
+## Slide 18 · Step 2 · Bring in your agents
 
 **What the student sees on this slide:**
 
@@ -654,7 +708,7 @@ key, which the student pastes into `.env` themselves (Claude creates `.env` firs
 it's in `.gitignore`); each connection is tested before moving on. Fallback where a service has no
 MCP server or key-based API: a trusted plugin, skill or script.
 
-## Slide 18 · Step 3 · Model and keys
+## Slide 19 · Step 3 · Model and keys
 
 **What the student sees on this slide:**
 
@@ -682,7 +736,7 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Slide 19 · Step 4 · The brief, in Python
+## Slide 20 · Step 4 · The brief, in Python
 
 **What the student sees on this slide:**
 
@@ -723,7 +777,7 @@ even on a quiet day. Claude runs it once, shows today's brief, and reviews the c
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`. Name tools for what they do, so the model picks the right one: morning_briefing, not a vague verb. The same script is also the agent's custom tool, which is how tooling is taught, and it is registered as a TOOL, not a skill (a skill only describes how to work; a tool is something the model can call, with a name, description and inputs). The slide's prompt just says "register it as a tool my OpenClaw agent can call"; how to do it is here, for Claude to carry out, not for the student to learn. Route: Claude writes a tiny local MCP server in Python (the official `mcp` SDK, FastMCP) exposing one tool, morning_briefing, which runs scripts/brief.py and returns the brief; it's added with `openclaw mcp add brief --command python3 --arg <server file> --cwd <repo>` and checked with `openclaw mcp doctor brief --probe` (docs.openclaw.ai/tools/mcp). Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent calling morning_briefing on request (midday, "Rerun my brief"), so the dictated work stays deterministic and cheap instead of the agent redoing it. Unverified until the dry run: exactly how the MCP tool's name appears to the model (check the probe output), and that the tool profile in use allows MCP tools (`coding` and `messaging` do; `full` does; a sandbox needs `bundle-mcp` in tools.sandbox.tools). Alternative: a plugin with `api.registerTool` plus an openclaw.plugin.json manifest, which needs TypeScript.
 
-## Slide 20 · Step 5 · Schedule the chain
+## Slide 21 · Step 5 · Schedule the chain
 
 **What the student sees on this slide:**
 
@@ -762,7 +816,7 @@ isolated light session and activeHours keep each wake to a few thousand tokens. 
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 5: an automation handing off to an agent.
 
-## Slide 21 · Step 6 · Connect a chat app
+## Slide 22 · Step 6 · Connect a chat app
 
 **What the student sees on this slide:**
 
@@ -796,7 +850,7 @@ workspace usually needs an admin to approve a new app; if that won't happen toda
 Telegram (needs only them) and switch to Slack once it's approved. One chat app per agent: a second one splits where the handoff and conversations land. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
-## Slide 22 · Webhooks
+## Slide 23 · Webhooks
 
 **What the student sees on this slide:**
 
@@ -831,7 +885,7 @@ and getting summarized with its dates flagged, anything Zapier or Make can see. 
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
-## Slide 23 · To the cloud
+## Slide 24 · To the cloud
 
 **What the student sees on this slide:**
 
@@ -911,7 +965,7 @@ the web service. A Render disk attaches to one service only, so the cron job can
 agent's /data: in the cloud the brief goes to Drive or Dropbox and the agent reads it there. Once
 hosted, both run with the laptop closed and webhooks become possible.
 
-## Slide 24 · When it breaks
+## Slide 25 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -942,7 +996,7 @@ come. Check OpenClaw's status and logs and tell me why."), then fix the cause on
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
 limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
-## Slide 25 · Homework
+## Slide 26 · Homework
 
 **What the student sees on this slide:**
 
@@ -975,7 +1029,7 @@ Then decide: move it to Render, or go back to the Managed Agents chain if that d
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
 
-## Slide 26 · You shipped it
+## Slide 27 · You shipped it
 
 **What the student sees on this slide:**
 

@@ -192,6 +192,34 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
+## How it signs in
+
+Onboarding asks for an auth method after the provider. For Anthropic: "Anthropic Claude CLI (Keep
+using an existing Claude Code CLI login on this host)", "Anthropic API key", "Anthropic
+setup-token". Definitions, checked 2026-09-30:
+API key: a key from the provider's developer console (for Anthropic, the Claude Console they used
+in Classes 4 and 5). Pay-as-you-go, with spend limits at the provider; works locally and on a
+server. This is what the class teaches: the only option with clear policy and a spend cap, which
+the whole cost thread depends on. OpenClaw's own docs call API-key auth "preferable for shared
+automation or predictable production spend."
+CLI login: OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
+`claude -p`) as a subprocess under the user's login; it doesn't read or forward the token
+(docs.openclaw.ai/gateway/cli-backends). It only works on the machine where that CLI is logged in,
+so it can't go to Render. Anthropic allows an end user signing in to the unmodified Claude Code
+binary with their own subscription, but its usage limits assume "ordinary, individual usage" (an
+always-on agent isn't that), every run including heartbeats draws on the 5-hour and weekly
+limits, and Anthropic has changed the rules for third-party tools several times in 2026 (blocks in
+January, a terms update in February, a billing change for third-party harnesses in April). So:
+OK to experiment with on a computer-only agent, knowing it can eat the subscription or be
+blocked. OpenClaw sets the heartbeat default to 1h (not 30m) under subscription auth.
+Setup-token: `claude setup-token` prints a long-lived subscription OAuth token (sk-ant-oat01-...)
+that OpenClaw stores and sends itself. That's credentials routed through a third-party app, which
+Anthropic's terms prohibit (code.claude.com/docs/en/legal-and-compliance). Never.
+Other providers: the menu differs, but many offer the same split (a CLI or OAuth login on a
+consumer subscription vs a pay-per-use API key); same rule, API key. If a student already chose the
+CLI login, `openclaw onboard` can be rerun or the auth changed later (check the current docs for
+the command).
+
 ## Step 1 · Clean it out
 
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
