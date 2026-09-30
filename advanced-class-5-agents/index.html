@@ -681,7 +681,7 @@
   <div class="title-head">
     <div class="title-kicker">Class 5 · Advanced · Agents in Managed Agents</div>
     <h1 class="title-main">An agent that works your brief <br class="hero-break">before you read it.</h1>
-    <p class="title-sub">Build it field by field in Create agent, hand it the trigger, and get back three lists: taken care of, needs your action, FYI.</p>
+    <p class="title-sub">Build it field by field in Create agent. It reads the brief your automation writes, acts, and hands back three lists: taken care of, needs your action, FYI.</p>
   </div>
 </section>
 
@@ -694,7 +694,7 @@
   <div class="slide-num" data-label="The arc"></div>
   <div class="eyebrow">Where today fits</div>
   <h2>Three classes, one agent, built in <em>layers</em>.</h2>
-  <p>Last class you built the brief. Today an agent takes it over: same skill, same logins, one new layer.</p>
+  <p>Last class you built the brief. Today an agent acts on it: the brief keeps running as it is, and a second part picks it up.</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Class 4 · Automation</div>
@@ -703,7 +703,7 @@
     </div>
     <div class="card card-hero">
       <div class="eyebrow">Class 5 · Today · Agent</div>
-      <p><strong>The agent pulls the trigger.</strong> It runs your skill when it needs it, acts on what it finds, and rewrites the brief: taken care of, needs your action, FYI.</p>
+      <p><strong>The agent decides the steps.</strong> It finds the brief your automation wrote, acts on each item, and writes back three lists: taken care of, needs your action, FYI.</p>
       <p><em>Managed Agents</em></p>
     </div>
     <div class="card">
@@ -741,26 +741,27 @@
   <p class="small-note">You stop being the one who checks. You read what it did, and decide the few things only you can.</p>
 </section>
 
-<!-- 3. THE TRIGGER MOVES -->
+<!-- 3. TWO JOBS, TWO PARTS -->
 <section class="slide dense">
-  <div class="slide-num" data-label="The trigger moves"></div>
-  <div class="eyebrow">Automation vs. agent, in one move</div>
-  <h2>Same skill. Now the <em>agent</em> pulls the trigger.</h2>
-  <p>Nothing from Class 4 gets rebuilt. What changes is who decides what happens next.</p>
+  <div class="slide-num" data-label="Two jobs, two parts"></div>
+  <div class="eyebrow">Separation of duties</div>
+  <h2>Keep the brief separate from the agent that <em>acts</em>.</h2>
+  <p>Your Class 4 automation keeps running exactly as it is. Today you add a second part that picks up its output.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">Class 4 · Automation</div>
-      <p>A timer starts the run. The skill's steps are dictated: the same pulls, the same order, every morning. Its autonomy is taken away on purpose.</p>
+      <div class="eyebrow">7:00 · Class 4 automation</div>
+      <p>Dictated steps. It reads your sources and saves the brief to your folder. It never acts.</p>
     </div>
     <div class="card card-hero">
-      <div class="eyebrow">Class 5 · Agent</div>
-      <p>A timer still wakes it, but it gets a <strong>goal</strong>, not steps. It decides to run the briefing skill, what to look up next, and what to do about each item.</p>
+      <div class="eyebrow">7:30 · Class 5 agent</div>
+      <p>A goal, not steps. It finds that file, decides what each item needs, acts within your limits, and writes the handoff.</p>
     </div>
   </div>
   <div class="heads-up">
-    <span class="heads-up-mark">🎯</span>
-    <p><strong>The test:</strong> can you write the steps down before you see what arrives? If yes, keep it an automation: cheaper and more predictable. If the next step depends on what it finds, it's a job for an agent.</p>
+    <span class="heads-up-mark">🧩</span>
+    <p><strong>Each part is managed on its own.</strong> Change what the brief pulls without touching the agent; tighten the agent's limits without touching the brief. Each has its own sessions, cost, and cap, so you always know which one broke.</p>
   </div>
+  <p class="small-note">The test for which is which: can you write the steps down before you see what arrives? If yes, it's an automation. If the next step depends on what it finds, it's an agent.</p>
 </section>
 
 <!-- ============================================================
@@ -824,8 +825,8 @@
       <p>Set a per-run cap in Step 6, and compare a run's cost to Class 4's in the session.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">⏸️ Pause the Class 4 deployment</div>
-      <p>The agent runs the briefing itself now. Don't pay for both every morning.</p>
+      <div class="eyebrow">🧾 Two parts, two bills</div>
+      <p>The brief and the agent each have their own cap and their own cost in Sessions, so you see which one costs what.</p>
     </div>
     <div class="card">
       <div class="eyebrow">👥 Subagents multiply it</div>
@@ -835,6 +836,32 @@
   <div class="heads-up">
     <span class="heads-up-mark">⚖️</span>
     <p><strong>Your monthly limit and prepaid credits from Class 4 still hold.</strong> And if a Cowork project can do the job, it runs on your subscription with no bill to cap.</p>
+  </div>
+</section>
+
+<!-- 6b. THE CHAIN -->
+<section class="slide dense">
+  <div class="slide-num" data-label="The chain"></div>
+  <div class="eyebrow">Many small agents, one after another</div>
+  <h2>Chain small agents, each with its own model and cap.</h2>
+  <p>The brief and the agent are the first two links in a chain. One writes a file; the next picks it up. You can keep adding links the same way.</p>
+  <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
+    <div class="card">
+      <div class="eyebrow">💵 A model per link</div>
+      <p>Each agent gets its own model. The brief can run on a cheaper one than the agent that acts, so you <strong>pay for power only where it's needed</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🪶 Low overhead</div>
+      <p>Each link loads only its own instructions and tools, not everything every agent might need.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔍 Traceable</div>
+      <p>Each link has its own sessions and cost, so a broken link is easy to find and fix on its own.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🔗 Add links later</div>
+      <p>A Friday wrap-up that reads the week's handoffs is just one more link.</p>
+    </div>
   </div>
 </section>
 
@@ -878,7 +905,7 @@
   <div class="eyebrow">Create agent, top to bottom</div>
   <h2>Step 1: Name it, pick the model, write its <em>directions</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, run the morning-briefing skill, then work through each item using my lists. Handle: [kinds of items]. Prepare (draft, never send): [kinds]. Bring to me: [kinds]. Leave alone: [kinds]. If unsure, bring it to me.<br><br>After each action, check it really happened. Read the handoff log first and update it last. Save the handoff to my [Drive / Dropbox] folder, dated: Taken care of, Needs your action, FYI.</div>
+  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through each item using my lists. If there's no brief today, say so at the top of the handoff. Handle: [kinds of items]. Prepare (draft, never send): [kinds]. Bring to me: [kinds]. Leave alone: [kinds]. If unsure, bring it to me.<br><br>After each action, check it really happened. Read the handoff log first and update it last. Save the handoff to my [Drive / Dropbox] folder, dated: Taken care of, Needs your action, FYI.</div>
   <p class="small-note">Model: a Sonnet model at low effort is a good start. Raise it only if the calls it makes are weak; higher effort costs more per run.</p>
 </section>
 
@@ -887,7 +914,7 @@
   <div class="slide-num" data-label="Step 2 · Tools"></div>
   <div class="eyebrow">What it may use, and how</div>
   <h2>Step 2: Add its tools and set each <em>permission</em>.</h2>
-  <p>Open <strong>Tools</strong>. The built-in toolset is already there, with its permission set to Auto. Then add an MCP server for each app it reads or acts in.</p>
+  <p>Open <strong>Tools</strong>. The built-in toolset is already there, with its permission set to Auto. Then add an MCP server for each app it reads or acts in, including the folder where the brief lands.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">✅ Always allow</div>
@@ -903,10 +930,10 @@
 
 <!-- 10. STEP 3 — SKILLS + MULTIAGENT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 3 · Skills"></div>
-  <div class="eyebrow">Your Class 4 steps, run when the agent decides</div>
-  <h2>Step 3: Attach your briefing skill.</h2>
-  <p>Open <strong>Skills</strong> → <strong>Add skill</strong> → <em>morning-briefing</em>. This is the moment the trigger moves: the skill is the same, but now the agent decides when to run it.</p>
+  <div class="slide-num" data-label="Step 3 · Skills and multiagent"></div>
+  <div class="eyebrow">The last two sections of the form</div>
+  <h2>Step 3: Leave Skills and Multiagent empty, on purpose.</h2>
+  <p><strong>Skills:</strong> the briefing skill stays with the Class 4 agent. This agent only needs the file it produces. That's the separation that lets you change one without the other.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">👥 Multiagent: subagents</div>
@@ -917,7 +944,7 @@
       <p>A second model it can consult on hard calls, billed at that model's rates against the same cap.</p>
     </div>
   </div>
-  <p class="small-note">Leave Multiagent empty today. Get one agent working before you give it a team. Then click <strong>Create agent</strong>.</p>
+  <p class="small-note">Get one agent working before you give it a team. Then click <strong>Create agent</strong>.</p>
 </section>
 
 <!-- 11. STEP 4 — MEMORY -->
@@ -945,7 +972,7 @@
   <h2>Step 5: Test-run it and check it really acted.</h2>
   <p>Start a test run and give it this morning: <em>"Handle my morning."</em> Watch the session, change the config where something's off, and run it again.</p>
   <ul class="numbered">
-    <li><strong>1.</strong> Read its choices → it ran the skill, then picked a different tool for each item. That's the agent deciding its own steps.</li>
+    <li><strong>1.</strong> Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.</li>
     <li><strong>2.</strong> Check it acted → the draft is in Gmail, the task is on your list. "I created the draft" isn't a draft you can open.</li>
     <li><strong>3.</strong> Check the lists → does "needs your action" hold only what needs you? Fix the lists in the system prompt, not the handoff.</li>
     <li><strong>4.</strong> Read the cost → compare it to a Class 4 run. Multiply by 22 weekdays.</li>
@@ -956,13 +983,13 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Step 6 · Schedule it"></div>
   <div class="eyebrow">The timer wakes it; the agent decides the rest</div>
-  <h2>Step 6: Deploy the agent; pause the Class 4 deployment.</h2>
-  <p>Managed Agents → <strong>Deployments</strong>. Pause the Class 4 deployment, then create a new one:</p>
+  <h2>Step 6: Deploy the agent at 7:30, after the brief.</h2>
+  <p>Managed Agents → <strong>Deployments</strong>. Leave the Class 4 deployment as it is, and create a second one:</p>
   <div class="card" style="margin-top: 4px;">
     <ul>
       <li><strong>Agent</strong>: the one you just built. <strong>Environment and vault</strong>: the ones from Class 4.</li>
       <li><strong>Memory store</strong>: <em>handoff-log</em>.</li>
-      <li><strong>Schedule</strong>: <span class="cron">0 7 * * 1-5</span> and your time zone.</li>
+      <li><strong>Schedule</strong>: <span class="cron">30 7 * * 1-5</span> (weekdays at 7:30) and your time zone. If the brief sometimes lands late, move this later, not earlier.</li>
       <li><strong>Prompt</strong>: <em>"Handle my morning."</em> A goal, not steps.</li>
       <li><strong>Budget</strong>: a per-run cap, a little above what your test run cost.</li>
     </ul>
@@ -1044,7 +1071,7 @@
   <h2>Your agent works the brief before you open it.</h2>
   <ul>
     <li class="done-check">An agent built field by field, with <strong>directions and four lists</strong> in its system prompt.</li>
-    <li class="done-check">Your Class 4 <strong>skill</strong>, run when the agent decides.</li>
+    <li class="done-check">Your Class 4 brief, <strong>still its own automation</strong>, feeding the agent.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
     <li class="done-check">A <strong>log</strong> it reads and updates, and a <strong>capped</strong> run every weekday.</li>
   </ul>

@@ -99,15 +99,20 @@ section.
   the agent calls one, *your own application* must run the code and send the result back.
   There is nowhere in the Console for that code to live, and a scheduled run would sit
   waiting. This is the surface's limit, shown on purpose; Class 6 removes it.
-- Skills: the Class 4 briefing skill attached here.
+- Skills: left empty on purpose; the briefing skill stays with the Class 4 agent.
 - Multiagent: subagents and advisors (introduce; stretch homework).
 
-**The trigger moves.** The same briefing skill from Class 4 is now called by the agent when
-it decides it needs it, instead of by the timer. Nothing rebuilt; only who pulls the
-trigger changed. That is the automation → agent line in one move.
+**Separation of duties (decided 2026-09-29, replacing "the trigger moves").** The Class 4
+deployment keeps running unchanged at 7:00: small, segmented, managed. The Class 5 agent is
+a separate part with its own deployment at 7:30 that finds the brief file and acts on it.
+Each part is configured, capped and debugged on its own, so the brief can change without
+editing the agent that acts. Don't pause the Class 4 deployment.
+Its own slide right after cost ("The chain"): agents daisy-chained, each writing a file the
+next reads; in Managed Agents each link gets its own model (cheaper model where power isn't
+needed = cost control), low overhead, traceable per link, and new jobs are just new links.
 
-**Build: Beginner Classes 5 and 6 collapsed into one.** The agent gets the report, acts on
-it within the authority it's given, and rewrites the report into three sections: **Taken
+**Build: Beginner Classes 5 and 6 collapsed into one.** The agent picks up the report, acts on
+it within the authority it's given, and writes a handoff in three sections: **Taken
 care of / Needs your action / FYI.** That is what they read every morning. A full agent.
 Carry over from Beginner: authority levels, act-then-verify, a log/state between runs,
 nothing sent as the student without them.

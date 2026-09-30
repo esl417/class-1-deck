@@ -197,7 +197,7 @@ const DECKS = [
       'class: before anything runs, spend is capped per run (deployment budget), ' +
       'per month (workspace spend limit) and by prepaid credits with auto-reload ' +
       'off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs ' +
-      'before directing clicks. Class 5 attaches this same skill to an agent; ' +
+      'before directing clicks. Class 5 adds a separate agent that acts on this brief; ' +
       'Class 6 moves to Claude Code and OpenClaw.',
   },
   {
@@ -208,12 +208,15 @@ const DECKS = [
       'Agents (Claude Console, billed by API usage): a morning-briefing skill, a ' +
       'Quickstart agent, an environment, a credential vault, and a capped scheduled ' +
       'deployment saving a brief to Drive or Dropbox. Today they build a new agent ' +
-      'in Create agent (General, Tools, Skills, Multiagent), attach the same skill ' +
-      'so the agent decides when to run it (the trigger moves), write four ' +
+      'in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the ' +
+      'Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) ' +
+      'finds the brief file it saved and acts on it (separation of duties: each ' +
+      'part is configured, capped and debugged on its own; Skills and Multiagent ' +
+      'are left empty on purpose). They write four ' +
       'authority lists (handle / prepare / bring to me / leave alone) into the ' +
-      'system prompt, add a memory store as its handoff log, test-run it, pause the ' +
-      'Class 4 deployment, and deploy the agent with a goal prompt ("Handle my ' +
-      'morning") and a per-run budget. Output: the brief rewritten as Taken care of ' +
+      'system prompt, add a memory store as its handoff log, test-run it, and ' +
+      'deploy the agent in its own deployment with a goal prompt ("Handle my ' +
+      'morning") and a per-run budget. Output: a handoff with Taken care of ' +
       '/ Needs your action / FYI. Custom tools are concept only: their code must run ' +
       'in the user\'s own app, which the Console cannot host (Class 6 fixes this). ' +
       'Rules: send and delete tools turned off (it drafts, they send); tools used ' +
