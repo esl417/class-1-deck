@@ -216,7 +216,7 @@ MEMORY.md hold personal context, one reason the repo must be private.
 
 
 After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
-(2026-09-30), what "fix the warnings worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+(2026-09-30), what "fix anything risky" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
 text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then

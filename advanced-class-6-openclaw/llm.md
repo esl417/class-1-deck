@@ -656,7 +656,7 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 MEMORY.md hold personal context, one reason the repo must be private.
 
 After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
-(2026-09-30), what "fix the warnings worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+(2026-09-30), what "fix anything risky" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
 text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then
@@ -775,7 +775,7 @@ _The rest of the wizard_
 When the wizard finishes , paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Onboarding is done. Check OpenClaw's health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
+> Onboarding is done. Check OpenClaw's health, fix anything risky, and commit.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
