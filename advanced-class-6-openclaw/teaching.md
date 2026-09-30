@@ -141,8 +141,12 @@ subagents. Skills: folders with a SKILL.md (name and description frontmatter); a
 injected every call, so unused bundled skills cost tokens. Permissions: tools.allow / tools.deny
 / tools.profile, and exec approvals with a security level (deny, allowlist, full) and an ask
 mode (off, on-miss, always); the stricter of config and approvals wins. The custom-tool payoff:
-a Python script in the folder, a skill that says when to run it, and exec runs it. No separate
-application needed, which removes the Class 5 limit.
+a Python script registered as a real tool (name, description, input schema) that the model sees in
+its tool list. The simplest documented route is MCP: a small local Python MCP server exposing the
+tool, added with `openclaw mcp add` (docs.openclaw.ai/tools/mcp; MCP tools go through the same tool
+policy as everything else). A plugin with `api.registerTool` also works but needs TypeScript and a
+manifest. A skill is not a tool: a skill only tells the agent how to work. No separate application
+needed, which removes the Class 5 limit.
 
 ## What wakes it
 
@@ -245,7 +249,7 @@ briefs/, dated. Honesty rules carry over from Class 4: say when a source failed;
 even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
-and adding the rest as homework. The model key for the judgment call also lives in `.env`. The same script is also the agent's custom tool, which is how tooling is taught: a short skill in the agent's skills/ tells it to run scripts/brief.py when the student asks for a fresh brief (e.g. midday, "Rerun my brief"). The agent calls the script instead of redoing the steps itself, so the dictated work stays deterministic and cheap. Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent on request. The skill's description is short, since the skill list rides on every call.
+and adding the rest as homework. The model key for the judgment call also lives in `.env`. The same script is also the agent's custom tool, which is how tooling is taught, and it is registered as a TOOL, not a skill (a skill only describes how to work; a tool is something the model can call, with a name, description and inputs). Route: Claude writes a tiny local MCP server in Python (the official `mcp` SDK, FastMCP) exposing one tool, run_brief, which runs scripts/brief.py and returns the brief; it's added with `openclaw mcp add brief --command python3 --arg <server file> --cwd <repo>` and checked with `openclaw mcp doctor brief --probe` (docs.openclaw.ai/tools/mcp). Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent calling run_brief on request (midday, "Rerun my brief"), so the dictated work stays deterministic and cheap instead of the agent redoing it. Unverified until the dry run: exactly how the MCP tool's name appears to the model (check the probe output), and that the tool profile in use allows MCP tools (`coding` and `messaging` do; `full` does; a sandbox needs `bundle-mcp` in tools.sandbox.tools). Alternative: a plugin with `api.registerTool` plus an openclaw.plugin.json manifest, which needs TypeScript.
 
 ## Step 5 · Schedule the chain
 
@@ -274,7 +278,7 @@ Claude Code walks them through creating the bot or app for that platform (Telegr
 `/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
 channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
 approves it (`openclaw pairing approve <channel> <CODE>`). It's the last build step, so once connected Claude also sends the 7:30 handoff there.
-Then the tool test: they message "Rerun my brief." and check the agent called scripts/brief.py (visible in the session transcript) rather than fetching the sources itself, and that a fresh brief came back. The catch with Slack at work: a company
+Then the tool test: they message "Rerun my brief." and check the agent called the run_brief tool (visible in the session transcript) rather than fetching the sources itself, and that a fresh brief came back. The catch with Slack at work: a company
 workspace usually needs an admin to approve a new app; if that won't happen today, start with
 Telegram (needs only them) and switch to Slack once it's approved. One chat app per agent: a second one splits where the handoff and conversations land. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
