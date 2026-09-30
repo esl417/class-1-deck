@@ -726,7 +726,7 @@ _Your two deployments, rebuilt_
 ## Step 5: Schedule the brief at 7:00 and the agent at 7:30.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff to handoffs/, dated. Show me the next five run times for both.
+> Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff, dated, to my [Drive / Dropbox] folder so I can open it from anywhere. Then list the next few times each one will run, so I can check both schedules are right.
 
 _⏸️ Then pause Classes 4 and 5_
 
@@ -744,9 +744,13 @@ The two Managed Agents deployments rebuilt, each with the right tool. 7:00: brie
 computer's own scheduler (on a Mac, Claude sets up a launchd job, which also runs a missed job
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
-"Handle my morning.", reading today's brief from briefs/ and saving the handoff to handoffs/,
-dated (the chat app comes in Step 6, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
-lesson). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
+"Handle my morning.", reading today's brief from briefs/ and saving the handoff, dated, to their
+Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere; a file in the VS
+Code project would be unreachable from a phone. The brief can stay local because it's an
+intermediate file only the agent reads; the handoff is the deliverable. Step 6 adds sending it in
+the chat app too. Claude then lists the next few run times for each, which catches schedule
+typos before a morning is missed (Class 4's cron lesson: `* 7 * * 1-5` runs every minute of the
+7am hour, `0 7 * * 1-5` once). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
 or they get two briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md,
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
