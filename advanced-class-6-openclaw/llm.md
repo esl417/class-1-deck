@@ -279,7 +279,7 @@ A monthly limit, prepaid credits, auto-reload off, at each provider you use . Ho
 
  🔑
 
-The classic surprise bill is a key pushed to GitHub, where bots find it within minutes. Keys go in a .env file that's in .gitignore before your first commit.
+A leaked key is a blank check: anyone who has it can run models on your bill. The usual leak is a key uploaded to GitHub by accident. So keys live in one file, .env , and Git is told never to upload it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
