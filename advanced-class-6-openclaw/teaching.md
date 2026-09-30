@@ -215,7 +215,7 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 MEMORY.md hold personal context, one reason the repo must be private.
 
 
-After onboarding (the student tells Claude Code it's done; the Install prompt already says to check health, fix anything risky and commit), from Eric's run of 2026.9.7
+After onboarding (the student tells Claude Code it's done; the Install prompt already says to check health, fix anything risky and commit), (Eric's run: the audit found 5 critical issues from skills in ~/.agents/skills and Claude switched them off for OpenClaw only; the only remaining warning was about reverse proxies, which only matters behind a proxy; it committed the four onboarding files, which are unfilled templates; the prompt now says commit and push so GitHub has the backup), from Eric's run of 2026.9.7
 (2026-09-30), what "fix anything risky" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
@@ -333,7 +333,7 @@ emoji reactions, voice storytelling, platform formatting, the heartbeat check-in
 notes), keeping only the red lines and the rule to write memories to files; turn off every bundled
 skill in openclaw.json (`skills.allowBundled` is the allowlist for bundled skills;
 `skills.entries.<name>.enabled: false` for individual ones), adding back only what a job needs
-later; heartbeat off (`every: "0m"`). Claude shows each change first.
+later; heartbeat off (`every: "0m"`). Skills from other tools: OpenClaw also loads skills from other folders on the machine (in Eric's run, ~/.agents/skills, shared with Claude Code), and `openclaw security audit` flagged 5 of them as critical, one of which told the agent how to pull Render API tokens and production secrets. The Install prompt's "fix anything risky" caught them in his run; Step 1 turns every loaded skill off regardless of where it came from (`openclaw config set skills.entries.<name>.enabled false`, which leaves the files working in Claude Code). Tools: OpenClaw's default gives the agent the full tool set, shell included; Step 1 narrows it to the minimum (tools.profile / tools.allow and tools.deny), matching the onboarding security notice's "give tools only the permissions they need." Tools are added back when a step needs them; the morning_briefing tool arrives through MCP, which the common tool profiles allow. Claude shows each change first.
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
