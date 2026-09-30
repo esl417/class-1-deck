@@ -192,11 +192,14 @@ consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map, the workspace
 and channels, tools/skills/permissions, what wakes it, any model, security. Build rebuilds the
 WHOLE chain (Eric, 2026-09-30: the automation link was missing): Install, Step 1 baseline
 cleanout (not job-specific), 2 pull in the Class 4 and 5 agents via `ant`, 3 model + fallback +
-`.env`, 4 connect a chat app with pairing, 5 on a branch rebuild the Class 4 brief as plain
-Python with NO OpenClaw (Eric: an automation needs no agent; OpenClaw is for the steps after the
-brief exists): code for dictated steps, one cheap model call for the judgment, brief saved to
-briefs/; 6 second-AI review and merge; 7 schedule brief.py at 7:00 on the system scheduler and
-the OpenClaw agent at 7:30 as an automation; then pause both Managed Agents deployments. Then webhooks
+`.env` (keys and MCP servers connected at the end of Step 2), 4 on a branch rebuild the Class 4
+brief as plain Python with NO OpenClaw (Eric: an automation needs no agent; OpenClaw is for the
+steps after the brief exists): code for dictated steps, one cheap model call for the judgment,
+brief saved to briefs/, reviewed by the prereqs review agents and merged; 5 schedule brief.py at
+7:00 on the system scheduler and the OpenClaw agent at 7:30 (handoff saved to handoffs/), then
+pause both Managed Agents deployments; 6 connect a chat app last (and send the handoff there).
+Second-AI (Codex) review dropped 2026-09-30: Eric doesn't want students installing another AI
+coder. Then webhooks
 (concept), when it breaks, Render (explained), homework, recap.
 Corrections from research against docs.openclaw.ai: TOOLS.md and HEARTBEAT.md are NOT
 injected every call (AGENTS, SOUL, IDENTITY, USER, MEMORY, BOOTSTRAP are); the cron command is

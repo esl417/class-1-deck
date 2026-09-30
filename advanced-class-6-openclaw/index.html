@@ -809,7 +809,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🐍 Your brief runs as Python</div>
-      <p>The Class 4 automation as a plain script, no agent needed, built on a branch and reviewed by a second AI.</p>
+      <p>The Class 4 automation as a plain script, no agent needed, built and reviewed on a branch before it runs.</p>
     </div>
     <div class="card">
       <div class="eyebrow">⏰ The chain still runs</div>
@@ -1192,7 +1192,7 @@
   <div class="eyebrow">Branching, hands-on · no OpenClaw needed</div>
   <h2>Step 4: On a branch, rebuild your brief as plain Python.</h2>
   <p><strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.</div>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, review it, then merge it into main.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">🐍 An automation needs no agent</div>
@@ -1203,30 +1203,14 @@
       <p>The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.</p>
     </div>
   </div>
+  <p class="small-note">Every change from now on goes this way: branch, review, merge. The review agents from your prerequisites check the code before it reaches main.</p>
 </section>
 
-<!-- STEP 5 — REVIEW AND MERGE -->
+<!-- STEP 5 — SCHEDULE THE CHAIN -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 5 · Review and merge"></div>
-  <div class="eyebrow">The author shouldn't grade its own work</div>
-  <h2>Step 5: A second AI reviews the branch, then you merge.</h2>
-  <ul class="numbered">
-    <li><strong>1.</strong> Tell Claude Code: <em>"Open a pull request for brief-automation."</em> That's the proposal to change main.</li>
-    <li><strong>2.</strong> Open <strong>Codex</strong> (or another AI) in VS Code: <em>"Review this pull request for bugs and security problems, especially how it handles keys."</em></li>
-    <li><strong>3.</strong> Paste the findings to Claude Code: <em>"Fix what's real, and tell me what you disagree with."</em></li>
-    <li><strong>4.</strong> <em>"Merge it into main."</em> Then: <em>"Run brief.py and show me today's brief."</em></li>
-  </ul>
-  <div class="heads-up">
-    <span class="heads-up-mark">🌿</span>
-    <p><strong>Every change from now on goes this way:</strong> branch, review, merge. When the agent runs in the cloud, main is what runs, so only reviewed code ever reaches it.</p>
-  </div>
-</section>
-
-<!-- STEP 6 — SCHEDULE THE CHAIN -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Schedule the chain"></div>
+  <div class="slide-num" data-label="Step 5 · Schedule the chain"></div>
   <div class="eyebrow">Your two deployments, rebuilt</div>
-  <h2>Step 6: Schedule the brief at 7:00 and the agent at 7:30.</h2>
+  <h2>Step 5: Schedule the brief at 7:00 and the agent at 7:30.</h2>
   <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff to handoffs/, dated. Show me the next five run times for both.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
@@ -1241,11 +1225,11 @@
   <p class="small-note">Same chain as Class 5: an automation handing off to an agent. The automation is plain Python; OpenClaw is for the steps after the brief exists.</p>
 </section>
 
-<!-- STEP 7 — CHAT APP -->
+<!-- STEP 6 — CHAT APP -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 7 · Connect a chat app"></div>
+  <div class="slide-num" data-label="Step 6 · Connect a chat app"></div>
   <div class="eyebrow">The thing Managed Agents couldn't do</div>
-  <h2>Step 7: Connect the chat app you already live in.</h2>
+  <h2>Step 6: Connect the chat app you already live in.</h2>
   <ul class="numbered">
     <li><strong>1.</strong> Pick one. <strong>Telegram</strong> comes built in. <strong>Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage</strong> are official plugins, and there are more.</li>
     <li><strong>2.</strong> Tell Claude Code: <em>"Connect OpenClaw to [app]. Walk me through creating its bot, put any token in .env, and keep DMs on pairing."</em></li>

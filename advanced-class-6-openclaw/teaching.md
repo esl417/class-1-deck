@@ -26,7 +26,7 @@ second rule: OpenClaw is not an upgrade everyone should take.
 ## The finish line
 
 What works by the end of class: the whole chain running on their computer. The Class 4 brief is
-rebuilt as a plain Python automation (built on a branch, reviewed by a second AI) that runs at
+rebuilt as a plain Python automation (built and reviewed on a branch) that runs at
 7:00 with no OpenClaw involved; the Class 5 agent in OpenClaw acts on it at 7:30; the handoff
 arrives in the chat app they choose (Slack, Telegram, WhatsApp and more), where they can also
 message the agent. Be clear about scope: today is the setup and a first working version;
@@ -242,35 +242,26 @@ scripts/brief.py from the exported briefing skill (the spec): it pulls each sour
 with keys from `.env`, does every dictated step (fetching, counting, dates, formatting), makes a
 single call to a cheap model for the one judgment ("what needs me today"), and saves the brief to
 briefs/, dated. Honesty rules carry over from Class 4: say when a source failed; write a brief
-even on a quiet day. Test, commit on the branch, don't merge. Keep personal output folders
+even on a quiet day. Test it, review it (the code-review and security-review agents set up in the prereqs run on it), fix what's real, then merge into main and run brief.py once to check today's brief lands in briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`.
 
-## Step 5 · Review and merge
-
-The author shouldn't grade its own work. Claude opens a pull request (the proposal to change
-main). A second AI reviews it: Codex in VS Code or another model, asked for bugs and security
-problems, especially key handling. The findings go back to Claude Code: fix what's real, say
-what it disagrees with. Then merge into main and run brief.py once to check today's brief lands in
-briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main
-is what runs, so only reviewed code reaches it.
-
-## Step 6 · Schedule the chain
+## Step 5 · Schedule the chain
 
 The two Managed Agents deployments rebuilt, each with the right tool. 7:00: brief.py on the
 computer's own scheduler (on a Mac, Claude sets up a launchd job, which also runs a missed job
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
 "Handle my morning.", reading today's brief from briefs/ and saving the handoff to handoffs/,
-dated (the chat app comes in Step 7, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
+dated (the chat app comes in Step 6, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
 lesson). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
 or they get two briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md,
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 5: an automation handing off to an agent.
 
-## Step 7 · Connect a chat app
+## Step 6 · Connect a chat app
 
 The student picks the chat app they already live in (this student lives in Slack). Telegram and
 WebChat ship with OpenClaw; Slack, WhatsApp, Microsoft Teams, Discord, Signal, iMessage and more

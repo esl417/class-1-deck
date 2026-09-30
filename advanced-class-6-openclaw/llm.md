@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), pull both Class 4 and 5 agents in with ant, rebuild the Class 5 agent as workspace files, set model and fallback, connect a chat app with pairing, rebuild the Class 4 brief as a plain Python script on a branch (no OpenClaw: code for the dictated steps, one cheap model call for the judgment), have a second AI review it, merge, and schedule the chain (brief.py at 7:00 on the system scheduler, the OpenClaw agent at 7:30). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
+ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), pull both Class 4 and 5 agents in with ant, rebuild the Class 5 agent as workspace files, set model and fallback, connect a chat app with pairing, rebuild the Class 4 brief as a plain Python script on a branch (no OpenClaw: code for the dictated steps, one cheap model call for the judgment), review it with the prereqs review agents, merge, and schedule the chain (brief.py at 7:00 on the system scheduler, the OpenClaw agent at 7:30). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
 
 ---
 
@@ -104,7 +104,7 @@ From your phone, in Slack, Telegram, WhatsApp or another app: "Prep me for the 2
 
 _🐍 Your brief runs as Python_
 
-The Class 4 automation as a plain script, no agent needed, built on a branch and reviewed by a second AI.
+The Class 4 automation as a plain script, no agent needed, built and reviewed on a branch before it runs.
 
 _⏰ The chain still runs_
 
@@ -115,7 +115,7 @@ Today is the setup and the first working version. Finishing the agent is homewor
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 What works by the end of class: the whole chain running on their computer. The Class 4 brief is
-rebuilt as a plain Python automation (built on a branch, reviewed by a second AI) that runs at
+rebuilt as a plain Python automation (built and reviewed on a branch) that runs at
 7:00 with no OpenClaw involved; the Class 5 agent in OpenClaw acts on it at 7:30; the handoff
 arrives in the chat app they choose (Slack, Telegram, WhatsApp and more), where they can also
 message the agent. Be clear about scope: today is the setup and a first working version;
@@ -689,7 +689,7 @@ _Branching, hands-on · no OpenClaw needed_
 main is the version that runs. A branch is a copy where you change things safely; nothing touches main until it's reviewed. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.
+> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, review it, then merge it into main.
 
 _🐍 An automation needs no agent_
 
@@ -698,6 +698,8 @@ Every step is dictated, so code runs them: same result every run, for almost not
 _🦞 OpenClaw starts where the brief ends_
 
 The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.
+
+Every change from now on goes this way: branch, review, merge. The review agents from your prerequisites check the code before it reaches main.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -710,47 +712,18 @@ scripts/brief.py from the exported briefing skill (the spec): it pulls each sour
 with keys from `.env`, does every dictated step (fetching, counting, dates, formatting), makes a
 single call to a cheap model for the one judgment ("what needs me today"), and saves the brief to
 briefs/, dated. Honesty rules carry over from Class 4: say when a source failed; write a brief
-even on a quiet day. Test, commit on the branch, don't merge. Keep personal output folders
+even on a quiet day. Test it, review it (the code-review and security-review agents set up in the prereqs run on it), fix what's real, then merge into main and run brief.py once to check today's brief lands in briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`.
 
-## Slide 20 · Step 5 · Review and merge
-
-**What the student sees on this slide:**
-
-_The author shouldn't grade its own work_
-
-## Step 5: A second AI reviews the branch, then you merge.
-
-- 1. Tell Claude Code: "Open a pull request for brief-automation." That's the proposal to change main.
-
-- 2. Open Codex (or another AI) in VS Code: "Review this pull request for bugs and security problems, especially how it handles keys."
-
-- 3. Paste the findings to Claude Code: "Fix what's real, and tell me what you disagree with."
-
-- 4. "Merge it into main." Then: "Run brief.py and show me today's brief."
-
- 🌿
-
-Every change from now on goes this way: branch, review, merge. When the agent runs in the cloud, main is what runs, so only reviewed code ever reaches it.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The author shouldn't grade its own work. Claude opens a pull request (the proposal to change
-main). A second AI reviews it: Codex in VS Code or another model, asked for bugs and security
-problems, especially key handling. The findings go back to Claude Code: fix what's real, say
-what it disagrees with. Then merge into main and run brief.py once to check today's brief lands in
-briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main
-is what runs, so only reviewed code reaches it.
-
-## Slide 21 · Step 6 · Schedule the chain
+## Slide 20 · Step 5 · Schedule the chain
 
 **What the student sees on this slide:**
 
 _Your two deployments, rebuilt_
 
-## Step 6: Schedule the brief at 7:00 and the agent at 7:30.
+## Step 5: Schedule the brief at 7:00 and the agent at 7:30.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff to handoffs/, dated. Show me the next five run times for both.
@@ -772,20 +745,20 @@ computer's own scheduler (on a Mac, Claude sets up a launchd job, which also run
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
 "Handle my morning.", reading today's brief from briefs/ and saving the handoff to handoffs/,
-dated (the chat app comes in Step 7, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
+dated (the chat app comes in Step 6, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
 lesson). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
 or they get two briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md,
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 5: an automation handing off to an agent.
 
-## Slide 22 · Step 7 · Connect a chat app
+## Slide 21 · Step 6 · Connect a chat app
 
 **What the student sees on this slide:**
 
 _The thing Managed Agents couldn't do_
 
-## Step 7: Connect the chat app you already live in.
+## Step 6: Connect the chat app you already live in.
 
 - 1. Pick one. Telegram comes built in. Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage are official plugins, and there are more.
 
@@ -813,7 +786,7 @@ workspace usually needs an admin to approve a new app; if that won't happen toda
 Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
-## Slide 23 · Webhooks
+## Slide 22 · Webhooks
 
 **What the student sees on this slide:**
 
@@ -848,7 +821,7 @@ and getting summarized with its dates flagged, anything Zapier or Make can see. 
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
-## Slide 24 · When it breaks
+## Slide 23 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -879,7 +852,7 @@ come. Check OpenClaw's status and logs and tell me why."), then fix the cause on
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
 limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
-## Slide 25 · To the cloud
+## Slide 24 · To the cloud
 
 **What the student sees on this slide:**
 
@@ -915,7 +888,7 @@ Tailscale, not a public port. One more bill to cap. On Render the brief becomes 
 them) and the agent a running service. Once hosted, both run with the laptop closed and webhooks
 become possible.
 
-## Slide 26 · Homework
+## Slide 25 · Homework
 
 **What the student sees on this slide:**
 
@@ -953,7 +926,7 @@ Then decide: move it to Render, or go back to the Managed Agents chain if that d
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
 
-## Slide 27 · You shipped it
+## Slide 26 · You shipped it
 
 **What the student sees on this slide:**
 
