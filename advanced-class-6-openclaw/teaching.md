@@ -209,9 +209,9 @@ so it can't go to Render. Anthropic allows an end user signing in to the unmodif
 binary with their own subscription, but its usage limits assume "ordinary, individual usage" (an
 always-on agent isn't that), every run including heartbeats draws on the 5-hour and weekly
 limits, and Anthropic has changed the rules for third-party tools several times in 2026 (blocks in
-January, a terms update in February, a billing change for third-party harnesses in April). So:
-OK to experiment with on a computer-only agent, knowing it can eat the subscription or be
-blocked. OpenClaw sets the heartbeat default to 1h (not 30m) under subscription auth.
+January, a terms update in February, a billing change for third-party harnesses in April). UNTESTED: it failed in Eric's own test run (2026-09-30), so the class
+doesn't rely on it. If a student tries it anyway on a computer-only agent, they should know it
+can eat the subscription or be blocked, and fall back to an API key if it fails. OpenClaw sets the heartbeat default to 1h (not 30m) under subscription auth.
 Setup-token: `claude setup-token` prints a long-lived subscription OAuth token (sk-ant-oat01-...)
 that OpenClaw stores and sends itself. That's credentials routed through a third-party app, which
 Anthropic's terms prohibit (code.claude.com/docs/en/legal-and-compliance). Never.
