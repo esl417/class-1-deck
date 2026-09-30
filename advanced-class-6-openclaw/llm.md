@@ -47,7 +47,7 @@ Class 6 · Advanced · OpenClaw in VS Code
 
 # Your agent, rebuilt on code you own.
 
-Compare the three ways to run an agent, learn what's inside OpenClaw, then clean it out and rebuild your Class 5 agent so you can message it from your phone.
+Know when an agent needs OpenClaw, then rebuild yours there.
 
 ## Slide 2 · The arc
 
