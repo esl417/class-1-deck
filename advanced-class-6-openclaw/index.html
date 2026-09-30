@@ -1114,6 +1114,56 @@
      PART 3 — BUILD IT
      ============================================================ -->
 
+<!-- GIT WORDS (adapted from Class 1) -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Git words"></div>
+  <div class="eyebrow">Before we build · GitHub is where your agent's code lives</div>
+  <h2>The eight words you need for GitHub.</h2>
+  <p>You won't type git commands: Claude Code does. But you'll ask for these by name, so know what each one means.</p>
+  <div class="file-list">
+    <div class="file-item"><code>Git</code><span>Change tracking. Like Track Changes in Word, but for your whole project.</span></div>
+    <div class="file-item"><code>Repo</code><span>Your project's folder, tracked by git. Your agent is one repo.</span></div>
+    <div class="file-item"><code>Commit</code><span>Save. A snapshot on your computer you can always roll back to.</span></div>
+    <div class="file-item"><code>Push</code><span>Send your saves up to GitHub: a backup with full history.</span></div>
+    <div class="file-item"><code>Pull</code><span>Bring the latest version from GitHub down to your computer.</span></div>
+    <div class="file-item"><code>Clone</code><span>Make a fresh copy of a project from GitHub onto a computer.</span></div>
+    <div class="file-item"><code>Branch</code><span>A copy where you change things safely. <strong>main</strong> is the version that runs.</span></div>
+    <div class="file-item"><code>Merge</code><span>Bring a branch's changes into main, once you approve them.</span></div>
+  </div>
+  <p class="small-note">The one people mix up: commit and push both sound like "save." Commit saves on your computer; push sends those saves to GitHub.</p>
+</section>
+
+<!-- SAVING AND PUSHING -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Saving and pushing"></div>
+  <div class="eyebrow">Where your changes live</div>
+  <h2>Commit to save, push to back up, merge to make it real.</h2>
+  <div class="chain" role="img" aria-label="Your change moves in three stages. On your computer you edit and commit, which saves a snapshot only you have. Push sends it to GitHub, a private backup with full history. Merging an approved branch into main makes it the version that runs, and later a cloud host runs main.">
+    <div class="chain-node">
+      <span class="chain-when">Your computer</span>
+      <span class="chain-name">Edit and commit</span>
+      <p class="chain-job">Every change you make, saved as snapshots. Only you have them.</p>
+    </div>
+    <div class="chain-hand"><svg class="chain-arrow" viewBox="0 0 44 14" aria-hidden="true"><path d="M0 7 H31" /><path class="head" d="M44 7 L30 1.5 L30 12.5 z" /></svg><span class="chain-file">push</span></div>
+    <div class="chain-node">
+      <span class="chain-when">GitHub · private</span>
+      <span class="chain-name">Backed up</span>
+      <p class="chain-job">A copy off your computer, with every snapshot. Lose the laptop, lose nothing.</p>
+    </div>
+    <div class="chain-hand"><svg class="chain-arrow" viewBox="0 0 44 14" aria-hidden="true"><path d="M0 7 H31" /><path class="head" d="M44 7 L30 1.5 L30 12.5 z" /></svg><span class="chain-file">merge</span></div>
+    <div class="chain-node is-today">
+      <span class="chain-when">main</span>
+      <span class="chain-name">The version that runs</span>
+      <p class="chain-job">Only approved changes get here. In the cloud, the host runs main.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">💬</span>
+    <p><strong>Ask in plain English:</strong> <em>"Commit and push this."</em> <em>"What changed since my last commit?"</em> <em>"Something broke: go back to the last commit."</em> Claude Code runs the git commands.</p>
+  </div>
+  <p class="small-note">Your repo is private, and .env never leaves your computer: .gitignore tells git to skip it.</p>
+</section>
+
 <!-- INSTALL -->
 <section class="slide dense">
   <div class="slide-num" data-label="Install"></div>

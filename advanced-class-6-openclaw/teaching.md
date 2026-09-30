@@ -179,6 +179,28 @@ files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in J
 let one malicious link take over an install via the Control UI). Class 5 rules carry over: it
 drafts, they send, and anything it reads from strangers can try to give it orders.
 
+## Git words
+
+Adapted from Class 1's "Git words" slide, plus branch and merge, which this class uses hands-on in
+Step 4. The student may never have used git (Advanced skipped Classes 1 to 3). Don't lecture the
+definitions back; check which word is unclear and anchor it to something they know. The analogy
+that lands: git is Track Changes for the whole project. The one that trips people is commit vs push
+(both sound like "save"): commit = a checkpoint on their computer; push = send those checkpoints up
+to GitHub. Branch = a safe copy to change; main = the version that runs; merge = bring an approved
+branch into main. They never type git commands: they ask Claude Code by name.
+
+## Saving and pushing
+
+Three stages. Their computer: edit and commit (snapshots only they have). Push: to GitHub, a
+private backup with full history (lose the laptop, lose nothing). Merge into main: only approved
+changes; main is the version that runs, and when they host it (Render), every merge to main
+redeploys. Unlike Class 1 there's no live website, so a push here is a backup, not a publish; the
+"publish" moment is the merge to main once a host watches main. Plain-English asks: "Commit and push
+this.", "What changed since my last commit?", "Something broke: go back to the last commit." The
+repo is private and .env never leaves the computer because .gitignore excludes it (set up in the
+Install prompt before the first commit). Personal outputs (briefs/, logs/, memory/) are kept out
+too.
+
 ## Install
 
 Before Step 1. They make a folder (morning-agent), open it in VS Code, and have Claude Code

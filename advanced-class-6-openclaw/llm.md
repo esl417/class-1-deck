@@ -547,7 +547,81 @@ files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in J
 let one malicious link take over an install via the Control UI). Class 5 rules carry over: it
 drafts, they send, and anything it reads from strangers can try to give it orders.
 
-## Slide 15 · Install
+## Slide 15 · Git words
+
+**What the student sees on this slide:**
+
+_Before we build · GitHub is where your agent's code lives_
+
+## The eight words you need for GitHub.
+
+You won't type git commands: Claude Code does. But you'll ask for these by name, so know what each one means.
+
+ Git Change tracking. Like Track Changes in Word, but for your whole project.
+ Repo Your project's folder, tracked by git. Your agent is one repo.
+ Commit Save. A snapshot on your computer you can always roll back to.
+ Push Send your saves up to GitHub: a backup with full history.
+ Pull Bring the latest version from GitHub down to your computer.
+ Clone Make a fresh copy of a project from GitHub onto a computer.
+ Branch A copy where you change things safely. main is the version that runs.
+ Merge Bring a branch's changes into main, once you approve them.
+
+The one people mix up: commit and push both sound like "save." Commit saves on your computer; push sends those saves to GitHub.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Adapted from Class 1's "Git words" slide, plus branch and merge, which this class uses hands-on in
+Step 4. The student may never have used git (Advanced skipped Classes 1 to 3). Don't lecture the
+definitions back; check which word is unclear and anchor it to something they know. The analogy
+that lands: git is Track Changes for the whole project. The one that trips people is commit vs push
+(both sound like "save"): commit = a checkpoint on their computer; push = send those checkpoints up
+to GitHub. Branch = a safe copy to change; main = the version that runs; merge = bring an approved
+branch into main. They never type git commands: they ask Claude Code by name.
+
+## Slide 16 · Saving and pushing
+
+**What the student sees on this slide:**
+
+_Where your changes live_
+
+## Commit to save, push to back up, merge to make it real.
+
+ Your computer
+ Edit and commit
+
+Every change you make, saved as snapshots. Only you have them.
+
+push
+
+ GitHub · private
+ Backed up
+ A copy off your computer, with every snapshot. Lose the laptop, lose nothing.
+
+merge
+
+ main
+ The version that runs
+ Only approved changes get here. In the cloud, the host runs main.
+
+ 💬
+
+Ask in plain English: "Commit and push this." "What changed since my last commit?" "Something broke: go back to the last commit." Claude Code runs the git commands.
+
+Your repo is private, and .env never leaves your computer: .gitignore tells git to skip it.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Three stages. Their computer: edit and commit (snapshots only they have). Push: to GitHub, a
+private backup with full history (lose the laptop, lose nothing). Merge into main: only approved
+changes; main is the version that runs, and when they host it (Render), every merge to main
+redeploys. Unlike Class 1 there's no live website, so a push here is a backup, not a publish; the
+"publish" moment is the merge to main once a host watches main. Plain-English asks: "Commit and push
+this.", "What changed since my last commit?", "Something broke: go back to the last commit." The
+repo is private and .env never leaves the computer because .gitignore excludes it (set up in the
+Install prompt before the first commit). Personal outputs (briefs/, logs/, memory/) are kept out
+too.
+
+## Slide 17 · Install
 
 **What the student sees on this slide:**
 
@@ -581,7 +655,7 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
-## Slide 16 · How it signs in
+## Slide 18 · How it signs in
 
 **What the student sees on this slide:**
 
@@ -635,7 +709,7 @@ consumer subscription vs a pay-per-use API key); same rule, API key. If a studen
 CLI login, `openclaw onboard` can be rerun or the auth changed later (check the current docs for
 the command).
 
-## Slide 17 · Finish onboarding
+## Slide 19 · Finish onboarding
 
 **What the student sees on this slide:**
 
@@ -677,7 +751,7 @@ select it). Step 1 turns bundled skills off anyway. If an older OpenClaw config 
 machine, the wizard asks whether to move existing agents to the new workspace; on a fresh install
 it won't.
 
-## Slide 18 · Step 1 · Clean it out
+## Slide 20 · Step 1 · Clean it out
 
 **What the student sees on this slide:**
 
@@ -709,7 +783,7 @@ later; heartbeat off (`every: "0m"`). Claude shows each change first.
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
-## Slide 19 · Step 2 · Bring in your agents
+## Slide 21 · Step 2 · Bring in your agents
 
 **What the student sees on this slide:**
 
@@ -750,7 +824,7 @@ key, which the student pastes into `.env` themselves (Claude creates `.env` firs
 it's in `.gitignore`); each connection is tested before moving on. Fallback where a service has no
 MCP server or key-based API: a trusted plugin, skill or script.
 
-## Slide 20 · Step 3 · Model and keys
+## Slide 22 · Step 3 · Model and keys
 
 **What the student sees on this slide:**
 
@@ -778,7 +852,7 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Slide 21 · Step 4 · The brief, in Python
+## Slide 23 · Step 4 · The brief, in Python
 
 **What the student sees on this slide:**
 
@@ -819,7 +893,7 @@ even on a quiet day. Claude runs it once, shows today's brief, and reviews the c
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`. Name tools for what they do, so the model picks the right one: morning_briefing, not a vague verb. The same script is also the agent's custom tool, which is how tooling is taught, and it is registered as a TOOL, not a skill (a skill only describes how to work; a tool is something the model can call, with a name, description and inputs). The slide's prompt just says "register it as a tool my OpenClaw agent can call"; how to do it is here, for Claude to carry out, not for the student to learn. Route: Claude writes a tiny local MCP server in Python (the official `mcp` SDK, FastMCP) exposing one tool, morning_briefing, which runs scripts/brief.py and returns the brief; it's added with `openclaw mcp add brief --command python3 --arg <server file> --cwd <repo>` and checked with `openclaw mcp doctor brief --probe` (docs.openclaw.ai/tools/mcp). Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent calling morning_briefing on request (midday, "Rerun my brief"), so the dictated work stays deterministic and cheap instead of the agent redoing it. Unverified until the dry run: exactly how the MCP tool's name appears to the model (check the probe output), and that the tool profile in use allows MCP tools (`coding` and `messaging` do; `full` does; a sandbox needs `bundle-mcp` in tools.sandbox.tools). Alternative: a plugin with `api.registerTool` plus an openclaw.plugin.json manifest, which needs TypeScript.
 
-## Slide 22 · Step 5 · Schedule the chain
+## Slide 24 · Step 5 · Schedule the chain
 
 **What the student sees on this slide:**
 
@@ -864,7 +938,7 @@ Class 5: an automation handing off to an agent. Then the tool test: they message
 brief." and check the agent called the morning_briefing tool (visible in the session transcript)
 rather than fetching the sources itself, and that a fresh brief came back.
 
-## Slide 23 · Webhooks
+## Slide 25 · Webhooks
 
 **What the student sees on this slide:**
 
@@ -899,7 +973,7 @@ and getting summarized with its dates flagged, anything Zapier or Make can see. 
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
-## Slide 24 · To the cloud
+## Slide 26 · To the cloud
 
 **What the student sees on this slide:**
 
@@ -979,7 +1053,7 @@ the web service. A Render disk attaches to one service only, so the cron job can
 agent's /data: in the cloud the brief goes to Drive or Dropbox and the agent reads it there. Once
 hosted, both run with the laptop closed and webhooks become possible.
 
-## Slide 25 · When it breaks
+## Slide 27 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -1010,7 +1084,7 @@ come. Check OpenClaw's status and logs and tell me why."), then fix the cause on
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
 limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
-## Slide 26 · Homework
+## Slide 28 · Homework
 
 **What the student sees on this slide:**
 
@@ -1043,7 +1117,7 @@ Then decide: move it to Render, or go back to the Managed Agents chain if that d
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
 
-## Slide 27 · You shipped it
+## Slide 29 · You shipped it
 
 **What the student sees on this slide:**
 
