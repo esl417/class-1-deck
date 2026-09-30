@@ -271,7 +271,7 @@ Its instruction files, skill list and tool list go out with every message . The 
 
 _💓 The heartbeat_
 
-By default it wakes every 30 minutes: 48 times a day, and each wake can carry around 100,000 tokens. It stays off until you set it up lean.
+By default it wakes every 30 minutes, 48 times a day, and resends your whole chat history each time. The longer the chat, the more each wake costs. It stays off until you set it up lean.
 
 _🧾 The cap lives at the provider_
 
@@ -289,9 +289,11 @@ provider: a monthly spend limit, prepaid credits, auto-reload off, at every prov
 (each bills separately), and hosting bills separately too. Overhead: the injected workspace
 files (AGENTS.md, SOUL.md, IDENTITY.md, USER.md, MEMORY.md, BOOTSTRAP.md on a new workspace),
 the skill list and the tool list go out with every message. The default install is full of
-extras; Step 1 removes them. The heartbeat defaults to every 30 minutes (48 wakes a day), and a
-heartbeat in the main session can carry around 100,000 tokens; OpenClaw's docs say an isolated
-session cuts that to 2,000–5,000. Keep it off until it's set up lean. The classic surprise bill:
+extras; Step 1 removes them. The heartbeat defaults to every 30 minutes (48 wakes a day), and by
+default each heartbeat is a full turn in the main session that resends the whole conversation
+history plus the workspace files, so its cost grows with the chat. The 100K figure is the docs'
+example for a long session, not a fixed cost: "~100K tokens down to ~2-5K per run" with
+isolatedSession: true (no history); lightContext: true also skips the workspace files. Keep it off until it's set up lean. The classic surprise bill:
 a key pushed to GitHub, found by bots within minutes. `.env` goes in `.gitignore` before the
 first commit. Official page: docs.openclaw.ai/reference/token-use.
 
