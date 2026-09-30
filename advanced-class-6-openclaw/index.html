@@ -1152,7 +1152,7 @@
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 4 and 5 agents as files.</h2>
   <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste:</p>
-  <div class="prompt-box">Use the ant CLI to download my Class 4 briefing agent with its skill, and my Class 5 agent, from the Claude Console into a class-export folder. Rebuild the Class 5 agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Leave the brief for Step 5. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.</div>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1209,7 +1209,7 @@
   <div class="eyebrow">Branching, hands-on · no OpenClaw needed</div>
   <h2>Step 5: On a branch, rebuild your brief as plain Python.</h2>
   <p><strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my Class 4 morning brief as a standalone Python script, scripts/brief.py, using the briefing skill in class-export as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.</div>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">🐍 An automation needs no agent</div>

@@ -205,11 +205,13 @@ message, schedule and check-in. Confirm exact config keys against docs.openclaw.
 
 ## Step 2 · Bring in your agents
 
-Rebuild from what works, not a description; both links of the chain come over. They download
+Prompts in this deck are pasted into Claude Code, which has no idea what "Class 4" or "Class 5"
+means, so they name the agents by role and Console name (the morning-briefing agent, the action
+agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. They download
 handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
 during prereqs) to pull the Class 4 briefing agent and its skill (`ant beta:agents retrieve`, and
 `ant beta:skills:versions download` for the skill's files) and the Class 5 agent into
-class-export/; the Console's Export as code is the other route. A Raw agent definition holds
+export/; the Console's Export as code is the other route. A Raw agent definition holds
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
 download. Translate the Class 5 agent now: who they are → USER.md; the job, the three-section
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.

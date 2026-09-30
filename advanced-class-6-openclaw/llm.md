@@ -620,7 +620,7 @@ _Rebuild from what works, not a description_
 Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download my Class 4 briefing agent with its skill, and my Class 5 agent, from the Claude Console into a class-export folder. Rebuild the Class 5 agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Leave the brief for Step 5. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.
 
 _📂 The export is your blueprint_
 
@@ -632,11 +632,13 @@ Your vault never leaves the Console, which is correct. Each app gets connected a
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Rebuild from what works, not a description; both links of the chain come over. They download
+Prompts in this deck are pasted into Claude Code, which has no idea what "Class 4" or "Class 5"
+means, so they name the agents by role and Console name (the morning-briefing agent, the action
+agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. They download
 handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
 during prereqs) to pull the Class 4 briefing agent and its skill (`ant beta:agents retrieve`, and
 `ant beta:skills:versions download` for the skill's files) and the Class 5 agent into
-class-export/; the Console's Export as code is the other route. A Raw agent definition holds
+export/; the Console's Export as code is the other route. A Raw agent definition holds
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
 download. Translate the Class 5 agent now: who they are → USER.md; the job, the three-section
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
@@ -719,7 +721,7 @@ _Branching, hands-on · no OpenClaw needed_
 main is the version that runs. A branch is a copy where you change things safely; nothing touches main until it's reviewed. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called brief-automation. Rebuild my Class 4 morning brief as a standalone Python script, scripts/brief.py, using the briefing skill in class-export as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.
+> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.
 
 _🐍 An automation needs no agent_
 
