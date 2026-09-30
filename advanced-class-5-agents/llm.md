@@ -233,23 +233,34 @@ _Many small agents, one after another_
 
 ## Chain small agents, each with its own model and cap.
 
-The brief and the agent are the first two links in a chain. One writes a file; the next picks it up. You can keep adding links the same way.
+Each agent owns one job and hands its deliverable to the next. The brief and today's agent are the first two links; you can keep adding more.
 
-_💵 A model per link_
+ 7:00 · Class 4
+ Brief agent
 
-Each agent gets its own model. The brief can run on a cheaper one than the agent that acts, so you pay for power only where it's needed .
+Reads your sources and sorts what matters. Never acts.
 
-_🪶 Low overhead_
+ Lighter model Own cap Own sessions
 
-Each link loads only its own instructions and tools, not everything every agent might need.
+📄 brief
 
-_🔍 Traceable_
+ 7:30 · Class 5 · Today
+ Action agent
+ Works each item within your limits: drafts, tasks, prep.
 
-Each link has its own sessions and cost, so a broken link is easy to find and fix on its own.
+ Stronger model Own cap Own sessions
 
-_🔗 Add links later_
+📄 handoff
 
-A Friday wrap-up that reads the week's handoffs is just one more link.
+ Friday · Later
+ Wrap-up agent
+ Reads the week's handoffs and writes the week in review.
+
+ Lighter model Own cap Own sessions
+
+ 💵 A model per link: pay for power only where it's needed.
+ 🪶 Low overhead: each loads only its own job.
+ 🔍 Traceable: a broken link is easy to find.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

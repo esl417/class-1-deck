@@ -669,6 +669,40 @@
     font-size: 0.88em;
     white-space: nowrap;
   }
+  /* ---- The chain: agents handing deliverables to each other ---- */
+  .chain { display: flex; align-items: stretch; max-width: var(--col); margin-top: 6px; }
+  .chain-node {
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: clamp(14px, 1.6vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 10px 28px -18px rgba(20,18,12,0.18);
+  }
+  .chain-node.is-today { border-color: var(--accent); box-shadow: 0 1px 2px rgba(20,18,12,0.04), 0 14px 34px -22px rgba(15,138,128,0.55); }
+  .chain-node.is-future { border: 1.5px dashed rgba(15,138,128,0.45); background: transparent; box-shadow: none; }
+  .chain-when { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-deep); }
+  .chain-name { font-family: var(--display); font-size: clamp(17px, 1.6vw, 20px); font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
+  .chain-job { font-size: clamp(14px, 1.3vw, 16px); line-height: 1.42; color: var(--body); margin: 0; max-width: none; }
+  .chain-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+  .chain-meta span { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--accent-ink); background: rgba(15,138,128,0.10); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .chain-hand { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 clamp(6px, 0.8vw, 12px); }
+  .chain-file { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); background: rgba(15,138,128,0.08); border: 1px solid rgba(15,138,128,0.3); border-radius: 8px; padding: 5px 9px; white-space: nowrap; }
+  .chain-arrow { width: 44px; height: 14px; display: block; }
+  .chain-arrow path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
+  .chain-arrow path.head { fill: var(--accent); stroke: none; }
+  .chain-perks { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; max-width: var(--col); }
+  .chain-perks span { font-size: clamp(14px, 1.3vw, 16px); color: var(--body); }
+  .chain-perks strong { color: var(--ink); }
+  @media (max-width: 760px) {
+    .chain { flex-direction: column; }
+    .chain-hand { flex-direction: row; padding: 8px 0; }
+    .chain-arrow { transform: rotate(90deg); width: 32px; }
+  }
 </style>
 </head>
 <body>
@@ -844,24 +878,33 @@
   <div class="slide-num" data-label="The chain"></div>
   <div class="eyebrow">Many small agents, one after another</div>
   <h2>Chain small agents, each with its own model and cap.</h2>
-  <p>The brief and the agent are the first two links in a chain. One writes a file; the next picks it up. You can keep adding links the same way.</p>
-  <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
-    <div class="card">
-      <div class="eyebrow">💵 A model per link</div>
-      <p>Each agent gets its own model. The brief can run on a cheaper one than the agent that acts, so you <strong>pay for power only where it's needed</strong>.</p>
+  <p>Each agent owns one job and hands its deliverable to the next. The brief and today's agent are the first two links; you can keep adding more.</p>
+  <div class="chain" role="img" aria-label="Three agents in a chain. The 7:00 brief agent writes a brief file, which the 7:30 action agent reads; it writes a handoff file, which a later Friday wrap-up agent can read.">
+    <div class="chain-node">
+      <span class="chain-when">7:00 · Class 4</span>
+      <span class="chain-name">Brief agent</span>
+      <p class="chain-job">Reads your sources and sorts what matters. Never acts.</p>
+      <div class="chain-meta"><span>Lighter model</span><span>Own cap</span><span>Own sessions</span></div>
     </div>
-    <div class="card">
-      <div class="eyebrow">🪶 Low overhead</div>
-      <p>Each link loads only its own instructions and tools, not everything every agent might need.</p>
+    <div class="chain-hand"><svg class="chain-arrow" viewBox="0 0 44 14" aria-hidden="true"><path d="M0 7 H31" /><path class="head" d="M44 7 L30 1.5 L30 12.5 z" /></svg><span class="chain-file">📄 brief</span></div>
+    <div class="chain-node is-today">
+      <span class="chain-when">7:30 · Class 5 · Today</span>
+      <span class="chain-name">Action agent</span>
+      <p class="chain-job">Works each item within your limits: drafts, tasks, prep.</p>
+      <div class="chain-meta"><span>Stronger model</span><span>Own cap</span><span>Own sessions</span></div>
     </div>
-    <div class="card">
-      <div class="eyebrow">🔍 Traceable</div>
-      <p>Each link has its own sessions and cost, so a broken link is easy to find and fix on its own.</p>
+    <div class="chain-hand"><svg class="chain-arrow" viewBox="0 0 44 14" aria-hidden="true"><path d="M0 7 H31" /><path class="head" d="M44 7 L30 1.5 L30 12.5 z" /></svg><span class="chain-file">📄 handoff</span></div>
+    <div class="chain-node is-future">
+      <span class="chain-when">Friday · Later</span>
+      <span class="chain-name">Wrap-up agent</span>
+      <p class="chain-job">Reads the week's handoffs and writes the week in review.</p>
+      <div class="chain-meta"><span>Lighter model</span><span>Own cap</span><span>Own sessions</span></div>
     </div>
-    <div class="card">
-      <div class="eyebrow">🔗 Add links later</div>
-      <p>A Friday wrap-up that reads the week's handoffs is just one more link.</p>
-    </div>
+  </div>
+  <div class="chain-perks">
+    <span>💵 <strong>A model per link:</strong> pay for power only where it's needed.</span>
+    <span>🪶 <strong>Low overhead:</strong> each loads only its own job.</span>
+    <span>🔍 <strong>Traceable:</strong> a broken link is easy to find.</span>
   </div>
 </section>
 
