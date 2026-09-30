@@ -1170,7 +1170,7 @@
   <div class="eyebrow">Before Step 1 · in VS Code</div>
   <h2>Install OpenClaw, with your project folder as its home.</h2>
   <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
-  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. Keep your answer short.</div>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. When I tell you it's done, check OpenClaw's health, fix anything risky, and commit. Keep your answers short.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
@@ -1221,8 +1221,7 @@
     <li><strong>3. Search provider:</strong> pick one that works without a key, or skip. You can add one later.</li>
     <li><strong>4. Install missing skill dependencies:</strong> skip. Press <strong>Space</strong> to select <em>Skip for now</em>, then <strong>Enter</strong>. Step 1 turns those skills off anyway.</li>
   </ul>
-  <p style="margin-top: 10px; margin-bottom: 0;"><strong>When the wizard finishes</strong>, paste this into Claude Code:</p>
-  <div class="prompt-box">Onboarding is done. Check OpenClaw's health, fix anything risky, and commit.</div>
+  <p class="small-note">When the wizard finishes, tell Claude Code it's done. Your install prompt already told it what to do next.</p>
 </section>
 
 <!-- STEP 1 — CLEAN IT OUT -->

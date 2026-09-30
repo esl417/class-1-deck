@@ -632,7 +632,7 @@ _Before Step 1 · in VS Code_
 First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. Keep your answer short.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. When I tell you it's done, check OpenClaw's health, fix anything risky, and commit. Keep your answers short.
 
 _⌨️ You run onboarding yourself_
 
@@ -655,7 +655,7 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
-After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
+After onboarding (the student tells Claude Code it's done; the Install prompt already says to check health, fix anything risky and commit), from Eric's run of 2026.9.7
 (2026-09-30), what "fix anything risky" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
@@ -772,10 +772,7 @@ _The rest of the wizard_
 
 - 4. Install missing skill dependencies: skip. Press Space to select Skip for now , then Enter . Step 1 turns those skills off anyway.
 
-When the wizard finishes , paste this into Claude Code:
-
-[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Onboarding is done. Check OpenClaw's health, fix anything risky, and commit.
+When the wizard finishes, tell Claude Code it's done. Your install prompt already told it what to do next.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

@@ -215,7 +215,7 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 MEMORY.md hold personal context, one reason the repo must be private.
 
 
-After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
+After onboarding (the student tells Claude Code it's done; the Install prompt already says to check health, fix anything risky and commit), from Eric's run of 2026.9.7
 (2026-09-30), what "fix anything risky" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
