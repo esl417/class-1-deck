@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), rebuild the Class 5 agent from its ant export, set model and fallback, connect Telegram with pairing, build a Python script tool on a branch, have a second AI review it, merge, and schedule 7:30 as an automation. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
+ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), pull both Class 4 and 5 agents in with ant, rebuild the Class 5 agent as workspace files, set model and fallback, connect a chat app with pairing, rebuild the Class 4 brief as a Python automation on a branch (script for the dictated steps, skill for the one judgment), have a second AI review it, merge, and schedule the chain as two automations (7:00 brief on a cheaper model, 7:30 agent). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
 
 ---
 
@@ -57,7 +57,7 @@ _Where today fits_
 
 ## Three classes, one agent, built in layers .
 
-You built the brief, then an agent that acts on it. Today you rebuild that agent somewhere you control every part.
+You built the brief, then an agent that acts on it. Today you rebuild both somewhere you control every part.
 
 _Class 4 · Automation_
 
@@ -73,7 +73,7 @@ Managed Agents
 
 _Class 6 · Today · Your own agent_
 
-You own the code. The same agent in OpenClaw: your own tools, any model, and you can message it.
+You own the code. The same chain in OpenClaw: the brief as Python, an agent you can message, any model.
 
 VS Code + Claude Code
 
@@ -84,7 +84,7 @@ The two rules still hold: cap what it can spend before anything runs, and use th
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Orientation. Class 4 dictated steps (automation), Class 5 dictated the deliverable (agent),
-Class 6 moves the same agent somewhere they own every part. Plant the two standing rules: cap
+Class 6 moves the same chain (brief and agent) somewhere they own every part. Plant the two standing rules: cap
 spend before anything runs, and use the simplest setup that does the job. Today tests the
 second rule: OpenClaw is not an upgrade everyone should take.
 
@@ -96,29 +96,31 @@ _Let's look at the end first_
 
 ## Today: your agent answers you in your chat app.
 
-By the end of class, your Class 5 agent runs in OpenClaw on your computer, and three things work that Managed Agents couldn't do:
+By the end of class, your whole chain runs in OpenClaw on your computer: the Class 4 brief and the Class 5 agent. Three things are new:
 
 _💬 You can message it_
 
 From your phone, in Slack, Telegram, WhatsApp or another app: "Prep me for the 2pm." It answers in the same chat.
 
-_🐍 It runs your own tool_
+_🐍 Your brief runs as Python_
 
-A Python script it calls as a tool, built on a branch and reviewed by a second AI.
+The Class 4 automation rebuilt as a script, built on a branch and reviewed by a second AI.
 
-_⏰ It still runs at 7:30_
+_⏰ The chain still runs_
 
-The same handoff as Class 5, now arriving as a message.
+The brief at 7:00, the handoff at 7:30, now arriving as a message.
 
 Today is the setup and the first working version. Finishing the agent is homework, and moving it to the cloud comes at the end.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-What works by the end of class: the Class 5 agent running in OpenClaw on their computer,
-reachable in the chat app they choose (Slack, Telegram, WhatsApp and more), calling one Python script as a tool (built on a branch, reviewed by a
-second AI), and scheduled at 7:30. Be clear about scope: today is the setup and a first working
-version; finishing the agent (every app connected, the handoff as good as Class 5's) is
-homework, and cloud hosting (Render) is explained at the end, not done.
+What works by the end of class: the whole chain running in OpenClaw on their computer. The Class
+4 brief is rebuilt as a Python automation (built on a branch, reviewed by a second AI) that runs
+at 7:00; the Class 5 agent acts on it at 7:30; the handoff arrives in the chat app they choose
+(Slack, Telegram, WhatsApp and more), where they can also message the agent. Be clear about
+scope: today is the setup and a first working version; finishing it (every source and app
+connected, the handoff as good as Class 5's) is homework, and cloud hosting (Render) is explained
+at the end, not done.
 
 ## Slide 4 · What OpenClaw is
 
@@ -607,22 +609,22 @@ later; heartbeat off (`every: "0m"`). Claude shows each change first.
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
-## Slide 17 · Step 2 · Bring in your agent
+## Slide 17 · Step 2 · Bring in your agents
 
 **What the student sees on this slide:**
 
-_Rebuild from the working agent, not a description_
+_Rebuild from what works, not a description_
 
-## Step 2: Pull in your Class 5 agent and translate it.
+## Step 2: Pull in your Class 4 and 5 agents as files.
 
-Download handoff-log.md from your briefing folder into this folder. Then paste:
+Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download my Class 5 agent, [name], from the Claude Console into a class5-export folder. Rebuild it for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Then list the apps the Console agent reached through MCP servers, and how we'll reach each one here.
+> Use the ant CLI to download my Class 4 briefing agent with its skill, and my Class 5 agent, from the Claude Console into a class-export folder. Rebuild the Class 5 agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Leave the brief for Step 5. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.
 
 _📂 The export is your blueprint_
 
-Model, system prompt, tools. Commit it: it's the record of the version that worked.
+Models, system prompts, tools, and the briefing skill. Commit it: it's the record of the version that worked.
 
 _🔌 Logins don't come across_
 
@@ -630,15 +632,18 @@ Your vault never leaves the Console, which is correct. Each app gets connected a
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Rebuild from the working agent, not a description. They download handoff-log.md from the
-briefing folder into the project. Claude uses the ant CLI (logged in during prereqs) to pull the
-Class 5 agent's definition (`ant beta:agents retrieve`; the Console's Export as code is the other
-route) into class5-export/. The Raw definition holds model, system prompt, tools and MCP servers;
-skills appear only as IDs (the Class 5 agent has none). Translate: who they are → USER.md; the
-job, the three-section deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's
-standing notes → MEMORY.md. Keep files short (overhead). Vault credentials never export, which is
-correct; each app is reconnected one at a time. Claude lists the MCP servers the Console agent
-used and how each will be reached here (the same MCP server or API where possible, else a plugin, skill or script).
+Rebuild from what works, not a description; both links of the chain come over. They download
+handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
+during prereqs) to pull the Class 4 briefing agent and its skill (`ant beta:agents retrieve`, and
+`ant beta:skills:versions download` for the skill's files) and the Class 5 agent into
+class-export/; the Console's Export as code is the other route. A Raw agent definition holds
+model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
+download. Translate the Class 5 agent now: who they are → USER.md; the job, the three-section
+deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
+Keep files short (overhead). The brief waits for Step 5. Vault credentials never export, which is
+correct; each app is reconnected one at a time. Claude lists every MCP server and API the two
+agents used and how each will be reached here (the same MCP server or API where possible, else a
+plugin, skill or script).
 
 ## Slide 18 · Step 3 · Model and keys
 
@@ -702,37 +707,42 @@ workspace usually needs an admin to approve a new app; if that won't happen toda
 Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
-## Slide 20 · Step 5 · A tool, on a branch
+## Slide 20 · Step 5 · The brief, in Python
 
 **What the student sees on this slide:**
 
 _Branching, hands-on_
 
-## Step 5: On a branch, give it a Python script as a tool.
+## Step 5: On a branch, rebuild your brief as Python.
 
 main is the agent that runs. A branch is a copy where you change things safely; nothing touches main until it's reviewed. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called add-brief-tool. On it, write a Python script in scripts/ that finds today's morning brief in my [Drive / Dropbox] briefing folder and prints its text, reading its key from .env. Then write a skill that tells the agent to run this script first when it handles my morning. Test it, commit it on the branch, and don't merge.
+> Create a branch called brief-automation. Rebuild my Class 4 morning brief as a Python automation, using the briefing skill in class-export as the spec. Write scripts/brief.py: it pulls each source through its API with keys from .env, does all the counting, dates and formatting, and prints a digest. Move the briefing skill into skills/ and update it: run the script, make the one judgment call (what needs me today), and save the brief to briefs/, dated. Test it, commit on the branch, and don't merge.
 
-_🐍 The script does the fetching_
+_🐍 Python does the dictated steps_
 
-Same result every run, for almost nothing. The agent spends its tokens on the judgment, not on finding a file.
+Fetching, counting, dates, formatting: same result every run, for almost nothing. The model only makes the one judgment call.
 
 _📘 The skill says when_
 
-Without the skill, the agent doesn't know the script exists. Together, they're a custom tool.
+SKILL.md is the same format as in the Console. Now it tells the automation to run your script: together, they're a custom tool.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Branching taught hands-on. main is the agent that runs; a branch is a copy where they change
-things safely, merged only after review. Claude creates add-brief-tool and, on it, writes a
-Python script in scripts/ that finds today's brief in the Drive or Dropbox folder and prints it,
-reading its key from `.env`, plus a skill telling the agent to run it first when handling the
-morning. Test, commit on the branch, don't merge. Why a script: same result every run for almost
-nothing, so the agent's tokens go to judgment (Class 4's split, now buildable). Why a skill: the
-agent doesn't know a script exists until a skill says when to use it; together they're a custom
-tool. Dropbox access tokens are simpler to set up than Google's OAuth for a first script.
+Branching taught hands-on, on the missing link: the Class 4 automation. main is the agent that
+runs; a branch is a copy where they change things safely, merged only after review. On a branch
+called brief-automation, Claude rebuilds the brief using the exported briefing skill as the spec:
+scripts/brief.py pulls each source through its API with keys from `.env` and does every dictated
+step (fetching, counting, dates, formatting), printing a digest; the briefing skill moves into
+skills/ and is updated to run the script, make the one judgment call ("what needs me today"),
+and save the brief to briefs/ dated. Test, commit on the branch, don't merge. This is Class 4's
+split made fully real: code for the dictated steps, the model only for judgment, and the script
+plus the skill that says when to run it is a custom tool. Keep personal output folders (briefs/,
+handoffs, memory/) in `.gitignore` or at least in the private repo only. Sources with a simple
+API key are easiest first; Google's APIs need an OAuth client, so Claude may suggest starting
+with one source and adding the rest as homework. Honesty rules carry over from Class 4: say when
+a source failed; write a brief even on a quiet day.
 
 ## Slide 21 · Step 6 · Review and merge
 
@@ -742,13 +752,13 @@ _The author shouldn't grade its own work_
 
 ## Step 6: A second AI reviews the branch, then you merge.
 
-- 1. Tell Claude Code: "Open a pull request for add-brief-tool." That's the proposal to change main.
+- 1. Tell Claude Code: "Open a pull request for brief-automation." That's the proposal to change main.
 
 - 2. Open Codex (or another AI) in VS Code: "Review this pull request for bugs and security problems, especially how it handles keys."
 
 - 3. Paste the findings to Claude Code: "Fix what's real, and tell me what you disagree with."
 
-- 4. "Merge it into main and restart the gateway." Then message the agent: "Handle my morning."
+- 4. "Merge it into main and restart the gateway." Then message it: "Write today's brief."
 
  🌿
 
@@ -759,41 +769,43 @@ Every change from now on goes this way: branch, review, merge. When the agent ru
 The author shouldn't grade its own work. Claude opens a pull request (the proposal to change
 main). A second AI reviews it: Codex in VS Code or another model, asked for bugs and security
 problems, especially key handling. The findings go back to Claude Code: fix what's real, say
-what it disagrees with. Then merge into main, restart the Gateway, and message the agent "Handle
-my morning." Every change from now on is branch, review, merge; once it runs in the cloud, main
+what it disagrees with. Then merge into main, restart the Gateway, and message it "Write today's
+brief." to check the brief lands in briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main
 is what runs, so only reviewed code reaches it.
 
-## Slide 22 · Step 7 · Schedule it
+## Slide 22 · Step 7 · Schedule the chain
 
 **What the student sees on this slide:**
 
-_Your deployment, rebuilt_
+_Your two deployments, rebuilt_
 
-## Step 7: Schedule the 7:30 run, and decide on the heartbeat.
+## Step 7: Schedule the brief at 7:00 and the agent at 7:30.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create an OpenClaw automation: weekdays at 7:30 in my time zone, in its own session, with the prompt "Handle my morning." Save the handoff to my briefing folder and send it to me in my chat app. Then show me the next five run times.
+> Create two OpenClaw automations, weekdays in my time zone, each in its own session. At 7:00, on a cheaper model: run the briefing skill. At 7:30, on my main model: "Handle my morning." It reads today's brief from briefs/, saves the handoff, and sends it to me in my chat app. Then show me the next five run times for each.
+
+_⏸️ Then pause Classes 4 and 5_
+
+Once this chain's handoff is right, pause both Managed Agents deployments. Otherwise you get two briefs and double drafts.
 
 _💓 The heartbeat stays off for now_
 
 When you want check-ins, turn it on with a short HEARTBEAT.md, its own light session, and working hours only. That keeps each wake to a few thousand tokens.
 
-_✌️ Two agents, one brief_
-
-Your Class 5 deployment also runs at 7:30. Two agents working one brief means double drafts: once this one's handoff is right, pause one of them .
-
-The chain now crosses surfaces: the brief still runs in Managed Agents at 7:00, and OpenClaw picks it up. Each link lives wherever suits it.
+Same chain as Class 5: one job per link, and a model per link. Now both links live in one folder you control.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The deployment rebuilt as an automation: weekdays at 7:30 in their time zone, isolated session,
-prompt "Handle my morning.", handoff saved to the folder and sent in their chat app; Claude shows the
-next five run times to catch cron typos (Class 4's lesson). Heartbeat stays off; when wanted, a
-short HEARTBEAT.md, isolated light session, and activeHours keep each wake to a few thousand
-tokens. The double-act risk: the Class 5 deployment also runs at 7:30, and two agents on one
-brief mean double drafts; once the OpenClaw handoff is right, pause one (the Class 4 brief keeps
-running). The chain now crosses surfaces: brief in Managed Agents at 7:00, action agent in
-OpenClaw. Each link lives where it suits. The laptop must be awake at 7:30 until it's hosted.
+The two Managed Agents deployments rebuilt as two OpenClaw automations, weekdays in their time
+zone, each in its own isolated session. 7:00 on a cheaper model: run the briefing skill (the
+script does the heavy lifting; the model makes one judgment call). 7:30 on the main model:
+"Handle my morning.", reading today's brief from briefs/, saving the handoff, and sending it in
+their chat app. A model per link is the Class 5 chain lesson, now inside one install. Claude
+shows the next five run times for each to catch cron typos (Class 4's lesson). Once the OpenClaw
+handoff is right, pause both Managed Agents deployments (Class 4 and Class 5), or they get two
+briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md, isolated light
+session and activeHours keep each wake to a few thousand tokens. The laptop must be awake at 7:00
+and 7:30 until it's hosted.
 
 ## Slide 23 · Webhooks
 
@@ -811,7 +823,7 @@ A new brief request from a client: it drafts the kickoff notes.
 
 _📂 A file lands_
 
-The Class 4 brief is saved: it starts right away instead of waiting for 7:30.
+A contract hits your Dropbox: it summarizes it and flags the dates.
 
 _⚡ A Zap fires_
 
@@ -825,8 +837,8 @@ Webhooks need an address the internet can reach, and your laptop isn't one. They
 
 Concept, not built today. hooks.enabled plus a hook token gives the Gateway endpoints
 (POST /hooks/wake, /hooks/agent, /hooks/<name>) with bearer-token auth; tokens in the query
-string are refused. Examples: a form submission drafting kickoff notes, the Class 4 brief landing
-and starting the agent right away, anything Zapier or Make can see. The catch: a webhook needs an
+string are refused. Examples: a form submission drafting kickoff notes, a contract landing in Dropbox
+and getting summarized with its dates flagged, anything Zapier or Make can see. The catch: a webhook needs an
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
@@ -902,9 +914,9 @@ and webhooks become possible.
 
 _Your homework_
 
-## Finish the agent until its handoff matches Class 5's.
+## Finish the chain until its handoff matches Class 5's.
 
-_🔌 Connect every app it needs_
+_🔌 Connect every source and app_
 
 One at a time, each on its own branch: an MCP server or API you trust, a plugin or skill you've read, or a script tool.
 
@@ -926,10 +938,11 @@ The calls are yours: what it may do, what model it runs on, and whether it's wor
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
+Finish the chain until its handoff matches Class 5's. Connect every source the brief reads and
+every app the agent acts in, one per branch:
 the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Add a second chat app
 if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
-Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
+Then decide: move it to Render, or go back to the Managed Agents chain if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
 
@@ -943,9 +956,9 @@ _That's the course — here's what you can do now_
 
 - The decision : Cowork first, Managed Agents next, OpenClaw only when a job needs it.
 
-- An OpenClaw agent, cleaned out and rebuilt from your Class 5 agent.
+- A cleaned-out OpenClaw running your whole chain: the brief and the agent.
 
-- A chat you can message it in , and a Python script it calls as a tool .
+- Your brief as Python , and a chat you can message the agent in .
 
 - Code in GitHub, changed only by branch, review, merge , with keys kept out.
 
@@ -956,7 +969,7 @@ Same rules, anywhere you build: dictate the deliverable, one job per agent, cap 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Recap of the course's end state: the decision (Cowork first, Managed Agents next, OpenClaw only
-when a job needs it); an OpenClaw agent cleaned out and rebuilt from the Class 5 agent; a chat
-they can message it in and a Python script it calls as a tool; code in GitHub changed only by
+when a job needs it); a cleaned-out OpenClaw running the whole chain (the brief as a Python
+automation, the agent acting on it); a chat they can message the agent in; code in GitHub changed only by
 branch, review, merge, keys kept out. The rules that travel to any surface: dictate the
 deliverable, one job per agent, cap what it can spend, use the simplest setup that works.

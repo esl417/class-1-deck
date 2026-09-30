@@ -185,14 +185,17 @@ the build.
 
 **As built (2026-09-30).** First half is teaching: what OpenClaw is, the comparison table
 (who runs it, models, payment, token overhead, customize, reach, what wakes it, deploy,
-maintain, debug, security), the decision tree (Cowork → Managed Agents → OpenClaw, plus the
-consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map from Managed Agents, the
-workspace files, Gateway and channels, tools/skills/permissions, what wakes it, any model,
-security. Build: Install (onboarding run by the student in the VS Code terminal), Step 1
-clean it out (measured with `/context detail`), 2 pull in the Class 5 agent via `ant`, 3 model
-+ fallback + `.env`, 4 connect the chat app they live in, with pairing (Telegram built in;
-Slack, WhatsApp, Teams, Discord, Signal, iMessage as plugins; a work Slack may need admin approval), 5 a Python script tool on a branch, 6 second-AI review and merge, 7 schedule 7:30
-as an automation (pause Class 5 or OpenClaw once both run, or drafts double). Then webhooks
+maintain, debug, security), the decision tree (three questions from the table: non-Claude
+model → OpenClaw; an event must wake it or it needs custom tools → OpenClaw; a service reached
+with an API key rather than an MCP connector → Managed Agents; else Cowork; plus the
+consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map, the workspace files, Gateway
+and channels, tools/skills/permissions, what wakes it, any model, security. Build rebuilds the
+WHOLE chain (Eric, 2026-09-30: the automation link was missing): Install, Step 1 baseline
+cleanout (not job-specific), 2 pull in the Class 4 and 5 agents via `ant`, 3 model + fallback +
+`.env`, 4 connect a chat app with pairing, 5 on a branch rebuild the Class 4 brief as a Python
+automation (script for dictated steps, the exported briefing skill for the one judgment, brief
+saved to briefs/), 6 second-AI review and merge, 7 schedule 7:00 brief (cheaper model) and
+7:30 agent as two automations, then pause both Managed Agents deployments. Then webhooks
 (concept), when it breaks, Render (explained), homework, recap.
 Corrections from research against docs.openclaw.ai: TOOLS.md and HEARTBEAT.md are NOT
 injected every call (AGENTS, SOUL, IDENTITY, USER, MEMORY, BOOTSTRAP are); the cron command is

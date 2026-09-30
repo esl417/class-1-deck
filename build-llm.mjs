@@ -238,10 +238,12 @@ const DECKS = [
       'channels, tools, skills, permissions, heartbeat, automations, webhooks, any ' +
       'model); then install it into a project folder that is a private GitHub repo, ' +
       'clean it out first (trim injected files, bundled skills off, heartbeat off, ' +
-      'measured with /context detail), rebuild the Class 5 agent from its ant export, ' +
-      'set model and fallback, connect Telegram with pairing, build a Python script ' +
-      'tool on a branch, have a second AI review it, merge, and schedule 7:30 as an ' +
-      'automation. Render hosting and webhooks are explained only; finishing the agent ' +
+      'measured with /context detail), pull both Class 4 and 5 agents in with ant, ' +
+      'rebuild the Class 5 agent as workspace files, set model and fallback, connect ' +
+      'a chat app with pairing, rebuild the Class 4 brief as a Python automation on a ' +
+      'branch (script for the dictated steps, skill for the one judgment), have a ' +
+      'second AI review it, merge, and schedule the chain as two automations (7:00 ' +
+      'brief on a cheaper model, 7:30 agent). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent ' +
       'is homework. Rules: keys only in .env (gitignored) or OpenClaw\'s credential ' +
       'store, never in a chat; read every skill before installing (malicious ClawHub ' +
       'skills exist); Gateway stays on loopback; caps live at each model provider. ' +
