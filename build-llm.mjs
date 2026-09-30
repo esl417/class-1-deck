@@ -214,7 +214,7 @@ const DECKS = [
       'part is configured, capped and debugged on its own; Skills and Multiagent ' +
       'are left empty on purpose). The system prompt dictates the DELIVERABLE, ' +
       'not steps: the handoff\'s three sections with a definition of done for each, ' +
-      'plus limits (draft never send, leave alone named kinds). It reads yesterday\'s handoff as its memory (no memory store), they test-run it, and ' +
+      'plus limits (draft never send, leave alone named kinds). Its memory is handoff-log.md in the briefing folder, named in the system prompt (no memory store). They test-run it in a session with the briefing\'s vault, and ' +
       'deploy the agent in its own deployment with a goal prompt ("Handle my ' +
       'morning") and a per-run budget. Output: a handoff with Taken care of ' +
       '/ Needs your action / FYI. Custom tools are concept only: their code must run ' +

@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). The system prompt dictates the DELIVERABLE, not steps: the handoff's three sections with a definition of done for each, plus limits (draft never send, leave alone named kinds). It reads yesterday's handoff as its memory (no memory store), they test-run it, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
+ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). The system prompt dictates the DELIVERABLE, not steps: the handoff's three sections with a definition of done for each, plus limits (draft never send, leave alone named kinds). Its memory is handoff-log.md in the briefing folder, named in the system prompt (no memory store). They test-run it in a session with the briefing's vault, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
 
 ---
 
@@ -311,13 +311,13 @@ _Create agent, top to bottom_
 Managed Agents → Agents → Create agent . Fill in General : a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff. The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each. Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read yesterday's handoff first, so you don't redo work or drop what's still waiting.
+> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff. The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each. Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. The briefing folder is [folder name] in [Drive / Dropbox]; read handoff-log.md there first, and add today's entry last.
 
 Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and "read yesterday's handoff first" so it doesn't redo work or drop what's still waiting. Each session starts with fresh context, so the previous handoff in the folder is its memory; no separate log or memory store is needed. The Console's sessions are the student's record of every run (for debugging), not something the agent reads. Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 4 brief agent only sorts, so they can move it to a lighter model for a direct saving.
+Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and the line that points it at its memory: the briefing folder's name and "read handoff-log.md there first, and add today's entry last." The Console's sessions are the student's record of every run (for debugging), not something the agent reads. Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 4 brief agent only sorts, so they can move it to a lighter model for a direct saving.
 
 ## Slide 11 · Step 2 · Tools
 
@@ -367,7 +367,33 @@ Subagents aren't the chain from slide 8: they run inside this agent's run and sh
 
 The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 4 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Distinguish them from the chain on slide 8: subagents run inside one session under one shared budget, while each link in a chain is its own deployment with its own model, cap and sessions. Then Create agent.
 
-## Slide 13 · Step 4 · Test run
+## Slide 13 · How it remembers
+
+**What the student sees on this slide:**
+
+_Every session starts blank_
+
+## Its memory is a log file in your briefing folder.
+
+The agent has no memory between sessions, and it can't edit its own system prompt. So it keeps a file, handoff-log.md , next to your briefs. It reads the log first and adds to it last.
+
+_📒 What's in the log_
+
+Standing notes it learns from you (where the folder is, how briefs are named, anything you correct), plus a dated entry for each run: what it did and what's still waiting.
+
+_🧭 How a new session finds it_
+
+The system prompt names the folder and says to read the log first. Without that line, a new session doesn't know the log exists.
+
+ ✍️
+
+The system prompt is yours; the log is its own. Correct it in a session and it writes the lesson to the log. Open the file now and then, and delete anything wrong or stale.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+Observed in Eric's own build: the agent has no memory between sessions and can't change its own system prompt or description, so when told to remember something it creates handoff-log.md in the briefing folder in Drive (or Dropbox) and writes there. That file is its memory. Two parts: standing notes it has learned (the folder and its ID so it can find it directly, how briefs are named, e.g. morning-briefing-YYYY-MM-DD.md, the deliverable format, limits like draft-never-send, and any correction the student gives), and a dated entry per run (what it did, what's still waiting, e.g. "no brief yet for today"). The catch the agent itself points out: a new session only finds the log if the system prompt names the folder and says to read handoff-log.md first; that line is in the Step 1 template, so make sure it's filled in. The division to teach, same as the Beginner track: the system prompt is the student's (only they edit it); the log is the agent's own (it writes it, they can read, edit and delete entries). Encourage a periodic skim: memory nobody reviews drifts, and because the agent reads email from strangers, a prompt injection could try to write into the log. No memory store resource is needed.
+
+## Slide 14 · Step 4 · Test run
 
 **What the student sees on this slide:**
 
@@ -389,7 +415,7 @@ Make sure today's brief is in your folder (if not, click Run now on the Class 4 
 
 How to test: start a session with this agent, choose the same credential vault as the morning briefing (that's where the app logins live; without it the MCP tools can't authenticate), start the session, and send "Handle my morning." A debugging loop, as in Class 4. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 4 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
-## Slide 14 · Step 5 · Schedule it
+## Slide 15 · Step 5 · Schedule it
 
 **What the student sees on this slide:**
 
@@ -415,7 +441,7 @@ Click Run now once, and read the session. It's the first run with nobody approvi
 
 Leave the Class 4 deployment running as it is; this is a second deployment. Fields: the new agent, Class 4's environment and vault, `30 7 * * 1-5` in their time zone (after the 7:00 brief; scheduled runs can start up to 9 minutes late, so if the brief sometimes lands late, move the agent later, not earlier), the prompt "Handle my morning." (a goal, not steps), and a per-run budget a little above the test run's cost. At the cap a run pauses rather than being killed. Then Run now once and read the session: it's the first run with nobody to approve anything, so it proves the permissions hold. If it stalls, look for a tool call waiting on approval. Confirm the current form fields in the Console.
 
-## Slide 15 · Direct it
+## Slide 16 · Direct it
 
 **What the student sees on this slide:**
 
@@ -437,7 +463,7 @@ It wasn't in the meeting. "We agreed on the 15th and a revised quote" belongs in
 
 Besides the schedule, they can start a session with the agent any time (choosing the same vault as the morning briefing) and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
 
-## Slide 16 · Tune what reaches you
+## Slide 17 · Tune what reaches you
 
 **What the student sees on this slide:**
 
@@ -455,13 +481,13 @@ It handled something you wanted to see. Say that kind of item belongs in Needs y
 
  🔍
 
-Surprised by something it did? Open that run's session and read why. Then fix the cause: the deliverable in the system prompt, or a tool's permission.
+Surprised by something it did? Open that run's session and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or an entry in its log file.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable or a tool permission.
+The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable, a tool permission, or an entry in its log file.
 
-## Slide 17 · Homework
+## Slide 18 · Homework
 
 **What the student sees on this slide:**
 
@@ -485,7 +511,7 @@ The calls are yours: what counts as done, and what always comes to you. Claude c
 
 Two things before Class 6. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
 
-## Slide 18 · You shipped it
+## Slide 19 · You shipped it
 
 **What the student sees on this slide:**
 
@@ -499,7 +525,7 @@ _That's the class — here's what now runs_
 
 - Tools allowed or turned off ; it drafts, you send.
 
-- Yesterday's handoff as its memory, and a capped run every weekday.
+- A log file as its memory, and a capped run every weekday.
 
  🧠
 
@@ -507,4 +533,4 @@ Next class, you own the code. You rebuild this agent in OpenClaw, where your own
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: a two-link chain (the Class 4 brief feeding the agent, each with its own model and cap), an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), yesterday's handoff as its memory, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
+Recap: a two-link chain (the Class 4 brief feeding the agent, each with its own model and cap), an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a handoff-log.md file in the briefing folder as its memory, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.

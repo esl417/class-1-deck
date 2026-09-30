@@ -116,7 +116,7 @@ it within the authority it's given, and writes a handoff in three sections: **Ta
 care of / Needs your action / FYI.** That is what they read every morning. A full agent.
 The agent's system prompt dictates the deliverable (outcome), not steps and not "how far it
 can go": the three sections with a definition of done for each (Eric's framing, 2026-09-29).
-Carry over from Beginner: act-then-verify, state between runs (yesterday's handoff),
+Carry over from Beginner: act-then-verify, state between runs (handoff-log.md in the folder),
 nothing sent as the student without them.
 
 ## Class 6 Advanced: OpenClaw in VS Code
@@ -198,7 +198,8 @@ The hub's single "Coming soon" card becomes three cards.
    agent; uploading a custom skill with a script and having a deployment run it; the Drive
    / Dropbox MCP path and vault setup; per-run budget on a deployment.
 2. **Class 5:** the agent calling the Class 4 skill on its own; where the three-section
-   report persists between sessions. Decided: no log or memory store; the agent reads
-   yesterday's handoff from the folder (sessions are the human's record, not the agent's).
+   report persists between sessions. Decided: no memory store. The agent keeps handoff-log.md in the
+   briefing folder (standing notes + dated entries), found via a line in the system prompt.
+   Observed in Eric's build 2026-09-30. Sessions are the human's record, not the agent's.
 3. **Cost screens:** confirm the Console's workspace spend limit and the auto-reload
    toggle exist where the Class 4 cost slide says.

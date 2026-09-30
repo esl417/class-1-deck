@@ -948,7 +948,7 @@
   <div class="eyebrow">Create agent, top to bottom</div>
   <h2>Step 1: Name it, pick the model, dictate its <em>deliverable</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read yesterday's handoff first, so you don't redo work or drop what's still waiting.</div>
+  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. The briefing folder is [folder name] in [Drive / Dropbox]; read handoff-log.md there first, and add today's entry last.</div>
   <p class="small-note">Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.</p>
 </section>
 
@@ -988,6 +988,28 @@
     </div>
   </div>
   <p class="small-note">Subagents aren't the chain from slide 8: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click <strong>Create agent</strong>.</p>
+</section>
+
+<!-- 11b. HOW IT REMEMBERS -->
+<section class="slide dense">
+  <div class="slide-num" data-label="How it remembers"></div>
+  <div class="eyebrow">Every session starts blank</div>
+  <h2>Its memory is a log file in your briefing folder.</h2>
+  <p>The agent has no memory between sessions, and it can't edit its own system prompt. So it keeps a file, <strong>handoff-log.md</strong>, next to your briefs. It reads the log first and adds to it last.</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">📒 What's in the log</div>
+      <p><strong>Standing notes</strong> it learns from you (where the folder is, how briefs are named, anything you correct), plus a <strong>dated entry</strong> for each run: what it did and what's still waiting.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">🧭 How a new session finds it</div>
+      <p>The system prompt names the folder and says to read the log first. Without that line, a new session doesn't know the log exists.</p>
+    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">✍️</span>
+    <p><strong>The system prompt is yours; the log is its own.</strong> Correct it in a session and it writes the lesson to the log. Open the file now and then, and delete anything wrong or stale.</p>
+  </div>
 </section>
 
 <!-- 12. STEP 4 — TEST RUN -->
@@ -1063,7 +1085,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🔍</span>
-    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: the deliverable in the system prompt, or a tool's permission.</p>
+    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or an entry in its log file.</p>
   </div>
 </section>
 
@@ -1097,7 +1119,7 @@
     <li class="done-check">An agent built field by field, with <strong>the deliverable it owes you</strong> dictated in its system prompt.</li>
     <li class="done-check">A <strong>two-link chain</strong>: your Class 4 brief feeding the agent, each with its own model and cap.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
-    <li class="done-check">Yesterday's handoff as its memory, and a <strong>capped</strong> run every weekday.</li>
+    <li class="done-check">A <strong>log file</strong> as its memory, and a <strong>capped</strong> run every weekday.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🧠</span>
