@@ -458,7 +458,7 @@ _🪝 A webhook_
 
 Another app knocks on its door with a secret token: a new form response, a file landing, a payment. It wakes and handles it.
 
-Rule of thumb: exact times go in a schedule; loose "keep an eye on things" goes in the heartbeat.
+Rule of thumb: a one-off ask is a message; "keep an eye on things" is the heartbeat; an exact time is a schedule; something happening in another app is a webhook.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
