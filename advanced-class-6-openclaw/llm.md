@@ -835,7 +835,7 @@ _Explained today, done when you're ready_
 
 ## Render runs your agent from GitHub, laptop open or not.
 
-Render is a hosting service, and OpenClaw's docs include a setup for it. You connect your GitHub repo, and Render runs the agent around the clock.
+Render is a hosting service. You sign up with your GitHub account and link your repo; Claude Code adds two small setup files to it. From then on, Render runs your agent around the clock.
 
 _🌿 It runs main_
 
@@ -849,65 +849,63 @@ _🔑 Keys go in Render_
 
 In Render's environment settings, never in the repo. And it's one more bill to cap.
 
-Once it's in the cloud, it can take webhooks, and 7:30 runs whether your laptop is open or not.
+Once it's live, turn off your laptop's agent: two agents on one bot fight over messages. In the cloud it can take webhooks, and 7:30 runs whether your laptop is open or not.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Explained, not done in class; verified against docs.openclaw.ai/install/render and render.com
-docs on 2026-09-30. Check both again before directing any click, and Render's pricing page before
-quoting a price.
+Explained, not done in class. The desired setup (Eric's): the student signs up for Render with
+their GitHub account, links THEIR class repo, and every push to main redeploys their agent. Facts
+below were checked against docs.openclaw.ai (install/render, install/docker, concepts/agent-workspace),
+render.com docs and pricing, and Telegram's Bot API on 2026-09-30; the wiring in "How their repo
+becomes deployable" is not a documented OpenClaw recipe, so Eric dry-runs it before recommending it.
+Check Render's pricing page before quoting a price.
 
-What the official path is. OpenClaw's docs provide a render.yaml Blueprint (it lives in OpenClaw's
-own repo, github.com/openclaw/openclaw, with its Dockerfile) and a one-click "Deploy to Render"
-button pointing at that repo. The Blueprint defines: a Docker web service with a health check
-(/startupz); a 1GB persistent disk at /data, with OPENCLAW_STATE_DIR=/data/.openclaw and
-OPENCLAW_WORKSPACE_DIR=/data/workspace; OPENCLAW_GATEWAY_PORT=8080; and an auto-generated
-OPENCLAW_GATEWAY_TOKEN. Prerequisite: a model provider API key, which goes in the Render dashboard
-(Environment). After deploy, the Control UI is at https://<service>.onrender.com/, connected with
-the gateway token (found under Dashboard → service → Environment); Dashboard → service → Shell opens
-a shell with the disk at /data. Onboarding and channel setup are done again on the deployed
-instance.
+What OpenClaw documents. A render.yaml Blueprint (in github.com/openclaw/openclaw, with a "Deploy to
+Render" button pointing at that repo): a Docker web service with a health check (/startupz); a 1GB
+persistent disk at /data, with OPENCLAW_STATE_DIR=/data/.openclaw and
+OPENCLAW_WORKSPACE_DIR=/data/workspace; OPENCLAW_GATEWAY_PORT=8080; an auto-generated
+OPENCLAW_GATEWAY_TOKEN. The docs deploy OpenClaw's own repo or a fork, not a workspace repo, which
+is why their repo needs the two files below. An official image exists: ghcr.io/openclaw/openclaw
+(mirrored on Docker Hub as openclaw/openclaw); pin a release tag, not latest.
 
-Cost, which decides the plan. Free web services can't attach a disk and spin down after 15 minutes
-without inbound traffic; the docs say to change plan to free and delete the disk block in a fork's
-render.yaml, and then OpenClaw's state resets on every deploy. Fine for a demo if they know
-memory and settings vanish. An agent they keep needs the Starter plan: $7/month plus $0.25 per GB
-per month for the disk (Render pricing, September 2026), so about $7.25 for 1GB. One more bill to
-cap, separate from the model provider.
+How their repo becomes deployable (Claude Code does this, on a branch, approved before merge):
+(1) a small Dockerfile that starts FROM the pinned OpenClaw image and keeps its entrypoint (the
+docs warn a custom entrypoint skips a startup step); (2) a render.yaml adapted from OpenClaw's,
+using runtime: docker so Render builds from their repo, branch main, and autoDeployTrigger:
+commit (deploy on each commit to main; the default for new services). Render can't reach the disk
+during the build, so the workspace files can't be copied into /data at build time: a small start
+step copies the files the student owns (AGENTS.md, SOUL.md, USER.md, IDENTITY.md, skills/) from the
+image into /data/workspace on each start, and leaves the agent's own files (MEMORY.md, memory/)
+alone. The rule to teach: the repo owns the instructions; the disk owns the memory. Without that
+split, a redeploy would overwrite what the agent has learned.
 
-Two gaps the official guide doesn't cover, so "push my GitHub and it works" isn't true:
-(1) The Blueprint deploys OpenClaw itself, not the student's class repo. The Render agent starts
-blank. Their workspace (SOUL.md, AGENTS.md, USER.md, MEMORY.md, skills) has to be brought onto the
-disk at /data/workspace. OpenClaw documents keeping the workspace in a private git repo and has
-`openclaw backup create` / `openclaw backup restore`; the practical route is to clone the class repo
-or restore a backup into /data/workspace from the Render Shell. That step is an inference from the
-docs, not a documented Render step: dry-run it before recommending it.
-(2) Settings and connections don't carry over: the local ~/.openclaw (model key, gateway config,
-paired channels) isn't in the repo and shouldn't be (secrets). They re-enter the key in Render
-and rerun onboarding and channel pairing on the deployed instance.
+Then in Render: New → Blueprint → pick their repo → set the model key in Dashboard → Environment
+(never in the repo; .env is already gitignored) → deploy. The Control UI is at
+https://<service>.onrender.com/, connected with the gateway token (Dashboard → service →
+Environment); Dashboard → service → Shell opens a shell with the disk at /data. Local settings in
+~/.openclaw (model key, paired channels) don't carry over and shouldn't be in the repo, so they
+pair the chat app again on the deployed instance.
 
-Redeploys. Render redeploys when the connected repo's branch gets a new commit; if they deployed
-straight from openclaw/openclaw (no push access) they must run a manual Blueprint sync or point the
-service at their own fork. So branch-approve-merge still matters for anything that deploys from a
-repo they own. Environment variables: Render offers "Save, rebuild, and deploy", "Save and deploy",
-or "Save only" (not used until the next deploy); a plain restart doesn't pick up changes. Anything
-written outside /data is wiped on the next deploy. Secrets live in the Render dashboard, never the
-repo; their .gitignore already excludes .env.
+Cost decides the plan. Free web services can't attach a disk and spin down after 15 minutes without
+traffic; without a disk, OpenClaw's state and the agent's memory reset on every deploy (for a free
+demo the disk block is removed from render.yaml). An agent they keep needs Starter: $7/month plus
+$0.25 per GB per month for the disk (render.com/pricing, September 2026), about $7.25 for 1GB. One
+more bill, separate from the model provider.
 
-Class-day trap: don't run two agents on one bot. OpenClaw's Telegram channel uses long polling by
-default, and Telegram allows only one receiver per bot token, so a local Gateway and a Render
-Gateway on the same token fight over messages (a getUpdates conflict; messages land in the wrong
-place or nowhere). Stop the local agent once the Render one is live, or give each its own bot.
+Redeploys and secrets. Every commit to main redeploys, which is why branch, test, approval, merge
+matters: main is what runs. Env var changes: Render offers "Save, rebuild, and deploy", "Save and
+deploy", or "Save only" (not used until the next deploy); a plain restart doesn't pick changes up.
+Anything written outside /data is wiped on the next deploy.
 
-The chain in the cloud. brief.py can run as a Render cron job from the class repo, and the agent as
+Class-day trap: one bot, one agent. OpenClaw's Telegram channel uses long polling by default, and
+Telegram allows only one way of receiving updates per bot, so a local Gateway and a Render Gateway
+on the same token fight over messages (a getUpdates conflict). Turn off the laptop's agent once the
+Render one is live, or give each its own bot.
+
+The chain in the cloud. brief.py can run as a Render cron job from the same repo, with the agent as
 the web service. A Render disk attaches to one service only, so the cron job can't write into the
-agent's /data: save the brief to Drive or Dropbox (as in Class 4) and have the agent read it from
-there. Once hosted, both run with the laptop closed and webhooks become possible.
-
-Realistic student flow, when they choose to do it: sign up for Render; deploy the OpenClaw
-Blueprint (Starter if it should remember); add the model key in the dashboard; open the deployed
-Control UI with the gateway token and run onboarding and channel setup; bring the workspace in from
-the class repo; stop the local agent. Recommend Eric does one dry run from a fresh account first.
+agent's /data: in the cloud the brief goes to Drive or Dropbox and the agent reads it there. Once
+hosted, both run with the laptop closed and webhooks become possible.
 
 ## Slide 24 · When it breaks
 
