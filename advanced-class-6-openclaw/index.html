@@ -1152,7 +1152,7 @@
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 4 and 5 agents as files.</h2>
   <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste:</p>
-  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.</div>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each connection.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1177,7 +1177,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔑 The .env file</div>
-      <p>Tell Claude Code: <em>"Create .env and confirm it's in .gitignore."</em> Then open .env in VS Code and <strong>paste each key there yourself</strong>. Your scripts read keys from it; Claude never sees them in the chat.</p>
+      <p>Step 2 created it, and every key you add later goes there too. Open .env in VS Code and <strong>paste each key yourself</strong>. Your scripts read keys from it; Claude never sees them in the chat.</p>
     </div>
   </div>
   <div class="heads-up">

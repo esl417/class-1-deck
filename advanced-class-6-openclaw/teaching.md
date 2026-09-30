@@ -217,16 +217,18 @@ download. Translate the Class 5 agent now: who they are → USER.md; the job, th
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
 Keep files short (overhead). The brief waits for Step 5; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
-correct; each app is reconnected one at a time. Claude lists every MCP server and API the two
-agents used and how each will be reached here (the same MCP server or API where possible, else a
-plugin, skill or script).
+correct; each app is reconnected one at a time. Then Claude gets every app the two agents used
+working: it connects the same MCP servers, and for each API walks the student through getting the
+key, which the student pastes into `.env` themselves (Claude creates `.env` first and confirms
+it's in `.gitignore`); each connection is tested before moving on. Fallback where a service has no
+MCP server or key-based API: a trusted plugin, skill or script.
 
 ## Step 3 · Model and keys
 
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
-`.env`: Claude creates it and confirms it's in `.gitignore`; the student opens it in VS Code and
-pastes keys themselves. Scripts read from it; Claude never sees the keys in chat. The habit
+`.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
+by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Step 4 · Connect a chat app

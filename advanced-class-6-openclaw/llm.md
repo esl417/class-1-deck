@@ -620,7 +620,7 @@ _Rebuild from what works, not a description_
 Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then list every app the two agents reached through MCP servers or APIs, and how we'll reach each one here.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write next. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each connection.
 
 _📂 The export is your blueprint_
 
@@ -644,9 +644,11 @@ download. Translate the Class 5 agent now: who they are → USER.md; the job, th
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
 Keep files short (overhead). The brief waits for Step 5; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
-correct; each app is reconnected one at a time. Claude lists every MCP server and API the two
-agents used and how each will be reached here (the same MCP server or API where possible, else a
-plugin, skill or script).
+correct; each app is reconnected one at a time. Then Claude gets every app the two agents used
+working: it connects the same MCP servers, and for each API walks the student through getting the
+key, which the student pastes into `.env` themselves (Claude creates `.env` first and confirms
+it's in `.gitignore`); each connection is tested before moving on. Fallback where a service has no
+MCP server or key-based API: a trusted plugin, skill or script.
 
 ## Slide 18 · Step 3 · Model and keys
 
@@ -662,7 +664,7 @@ Tell Claude Code: "Set my main model to [model] and add [model] as a fallback." 
 
 _🔑 The .env file_
 
-Tell Claude Code: "Create .env and confirm it's in .gitignore." Then open .env in VS Code and paste each key there yourself . Your scripts read keys from it; Claude never sees them in the chat.
+Step 2 created it, and every key you add later goes there too. Open .env in VS Code and paste each key yourself . Your scripts read keys from it; Claude never sees them in the chat.
 
  ✅
 
@@ -672,8 +674,8 @@ Check before every commit: ask Claude "Is anything secret about to be committed?
 
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
-`.env`: Claude creates it and confirms it's in `.gitignore`; the student opens it in VS Code and
-pastes keys themselves. Scripts read from it; Claude never sees the keys in chat. The habit
+`.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
+by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Slide 19 · Step 4 · Connect a chat app
