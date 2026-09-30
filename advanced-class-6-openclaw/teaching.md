@@ -58,13 +58,15 @@ The decision tree, built from the comparison table's rows (each question is labe
 rows it comes from). Start at the top; the first yes decides. 1 (models): does it need a model
 other than Claude? Yes → OpenClaw. 2 (what wakes it, customize): does an event need to wake it (a webhook: a form
 submitted, a file landing, a payment), or does it need custom tools (their own scripts)? Yes →
-OpenClaw. 3 (reach it): must they message it in Slack, Telegram or
-WhatsApp, where the Claude app on the phone isn't enough? Yes → OpenClaw. 4 (deploy, debug):
-must it run unattended with a hard cap on every run and every step traced in a session? Yes →
-Managed Agents. No to all four (payment, maintain): a Cowork project on the flat Claude plan,
-nothing to host. Any OpenClaw answer also brings the Maintain and Security rows: only choose it
-if they'll own the upkeep. Worked example: the Class 5 agent lands on OpenClaw only at question
-3 (Slack), and the student could equally decide that isn't worth the upkeep. Consumer agents:
+OpenClaw. 3 (deploy, debug): must it run unattended with a hard cap on every
+run and every step traced in a session? Yes → Managed Agents. No to all three (payment,
+maintain): a Cowork project on the flat Claude plan, nothing to host. Messaging is deliberately
+not a question: a Cowork project can be messaged from the Claude app on desktop and phone, so
+being reachable doesn't by itself justify OpenClaw (only Managed Agents lacks it). Any OpenClaw
+answer also brings the Maintain and Security rows: only choose it if they'll own the upkeep.
+Worked example, said honestly: the Class 5 agent answers no to questions 1 and 2, so it can stay
+where it is; they rebuild it in OpenClaw today to learn the surface on a job they know, for the
+day a job answers yes. Consumer agents:
 big companies are shipping agents for everyone (xAI's Grok Bot, in early beta since August 2026
 in its top tier; Meta's Muse, a personal agent app launched September 2026; OpenAI and Google
 have their own always-on agents), so a given job may soon be doable off the shelf and is worth
