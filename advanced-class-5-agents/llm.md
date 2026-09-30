@@ -145,9 +145,9 @@ The automation-to-agent line in one move. Class 4: a timer starts the run and th
 
 _What the agent can reach for_
 
-## A tool is an automation the agent calls itself .
+## Tools are what the agent uses to act .
 
-Last class a timer ran your skill. Today the agent decides when to run it. That's what a tool is: something it can use when it judges it needs to. It has four kinds:
+An automation calls the same things in the same order. An agent picks the tool each item needs, when it needs it. In Managed Agents, its tools come three ways:
 
 _🧰 Built-in tools_
 
@@ -157,17 +157,17 @@ _🔌 MCP servers_
 
 Your apps. The same connections as Class 4, plus the ones that act: drafts, events, tasks.
 
-_🧩 Skills_
+_🌐 API calls_
 
-Your Class 4 briefing , now a tool the agent runs when it decides to.
+Any service with an API, called with a token from your vault. For apps with no MCP server.
 
-_🛠️ Custom tools_
+ 🐍
 
-Your own code, called by name. The one kind this surface can't fully run for you: next slide.
+In Class 6, a fourth kind: your own Python scripts. In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you: next slide.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Eric's framing: a tool is an automation the agent calls itself instead of a timer calling it. Four kinds, matching the Create agent form: built-in tools (the agent toolset: bash, read, write, edit, glob, grep, web_search, web_fetch; web search costs $10 per 1,000 searches), MCP servers (their apps, now including actions like creating drafts, events and tasks), skills (their Class 4 briefing, now invoked when the agent decides), and custom tools (their own code, next slide). The payoff: the same skill they built last class is now one of the agent's tools.
+Keep the terms clean: tools are what the agent uses to act; a skill is not a tool (it's packaged instructions the agent loads, here the Class 4 briefing steps). An automation calls the same things in the same order; an agent picks the tool each item needs. In Managed Agents, tools come three ways: built-in tools (the agent toolset: bash, read, write, edit, glob, grep, web_search, web_fetch; web search costs $10 per 1,000 searches), MCP servers (their apps, now including actions like creating drafts, events and tasks), and API calls (any service with an API, called from the shell or web fetch with a token stored in the vault as a secret; the real key is swapped in as the request leaves, so the agent never sees it; used for apps with no MCP server). The fourth kind arrives in Class 6: their own Python scripts, handed to an OpenClaw agent as tools. Managed Agents can't run a custom tool's code for them, which is the next slide.
 
 ## Slide 6 · Custom tools
 
@@ -304,7 +304,7 @@ The built-in toolset is present by default with its permission policy shown (Aut
 
 **What the student sees on this slide:**
 
-_The Class 4 automation becomes one of its tools_
+_Your Class 4 steps, run when the agent decides_
 
 ## Step 3: Attach your briefing skill.
 
@@ -322,7 +322,7 @@ Leave Multiagent empty today. Get one agent working before you give it a team. T
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Add skill → morning-briefing. This is where the trigger moves: the skill is unchanged, and the agent now decides when to run it. Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty today, and note they're a stretch for later. Then Create agent.
+Add skill → morning-briefing. This is where the trigger moves: the skill (the Class 4 briefing steps) is unchanged, and the agent now decides when to run it. Keep calling it a skill, not a tool. Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty today, and note they're a stretch for later. Then Create agent.
 
 ## Slide 12 · Step 4 · Memory
 
@@ -476,7 +476,7 @@ _That's the class — here's what now runs_
 
 - An agent built field by field, with directions and four lists in its system prompt.
 
-- Your Class 4 skill as one of its tools , run when it decides.
+- Your Class 4 skill , run when the agent decides.
 
 - Tools allowed or turned off ; it drafts, you send.
 
@@ -488,4 +488,4 @@ Next class, you own the code. You rebuild this agent in OpenClaw, where your own
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: an agent built in Create agent with directions and four lists, the Class 4 skill as one of its tools, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
+Recap: an agent built in Create agent with directions and four lists, the Class 4 skill, run when the agent decides, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.

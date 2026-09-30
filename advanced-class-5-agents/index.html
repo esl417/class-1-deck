@@ -771,9 +771,9 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Tools"></div>
   <div class="eyebrow">What the agent can reach for</div>
-  <h2>A tool is an automation the agent <em>calls itself</em>.</h2>
-  <p>Last class a timer ran your skill. Today the agent decides when to run it. That's what a tool is: something it can use when it judges it needs to. It has four kinds:</p>
-  <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
+  <h2>Tools are what the agent uses to <em>act</em>.</h2>
+  <p>An automation calls the same things in the same order. An agent picks the tool each item needs, when it needs it. In Managed Agents, its tools come three ways:</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🧰 Built-in tools</div>
       <p>Ready on every agent: a shell, reading and writing files, searching, web search and web fetch.</p>
@@ -783,13 +783,13 @@
       <p>Your apps. The same connections as Class 4, plus the ones that act: drafts, events, tasks.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🧩 Skills</div>
-      <p>Your <strong>Class 4 briefing</strong>, now a tool the agent runs when it decides to.</p>
+      <div class="eyebrow">🌐 API calls</div>
+      <p>Any service with an API, called with a token from your vault. For apps with no MCP server.</p>
     </div>
-    <div class="card">
-      <div class="eyebrow">🛠️ Custom tools</div>
-      <p>Your own code, called by name. The one kind this surface can't fully run for you: next slide.</p>
-    </div>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">🐍</span>
+    <p><strong>In Class 6, a fourth kind: your own Python scripts.</strong> In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you: next slide.</p>
   </div>
 </section>
 
@@ -904,7 +904,7 @@
 <!-- 10. STEP 3 — SKILLS + MULTIAGENT -->
 <section class="slide dense">
   <div class="slide-num" data-label="Step 3 · Skills"></div>
-  <div class="eyebrow">The Class 4 automation becomes one of its tools</div>
+  <div class="eyebrow">Your Class 4 steps, run when the agent decides</div>
   <h2>Step 3: Attach your briefing skill.</h2>
   <p>Open <strong>Skills</strong> → <strong>Add skill</strong> → <em>morning-briefing</em>. This is the moment the trigger moves: the skill is the same, but now the agent decides when to run it.</p>
   <div class="grid-2" style="margin-top: 4px;">
@@ -1044,7 +1044,7 @@
   <h2>Your agent works the brief before you open it.</h2>
   <ul>
     <li class="done-check">An agent built field by field, with <strong>directions and four lists</strong> in its system prompt.</li>
-    <li class="done-check">Your Class 4 skill as <strong>one of its tools</strong>, run when it decides.</li>
+    <li class="done-check">Your Class 4 <strong>skill</strong>, run when the agent decides.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
     <li class="done-check">A <strong>log</strong> it reads and updates, and a <strong>capped</strong> run every weekday.</li>
   </ul>
