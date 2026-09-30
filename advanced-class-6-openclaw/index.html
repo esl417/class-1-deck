@@ -979,7 +979,7 @@
     <div class="file-item"><code>memory/</code><span>A dated note per day. Read when needed, not every call.</span></div>
     <div class="file-item"><code>HEARTBEAT.md</code><span>The checklist it follows each time the heartbeat wakes it.</span></div>
     <div class="file-item"><code>TOOLS.md</code><span>Notes about your setup: device names, accounts.</span></div>
-    <div class="file-item is-trim"><code>BOOTSTRAP.md</code><span>📌 A first-run interview. Delete it once it's done.</span></div>
+    <div class="file-item is-trim"><code>BOOTSTRAP.md</code><span>📌 A first-run interview some setups create. Delete it once it's done.</span></div>
     <div class="file-item"><code>skills/</code><span>Its skills, one folder each.</span></div>
   </div>
   <p class="small-note">The model, channels, schedules and permissions live outside the folder, in <code>~/.openclaw/openclaw.json</code>, along with its logins.</p>
@@ -1230,7 +1230,7 @@
   <div class="eyebrow">The control Managed Agents never gave you</div>
   <h2>Step 1: Clean it out before it costs you on every call.</h2>
   <p>Open the Control UI (<code>openclaw dashboard</code>) and send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
-  <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Delete BOOTSTRAP.md. 2) Strip every default example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 3) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 4) Keep its tools to the minimum; I'll add what it needs later. 5) Turn the heartbeat off. 6) Restart the gateway and run openclaw doctor.</div>
+  <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Keep its tools to the minimum; I'll add what it needs later. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.</div>
   <div class="heads-up">
     <span class="heads-up-mark">📉</span>
     <p><strong>Send <code>/context detail</code> again and compare.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>

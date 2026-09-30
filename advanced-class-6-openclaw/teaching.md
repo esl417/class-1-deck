@@ -327,7 +327,10 @@ it won't.
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
 rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
 shows each file's and skill's size. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
-this agent's job. Cleanup: delete BOOTSTRAP.md (onboarding may already have); strip every default
+this agent's job. In Eric's fresh 2026.9.7 run, onboarding created only AGENTS.md, IDENTITY.md, SOUL.md and USER.md
+(no BOOTSTRAP.md or TOOLS.md), and the Install prompt's health check had already switched off the
+skills the security audit flagged, so the prompt names no specific files and Step 1 finishes the
+job. Cleanup: delete BOOTSTRAP.md if present; strip every default
 example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md (group-chat etiquette,
 emoji reactions, voice storytelling, platform formatting, the heartbeat check-in examples, sample
 notes), keeping only the red lines and the rule to write memories to files; turn off every bundled

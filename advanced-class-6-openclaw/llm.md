@@ -349,7 +349,7 @@ No form to fill in: you, Claude Code, and the agent itself edit these files. The
  memory/ A dated note per day. Read when needed, not every call.
  HEARTBEAT.md The checklist it follows each time the heartbeat wakes it.
  TOOLS.md Notes about your setup: device names, accounts.
- BOOTSTRAP.md 📌 A first-run interview. Delete it once it's done.
+ BOOTSTRAP.md 📌 A first-run interview some setups create. Delete it once it's done.
  skills/ Its skills, one folder each.
 
 The model, channels, schedules and permissions live outside the folder, in ~/.openclaw/openclaw.json , along with its logins.
@@ -820,7 +820,7 @@ _The control Managed Agents never gave you_
 Open the Control UI ( openclaw dashboard ) and send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Delete BOOTSTRAP.md. 2) Strip every default example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 3) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 4) Keep its tools to the minimum; I'll add what it needs later. 5) Turn the heartbeat off. 6) Restart the gateway and run openclaw doctor.
+> Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Keep its tools to the minimum; I'll add what it needs later. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.
 
  📉
 
@@ -831,7 +831,10 @@ Send /context detail again and compare. That difference is saved on every messag
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
 rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
 shows each file's and skill's size. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
-this agent's job. Cleanup: delete BOOTSTRAP.md (onboarding may already have); strip every default
+this agent's job. In Eric's fresh 2026.9.7 run, onboarding created only AGENTS.md, IDENTITY.md, SOUL.md and USER.md
+(no BOOTSTRAP.md or TOOLS.md), and the Install prompt's health check had already switched off the
+skills the security audit flagged, so the prompt names no specific files and Step 1 finishes the
+job. Cleanup: delete BOOTSTRAP.md if present; strip every default
 example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md (group-chat etiquette,
 emoji reactions, voice storytelling, platform formatting, the heartbeat check-in examples, sample
 notes), keeping only the red lines and the rule to write memories to files; turn off every bundled
