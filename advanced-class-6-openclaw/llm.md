@@ -207,9 +207,9 @@ _Start at the top · the first yes decides_
 
  ↓ No
 
- 2 · Customize, what wakes it Does it need your own code as tools, or other apps waking it?
+ 2 · What wakes it, customize Does an event need to wake it (a webhook), or does it need custom tools?
  Yes →
- OpenClaw Scripts become tools; webhooks wake it.
+ OpenClaw Webhooks wake it; your scripts become its tools.
 
  ↓ No
 
@@ -239,8 +239,9 @@ Keep an eye on consumer agents like xAI's Grok Bot and Meta's Muse: one may soon
 
 The decision tree, built from the comparison table's rows (each question is labeled with the
 rows it comes from). Start at the top; the first yes decides. 1 (models): does it need a model
-other than Claude? Yes → OpenClaw. 2 (customize, what wakes it): does it need their own code as tools, or other apps
-waking it via webhooks? Yes → OpenClaw. 3 (reach it): must they message it in Slack, Telegram or
+other than Claude? Yes → OpenClaw. 2 (what wakes it, customize): does an event need to wake it (a webhook: a form
+submitted, a file landing, a payment), or does it need custom tools (their own scripts)? Yes →
+OpenClaw. 3 (reach it): must they message it in Slack, Telegram or
 WhatsApp, where the Claude app on the phone isn't enough? Yes → OpenClaw. 4 (deploy, debug):
 must it run unattended with a hard cap on every run and every step traced in a session? Yes →
 Managed Agents. No to all four (payment, maintain): a Cowork project on the flat Claude plan,
