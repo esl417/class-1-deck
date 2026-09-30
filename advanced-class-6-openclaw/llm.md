@@ -308,7 +308,7 @@ _You already know these parts_
  Managed Agents OpenClaw
  General: model, system prompt → openclaw.json picks the model; AGENTS.md, SOUL.md, USER.md are the prompt
  Tools and permission policies → Tools with allow and deny lists, plus approvals for commands
- MCP servers and API calls → The same: MCP servers and API calls, plus plugins and your own scripts
+ MCP servers and API calls → MCP servers and API calls, plus plugins and your own scripts
  Skills → Skills: the same idea, a folder with a SKILL.md
  Environment (the sandbox) → Your computer. A sandbox is optional and off by default
  Credential vault → OpenClaw's credentials for the model, .env for your scripts
