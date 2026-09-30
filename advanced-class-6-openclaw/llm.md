@@ -629,14 +629,14 @@ _Before Step 1 · in VS Code_
 
 ## Install OpenClaw, with your project folder as its home.
 
-Make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
+First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Then tell me exactly how to run openclaw onboard myself in the VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Set up my Anthropic API key as an environment variable OpenClaw can use: open the right file in VS Code with a spot for me to paste the key myself, never in this chat. Then tell me exactly how to run openclaw onboard myself in a new VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
 
 _⌨️ You run onboarding yourself_
 
-In the VS Code terminal, so your model key goes into the terminal, never into the chat . It's a wizard: name the agent carefully (the name sticks), choose QuickStart , and keep its gateway defaults.
+In a new VS Code terminal. Your key goes in the file Claude opens for you, never into the chat . It's a wizard: name the agent carefully (the name sticks), choose QuickStart , and keep its gateway defaults.
 
 _🧭 The screens that matter_
 
@@ -701,6 +701,8 @@ Copies a long-lived subscription token into OpenClaw. That's what Anthropic's te
 
 Using a different model? The menu will look different, but the same two choices usually exist: a CLI login that borrows your subscription, or an API key billed per use. Same rule: API key.
 
+Next it asks where the key is stored: choose Environment variable . The install prompt already set it up, and it keeps the key out of OpenClaw's config file.
+
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Onboarding asks for an auth method after the provider. For Anthropic: "Anthropic Claude CLI (Keep
@@ -728,6 +730,23 @@ Other providers: the menu differs, but many offer the same split (a CLI or OAuth
 consumer subscription vs a pay-per-use API key); same rule, API key. If a student already chose the
 CLI login, `openclaw onboard` can be rerun or the auth changed later (check the current docs for
 the command).
+
+Where the key is stored (fresh 2026.9.7 onboarding asks "Where is this API key stored?"):
+Environment variable, OpenClaw secret store, or Configured secret provider. Choose Environment
+variable. It keeps the key out of openclaw.json (the plain-text warning doctor flagged) and
+matches Render, where keys are dashboard environment variables. The secret store is not encrypted
+("Store values are not encrypted at rest", a SQLite file under ~/.openclaw) and needs the key
+pre-seeded; a configured provider means 1Password, Bitwarden or Vault, too much for this class.
+Mechanics, done by Claude Code in the Install prompt so students never handle shell files: it
+adds an `export ANTHROPIC_API_KEY=` line to the shell profile (~/.zshrc on a Mac), opens that
+file in VS Code for the student to paste the key after the = sign, and has them open a new
+terminal before onboarding (onboarding checks the terminal's environment). Never typed as a
+terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
+the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
+plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own
+docs, any plaintext credential the agent can reach is readable via its file or shell tools. That's
+why the real protection is the key itself: a new key just for this agent, with a spend limit in
+the Claude Console, revocable on its own if it leaks.
 
 ## Slide 19 · Finish onboarding
 

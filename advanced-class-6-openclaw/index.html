@@ -1169,12 +1169,12 @@
   <div class="slide-num" data-label="Install"></div>
   <div class="eyebrow">Before Step 1 · in VS Code</div>
   <h2>Install OpenClaw, with your project folder as its home.</h2>
-  <p>Make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
-  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Then tell me exactly how to run openclaw onboard myself in the VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.</div>
+  <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Set up my Anthropic API key as an environment variable OpenClaw can use: open the right file in VS Code with a spot for me to paste the key myself, never in this chat. Then tell me exactly how to run openclaw onboard myself in a new VS Code terminal, using this folder as the workspace. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
-      <p>In the VS Code terminal, so your model key goes into the terminal, <strong>never into the chat</strong>. It's a wizard: name the agent carefully (the name sticks), choose <strong>QuickStart</strong>, and keep its gateway defaults.</p>
+      <p>In a new VS Code terminal. Your key goes in the file Claude opens for you, <strong>never into the chat</strong>. It's a wizard: name the agent carefully (the name sticks), choose <strong>QuickStart</strong>, and keep its gateway defaults.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧭 The screens that matter</div>
@@ -1207,6 +1207,7 @@
     <span class="heads-up-mark">🔀</span>
     <p><strong>Using a different model?</strong> The menu will look different, but the same two choices usually exist: a <strong>CLI login</strong> that borrows your subscription, or an <strong>API key</strong> billed per use. Same rule: API key.</p>
   </div>
+  <p class="small-note">Next it asks where the key is stored: choose <strong>Environment variable</strong>. The install prompt already set it up, and it keeps the key out of OpenClaw's config file.</p>
 </section>
 
 <!-- FINISH ONBOARDING -->

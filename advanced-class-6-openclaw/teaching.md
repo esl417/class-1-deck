@@ -262,6 +262,23 @@ consumer subscription vs a pay-per-use API key); same rule, API key. If a studen
 CLI login, `openclaw onboard` can be rerun or the auth changed later (check the current docs for
 the command).
 
+
+Where the key is stored (fresh 2026.9.7 onboarding asks "Where is this API key stored?"):
+Environment variable, OpenClaw secret store, or Configured secret provider. Choose Environment
+variable. It keeps the key out of openclaw.json (the plain-text warning doctor flagged) and
+matches Render, where keys are dashboard environment variables. The secret store is not encrypted
+("Store values are not encrypted at rest", a SQLite file under ~/.openclaw) and needs the key
+pre-seeded; a configured provider means 1Password, Bitwarden or Vault, too much for this class.
+Mechanics, done by Claude Code in the Install prompt so students never handle shell files: it
+adds an `export ANTHROPIC_API_KEY=` line to the shell profile (~/.zshrc on a Mac), opens that
+file in VS Code for the student to paste the key after the = sign, and has them open a new
+terminal before onboarding (onboarding checks the terminal's environment). Never typed as a
+terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
+the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
+plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own
+docs, any plaintext credential the agent can reach is readable via its file or shell tools. That's
+why the real protection is the key itself: a new key just for this agent, with a spend limit in
+the Claude Console, revocable on its own if it leaks.
 ## Finish onboarding
 
 The rest of the wizard, from Eric's run of OpenClaw 2026.9.7 on 2026-09-30 (QuickStart mode; it keeps
