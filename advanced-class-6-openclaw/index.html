@@ -1192,15 +1192,15 @@
   <div class="eyebrow">Branching, hands-on · your approval gates main</div>
   <h2>Step 4: Rebuild the brief in Python; you approve the merge.</h2>
   <p><strong>How branching works:</strong> <strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you <strong>merge</strong>: the branch's changes join main. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then add a short skill so my OpenClaw agent runs this script whenever I ask for a fresh brief. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">🐍 An automation needs no agent</div>
       <p>Every step is dictated, so code runs them: same result every run, for almost nothing. The one judgment is a single model call.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">🦞 OpenClaw starts where the brief ends</div>
-      <p>The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.</p>
+      <div class="eyebrow">🧰 The same script is a tool</div>
+      <p>The schedule runs it at 7:00 with no agent. Midday, message <em>"Rerun my brief"</em>: the skill tells the agent to call the script, not redo the steps itself.</p>
     </div>
   </div>
   <div class="heads-up">
@@ -1237,11 +1237,11 @@
     <li><strong>1.</strong> Pick one. <strong>Telegram</strong> comes built in. <strong>Slack, WhatsApp, Microsoft Teams, Discord, Signal and iMessage</strong> are official plugins, and there are more.</li>
     <li><strong>2.</strong> Tell Claude Code: <em>"Connect OpenClaw to [app]. Walk me through creating its bot, put any token in .env, and keep DMs on pairing."</em></li>
     <li><strong>3.</strong> Message your bot. It replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
-    <li><strong>4.</strong> Tell Claude Code: <em>"Send the 7:30 handoff to me here too."</em> Then send it a job, <em>"What's on my calendar tomorrow?"</em>, and check the answer is real.</li>
+    <li><strong>4.</strong> Tell Claude Code: <em>"Send the 7:30 handoff to me here too."</em> Then message it <em>"Rerun my brief."</em> It should call your script, not redo the steps, and send back a fresh brief.</li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">💼</span>
-    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and add Slack when it does.</p>
+    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and switch to Slack when it comes.</p>
   </div>
 </section>
 
@@ -1324,14 +1324,10 @@
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework</div>
   <h2>Finish the chain until its handoff matches Class 5's.</h2>
-  <div class="grid-2 cols-2" style="margin-top: 4px;">
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">🔌 Connect every source and app</div>
+      <div class="eyebrow">🔌 Connect every app</div>
       <p>One at a time, each on its own branch: an MCP server or API you trust, a plugin or skill you've read, or a script tool.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">💼 Add a second chat app</div>
-      <p>Slack at work once your admin approves it, or any other app you'd rather message it from.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📉 Watch the cost for a week</div>

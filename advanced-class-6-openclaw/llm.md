@@ -689,15 +689,15 @@ _Branching, hands-on · your approval gates main_
 How branching works: main is the version that runs. A branch is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you merge : the branch's changes join main. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
+> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then add a short skill so my OpenClaw agent runs this script whenever I ask for a fresh brief. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
 
 _🐍 An automation needs no agent_
 
 Every step is dictated, so code runs them: same result every run, for almost nothing. The one judgment is a single model call.
 
-_🦞 OpenClaw starts where the brief ends_
+_🧰 The same script is a tool_
 
-The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.
+The schedule runs it at 7:00 with no agent. Midday, message "Rerun my brief" : the skill tells the agent to call the script, not redo the steps itself.
 
  ✋
 
@@ -717,7 +717,7 @@ briefs/, dated. Honesty rules carry over from Class 4: say when a source failed;
 even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
-and adding the rest as homework. The model key for the judgment call also lives in `.env`.
+and adding the rest as homework. The model key for the judgment call also lives in `.env`. The same script is also the agent's custom tool, which is how tooling is taught: a short skill in the agent's skills/ tells it to run scripts/brief.py when the student asks for a fresh brief (e.g. midday, "Rerun my brief"). The agent calls the script instead of redoing the steps itself, so the dictated work stays deterministic and cheap. Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent on request. The skill's description is short, since the skill list rides on every call.
 
 ## Slide 20 · Step 5 · Schedule the chain
 
@@ -772,11 +772,11 @@ _The thing Managed Agents couldn't do_
 
 - 3. Message your bot. It replies with a pairing code. Tell Claude Code: "Approve pairing code [code]."
 
-- 4. Tell Claude Code: "Send the 7:30 handoff to me here too." Then send it a job, "What's on my calendar tomorrow?" , and check the answer is real.
+- 4. Tell Claude Code: "Send the 7:30 handoff to me here too." Then message it "Rerun my brief." It should call your script, not redo the steps, and send back a fresh brief.
 
  💼
 
-Slack at work usually needs an admin to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and add Slack when it does.
+Slack at work usually needs an admin to approve a new app. If that approval won't come today, start with Telegram, which only needs you, and switch to Slack when it comes.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -787,9 +787,9 @@ Claude Code walks them through creating the bot or app for that platform (Telegr
 `/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
 channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
 approves it (`openclaw pairing approve <channel> <CODE>`). It's the last build step, so once connected Claude also sends the 7:30 handoff there.
-Then a real job, and they check the answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
+Then the tool test: they message "Rerun my brief." and check the agent called scripts/brief.py (visible in the session transcript) rather than fetching the sources itself, and that a fresh brief came back. The catch with Slack at work: a company
 workspace usually needs an admin to approve a new app; if that won't happen today, start with
-Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
+Telegram (needs only them) and switch to Slack once it's approved. One chat app per agent: a second one splits where the handoff and conversations land. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
 ## Slide 22 · Webhooks
@@ -946,13 +946,9 @@ _Your homework_
 
 ## Finish the chain until its handoff matches Class 5's.
 
-_🔌 Connect every source and app_
+_🔌 Connect every app_
 
 One at a time, each on its own branch: an MCP server or API you trust, a plugin or skill you've read, or a script tool.
-
-_💼 Add a second chat app_
-
-Slack at work once your admin approves it, or any other app you'd rather message it from.
 
 _📉 Watch the cost for a week_
 
@@ -970,8 +966,7 @@ The calls are yours: what it may do, what model it runs on, and whether it's wor
 
 Finish the chain until its handoff matches Class 5's. Connect every source the brief reads and
 every app the agent acts in, one per branch:
-the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Add a second chat app
-if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
+the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Managed Agents chain if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.

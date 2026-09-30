@@ -245,7 +245,7 @@ briefs/, dated. Honesty rules carry over from Class 4: say when a source failed;
 even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
-and adding the rest as homework. The model key for the judgment call also lives in `.env`.
+and adding the rest as homework. The model key for the judgment call also lives in `.env`. The same script is also the agent's custom tool, which is how tooling is taught: a short skill in the agent's skills/ tells it to run scripts/brief.py when the student asks for a fresh brief (e.g. midday, "Rerun my brief"). The agent calls the script instead of redoing the steps itself, so the dictated work stays deterministic and cheap. Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent on request. The skill's description is short, since the skill list rides on every call.
 
 ## Step 5 · Schedule the chain
 
@@ -274,9 +274,9 @@ Claude Code walks them through creating the bot or app for that platform (Telegr
 `/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
 channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
 approves it (`openclaw pairing approve <channel> <CODE>`). It's the last build step, so once connected Claude also sends the 7:30 handoff there.
-Then a real job, and they check the answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
+Then the tool test: they message "Rerun my brief." and check the agent called scripts/brief.py (visible in the session transcript) rather than fetching the sources itself, and that a fresh brief came back. The catch with Slack at work: a company
 workspace usually needs an admin to approve a new app; if that won't happen today, start with
-Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
+Telegram (needs only them) and switch to Slack once it's approved. One chat app per agent: a second one splits where the handoff and conversations land. WhatsApp links a personal account by
 QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
 ## Webhooks
@@ -359,8 +359,7 @@ limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
 Finish the chain until its handoff matches Class 5's. Connect every source the brief reads and
 every app the agent acts in, one per branch:
-the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Add a second chat app
-if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
+the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Managed Agents chain if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
