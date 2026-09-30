@@ -33,8 +33,8 @@ homework, and cloud hosting (Render) is explained at the end, not done.
 
 OpenClaw is free, open-source, self-hosted agent software (formerly Clawdbot / Moltbot). It
 runs as a background program on their computer or a rented server and connects a model to
-files, tools and chat apps. Three differences that matter: it runs where they put it (laptop
-asleep = agent asleep), any model (60+ providers), and it lives in chat apps. The trade to say
+files, tools and chat apps. Three differences that matter: it runs where they put it (on a laptop it
+sleeps with the laptop; on a rented server it runs around the clock), any model (60+ providers), and it lives in chat apps. The trade to say
 plainly: they can change everything, and they maintain everything: updates, uptime, security,
 debugging. Claude Code is their help desk for all of it.
 
