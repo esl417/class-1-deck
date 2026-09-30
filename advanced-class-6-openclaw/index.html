@@ -786,7 +786,7 @@
     </div>
     <div class="card card-hero">
       <div class="eyebrow">Class 6 · Today · Your own agent</div>
-      <p><strong>You own the code.</strong> The same chain in OpenClaw: the brief as Python, an agent you can message, any model.</p>
+      <p><strong>You own the code.</strong> The same chain: the brief as plain Python, the agent in OpenClaw, where you can message it.</p>
       <p><em>VS Code + Claude Code</em></p>
     </div>
   </div>
@@ -801,7 +801,7 @@
   <div class="slide-num" data-label="The finish line"></div>
   <div class="eyebrow">Let's look at the end first</div>
   <h2>Today: your agent answers you in your chat app.</h2>
-  <p>By the end of class, your whole chain runs in OpenClaw on your computer: the Class 4 brief and the Class 5 agent. Three things are new:</p>
+  <p>By the end of class, your whole chain runs on your computer: the Class 4 brief as plain Python, and the Class 5 agent in OpenClaw. Three things are new:</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">💬 You can message it</div>
@@ -809,7 +809,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🐍 Your brief runs as Python</div>
-      <p>The Class 4 automation rebuilt as a script, built on a branch and reviewed by a second AI.</p>
+      <p>The Class 4 automation as a plain script, no agent needed, built on a branch and reviewed by a second AI.</p>
     </div>
     <div class="card">
       <div class="eyebrow">⏰ The chain still runs</div>
@@ -1206,18 +1206,18 @@
 <!-- STEP 5 — THE BRIEF AS PYTHON, ON A BRANCH -->
 <section class="slide dense">
   <div class="slide-num" data-label="Step 5 · The brief, in Python"></div>
-  <div class="eyebrow">Branching, hands-on</div>
-  <h2>Step 5: On a branch, rebuild your brief as Python.</h2>
-  <p><strong>main</strong> is the agent that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my Class 4 morning brief as a Python automation, using the briefing skill in class-export as the spec. Write scripts/brief.py: it pulls each source through its API with keys from .env, does all the counting, dates and formatting, and prints a digest. Move the briefing skill into skills/ and update it: run the script, make the one judgment call (what needs me today), and save the brief to briefs/, dated. Test it, commit on the branch, and don't merge.</div>
+  <div class="eyebrow">Branching, hands-on · no OpenClaw needed</div>
+  <h2>Step 5: On a branch, rebuild your brief as plain Python.</h2>
+  <p><strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my Class 4 morning brief as a standalone Python script, scripts/brief.py, using the briefing skill in class-export as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, commit on the branch, and don't merge.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
-      <div class="eyebrow">🐍 Python does the dictated steps</div>
-      <p>Fetching, counting, dates, formatting: same result every run, for almost nothing. The model only makes the one judgment call.</p>
+      <div class="eyebrow">🐍 An automation needs no agent</div>
+      <p>Every step is dictated, so code runs them: same result every run, for almost nothing. The one judgment is a single model call.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">📘 The skill says when</div>
-      <p>SKILL.md is the same format as in the Console. Now it tells the automation to run your script: together, they're a custom tool.</p>
+      <div class="eyebrow">🦞 OpenClaw starts where the brief ends</div>
+      <p>The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.</p>
     </div>
   </div>
 </section>
@@ -1231,7 +1231,7 @@
     <li><strong>1.</strong> Tell Claude Code: <em>"Open a pull request for brief-automation."</em> That's the proposal to change main.</li>
     <li><strong>2.</strong> Open <strong>Codex</strong> (or another AI) in VS Code: <em>"Review this pull request for bugs and security problems, especially how it handles keys."</em></li>
     <li><strong>3.</strong> Paste the findings to Claude Code: <em>"Fix what's real, and tell me what you disagree with."</em></li>
-    <li><strong>4.</strong> <em>"Merge it into main and restart the gateway."</em> Then message it: <em>"Write today's brief."</em></li>
+    <li><strong>4.</strong> <em>"Merge it into main."</em> Then: <em>"Run brief.py and show me today's brief."</em></li>
   </ul>
   <div class="heads-up">
     <span class="heads-up-mark">🌿</span>
@@ -1244,7 +1244,7 @@
   <div class="slide-num" data-label="Step 7 · Schedule the chain"></div>
   <div class="eyebrow">Your two deployments, rebuilt</div>
   <h2>Step 7: Schedule the brief at 7:00 and the agent at 7:30.</h2>
-  <div class="prompt-box">Create two OpenClaw automations, weekdays in my time zone, each in its own session. At 7:00, on a cheaper model: run the briefing skill. At 7:30, on my main model: "Handle my morning." It reads today's brief from briefs/, saves the handoff, and sends it to me in my chat app. Then show me the next five run times for each.</div>
+  <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/, saves the handoff, and sends it to me in my chat app. Show me the next five run times for both.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⏸️ Then pause Classes 4 and 5</div>
@@ -1255,7 +1255,7 @@
       <p>When you want check-ins, turn it on with a short HEARTBEAT.md, its own light session, and working hours only. That keeps each wake to a few thousand tokens.</p>
     </div>
   </div>
-  <p class="small-note">Same chain as Class 5: one job per link, and a model per link. Now both links live in one folder you control.</p>
+  <p class="small-note">Same chain as Class 5: an automation handing off to an agent. The automation is plain Python; OpenClaw is for the steps after the brief exists.</p>
 </section>
 
 <!-- WEBHOOKS -->
@@ -1368,8 +1368,8 @@
   <h2>You can put an agent wherever the job needs it.</h2>
   <ul>
     <li class="done-check">The <strong>decision</strong>: Cowork first, Managed Agents next, OpenClaw only when a job needs it.</li>
-    <li class="done-check">A <strong>cleaned-out</strong> OpenClaw running your whole chain: the brief and the agent.</li>
-    <li class="done-check">Your brief as <strong>Python</strong>, and a chat you can <strong>message the agent in</strong>.</li>
+    <li class="done-check">Your chain rebuilt: the brief as <strong>plain Python</strong>, the agent in a <strong>cleaned-out</strong> OpenClaw.</li>
+    <li class="done-check">A chat you can <strong>message the agent in</strong>, on any model you choose.</li>
     <li class="done-check">Code in GitHub, changed only by <strong>branch, review, merge</strong>, with keys kept out.</li>
   </ul>
   <div class="heads-up">
