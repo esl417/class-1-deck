@@ -586,7 +586,7 @@ _The control Managed Agents never gave you_
 Open the Control UI ( openclaw dashboard ) and send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Clean out my OpenClaw install to cut per-call overhead. Show me each change before you make it. 1) Delete BOOTSTRAP.md. 2) Cut AGENTS.md down to what a morning agent needs: remove group chats, emoji reactions, voice, platform formatting and the heartbeat examples; keep the memory rules and red lines. 3) Strip the boilerplate from SOUL.md and TOOLS.md. 4) In openclaw.json, turn off every bundled skill and turn the heartbeat off. 5) Restart the gateway and run openclaw doctor.
+> Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Delete BOOTSTRAP.md. 2) Strip every default example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 3) In openclaw.json, turn off every bundled skill and turn the heartbeat off. 4) Restart the gateway and run openclaw doctor.
 
  📉
 
@@ -596,12 +596,14 @@ Send /context detail again and compare. That difference is saved on every messag
 
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
 rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
-shows each file's and skill's size. Cleanup: delete BOOTSTRAP.md (onboarding may already have);
-cut AGENTS.md to what a morning agent needs (drop group chats, reactions, voice storytelling,
-platform formatting, the heartbeat check-in examples; keep memory rules and red lines); strip
-boilerplate from SOUL.md and TOOLS.md; turn off bundled skills in openclaw.json
-(`skills.allowBundled` is the allowlist for bundled skills; `skills.entries.<name>.enabled:
-false` for individual ones); heartbeat off (`every: "0m"`). Claude shows each change first.
+shows each file's and skill's size. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
+this agent's job. Cleanup: delete BOOTSTRAP.md (onboarding may already have); strip every default
+example and boilerplate from AGENTS.md, SOUL.md, USER.md and TOOLS.md (group-chat etiquette,
+emoji reactions, voice storytelling, platform formatting, the heartbeat check-in examples, sample
+notes), keeping only the red lines and the rule to write memories to files; turn off every bundled
+skill in openclaw.json (`skills.allowBundled` is the allowlist for bundled skills;
+`skills.entries.<name>.enabled: false` for individual ones), adding back only what a job needs
+later; heartbeat off (`every: "0m"`). Claude shows each change first.
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
