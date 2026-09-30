@@ -441,27 +441,35 @@ Click Run now once, and read the session. It's the first run with nobody approvi
 
 Leave the Class 4 deployment running as it is; this is a second deployment. Fields: the new agent, Class 4's environment and vault, `30 7 * * 1-5` in their time zone (after the 7:00 brief; scheduled runs can start up to 9 minutes late, so if the brief sometimes lands late, move the agent later, not earlier), the prompt "Handle my morning." (a goal, not steps), and a per-run budget a little above the test run's cost. At the cap a run pauses rather than being killed. Then Run now once and read the session: it's the first run with nobody to approve anything, so it proves the permissions hold. If it stalls, look for a tool call waiting on approval. Confirm the current form fields in the Console.
 
-## Slide 16 · Direct it
+## Slide 16 · Reach it remotely
 
 **What the student sees on this slide:**
 
-_It works on a schedule, and when you ask_
+_Handing an agent work when you're away from your desk_
 
-## Hand it work directly in a new session.
+## Three ways to reach an agent from your phone.
 
-Start a session with the agent any time (same vault as your briefing) and give it a job, phrased as the outcome you want: "Prep me for the 2pm: one page, open questions first." Same system prompt, same limits.
+Managed Agents has no chat app: you can't message this agent from Slack or your phone. So where an agent lives decides how you reach it.
 
-_🧭 It decides the steps_
+_🤝 1 · A Cowork project_
 
-It reads the invite, the thread and your tasks, then writes the prep. You didn't say where to look.
+The Claude app on your phone reaches it natively. The simplest option: if a Cowork project can do the job, run it there.
 
-_📝 Tell it what it can't know_
+_🔁 2 · The Slack workaround_
 
-It wasn't in the meeting. "We agreed on the 15th and a revised quote" belongs in your request.
+A small agent checks a #requests channel every 30 minutes and replies in the thread. It works, but every check costs money and replies lag.
+
+_🛠️ 3 · Your own build_
+
+Class 6. An OpenClaw agent connects to Slack or Telegram directly. You message it; it answers.
+
+ 🎯
+
+The real lesson: build agents you don't need to message. A clear deliverable on a schedule beats an agent you have to chase. At your desk, you can still start a session with this one any time.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Besides the schedule, they can start a session with the agent any time (choosing the same vault as the morning briefing) and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
+Be honest about the surface: Managed Agents has no messaging channel. Webhooks only go outward (session status notifications) and the agent is only an MCP client, so nothing in Slack or on a phone can start a session without code; every official way in is the Console, the API or the ant CLI. Three ways to reach agents remotely, in order of simplicity. (1) A Cowork project: the Claude app on the phone reaches it natively, which fits the use-the-simplest-setup principle; if a Cowork project can do the job, run it there. (2) The Slack workaround for Managed Agents: a small, cheap agent on its own deployment (for example every 30 minutes during work hours) reads a #requests channel through the Slack MCP server, handles new requests and replies in the thread. It works without code but isn't documented as a pattern; every check is billed even when the channel is empty, replies lag by up to the interval plus up to 9 minutes of start jitter, and it's one more link in the chain with its own model and cap. Don't build it in class. (3) Class 6: an OpenClaw agent connects to Slack or Telegram directly, so they message it and it answers. The lesson to land: design agents you don't need to contact ad hoc; a clear deliverable on a schedule beats an agent you have to chase. At their desk they can still start a session with this agent (same vault as the briefing) and give it a job phrased as an outcome ("Prep me for the 2pm: one page, open questions first"). Other routes exist but don't suit this audience: Anthropic's Vercel Chat SDK template (a one-click deploy behind a Slack bot), generic HTTP steps in Zapier or Make, and an unofficial community MCP bridge; Claude Tag (Claude in Slack, Team and Enterprise) is a separate product that can't run a Managed Agent.
 
 ## Slide 17 · Tune what reaches you
 

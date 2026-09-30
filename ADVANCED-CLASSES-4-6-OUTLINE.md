@@ -111,6 +111,13 @@ Its own slide right after cost ("The chain"): agents daisy-chained, each writing
 next reads; in Managed Agents each link gets its own model (cheaper model where power isn't
 needed = cost control), low overhead, traceable per link, and new jobs are just new links.
 
+**Reaching the agent remotely (slide "Reach it remotely"):** Managed Agents has no messaging
+channel (researched 2026-09-30: webhooks are outbound only, the agent is only an MCP client;
+Claude Tag can't run a Managed Agent). Teach three ways: 1) a Cowork project, which the Claude
+app reaches natively (simplest); 2) the Slack workaround, a small scheduled agent that polls a
+#requests channel (works, but costs per check and lags; the lesson is to build agents you
+don't need to message); 3) Class 6, an OpenClaw agent on Slack or Telegram.
+
 **Build: Beginner Classes 5 and 6 collapsed into one.** The agent picks up the report, acts on
 it within the authority it's given, and writes a handoff in three sections: **Taken
 care of / Needs your action / FYI.** That is what they read every morning. A full agent.
