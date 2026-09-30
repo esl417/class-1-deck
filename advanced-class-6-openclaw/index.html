@@ -745,6 +745,8 @@
   .file-item span { font-size: clamp(14px, 1.3vw, 15.5px); line-height: 1.38; color: var(--body); }
   .file-item.is-trim { border-style: dashed; border-color: rgba(15,138,128,0.5); }
   @media (max-width: 760px) { .file-list { grid-template-columns: 1fr; } }
+  .grid-2.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 760px) { .grid-2.cols-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1038,7 +1040,7 @@
   <div class="slide-num" data-label="What wakes it"></div>
   <div class="eyebrow">Managed Agents had a schedule and you. OpenClaw has four.</div>
   <h2>It wakes four ways: message, heartbeat, schedule, webhook.</h2>
-  <div class="grid-2" style="margin-top: 4px;">
+  <div class="grid-2 cols-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">💬 A message</div>
       <p>You, in Slack, Telegram or any chat app you connect. It answers in the same chat.</p>
@@ -1087,7 +1089,7 @@
   <div class="slide-num" data-label="Security"></div>
   <div class="eyebrow">Nobody else is watching this one</div>
   <h2>You're the security team now.</h2>
-  <div class="grid-2" style="margin-top: 4px;">
+  <div class="grid-2 cols-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🧩 Read every skill before you install it</div>
       <p>In February 2026, researchers found <strong>341 malicious skills</strong> on ClawHub that stole data from Macs. A skill is code with your access. Install only what you or Claude Code have read.</p>
@@ -1335,7 +1337,7 @@
   <div class="slide-num" data-label="Homework"></div>
   <div class="eyebrow">Your homework</div>
   <h2>Finish the agent until its handoff matches Class 5's.</h2>
-  <div class="grid-2" style="margin-top: 4px;">
+  <div class="grid-2 cols-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🔌 Connect every app it needs</div>
       <p>One at a time, each on its own branch: an MCP server or API you trust, a plugin or skill you've read, or a script tool.</p>
