@@ -201,9 +201,9 @@ _Start at the top · the first yes decides_
 
 ## Four questions from the table pick where it lives.
 
- 1 · Models, token overhead Does it need a non-Claude model, or overhead trimmed on every call?
+ 1 · Models Does it need a model other than Claude?
  Yes →
- OpenClaw Any model, and every file and skill is yours to cut.
+ OpenClaw GPT, Gemini, Kimi, or a model on your own machine.
 
  ↓ No
 
@@ -238,9 +238,8 @@ Keep an eye on consumer agents like xAI's Grok Bot and Meta's Muse: one may soon
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 The decision tree, built from the comparison table's rows (each question is labeled with the
-rows it comes from). Start at the top; the first yes decides. 1 (models, token overhead): does
-it need a non-Claude model, or overhead trimmed on every call (a high-volume agent)? Yes →
-OpenClaw. 2 (customize, what wakes it): does it need their own code as tools, or other apps
+rows it comes from). Start at the top; the first yes decides. 1 (models): does it need a model
+other than Claude? Yes → OpenClaw. 2 (customize, what wakes it): does it need their own code as tools, or other apps
 waking it via webhooks? Yes → OpenClaw. 3 (reach it): must they message it in Slack, Telegram or
 WhatsApp, where the Claude app on the phone isn't enough? Yes → OpenClaw. 4 (deploy, debug):
 must it run unattended with a hard cap on every run and every step traced in a session? Yes →
