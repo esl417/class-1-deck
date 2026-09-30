@@ -948,7 +948,7 @@
   <div class="eyebrow">Create agent, top to bottom</div>
   <h2>Step 1: Name it, pick the model, dictate its <em>deliverable</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. Your memory and standing directions live in handoff-log.md in my [folder name] folder in [Drive / Dropbox]. Read it first in every session and follow it. When I correct you or teach you something, write it there. Add today's entry last.<br><br>I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action.</div>
+  <div class="prompt-box">You run my mornings. Your memory and standing directions live in handoff-log.md in my morning-briefing folder in [Drive / Dropbox], where my briefs are saved. If it doesn't exist yet, create it there. Read it first in every session and follow it. When I correct you or teach you something, write it there. Add today's entry last.<br><br>I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in that same folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action.</div>
   <p class="small-note">Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.</p>
 </section>
 
@@ -1003,7 +1003,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🧭 How a new session finds it</div>
-      <p>The system prompt names the folder and says to read the log first. Without that line, a new session doesn't know the log exists.</p>
+      <p>The system prompt names the folder and says to read the log first. The log doesn't exist yet when you create the agent, so the prompt also says to create it there; the first run does.</p>
     </div>
   </div>
   <div class="heads-up">
