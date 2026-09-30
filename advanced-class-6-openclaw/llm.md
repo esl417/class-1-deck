@@ -852,10 +852,10 @@ _Rebuild from what works, not a description_
 
 ## Step 2: Pull in your Class 4 and 5 agents as files.
 
-Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste:
+Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste this, replacing the highlighted parts with your own:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.
 
 _📂 The export is your blueprint_
 
@@ -921,10 +921,10 @@ _Branching, hands-on · your approval gates main_
 
 ## Step 4: Rebuild the brief in Python; you approve the merge.
 
-How branching works: main is the version that runs. A branch is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you merge : the branch's changes join main. Paste:
+How branching works: main is the version that runs. A branch is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you merge : the branch's changes join main. Paste this, filling in the highlighted part:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
+> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model, e.g. Haiku] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
 
 _🐍 An automation needs no agent_
 

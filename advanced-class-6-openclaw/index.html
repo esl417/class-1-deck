@@ -746,6 +746,7 @@
   .file-item.is-trim { border-style: dashed; border-color: rgba(15,138,128,0.5); }
   @media (max-width: 760px) { .file-list { grid-template-columns: 1fr; } }
   .grid-2.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ph { font-weight: 800; background: #ffe08a; color: #4a3200; padding: 0 5px; border-radius: 4px; }
   @media (max-width: 760px) { .grid-2.cols-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -1242,8 +1243,8 @@
   <div class="slide-num" data-label="Step 2 · Bring in your agents"></div>
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 4 and 5 agents as files.</h2>
-  <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste:</p>
-  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [name], with its skill, and my action agent, [name], which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.</div>
+  <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste this, replacing the <span class="ph">highlighted</span> parts with your own:</p>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1282,8 +1283,8 @@
   <div class="slide-num" data-label="Step 4 · The brief, in Python"></div>
   <div class="eyebrow">Branching, hands-on · your approval gates main</div>
   <h2>Step 4: Rebuild the brief in Python; you approve the merge.</h2>
-  <p><strong>How branching works:</strong> <strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you <strong>merge</strong>: the branch's changes join main. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
+  <p><strong>How branching works:</strong> <strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you <strong>merge</strong>: the branch's changes join main. Paste this, filling in the <span class="ph">highlighted</span> part:</p>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to <span class="ph">[a cheap model, e.g. Haiku]</span> for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">🐍 An automation needs no agent</div>
@@ -1305,7 +1306,7 @@
   <div class="slide-num" data-label="Step 5 · Schedule the chain"></div>
   <div class="eyebrow">Your two deployments, rebuilt</div>
   <h2>Step 5: Schedule the brief at 7:00 and the agent at 7:30.</h2>
-  <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff, dated, to my [Drive / Dropbox] folder so I can open it from anywhere, and sends it to me in my chat app. Then list the next few times each one will run, so I can check both schedules are right.</div>
+  <div class="prompt-box">Schedule scripts/brief.py to run weekdays at 7:00 with this computer's own scheduler, logging to logs/brief.log. Then create an OpenClaw automation for weekdays at 7:30, in its own session: "Handle my morning." It reads today's brief from briefs/ and saves the handoff, dated, to my <span class="ph">[Drive / Dropbox]</span> folder so I can open it from anywhere, and sends it to me in my chat app. Then list the next few times each one will run, so I can check both schedules are right.</div>
   <div class="grid-2 cols-3" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⏸️ Pause Classes 4 and 5</div>
