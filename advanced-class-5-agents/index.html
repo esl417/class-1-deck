@@ -946,10 +946,10 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Step 1 · General"></div>
   <div class="eyebrow">Create agent, top to bottom</div>
-  <h2>Step 1: Name it, pick the model, write its <em>directions</em>.</h2>
+  <h2>Step 1: Name it, pick the model, dictate its <em>deliverable</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
   <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read the handoff log first and update it last.</div>
-  <p class="small-note">Model: a Sonnet model at low effort is a good start. Raise it only if the calls it makes are weak; higher effort costs more per run.</p>
+  <p class="small-note">Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.</p>
 </section>
 
 <!-- 9. STEP 2 — TOOLS -->
@@ -968,7 +968,7 @@
       <p><strong>Send</strong>, anything that <strong>deletes</strong>, and any action the deliverable doesn't need. A tool that's off can't be called, whatever an email says.</p>
     </div>
   </div>
-  <p class="small-note">Logins work as in Class 4: each new MCP server asks for a credential, and plain Connect is usually enough.</p>
+  <p class="small-note">Logins work as in Class 4: each new MCP server asks for a credential, and plain Connect is usually enough. For an app with no MCP server, its API token goes in the vault.</p>
 </section>
 
 <!-- 10. STEP 3 — SKILLS + MULTIAGENT -->
@@ -987,7 +987,7 @@
       <p>A second model it can consult on hard calls, billed at that model's rates against the same cap.</p>
     </div>
   </div>
-  <p class="small-note">Get one agent working before you give it a team. Then click <strong>Create agent</strong>.</p>
+  <p class="small-note">Subagents aren't the chain from slide 8: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click <strong>Create agent</strong>.</p>
 </section>
 
 <!-- 11. STEP 4 — MEMORY -->
@@ -1013,7 +1013,7 @@
   <div class="slide-num" data-label="Step 5 · Test run"></div>
   <div class="eyebrow">Run it, read it, fix it</div>
   <h2>Step 5: Test-run it and check it really acted.</h2>
-  <p>Start a test run and give it this morning: <em>"Handle my morning."</em> Watch the session, change the config where something's off, and run it again.</p>
+  <p>Make sure today's brief is in your folder (if not, click Run now on the Class 4 deployment). Then start a test run: <em>"Handle my morning."</em> Watch the session, change the config where something's off, and run it again.</p>
   <ul class="numbered">
     <li><strong>1.</strong> Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.</li>
     <li><strong>2.</strong> Check it acted → the draft is in Gmail, the task is on your list. "I created the draft" isn't a draft you can open.</li>
@@ -1048,7 +1048,7 @@
   <div class="slide-num" data-label="Direct it"></div>
   <div class="eyebrow">It works on a schedule, and when you ask</div>
   <h2>Hand it work directly in a new session.</h2>
-  <p>Start a session with the agent any time and give it a job: <em>"Prep me for the 2pm," "draft the reply to Dana."</em> Same directions, same limits.</p>
+  <p>Start a session with the agent any time and give it a job, phrased as the outcome you want: <em>"Prep me for the 2pm: one page, open questions first."</em> Same system prompt, same limits.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🧭 It decides the steps</div>
@@ -1103,7 +1103,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🎓</span>
-    <p><strong>The calls are yours:</strong> what it may handle alone, and what always comes to you. Claude can walk you through every setting.</p>
+    <p><strong>The calls are yours:</strong> what counts as done, and what always comes to you. Claude can walk you through every setting.</p>
   </div>
 </section>
 
@@ -1114,7 +1114,7 @@
   <h2>Your agent works the brief before you open it.</h2>
   <ul>
     <li class="done-check">An agent built field by field, with <strong>the deliverable it owes you</strong> dictated in its system prompt.</li>
-    <li class="done-check">Your Class 4 brief, <strong>still its own automation</strong>, feeding the agent.</li>
+    <li class="done-check">A <strong>two-link chain</strong>: your Class 4 brief feeding the agent, each with its own model and cap.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
     <li class="done-check">A <strong>log</strong> it reads and updates, and a <strong>capped</strong> run every weekday.</li>
   </ul>

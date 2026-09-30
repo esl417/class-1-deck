@@ -48,7 +48,7 @@ The core design idea, framed as Eric wants it: an automation gets its steps dict
 
 ## Step 1 · General
 
-Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and the handoff log (read first, update last). Model: a Sonnet model at low effort is a sensible start; raise effort only if its calls are weak, since higher effort costs more per run.
+Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and the handoff log (read first, update last). Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 4 brief agent only sorts, so they can move it to a lighter model for a direct saving.
 
 ## Step 2 · Tools
 
@@ -56,7 +56,7 @@ The built-in toolset is present by default with its permission policy shown (Aut
 
 ## Step 3 · Skills and multiagent
 
-The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 4 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Then Create agent.
+The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 4 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Distinguish them from the chain on slide 8: subagents run inside one session under one shared budget, while each link in a chain is its own deployment with its own model, cap and sessions. Then Create agent.
 
 ## Step 4 · Memory
 
@@ -64,7 +64,7 @@ Each session starts with fresh context, so without a record it would redo work a
 
 ## Step 5 · Test run
 
-A debugging loop, as in Class 4. Give it "Handle my morning." The Class 4 brief must exist for today (run the Class 4 deployment first if it hasn't). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
+A debugging loop, as in Class 4. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 4 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
 ## Step 6 · Schedule it
 
@@ -72,7 +72,7 @@ Leave the Class 4 deployment running as it is; this is a second deployment. Fiel
 
 ## Direct it
 
-Besides the schedule, they can start a session with the agent any time and hand it a job ("prep me for the 2pm," "draft the reply to Dana"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
+Besides the schedule, they can start a session with the agent any time and hand it a job, phrased as an outcome, the same way the handoff is dictated ("Prep me for the 2pm: one page, open questions first"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
 
 ## Tune what reaches you
 
@@ -80,8 +80,8 @@ The first week is calibration, and the fix is always the deliverable in the syst
 
 ## Homework
 
-Two things before Class 6. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what it may handle alone is their call.
+Two things before Class 6. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
 
 ## You shipped it
 
-Recap: an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
+Recap: a two-link chain (the Class 4 brief feeding the agent, each with its own model and cap), an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
