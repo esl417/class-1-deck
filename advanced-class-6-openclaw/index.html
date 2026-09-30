@@ -1170,7 +1170,7 @@
   <div class="eyebrow">Before Step 1 · in VS Code</div>
   <h2>Install OpenClaw, with your project folder as its home.</h2>
   <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
-  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the exact onboarding command, using this folder as the workspace, and the choices to make. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.</div>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. Keep your answer short.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
@@ -1216,15 +1216,13 @@
   <div class="eyebrow">The rest of the wizard</div>
   <h2>Finish onboarding: connect your chat app, skip the extras.</h2>
   <ul class="numbered">
-    <li><strong>1. Select channel:</strong> pick the chat app you already live in and follow its steps. <strong>Telegram</strong> is the simplest (a bot from @BotFather); <strong>Slack</strong> works too. Then message your bot: it replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
+    <li><strong>1. Select channel:</strong> pick the chat app you already live in and follow its steps. <strong>Telegram</strong> is the simplest (a bot from @BotFather). <strong>Slack</strong> works too, but a work Slack usually needs an admin to approve it. Then message your bot: it replies with a pairing code. Tell Claude Code: <em>"Approve pairing code [code]."</em></li>
     <li><strong>2. Memories found:</strong> choose <strong>No</strong>. It offers to import memories from other AI tools: extra overhead and private context this agent doesn't need.</li>
     <li><strong>3. Search provider:</strong> pick one that works without a key, or skip. You can add one later.</li>
     <li><strong>4. Install missing skill dependencies:</strong> skip. Press <strong>Space</strong> to select <em>Skip for now</em>, then <strong>Enter</strong>. Step 1 turns those skills off anyway.</li>
   </ul>
-  <div class="heads-up">
-    <span class="heads-up-mark">💼</span>
-    <p><strong>Slack at work usually needs an admin</strong> to approve a new app. If that approval won't come today, pick Telegram, which only needs you, and switch to Slack when it comes. One chat app per agent.</p>
-  </div>
+  <p style="margin-top: 10px; margin-bottom: 0;"><strong>When the wizard finishes</strong>, paste this into Claude Code:</p>
+  <div class="prompt-box">Onboarding is done. Check OpenClaw's health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.</div>
 </section>
 
 <!-- STEP 1 — CLEAN IT OUT -->

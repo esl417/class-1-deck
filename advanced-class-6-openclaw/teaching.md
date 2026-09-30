@@ -215,8 +215,8 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 MEMORY.md hold personal context, one reason the repo must be private.
 
 
-After onboarding, from Eric's run of 2026.9.7 (2026-09-30), what the prompt's "fix the warnings
-worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
+(2026-09-30), what "fix the warnings worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
 text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then
@@ -277,9 +277,10 @@ materialized by the active runtime" (SecretSurfaceUnavailableError). So the key 
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
 Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
-and report its length), then gives the exact `openclaw onboard --workspace "<folder>"` command
-and the choices: QuickStart, the agent name, Anthropic, API key, Environment variable,
-ANTHROPIC_API_KEY. Never typed as a
+and report its length), then gives the one command to start onboarding in the folder, briefly. The
+choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment
+variable), not from Claude: asked for "the choices", Claude invented a longer Manual-setup path
+in Eric's test, so the prompt no longer asks for them. Never typed as a
 terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
 the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
 plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own

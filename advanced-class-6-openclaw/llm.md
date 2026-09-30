@@ -632,7 +632,7 @@ _Before Step 1 · in VS Code_
 First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the exact onboarding command, using this folder as the workspace, and the choices to make. When I'm done, check its health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then give me the one command to start onboarding in this folder. Keep your answer short.
 
 _⌨️ You run onboarding yourself_
 
@@ -655,8 +655,8 @@ OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the m
 (overhead and risk). Then `openclaw doctor` and `openclaw gateway status`. The memory/ folder and
 MEMORY.md hold personal context, one reason the repo must be private.
 
-After onboarding, from Eric's run of 2026.9.7 (2026-09-30), what the prompt's "fix the warnings
-worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
+After onboarding (the second prompt, on the Finish onboarding slide), from Eric's run of 2026.9.7
+(2026-09-30), what "fix the warnings worth fixing" means, for Claude to carry out: `openclaw gateway status` should show the LaunchAgent
 loaded (starts at login), running, probe ok, bind 127.0.0.1:18789 (loopback only), matching CLI and
 gateway versions. `openclaw doctor` warnings worth acting on: the gateway token is stored in plain
 text in ~/.openclaw/openclaw.json (gateway.auth.token); fix with `openclaw secrets configure`, then
@@ -745,9 +745,10 @@ materialized by the active runtime" (SecretSurfaceUnavailableError). So the key 
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
 Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
-and report its length), then gives the exact `openclaw onboard --workspace "<folder>"` command
-and the choices: QuickStart, the agent name, Anthropic, API key, Environment variable,
-ANTHROPIC_API_KEY. Never typed as a
+and report its length), then gives the one command to start onboarding in the folder, briefly. The
+choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment
+variable), not from Claude: asked for "the choices", Claude invented a longer Manual-setup path
+in Eric's test, so the prompt no longer asks for them. Never typed as a
 terminal command (it would land in shell history) and never pasted into the chat. Caveats, from
 the docs and OpenClaw's code: installing the gateway service copies the value into its LaunchAgent
 plist (plain text); changing the key later means reinstalling the service; and per OpenClaw's own
@@ -763,7 +764,7 @@ _The rest of the wizard_
 
 ## Finish onboarding: connect your chat app, skip the extras.
 
-- 1. Select channel: pick the chat app you already live in and follow its steps. Telegram is the simplest (a bot from @BotFather); Slack works too. Then message your bot: it replies with a pairing code. Tell Claude Code: "Approve pairing code [code]."
+- 1. Select channel: pick the chat app you already live in and follow its steps. Telegram is the simplest (a bot from @BotFather). Slack works too, but a work Slack usually needs an admin to approve it. Then message your bot: it replies with a pairing code. Tell Claude Code: "Approve pairing code [code]."
 
 - 2. Memories found: choose No . It offers to import memories from other AI tools: extra overhead and private context this agent doesn't need.
 
@@ -771,9 +772,10 @@ _The rest of the wizard_
 
 - 4. Install missing skill dependencies: skip. Press Space to select Skip for now , then Enter . Step 1 turns those skills off anyway.
 
- 💼
+When the wizard finishes , paste this into Claude Code:
 
-Slack at work usually needs an admin to approve a new app. If that approval won't come today, pick Telegram, which only needs you, and switch to Slack when it comes. One chat app per agent.
+[PROMPT — the exact text the student would paste; you can run or adapt this for their project]
+> Onboarding is done. Check OpenClaw's health and fix the warnings worth fixing: get the gateway token out of the plain-text config, turn off browser features I'm not using, and keep the gateway reachable only from this computer. Then commit the agent's files and tell me what you changed.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
