@@ -308,7 +308,7 @@ _You already know these parts_
  Managed Agents OpenClaw
  General: model, system prompt → openclaw.json picks the model; AGENTS.md, SOUL.md, USER.md are the prompt
  Tools and permission policies → Tools with allow and deny lists, plus approvals for commands
- MCP servers and API calls → Plugins, skills, and your own scripts
+ MCP servers and API calls → The same: MCP servers and API calls, plus plugins and your own scripts
  Skills → Skills: the same idea, a folder with a SKILL.md
  Environment (the sandbox) → Your computer. A sandbox is optional and off by default
  Credential vault → OpenClaw's credentials for the model, .env for your scripts
@@ -322,7 +322,7 @@ _You already know these parts_
 The bridge from Managed Agents. Every Console part has an OpenClaw home: General (model, system
 prompt) → openclaw.json for the model and AGENTS.md / SOUL.md / USER.md as the prompt; tools and
 permission policies → tool allow and deny lists plus exec approvals; MCP servers and API calls →
-plugins, skills and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
+the same MCP servers and API calls, plus plugins and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
 Class 4); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
 deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
@@ -636,7 +636,7 @@ skills appear only as IDs (the Class 5 agent has none). Translate: who they are 
 job, the three-section deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's
 standing notes → MEMORY.md. Keep files short (overhead). Vault credentials never export, which is
 correct; each app is reconnected one at a time. Claude lists the MCP servers the Console agent
-used and how each will be reached here (a plugin or skill if a trusted one exists, else a script).
+used and how each will be reached here (the same MCP server or API where possible, else a plugin, skill or script).
 
 ## Slide 18 · Step 3 · Model and keys
 
@@ -902,7 +902,7 @@ _Your homework_
 
 _🔌 Connect every app it needs_
 
-One at a time, each on its own branch: a plugin or skill if a trusted one exists, otherwise a script tool.
+One at a time, each on its own branch: an MCP server or API you trust, a plugin or skill you've read, or a script tool.
 
 _💼 Add a second chat app_
 
@@ -923,7 +923,7 @@ The calls are yours: what it may do, what model it runs on, and whether it's wor
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
-a trusted plugin or skill (read before installing), else a script tool. Add a second chat app
+the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Add a second chat app
 if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and

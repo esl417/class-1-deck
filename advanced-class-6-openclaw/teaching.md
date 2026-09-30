@@ -99,7 +99,7 @@ first commit. Official page: docs.openclaw.ai/reference/token-use.
 The bridge from Managed Agents. Every Console part has an OpenClaw home: General (model, system
 prompt) → openclaw.json for the model and AGENTS.md / SOUL.md / USER.md as the prompt; tools and
 permission policies → tool allow and deny lists plus exec approvals; MCP servers and API calls →
-plugins, skills and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
+the same MCP servers and API calls, plus plugins and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
 Class 4); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
 deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
@@ -207,7 +207,7 @@ skills appear only as IDs (the Class 5 agent has none). Translate: who they are 
 job, the three-section deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's
 standing notes → MEMORY.md. Keep files short (overhead). Vault credentials never export, which is
 correct; each app is reconnected one at a time. Claude lists the MCP servers the Console agent
-used and how each will be reached here (a plugin or skill if a trusted one exists, else a script).
+used and how each will be reached here (the same MCP server or API where possible, else a plugin, skill or script).
 
 ## Step 3 · Model and keys
 
@@ -294,7 +294,7 @@ and webhooks become possible.
 ## Homework
 
 Finish the agent until its handoff matches Class 5's. Connect every app it needs, one per branch:
-a trusted plugin or skill (read before installing), else a script tool. Add a second chat app
+the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Add a second chat app
 if useful (Slack at work once an admin approves the app). Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Class 5 agent if that did the job; either is
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
