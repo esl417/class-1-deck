@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). They write four authority lists (handle / prepare / bring to me / leave alone) into the system prompt, add a memory store as its handoff log, test-run it, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
+ADVANCED track. The student finished Advanced Class 4 in Claude Managed Agents (Claude Console, billed by API usage): a morning-briefing skill, a Quickstart agent, an environment, a credential vault, and a capped scheduled deployment saving a brief to Drive or Dropbox. Today they build a new agent in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) finds the brief file it saved and acts on it (separation of duties: each part is configured, capped and debugged on its own; Skills and Multiagent are left empty on purpose). The system prompt dictates the DELIVERABLE, not steps: the handoff's three sections with a definition of done for each, plus limits (draft never send, leave alone named kinds). They add a memory store as its handoff log, test-run it, and deploy the agent in its own deployment with a goal prompt ("Handle my morning") and a per-run budget. Output: a handoff with Taken care of / Needs your action / FYI. Custom tools are concept only: their code must run in the user's own app, which the Console cannot host (Class 6 fixes this). Rules: send and delete tools turned off (it drafts, they send); tools used unattended set to always allow; keys only in the vault; cap every run; Cowork is cheaper if it can do the job. Managed Agents is beta: check current docs before directing clicks.
 
 ---
 
@@ -270,39 +270,35 @@ The rule: one job per agent. This example is simple enough to run as one agent, 
 
 Generalize the two-part design into a chain: small agents run one after another, each writing a file the next picks up (daisy chained). The brief (Class 4) and the acting agent (Class 5) are the first two links. What Managed Agents gives each link: its own model (and effort), so the brief can run on a cheaper model than the agent that acts, which is a direct cost control; low overhead, since each link loads only its own instructions and tools rather than one big agent carrying everything; traceability, since each link has its own sessions, cost and cap, so a broken link is found and fixed on its own; and extensibility, since a new job is one more link with its own deployment. The third box on the slide (a wrap-up agent reading the week's handoffs) is hypothetical, an illustration only; the class doesn't build it. The generalizable rule: each agent gets one job (one persona). This example is simple enough that the brief and the actions could be combined into one agent, and a student may point that out; the reason to split is greater cost control (a cheaper model and its own cap for the brief) plus the traceability above. Be precise about terms: the first link has dictated steps, so it's an automation (it happens to run as a Managed Agents agent object); today's chain is an automation handing off to an agent, not an agent handing to an agent. Contrast with subagents (Multiagent in the form): those run inside one session under one shared budget; a chain is separate deployments, each managed on its own. Ordering matters: schedule each link after the one it depends on, with slack for the up-to-9-minute start jitter, and have each link say so clearly when its input file is missing.
 
-## Slide 9 · Authority
+## Slide 9 · The deliverable
 
 **What the student sees on this slide:**
 
-_You can't list every case, so give it limits_
+_An automation gets steps; an agent gets an outcome_
 
-## For each kind of item, decide how far it can go.
+## Dictate the deliverable, not the steps.
 
-You can't write a step for every email that might arrive. So instead of steps, you give it four lists. This is the heart of the agent's system prompt.
+You can't write a step for every email that might arrive. So tell the agent exactly what the finished handoff must look like, and let it work out how to get there. This is the heart of its system prompt.
 
-_✅ Handle it_
+_✅ Taken care of_
 
-Do it and report after. Scheduling requests, filing follow-ups as tasks.
+Each item done and checked : the draft is in Gmail, the task is on your list, with a link to each.
 
-_📝 Prepare it_
+_✋ Needs your action_
 
-Get it ready; you finish it. A reply drafted in Gmail that you read and send.
+Only what needs your judgment, each with the options already prepared .
 
-_✋ Bring it to me_
+_📎 FYI_
 
-Only you can decide. Money, clients unhappy, anything about your team.
-
-_🚫 Leave it alone_
-
-Don't touch it. HR, legal, anything personal.
+What changed and what it skipped, one line each .
 
  🛡️
 
-It reads email from strangers, and an email can try to give it orders. The lists and the tools you turn off are what stop that. Nothing goes out as you: it drafts, you send.
+Limits still apply: it drafts, you send, and it leaves alone anything you name. It reads email from strangers, and an email can try to give it orders; a clear deliverable and the tools you turn off keep it on task.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The core design idea. They can't write a step for every email, so they give it authority: for each kind of item, handle it (do it, report after), prepare it (get it ready, they finish, e.g. a Gmail draft they read and send), bring it to me (only they can decide), leave it alone. Push for concrete kinds of items ("scheduling requests," "invoices over $1,000," "anything from Acme"), not vague ones ("important emails"). Start conservative and widen as trust grows. The safety point to land: the agent reads untrusted input (email from anyone), and an email can contain instructions aimed at it (prompt injection). What protects them is structural: the four lists, send and delete tools turned off, and "if unsure, bring it to me." Nothing goes out as them.
+The core design idea, framed as Eric wants it: an automation gets its steps dictated; an agent gets its DELIVERABLE (the outcome) dictated and works out the steps. They can't write a step for every email, so they specify exactly what the finished handoff must look like: Taken care of (each item done and checked, e.g. the draft is really in Gmail and the task really on the list, each with a link), Needs your action (only what needs their judgment, each with options already prepared), FYI (what changed and what it skipped, one line each). The sharper the definition of done, the better the agent performs. Limits still apply but are secondary: it drafts and never sends, and it leaves alone the kinds of items they name. Safety: the agent reads untrusted input (email from anyone), and an email can contain instructions aimed at it (prompt injection); a clear deliverable plus send and delete tools turned off keep it on task, and "if unsure, put it under Needs your action" is the default. Push for concrete wording ("a scheduling request is done when a reply proposing two times is drafted"), not vague ("handle important emails").
 
 ## Slide 10 · Step 1 · General
 
@@ -315,13 +311,13 @@ _Create agent, top to bottom_
 Managed Agents → Agents → Create agent . Fill in General : a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through each item using my lists. If there's no brief today, say so at the top of the handoff. Handle: [kinds of items]. Prepare (draft, never send): [kinds]. Bring to me: [kinds]. Leave alone: [kinds]. If unsure, bring it to me. After each action, check it really happened. Read the handoff log first and update it last. Save the handoff to my [Drive / Dropbox] folder, dated: Taken care of, Needs your action, FYI.
+> You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules]. Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff. The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each. Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read the handoff log first and update it last.
 
 Model: a Sonnet model at low effort is a good start. Raise it only if the calls it makes are weak; higher effort costs more per run.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work each item by the lists; if there's no brief, say so at the top of the handoff), the four lists with their own examples in the brackets, the rule "if unsure, bring it to me" (nobody is there to ask at 7am), act-then-verify, the handoff log (read first, update last), and the three-section handoff saved to Drive or Dropbox. Model: a Sonnet model at low effort is a sensible start; raise effort only if its calls are weak, since higher effort costs more per run.
+Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 4 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and the handoff log (read first, update last). Model: a Sonnet model at low effort is a sensible start; raise effort only if its calls are weak, since higher effort costs more per run.
 
 ## Slide 11 · Step 2 · Tools
 
@@ -335,17 +331,17 @@ Open Tools . The built-in toolset is already there, with its permission set to A
 
 _✅ Always allow_
 
-The built-in tools, the reading tools, and the actions your lists need: creating drafts, filing tasks, saving the handoff. It runs unattended, so nothing can wait on a click.
+The built-in tools, the reading tools, and the actions the deliverable needs: creating drafts, filing tasks, saving the handoff. It runs unattended, so nothing can wait on a click.
 
 _🚫 Turned off_
 
-Send , anything that deletes , and any action your lists don't need. A tool that's off can't be called, whatever an email says.
+Send , anything that deletes , and any action the deliverable doesn't need. A tool that's off can't be called, whatever an email says.
 
 Logins work as in Class 4: each new MCP server asks for a credential, and plain Connect is usually enough.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The built-in toolset is present by default with its permission policy shown (Auto in the form); per-tool permissions are under Tool permissions. Add an MCP server for each app it reads or acts in, including the Drive or Dropbox folder where the brief lands (reuse Class 4's, plus ones for actions like drafts and tasks). Permission policies: always allow, always ask, auto; there's no "never" policy, so turning a tool off (disabling it) is the lock. For an unattended agent: always allow for the built-in tools, the reading tools, and the actions the lists need (create draft, create task, save the handoff); turn off send, anything that deletes, and any action the lists don't need. Auto can still pause for approval, so don't rely on it unattended. New MCP servers prompt for a credential as in Class 4 (leave the optional fields empty, acknowledge, Connect). Keep "leave it alone" in the lists, not in permissions: it's about kinds of items, and permissions are per action.
+The built-in toolset is present by default with its permission policy shown (Auto in the form); per-tool permissions are under Tool permissions. Add an MCP server for each app it reads or acts in, including the Drive or Dropbox folder where the brief lands (reuse Class 4's, plus ones for actions like drafts and tasks). Permission policies: always allow, always ask, auto; there's no "never" policy, so turning a tool off (disabling it) is the lock. For an unattended agent: always allow for the built-in tools, the reading tools, and the actions the deliverable needs (create draft, create task, save the handoff); turn off send, anything that deletes, and any action the deliverable doesn't need. Auto can still pause for approval, so don't rely on it unattended. New MCP servers prompt for a credential as in Class 4 (leave the optional fields empty, acknowledge, Connect). Keep "leave alone" in the system prompt, not in permissions: it's about kinds of items, and permissions are per action.
 
 ## Slide 12 · Step 3 · Skills and multiagent
 
@@ -407,13 +403,13 @@ Start a test run and give it this morning: "Handle my morning." Watch the sessio
 
 - 2. Check it acted → the draft is in Gmail, the task is on your list. "I created the draft" isn't a draft you can open.
 
-- 3. Check the lists → does "needs your action" hold only what needs you? Fix the lists in the system prompt, not the handoff.
+- 3. Check the deliverable → does "needs your action" hold only what needs you? Fix the deliverable in the system prompt, not the handoff.
 
 - 4. Read the cost → compare it to a Class 4 run. Multiply by 22 weekdays.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-A debugging loop, as in Class 4. Give it "Handle my morning." The Class 4 brief must exist for today (run the Class 4 deployment first if it hasn't). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the lists (Needs your action holds only what needs them; fix the lists in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
+A debugging loop, as in Class 4. Give it "Handle my morning." The Class 4 brief must exist for today (run the Class 4 deployment first if it hasn't). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 4 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
 ## Slide 15 · Step 6 · Schedule it
 
@@ -451,7 +447,7 @@ _It works on a schedule, and when you ask_
 
 ## Hand it work directly in a new session.
 
-Start a session with the agent any time and give it a job: "Prep me for the 2pm," "draft the reply to Dana." Same directions, same lists, same limits.
+Start a session with the agent any time and give it a job: "Prep me for the 2pm," "draft the reply to Dana." Same directions, same limits.
 
 _🧭 It decides the steps_
 
@@ -463,7 +459,7 @@ It wasn't in the meeting. "We agreed on the 15th and a revised quote" belongs in
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Besides the schedule, they can start a session with the agent any time and hand it a job ("prep me for the 2pm," "draft the reply to Dana"). Same system prompt, lists and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
+Besides the schedule, they can start a session with the agent any time and hand it a job ("prep me for the 2pm," "draft the reply to Dana"). Same system prompt and limits. Have them notice it chooses where to look. It can't know what happened in a meeting, so the request has to carry decisions ("we agreed on the 15th and a revised quote"). Describe-don't-micro-direct applies: tell it the outcome, not the clicks.
 
 ## Slide 17 · Tune what reaches you
 
@@ -471,23 +467,23 @@ Besides the schedule, they can start a session with the agent any time and hand 
 
 _The first week is calibration_
 
-## Move items between lists until the handoff is right.
+## Sharpen the deliverable until the handoff is right.
 
 _📥 Too much reaches you_
 
-Things you'd handle the same way every time. Move that kind of item to handle or prepare .
+Things you'd handle the same way every time. Say that kind of item belongs in Taken care of , and what done looks like.
 
 _📤 Too little reaches you_
 
-It handled something you wanted to see. Move it to bring to me , and say why.
+It handled something you wanted to see. Say that kind of item belongs in Needs your action , and why.
 
  🔍
 
-Surprised by something it did? Open that run's session and read why. Then fix the cause: a list in the system prompt, a tool's permission, or a wrong entry in the log.
+Surprised by something it did? Open that run's session and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or a wrong entry in the log.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The first week is calibration. Too much reaching them: move that kind of item to handle or prepare. Too little: it handled something they wanted to see, so move it to bring to me and say why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: a list in the system prompt, a tool permission, or a wrong log entry. Fix the lists, not the handoff, so it sticks for every morning after.
+The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable, a tool permission, or a wrong log entry.
 
 ## Slide 18 · Homework
 
@@ -499,7 +495,7 @@ _Your homework · before Class 6_
 
 _☀️ Start every morning with the handoff_
 
-Tune the four lists as you go. You've arrived when you send its drafts with barely a change.
+Sharpen the deliverable as you go. You've arrived when you send its drafts with barely a change.
 
 _🛠️ Do the Class 6 prerequisites_
 
@@ -511,7 +507,7 @@ The calls are yours: what it may handle alone, and what always comes to you. Cla
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two things before Class 6. A week of starting every morning with the handoff and tuning the four lists; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what it may handle alone is their call.
+Two things before Class 6. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 6 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 6 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 6 starts building immediately. Help fully with mechanics; what it may handle alone is their call.
 
 ## Slide 19 · You shipped it
 
@@ -521,7 +517,7 @@ _That's the class — here's what now runs_
 
 ## Your agent works the brief before you open it.
 
-- An agent built field by field, with directions and four lists in its system prompt.
+- An agent built field by field, with the deliverable it owes you dictated in its system prompt.
 
 - Your Class 4 brief, still its own automation , feeding the agent.
 
@@ -535,4 +531,4 @@ Next class, you own the code. You rebuild this agent in OpenClaw, where your own
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Recap: an agent built in Create agent with directions and four lists, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.
+Recap: an agent built in Create agent with its deliverable dictated in the system prompt, the Class 4 brief still running as its own automation and feeding the agent, tools allowed or turned off (it drafts, they send), a memory store log, and a capped weekday run. Bridge to Class 6: they own the code, rebuilding this agent in OpenClaw where custom tools run and any model can power it. Say the simplicity rule plainly: if this agent already does the job, staying in Managed Agents is the right call; Class 6 is for when an agent needs more.

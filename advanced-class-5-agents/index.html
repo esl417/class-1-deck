@@ -912,33 +912,29 @@
   </div>
 </section>
 
-<!-- 7. AUTHORITY -->
+<!-- 7. THE DELIVERABLE -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Authority"></div>
-  <div class="eyebrow">You can't list every case, so give it limits</div>
-  <h2>For each kind of item, decide how far it can go.</h2>
-  <p>You can't write a step for every email that might arrive. So instead of steps, you give it four lists. This is the heart of the agent's system prompt.</p>
-  <div class="grid-2" style="margin-top: 4px; grid-template-columns: 1fr 1fr;">
+  <div class="slide-num" data-label="The deliverable"></div>
+  <div class="eyebrow">An automation gets steps; an agent gets an outcome</div>
+  <h2>Dictate the deliverable, not the steps.</h2>
+  <p>You can't write a step for every email that might arrive. So tell the agent exactly what the finished handoff must look like, and let it work out how to get there. This is the heart of its system prompt.</p>
+  <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
-      <div class="eyebrow">✅ Handle it</div>
-      <p>Do it and report after. <em>Scheduling requests, filing follow-ups as tasks.</em></p>
+      <div class="eyebrow">✅ Taken care of</div>
+      <p>Each item done <strong>and checked</strong>: the draft is in Gmail, the task is on your list, with a link to each.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">📝 Prepare it</div>
-      <p>Get it ready; you finish it. <em>A reply drafted in Gmail that you read and send.</em></p>
+      <div class="eyebrow">✋ Needs your action</div>
+      <p>Only what needs your judgment, each with the <strong>options already prepared</strong>.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">✋ Bring it to me</div>
-      <p>Only you can decide. <em>Money, clients unhappy, anything about your team.</em></p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">🚫 Leave it alone</div>
-      <p>Don't touch it. <em>HR, legal, anything personal.</em></p>
+      <div class="eyebrow">📎 FYI</div>
+      <p>What changed and what it skipped, <strong>one line each</strong>.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🛡️</span>
-    <p><strong>It reads email from strangers,</strong> and an email can try to give it orders. The lists and the tools you turn off are what stop that. Nothing goes out as you: it drafts, you send.</p>
+    <p><strong>Limits still apply:</strong> it drafts, you send, and it leaves alone anything you name. It reads email from strangers, and an email can try to give it orders; a clear deliverable and the tools you turn off keep it on task.</p>
   </div>
 </section>
 
@@ -952,7 +948,7 @@
   <div class="eyebrow">Create agent, top to bottom</div>
   <h2>Step 1: Name it, pick the model, write its <em>directions</em>.</h2>
   <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through each item using my lists. If there's no brief today, say so at the top of the handoff. Handle: [kinds of items]. Prepare (draft, never send): [kinds]. Bring to me: [kinds]. Leave alone: [kinds]. If unsure, bring it to me.<br><br>After each action, check it really happened. Read the handoff log first and update it last. Save the handoff to my [Drive / Dropbox] folder, dated: Taken care of, Needs your action, FYI.</div>
+  <div class="prompt-box">You run my mornings. I'm [role] at [company]. What matters to me: [who and what gets priority; carry over your Class 4 rules].<br><br>Each morning, find today's brief in my [Drive / Dropbox] folder and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action. Read the handoff log first and update it last.</div>
   <p class="small-note">Model: a Sonnet model at low effort is a good start. Raise it only if the calls it makes are weak; higher effort costs more per run.</p>
 </section>
 
@@ -965,11 +961,11 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">✅ Always allow</div>
-      <p>The built-in tools, the reading tools, and the actions your lists need: creating drafts, filing tasks, saving the handoff. It runs unattended, so nothing can wait on a click.</p>
+      <p>The built-in tools, the reading tools, and the actions the deliverable needs: creating drafts, filing tasks, saving the handoff. It runs unattended, so nothing can wait on a click.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🚫 Turned off</div>
-      <p><strong>Send</strong>, anything that <strong>deletes</strong>, and any action your lists don't need. A tool that's off can't be called, whatever an email says.</p>
+      <p><strong>Send</strong>, anything that <strong>deletes</strong>, and any action the deliverable doesn't need. A tool that's off can't be called, whatever an email says.</p>
     </div>
   </div>
   <p class="small-note">Logins work as in Class 4: each new MCP server asks for a credential, and plain Connect is usually enough.</p>
@@ -1021,7 +1017,7 @@
   <ul class="numbered">
     <li><strong>1.</strong> Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.</li>
     <li><strong>2.</strong> Check it acted → the draft is in Gmail, the task is on your list. "I created the draft" isn't a draft you can open.</li>
-    <li><strong>3.</strong> Check the lists → does "needs your action" hold only what needs you? Fix the lists in the system prompt, not the handoff.</li>
+    <li><strong>3.</strong> Check the deliverable → does "needs your action" hold only what needs you? Fix the deliverable in the system prompt, not the handoff.</li>
     <li><strong>4.</strong> Read the cost → compare it to a Class 4 run. Multiply by 22 weekdays.</li>
   </ul>
 </section>
@@ -1052,7 +1048,7 @@
   <div class="slide-num" data-label="Direct it"></div>
   <div class="eyebrow">It works on a schedule, and when you ask</div>
   <h2>Hand it work directly in a new session.</h2>
-  <p>Start a session with the agent any time and give it a job: <em>"Prep me for the 2pm," "draft the reply to Dana."</em> Same directions, same lists, same limits.</p>
+  <p>Start a session with the agent any time and give it a job: <em>"Prep me for the 2pm," "draft the reply to Dana."</em> Same directions, same limits.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🧭 It decides the steps</div>
@@ -1073,20 +1069,20 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Tune what reaches you"></div>
   <div class="eyebrow">The first week is calibration</div>
-  <h2>Move items between lists until the handoff is right.</h2>
+  <h2>Sharpen the deliverable until the handoff is right.</h2>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">📥 Too much reaches you</div>
-      <p>Things you'd handle the same way every time. Move that kind of item to <strong>handle</strong> or <strong>prepare</strong>.</p>
+      <p>Things you'd handle the same way every time. Say that kind of item belongs in <strong>Taken care of</strong>, and what done looks like.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📤 Too little reaches you</div>
-      <p>It handled something you wanted to see. Move it to <strong>bring to me</strong>, and say why.</p>
+      <p>It handled something you wanted to see. Say that kind of item belongs in <strong>Needs your action</strong>, and why.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🔍</span>
-    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: a list in the system prompt, a tool's permission, or a wrong entry in the log.</p>
+    <p><strong>Surprised by something it did? Open that run's session</strong> and read why. Then fix the cause: the deliverable in the system prompt, a tool's permission, or a wrong entry in the log.</p>
   </div>
 </section>
 
@@ -1098,7 +1094,7 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">☀️ Start every morning with the handoff</div>
-      <p>Tune the four lists as you go. You've arrived when you send its drafts with barely a change.</p>
+      <p>Sharpen the deliverable as you go. You've arrived when you send its drafts with barely a change.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🛠️ Do the Class 6 prerequisites</div>
@@ -1117,7 +1113,7 @@
   <div class="eyebrow">That's the class — here's what now runs</div>
   <h2>Your agent works the brief before you open it.</h2>
   <ul>
-    <li class="done-check">An agent built field by field, with <strong>directions and four lists</strong> in its system prompt.</li>
+    <li class="done-check">An agent built field by field, with <strong>the deliverable it owes you</strong> dictated in its system prompt.</li>
     <li class="done-check">Your Class 4 brief, <strong>still its own automation</strong>, feeding the agent.</li>
     <li class="done-check">Tools <strong>allowed or turned off</strong>; it drafts, you send.</li>
     <li class="done-check">A <strong>log</strong> it reads and updates, and a <strong>capped</strong> run every weekday.</li>

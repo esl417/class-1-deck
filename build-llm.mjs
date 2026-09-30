@@ -212,9 +212,9 @@ const DECKS = [
       'Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) ' +
       'finds the brief file it saved and acts on it (separation of duties: each ' +
       'part is configured, capped and debugged on its own; Skills and Multiagent ' +
-      'are left empty on purpose). They write four ' +
-      'authority lists (handle / prepare / bring to me / leave alone) into the ' +
-      'system prompt, add a memory store as its handoff log, test-run it, and ' +
+      'are left empty on purpose). The system prompt dictates the DELIVERABLE, ' +
+      'not steps: the handoff\'s three sections with a definition of done for each, ' +
+      'plus limits (draft never send, leave alone named kinds). They add a memory store as its handoff log, test-run it, and ' +
       'deploy the agent in its own deployment with a goal prompt ("Handle my ' +
       'morning") and a per-run budget. Output: a handoff with Taken care of ' +
       '/ Needs your action / FYI. Custom tools are concept only: their code must run ' +

@@ -114,7 +114,9 @@ needed = cost control), low overhead, traceable per link, and new jobs are just 
 **Build: Beginner Classes 5 and 6 collapsed into one.** The agent picks up the report, acts on
 it within the authority it's given, and writes a handoff in three sections: **Taken
 care of / Needs your action / FYI.** That is what they read every morning. A full agent.
-Carry over from Beginner: authority levels, act-then-verify, a log/state between runs,
+The agent's system prompt dictates the deliverable (outcome), not steps and not "how far it
+can go": the three sections with a definition of done for each (Eric's framing, 2026-09-29).
+Carry over from Beginner: act-then-verify, a log/state between runs,
 nothing sent as the student without them.
 
 ## Class 6 Advanced: OpenClaw in VS Code
