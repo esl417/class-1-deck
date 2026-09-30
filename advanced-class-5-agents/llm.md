@@ -236,7 +236,7 @@ _Many small agents, one after another_
 Each agent owns one job and hands its deliverable to the next. The brief and today's agent are the first two links; you can keep adding more.
 
  7:00 · Class 4
- Brief agent
+ Brief agent/automation
 
 Reads your sources and sorts what matters. Never acts.
 
