@@ -58,8 +58,11 @@ The decision tree, built from the comparison table's rows (each question is labe
 rows it comes from). Start at the top; the first yes decides. 1 (models): does it need a model
 other than Claude? Yes → OpenClaw. 2 (what wakes it, customize): does an event need to wake it (a webhook: a form
 submitted, a file landing, a payment), or does it need custom tools (their own scripts)? Yes →
-OpenClaw. 3 (deploy, debug): must it run unattended with a hard cap on every
-run and every step traced in a session? Yes → Managed Agents. No to all three (payment,
+OpenClaw. 3 (customize, security): does it need control Cowork
+doesn't give: a permission set per tool (always allow, always ask, off), its own sandbox
+environment, or apps Cowork has no connector for (any remote MCP server or API, with keys in a
+vault)? Yes → Managed Agents, which also brings a hard per-run cap and a traced session for every
+run. No to all three (payment,
 maintain): a Cowork project on the flat Claude plan, nothing to host. Messaging is deliberately
 not a question: a Cowork project can be messaged from the Claude app on desktop and phone, so
 being reachable doesn't by itself justify OpenClaw (only Managed Agents lacks it). Any OpenClaw
