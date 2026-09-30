@@ -242,7 +242,7 @@ scripts/brief.py from the exported briefing skill (the spec): it pulls each sour
 with keys from `.env`, does every dictated step (fetching, counting, dates, formatting), makes a
 single call to a cheap model for the one judgment ("what needs me today"), and saves the brief to
 briefs/, dated. Honesty rules carry over from Class 4: say when a source failed; write a brief
-even on a quiet day. Test it, review it (the code-review and security-review agents set up in the prereqs run on it), fix what's real, then merge into main and run brief.py once to check today's brief lands in briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
+even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`.

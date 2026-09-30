@@ -1192,7 +1192,7 @@
   <div class="eyebrow">Branching, hands-on · no OpenClaw needed</div>
   <h2>Step 4: On a branch, rebuild your brief as plain Python.</h2>
   <p><strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until it's reviewed. Paste:</p>
-  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, review it, then merge it into main.</div>
+  <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">🐍 An automation needs no agent</div>
@@ -1203,7 +1203,7 @@
       <p>The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.</p>
     </div>
   </div>
-  <p class="small-note">Every change from now on goes this way: branch, review, merge. The review agents from your prerequisites check the code before it reaches main.</p>
+  <p class="small-note">Read the test brief. Only when it's right, tell Claude Code: <em>"Approved, merge it into main."</em> Every change from now on goes this way: branch, test, your approval, merge.</p>
 </section>
 
 <!-- STEP 5 — SCHEDULE THE CHAIN -->

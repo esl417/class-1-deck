@@ -689,7 +689,7 @@ _Branching, hands-on · no OpenClaw needed_
 main is the version that runs. A branch is a copy where you change things safely; nothing touches main until it's reviewed. Paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Test it, review it, then merge it into main.
+> Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
 
 _🐍 An automation needs no agent_
 
@@ -699,7 +699,7 @@ _🦞 OpenClaw starts where the brief ends_
 
 The agent reads the finished brief at 7:30. The automation never loads OpenClaw's files, skills or overhead.
 
-Every change from now on goes this way: branch, review, merge. The review agents from your prerequisites check the code before it reaches main.
+Read the test brief. Only when it's right, tell Claude Code: "Approved, merge it into main." Every change from now on goes this way: branch, test, your approval, merge.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -712,7 +712,7 @@ scripts/brief.py from the exported briefing skill (the spec): it pulls each sour
 with keys from `.env`, does every dictated step (fetching, counting, dates, formatting), makes a
 single call to a cheap model for the one judgment ("what needs me today"), and saves the brief to
 briefs/, dated. Honesty rules carry over from Class 4: say when a source failed; write a brief
-even on a quiet day. Test it, review it (the code-review and security-review agents set up in the prereqs run on it), fix what's real, then merge into main and run brief.py once to check today's brief lands in briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
+even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`.
