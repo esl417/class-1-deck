@@ -293,7 +293,7 @@ _Installed ≠ logged in_
 The tools are installed, but they don't know who you are yet. One prompt logs you into all three — Claude drives it and pauses when a browser window needs a click.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Log me into the GitHub CLI, the ant CLI (ant auth login, with my Claude Console account from Class 4), and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
+> Log me into the GitHub CLI, the ant CLI (ant auth login, with my Claude Console account), and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
 
  ✋
 
