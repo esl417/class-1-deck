@@ -1191,7 +1191,7 @@
   <div class="slide-num" data-label="Step 4 · The brief, in Python"></div>
   <div class="eyebrow">Branching, hands-on · your approval gates main</div>
   <h2>Step 4: Rebuild the brief in Python; you approve the merge.</h2>
-  <p><strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy where you change things safely; nothing touches main until you approve it. Paste:</p>
+  <p><strong>How branching works:</strong> <strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you <strong>merge</strong>: the branch's changes join main. Paste:</p>
   <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
