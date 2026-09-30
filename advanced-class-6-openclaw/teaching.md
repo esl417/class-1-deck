@@ -215,7 +215,7 @@ export/; the Console's Export as code is the other route. A Raw agent definition
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
 download. Translate the Class 5 agent now: who they are → USER.md; the job, the three-section
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
-Keep files short (overhead). The brief waits for Step 5; the exported briefing skill is only its
+Keep files short (overhead). The brief waits for Step 4; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
 correct; each app is reconnected one at a time. Then Claude gets every app the two agents used
 working: it connects the same MCP servers, and for each API walks the student through getting the
@@ -231,21 +231,7 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Step 4 · Connect a chat app
-
-The student picks the chat app they already live in (this student lives in Slack). Telegram and
-WebChat ship with OpenClaw; Slack, WhatsApp, Microsoft Teams, Discord, Signal, iMessage and more
-are official plugins (check docs.openclaw.ai/channels for the current list and each one's setup).
-Claude Code walks them through creating the bot or app for that platform (Telegram: @BotFather,
-`/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
-channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
-approves it (`openclaw pairing approve <channel> <CODE>`). Then a real job, and they check the
-answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
-workspace usually needs an admin to approve a new app; if that won't happen today, start with
-Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
-QR code, so it speaks as them: prefer a separate number or a bot-style channel.
-
-## Step 5 · The brief, in Python
+## Step 4 · The brief, in Python
 
 The design rule (Eric's): the brief is an automation, every step dictated, so it needs no agent
 and no OpenClaw; OpenClaw is for the steps after the brief exists. Loading OpenClaw's workspace
@@ -261,7 +247,7 @@ even on a quiet day. Test, commit on the branch, don't merge. Keep personal outp
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`.
 
-## Step 6 · Review and merge
+## Step 5 · Review and merge
 
 The author shouldn't grade its own work. Claude opens a pull request (the proposal to change
 main). A second AI reviews it: Codex in VS Code or another model, asked for bugs and security
@@ -270,19 +256,33 @@ what it disagrees with. Then merge into main and run brief.py once to check toda
 briefs/. Every change from now on is branch, review, merge; once it runs in the cloud, main
 is what runs, so only reviewed code reaches it.
 
-## Step 7 · Schedule the chain
+## Step 6 · Schedule the chain
 
 The two Managed Agents deployments rebuilt, each with the right tool. 7:00: brief.py on the
 computer's own scheduler (on a Mac, Claude sets up a launchd job, which also runs a missed job
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
-"Handle my morning.", reading today's brief from briefs/, saving the handoff, and sending it in
-their chat app. Claude shows the next five run times for both to catch schedule typos (Class 4's
+"Handle my morning.", reading today's brief from briefs/ and saving the handoff to handoffs/,
+dated (the chat app comes in Step 7, which adds sending it there). Claude shows the next five run times for both to catch schedule typos (Class 4's
 lesson). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
 or they get two briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md,
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 5: an automation handing off to an agent.
+
+## Step 7 · Connect a chat app
+
+The student picks the chat app they already live in (this student lives in Slack). Telegram and
+WebChat ship with OpenClaw; Slack, WhatsApp, Microsoft Teams, Discord, Signal, iMessage and more
+are official plugins (check docs.openclaw.ai/channels for the current list and each one's setup).
+Claude Code walks them through creating the bot or app for that platform (Telegram: @BotFather,
+`/newbot`; Slack: a Slack app in their workspace), puts any token in `.env`, and connects the
+channel with DM policy on pairing. The student messages the bot, gets a pairing code, and Claude
+approves it (`openclaw pairing approve <channel> <CODE>`). It's the last build step, so once connected Claude also sends the 7:30 handoff there.
+Then a real job, and they check the answer against the source (act-then-verify from Class 5). The catch with Slack at work: a company
+workspace usually needs an admin to approve a new app; if that won't happen today, start with
+Telegram (needs only them) and add Slack once it's approved. WhatsApp links a personal account by
+QR code, so it speaks as them: prefer a separate number or a bot-style channel.
 
 ## Webhooks
 
