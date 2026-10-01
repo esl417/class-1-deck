@@ -1244,7 +1244,7 @@
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 4 and 5 agents as files.</h2>
   <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste this, replacing the <span class="ph">highlighted</span> parts with your own:</p>
-  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.</div>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set it up so the sign-in doesn't expire every week.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1252,7 +1252,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔌 Logins don't come across</div>
-      <p>Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: <strong>Claude Code walks you through it.</strong></p>
+      <p>Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: <strong>Claude Code walks you through it.</strong> A "Google hasn't verified this app" warning is expected: it's your own app.</p>
     </div>
   </div>
 </section>

@@ -855,7 +855,7 @@ _Rebuild from what works, not a description_
 Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste this, replacing the highlighted parts with your own:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set it up so the sign-in doesn't expire every week.
 
 _📂 The export is your blueprint_
 
@@ -863,7 +863,7 @@ Models, system prompts, tools, and the briefing skill. Commit it: it's the recor
 
 _🔌 Logins don't come across_
 
-Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: Claude Code walks you through it.
+Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: Claude Code walks you through it. A "Google hasn't verified this app" warning is expected: it's your own app.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -897,9 +897,17 @@ APIs (the project ID isn't secret); Google Auth Platform → Branding → app na
 the project belongs to their Google Workspace, otherwise External with themselves as a test user;
 Clients → Create client → Desktop app; the student pastes the client ID and secret into .env
 themselves; Claude then tests each app, which opens a Google sign-in. Two things to tell students:
-with an External app in Testing, Google makes them sign in again every 7 days, so a personal-Gmail
-agent can stop working weekly until they re-auth (a Workspace account with Internal avoids it;
-check Google's current rules before suggesting publishing the app); and Drive's MCP server can't edit
+the weekly sign-in trap. Google's docs: an External app in "Testing" is "issued a refresh token
+expiring in 7 days" (unless it only asks for name/email/profile), so a personal-Gmail agent would
+stop working every week. The fix, which the Step 2 prompt asks for ("set it up so the sign-in
+doesn't expire every week") and which Eric's own Jerry agent already uses for a personal Gmail
+(its gog OAuth token lasts until revoked or ~6 months unused): set the OAuth app's publishing status
+to "In production" instead of Testing. No verification needed for personal use; Google shows a
+"Google hasn't verified this app" warning at sign-in (click Advanced → continue; it's their own
+app), and an unverified production app is capped at 100 users for the project's lifetime, which
+doesn't matter for one person. A Workspace account can use Internal instead, which never expires
+weekly. Other things that still end a token: 6 months unused, changing the Google password (for
+Gmail scopes), revoking access, or more than 100 tokens for one client; and Drive's MCP server can't edit
 an existing file, so the handoff is saved as a new dated file, which matches Step 5.
 
 ## Slide 22 · Step 3 · Model and keys
