@@ -1,12 +1,12 @@
-# Teaching notes — Advanced Class 6 Prerequisites
+# Teaching notes — Advanced Class 3 Prerequisites
 
-Per-slide notes for the bot view of the Advanced Class 6 PREREQS deck, adapted from the
-Class 1 prereqs. Each `##` heading is a slide's label (its data-label in prereqs.html).
+Per-slide notes for the bot view of the Advanced Class 3 PREREQS deck, adapted from the
+website course's Class 1 prereqs. Each `##` heading is a slide's label (its data-label in prereqs.html).
 Kept private — never served on the human deck. The student is on the Advanced track: they
-built in Claude Managed Agents in Classes 4 and 5 but may never have used VS Code, a
-terminal, or GitHub. Class 6 installs OpenClaw in VS Code with Claude Code, so this setup
+built in Claude Managed Agents in Classes 1 and 2 but may never have used VS Code, a
+terminal, or GitHub. Class 3 installs OpenClaw in VS Code with Claude Code, so this setup
 covers VS Code, Claude Code, git, Node.js, and GitHub only (no Vercel, no Impeccable). If
-they already did the Class 1 setup, they only need the Terminal check.
+they already did the website course setup, they only need the Terminal check.
 
 These notes are **recovery-focused**, not concept-focused. A student reading prereqs is
 setting up for the first time; when they consult you, it's usually because an install,
@@ -19,7 +19,7 @@ Nothing technical here — it's a morale slide ("this part is a drag, you only d
 
 ## Overview
 
-Three tools, not four: VS Code, Claude Code, GitHub. Vercel is not part of Class 6 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the Class 1 prereqs, everything is installed: send them to the Terminal check to confirm it still works, then they're done.
+Three tools, not four: VS Code, Claude Code, GitHub. Vercel is not part of Class 3 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the website course prereqs, everything is installed: send them to the Terminal check to confirm it still works, then they're done.
 
 ## VS Code + Claude Code
 
@@ -39,7 +39,7 @@ Also: once in, they should switch to Opus (`/model` → Opus). If their answers 
 
 ## Prerequisites
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub and Claude Code CLIs, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 5 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub and Claude Code CLIs, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 2 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -59,11 +59,11 @@ Concept slide — teach it if asked, don't drill it. The analogy on the slide is
 
 The trap here is subtle and worth catching: **the accounts must EXIST before the login step can log into them.** Students sometimes try to run the CLI login (next slide) before signing up at github.com, and it fails confusingly. If a login is failing, verify the account was actually created first.
 
-Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 6. Their Claude Console login from Class 4 is reused for the ant CLI login; no new account needed.
+Tell them to pick a professional username — it's public and permanent. No Vercel account is needed for Class 3. Their Claude Console login from Class 1 is reused for the ant CLI login; no new account needed.
 
 ## Log into your CLIs
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 4 and 5; no API key to paste), and Claude Code, one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 1 and 2; no API key to paste), and Claude Code, one at a time.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 
@@ -89,7 +89,7 @@ Two things to get right if a student has trouble: (1) it must go in the GLOBAL s
 
 First encounter with Claude Code agents — teach the category. An agent is a specialist Claude summons when needed (here: a code-reviewer and a security-reviewer). The key mental model: they don't build these by hand — each agent is a ready-made prompt they paste, and Claude creates the agent for them, installed globally so it works in every project.
 
-The link to Class 6: these reviewers check the code Claude writes for their agent, and in class they also get a second opinion from a different AI. The handout lives at /class-1-website-build/agents.html (shared with Class 1). If a student is intimidated ("I have to build an AI agent?"), deflate that: they're pasting a message, Claude does the building. If an agent doesn't show up afterward, have them ask Claude to "list my global agents" to confirm it landed in ~/.claude/agents/.
+The link to Class 3: these reviewers check the code Claude writes for their agent, and in class they also get a second opinion from a different AI. The handout lives at /class-1-website-build/agents.html (shared with the website course's Class 1). If a student is intimidated ("I have to build an AI agent?"), deflate that: they're pasting a message, Claude does the building. If an agent doesn't show up afterward, have them ask Claude to "list my global agents" to confirm it landed in ~/.claude/agents/.
 
 ## Agents — the steps
 

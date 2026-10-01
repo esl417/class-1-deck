@@ -1,14 +1,14 @@
-# Teaching notes — Advanced Class 6 (OpenClaw in VS Code)
+# Teaching notes — Advanced Class 3 (OpenClaw in VS Code)
 
 Per-slide notes for the bot view. `##` = slide label. Private. Teach the skill, don't
-perform the build. The student finished Advanced Classes 4 and 5 in Claude Managed Agents: a
+perform the build. The student finished Advanced Classes 1 and 2 in Claude Managed Agents: a
 7:00 brief automation saving to Drive or Dropbox, and a 7:30 agent that acts on it and writes a
 handoff (Taken care of / Needs your action / FYI), with its memory in handoff-log.md. They did
-the Class 6 prereqs (VS Code, Claude Code, git, Node, GitHub CLI, ant CLI, logged in). Today
+the Class 3 prereqs (VS Code, Claude Code, git, Node, GitHub CLI, ant CLI, logged in). Today
 they compare Cowork, Managed Agents and OpenClaw, learn OpenClaw's parts, then install it,
 clean it out, and rebuild the whole chain in a project folder that is a private GitHub repo: the
-Class 4 brief as a plain Python automation (no OpenClaw: an automation needs no agent), and the
-Class 5 agent in OpenClaw, which handles everything after the brief exists.
+Class 1 brief as a plain Python automation (no OpenClaw: an automation needs no agent), and the
+Class 2 agent in OpenClaw, which handles everything after the brief exists.
 OpenClaw changes fast: check docs.openclaw.ai before giving any command or config key, and
 prefer `openclaw doctor` and the docs over memory. Rules that never slide: keys only in `.env`
 (in `.gitignore` before the first commit) or OpenClaw's own credential store, never pasted into
@@ -18,19 +18,19 @@ the caps live at each model provider, and trimming overhead is the lever.
 
 ## The arc
 
-Orientation. Class 4 dictated steps (automation), Class 5 dictated the deliverable (agent),
-Class 6 moves the same chain (brief and agent) somewhere they own every part. Plant the two standing rules: cap
+Orientation. Class 1 dictated steps (automation), Class 2 dictated the deliverable (agent),
+Class 3 moves the same chain (brief and agent) somewhere they own every part. Plant the two standing rules: cap
 spend before anything runs, and use the simplest setup that does the job. Today tests the
 second rule: OpenClaw is not an upgrade everyone should take.
 
 ## The finish line
 
-What works by the end of class: the whole chain running on their computer. The Class 4 brief is
+What works by the end of class: the whole chain running on their computer. The Class 1 brief is
 rebuilt as a plain Python automation (built and reviewed on a branch) that runs at
-7:00 with no OpenClaw involved; the Class 5 agent in OpenClaw acts on it at 7:30; the handoff
+7:00 with no OpenClaw involved; the Class 2 agent in OpenClaw acts on it at 7:30; the handoff
 arrives in the chat app they choose (Slack, Telegram, WhatsApp and more), where they can also
 message the agent. Be clear about scope: today is the setup and a first working version;
-finishing it (every source and app connected, the handoff as good as Class 5's) is homework, and
+finishing it (every source and app connected, the handoff as good as Class 2's) is homework, and
 cloud hosting (Render) is explained at the end, not done.
 
 ## What OpenClaw is
@@ -51,7 +51,7 @@ charged per token plus $0.08 per session-hour; OpenClaw is an account and card a
 provider, plus hosting); token overhead (on Cowork and Managed Agents Anthropic decides what
 loads with each call and they can't trim it; in OpenClaw every file, skill and check-in is
 theirs to cut, which is Step 1); customization; how they reach it (Cowork via the Claude app on
-desktop and phone; Managed Agents only via the Console, as Class 5 showed; OpenClaw via
+desktop and phone; Managed Agents only via the Console, as Class 2 showed; OpenClaw via
 Telegram, Slack, WhatsApp and more); what wakes it; deploy; maintain; debug (sessions in the
 Console trace every step; OpenClaw means logs, config files and health checks, which is slower);
 security (on OpenClaw the machine, keys and every installed skill are theirs to secure).
@@ -72,7 +72,7 @@ maintain): a Cowork project on the flat Claude plan, nothing to host. Messaging 
 not a question: a Cowork project can be messaged from the Claude app on desktop and phone, so
 being reachable doesn't by itself justify OpenClaw (only Managed Agents lacks it). Any OpenClaw
 answer also brings the Maintain and Security rows: only choose it if they'll own the upkeep.
-Worked example, said honestly: the Class 5 agent answers no to questions 1 and 2, so it can stay
+Worked example, said honestly: the Class 2 agent answers no to questions 1 and 2, so it can stay
 where it is; they rebuild it in OpenClaw today to learn the surface on a job they know, for the
 day a job answers yes. Consumer agents:
 big companies are shipping agents for everyone (xAI's Grok Bot, in early beta since August 2026
@@ -104,7 +104,7 @@ The bridge from Managed Agents. Every Console part has an OpenClaw home: General
 prompt) → openclaw.json for the model and AGENTS.md / SOUL.md / USER.md as the prompt; tools and
 permission policies → tool allow and deny lists plus exec approvals; MCP servers and API calls →
 the same MCP servers and API calls, plus plugins and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
-Class 4); environment → their computer (sandboxing is optional, off by default, Docker-based);
+Class 1); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
 deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
 Control UI and terminal; handoff-log.md → MEMORY.md plus daily notes in memory/. New: channels
@@ -146,7 +146,7 @@ its tool list. The simplest documented route is MCP: a small local Python MCP se
 tool, added with `openclaw mcp add` (docs.openclaw.ai/tools/mcp; MCP tools go through the same tool
 policy as everything else). A plugin with `api.registerTool` also works but needs TypeScript and a
 manifest. A skill is not a tool: a skill only tells the agent how to work. No separate application
-needed, which removes the Class 5 limit.
+needed, which removes the Class 2 limit.
 
 ## What wakes it
 
@@ -176,13 +176,13 @@ password- and data-stealer. A skill is code running with the agent's access: ins
 they or Claude Code have read. Whoever can reach the Gateway controls the agent, so it stays on loopback; `openclaw security audit` checks
 the setup. Keys live in `.env` or OpenClaw's credential store, never in a chat, the agent's
 files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in January 2026,
-let one malicious link take over an install via the Control UI). Class 5 rules carry over: it
+let one malicious link take over an install via the Control UI). Class 2 rules carry over: it
 drafts, they send, and anything it reads from strangers can try to give it orders.
 
 ## Git words
 
-Adapted from Class 1's "Git words" slide, plus branch and merge, which this class uses hands-on in
-Step 4. The student may never have used git (Advanced skipped Classes 1 to 3). Don't lecture the
+Adapted from the website course's Class 1 "Git words" slide, plus branch and merge, which this class uses hands-on in
+Step 4. The student may never have used git (the Advanced course does not include the website course). Don't lecture the
 definitions back; check which word is unclear and anchor it to something they know. The analogy
 that lands: git is Track Changes for the whole project. The one that trips people is commit vs push
 (both sound like "save"): commit = a checkpoint on their computer; push = send those checkpoints up
@@ -194,7 +194,7 @@ branch into main. They never type git commands: they ask Claude Code by name.
 Three stages. Their computer: edit and commit (snapshots only they have). Push: to GitHub, a
 private backup with full history (lose the laptop, lose nothing). Merge into main: only approved
 changes; main is the version that runs, and when they host it (Render), every merge to main
-redeploys. Unlike Class 1 there's no live website, so a push here is a backup, not a publish; the
+redeploys. Unlike the website course there's no live website, so a push here is a backup, not a publish; the
 "publish" moment is the merge to main once a host watches main. Plain-English asks: "Commit and push
 this.", "What changed since my last commit?", "Something broke: go back to the last commit." The
 repo is private and .env never leaves the computer because .gitignore excludes it (set up in the
@@ -240,7 +240,7 @@ Onboarding asks for an auth method after the provider. For Anthropic: "Anthropic
 using an existing Claude Code CLI login on this host)", "Anthropic API key", "Anthropic
 setup-token". Definitions, checked 2026-09-30:
 API key: a key from the provider's developer console (for Anthropic, the Claude Console they used
-in Classes 4 and 5). Pay-as-you-go, with spend limits at the provider; works locally and on a
+in Classes 1 and 2). Pay-as-you-go, with spend limits at the provider; works locally and on a
 server. This is what the class teaches: the only option with clear policy and a spend cap, which
 the whole cost thread depends on. OpenClaw's own docs call API-key auth "preferable for shared
 automation or predictable production spend."
@@ -342,15 +342,15 @@ message, schedule and check-in. Confirm exact config keys against docs.openclaw.
 
 ## Step 2 · Bring in your agents
 
-Prompts in this deck are pasted into Claude Code, which has no idea what "Class 4" or "Class 5"
+Prompts in this deck are pasted into Claude Code, which has no idea what "Class 1" or "Class 2"
 means, so they name the agents by role and Console name (the morning-briefing agent, the action
 agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. They download
 handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
-during prereqs) to pull the Class 4 briefing agent and its skill (`ant beta:agents retrieve`, and
-`ant beta:skills:versions download` for the skill's files) and the Class 5 agent into
+during prereqs) to pull the Class 1 briefing agent and its skill (`ant beta:agents retrieve`, and
+`ant beta:skills:versions download` for the skill's files) and the Class 2 agent into
 export/; the Console's Export as code is the other route. A Raw agent definition holds
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
-download. Translate the Class 5 agent now: who they are → USER.md; the job, the three-section
+download. Translate the Class 2 agent now: who they are → USER.md; the job, the three-section
 deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
 Keep files short (overhead). The brief waits for Step 4; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
@@ -403,7 +403,7 @@ safely, merged only after review. On a branch called brief-automation, Claude wr
 scripts/brief.py from the exported briefing skill (the spec): it pulls each source through its API
 with keys from `.env`, does every dictated step (fetching, counting, dates, formatting), makes a
 single call to a cheap model for the one judgment ("what needs me today"), and saves the brief to
-briefs/, dated. Honesty rules carry over from Class 4: say when a source failed; write a brief
+briefs/, dated. Honesty rules carry over from Class 1: say when a source failed; write a brief
 even on a quiet day. Claude runs it once, shows today's brief, and reviews the code (the code-review and security-review agents set up in the prereqs run on it), fixing what's real. It does not merge: the student reads the test brief and approves it first ("Approved, merge it into main."). The approval is the lesson: a person signs off on test results before anything reaches main. Every change from now on is branch, test, approval, merge; once it runs in the cloud, main is what runs, so only reviewed code reaches it. (No second AI coder in class: Eric decided against installing another tool.) Keep personal output folders
 (briefs/, logs/, memory/) out of commits via `.gitignore`. Sources with a simple API key are
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
@@ -420,12 +420,12 @@ Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere;
 Code project would be unreachable from a phone. The brief can stay local because it's an
 intermediate file only the agent reads; the handoff is the deliverable. It's also sent in the chat
 app connected during onboarding. Claude then lists the next few run times for each, which catches schedule
-typos before a morning is missed (Class 4's cron lesson: `* 7 * * 1-5` runs every minute of the
-7am hour, `0 7 * * 1-5` once). Once the handoff is right, pause both Managed Agents deployments (Class 4 and Class 5),
+typos before a morning is missed (Class 1's cron lesson: `* 7 * * 1-5` runs every minute of the
+7am hour, `0 7 * * 1-5` once). Once the handoff is right, pause both Managed Agents deployments (Class 1 and Class 2),
 or they get two briefs and double drafts. Heartbeat stays off; when wanted, a short HEARTBEAT.md,
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
-Class 5: an automation handing off to an agent. Then the tool test: they message "Rerun my
+Class 2: an automation handing off to an agent. Then the tool test: they message "Rerun my
 brief." and check the agent called the morning_briefing tool (visible in the session transcript)
 rather than fetching the sources itself, and that a fresh brief came back.
 
@@ -500,14 +500,14 @@ No Sessions page does this for them. First check: is the Gateway running (`openc
 status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
 Then `openclaw status` (channels, sessions, usage), `openclaw
 doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
-move from the Class 1 prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
+move from the website course prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
 come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
 limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
 ## Homework
 
-Finish the chain until its handoff matches Class 5's. Connect every source the brief reads and
+Finish the chain until its handoff matches Class 2's. Connect every source the brief reads and
 every app the agent acts in, one per branch:
 the same MCP server or API it used in the Console, a trusted plugin or skill (read before installing), or a script tool. Watch cost daily for a week at each provider and trim anything that grew back.
 Then decide: move it to Render, or go back to the Managed Agents chain if that did the job; either is

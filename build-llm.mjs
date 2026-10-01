@@ -175,7 +175,7 @@ const DECKS = [
   },
   {
     dir: 'advanced-class-4-automations',
-    title: 'Class 4: Automations (Advanced)',
+    title: 'Class 1: Automations (Advanced)',
     standing:
       'ADVANCED track. The student is comfortable with Claude and Cowork (they may ' +
       'already run small agents there) but has not written code. This track does ' +
@@ -197,19 +197,19 @@ const DECKS = [
       'class: before anything runs, spend is capped per run (deployment budget), ' +
       'per month (workspace spend limit) and by prepaid credits with auto-reload ' +
       'off; read the upcoming runs to catch cron typos. Managed Agents is beta: check current docs ' +
-      'before directing clicks. Class 5 adds a separate agent that acts on this brief; ' +
-      'Class 6 moves to Claude Code and OpenClaw.',
+      'before directing clicks. Class 2 adds a separate agent that acts on this brief; ' +
+      'Class 3 moves to Claude Code and OpenClaw.',
   },
   {
     dir: 'advanced-class-5-agents',
-    title: 'Class 5: Agents (Advanced)',
+    title: 'Class 2: Agents (Advanced)',
     standing:
-      'ADVANCED track. The student finished Advanced Class 4 in Claude Managed ' +
+      'ADVANCED track. The student finished Advanced Class 1 in Claude Managed ' +
       'Agents (Claude Console, billed by API usage): a morning-briefing skill, a ' +
       'Quickstart agent, an environment, a credential vault, and a capped scheduled ' +
       'deployment saving a brief to Drive or Dropbox. Today they build a new agent ' +
       'in Create agent (General, Tools, Skills, Multiagent) as a SEPARATE part: the ' +
-      'Class 4 deployment keeps running unchanged at 7:00, and the agent (7:30) ' +
+      'Class 1 deployment keeps running unchanged at 7:00, and the agent (7:30) ' +
       'finds the brief file it saved and acts on it (separation of duties: each ' +
       'part is configured, capped and debugged on its own; Skills and Multiagent ' +
       'are left empty on purpose). The system prompt dictates the DELIVERABLE, ' +
@@ -218,7 +218,7 @@ const DECKS = [
       'deploy the agent in its own deployment with a goal prompt ("Handle my ' +
       'morning") and a per-run budget. Output: a handoff with Taken care of ' +
       '/ Needs your action / FYI. Custom tools are concept only: their code must run ' +
-      'in the user\'s own app, which the Console cannot host (Class 6 fixes this). ' +
+      'in the user\'s own app, which the Console cannot host (Class 3 fixes this). ' +
       'Rules: send and delete tools turned off (it drafts, they send); tools used ' +
       'unattended set to always allow; keys only in the vault; cap every run; ' +
       'Cowork is cheaper if it can do the job. Managed Agents is beta: check ' +
@@ -226,11 +226,11 @@ const DECKS = [
   },
   {
     dir: 'advanced-class-6-openclaw',
-    title: 'Class 6: OpenClaw (Advanced)',
+    title: 'Class 3: OpenClaw (Advanced)',
     standing:
       'ADVANCED track, the last class. The student built a 7:00 brief automation and ' +
-      'a 7:30 action agent in Claude Managed Agents (Classes 4 and 5) and did the ' +
-      'Class 6 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, ' +
+      'a 7:30 action agent in Claude Managed Agents (Classes 1 and 2) and did the ' +
+      'Class 3 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, ' +
       'Managed Agents and OpenClaw (payment, token overhead, customization, reach, ' +
       'deploy, maintain, debug, security) and decide with the simplest-deployment ' +
       'rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); ' +
@@ -238,9 +238,9 @@ const DECKS = [
       'channels, tools, skills, permissions, heartbeat, automations, webhooks, any ' +
       'model); then install it into a project folder that is a private GitHub repo, ' +
       'clean it out first (trim injected files, bundled skills off, heartbeat off, ' +
-      'measured with /context detail), pull both Class 4 and 5 agents in with ant, ' +
-      'rebuild the Class 5 agent as workspace files, set model and fallback, connect ' +
-      'a chat app with pairing, rebuild the Class 4 brief as a plain Python script ' +
+      'measured with /context detail), pull both Class 1 and 2 agents in with ant, ' +
+      'rebuild the Class 2 agent as workspace files, set model and fallback, connect ' +
+      'a chat app with pairing, rebuild the Class 1 brief as a plain Python script ' +
       'on a branch (no OpenClaw: code for the dictated steps, one cheap model call ' +
       'for the judgment), review it with the prereqs review agents, merge, and schedule the chain ' +
       '(brief.py at 7:00 on the system scheduler, the OpenClaw agent at 7:30). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent ' +
@@ -254,15 +254,15 @@ const DECKS = [
     file: 'prereqs.html',
     out: 'prereqs-llm.md',
     teaching: 'prereqs-teaching.md',
-    title: 'Class 6 Prerequisites & Setup (Advanced)',
+    title: 'Class 3 Prerequisites & Setup (Advanced)',
     standing:
-      'This is the BEFORE-CLASS setup deck for Advanced Class 6, adapted from the ' +
-      'Class 1 prereqs. The student built in Claude Managed Agents in Classes 4 and ' +
-      '5 and may never have used VS Code, a terminal, or GitHub. They are installing ' +
+      'This is the BEFORE-CLASS setup deck for Advanced Class 3, adapted from the ' +
+      'website course\'s Class 1 prereqs. The student built in Claude Managed Agents in Classes 1 and ' +
+      '2 and may never have used VS Code, a terminal, or GitHub. They are installing ' +
       'VS Code, the Claude Code extension, git, Node.js, the GitHub and Claude ' +
       'Code CLIs and the ant CLI (Anthropic\'s, logged in with their Console account), creating a GitHub account, logging in, adding review agents and a ' +
       'CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already ' +
-      'did the Class 1 setup, only the Terminal check is needed. Most often you are ' +
+      'did the website course setup, only the Terminal check is needed. Most often you are ' +
       'consulted because an install, login, or terminal command failed: read the ' +
       'actual error, fix the real cause, keep them moving.',
   },

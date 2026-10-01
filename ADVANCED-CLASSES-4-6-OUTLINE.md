@@ -11,6 +11,8 @@ Eric's own runs. This doc describes what the decks actually present; the decks t
 | 6 · OpenClaw | `advanced-class-6-openclaw/` | 29 | VS Code + Claude Code + OpenClaw |
 | 6 · Prereqs | `advanced-class-6-openclaw/prereqs.html` | 19 | Before-class setup |
 
+**Numbering (2026-09-30):** the decks now label themselves Class 1, 2 and 3 to match the Maven course (Build an AI Agent with Claude Code). Folder names and URLs keep 4 to 6; this doc still says Class 4 to 6 in places.
+
 The Beginner track (`class-4-automations`, `class-5-agents-beginner`,
 `class-6-the-loop-beginner`, `CLASSES-5-6-OUTLINE.md`) is separate and untouched.
 
