@@ -1,239 +1,209 @@
-# Advanced Classes 4 to 6: Outline (working draft)
+# Advanced Classes 4 to 6: Outline
 
-Status as of 2026-09-30. Class 4 deck done (advanced-class-4-automations/, built alongside
-Eric's own run in the Console). Class 5 deck done 2026-09-30 (advanced-class-5-agents/), built alongside Eric's run.
-Class 6 deck done 2026-09-30 (advanced-class-6-openclaw/, 29 slides), built and tested alongside Eric's run
-through install, onboarding, cleanup, Step 2 and the brief automation on a branch; the Class 6
-prereqs (ant CLI added) are linked from the hub and from Class 5's homework and close.
-Open from Class 4: Eric noted Python tools can't be built in the Console, but the deck still
-teaches a script inside the skill; left as is when he called the deck done. The
-Beginner track (class-4-automations, class-5-agents-beginner, class-6-the-loop-beginner,
-CLASSES-5-6-OUTLINE.md) is unchanged and stays as is.
+Status as of 2026-09-30: all three decks are done, live and linked from the hub, built alongside
+Eric's own runs. This doc describes what the decks actually present; the decks themselves
+(`index.html` + `teaching.md` in each folder) are the source of truth for exact wording.
+
+| Class | Folder | Slides | Surface |
+|---|---|---|---|
+| 4 · Automations | `advanced-class-4-automations/` | 19 | Claude Managed Agents (Claude Console) |
+| 5 · Agents | `advanced-class-5-agents/` | 19 | Claude Managed Agents (Create agent) |
+| 6 · OpenClaw | `advanced-class-6-openclaw/` | 29 | VS Code + Claude Code + OpenClaw |
+| 6 · Prereqs | `advanced-class-6-openclaw/prereqs.html` | 19 | Before-class setup |
+
+The Beginner track (`class-4-automations`, `class-5-agents-beginner`,
+`class-6-the-loop-beginner`, `CLASSES-5-6-OUTLINE.md`) is separate and untouched.
 
 ## Who it's for
 
-Students already comfortable with Claude: they use Cowork, may already run small agents
-(the first paid student tracks flights, prices and home tasks in Cowork), but have not
-touched code. They want Claude Code, want to understand the product surfaces (artifacts vs
-projects etc.), and want agents in their workday. First student: a creative director at an
-agency, lives in Slack, develops processes, manages 18 direct reports.
-
-Skip what the Beginner track spends time on (what a connector is, what an agent is, how to
-write instructions). Spend it on the control surfaces instead.
+Students already comfortable with Claude: they use Cowork and may run small agents there, but
+haven't touched code. First paid student: a creative director at an agency who lives in Slack,
+develops processes and manages 18 direct reports. Skip what Beginner teaches (what a connector
+or an agent is); spend the time on control surfaces, cost and choosing the right surface.
 
 ## The arc
 
 | | Class 4 | Class 5 | Class 6 |
 |---|---|---|---|
-| Surface | Managed Agents (Console) | Managed Agents (Console) | VS Code + Claude Code |
-| Core idea | Automation: steps dictated | Agent: it decides, and acts | Own the agent: OpenClaw |
-| Who pulls the trigger | A deployment (timer) | The agent | The agent, plus outside events |
-| Morning artifact | The brief | The brief, rewritten: Taken care of / Needs your action / FYI | Same agent, rebuilt on OpenClaw (finished as homework) |
+| Idea | Automation: the steps are dictated | Agent: the deliverable is dictated | Own the code |
+| What runs | A 7:00 deployment writes the brief | A separate 7:30 agent acts on it | The same chain, rebuilt on your machine |
+| Output | Morning brief in Drive/Dropbox | Handoff: Taken care of / Needs your action / FYI | Same handoff, also sent to a chat app |
 
-**Why Managed Agents for 4 and 5:** it lays every control surface out as a field (model,
-system prompt, tools, MCP, permission policy per tool, skills, subagents, deployments,
-vaults, memory), so the concepts are visible rather than hidden behind an app. Its limits
-(no custom tool code of your own in the cloud) are what motivate Class 6.
+## Rules that run through all three
 
-## Cost control: a thread through every class
+- **Cost control in every class.** Only the Advanced track bills by API usage. Class 4 has its
+  own cost slide (per run, per month, prepaid ceiling, the cron typo); Class 5 adds "agents cost
+  more" and two parts, two bills; Class 6 moves the caps to the model provider and makes token
+  overhead the lever.
+- **Use the simplest setup that does the job.** Cowork runs on the subscription with no usage
+  bill; Managed Agents next; OpenClaw only when a job needs it.
+- **Automation vs agent.** Automation = steps dictated (autonomy taken away). Agent = the
+  deliverable/outcome dictated, it chooses the steps. A skill is not a tool.
+- **Separation of duties / the chain.** One job per agent; the 7:00 brief (an automation) hands
+  a file to the 7:30 agent; each link has its own model, cap and record.
+- **Keys** only in a vault (Managed Agents) or `.env` / environment variables (Class 6), never in
+  a chat. The agent drafts; the student sends.
+- **Paste-in prompts are self-contained and plain:** no "Class 5"/"Step 5" references, say what
+  not how, placeholders highlighted; any terminal command says "in a new VS Code terminal".
 
-Only the Advanced track bills by API usage, and surprise bills are the fear ("woke up to a
-$2,100 API bill"); few competitors teach it. Every Advanced class has a cost beat.
-- **Tied to simplicity:** Cowork runs on the Claude subscription, not the API, so it has
-  no usage bill. Another reason to run agentic work in a Cowork project when it can do the
-  job. Keep driving simplicity and cost control together in every class.
-- **Class 4:** its own slide before anything runs. Three levels: per run (deployment
-  budget), per month (workspace spend limit), the hard ceiling (prepaid credits,
-  auto-reload off). The cron typo (`* 7 * * 1-5` = 60 runs a morning). Read each run's
-  cost in its session; x22 weekdays = the monthly bill.
-- **Class 5:** agents cost more than automations: they choose steps, retry, search, and
-  spawn subagents (which multiply cost). Every session gets a budget.
-- **Class 6:** **first thing after installing OpenClaw: clean it out.** Strip the default
-  junk that adds overhead (boilerplate in the workspace files, bundled skills and
-  plugins it doesn't need), because whatever is loaded rides along on every call and
-  costs tokens every time. Exact list to decide when building the deck. OpenClaw runs on
-  your own key with no Anthropic-side per-run cap, so the workspace limit and prepaid
-  credits carry the weight. Heartbeat frequency is a cost
-  setting. A key committed to GitHub is the classic surprise bill: `.env` in `.gitignore`
-  before the first commit (ties to branching). Render bills separately.
+## Class 4 · Automations (Managed Agents)
 
-## Class 4 Advanced: Automations
+Title: "Your morning brief, rebuilt in Managed Agents."
 
-**Where:** Console → Quickstart ("describe what you need") to create the agent. Create
-agent is saved for Class 5, where every field gets taught.
+**Framing:** the arc; the finish line (brief on a schedule); **the map** of six Claude surfaces
+(Chat, Projects, Artifacts, Cowork, Claude Code, Managed Agents, with Anthropic's definitions;
+answers artifacts vs projects); **why Managed Agents** (exact schedules, a hard cap per run, any
+service with an MCP server or API key, every run on the record; billed separately).
 
-**Opener: the map.** Chat, projects, artifacts, Cowork, Claude Code, Managed Agents: what
-each is for and when to reach for it. Answers "artifacts vs projects." Why go past Cowork:
-schedules to the minute, a hard spend cap per run, any service with an API or remote MCP
-server, a real sandbox, and every run kept as an inspectable session.
+**Core teach, the key question:** dictate the steps, keep one judgment call. Exact tool calls
+reach the apps, a script does counting/dates/formatting, judgment only for "what needs me today".
+**The parts:** six parts and what each was in Cowork.
 
-**Core teach, deterministic vs judgment:** an automation's steps are *dictated* for the
-agent to follow; its autonomy is taken away. In Cowork a "fixed step" is still an English
-sentence Claude executes. Here every fixed step is dictated, split by who carries it out:
-**exact tool calls** (one named MCP tool, fixed inputs) reach the apps; a **script** does the
-pure computing (counting, dates, formatting), same result every run for almost nothing;
-**judgment** only for "what needs me today." Not "code wherever possible": reaching an app
-from a script needs its own token and setup, so a script calling an API is the fallback for
-an app with no MCP server. Quickstart writes the skill and script; the student doesn't.
+**Before class:** a Claude Console account (platform.claude.com), $10 credits, auto-reload off.
+Pricing: model usage plus $0.08 per session-hour.
 
-**Build: the morning brief, done the robust way.** Conceptually simple, but the value is in
-coding it, plugging in every source they want, and tailoring it.
-- The student describes the brief in **Quickstart**, which drafts the agent and a
-  **skill** (dictated steps plus a script). No separate app, no upload.
-- A **deployment** runs it on a schedule with a per-run budget. Its prompt says: run the
-  briefing skill, exactly these steps.
-- Sources come in through MCP servers, credentials through a vault. Never in a prompt.
-- **Output lands wherever they configure it; advise Google Drive or Dropbox** so it can be
-  opened from anywhere.
-- Honesty rules carry over from Beginner: say when a source failed; write a brief even on a
-  quiet day.
+**Cost control slide:** per run (Quickstart sets $5, lower to $1 on the deployment), per month
+(workspace spend limit), hard ceiling (prepaid credits). The typo: `* 7 * * 1-5` = 60 runs a
+morning; `0 7 * * 1-5` = once. Cowork runs on the subscription instead.
 
-## Class 5 Advanced: Agents
+**Build:** Step 1 describe the brief to **Quickstart** (it interviews, drafts the agent and the
+morning-briefing skill, sorts each step into tool call / script / judgment); Step 2 check every
+field; Step 3 environment (packages, limited networking); Step 4 the vault (just Connect for most
+apps; client ID/secret only if Connect fails; API tokens as secrets); Step 5 test-run in the
+panel and debug; Step 6 deployment (`0 7 * * 1-5`, time zone, "Run the morning-briefing skill
+exactly as written.", budget $1, check upcoming runs, don't Run now yet); Step 7 permissions
+(always allow the reading tools and the save tool, turn off every other write/send/delete tool,
+then Run now). **When it breaks:** the session is the stack trace. **Homework:** add a source and
+tune the brief. Close: next class an agent acts on this brief; the automation keeps running.
 
-**Where:** Console → Agents → **Create agent**. The form is the syllabus: walk every
-section.
-- General: name, model and effort, description, system prompt.
-- Tools: built-in tools (`agent_toolset_*`: bash, files, web search/fetch, etc.) with their
-  permission policies (always allow / always ask / auto; disabling a tool is the "never").
-  These are the preloaded tools to point at and introduce.
-- MCP servers: their apps.
-- **Custom tools: concept only.** Name, description, input schema — and the catch: when
-  the agent calls one, *your own application* must run the code and send the result back.
-  There is nowhere in the Console for that code to live, and a scheduled run would sit
-  waiting. This is the surface's limit, shown on purpose; Class 6 removes it.
-- Skills: left empty on purpose; the briefing skill stays with the Class 4 agent.
-- Multiagent: subagents and advisors (introduce; stretch homework).
+Known gap, left as is when Eric called the deck done: the deck teaches a script inside the skill,
+but Eric found Python tools can't really be built in the Console.
 
-**Separation of duties (decided 2026-09-29, replacing "the trigger moves").** The Class 4
-deployment keeps running unchanged at 7:00: small, segmented, managed. The Class 5 agent is
-a separate part with its own deployment at 7:30 that finds the brief file and acts on it.
-Each part is configured, capped and debugged on its own, so the brief can change without
-editing the agent that acts. Don't pause the Class 4 deployment.
-Its own slide right after cost ("The chain"): agents daisy-chained, each writing a file the
-next reads; in Managed Agents each link gets its own model (cheaper model where power isn't
-needed = cost control), low overhead, traceable per link, and new jobs are just new links.
+## Class 5 · Agents (Managed Agents, Create agent)
 
-**Reaching the agent remotely (slide "Reach it remotely"):** Managed Agents has no messaging
-channel (researched 2026-09-30: webhooks are outbound only, the agent is only an MCP client;
-Claude Tag can't run a Managed Agent). Teach three ways: 1) a Cowork project, which the Claude
-app reaches natively (simplest); 2) the Slack workaround, a small scheduled agent that polls a
-#requests channel (works, but costs per check and lags; the lesson is to build agents you
-don't need to message); 3) Class 6, an OpenClaw agent on Slack or Telegram.
+Title: "An agent that works your brief before you read it."
 
-**Build: Beginner Classes 5 and 6 collapsed into one.** The agent picks up the report, acts on
-it within the authority it's given, and writes a handoff in three sections: **Taken
-care of / Needs your action / FYI.** That is what they read every morning. A full agent.
-The agent's system prompt dictates the deliverable (outcome), not steps and not "how far it
-can go": the three sections with a definition of done for each (Eric's framing, 2026-09-29).
-Carry over from Beginner: act-then-verify, state between runs (handoff-log.md in the folder),
-nothing sent as the student without them.
+**Framing:** the arc; the finish line (three lists); **two jobs, two parts** (the Class 4
+deployment keeps running at 7:00; the agent is a separate part at 7:30; never pause Class 4).
 
-## Class 6 Advanced: OpenClaw in VS Code
+**Mental model:** **Tools** (built-in, MCP servers, API calls; Python scripts as tools arrive in
+Class 6); **Custom tools** need your code running somewhere (name/description/schema only; the run
+waits for your own app, which the Console can't host); **Cost** (agents cost more, two parts two
+bills, subagents multiply); **The chain** diagram (brief agent/automation → brief → action agent →
+handoff → hypothetical wrap-up; one job per agent; strictly an automation handing off to an
+agent); **The deliverable** (dictate the deliverable, not the steps).
 
-**Where:** VS Code with Claude Code. Chosen over the desktop app because an OpenClaw agent
-*is* its files (SOUL.md, AGENTS.md, USER.md, TOOLS.md, HEARTBEAT.md, memory/), which VS
-Code keeps visible, and because VS Code lets a second AI (Codex or another model) review
-Claude's code for bugs: the author shouldn't grade its own work.
+**Build in Create agent:** Step 1 General (system prompt template that points to handoff-log.md
+for memory and directions, names the folder, dictates the three-section deliverable and limits;
+stronger model here); Step 2 Tools (always allow what the deliverable needs; send and delete
+turned off); Step 3 Skills and Multiagent left empty on purpose (subagents ≠ the chain). **How it
+remembers:** handoff-log.md in the briefing folder (no memory store; the first run creates it;
+the system prompt is the student's, the log is the agent's). Step 4 test run (start a session
+with the briefing's vault, "Handle my morning.", act-then-verify); Step 5 second deployment
+`30 7 * * 1-5`, prompt "Handle my morning.", budget, Run now.
 
-**Prerequisite: the Class 1 prereqs, done before class** (`class-1-website-build/prereqs.html`):
-VS Code + Claude Code installed and signed in, GitHub (and Vercel) accounts, CLIs logged in,
-terminal check, fewer approvals, review agents, CLAUDE.md. The Class 5 deck's homework or
-close should point students to it, and the hub card for Class 6 should carry the same
-"Do first" link the Classes 1–3 cards use.
+**Reach it remotely:** Managed Agents has no messaging channel. Three ways: a Cowork project (the
+Claude app reaches it), the Slack polling workaround (costs per check, lags), or Class 6. The
+lesson: in Managed Agents, build agents you don't need to message. **Tune what reaches you**,
+**Homework** (a week of handoffs + the Class 6 prereqs, linked), close.
 
-**Class 6 prereqs deck** (drafted 2026-09-29; linked and `ant` CLI added 2026-09-30):
-`advanced-class-6-openclaw/prereqs.html` + `prereqs-teaching.md`, a copy of the Class 1
-prereqs with Vercel and Impeccable removed, "website" → "agent", a "skip to the Terminal
-check if you did Class 1" note, the review-agents handout pointed at
-`/class-1-website-build/agents.html`, and the Claude Console login from Class 4 mentioned.
-To do when Class 6 is built: Eric reviews it, add the hub "Do first" link, deploy the
-Worker (its BOT_VIEWS route is already in `infra/worker.js`).
+## Class 6 · OpenClaw (VS Code + Claude Code)
 
-**Disclaimer, up front: use the simplest deployment you can.** OpenClaw is not the
-upgrade everyone should take. Choose the lightest option that can do the job:
-- **Cowork project** if the job can be run from there. Least to maintain.
-- **Managed Agents** for a simple agent with little customization. Anthropic hosts it
-  and it's easier to maintain.
-- **OpenClaw** only for an agent that needs a lot of customization (its own code and
-  custom tools, its own channels, webhooks, **any model you want**), because you now own
-  the code, the hosting and the upkeep.
+Title: "Your agent, rebuilt on code you own." Prereqs: `prereqs.html` (Class 1 prereqs minus
+Vercel/Impeccable, plus the ant CLI logged in with the Console account), linked from the hub card
+and Class 5.
 
-**Any model:** Managed Agents runs Claude only; OpenClaw can swap to whatever model fits
-the job (Eric runs Kimi 3). Worth teaching both as flexibility and as a cost lever (a
-cheaper model for routine runs), with the cost beat's caveat that each provider bills and
-caps spend separately.
-The class teaches OpenClaw so they can go there when a job needs it, not as the default.
+**Choosing a surface:**
+- **What OpenClaw is:** open-source, self-hosted; on a laptop it sleeps when the laptop does, on a
+  rented server it runs around the clock; any model; lives in chat apps. You maintain everything.
+- **Comparison table** (Cowork / Managed Agents / OpenClaw): who runs it, models, payment,
+  token overhead (set by Anthropic vs yours to trim), customize, reach it, what wakes it, deploy,
+  maintain, debug, security.
+- **Decision tree**, three questions from the table, first yes decides: needs a non-Claude model →
+  OpenClaw; an event must wake it (webhook) or it needs custom tools → OpenClaw; needs a service
+  reached with an API key, not an MCP connector → Managed Agents; otherwise Cowork. OpenClaw
+  answers bring the maintain and security rows with them. Note: consumer agents (xAI's Grok Bot,
+  Meta's Muse) are coming; after this class you can build anything. Messaging is deliberately not
+  a question (Cowork can be messaged).
+- **Cost:** no per-run budget field; caps at each provider; overhead (workspace files, skill
+  list, tool list) rides every call; the heartbeat (every 30 min by default) resends the whole
+  chat history each wake; a leaked key is a blank check.
 
-**Start from the working agent, as files.** First move in Class 6: pull the Class 5 agent
-into the project folder so Claude has a working example to rebuild from in OpenClaw instead
-of a description; the files go into GitHub with everything else.
-- The Console's **Raw** view is only the agent definition (model, system prompt, tools, MCP
-  servers). Skills appear as references (a skill ID), not their contents.
-- The whole agent is several separate resources: the agent, its skill (SKILL.md + script),
-  the environment, the deployment, and the vault. Vault credentials are never exported
-  (correctly).
-- The docs' route is **Export as code** in the Console ("Manage this agent as code"), whose
-  download includes a `claude-lock.json` so `ant apply` updates the same resources.
-  Unverified: whether the download includes the skill folder, environment and deployment
-  files. Eric to click it and check.
-- Fallback that always works: Claude Code uses the `ant` CLI (`brew install
-  anthropics/tap/ant`, then `ant auth login` in the browser, no key to paste) to fetch the
-  agent (`ant beta:agents retrieve`) and download the skill
-  (`ant beta:skills:versions download`). Add `ant` to the Class 6 prereqs draft.
+**What's inside OpenClaw:** the parts map (each Managed Agents part → its OpenClaw home; MCP
+servers and API calls stay MCP servers and API calls); the workspace files (AGENTS, SOUL, USER,
+IDENTITY, MEMORY loaded every call; memory/, HEARTBEAT, TOOLS not); the Gateway (always-on
+program; whoever reaches it controls the agent; channels; pairing); tools, skills and permissions
+(a Python script registered as a tool is how custom tools become real); what wakes it (message,
+heartbeat, schedule, webhook); any model (one command, a fallback, test before trusting; Eric runs
+Kimi); security (read every skill: 341 malicious skills on ClawHub, Feb 2026; keep the Gateway
+private; keys never in a chat; update).
 
-**Scope: config and getting it off the ground, not the full agent.** Homework is finishing
-the build.
+**GitHub:** git words (git, repo, commit, push, pull, clone, branch, merge) and saving and pushing
+(commit to save, push to back up, merge to make it real; no live site, so push = backup).
 
-**As built (2026-09-30).** First half is teaching: what OpenClaw is, the comparison table
-(who runs it, models, payment, token overhead, customize, reach, what wakes it, deploy,
-maintain, debug, security), the decision tree (three questions from the table: non-Claude
-model → OpenClaw; an event must wake it or it needs custom tools → OpenClaw; a service reached
-with an API key rather than an MCP connector → Managed Agents; else Cowork; plus the
-consumer-agents note: Grok Bot, Meta's Muse), cost, the parts map, the workspace files, Gateway
-and channels, tools/skills/permissions, what wakes it, any model, security. Build rebuilds the
-WHOLE chain (Eric, 2026-09-30: the automation link was missing): Install, Step 1 baseline
-cleanout (not job-specific), 2 pull in the Class 4 and 5 agents via `ant`, 3 model + fallback +
-`.env` (keys and MCP servers connected at the end of Step 2), 4 on a branch rebuild the Class 4
-brief as plain Python with NO OpenClaw (Eric: an automation needs no agent; OpenClaw is for the
-steps after the brief exists): code for dictated steps, one cheap model call for the judgment,
-brief saved to briefs/, reviewed by the prereqs review agents and merged; 5 schedule brief.py at
-7:00 on the system scheduler and the OpenClaw agent at 7:30 (handoff saved to handoffs/), then
-pause both Managed Agents deployments; chat app connected inside the onboarding wizard (slide 'Finish onboarding', from Eric's
-2026.9.7 run), not as its own step; the handoff is also sent there.
-Second-AI (Codex) review dropped 2026-09-30: Eric doesn't want students installing another AI
-coder. Then webhooks
-(concept), when it breaks, Render (explained), homework, recap.
-Corrections from research against docs.openclaw.ai: TOOLS.md and HEARTBEAT.md are NOT
-injected every call (AGENTS, SOUL, IDENTITY, USER, MEMORY, BOOTSTRAP are); the cron command is
-now `openclaw automations`; Telegram is built in, Slack is a plugin; Render is documented
-(render.yaml; free plan has no disk, so state resets). Unverified: whether onboarding asks for
-the workspace path; exact config keys should be checked in the docs during the build-along.
-- Same concepts, new home: system prompt → SOUL/AGENTS.md, tools → skills and scripts,
-  permissions → allowlists, memory → memory files, deployment → heartbeat/cron.
-- **Custom tools become real:** a script the agent calls as a tool, running where they now
-  control the code.
-- Messaging the agent in the cloud.
-- **Webhooks:** outside events that wake the agent.
-- Keys go in `.env` via Claude Code, never in a chat.
-- Code lives in **GitHub**. **Render** (hosting) picks up the GitHub repo and runs the
-  agent in the cloud; explained at the end, not taught hands-on.
-- **Branching in GitHub (taught hands-on):** main is the agent that runs; every change
-  happens on a branch, gets reviewed (the second-AI review lands here), then merges. Ties
-  to the cloud step: a deploy that picks up main only ever gets reviewed code.
+**Install and onboarding (tested on OpenClaw 2026.9.7):**
+- Create a **new API key just for this agent, with a spend limit**, in the Claude Console.
+- **One Install prompt** does everything: official installer, private GitHub repo with a
+  .gitignore for .env and the agent's memory files, the API key as an environment variable the
+  onboarding terminal can see (the student pastes it into a file Claude opens; checked without
+  showing it), then `openclaw onboard --classic --workspace "$PWD"` in a new VS Code terminal, and
+  when the student says it's done: check health, fix anything risky, commit and push.
+- **How it signs in:** API key (what we use: paid, capped, works on a server); CLI login
+  (untested: failed in Eric's test; computer-only, eats the subscription, can be blocked);
+  setup-token (never: prohibited by Anthropic's terms). Onboarding offers to use the existing
+  ANTHROPIC_API_KEY: yes. Other providers have the same CLI-vs-API-key split.
+- **Finish onboarding:** pick a chat app in the wizard (Telegram simplest; a work Slack may need
+  an admin), approve the pairing code; No to importing memories; skip the search provider; skip
+  missing skill dependencies (Space to select, then Enter). The chat app is connected here, not
+  in a separate step.
 
-## Folders
+**Build (five steps):**
+1. **Clean it out** (measure with `/context detail` in the Control UI before and after): strip
+   boilerplate from the workspace files (keep the red lines and memory rule), turn off every
+   skill (bundled or from other tools on the computer), turn off every tool except read/write/edit
+   of its own files (shell and web search off), heartbeat off, commit and push.
+2. **Bring in your agents:** `ant` downloads the briefing agent (with its skill) and the action
+   agent into export/; the action agent is translated into USER/AGENTS/SOUL/MEMORY; every app is
+   reconnected (same MCP servers; API keys pasted into .env by the student), each tested by having
+   the agent use it. Google apps need a Google client (Claude walks them through it); set its
+   publishing status to **In production, not Testing**, or the sign-in expires every 7 days. An
+   "unverified app" warning is expected.
+3. **Model and keys:** main model plus a fallback; .env from Step 2; ask before every commit
+   whether anything secret is in it.
+4. **The brief, in Python, on a branch:** the brief is an automation, so it's **plain Python with
+   no OpenClaw** (code for the dictated steps, one cheap model call for the judgment, saved to
+   briefs/). The same script is registered as a tool, **morning_briefing**, so the agent can rerun
+   it on request. Branching explained on the slide; **nothing merges until the student approves
+   the test brief.**
+5. **Schedule the chain:** brief.py at 7:00 on the computer's own scheduler; an OpenClaw
+   automation at 7:30 ("Handle my morning.") saves the dated handoff to Drive/Dropbox (reachable
+   from anywhere) and sends it in the chat app; list the next run times to catch typos. Then pause
+   both Managed Agents deployments. Heartbeat stays off. Test the tool: "Rerun my brief."
 
-`advanced-class-4-automations/`, `advanced-class-5-agents/`, `advanced-class-6-openclaw/`.
-The hub's single "Coming soon" card becomes three cards.
+**After the build:** webhooks (concept; need an internet-reachable address, so they come with
+hosting); **to the cloud** (Render explained, not done: sign up with GitHub, link the class repo,
+every push to main redeploys; the repo needs a small Dockerfile from the official OpenClaw image
+plus a render.yaml; the repo owns the instructions, the disk owns the memory; Starter plan with a
+disk; turn off the laptop's agent so two agents don't fight over one bot; unverified as a whole,
+dry-run before recommending); when it breaks (gateway status first, doctor, logs, restart after
+config changes; describe the symptom to Claude Code); homework (connect every app, watch cost for
+a week, then decide Render or back to Managed Agents); close (the decision, the chain rebuilt,
+branch-test-approve-merge, same rules anywhere).
+
+**Dropped on purpose:** second-AI (Codex) code review (no extra AI coder to install); a separate
+chat-app step (onboarding does it); a second chat app (one chat app per agent).
+
+## Infrastructure
+
+Each deck is static HTML with a `teaching.md` (labels match `data-label` exactly) compiled into
+`llm.md` by `build-llm.mjs`; `infra/worker.js` BOT_VIEWS serves `llm.md` to AI crawlers (deploy
+with `cd infra && npx wrangler deploy` after route changes). Vercel deploys on push. This file is
+in `.vercelignore`.
 
 ## Open
 
-1. **Class 4 build, hands-on checks in the Console:** Quickstart output for a briefing
-   agent; uploading a custom skill with a script and having a deployment run it; the Drive
-   / Dropbox MCP path and vault setup; per-run budget on a deployment.
-2. **Class 5:** the agent calling the Class 4 skill on its own; where the three-section
-   report persists between sessions. Decided: no memory store. The agent keeps handoff-log.md in the
-   briefing folder (standing notes + dated entries), found via a line in the system prompt.
-   Observed in Eric's build 2026-09-30. Sessions are the human's record, not the agent's.
-3. **Cost screens:** confirm the Console's workspace spend limit and the auto-reload
-   toggle exist where the Class 4 cost slide says.
+1. Class 4 still teaches a script inside the skill although Python tools can't be built in the
+   Console (left as is).
+2. The shared bot-view preamble (`llm-preamble.md`) describes a non-technical small-business owner
+   and a Class 6 "Go-to-market", which doesn't fit the Advanced track.
+3. Class 6's Render setup (own-repo Dockerfile + render.yaml + start step) hasn't been dry-run.
