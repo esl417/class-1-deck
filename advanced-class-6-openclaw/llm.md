@@ -863,7 +863,7 @@ Models, system prompts, tools, and the briefing skill. Commit it: it's the recor
 
 _🔌 Logins don't come across_
 
-Your vault never leaves the Console, which is correct. Each app gets connected again here, one at a time.
+Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: Claude Code walks you through it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -884,6 +884,23 @@ working: it connects the same MCP servers, and for each API walks the student th
 key, which the student pastes into `.env` themselves (Claude creates `.env` first and confirms
 it's in `.gitignore`); each connection is tested before moving on. Fallback where a service has no
 MCP server or key-based API: a trusted plugin, skill or script.
+
+From Eric's run (2026-09-30): the export landed in export/ (both agent files, the briefing skill,
+which lived inside the agent's instructions rather than as a separate skill, and a copy of
+handoff-log.md). MEMORY.md is gitignored. The agent's apps were Google-hosted MCP servers (Gmail,
+Calendar, Drive); a security review in that run found the agent could have edited the connection
+script and .env, so Claude moved the script out of the workspace and scoped each app down (Gmail
+read and draft, no send/trash/labels; Calendar read only; Drive read and create). Google's MCP
+servers need a Google OAuth client: the deck doesn't teach this, Claude walks the student through
+it. Roughly: a Google Cloud project; Claude enables the Gmail, Calendar and Drive APIs plus their MCP
+APIs (the project ID isn't secret); Google Auth Platform → Branding → app name; Audience: Internal if
+the project belongs to their Google Workspace, otherwise External with themselves as a test user;
+Clients → Create client → Desktop app; the student pastes the client ID and secret into .env
+themselves; Claude then tests each app, which opens a Google sign-in. Two things to tell students:
+with an External app in Testing, Google makes them sign in again every 7 days, so a personal-Gmail
+agent can stop working weekly until they re-auth (a Workspace account with Internal avoids it;
+check Google's current rules before suggesting publishing the app); and Drive's MCP server can't edit
+an existing file, so the handoff is saved as a new dated file, which matches Step 5.
 
 ## Slide 22 · Step 3 · Model and keys
 
