@@ -375,8 +375,8 @@ Clients → Create client → Desktop app; the student pastes the client ID and 
 themselves; Claude then tests each app, which opens a Google sign-in. Two things to tell students:
 the weekly sign-in trap. Google's docs: an External app in "Testing" is "issued a refresh token
 expiring in 7 days" (unless it only asks for name/email/profile), so a personal-Gmail agent would
-stop working every week. The fix, which the Step 2 prompt asks for ("set it up so the sign-in
-doesn't expire every week") and which Eric's own Jerry agent already uses for a personal Gmail
+stop working every week. The fix, which the Step 2 prompt names explicitly ("set the Google app's publishing status to In
+production, not Testing"; a vaguer "don't let it expire weekly" wasn't enough for Claude to land on this) and which Eric's own Jerry agent already uses for a personal Gmail
 (its gog OAuth token lasts until revoked or ~6 months unused): set the OAuth app's publishing status
 to "In production" instead of Testing. No verification needed for personal use; Google shows a
 "Google hasn't verified this app" warning at sign-in (click Advanced → continue; it's their own
