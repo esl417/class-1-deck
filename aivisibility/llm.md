@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait several minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (founding cohort October 7 to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% off), which is open and enrolling.
+A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait 10 to 20 minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (founding cohort October 7 to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% off), which is open and enrolling.
 
 ---
 
@@ -285,13 +285,13 @@ _Running it_
 
 _What happens now_
 
-It goes and reads that site the way ChatGPT, Perplexity, and Google's AI read it. This takes a few minutes. I'll start it and leave it completely alone.
+It crawls the whole site, up to 500 pages, then hands the work to a team of specialists working side by side. One reads the site the way ChatGPT, Perplexity, and Google's AI read it. Others check whether search engines can find every page, whether the writing earns trust, how fast it loads on a phone, and whether the hidden labels tell machines what the business actually is. It all comes back as one score out of 100 and a ranked list of what to fix first. This takes 10 to 20 minutes. I'll start it and leave it completely alone.
 
 _What we'll do meanwhile_
 
 Keep going. By the time the report lands, you'll know exactly how to read it. Put questions in the chat as they come up and we'll hit them at the end.
 
-When you run this yourself, that's your own domain in place of the example. Same one line, same few minutes.
+When you run this yourself, that's your own domain in place of the example. Same one line, same 10 to 20 minutes.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -301,7 +301,7 @@ One line, with their own domain in place of the example:
 /seo audit theirdomain.com
 ```
 
-**It takes several minutes.** Start it and leave it alone. Do not interrupt it, do not
+**It takes 10 to 20 minutes.** Start it and leave it alone. Do not interrupt it, do not
 ask it questions in the same window while it works, do not close the app.
 
 If the run errors or hangs: ask Claude in that same window what went wrong. That is the
@@ -310,7 +310,7 @@ causes are a typo'd domain, a site that blocks crawlers, or the plugin not actua
 being installed (see the Add it notes).
 
 In the session, Eric ran this on one site, live, having not seen the results first. A
-student doing this on their own site should expect roughly the same experience: a few
+student doing this on their own site should expect roughly the same experience: 10 to 20
 minutes of waiting, then a report they have not seen before.
 
 ## Slide 8 · SEO + GEO
@@ -910,21 +910,21 @@ Install AgriciDaniel/claude-seo , then run one line on your own site:
 
 Then read it with Claude rather than alone, fix the top three it names, and run it again in a month.
 
-_It takes about ten minutes_
+_Under half an hour, mostly waiting_
 
-Four clicks to install, one line to run, and a few minutes while it works. The recording and every slide are in your inbox , so nothing you saw today is something you have to remember.
+Four clicks to install, one line to run, and 10 to 20 minutes while it works. The recording and every slide are in your inbox , so nothing you saw today is something you have to remember.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 **The real close, and the thing a student should actually do tonight:**
 
 1. Install `AgriciDaniel/claude-seo` (four clicks, see the Add it notes).
-2. Run `/seo audit theirdomain.com` (one line, a few minutes).
+2. Run `/seo audit theirdomain.com` (one line, 10 to 20 minutes).
 3. Read the report with Claude rather than alone.
 4. Fix the top three things it names.
 5. Run it again in a month.
 
-The whole thing takes about ten minutes of actual work. Step 5 is the loop that makes it
+The whole thing takes under half an hour, most of it waiting. Step 5 is the loop that makes it
 worth doing at all: fix, re-measure, see the number move.
 
 Common questions and honest answers:
@@ -938,4 +938,3 @@ Common questions and honest answers:
   Check the domain spelling and that the plugin actually installed.
 - **"Do I need to know what schema is?"** No. Ask Claude to explain it when it comes up.
 - **"Can it fix the things it found?"** Yes, and that is the natural next step. Ask it to
-  work through the list, highest impact first.

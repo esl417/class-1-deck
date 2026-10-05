@@ -14,7 +14,7 @@ do it.
 
 1. Open the Claude desktop app and go to the **Code** tab (not Chat, not Cowork).
 2. Install the `AgriciDaniel/claude-seo` plugin through the Plugins UI.
-3. Run one command, `/seo audit theirdomain.com`, and wait a few minutes.
+3. Run one command, `/seo audit theirdomain.com`, and wait 10 to 20 minutes.
 4. Read the report: overall score, weakest category, what would move it.
 5. Ask Claude to help them actually fix what it found.
 
@@ -143,7 +143,7 @@ One line, with their own domain in place of the example:
 /seo audit theirdomain.com
 ```
 
-**It takes several minutes.** Start it and leave it alone. Do not interrupt it, do not
+**It takes 10 to 20 minutes.** Start it and leave it alone. Do not interrupt it, do not
 ask it questions in the same window while it works, do not close the app.
 
 If the run errors or hangs: ask Claude in that same window what went wrong. That is the
@@ -152,7 +152,7 @@ causes are a typo'd domain, a site that blocks crawlers, or the plugin not actua
 being installed (see the Add it notes).
 
 In the session, Eric ran this on one site, live, having not seen the results first. A
-student doing this on their own site should expect roughly the same experience: a few
+student doing this on their own site should expect roughly the same experience: 10 to 20
 minutes of waiting, then a report they have not seen before.
 
 ## SEO + GEO
@@ -454,12 +454,12 @@ Still free on YouTube at ericgrows.com for anyone who would rather do it alone.
 **The real close, and the thing a student should actually do tonight:**
 
 1. Install `AgriciDaniel/claude-seo` (four clicks, see the Add it notes).
-2. Run `/seo audit theirdomain.com` (one line, a few minutes).
+2. Run `/seo audit theirdomain.com` (one line, 10 to 20 minutes).
 3. Read the report with Claude rather than alone.
 4. Fix the top three things it names.
 5. Run it again in a month.
 
-The whole thing takes about ten minutes of actual work. Step 5 is the loop that makes it
+The whole thing takes under half an hour, most of it waiting. Step 5 is the loop that makes it
 worth doing at all: fix, re-measure, see the number move.
 
 Common questions and honest answers:
@@ -473,4 +473,3 @@ Common questions and honest answers:
   Check the domain spelling and that the plugin actually installed.
 - **"Do I need to know what schema is?"** No. Ask Claude to explain it when it comes up.
 - **"Can it fix the things it found?"** Yes, and that is the natural next step. Ask it to
-  work through the list, highest impact first.
