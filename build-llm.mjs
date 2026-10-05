@@ -140,7 +140,7 @@ const DECKS = [
       'run from wherever they actually are. The sequence is: Code tab -> install the ' +
       'claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from ' +
       'a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; ' +
-      'no restart needed) -> run ONE command, `/seo geo theirdomain.com` -> wait ' +
+      'no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait ' +
       'several minutes -> read the report. Three gotchas dominate and are the most ' +
       'likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or ' +
       'Cowork, because the plugin fails to sync in Cowork; (2) the repo string is ' +

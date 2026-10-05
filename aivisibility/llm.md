@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo geo theirdomain.com` -> wait several minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (founding cohort October 7 to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% off), which is open and enrolling.
+A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait several minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (founding cohort October 7 to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% off), which is open and enrolling.
 
 ---
 
@@ -281,7 +281,7 @@ _Running it_
 ## One line. Then we let it work.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> /seo geo yourwebsite.com
+> /seo audit yourwebsite.com
 
 _What happens now_
 
@@ -298,7 +298,7 @@ When you run this yourself, that's your own domain in place of the example. Same
 One line, with their own domain in place of the example:
 
 ```
-/seo geo theirdomain.com
+/seo audit theirdomain.com
 ```
 
 **It takes several minutes.** Start it and leave it alone. Do not interrupt it, do not
@@ -906,7 +906,7 @@ _Tonight, if you do nothing else_
 Install AgriciDaniel/claude-seo , then run one line on your own site:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> /seo geo yourwebsite.com
+> /seo audit yourwebsite.com
 
 Then read it with Claude rather than alone, fix the top three it names, and run it again in a month.
 
@@ -919,7 +919,7 @@ Four clicks to install, one line to run, and a few minutes while it works. The r
 **The real close, and the thing a student should actually do tonight:**
 
 1. Install `AgriciDaniel/claude-seo` (four clicks, see the Add it notes).
-2. Run `/seo geo theirdomain.com` (one line, a few minutes).
+2. Run `/seo audit theirdomain.com` (one line, a few minutes).
 3. Read the report with Claude rather than alone.
 4. Fix the top three things it names.
 5. Run it again in a month.

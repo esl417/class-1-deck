@@ -14,7 +14,7 @@ do it.
 
 1. Open the Claude desktop app and go to the **Code** tab (not Chat, not Cowork).
 2. Install the `AgriciDaniel/claude-seo` plugin through the Plugins UI.
-3. Run one command, `/seo geo theirdomain.com`, and wait a few minutes.
+3. Run one command, `/seo audit theirdomain.com`, and wait a few minutes.
 4. Read the report: overall score, weakest category, what would move it.
 5. Ask Claude to help them actually fix what it found.
 
@@ -140,7 +140,7 @@ something now that it could not do sixty seconds ago, and it persists.
 One line, with their own domain in place of the example:
 
 ```
-/seo geo theirdomain.com
+/seo audit theirdomain.com
 ```
 
 **It takes several minutes.** Start it and leave it alone. Do not interrupt it, do not
@@ -454,7 +454,7 @@ Still free on YouTube at ericgrows.com for anyone who would rather do it alone.
 **The real close, and the thing a student should actually do tonight:**
 
 1. Install `AgriciDaniel/claude-seo` (four clicks, see the Add it notes).
-2. Run `/seo geo theirdomain.com` (one line, a few minutes).
+2. Run `/seo audit theirdomain.com` (one line, a few minutes).
 3. Read the report with Claude rather than alone.
 4. Fix the top three things it names.
 5. Run it again in a month.
