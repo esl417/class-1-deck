@@ -760,6 +760,10 @@ _What you have now, for free_
 
 A real read of whether your site can be understood and quoted, a prioritized list of fixes, and something that will explain any of it to you and help you do it. Genuinely useful. Go do it.
 
+_What to do with it_
+
+Fix the top three things it names, then run it again in a month to see what moved.
+
 _What it can't reach_
 
 Whether ChatGPT actually names you today. What you rank for and what that's worth. Who your competitors are beating you with. That needs live data plugged in behind it.
