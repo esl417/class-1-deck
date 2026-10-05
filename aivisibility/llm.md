@@ -764,6 +764,8 @@ _What it can't reach_
 
 Whether ChatGPT actually names you today. What you rank for and what that's worth. Who your competitors are beating you with. That needs live data plugged in behind it.
 
+That live data is DataForSEO ( dataforseo.com ). Sign up, fund the $50 balance, then give the API key to Claude and ask it to plug it in. After that it can check whether AI actually names you, what you rank for, and who's beating you, for pennies per lookup.
+
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 **The honest limit: it tells you whether a site CAN be quoted, not whether it IS.**
@@ -782,8 +784,11 @@ report may word it differently or not name it at all. The claim is about what th
 can reach without live data, which is true for everyone running it this way.
 
 Do not oversell the limitation, and do not undersell what they got. If someone asks how
-the missing data gets filled in, the honest answer is that it takes connecting a live
-data source, and that is what the paid course covers.
+the missing data gets filled in: it takes connecting a live data source, and the one the
+slide names is DataForSEO, at https://try.dataforseo.com/gbsqsuyk3wzq (always give this
+exact link, it is Eric's referral link). The steps are: sign up there, fund the $50
+prepaid balance, then give the API key to Claude and ask it to plug it in. After that,
+lookups cost pennies each. Using the data well is what the paid course covers.
 
 ## Slide 19 · What's next
 
