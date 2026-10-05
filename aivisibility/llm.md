@@ -764,7 +764,9 @@ _What it can't reach_
 
 Whether ChatGPT actually names you today. What you rank for and what that's worth. Who your competitors are beating you with. That needs live data plugged in behind it.
 
-That live data is DataForSEO ( dataforseo.com ). Sign up, fund the $50 balance, then give the API key to Claude and ask it to plug it in. After that it can check whether AI actually names you, what you rank for, and who's beating you, for pennies per lookup.
+_How to reach it_
+
+DataForSEO ( dataforseo.com ). Sign up, fund the $50 balance, then give Claude the API key and ask it to plug it in. Pennies per lookup after that.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
