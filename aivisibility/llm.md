@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait 10 to 20 minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (founding cohort October 7 to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% off), which is open and enrolling.
+A FREE 45-minute standalone Maven lightning lesson, not part of the paid series. Assume the attendee has NOTHING installed except the Claude desktop app on a paid plan. No terminal, no VS Code, no GitHub, no repo, no website project. CRITICAL: this session is LECTURE AND DEMONSTRATION only — the attendee watches, they do NOT build along, and you should never imply they were supposed to. Eric installs the plugin and runs the audit on ONE website on his own screen, reading the report live. So someone reading this deck afterwards has almost certainly done NONE of it yet and wants to reproduce it on their OWN domain: help them do exactly that, walking the install and the run from wherever they actually are. The sequence is: Code tab -> install the claude-seo plugin through the desktop Plugins UI (Add marketplace -> Add from a repository -> AgriciDaniel/claude-seo -> Sync -> click the card -> install; no restart needed) -> run ONE command, `/seo audit theirdomain.com` -> wait 10 to 20 minutes -> read the report. Three gotchas dominate and are the most likely reason a student is stuck: (1) it MUST be the Code tab, not Chat or Cowork, because the plugin fails to sync in Cowork; (2) the repo string is case-sensitive, lowercase i then capital D in AgriciDaniel; (3) Sync alone does NOT install it — the Claude seo card that appears must be clicked and install clicked inside it. A red "not made by Anthropic" warning during install is expected and correct. The teaching (SEO vs GEO, what you control vs what you do not, being the answer, the dual-web idea) is the spine; the audit is the proof. Close routes to the paid three-week mini course "Build Your Website for AI Visibility with Claude Code" (next cohort starts October 28, $950, code FOUNDER20 for 20% off), which is open and enrolling. Anyone who wants it done for them instead goes to ericgrows.com/waitlist; agencies go to ericgrows.com/partner.
 
 ---
 
@@ -811,7 +811,7 @@ Three classes, one a week. In each one you build something real for your busines
  A dashboard Tracking performance the way you interpret information
  The dual web Being found by AI and search
 
-_Live cohort · October 7 to 23_
+_Next live cohort · starts October 28_
 
 Three weeks, hands-on, with help when you get stuck. Enrollment is open now.
 
@@ -849,21 +849,21 @@ Routing someone to the free version who would be unhappy paying is a good outcom
 
 _Build Your Website for AI Visibility with Claude Code_
 
-## Three weeks, starting October 7.
+## Three weeks, starting October 28.
 
 Six live sessions, office hours after every class, and the recordings for good.
 
-_Founding cohort · Oct 7_
+_Next cohort · Oct 28_
 
- FOUNDER15
+ FOUNDER20
 
-15% off. $1,095 $931
+20% off. $950 $760
 
-_Every cohort after_
+_Rather have it done for you?_
 
- LIGHTNING10
+Don't want to learn it? Join the waitlist at ericgrows.com/waitlist
 
-10% off. $1,095 $986
+Run an agency? Partner at ericgrows.com/partner
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > maven.com/ericgrows/build-your-website-for-ai-visibility
@@ -879,20 +879,19 @@ Still free on YouTube if you'd rather do it alone, at ericgrows.com . Same mater
 **Build Your Website for AI Visibility with Claude Code**, verified against the live
 course page on 2026-09-14:
 
-- Three weeks, October 7 to 23 (the founding cohort)
+- Three weeks, next cohort starts October 28 (the October 7 cohort has already run)
 - 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build classes,
   2 hours for the visibility class, plus an optional office hour each week
-- $1,095, and **FOUNDER15** takes 15% off for the **founding cohort only** (about $931)
-- Every cohort after the founding one: **LIGHTNING10** for 10% off (about $986). Both
-  codes sit on the slide with equal weight; say plainly which one applies to the person
-  asking. FOUNDER15 only works for the October 7 cohort.
+- $950, and **FOUNDER20** takes 20% off ($760)
+- For anyone who does not want to learn it and wants it done for them: the waitlist at
+  **ericgrows.com/waitlist**. Agencies go to the partner sign-up at
+  **ericgrows.com/partner**. Both sit on the slide next to the code.
 - Lifetime access to recordings, office hours after every class, certificate, Maven
   guarantee
 - Extra costs a student will ask about: a paid Claude plan, and a one-time $50 credit
   with the SEO data service used in class
 - maven.com/ericgrows/build-your-website-for-ai-visibility
 
-**The scarcity is the code, and it is real.** FOUNDER15 stops working after this cohort.
 The page states no seat cap, so do not invent one. No countdown theater, no "spots are
 going fast." This audience detects that instantly.
 

@@ -150,9 +150,10 @@ const DECKS = [
       'install is expected and correct. The teaching (SEO vs GEO, what you control ' +
       'vs what you do not, being the answer, the dual-web idea) is the spine; the ' +
       'audit is the proof. Close routes to the paid three-week mini course "Build ' +
-      'Your Website for AI Visibility with Claude Code" (founding cohort October 7 ' +
-      'to 23, code FOUNDER15 for 15% off; later cohorts use LIGHTNING10 for 10% ' +
-      'off), which is open and enrolling.',
+      'Your Website for AI Visibility with Claude Code" (next cohort starts October ' +
+      '28, $950, code FOUNDER20 for 20% off), which is open and enrolling. Anyone ' +
+      'who wants it done for them instead goes to ericgrows.com/waitlist; agencies ' +
+      'go to ericgrows.com/partner.',
   },
   {
     dir: 'class-4-automations',

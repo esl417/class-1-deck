@@ -429,20 +429,19 @@ Routing someone to the free version who would be unhappy paying is a good outcom
 **Build Your Website for AI Visibility with Claude Code**, verified against the live
 course page on 2026-09-14:
 
-- Three weeks, October 7 to 23 (the founding cohort)
+- Three weeks, next cohort starts October 28 (the October 7 cohort has already run)
 - 6 live sessions, 3 lessons, 3 projects: 3 hours for each of the two build classes,
   2 hours for the visibility class, plus an optional office hour each week
-- $1,095, and **FOUNDER15** takes 15% off for the **founding cohort only** (about $931)
-- Every cohort after the founding one: **LIGHTNING10** for 10% off (about $986). Both
-  codes sit on the slide with equal weight; say plainly which one applies to the person
-  asking. FOUNDER15 only works for the October 7 cohort.
+- $950, and **FOUNDER20** takes 20% off ($760)
+- For anyone who does not want to learn it and wants it done for them: the waitlist at
+  **ericgrows.com/waitlist**. Agencies go to the partner sign-up at
+  **ericgrows.com/partner**. Both sit on the slide next to the code.
 - Lifetime access to recordings, office hours after every class, certificate, Maven
   guarantee
 - Extra costs a student will ask about: a paid Claude plan, and a one-time $50 credit
   with the SEO data service used in class
 - maven.com/ericgrows/build-your-website-for-ai-visibility
 
-**The scarcity is the code, and it is real.** FOUNDER15 stops working after this cohort.
 The page states no seat cap, so do not invent one. No countdown theater, no "spots are
 going fast." This audience detects that instantly.
 
