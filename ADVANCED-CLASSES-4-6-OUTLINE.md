@@ -8,7 +8,7 @@ Eric's own runs. This doc describes what the decks actually present; the decks t
 |---|---|---|---|
 | 4 · Automations | `advanced-class-4-automations/` | 19 | Claude Managed Agents (Claude Console) |
 | 5 · Agents | `advanced-class-5-agents/` | 19 | Claude Managed Agents (Create agent) |
-| 6 · OpenClaw | `advanced-class-6-openclaw/` | 29 | VS Code + Claude Code + OpenClaw |
+| 6 · OpenClaw | `advanced-class-6-openclaw/` | 29 | Claude Code (desktop app) + OpenClaw |
 | 6 · Prereqs | `advanced-class-6-openclaw/prereqs.html` | 19 | Before-class setup |
 
 **Numbering (2026-09-30):** the decks now label themselves Class 1, 2 and 3 to match the Maven course (Build an AI Agent with Claude Code). Folder names and URLs keep 4 to 6; this doc still says Class 4 to 6 in places.
@@ -46,7 +46,7 @@ or an agent is); spend the time on control surfaces, cost and choosing the right
 - **Keys** only in a vault (Managed Agents) or `.env` / environment variables (Class 6), never in
   a chat. The agent drafts; the student sends.
 - **Paste-in prompts are self-contained and plain:** no "Class 5"/"Step 5" references, say what
-  not how, placeholders highlighted; any terminal command says "in a new VS Code terminal".
+  not how, placeholders highlighted; any terminal command says "in a new terminal in the Claude app".
 
 ## Class 4 · Automations (Managed Agents)
 
@@ -109,7 +109,7 @@ Claude app reaches it), the Slack polling workaround (costs per check, lags), or
 lesson: in Managed Agents, build agents you don't need to message. **Tune what reaches you**,
 **Homework** (a week of handoffs + the Class 6 prereqs, linked), close.
 
-## Class 6 · OpenClaw (VS Code + Claude Code)
+## Class 6 · OpenClaw (Claude Code in the desktop app)
 
 Title: "Your agent, rebuilt on code you own." Prereqs: `prereqs.html` (Class 1 prereqs minus
 Vercel/Impeccable, plus the ant CLI logged in with the Console account), linked from the hub card
@@ -148,7 +148,7 @@ private; keys never in a chat; update).
 - **One Install prompt** does everything: official installer, private GitHub repo with a
   .gitignore for .env and the agent's memory files, the API key as an environment variable the
   onboarding terminal can see (the student pastes it into a file Claude opens; checked without
-  showing it), then `openclaw onboard --classic --workspace "$PWD"` in a new VS Code terminal, and
+  showing it), then `openclaw onboard --classic --workspace "$PWD"` in a new terminal in the Claude app, and
   when the student says it's done: check health, fix anything risky, commit and push.
 - **How it signs in:** API key (what we use: paid, capped, works on a server); CLI login
   (untested: failed in Eric's test; computer-only, eats the subscription, can be blocked);

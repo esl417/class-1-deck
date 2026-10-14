@@ -231,7 +231,7 @@ const DECKS = [
     standing:
       'ADVANCED track, the last class. The student built a 7:00 brief automation and ' +
       'a 7:30 action agent in Claude Managed Agents (Classes 1 and 2) and did the ' +
-      'Class 3 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, ' +
+      'Class 3 prereqs (Claude desktop app, GitHub, ant CLI). Today: compare Cowork, ' +
       'Managed Agents and OpenClaw (payment, token overhead, customization, reach, ' +
       'deploy, maintain, debug, security) and decide with the simplest-deployment ' +
       'rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); ' +
@@ -259,11 +259,11 @@ const DECKS = [
     standing:
       'This is the BEFORE-CLASS setup deck for Advanced Class 3, adapted from the ' +
       'website course\'s Class 1 prereqs. The student built in Claude Managed Agents in Classes 1 and ' +
-      '2 and may never have used VS Code, a terminal, or GitHub. They are installing ' +
-      'VS Code, the Claude Code extension, git, Node.js, the GitHub and Claude ' +
-      'Code CLIs and the ant CLI (Anthropic\'s, logged in with their Console account), creating a GitHub account, logging in, adding review agents and a ' +
+      '2 and may never have used Claude Code, a terminal, or GitHub. They are installing ' +
+      'Claude\'s desktop app (Code tab), git, Node.js, the GitHub CLI ' +
+      'and the ant CLI (Anthropic\'s, logged in with their Console account), creating a GitHub account, logging in, adding review agents and a ' +
       'CLAUDE.md rule. No Vercel and no Impeccable in this version. If they already ' +
-      'did the website course setup, only the Terminal check is needed. Most often you are ' +
+      'did the website course setup, they need only the install prompt (for the ant CLI), the login prompt and the Terminal check. Most often you are ' +
       'consulted because an install, login, or terminal command failed: read the ' +
       'actual error, fix the real cause, keep them moving.',
   },

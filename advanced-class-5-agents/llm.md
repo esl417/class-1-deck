@@ -75,7 +75,7 @@ _Class 3 · Your own agent_
 
 You own the code. Rebuild the agent in OpenClaw: your own tools, any model, events that wake it up.
 
-VS Code + Claude Code
+Claude Code
 
  🧱
 
@@ -509,7 +509,7 @@ Sharpen the deliverable as you go. You've arrived when you send its drafts with 
 
 _🛠️ Do the Class 3 prerequisites_
 
-VS Code, Claude Code and GitHub, installed and logged in. About an hour, before class . Follow the Class 3 prerequisites guide .
+Claude's desktop app, GitHub and the ant CLI, installed and logged in. About an hour, before class . Follow the Class 3 prerequisites guide .
 
  🎓
 
@@ -517,7 +517,7 @@ The calls are yours: what counts as done, and what always comes to you. Claude c
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Two things before Class 3. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 3 prerequisites (VS Code, Claude Code, GitHub installed and logged in; about an hour; the Class 3 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 3 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
+Two things before Class 3. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 3 prerequisites (Claude's desktop app, GitHub and the ant CLI installed and logged in; about an hour; the Class 3 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 3 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
 
 ## Slide 19 · You shipped it
 

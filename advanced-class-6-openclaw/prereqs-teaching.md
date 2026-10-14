@@ -3,10 +3,11 @@
 Per-slide notes for the bot view of the Advanced Class 3 PREREQS deck, adapted from the
 website course's Class 1 prereqs. Each `##` heading is a slide's label (its data-label in prereqs.html).
 Kept private — never served on the human deck. The student is on the Advanced track: they
-built in Claude Managed Agents in Classes 1 and 2 but may never have used VS Code, a
-terminal, or GitHub. Class 3 installs OpenClaw in VS Code with Claude Code, so this setup
-covers VS Code, Claude Code, git, Node.js, and GitHub only (no Vercel, no Impeccable). If
-they already did the website course setup, they only need the Terminal check.
+built in Claude Managed Agents in Classes 1 and 2 but may never have used Claude Code, a
+terminal, or GitHub. Class 3 installs OpenClaw with Claude Code in Claude's desktop app, so
+this setup covers the desktop app, git, Node.js, GitHub, and the ant CLI only (no Vercel, no
+Impeccable). If they already did the website course setup, they only need the install
+prompt (for the ant CLI), the login prompt, and the Terminal check.
 
 These notes are **recovery-focused**, not concept-focused. A student reading prereqs is
 setting up for the first time; when they consult you, it's usually because an install,
@@ -19,27 +20,25 @@ Nothing technical here — it's a morale slide ("this part is a drag, you only d
 
 ## Overview
 
-Three tools, not four: VS Code, Claude Code, GitHub. Vercel is not part of Class 3 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the website course prereqs, everything is installed: send them to the Terminal check to confirm it still works, then they're done.
+Two tools, not three: Claude Code (in Claude's desktop app) and GitHub. Vercel is not part of Class 3 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the website course prereqs, most of it is installed: they run the install prompt (it adds only the missing ant CLI), the login prompt, and the Terminal check, then they're done.
 
-## VS Code + Claude Code
-
-The one real stuck-point on this slide is buried in the third bullet: **File → Open Folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead open their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the agent's files) is a mess. If a student seems lost about "where their project is," check this first: are they in a dedicated, empty project folder? If not, have them create one and open it before anything else.
-
-They also sometimes confuse "install VS Code" with "install the Claude Code extension" — those are two steps. VS Code is the app; Claude Code is an extension inside it. Make sure both happened.
-
-## Sign in
+## Claude desktop app
 
 Two failure modes here, both common:
 
-1. **They can't find the Claude icon.** It's the orange starburst in the top-right toolbar, but that toolbar only appears once a file is open. If they see no icon, the fix is on the slide: open or create any file first, then the toolbar icons appear. Walk them to that.
+1. **They're in the Chat tab, not Code.** The desktop app opens on Chat, which can't touch files on their computer. If Claude says it can't see or edit their files, check that they clicked the **Code** tab.
 
-2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but nothing works right. If a student is signed in but Claude Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
+2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but the Code tab won't work. If a student is signed in but Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
 
-Also: once in, they should switch to Opus (`/model` → Opus). If their answers later feel weak, this is worth re-checking.
+## Project folder
+
+The one real stuck-point: **Select folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead pick their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the agent's files) is a mess. If a student seems lost about "where their project is," check this first: is the session open on a dedicated, empty folder? If not, have them start a new session (⌘N / Ctrl+N) on a fresh folder before anything else.
+
+Also: they should switch to Opus (the model menu next to the Send button). If their answers later feel weak, this is worth re-checking.
 
 ## Prerequisites
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub and Claude Code CLIs, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 2 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node.js (current LTS; OpenClaw runs on it), the GitHub CLI, and Anthropic's ant CLI (Mac: `brew install anthropics/tap/ant`; in class Claude uses it to download the Class 2 agent from the Console as files), across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -63,7 +62,7 @@ Tell them to pick a professional username — it's public and permanent. No Verc
 
 ## Log into your CLIs
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 1 and 2; no API key to paste), and Claude Code, one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, the ant CLI (`ant auth login`, a browser sign-in with the same Claude Console account used in Classes 1 and 2; no API key to paste), one at a time.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 
@@ -73,7 +72,7 @@ Failure modes to check if a login won't complete: (1) the account doesn't exist 
 
 This slide exists because a broken shell causes confusing failures later (agents won't launch, commands "not found"), so it's verified now while nothing's at stake. When a student consults you here, the symptom is usually one of two:
 
-1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen VS Code (which opens a fresh terminal), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
+1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen the Claude app (⌘Q on a Mac — closing the window isn't enough), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
 
 2. **Red text when the terminal opens.** This is a shell-startup problem (a broken .zshrc or PATH). Don't have them read it — have them paste it, then fix the real cause and tell them what you changed. This is exactly the kind of thing they can't diagnose and you can.
 

@@ -758,7 +758,7 @@
 <section class="slide active title-slide">
   <div class="slide-num" data-label=""></div>
   <div class="title-head">
-    <div class="title-kicker">Class 3 · Advanced · OpenClaw in VS Code</div>
+    <div class="title-kicker">Class 3 · Advanced · OpenClaw with Claude Code</div>
     <h1 class="title-main">Your agent, rebuilt on <br class="hero-break">code you own.</h1>
     <p class="title-sub">Know when an agent needs OpenClaw, then rebuild yours there.</p>
   </div>
@@ -788,7 +788,7 @@
     <div class="card card-hero">
       <div class="eyebrow">Class 3 · Today · Your own agent</div>
       <p><strong>You own the code.</strong> The same chain: the brief as plain Python, the agent in OpenClaw, where you can message it.</p>
-      <p><em>VS Code + Claude Code</em></p>
+      <p><em>Claude Code</em></p>
     </div>
   </div>
   <div class="heads-up">
@@ -968,7 +968,7 @@
 <!-- THE WORKSPACE FILES -->
 <section class="slide dense">
   <div class="slide-num" data-label="The workspace"></div>
-  <div class="eyebrow">Open the folder in VS Code and you're looking at the agent</div>
+  <div class="eyebrow">Open the folder in the Claude app and you're looking at the agent</div>
   <h2>Your agent is a folder of plain-text files.</h2>
   <p>No form to fill in: you, Claude Code, and the agent itself edit these files. The ones marked 📌 are loaded into <strong>every call</strong>.</p>
   <div class="file-list">
@@ -994,7 +994,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⚙️ The Gateway</div>
-      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open by running <code>openclaw dashboard</code> in a new VS Code terminal.</p>
+      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open by running <code>openclaw dashboard</code> in a new terminal in the Claude app.</p>
     </div>
     <div class="card">
       <div class="eyebrow">💬 Channels</div>
@@ -1067,7 +1067,7 @@
   <div class="slide-num" data-label="Any model"></div>
   <div class="eyebrow">The one thing no Anthropic surface does</div>
   <h2>Switch models with one command, and set a fallback.</h2>
-  <p>OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. <code>openclaw models set</code>, run in a new VS Code terminal, changes it; <code>/model</code>, typed in a chat with your agent, changes it mid-chat.</p>
+  <p>OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. <code>openclaw models set</code>, run in a new terminal in the Claude app, changes it; <code>/model</code>, typed in a chat with your agent, changes it mid-chat.</p>
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🎯 Fit the model to the job</div>
@@ -1097,7 +1097,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔒 Keep the Gateway private</div>
-      <p><strong>Whoever can reach the Gateway controls your agent.</strong> By default only your own machine can: keep it that way. <code>openclaw security audit</code>, run in a new VS Code terminal, checks your setup.</p>
+      <p><strong>Whoever can reach the Gateway controls your agent.</strong> By default only your own machine can: keep it that way. <code>openclaw security audit</code>, run in a new terminal in the Claude app, checks your setup.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🔑 Keys in .env, never in a chat</div>
@@ -1168,14 +1168,14 @@
 <!-- INSTALL -->
 <section class="slide dense">
   <div class="slide-num" data-label="Install"></div>
-  <div class="eyebrow">Before Step 1 · in VS Code</div>
+  <div class="eyebrow">Before Step 1 · in the Claude app</div>
   <h2>Install OpenClaw, with your project folder as its home.</h2>
-  <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in VS Code, and paste this into Claude Code:</p>
-  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new VS Code terminal in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.</div>
+  <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in the Claude app's Code tab, and paste this into Claude Code:</p>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file for me in the Claude app where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
-      <p>In a new VS Code terminal. Your key goes in the file Claude opens for you, <strong>never into the chat</strong>. First screens: read the security notice and say yes, choose <strong>QuickStart</strong>, and name the agent carefully (the name sticks).</p>
+      <p>In a new terminal in the Claude app. Your key goes in the file Claude opens for you, <strong>never into the chat</strong>. First screens: read the security notice and say yes, choose <strong>QuickStart</strong>, and name the agent carefully (the name sticks).</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧭 The screens that matter</div>
@@ -1230,7 +1230,7 @@
   <div class="slide-num" data-label="Step 1 · Clean it out"></div>
   <div class="eyebrow">The control Managed Agents never gave you</div>
   <h2>Step 1: Clean it out before it costs you on every call.</h2>
-  <p>Open a new VS Code terminal and run <code>openclaw dashboard</code>: the Control UI opens in your browser. In its chat, send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
+  <p>Open a new terminal in the Claude app and run <code>openclaw dashboard</code>: the Control UI opens in your browser. In its chat, send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
   <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.</div>
   <div class="heads-up">
     <span class="heads-up-mark">📉</span>
@@ -1269,7 +1269,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔑 The .env file</div>
-      <p>Step 2 created it, and every key you add later goes there too. Open .env in VS Code and <strong>paste each key yourself</strong>. Your scripts read keys from it; Claude never sees them in the chat.</p>
+      <p>Step 2 created it, and every key you add later goes there too. Open .env in the Claude app's file view, <strong>paste each key yourself</strong>, and save. Your scripts read keys from it; Claude never sees them in the chat.</p>
     </div>
   </div>
   <div class="heads-up">
@@ -1381,11 +1381,11 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">🩺 Health</div>
-      <p>Run these in a new VS Code terminal. First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
+      <p>Run these in a new terminal in the Claude app. First check: is it running? <code>openclaw gateway status</code>. Then <code>openclaw doctor</code> finds broken config, and <code>--fix</code> repairs it. Changed the config? Restart the Gateway, or nothing changes.</p>
     </div>
     <div class="card">
       <div class="eyebrow">📜 What happened</div>
-      <p>In a new VS Code terminal, <code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
+      <p>In a new terminal in the Claude app, <code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
     </div>
   </div>
   <div class="heads-up">

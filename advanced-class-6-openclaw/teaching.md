@@ -1,10 +1,10 @@
-# Teaching notes — Advanced Class 3 (OpenClaw in VS Code)
+# Teaching notes — Advanced Class 3 (OpenClaw with Claude Code)
 
 Per-slide notes for the bot view. `##` = slide label. Private. Teach the skill, don't
 perform the build. The student finished Advanced Classes 1 and 2 in Claude Managed Agents: a
 7:00 brief automation saving to Drive or Dropbox, and a 7:30 agent that acts on it and writes a
 handoff (Taken care of / Needs your action / FYI), with its memory in handoff-log.md. They did
-the Class 3 prereqs (VS Code, Claude Code, git, Node, GitHub CLI, ant CLI, logged in). Today
+the Class 3 prereqs (Claude's desktop app, git, Node, GitHub CLI, ant CLI, logged in). Today
 they compare Cowork, Managed Agents and OpenClaw, learn OpenClaw's parts, then install it,
 clean it out, and rebuild the whole chain in a project folder that is a private GitHub repo: the
 Class 1 brief as a plain Python automation (no OpenClaw: an automation needs no agent), and the
@@ -112,7 +112,7 @@ and webhooks, which Managed Agents couldn't do.
 
 ## The workspace
 
-The agent is a folder of plain-text files, which is why VS Code: they can see and edit the agent
+The agent is a folder of plain-text files, which is why the Claude app's Code tab: they can see and edit the agent
 directly. Injected into every call (per the current docs): AGENTS.md (operating rules; the
 biggest default file, about 8,000 characters of group-chat etiquette, emoji reactions, voice and
 platform formatting most agents don't need), SOUL.md (personality), USER.md (about them),
@@ -203,11 +203,11 @@ too.
 
 ## Install
 
-Before Step 1. They make a folder (morning-agent), open it in VS Code, and have Claude Code
+Before Step 1. They make a folder (morning-agent), open it in the Claude app's Code tab, and have Claude Code
 install OpenClaw with the official installer (macOS/Linux: `curl -fsSL
 https://openclaw.ai/install.sh | bash`; Windows: the install.ps1 script; it handles Node) and
 make the folder a private GitHub repo with `.env` in `.gitignore` before any commit. They run
-`openclaw onboard --install-daemon` themselves in the VS Code terminal, because it's interactive
+`openclaw onboard --install-daemon` themselves in a terminal in the Claude app, because it's interactive
 and the model key goes in there, not in a chat. Choices: ask first rather than full access; their
 provider and model; this folder as the workspace (if onboarding doesn't offer it, Claude can set
 OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
@@ -279,10 +279,10 @@ in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gate
 runtime) is not loaded into the terminal, so the test fails with "secret reference was not
 materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
-Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
+Mac), which the student pastes the key into in the Claude app's file view, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
 and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
-(confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new VS Code terminal,
+(confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new terminal in the Claude app,
 `openclaw onboard --classic --workspace "$PWD"`. The
 choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment
 variable), not from Claude: asked for "the choices", Claude invented a longer Manual-setup path
@@ -390,7 +390,7 @@ an existing file, so the handoff is saved as a new dated file, which matches Ste
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
 `.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
-by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
+by the student in the Claude app's file view. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Step 4 · The brief, in Python

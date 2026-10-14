@@ -35,7 +35,7 @@ Each slide has **What the student sees** (the exact slide content — your share
 
 ## Where this student is right now
 
-ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 1 and 2) and did the Class 3 prereqs (VS Code, Claude Code, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), pull both Class 1 and 2 agents in with ant, rebuild the Class 2 agent as workspace files, set model and fallback, connect a chat app with pairing, rebuild the Class 1 brief as a plain Python script on a branch (no OpenClaw: code for the dictated steps, one cheap model call for the judgment), review it with the prereqs review agents, merge, and schedule the chain (brief.py at 7:00 on the system scheduler, the OpenClaw agent at 7:30). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
+ADVANCED track, the last class. The student built a 7:00 brief automation and a 7:30 action agent in Claude Managed Agents (Classes 1 and 2) and did the Class 3 prereqs (Claude desktop app, GitHub, ant CLI). Today: compare Cowork, Managed Agents and OpenClaw (payment, token overhead, customization, reach, deploy, maintain, debug, security) and decide with the simplest-deployment rule (Cowork, then Managed Agents, then OpenClaw only for heavy customization); learn OpenClaw's parts mapped to Managed Agents (workspace files, Gateway, channels, tools, skills, permissions, heartbeat, automations, webhooks, any model); then install it into a project folder that is a private GitHub repo, clean it out first (trim injected files, bundled skills off, heartbeat off, measured with /context detail), pull both Class 1 and 2 agents in with ant, rebuild the Class 2 agent as workspace files, set model and fallback, connect a chat app with pairing, rebuild the Class 1 brief as a plain Python script on a branch (no OpenClaw: code for the dictated steps, one cheap model call for the judgment), review it with the prereqs review agents, merge, and schedule the chain (brief.py at 7:00 on the system scheduler, the OpenClaw agent at 7:30). Pause both Managed Agents deployments once it works. Render hosting and webhooks are explained only; finishing the agent is homework. Rules: keys only in .env (gitignored) or OpenClaw's credential store, never in a chat; read every skill before installing (malicious ClawHub skills exist); Gateway stays on loopback; caps live at each model provider. OpenClaw changes fast: check docs.openclaw.ai before giving commands or config keys.
 
 ---
 
@@ -43,7 +43,7 @@ ADVANCED track, the last class. The student built a 7:00 brief automation and a 
 
 **What the student sees on this slide:**
 
-Class 3 · Advanced · OpenClaw in VS Code
+Class 3 · Advanced · OpenClaw with Claude Code
 
 # Your agent, rebuilt on code you own.
 
@@ -75,7 +75,7 @@ _Class 3 · Today · Your own agent_
 
 You own the code. The same chain: the brief as plain Python, the agent in OpenClaw, where you can message it.
 
-VS Code + Claude Code
+Claude Code
 
  🧱
 
@@ -335,7 +335,7 @@ and webhooks, which Managed Agents couldn't do.
 
 **What the student sees on this slide:**
 
-_Open the folder in VS Code and you're looking at the agent_
+_Open the folder in the Claude app and you're looking at the agent_
 
 ## Your agent is a folder of plain-text files.
 
@@ -356,7 +356,7 @@ The model, channels, schedules and permissions live outside the folder, in ~/.op
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The agent is a folder of plain-text files, which is why VS Code: they can see and edit the agent
+The agent is a folder of plain-text files, which is why the Claude app's Code tab: they can see and edit the agent
 directly. Injected into every call (per the current docs): AGENTS.md (operating rules; the
 biggest default file, about 8,000 characters of group-chat etiquette, emoji reactions, voice and
 platform formatting most agents don't need), SOUL.md (personality), USER.md (about them),
@@ -377,7 +377,7 @@ _The engine room_
 
 _⚙️ The Gateway_
 
-Runs in the background on your computer. Only your own machine can reach it, and it serves the Control UI , a dashboard you open by running openclaw dashboard in a new VS Code terminal.
+Runs in the background on your computer. Only your own machine can reach it, and it serves the Control UI , a dashboard you open by running openclaw dashboard in a new terminal in the Claude app.
 
 _💬 Channels_
 
@@ -484,7 +484,7 @@ _The one thing no Anthropic surface does_
 
 ## Switch models with one command, and set a fallback.
 
-OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. openclaw models set , run in a new VS Code terminal, changes it; /model , typed in a chat with your agent, changes it mid-chat.
+OpenClaw works with more than 60 providers: Anthropic, OpenAI, Google, xAI, Moonshot (Kimi), OpenRouter, and models running on your own machine. openclaw models set , run in a new terminal in the Claude app, changes it; /model , typed in a chat with your agent, changes it mid-chat.
 
 _🎯 Fit the model to the job_
 
@@ -524,7 +524,7 @@ In February 2026, researchers found 341 malicious skills on ClawHub that stole d
 
 _🔒 Keep the Gateway private_
 
-Whoever can reach the Gateway controls your agent. By default only your own machine can: keep it that way. openclaw security audit , run in a new VS Code terminal, checks your setup.
+Whoever can reach the Gateway controls your agent. By default only your own machine can: keep it that way. openclaw security audit , run in a new terminal in the Claude app, checks your setup.
 
 _🔑 Keys in .env, never in a chat_
 
@@ -625,18 +625,18 @@ too.
 
 **What the student sees on this slide:**
 
-_Before Step 1 · in VS Code_
+_Before Step 1 · in the Claude app_
 
 ## Install OpenClaw, with your project folder as its home.
 
-First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in VS Code, and paste this into Claude Code:
+First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in the Claude app's Code tab, and paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file in VS Code where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new VS Code terminal in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file for me in the Claude app where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.
 
 _⌨️ You run onboarding yourself_
 
-In a new VS Code terminal. Your key goes in the file Claude opens for you, never into the chat . First screens: read the security notice and say yes, choose QuickStart , and name the agent carefully (the name sticks).
+In a new terminal in the Claude app. Your key goes in the file Claude opens for you, never into the chat . First screens: read the security notice and say yes, choose QuickStart , and name the agent carefully (the name sticks).
 
 _🧭 The screens that matter_
 
@@ -644,11 +644,11 @@ How it signs in to your model, your chat app, and the extras to skip. The next t
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Before Step 1. They make a folder (morning-agent), open it in VS Code, and have Claude Code
+Before Step 1. They make a folder (morning-agent), open it in the Claude app's Code tab, and have Claude Code
 install OpenClaw with the official installer (macOS/Linux: `curl -fsSL
 https://openclaw.ai/install.sh | bash`; Windows: the install.ps1 script; it handles Node) and
 make the folder a private GitHub repo with `.env` in `.gitignore` before any commit. They run
-`openclaw onboard --install-daemon` themselves in the VS Code terminal, because it's interactive
+`openclaw onboard --install-daemon` themselves in a terminal in the Claude app, because it's interactive
 and the model key goes in there, not in a chat. Choices: ask first rather than full access; their
 provider and model; this folder as the workspace (if onboarding doesn't offer it, Claude can set
 OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
@@ -747,10 +747,10 @@ in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gate
 runtime) is not loaded into the terminal, so the test fails with "secret reference was not
 materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
-Mac), which the student pastes the key into in VS Code, then a new terminal. Before handing over,
+Mac), which the student pastes the key into in the Claude app's file view, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
 and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
-(confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new VS Code terminal,
+(confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new terminal in the Claude app,
 `openclaw onboard --classic --workspace "$PWD"`. The
 choices come from the deck's slides (QuickStart, the agent name, Anthropic, API key, Environment
 variable), not from Claude: asked for "the choices", Claude invented a longer Manual-setup path
@@ -817,7 +817,7 @@ _The control Managed Agents never gave you_
 
 ## Step 1: Clean it out before it costs you on every call.
 
-Open a new VS Code terminal and run openclaw dashboard : the Control UI opens in your browser. In its chat, send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
+Open a new terminal in the Claude app and run openclaw dashboard : the Control UI opens in your browser. In its chat, send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.
@@ -924,7 +924,7 @@ Tell Claude Code: "Set my main model to [model] and add [model] as a fallback." 
 
 _🔑 The .env file_
 
-Step 2 created it, and every key you add later goes there too. Open .env in VS Code and paste each key yourself . Your scripts read keys from it; Claude never sees them in the chat.
+Step 2 created it, and every key you add later goes there too. Open .env in the Claude app's file view, paste each key yourself , and save. Your scripts read keys from it; Claude never sees them in the chat.
 
  ✅
 
@@ -935,7 +935,7 @@ Check before every commit: ask Claude "Is anything secret about to be committed?
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
 `.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
-by the student in VS Code. Scripts read from it; Claude never sees the keys in chat. The habit
+by the student in the Claude app's file view. Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Slide 23 · Step 4 · The brief, in Python
@@ -1149,11 +1149,11 @@ _There's no Sessions page doing this for you_
 
 _🩺 Health_
 
-Run these in a new VS Code terminal. First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
+Run these in a new terminal in the Claude app. First check: is it running? openclaw gateway status . Then openclaw doctor finds broken config, and --fix repairs it. Changed the config? Restart the Gateway, or nothing changes.
 
 _📜 What happened_
 
-In a new VS Code terminal, openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
+In a new terminal in the Claude app, openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
 
  🔍
 
