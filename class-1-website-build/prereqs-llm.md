@@ -313,9 +313,11 @@ No prompt for this one — you click it yourself:
 
 1. Click + next to the message box.
 
-2. Open Connectors .
+2. Choose Connectors → Manage connectors .
 
-3. Find Vercel and sign in.
+3. Click the Discover tab at the top and search Vercel .
+
+4. Add it and sign in.
 
  ✋
 
@@ -323,7 +325,7 @@ Expect a browser window (or a short code) for each sign-in — that's normal, no
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Vercel → sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Manage connectors → Discover tab → search Vercel → add and sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 

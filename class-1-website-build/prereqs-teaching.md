@@ -58,7 +58,7 @@ Two specifics: for GitHub, tell them to pick a professional username — it's pu
 
 ## Log in
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Vercel → sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Manage connectors → Discover tab → search Vercel → add and sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 
