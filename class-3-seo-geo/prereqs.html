@@ -560,16 +560,6 @@
   .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
   .heads-up strong { color: var(--accent-deep); }
 
-  /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
-  .ui-shot {
-    display: block;
-    width: 100%;
-    margin-top: 12px;
-    border-radius: 9px;
-    border: 1px solid var(--hair);
-    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
-  }
-
   /* keep the slide column readable on smaller laptop widths */
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
@@ -770,7 +760,7 @@
   <div class="prompt-box">Grab the Cloudflare setup kit from https://github.com/esl417/class-materials (the files in class-3-seo-geo/cloudflare-student-kit) into this project, then read CLOUDFLARE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.</div>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
-    <p><strong>Expect Claude to pause twice</strong> — one restart of Claude Code partway through (with the 🕐 pick-up-where-you-left-off move you know from Class 2), and one <strong>Allow</strong> click in your browser. Both are on the next slide.</p>
+    <p><strong>Expect Claude to pause twice</strong> — one restart of the Claude app partway through (with the pick-up-where-you-left-off move you know from Class 2), and one <strong>Allow</strong> click in your browser. Both are on the next slide.</p>
   </div>
 </section>
 
@@ -781,9 +771,8 @@
   <h2>Claude will pause twice. Here's what for.</h2>
   <div class="grid-2">
     <div class="card">
-      <div class="eyebrow">🔁 Pause 1 · Restart Claude Code</div>
-      <p>New tools only switch on after a restart. When Claude asks, <strong>fully quit and reopen</strong> — then click the <strong>🕐 clock icon at the top-right</strong> of the Claude box (boxed in red below), pick the chat you were just in, and say <strong>"continue the Cloudflare setup."</strong></p>
-      <img class="ui-shot" src="claude-history-icon.png" alt="The Claude Code panel with the clock-shaped conversation-history icon, top-right, highlighted in a red box.">
+      <div class="eyebrow">🔁 Pause 1 · Restart the Claude app</div>
+      <p>New tools only switch on after a restart. When Claude asks, <strong>fully quit the Claude app and reopen it</strong> (on a Mac, ⌘Q) — then click the chat you were just in from the <strong>list of past chats on the left</strong>, and say <strong>"continue the Cloudflare setup."</strong></p>
     </div>
     <div class="card">
       <div class="eyebrow">🙋 Pause 2 · Sign in to Cloudflare</div>

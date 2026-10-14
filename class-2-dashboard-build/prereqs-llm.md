@@ -312,27 +312,27 @@ _Read this before you start — it's the tricky bit_
 
 ## Claude will ask you to restart . Here's how to come back.
 
-The Supabase tools only switch on after Claude Code restarts. When Claude tells you to, fully quit and reopen it — then you need to get back into this same conversation so Claude remembers what it was doing.
+The Supabase tools only switch on after a restart. When Claude tells you to, fully quit the Claude app and reopen it (on a Mac, ⌘Q) — then you need to get back into this same conversation so Claude remembers what it was doing.
 
-_🕐 Reopen the same chat_
+_↩ Reopen the same chat_
 
-After reopening, click the clock icon at the top-right of the Claude box (boxed in red below). That's your conversation history — pick the chat you were just in, then type "continue the Supabase setup."
+After reopening, look at the list of past chats on the left . Click the chat you were just in, then type "continue the Supabase setup."
 
-_Can't find the Claude box?_
+_Not sure which chat it was?_
 
-If the Claude panel (the Anthropic logo) disappeared after restarting, just click any file in your project on the left — the Claude box pops right back.
+It's the one at or near the top of the list : your most recent chats come first.
 
  ✋
 
-Don't start a brand-new chat — Claude would forget where it was. Always come back through the 🕐 history.
+Don't start a brand-new chat — Claude would forget where it was. Always come back through the list of past chats.
 
-Then one last thing Claude will walk you through: type /mcp in the Claude box, pick supabase , and choose Authenticate . A Supabase page opens in your browser — sign in if asked, pick your project , and click Authorize . That's it — Claude can now build your database.
+Then one last thing Claude will walk you through: type /mcp in the message box, pick supabase , and choose Authenticate . A Supabase page opens in your browser — sign in if asked, pick your project , and click Authorize . That's it — Claude can now build your database.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after Claude Code fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen Claude Code, click the CLOCK/history icon at the top-right of the Claude box, pick the chat they were just in, and type "continue the Supabase setup." They must NOT start a brand-new chat.
+THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after the Claude app fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen the Claude app (⌘Q on a Mac), click the chat they were just in from the list of past chats on the left, and type "continue the Supabase setup." They must NOT start a brand-new chat.
 
-Two sub-gotchas: (1) if the Claude panel vanished after restart, clicking any file in the project brings it back; (2) the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
+One more gotcha: the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
 
 ## Slide 13 · You're all set
 

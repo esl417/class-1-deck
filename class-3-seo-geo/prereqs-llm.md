@@ -271,11 +271,11 @@ This happens in your website project from Class 1 — the folder your site lives
 
  ✋
 
-Expect Claude to pause twice — one restart of Claude Code partway through (with the 🕐 pick-up-where-you-left-off move you know from Class 2), and one Allow click in your browser. Both are on the next slide.
+Expect Claude to pause twice — one restart of the Claude app partway through (with the pick-up-where-you-left-off move you know from Class 2), and one Allow click in your browser. Both are on the next slide.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Setup: this happens in their WEBSITE project from Class 1 (the folder their site lives in) — that's where they build in class, so the right folder matters. The prompt pulls the Cloudflare kit and runs it. The important pre-warning, which the slide makes explicitly: expect Claude to pause twice — a restart of Claude Code partway through (the 🕐 resume-the-same-chat move from Class 2) and one Allow click in the browser. If a student is about to paste this, make sure they know the restart is coming so they don't panic and start a new chat afterward.
+Setup: this happens in their WEBSITE project from Class 1 (the folder their site lives in) — that's where they build in class, so the right folder matters. The prompt pulls the Cloudflare kit and runs it. The important pre-warning, which the slide makes explicitly: expect Claude to pause twice — a restart of the Claude app partway through (the resume-the-same-chat move from Class 2) and one Allow click in the browser. If a student is about to paste this, make sure they know the restart is coming so they don't panic and start a new chat afterward.
 
 ## Slide 11 · Step 2 · The two pauses
 
@@ -285,9 +285,9 @@ _The only moments Claude needs you_
 
 ## Claude will pause twice. Here's what for.
 
-_🔁 Pause 1 · Restart Claude Code_
+_🔁 Pause 1 · Restart the Claude app_
 
-New tools only switch on after a restart. When Claude asks, fully quit and reopen — then click the 🕐 clock icon at the top-right of the Claude box (boxed in red below), pick the chat you were just in, and say "continue the Cloudflare setup."
+New tools only switch on after a restart. When Claude asks, fully quit the Claude app and reopen it (on a Mac, ⌘Q) — then click the chat you were just in from the list of past chats on the left , and say "continue the Cloudflare setup."
 
 _🙋 Pause 2 · Sign in to Cloudflare_
 
@@ -299,7 +299,7 @@ Done when Claude confirms it's logged in — it runs a check that prints your ac
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat via the 🕐 clock/history icon at the top-right of the Claude box, pick the chat they were in, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming via the history icon — that's the fix, and it's the deck's main stuck-point.
+The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat: click it in the list of past chats on the left side of the Claude app, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming from the list of past chats — that's the fix, and it's the deck's main stuck-point.
 
 ## Slide 12 · You're all set
 

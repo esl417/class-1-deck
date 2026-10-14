@@ -516,16 +516,6 @@
   .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
   .heads-up strong { color: var(--accent-deep); }
 
-  /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
-  .ui-shot {
-    display: block;
-    width: 100%;
-    margin-top: 12px;
-    border-radius: 9px;
-    border: 1px solid var(--hair);
-    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
-  }
-
   /* keep the slide column readable on smaller laptop widths */
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
@@ -738,23 +728,22 @@
   <div class="slide-num" data-label="Step 3 · The restart everyone trips on"></div>
   <div class="eyebrow">Read this before you start — it's the tricky bit</div>
   <h2>Claude will ask you to <em>restart</em>. Here's how to come back.</h2>
-  <p>The Supabase tools only switch on after Claude Code restarts. When Claude tells you to, <strong>fully quit and reopen it</strong> — then you need to get back into <em>this same conversation</em> so Claude remembers what it was doing.</p>
+  <p>The Supabase tools only switch on after a restart. When Claude tells you to, <strong>fully quit the Claude app and reopen it</strong> (on a Mac, ⌘Q) — then you need to get back into <em>this same conversation</em> so Claude remembers what it was doing.</p>
   <div class="grid-2">
     <div class="card">
-      <div class="eyebrow">🕐 Reopen the same chat</div>
-      <p>After reopening, click the <strong>clock icon at the top-right</strong> of the Claude box (boxed in red below). That's your <strong>conversation history</strong> — pick the chat you were just in, then type <strong>"continue the Supabase setup."</strong></p>
-      <img class="ui-shot" src="claude-history-icon.png" alt="The Claude Code panel with the clock-shaped conversation-history icon, top-right, highlighted in a red box.">
+      <div class="eyebrow">↩ Reopen the same chat</div>
+      <p>After reopening, look at the <strong>list of past chats on the left</strong>. Click the chat you were just in, then type <strong>"continue the Supabase setup."</strong></p>
     </div>
     <div class="card">
-      <div class="eyebrow">Can't find the Claude box?</div>
-      <p>If the Claude panel (the Anthropic logo) disappeared after restarting, just <strong>click any file</strong> in your project on the left — the Claude box pops right back.</p>
+      <div class="eyebrow">Not sure which chat it was?</div>
+      <p>It's the one at or near the <strong>top of the list</strong>: your most recent chats come first.</p>
     </div>
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
-    <p><strong>Don't start a brand-new chat</strong> — Claude would forget where it was. Always come back through the 🕐 history.</p>
+    <p><strong>Don't start a brand-new chat</strong> — Claude would forget where it was. Always come back through the list of past chats.</p>
   </div>
-  <p style="margin-top:14px;"><strong>Then one last thing Claude will walk you through:</strong> type <strong><code>/mcp</code></strong> in the Claude box, pick <strong>supabase</strong>, and choose <strong>Authenticate</strong>. A Supabase page opens in your browser — sign in if asked, <strong>pick your project</strong>, and click <strong>Authorize</strong>. That's it — Claude can now build your database.</p>
+  <p style="margin-top:14px;"><strong>Then one last thing Claude will walk you through:</strong> type <strong><code>/mcp</code></strong> in the message box, pick <strong>supabase</strong>, and choose <strong>Authenticate</strong>. A Supabase page opens in your browser — sign in if asked, <strong>pick your project</strong>, and click <strong>Authorize</strong>. That's it — Claude can now build your database.</p>
 </section>
 
 <!-- 12. YOU'RE DONE -->
