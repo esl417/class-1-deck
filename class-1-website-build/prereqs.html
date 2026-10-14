@@ -653,9 +653,21 @@
   <div class="slide-num" data-label="Log in"></div>
   <div class="eyebrow">Installed ≠ logged in</div>
   <h2>Log Claude into GitHub and Vercel.</h2>
-  <p>The tools are installed, but they don't know who you are yet. Two quick sign-ins, each in your browser. First GitHub — paste this:</p>
-  <div class="prompt-box">Log me into the GitHub CLI. Walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in.</div>
-  <p>Then <strong>Vercel</strong>: click <strong>+</strong> next to the message box, open <strong>Connectors</strong>, find <strong>Vercel</strong>, and sign in.</p>
+  <p>The tools are installed, but they don't know who you are yet. Two sign-ins, in this order:</p>
+  <div class="grid-2" style="margin-top: 4px;">
+    <div class="card">
+      <div class="eyebrow">Step 1 · GitHub</div>
+      <p>Paste this into Claude:</p>
+      <div class="prompt-box" style="margin: 8px 0 0;">Log me into the GitHub CLI. Walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in.</div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Step 2 · Vercel</div>
+      <p>No prompt for this one — you click it yourself:</p>
+      <p style="margin: 8px 0 4px;"><strong>1.</strong> Click <strong>+</strong> next to the message box.</p>
+      <p style="margin: 0 0 4px;"><strong>2.</strong> Open <strong>Connectors</strong>.</p>
+      <p style="margin: 0;"><strong>3.</strong> Find <strong>Vercel</strong> and sign in.</p>
+    </div>
+  </div>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
     <p><strong>Expect a browser window (or a short code) for each sign-in</strong> — that's normal, not an error. Sign in, approve, and come back to the Claude app. This is where the GitHub and Vercel accounts you just made get used.</p>

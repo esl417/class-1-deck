@@ -298,12 +298,24 @@ _Installed ≠ logged in_
 
 ## Log Claude into GitHub and Vercel.
 
-The tools are installed, but they don't know who you are yet. Two quick sign-ins, each in your browser. First GitHub — paste this:
+The tools are installed, but they don't know who you are yet. Two sign-ins, in this order:
+
+_Step 1 · GitHub_
+
+Paste this into Claude:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Log me into the GitHub CLI. Walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in.
 
-Then Vercel : click + next to the message box, open Connectors , find Vercel , and sign in.
+_Step 2 · Vercel_
+
+No prompt for this one — you click it yourself:
+
+1. Click + next to the message box.
+
+2. Open Connectors .
+
+3. Find Vercel and sign in.
 
  ✋
 
