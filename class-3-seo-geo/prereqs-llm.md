@@ -347,7 +347,7 @@ If your site starts looping or shows a security error right after moving to Clou
 
  ✉️
 
-Still stuck after asking Claude a couple of times? Don't lose your evening over it — email me at eric@stratengineai.com and I'll walk you through it.
+Still stuck after asking Claude a couple of times? Don't lose your evening over it — email me at eric@ericgrows.com and I'll walk you through it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 

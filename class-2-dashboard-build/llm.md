@@ -547,7 +547,7 @@ Claude reads the error, knows the usual causes, and walks you through it — the
 
  ✉️
 
-Still stuck after a couple of tries? Email me at eric@stratengineai.com and I'll walk you through it.
+Still stuck after a couple of tries? Email me at eric@ericgrows.com and I'll walk you through it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -569,4 +569,4 @@ _You built a decision tool — now use it_
 
 > The point was never the charts. It was turning your data into decisions you can act on this week.
 
-Want this kind of decision tooling built for your whole business — not just your website? That's what we do at StratEngine . Come talk to me: eric@stratengineai.com .
+Want this kind of decision tooling built for your whole business — not just your website? That's what we do at StratEngine . Come talk to me: eric@ericgrows.com .

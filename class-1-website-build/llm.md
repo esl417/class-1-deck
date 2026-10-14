@@ -672,7 +672,7 @@ _Then keep going_
 ### Let's stay connected.
 
  Email me
- eric@stratengineai.com
+ eric@ericgrows.com
 
 StratEngine AI
 

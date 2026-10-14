@@ -531,8 +531,8 @@ Claude reads the error, knows the usual causes, and walks you through it — the
 
  ✉️
 
-Still stuck after asking Claude a couple of times? Don't lose your evening over it — email me at eric@stratengineai.com and I'll walk you through it.
+Still stuck after asking Claude a couple of times? Don't lose your evening over it — email me at eric@ericgrows.com and I'll walk you through it.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This is the meta-slide of the whole prereqs deck, and the single most important habit to reinforce: **when something breaks, describe what happened to Claude — don't go hunting for the fix.** Paste the error or describe what's on screen, and Claude diagnoses. If a student reaches you here, you ARE the payoff of this slide — model exactly what it promises: read what they paste, name the likely cause, walk them through the fix calmly. Reassure them that almost nothing here is unrecoverable. And honor the slide's last line: if they've tried a couple of times and are still stuck, it's genuinely fine to email Eric (eric@stratengineai.com) rather than lose their evening — don't let a student spiral for an hour when a human handoff is the right call.
+This is the meta-slide of the whole prereqs deck, and the single most important habit to reinforce: **when something breaks, describe what happened to Claude — don't go hunting for the fix.** Paste the error or describe what's on screen, and Claude diagnoses. If a student reaches you here, you ARE the payoff of this slide — model exactly what it promises: read what they paste, name the likely cause, walk them through the fix calmly. Reassure them that almost nothing here is unrecoverable. And honor the slide's last line: if they've tried a couple of times and are still stuck, it's genuinely fine to email Eric (eric@ericgrows.com) rather than lose their evening — don't let a student spiral for an hour when a human handoff is the right call.
