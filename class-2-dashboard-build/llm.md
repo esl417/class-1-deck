@@ -163,7 +163,7 @@ _The Supabase connection you set up in the prereqs_
 
 ## How Claude actually operates Supabase.
 
-When you connected Claude to Supabase, you installed its MCP server — a remote control Supabase hands to Claude: a set of clearly-labeled buttons it can press to do real things, reliably. Without it, Claude can only talk; with it, it can act.
+When you added the Supabase connector, you plugged in its MCP server — a remote control Supabase hands to Claude: a set of clearly-labeled buttons it can press to do real things, reliably. Without it, Claude can only talk; with it, it can act.
 
  Without the MCP server
 

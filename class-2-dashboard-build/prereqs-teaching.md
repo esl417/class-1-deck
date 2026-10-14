@@ -3,7 +3,7 @@
 Per-slide notes for the bot view of the Class 2 PREREQS deck. `##` = slide label. Private.
 Recovery-focused: the student is doing before-class setup (Google tag, analytics access,
 Supabase) and usually consults you because something broke. Read the real error, fix the
-real cause, reassure. The single biggest trap in this deck is the Supabase MCP restart.
+real cause, reassure. The step most likely to need help is adding the Supabase connector.
 
 ## Step 1 · The Google tag
 
@@ -49,14 +49,12 @@ Mechanical walkthrough. The one thing worth catching: step 4 sets a database pas
 
 ## Step 3 · Connect Claude to your database
 
-Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes the student quit and reopen the Claude app partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
+Same shape as the analytics connect. The prompt pulls the Supabase kit; Claude installs Supabase's agent skills itself (`npx skills add supabase/agent-skills`, global, for Claude Code), then pauses once for the student to add the Supabase connector. Make sure they paste this in the dashboard project's chat, not the website's.
 
-## Step 3 · The restart everyone trips on
+## Step 3 · Add the Supabase connector
 
-THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after the Claude app fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen the Claude app (⌘Q on a Mac), click the chat they were just in from the list of past chats on the left, and type "continue the Supabase setup." They must NOT start a brand-new chat.
-
-Two sub-gotchas: (1) if their chat isn't in the list after reopening, they're on the wrong tab — have them click Code at the top; (2) the final piece is authentication — click + next to the message box → Connectors, pick supabase, and sign in, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume from the past-chats list, then sign in through Connectors. This is the #1 stuck-point of the whole deck.
+The one human step: + next to the message box → Connectors → Manage connectors → Discover tab → search Supabase → add and sign in, then in the browser sign in, PICK THEIR CLASS PROJECT, and Authorize. If Claude still can't see the Supabase tools afterwards, the connector was added mid-session: have them start a + New session on the dashboard folder (Local → Select folder) and type "continue the Supabase setup" — the kit file is in the folder, so Claude picks up from there. Wrong project authorized? Sign in to the connector again and pick the right one. If the skills install failed, it isn't a blocker; Claude can retry it later.
 
 ## If something breaks
 
-The troubleshooter habit: describe the symptom to Claude, don't hunt. If a student reaches you here during Class 2 prereqs, the likeliest causes to check, in order: the Supabase restart/resume/authenticate sequence (by far the most common — see "The restart everyone trips on"); a locked-down work Google account (use a personal gmail); analytics reading zero because it's within the ~48h delay (wait, don't debug); a paused Supabase project (click Resume); the tag not firing (wrong property or not on the live page). Honor the last line — if they've tried a couple of times and are stuck, emailing Eric is the right call, not losing their evening.
+The troubleshooter habit: describe the symptom to Claude, don't hunt. If a student reaches you here during Class 2 prereqs, the likeliest causes to check, in order: the Supabase connector step (by far the most common — see "Add the Supabase connector"); a locked-down work Google account (use a personal gmail); analytics reading zero because it's within the ~48h delay (wait, don't debug); a paused Supabase project (click Resume); the tag not firing (wrong property or not on the live page). Honor the last line — if they've tried a couple of times and are stuck, emailing Eric is the right call, not losing their evening.

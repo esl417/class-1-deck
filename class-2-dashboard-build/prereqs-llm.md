@@ -296,43 +296,45 @@ In the Claude app's Code tab, go back to your dashboard project chat (in the lis
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Grab the Supabase setup kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/supabase-student-kit) into this project, then read SUPABASE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.
 
- ⚠️
+ ✋
 
-Read the next slide before you paste this. Unlike the analytics setup, this one makes you quit and reopen the Claude app partway through — and that's exactly where people get stuck. The next slide shows you how to pick up right where you left off.
+Claude will pause once and ask you to add the Supabase connector. The next slide shows the clicks.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes the student quit and reopen the Claude app partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
+Same shape as the analytics connect. The prompt pulls the Supabase kit; Claude installs Supabase's agent skills itself (`npx skills add supabase/agent-skills`, global, for Claude Code), then pauses once for the student to add the Supabase connector. Make sure they paste this in the dashboard project's chat, not the website's.
 
-## Slide 12 · Step 3 · The restart everyone trips on
+## Slide 12 · Step 3 · Add the Supabase connector
 
 **What the student sees on this slide:**
 
-_Read this before you start — it's the tricky bit_
+_The one part you click yourself_
 
-## Claude will ask you to restart . Here's how to come back.
+## Add the Supabase connector when Claude asks.
 
-The Supabase tools only switch on after a restart. When Claude tells you to, fully quit the Claude app and reopen it (on a Mac, ⌘Q) — then you need to get back into this same conversation so Claude remembers what it was doing.
+Claude installs Supabase's skills on its own, then stops and asks you to connect Supabase. That part is yours:
 
-_↩ Reopen the same chat_
+_Add the connector_
 
-After reopening, look at the list of past chats on the left . Click the chat you were just in, then type "continue the Supabase setup."
+1. Click + next to the message box.
 
-_Don't see your chat?_
+2. Choose Connectors → Manage connectors .
 
-Click the Code tab at the top of the window first. Your chat is at or near the top of the list — newest chats come first.
+3. Click the Discover tab at the top and search Supabase .
 
- ✋
+4. Add it and sign in.
 
-Don't start a brand-new chat — Claude would forget where it was. Always come back through the list of past chats.
+_Then approve it in your browser_
 
-Then one last thing Claude will walk you through: click + next to the message box, open Connectors , pick supabase , and sign in. A Supabase page opens in your browser — sign in if asked, pick your project , and click Authorize . That's it — Claude can now build your database.
+A Supabase page opens. Sign in if asked, pick your class project , and click Authorize . Then tell Claude you're done.
+
+ ↻
+
+If Claude can't see Supabase yet, it will ask you to start a fresh session: click + New session , choose Local → Select folder , pick your dashboard folder, and type "continue the Supabase setup."
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after the Claude app fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen the Claude app (⌘Q on a Mac), click the chat they were just in from the list of past chats on the left, and type "continue the Supabase setup." They must NOT start a brand-new chat.
-
-Two sub-gotchas: (1) if their chat isn't in the list after reopening, they're on the wrong tab — have them click Code at the top; (2) the final piece is authentication — click + next to the message box → Connectors, pick supabase, and sign in, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume from the past-chats list, then sign in through Connectors. This is the #1 stuck-point of the whole deck.
+The one human step: + next to the message box → Connectors → Manage connectors → Discover tab → search Supabase → add and sign in, then in the browser sign in, PICK THEIR CLASS PROJECT, and Authorize. If Claude still can't see the Supabase tools afterwards, the connector was added mid-session: have them start a + New session on the dashboard folder (Local → Select folder) and type "continue the Supabase setup" — the kit file is in the folder, so Claude picks up from there. Wrong project authorized? Sign in to the connector again and pick the right one. If the skills install failed, it isn't a blocker; Claude can retry it later.
 
 ## Slide 13 · You're all set
 
@@ -375,4 +377,4 @@ Still stuck after asking Claude a couple of times? Don't lose your evening over 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The troubleshooter habit: describe the symptom to Claude, don't hunt. If a student reaches you here during Class 2 prereqs, the likeliest causes to check, in order: the Supabase restart/resume/authenticate sequence (by far the most common — see "The restart everyone trips on"); a locked-down work Google account (use a personal gmail); analytics reading zero because it's within the ~48h delay (wait, don't debug); a paused Supabase project (click Resume); the tag not firing (wrong property or not on the live page). Honor the last line — if they've tried a couple of times and are stuck, emailing Eric is the right call, not losing their evening.
+The troubleshooter habit: describe the symptom to Claude, don't hunt. If a student reaches you here during Class 2 prereqs, the likeliest causes to check, in order: the Supabase connector step (by far the most common — see "Add the Supabase connector"); a locked-down work Google account (use a personal gmail); analytics reading zero because it's within the ~48h delay (wait, don't debug); a paused Supabase project (click Resume); the tag not firing (wrong property or not on the live page). Honor the last line — if they've tried a couple of times and are stuck, emailing Eric is the right call, not losing their evening.

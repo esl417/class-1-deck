@@ -718,32 +718,34 @@
   <p>In the Claude app's <strong>Code</strong> tab, go back to your <strong>dashboard project</strong> chat (in the list on the left), and paste this:</p>
   <div class="prompt-box">Grab the Supabase setup kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/supabase-student-kit) into this project, then read SUPABASE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.</div>
   <div class="heads-up">
-    <span class="heads-up-mark">⚠️</span>
-    <p><strong>Read the next slide before you paste this.</strong> Unlike the analytics setup, this one makes you <strong>quit and reopen the Claude app partway through</strong> — and that's exactly where people get stuck. The next slide shows you how to pick up right where you left off.</p>
+    <span class="heads-up-mark">✋</span>
+    <p><strong>Claude will pause once</strong> and ask you to add the Supabase connector. The next slide shows the clicks.</p>
   </div>
 </section>
 
-<!-- 11. DATABASE — THE RESTART + RESUME (the gotcha) -->
-<section class="slide dense" id="restart">
-  <div class="slide-num" data-label="Step 3 · The restart everyone trips on"></div>
-  <div class="eyebrow">Read this before you start — it's the tricky bit</div>
-  <h2>Claude will ask you to <em>restart</em>. Here's how to come back.</h2>
-  <p>The Supabase tools only switch on after a restart. When Claude tells you to, <strong>fully quit the Claude app and reopen it</strong> (on a Mac, ⌘Q) — then you need to get back into <em>this same conversation</em> so Claude remembers what it was doing.</p>
+<!-- 11. DATABASE — ADD THE SUPABASE CONNECTOR -->
+<section class="slide dense" id="connect">
+  <div class="slide-num" data-label="Step 3 · Add the Supabase connector"></div>
+  <div class="eyebrow">The one part you click yourself</div>
+  <h2>Add the Supabase connector when Claude asks.</h2>
+  <p>Claude installs Supabase's skills on its own, then stops and asks you to connect Supabase. That part is yours:</p>
   <div class="grid-2">
     <div class="card">
-      <div class="eyebrow">↩ Reopen the same chat</div>
-      <p>After reopening, look at the <strong>list of past chats on the left</strong>. Click the chat you were just in, then type <strong>"continue the Supabase setup."</strong></p>
+      <div class="eyebrow">Add the connector</div>
+      <p style="margin: 8px 0 4px;"><strong>1.</strong> Click <strong>+</strong> next to the message box.</p>
+      <p style="margin: 0 0 4px;"><strong>2.</strong> Choose <strong>Connectors → Manage connectors</strong>.</p>
+      <p style="margin: 0 0 4px;"><strong>3.</strong> Click the <strong>Discover</strong> tab at the top and search <strong>Supabase</strong>.</p>
+      <p style="margin: 0;"><strong>4.</strong> Add it and sign in.</p>
     </div>
     <div class="card">
-      <div class="eyebrow">Don't see your chat?</div>
-      <p>Click the <strong>Code</strong> tab at the top of the window first. Your chat is at or near the <strong>top of the list</strong> — newest chats come first.</p>
+      <div class="eyebrow">Then approve it in your browser</div>
+      <p>A Supabase page opens. Sign in if asked, <strong>pick your class project</strong>, and click <strong>Authorize</strong>. Then tell Claude you're done.</p>
     </div>
   </div>
   <div class="heads-up">
-    <span class="heads-up-mark">✋</span>
-    <p><strong>Don't start a brand-new chat</strong> — Claude would forget where it was. Always come back through the list of past chats.</p>
+    <span class="heads-up-mark">↻</span>
+    <p><strong>If Claude can't see Supabase yet,</strong> it will ask you to start a fresh session: click <strong>+ New session</strong>, choose <strong>Local → Select folder</strong>, pick your dashboard folder, and type <strong>"continue the Supabase setup."</strong></p>
   </div>
-  <p style="margin-top:14px;"><strong>Then one last thing Claude will walk you through:</strong> click <strong>+</strong> next to the message box, open <strong>Connectors</strong>, pick <strong>supabase</strong>, and sign in. A Supabase page opens in your browser — sign in if asked, <strong>pick your project</strong>, and click <strong>Authorize</strong>. That's it — Claude can now build your database.</p>
 </section>
 
 <!-- 12. YOU'RE DONE -->
@@ -805,7 +807,7 @@
     if (e.key === 'Home') { e.preventDefault(); show(0); }
     if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
   });
-  // Deep-link support: a hash matching a slide's id (e.g. #restart) opens that slide.
+  // Deep-link support: a hash matching a slide's id (e.g. #connect) opens that slide.
   function showFromHash() {
     const id = location.hash.slice(1);
     if (!id) { show(0); return; }
