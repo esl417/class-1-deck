@@ -135,11 +135,11 @@ _Two habits that make every session better_
 
 ## Use Opus, and start fresh often.
 
-Everything today happens in the Claude app's Code tab, with your project folder open. Check its name shows under the prompt box. If it doesn't, choose Local → Select folder and pick it.
+First, check you're in the right place: the Claude app's Code tab, with your project folder's name showing under the prompt box. (Not there? Local → Select folder and pick your project.)
 
 _Model · Use Opus for coding_
 
-Opus is the strongest model for building. Pick Opus from the model menu next to the Send button. If your answers feel weak, check you're on Opus.
+Opus is the strongest model for building. Click the model name next to the Send button (it may say Sonnet) and pick Opus . If your answers feel weak, check it still says Opus.
 
 _Sessions · Start fresh between tasks_
 
@@ -151,7 +151,7 @@ Rule of thumb: one focused task per session. Locked the aesthetic? New session. 
 
 Two habits, and the student should understand *why* each one matters, not just do it.
 
-**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model menu next to the Send button.
+**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model name next to the Send button — click it (it may say Sonnet) and pick Opus.
 
 **Start fresh between tasks.** A new session (+ New session, with the project folder still selected) for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
 

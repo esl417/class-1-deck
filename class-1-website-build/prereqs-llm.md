@@ -135,13 +135,13 @@ _Before you can type a single prompt_
 
  ⚡
 
-Switch the model to Opus — the strongest model for coding. Use the model menu next to the Send button.
+Switch the model to Opus — the strongest model for coding. Click the model name next to the Send button (it may say Sonnet) and pick Opus .
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 The one real stuck-point: **Select folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead pick their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the project) is a mess. If a student seems lost about "where their project is," check this first: is the session open on a dedicated, empty project folder? If not, have them start a new session (⌘N / Ctrl+N) on a fresh folder before anything else.
 
-Also: they should switch to Opus (the model menu next to the Send button). If their answers later feel weak, this is worth re-checking.
+Also: they should switch to Opus (click the model name next to the Send button — it may say Sonnet — and pick Opus). If their answers later feel weak, this is worth re-checking.
 
 ## Slide 6 · Mentality
 
