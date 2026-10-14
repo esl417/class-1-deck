@@ -212,29 +212,35 @@
 <header>
   <a href="/class-1-website-build/" class="back-link">← Back to deck</a>
   <h1>Agent Prompts</h1>
-  <p class="lede">Each block below is a ready-to-send message. Click <strong>Copy</strong>, paste it into the Code tab of the Claude app (not the Chat tab), and press enter — Claude builds the agent and installs it globally for you.</p>
+  <p class="lede">One button copies one message that creates <strong>both</strong> agents. Paste it into the Code tab of the Claude app (not the Chat tab) and press enter — Claude builds both and installs them globally for you.</p>
 </header>
 
 <div class="steps">
-  <h3>The install flow (per agent)</h3>
+  <h3>The install flow</h3>
   <ol>
     <li>Open the Claude app's <strong>Code</strong> tab on your project folder.</li>
-    <li>Click <strong>Copy</strong> on the first block below.</li>
-    <li><strong>Paste it into the Code tab and press enter.</strong> The whole block is the message — the first line tells Claude to create the agent and install it globally, and everything under the line is the agent itself.</li>
-    <li>Let it finish. Claude writes the agent file into your global <code>~/.claude/agents/</code> folder so it's available in every project.</li>
-    <li>Repeat for the second block.</li>
-    <li>To confirm both landed, ask Claude: <code>list my global agents</code>.</li>
+    <li>Click <strong>Copy both agents</strong> below.</li>
+    <li><strong>Paste it into the Code tab and press enter.</strong> That's the whole message — it tells Claude to create both agents and install them globally.</li>
+    <li>Let it finish. Claude saves both into your global <code>~/.claude/agents/</code> folder, so they work in every project, then lists them so you can see they landed.</li>
   </ol>
 </div>
+
+<div class="agent-block">
+  <div class="agent-header">
+    <h2>Both agents, one message</h2>
+    <button class="copy-btn" onclick="copyBoth(this)">Copy both agents</button>
+  </div>
+  <p class="send-note"><strong>Copy sends this as one message:</strong> "Create two new agents, <code>code-reviewer</code> and <code>security-reviewer</code>, using exactly the definitions below, and install both globally…" followed by both definitions shown below. Just paste and press enter.</p>
+</div>
+
+<h3 style="margin: 8px 0 16px;">What's inside the message</h3>
 
 <!-- CODE REVIEWER -->
 <div class="agent-block">
   <div class="agent-header">
     <h2>code-reviewer</h2>
-    <button class="copy-btn" onclick="copyAgent('code-reviewer-text', this)">Copy</button>
   </div>
   <p class="agent-desc">Reviews code changes for high-confidence bugs, correctness issues, and security problems. Runs after Claude makes edits.</p>
-  <p class="send-note"><strong>Copy sends this as a message:</strong> "Create a new agent called <code>code-reviewer</code> using exactly the definition below, and install it globally…" followed by everything in the panel. Just paste and press enter.</p>
   <pre id="code-reviewer-text" data-agent-name="code-reviewer">---
 name: code-reviewer
 description: Reviews code changes (PRs, diffs, recent commits) for high-confidence bugs, correctness issues, and security problems. Use after making code changes, before committing, or when reviewing someone else's work. Scales to large PRs via parallel sub-agents.
@@ -503,10 +509,8 @@ Write findings in the language the user is communicating in. Priority tags (`[P0
 <div class="agent-block">
   <div class="agent-header">
     <h2>security-reviewer</h2>
-    <button class="copy-btn" onclick="copyAgent('security-reviewer-text', this)">Copy</button>
   </div>
   <p class="agent-desc">Security-focused review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Runs alongside code-reviewer after Claude makes edits.</p>
-  <p class="send-note"><strong>Copy sends this as a message:</strong> "Create a new agent called <code>security-reviewer</code> using exactly the definition below, and install it globally…" followed by everything in the panel. Just paste and press enter.</p>
   <pre id="security-reviewer-text" data-agent-name="security-reviewer">---
 name: security-reviewer
 description: Security-focused code review using STRIDE, OWASP Top 10, OWASP LLM Top 10, and supply chain analysis. Use to review a PR for security vulnerabilities, perform a security audit of code changes, identify injection/auth/data-exposure issues, or run a full-project security audit. Supports both diff mode and full-project mode; scales via parallel sub-agents.
@@ -834,11 +838,12 @@ Write findings in the language the user is communicating in. Priority tags, seve
 </div>
 
 <script>
-  function copyAgent(id, btn) {
-    const pre = document.getElementById(id);
-    const name = pre.dataset.agentName;
-    const instruction = "Create a new agent called \"" + name + "\" using exactly the definition below, and install it globally (in ~/.claude/agents, so it's available in every project — not just this one). Here is the full agent definition:\n\n";
-    const text = instruction + pre.textContent;
+  function copyBoth(btn) {
+    const a = document.getElementById('code-reviewer-text').textContent;
+    const b = document.getElementById('security-reviewer-text').textContent;
+    const text = "Create two new agents, \"code-reviewer\" and \"security-reviewer\", using exactly the two definitions below, and install both globally (in ~/.claude/agents, so they're available in every project — not just this one). Each definition starts at its own '---' line. Save each as its own file, then list my global agents so I can see both landed.\n\n"
+      + "===== AGENT 1: code-reviewer =====\n\n" + a
+      + "\n\n===== AGENT 2: security-reviewer =====\n\n" + b;
     navigator.clipboard.writeText(text).then(() => {
       const original = btn.textContent;
       btn.textContent = 'Copied!';

@@ -82,13 +82,13 @@ Two things to get right if a student has trouble: (1) it must go in the GLOBAL s
 
 ## Agents
 
-First encounter with agents — teach the category, like Impeccable did for skills. An agent is a specialist Claude summons when needed (here: a code-reviewer and a security-reviewer). The key mental model: they don't build these by hand — each agent is a ready-made prompt they paste, and Claude creates the agent for them, installed globally so it works in every project.
+First encounter with agents — teach the category, like Impeccable did for skills. An agent is a specialist Claude summons when needed (here: a code-reviewer and a security-reviewer). The key mental model: they don't build these by hand — one ready-made message (both agents in it) they paste, and Claude creates both for them, installed globally so it works in every project.
 
-The empowering point worth making: once they've done this twice, they know how to make an agent for anything — a copywriter, a bookkeeping helper, whatever. If a student is intimidated ("I have to build an AI agent?"), deflate that: they're pasting a message, Claude does the building. If an agent doesn't show up afterward, have them ask Claude to "list my global agents" to confirm it landed in ~/.claude/agents/.
+The empowering point worth making: once they've done this, they know how to make an agent for anything — a copywriter, a bookkeeping helper, whatever. If a student is intimidated ("I have to build an AI agent?"), deflate that: they're pasting a message, Claude does the building. If an agent doesn't show up afterward, have them ask Claude to "list my global agents" to confirm it landed in ~/.claude/agents/.
 
 ## Agents — the steps
 
-Mechanical companion to the previous slide. If a student is stuck executing it: the flow is open the agents handout (agents.html), copy the first agent's prompt, paste into Claude, press enter, let it finish, repeat for the second. The message itself already instructs Claude to create and globally install the agent — they don't add anything. Verify both landed with "list my global agents." No deep teaching needed here; it's a do-the-steps slide. Just unblock and confirm.
+Mechanical companion to the previous slide. If a student is stuck executing it: the flow is open the agents handout (agents.html), click Copy both agents, paste into the Code tab, press enter, let it finish. The one message creates and globally installs both agents and asks Claude to list them at the end — they don't add anything. If either is missing from that list, have them ask "list my global agents" and re-paste. No deep teaching needed here; it's a do-the-steps slide. Just unblock and confirm.
 
 ## Lock the review habit
 

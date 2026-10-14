@@ -357,7 +357,7 @@ _Specialist Claudes_
 
 An agent is just a specialist Claude calls when needed. Now we'll install two: code-reviewer security-reviewer
 
-You don't build these by hand. Each one is a ready-made message — you paste it into Claude, and Claude creates the agent for you.
+You don't build these by hand. It's one ready-made message — you paste it into Claude, and Claude creates both agents for you.
 
 → Open agent prompts (copy & paste)
 
@@ -365,7 +365,7 @@ These reviewers check Claude's code in class. You'll also meet a second opinion 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-First encounter with Claude Code agents — teach the category. An agent is a specialist Claude summons when needed (here: a code-reviewer and a security-reviewer). The key mental model: they don't build these by hand — each agent is a ready-made prompt they paste, and Claude creates the agent for them, installed globally so it works in every project.
+First encounter with Claude Code agents — teach the category. An agent is a specialist Claude summons when needed (here: a code-reviewer and a security-reviewer). The key mental model: they don't build these by hand — one ready-made message (both agents in it) they paste, and Claude creates both for them, installed globally so it works in every project.
 
 The link to Class 3: these reviewers check the code Claude writes for their agent, and in class they also get a second opinion from a different AI. The handout lives at /class-1-website-build/agents.html (shared with the website course's Class 1). If a student is intimidated ("I have to build an AI agent?"), deflate that: they're pasting a message, Claude does the building. If an agent doesn't show up afterward, have them ask Claude to "list my global agents" to confirm it landed in ~/.claude/agents/.
 
@@ -377,21 +377,17 @@ _Specialist Claudes_
 
 ## Steps
 
-- Open the agent prompts handout and click Copy on the first agent.
+- Open the agent prompts handout and click Copy both agents .
 
-- Paste it into the Code tab (not Chat) and press enter. The message already tells Claude to create the agent and install it globally.
+- Paste it into the Code tab (not Chat) and press enter. The message already tells Claude to create both agents and install them globally.
 
-- Let Claude finish. It writes the agent into your global ~/.claude/agents/ folder, so it works in every project.
+- Let Claude finish. It writes both into your global ~/.claude/agents/ folder, so they work in every project, and lists them so you can see they landed.
 
-- Do the same for the second agent.
-
-- To check both landed, ask Claude: list my global agents
-
-Claude Code used to have a menu for this. Now it's simpler: you just ask Claude, and it builds the agent for you.
+Claude Code used to have a menu for this. Now it's simpler: you just ask Claude, and it builds the agents for you.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Mechanical companion to the previous slide. If a student is stuck executing it: the flow is open the agents handout (agents.html), copy the first agent's prompt, paste into Claude, press enter, let it finish, repeat for the second. The message itself already instructs Claude to create and globally install the agent — they don't add anything. Verify both landed with "list my global agents." No deep teaching needed here; it's a do-the-steps slide. Just unblock and confirm.
+Mechanical companion to the previous slide. If a student is stuck executing it: the flow is open the agents handout (agents.html), click Copy both agents, paste into the Code tab, press enter, let it finish. The one message creates and globally installs both agents and asks Claude to list them at the end — they don't add anything. If either is missing from that list, have them ask "list my global agents" and re-paste. No deep teaching needed here; it's a do-the-steps slide. Just unblock and confirm.
 
 ## Slide 15 · Lock the review habit
 
