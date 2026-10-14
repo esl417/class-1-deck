@@ -186,7 +186,7 @@ _Let Claude do the whole setup_
 Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI and the Vercel CLI — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE and tell me exactly where to type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.
+> Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), and the GitHub CLI — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE and tell me exactly where to type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; and install Git for Windows (Claude Code uses it to run terminal commands as Bash). Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.
 
 _What Claude will install_
 
@@ -194,9 +194,9 @@ _What Claude will install_
 
 - git — the change-tracker GitHub is built on.
 
-- Node.js (includes npm + npx) — the engine the Vercel and Impeccable tools run on.
+- Node.js (includes npm + npx) — the engine Impeccable and your local preview run on.
 
-- GitHub CLI + Vercel CLI — how Claude talks to your accounts.
+- GitHub CLI — how Claude saves your work to GitHub.
 
 - Impeccable — the design tool that makes your site look professional (installed globally, ready for class).
 
@@ -214,7 +214,7 @@ _Your only job_
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub and Vercel CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub CLI, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -222,7 +222,7 @@ This is the biggest failure surface in the entire prereqs deck — one prompt in
 
 **Scrolling text is an install working, not an error.** Reassure them they never need to read it — that's your job. Panic at scrolling output is common and misplaced.
 
-**Failures are usually order/dependency issues.** On Mac, Homebrew must exist before the rest; on Windows, winget (App Installer) must exist, Git for Windows is required (Claude Code runs commands through Bash), and the Vercel CLI installs via npm, not winget. If one tool failed, install the missing dependency first, then retry that one tool — don't restart the whole prompt.
+**Failures are usually order/dependency issues.** On Mac, Homebrew must exist before the rest; on Windows, winget (App Installer) must exist, and Git for Windows is required (Claude Code runs commands through Bash). If one tool failed, install the missing dependency first, then retry that one tool — don't restart the whole prompt.
 
 **Impeccable is the last step** and installs globally via npx from impeccable.style — if it asks "project or global?", the answer is global. A student who skipped or fumbled this will hit it again in class; fixing it here is cheaper.
 
@@ -290,7 +290,7 @@ The trap here is subtle and worth catching: **the accounts must EXIST before the
 
 Two specifics: for GitHub, tell them to pick a professional username — it's public and permanent. For Vercel, they should sign up with "Continue with GitHub" — one click, no separate password, and it links the two accounts automatically, which saves grief later. If a student created a Vercel account with a separate email instead, that's a common source of "my GitHub and Vercel aren't connected" trouble down the line.
 
-## Slide 11 · Log into your CLIs
+## Slide 11 · Log in
 
 **What the student sees on this slide:**
 
@@ -298,22 +298,24 @@ _Installed ≠ logged in_
 
 ## Log Claude into GitHub and Vercel.
 
-The tools are installed, but they don't know who you are yet. One prompt logs you into both — Claude drives it and pauses when a browser window needs a click.
+The tools are installed, but they don't know who you are yet. Two quick sign-ins, each in your browser. First GitHub — paste this:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Log me into the GitHub CLI and the Vercel CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
+> Log me into the GitHub CLI. Walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in.
+
+Then Vercel : click + next to the message box, open Connectors , find Vercel , and sign in.
 
  ✋
 
-Expect a browser window (or a short code) for each login — that's normal, not an error. Sign in, approve, and tell Claude you're done. This is where the GitHub and Vercel accounts you just made get used.
+Expect a browser window (or a short code) for each sign-in — that's normal, not an error. Sign in, approve, and come back to the Claude app. This is where the GitHub and Vercel accounts you just made get used.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, Vercel, and Claude one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Vercel → sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 
-Failure modes to check if a login won't complete: (1) the account doesn't exist yet (see previous slide); (2) they closed the browser window before approving; (3) for GitHub, they approved the wrong account if signed into multiple. Take them one CLI at a time and confirm each before moving on.
+Failure modes to check if a login won't complete: (1) the account doesn't exist yet (see previous slide); (2) they closed the browser window before approving; (3) for GitHub, they approved the wrong account if signed into multiple. Do GitHub first and confirm it before the Vercel connector. If Claude says it can't see Vercel, check the connector shows as connected under + → Connectors.
 
 ## Slide 12 · Terminal check
 
@@ -326,7 +328,7 @@ _After the installs and logins finish_
 Claude runs everything through your computer's terminal. If its configuration is broken, things fail in confusing ways later — agents won't launch, commands won't be found. Verify it now, while there's nothing to break:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed.
+> Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, and gh should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed.
 
 - Quit and reopen the Claude app first (on a Mac, press ⌘Q; closing the window isn't enough). Freshly installed tools only show up after a restart — this alone fixes most problems.
 
@@ -492,7 +494,7 @@ _That's everything — see you in class_
 
 - Claude's desktop app , signed in, Code tab on Opus.
 
-- All the tools installed and logged in (git, Node, gh, vercel).
+- All the tools installed and logged in (git, Node, gh), plus the Vercel connector .
 
 - Two review agents and a global CLAUDE.md rule.
 

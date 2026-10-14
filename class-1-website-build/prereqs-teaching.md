@@ -28,7 +28,7 @@ Also: they should switch to Opus (the model menu next to the Send button). If th
 
 ## Prerequisites
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub and Vercel CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub CLI, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
@@ -36,7 +36,7 @@ This is the biggest failure surface in the entire prereqs deck — one prompt in
 
 **Scrolling text is an install working, not an error.** Reassure them they never need to read it — that's your job. Panic at scrolling output is common and misplaced.
 
-**Failures are usually order/dependency issues.** On Mac, Homebrew must exist before the rest; on Windows, winget (App Installer) must exist, Git for Windows is required (Claude Code runs commands through Bash), and the Vercel CLI installs via npm, not winget. If one tool failed, install the missing dependency first, then retry that one tool — don't restart the whole prompt.
+**Failures are usually order/dependency issues.** On Mac, Homebrew must exist before the rest; on Windows, winget (App Installer) must exist, and Git for Windows is required (Claude Code runs commands through Bash). If one tool failed, install the missing dependency first, then retry that one tool — don't restart the whole prompt.
 
 **Impeccable is the last step** and installs globally via npx from impeccable.style — if it asks "project or global?", the answer is global. A student who skipped or fumbled this will hit it again in class; fixing it here is cheaper.
 
@@ -56,13 +56,13 @@ The trap here is subtle and worth catching: **the accounts must EXIST before the
 
 Two specifics: for GitHub, tell them to pick a professional username — it's public and permanent. For Vercel, they should sign up with "Continue with GitHub" — one click, no separate password, and it links the two accounts automatically, which saves grief later. If a student created a Vercel account with a separate email instead, that's a common source of "my GitHub and Vercel aren't connected" trouble down the line.
 
-## Log into your CLIs
+## Log in
 
-"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs into GitHub, Vercel, and Claude one at a time.
+"Installed ≠ logged in" is the whole point — the tools are on their computer but don't know who they are yet. The prompt logs the GitHub CLI in; then the student adds Vercel as a connector (+ next to the message box → Connectors → Vercel → sign in). There is no Vercel CLI any more — Claude reaches Vercel (deploys, build logs, project setup) through the connector.
 
 The thing to normalize: **each login pops a browser window or gives a short code to approve — that's expected, not an error.** Non-technical students often think the browser opening means something went wrong. Walk them through: sign in, approve, come back, tell Claude done, next one.
 
-Failure modes to check if a login won't complete: (1) the account doesn't exist yet (see previous slide); (2) they closed the browser window before approving; (3) for GitHub, they approved the wrong account if signed into multiple. Take them one CLI at a time and confirm each before moving on.
+Failure modes to check if a login won't complete: (1) the account doesn't exist yet (see previous slide); (2) they closed the browser window before approving; (3) for GitHub, they approved the wrong account if signed into multiple. Do GitHub first and confirm it before the Vercel connector. If Claude says it can't see Vercel, check the connector shows as connected under + → Connectors.
 
 ## Terminal check
 

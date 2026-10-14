@@ -582,15 +582,15 @@
   <div class="eyebrow">Let Claude do the whole setup</div>
   <h2>One prompt installs everything.</h2>
   <p>Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):</p>
-  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI and the Vercel CLI — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE and tell me exactly where to type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.</div>
+  <div class="prompt-box">Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), and the GitHub CLI — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE and tell me exactly where to type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; and install Git for Windows (Claude Code uses it to run terminal commands as Bash). Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.</div>
   <div class="grid-2" style="margin-top: 12px;">
     <div class="card">
       <div class="eyebrow">What Claude will install</div>
       <ul>
         <li><strong>Homebrew</strong> (Mac) — the installer everything else is set up through.</li>
         <li><strong>git</strong> — the change-tracker GitHub is built on.</li>
-        <li><strong>Node.js</strong> (includes npm + npx) — the engine the Vercel and Impeccable tools run on.</li>
-        <li><strong>GitHub CLI + Vercel CLI</strong> — how Claude talks to your accounts.</li>
+        <li><strong>Node.js</strong> (includes npm + npx) — the engine Impeccable and your local preview run on.</li>
+        <li><strong>GitHub CLI</strong> — how Claude saves your work to GitHub.</li>
         <li><strong>Impeccable</strong> — the design tool that makes your site look professional (installed globally, ready for class).</li>
       </ul>
       <p style="margin-top: 10px; color: var(--muted); font-size: 15px;">All free and standard — safe to say yes to each.</p>
@@ -650,14 +650,15 @@
 
 <!-- 3.3 LOG INTO THE CLIs -->
 <section class="slide">
-  <div class="slide-num" data-label="Log into your CLIs"></div>
+  <div class="slide-num" data-label="Log in"></div>
   <div class="eyebrow">Installed ≠ logged in</div>
   <h2>Log Claude into GitHub and Vercel.</h2>
-  <p>The tools are installed, but they don't know who you are yet. One prompt logs you into both — Claude drives it and pauses when a browser window needs a click.</p>
-  <div class="prompt-box">Log me into the GitHub CLI and the Vercel CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.</div>
+  <p>The tools are installed, but they don't know who you are yet. Two quick sign-ins, each in your browser. First GitHub — paste this:</p>
+  <div class="prompt-box">Log me into the GitHub CLI. Walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in.</div>
+  <p>Then <strong>Vercel</strong>: click <strong>+</strong> next to the message box, open <strong>Connectors</strong>, find <strong>Vercel</strong>, and sign in.</p>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
-    <p><strong>Expect a browser window (or a short code) for each login</strong> — that's normal, not an error. Sign in, approve, and tell Claude you're done. This is where the GitHub and Vercel accounts you just made get used.</p>
+    <p><strong>Expect a browser window (or a short code) for each sign-in</strong> — that's normal, not an error. Sign in, approve, and come back to the Claude app. This is where the GitHub and Vercel accounts you just made get used.</p>
   </div>
 </section>
 
@@ -667,7 +668,7 @@
   <div class="eyebrow">After the installs and logins finish</div>
   <h2>Make sure your terminal itself works.</h2>
   <p>Claude runs everything through your computer's terminal. If its configuration is broken, things fail in confusing ways later — agents won't launch, commands won't be found. Verify it now, while there's nothing to break:</p>
-  <div class="prompt-box">Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed.</div>
+  <div class="prompt-box">Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, and gh should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed.</div>
   <ul>
     <li><strong>Quit and reopen the Claude app first</strong> (on a Mac, press ⌘Q; closing the window isn't enough). Freshly installed tools only show up after a restart — this alone fixes most problems.</li>
     <li><strong>"command not found" right after installing ≠ broken install.</strong> Claude just hasn't reloaded. Quit and reopen the Claude app, then ask Claude to check again.</li>
@@ -764,7 +765,7 @@
   <h2>You're done. Here's what you set up.</h2>
   <ul>
     <li class="done-check"><strong>Claude's desktop app</strong>, signed in, Code tab on Opus.</li>
-    <li class="done-check">All the <strong>tools installed and logged in</strong> (git, Node, gh, vercel).</li>
+    <li class="done-check">All the <strong>tools installed and logged in</strong> (git, Node, gh), plus the <strong>Vercel connector</strong>.</li>
     <li class="done-check">Two <strong>review agents</strong> and a global <strong>CLAUDE.md</strong> rule.</li>
     <li class="done-check"><strong>GitHub + Vercel</strong> accounts, created and logged in — we wire them to your project in class.</li>
   </ul>
