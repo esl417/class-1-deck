@@ -27,7 +27,7 @@ writing code by hand.
 
 **Arc:**
 1. **The mindset shift** — stop using a tool, start delegating to a person.
-2. **The four tools** — Claude Code, VS Code, GitHub, Vercel, and what each does.
+2. **The three tools** — Claude Code (in Claude's desktop app), GitHub, Vercel, and what each does.
 3. **Setup, live** — one prompt installs everything; verify the terminal works.
 4. **Specialist Claudes** — creating agents; making code-review and
    security-review automatic.

@@ -69,7 +69,7 @@ Your tools are already installed and logged in from the prereqs — today we con
 
  🧰
 
-Not set up yet? Open the prereqs deck ( prereqs.html ) and run through it first — VS Code + Claude Code, the tool installs and logins, your review agents, and your GitHub + Vercel accounts.
+Not set up yet? Open the prereqs deck ( prereqs.html ) and run through it first — Claude's desktop app, the tool installs and logins, your review agents, and your GitHub + Vercel accounts.
 
 ## Slide 3 · Scope
 
@@ -137,11 +137,11 @@ _Two habits that make every session better_
 
 _Model · Use Opus for coding_
 
-Opus is the strongest model for building. Type /model and pick Opus , or use the picker at the bottom of the Claude panel. If your answers feel weak, check you're on Opus.
+Opus is the strongest model for building. Pick Opus from the model menu next to the Send button. If your answers feel weak, check you're on Opus.
 
 _Sessions · Start fresh between tasks_
 
-When you finish one thing and move to the next, click the ✳ starburst to open a new session. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat. (Avoid /clear — it wipes your history.)
+When you finish one thing and move to the next, click + New session ( ⌘N / Ctrl+N ) to start fresh. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.
 
 Rule of thumb: one focused task per session. Locked the aesthetic? New session. Moving from layout to copy? New session. A short, on-topic conversation always beats a giant one.
 
@@ -149,11 +149,11 @@ Rule of thumb: one focused task per session. Locked the aesthetic? New session. 
 
 Two habits, and the student should understand *why* each one matters, not just do it.
 
-**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check `/model`.
+**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model menu next to the Send button.
 
 **Start fresh between tasks.** A new session for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
 
-One trap to warn about: **`/clear` is not "new session."** `/clear` wipes their history. The starburst (✳) opens a fresh session while keeping their history intact. If a student says they lost their work or history, check whether they hit `/clear` expecting a clean slate.
+How to start fresh: **+ New session** (⌘N / Ctrl+N). The old session stays in the sidebar, so nothing is lost.
 
 ## Slide 6 · Git words
 
@@ -193,14 +193,14 @@ _Connect the three_
 
 ## Create your repo — and wire it to GitHub and Vercel.
 
-The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude in the VS Code terminal:
+The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Create a GitHub repo for this project and connect it to my Vercel. Make sure they're synced and a push will deploy.
 
 ### Verification checklist
 
-- git status works in the VS Code terminal
+- Claude can run git status in your project
 
 - Your project shows up at github.com/yourname
 
@@ -270,7 +270,7 @@ _Make it look good_
 
 - You already installed this in the prereqs — it's ready to go. Nothing to do now.
 
-- Restart VS Code if you haven't since setup, so the skill loads before you use it.
+- Quit and reopen the Claude app if you haven't since setup, so the skill loads before you use it.
 
 Skipped the prereqs, or not sure it's there? Paste this and Claude sorts it out:
 
@@ -287,7 +287,7 @@ This is the student's **first encounter with a slash command / skill**, so this 
 
 What Impeccable specifically is: Claude writes the code; Impeccable is the skill that makes the result look designed rather than generically AI-generated. Without it, pages have that flat template look; with it, they have real craft. That's the whole value proposition, and it's worth the student understanding it so they actually *use* the iteration commands later instead of settling for the first rough pass.
 
-The friction to expect: the slide says "you already installed this in the prereqs." Two things go wrong. (1) A student who skipped the prereqs won't have it — there's a prompt on the slide to check-and-install; that's fine to run for them, it's setup. (2) A student who installed it but hasn't restarted VS Code since won't have the skill loaded — if `/impeccable` commands aren't recognized, the fix is almost always "restart VS Code." Check that before assuming anything is broken.
+The friction to expect: the slide says "you already installed this in the prereqs." Two things go wrong. (1) A student who skipped the prereqs won't have it — there's a prompt on the slide to check-and-install; that's fine to run for them, it's setup. (2) A student who installed it but hasn't restarted the Claude app since won't have the skill loaded — if `/impeccable` commands aren't recognized, the fix is almost always "quit and reopen the Claude app." Check that before assuming anything is broken.
 
 ## Slide 10 · Design brief
 
@@ -311,7 +311,7 @@ Run /impeccable init to start. In the same message , paste in as much context as
 
 - Brand colors and fonts if you have them
 
-Logo tip: drop your logo file into the root of the project tree before running — it gets picked up automatically.
+Logo tip: drop your logo file into your project folder (in Finder or File Explorer) before running — it gets picked up automatically.
 
 At the end of /impeccable init , it offers to run /impeccable document — say yes. It writes two files every command reads first: PRODUCT.md (who, what, why) and DESIGN.md (colors, type, components).
 
@@ -327,7 +327,7 @@ After every /impeccable pass, fight the urge to fix small things first. Lock eac
 
  TIP
 
-Once a layer feels done, click the ✳ starburst to open a new session. A clean slate gives better results and uses less of your plan.
+Once a layer feels done, click + New session to start fresh. A clean slate gives better results and uses less of your plan.
 
  Top of funnel
  ↓
@@ -439,7 +439,7 @@ _Normalizing the chaos_
 
 - Page blank? Ask Claude: "the page is blank, what's wrong?"
 
-- Want to preview your site locally? Ask Claude: "launch a local server and open it in my web browser" — that last part matters, so it opens full-size in Chrome/Safari instead of a cramped panel inside VS Code.
+- Want to preview your site locally? Ask Claude: "launch a local server and open it in my web browser" — that last part matters, so it opens full-size in Chrome/Safari instead of the small preview panel inside the Claude app.
 
 - Preview won't update? Refresh the browser, then ask Claude to restart the server.
 
@@ -451,7 +451,7 @@ When in doubt, describe what you see and what you expected. Claude will figure i
 
 The single most transferable skill in the whole class lives on this slide: **describe what you see and what you expected, and let Claude diagnose.** Non-technical students freeze when something breaks because they think they need to know the technical cause. They don't. Teach them the move is always the same — narrate the symptom ("the page is blank," "the preview won't update") and Claude figures out the rest.
 
-Reassure them that breakage is *normal*, not a sign they're failing. The specific reflexes worth reinforcing: blank page → ask what's wrong; want to see the site → ask Claude to "launch a local server and open it in my web browser" (the *open in my browser* part matters, so it opens full-size instead of cramped inside VS Code); broke something → "revert to the last commit." But the meta-skill — describe, don't diagnose — matters more than memorizing any single fix.
+Reassure them that breakage is *normal*, not a sign they're failing. The specific reflexes worth reinforcing: blank page → ask what's wrong; want to see the site → ask Claude to "launch a local server and open it in my web browser" (the *open in my browser* part matters, so it opens full-size instead of in the small panel inside the Claude app); broke something → "revert to the last commit." But the meta-skill — describe, don't diagnose — matters more than memorizing any single fix.
 
 ## Slide 15 · Troubleshooting cheat sheet
 

@@ -61,7 +61,7 @@ Installing all this stuff isn't the fun part. It takes a while, a few things wil
 
 > Get through this once, and you never touch it again.
 
-Everything below is a one-time setup for your computer. After today, you open VS Code and go straight to building — no installing, no accounts, no drag. So take a breath, follow along, and let Claude do the heavy lifting.
+Everything below is a one-time setup for your computer. After today, you open the Claude app and go straight to building — no installing, no accounts, no drag. So take a breath, follow along, and let Claude do the heavy lifting.
 
  ☕
 
@@ -77,13 +77,11 @@ Nothing technical here — it's a morale slide ("this part is a drag, you only d
 
 _What you're setting up_
 
-## Four free tools, installed and logged in.
+## Three tools, installed and logged in.
 
-### The four tools
+### The three tools
 
-- VS Code — where the files for your website live on your computer.
-
-- Claude Code — the AI that edits those files for you.
+- Claude Code — the AI that edits your website's files for you. It lives in Claude's desktop app.
 
 - GitHub — the backup + history of every change.
 
@@ -97,61 +95,53 @@ _What you're setting up_
  →
  Vercel publishes
 
-## Slide 4 · VS Code + Claude Code
+## Slide 4 · Claude desktop app
 
 **What the student sees on this slide:**
 
 _Your workspace_
 
-## VS Code is just a really fancy file manager.
+## One app runs everything: Claude's desktop app.
 
 > "You will never type code. You will type English."
 
-- Install VS Code (free, from code.visualstudio.com ).
+- Download the Claude desktop app (free, from claude.ai/download ) and sign in with your Claude account.
 
-- Install the Claude Code extension from the VS Code extension marketplace.
+- Click the Code tab at the top. (Chat can't touch the files on your computer. Code can.)
 
-- File → Open Folder → "New Folder" — create a brand new folder for your project, then open it. (The #1 stuck-point.)
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-The one real stuck-point on this slide is buried in the third bullet: **File → Open Folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead open their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the project) is a mess. If a student seems lost about "where their project is," check this first: are they in a dedicated, empty project folder? If not, have them create one and open it before anything else.
-
-They also sometimes confuse "install VS Code" with "install the Claude Code extension" — those are two steps. VS Code is the app; Claude Code is an extension inside it. Make sure both happened.
-
-## Slide 5 · Sign in
-
-**What the student sees on this slide:**
-
-_Before you can type a single prompt_
-
-## Open Claude Code and sign in.
-
-- Find the Claude Code icon — the orange starburst in the top-right toolbar of VS Code (near the split-screen and "…" icons). Click it to open the panel.
-
-- Click Sign in — a browser window opens. Log into your Claude account and approve, then come back to VS Code.
-
-- You're connected when the panel shows a prompt box waiting for you — not a sign-in button.
-
-💳 Needs a paid Claude plan (Pro or Max) — the free account won't work. Subscribe at claude.ai first.
-
- Look for this orange starburst in the top-right toolbar.
-
- Don't see the icon? In the file list on the left, click New File (this button) — or press ⌘N (Mac) / Ctrl+N (Windows) — and make any file. The toolbar icons appear once a file is open.
-
- ⚡
-
-Once you're in, switch the model to Opus — the strongest model for coding. Type /model and pick Opus, or use the model picker at the bottom of the panel.
+💳 Code needs a paid Claude plan (Pro or Max) — the free account won't work. Subscribe at claude.ai first.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Two failure modes here, both common:
 
-1. **They can't find the Claude icon.** It's the orange starburst in the top-right toolbar, but that toolbar only appears once a file is open. If they see no icon, the fix is on the slide: open or create any file first, then the toolbar icons appear. Walk them to that.
+1. **They're in the Chat tab, not Code.** The desktop app opens on Chat, which can't touch files on their computer. If Claude says it can't see or edit their files, check that they clicked the **Code** tab.
 
-2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but nothing works right. If a student is signed in but Claude Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
+2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but the Code tab won't work. If a student is signed in but Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
 
-Also: once in, they should switch to Opus (`/model` → Opus). If their answers later feel weak, this is worth re-checking.
+## Slide 5 · Project folder
+
+**What the student sees on this slide:**
+
+_Before you can type a single prompt_
+
+## Open a brand-new project folder.
+
+- In the Code tab, choose Local , then Select folder .
+
+- In the window that opens, click New Folder , name it after your project, and open it. (The #1 stuck-point.)
+
+- You're ready when you see a prompt box under your folder's name.
+
+ ⚡
+
+Switch the model to Opus — the strongest model for coding. Use the model menu next to the Send button.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+The one real stuck-point: **Select folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead pick their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the project) is a mess. If a student seems lost about "where their project is," check this first: is the session open on a dedicated, empty project folder? If not, have them start a new session (⌘N / Ctrl+N) on a fresh folder before anything else.
+
+Also: they should switch to Opus (the model menu next to the Send button). If their answers later feel weak, this is worth re-checking.
 
 ## Slide 6 · Mentality
 
@@ -196,7 +186,7 @@ _Let Claude do the whole setup_
 Claude installs every tool you need in one shot. Paste this into Claude (Mac or Windows, same prompt):
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI, the Vercel CLI, and the Claude Code CLI (@anthropic-ai/claude-code) — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE so I can type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.
+> Set up everything I need to build and deploy a website: git, Node.js (npm and npx must work), the GitHub CLI and the Vercel CLI — plus whatever those need on my OS. On a Mac: install the Xcode Command Line Tools and, if Homebrew isn't already installed, install it first by running the official installer — and PAUSE and tell me exactly where to type my Mac password when it asks. On Windows: install with winget, but if winget itself is missing, install the App Installer / winget first; install Git for Windows (Claude Code uses it to run terminal commands as Bash); and install the Vercel CLI with npm after Node — it isn't a winget package. Finally, once Node is working, install Impeccable globally from impeccable.style using npx — if it asks "project or global?", choose global. Install anything missing, one at a time, then show me a checklist proving each one works.
 
 _What Claude will install_
 
@@ -207,8 +197,6 @@ _What Claude will install_
 - Node.js (includes npm + npx) — the engine the Vercel and Impeccable tools run on.
 
 - GitHub CLI + Vercel CLI — how Claude talks to your accounts.
-
-- Claude Code CLI — required before you can create agents (next section).
 
 - Impeccable — the design tool that makes your site look professional (installed globally, ready for class).
 
@@ -226,11 +214,11 @@ _Your only job_
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub/Vercel/Claude CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub and Vercel CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
-**The one thing only the student can do: type their Mac password.** When an install needs `sudo`, the terminal waits for their Mac password, and the screen stays completely blank as they type — no dots, no stars. Non-technical students think it's frozen or broken. It isn't. Tell them: type your password blind and press Enter. This trips up almost everyone.
+**The one thing only the student can do: type their Mac password.** When an install needs `sudo`, a terminal waits for their Mac password (Claude should tell them exactly where — the app's Terminal pane or the Mac Terminal app), and the screen stays completely blank as they type — no dots, no stars. Non-technical students think it's frozen or broken. It isn't. Tell them: type your password blind and press Enter. This trips up almost everyone.
 
 **Scrolling text is an install working, not an error.** Reassure them they never need to read it — that's your job. Panic at scrolling output is common and misplaced.
 
@@ -308,12 +296,12 @@ Two specifics: for GitHub, tell them to pick a professional username — it's pu
 
 _Installed ≠ logged in_
 
-## Log Claude into GitHub, Vercel, and itself.
+## Log Claude into GitHub and Vercel.
 
-The tools are installed, but they don't know who you are yet. One prompt logs you into all three — Claude drives it and pauses when a browser window needs a click.
+The tools are installed, but they don't know who you are yet. One prompt logs you into both — Claude drives it and pauses when a browser window needs a click.
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Log me into the GitHub CLI, the Vercel CLI, and the Claude Code CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
+> Log me into the GitHub CLI and the Vercel CLI — one at a time. For each, walk me through any browser sign-in or code you need me to approve, then confirm I'm logged in before moving to the next.
 
  ✋
 
@@ -340,9 +328,9 @@ Claude runs everything through your computer's terminal. If its configuration is
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Open a fresh terminal session and check that my shell is healthy: it should start with no errors, and git, node, npm, npx, gh, and vercel should all run. If my PATH or my shell startup files (like .zshrc) have problems, fix them and tell me what you changed.
 
-- Quit and reopen VS Code first. Freshly installed tools only show up in fresh terminals — this alone fixes most problems.
+- Quit and reopen the Claude app first (on a Mac, press ⌘Q; closing the window isn't enough). Freshly installed tools only show up after a restart — this alone fixes most problems.
 
-- "command not found" right after installing ≠ broken install. The terminal just hasn't reloaded. Restart VS Code, then ask Claude to check again.
+- "command not found" right after installing ≠ broken install. Claude just hasn't reloaded. Quit and reopen the Claude app, then ask Claude to check again.
 
 - Red text when the terminal opens? Don't read it — copy it and paste it to Claude: "my terminal shows this when it opens — fix it."
 
@@ -350,7 +338,7 @@ Claude runs everything through your computer's terminal. If its configuration is
 
 This slide exists because a broken shell causes confusing failures later (agents won't launch, commands "not found"), so it's verified now while nothing's at stake. When a student consults you here, the symptom is usually one of two:
 
-1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen VS Code (which opens a fresh terminal), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
+1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen the Claude app (⌘Q on a Mac — closing the window isn't enough), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
 
 2. **Red text when the terminal opens.** This is a shell-startup problem (a broken .zshrc or PATH). Don't have them read it — have them paste it, then fix the real cause and tell them what you changed. This is exactly the kind of thing they can't diagnose and you can.
 
@@ -502,9 +490,9 @@ _That's everything — see you in class_
 
 ## You're done. Here's what you set up.
 
-- VS Code + Claude Code , signed in and on Opus.
+- Claude's desktop app , signed in, Code tab on Opus.
 
-- All the tools installed and logged in (git, Node, gh, vercel, claude).
+- All the tools installed and logged in (git, Node, gh, vercel).
 
 - Two review agents and a global CLAUDE.md rule.
 
@@ -512,7 +500,7 @@ _That's everything — see you in class_
 
  🚀
 
-Bring your laptop to class with your project folder open in VS Code . We'll go straight to building and shipping your site — no setup time lost.
+Bring your laptop to class with your project folder open in the Claude app's Code tab . We'll go straight to building and shipping your site — no setup time lost.
 
 ## Slide 20 · If something breaks
 

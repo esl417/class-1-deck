@@ -67,7 +67,7 @@ Same "first pass is never right" loop as Class 1, with dashboard-specific twists
 
 ## See it update live
 
-Teach the workflow win: run a LOCAL preview so changes appear instantly, instead of deploying to Vercel and waiting a minute per tweak. This is what makes the build loop feel fast. The one thing that matters in the prompt: "open it in my web browser" — without that phrase, the preview can open in a cramped panel inside VS Code; with it, full-size in their real browser. If a student complains the preview is tiny or awkward, that phrase is the fix. Leave the tab open while building; it refreshes itself.
+Teach the workflow win: run a LOCAL preview so changes appear instantly, instead of deploying to Vercel and waiting a minute per tweak. This is what makes the build loop feel fast. The one thing that matters in the prompt: "open it in my web browser" — without that phrase, the preview can open in the small panel inside the Claude app; with it, full-size in their real browser. If a student complains the preview is tiny or awkward, that phrase is the fix. Leave the tab open while building; it refreshes itself.
 
 ## Deploy it live
 

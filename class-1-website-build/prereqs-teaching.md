@@ -12,29 +12,27 @@ real cause, keep them moving, and reassure — this stage is a slog and they kno
 
 Nothing technical here — it's a morale slide ("this part is a drag, you only do it once"). The teaching value is emotional, not procedural: if a student reaches you here they may be dreading the setup. Match the slide's honesty. Confirm that yes, this part is tedious and one-time, that scrolling terminal text is normal, and that you'll handle the heavy lifting. Don't oversell it as easy — validate that it's a slog, then get them moving.
 
-## VS Code + Claude Code
-
-The one real stuck-point on this slide is buried in the third bullet: **File → Open Folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead open their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the project) is a mess. If a student seems lost about "where their project is," check this first: are they in a dedicated, empty project folder? If not, have them create one and open it before anything else.
-
-They also sometimes confuse "install VS Code" with "install the Claude Code extension" — those are two steps. VS Code is the app; Claude Code is an extension inside it. Make sure both happened.
-
-## Sign in
+## Claude desktop app
 
 Two failure modes here, both common:
 
-1. **They can't find the Claude icon.** It's the orange starburst in the top-right toolbar, but that toolbar only appears once a file is open. If they see no icon, the fix is on the slide: open or create any file first, then the toolbar icons appear. Walk them to that.
+1. **They're in the Chat tab, not Code.** The desktop app opens on Chat, which can't touch files on their computer. If Claude says it can't see or edit their files, check that they clicked the **Code** tab.
 
-2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but nothing works right. If a student is signed in but Claude Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
+2. **Free Claude account.** This needs a PAID plan (Pro or Max) — the free account will not work, and the failure is confusing because sign-in appears to succeed but the Code tab won't work. If a student is signed in but Code won't function, verify they're on a paid plan at claude.ai before debugging anything else. This is the single most common "it just won't work" cause at this step.
 
-Also: once in, they should switch to Opus (`/model` → Opus). If their answers later feel weak, this is worth re-checking.
+## Project folder
+
+The one real stuck-point: **Select folder → make a NEW folder, then open it.** Students routinely skip creating a fresh folder and instead pick their Desktop, their Documents, or nothing at all — then everything downstream (the repo, the project) is a mess. If a student seems lost about "where their project is," check this first: is the session open on a dedicated, empty project folder? If not, have them start a new session (⌘N / Ctrl+N) on a fresh folder before anything else.
+
+Also: they should switch to Opus (the model menu next to the Send button). If their answers later feel weak, this is worth re-checking.
 
 ## Prerequisites
 
-This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub/Vercel/Claude CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
+This is the biggest failure surface in the entire prereqs deck — one prompt installs git, Node, the GitHub and Vercel CLIs, and Impeccable, across Mac or Windows. When a student consults you here, something in that chain broke. Approach:
 
 **Read the actual error — don't guess.** Have them paste exactly what the terminal shows. The fix depends entirely on which tool failed and why.
 
-**The one thing only the student can do: type their Mac password.** When an install needs `sudo`, the terminal waits for their Mac password, and the screen stays completely blank as they type — no dots, no stars. Non-technical students think it's frozen or broken. It isn't. Tell them: type your password blind and press Enter. This trips up almost everyone.
+**The one thing only the student can do: type their Mac password.** When an install needs `sudo`, a terminal waits for their Mac password (Claude should tell them exactly where — the app's Terminal pane or the Mac Terminal app), and the screen stays completely blank as they type — no dots, no stars. Non-technical students think it's frozen or broken. It isn't. Tell them: type your password blind and press Enter. This trips up almost everyone.
 
 **Scrolling text is an install working, not an error.** Reassure them they never need to read it — that's your job. Panic at scrolling output is common and misplaced.
 
@@ -70,7 +68,7 @@ Failure modes to check if a login won't complete: (1) the account doesn't exist 
 
 This slide exists because a broken shell causes confusing failures later (agents won't launch, commands "not found"), so it's verified now while nothing's at stake. When a student consults you here, the symptom is usually one of two:
 
-1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen VS Code (which opens a fresh terminal), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
+1. **"command not found" right after installing.** This almost never means a broken install — the terminal just hasn't reloaded to see the new tool. The fix is: quit and reopen the Claude app (⌘Q on a Mac — closing the window isn't enough), then check again. Try this BEFORE assuming anything is actually wrong. It resolves the majority of cases.
 
 2. **Red text when the terminal opens.** This is a shell-startup problem (a broken .zshrc or PATH). Don't have them read it — have them paste it, then fix the real cause and tell them what you changed. This is exactly the kind of thing they can't diagnose and you can.
 

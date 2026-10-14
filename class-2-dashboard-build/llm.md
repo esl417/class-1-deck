@@ -440,11 +440,11 @@ You set up nothing. Just tell Claude:
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Launch the dashboard locally and open it in my web browser so I can see it live.
 
-Say "in my web browser" — it matters. Without it, the preview can open in a cramped little panel inside VS Code. That phrase pops it open full-size in your real browser (Chrome, Safari…). Leave the tab up while you build — it updates itself. When it looks right, then you deploy.
+Say "in my web browser" — it matters. Without it, the preview can open in the small panel inside the Claude app. That phrase pops it open full-size in your real browser (Chrome, Safari…). Leave the tab up while you build — it updates itself. When it looks right, then you deploy.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach the workflow win: run a LOCAL preview so changes appear instantly, instead of deploying to Vercel and waiting a minute per tweak. This is what makes the build loop feel fast. The one thing that matters in the prompt: "open it in my web browser" — without that phrase, the preview can open in a cramped panel inside VS Code; with it, full-size in their real browser. If a student complains the preview is tiny or awkward, that phrase is the fix. Leave the tab open while building; it refreshes itself.
+Teach the workflow win: run a LOCAL preview so changes appear instantly, instead of deploying to Vercel and waiting a minute per tweak. This is what makes the build loop feel fast. The one thing that matters in the prompt: "open it in my web browser" — without that phrase, the preview can open in the small panel inside the Claude app; with it, full-size in their real browser. If a student complains the preview is tiny or awkward, that phrase is the fix. Leave the tab open while building; it refreshes itself.
 
 ## Slide 16 · Deploy it live
 

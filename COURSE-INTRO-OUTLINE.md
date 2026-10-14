@@ -54,8 +54,8 @@ Each beat: what you walk out with, the one plain-English idea, the habit it adds
 
 **Class 1 — How to Build a Website**
 - Walk out with: a live site on a real URL. No coding.
-- Idea: the four tools and what each does. Claude Code builds, VS Code is the
-  file manager, GitHub is Google Drive for code, Vercel is free hosting that
+- Idea: the three tools and what each does. Claude Code (in Claude's desktop
+  app) builds, GitHub is Google Drive for code, Vercel is free hosting that
   publishes on push.
 - Habit: permanent instructions (CLAUDE.md) and specialist Claudes that review
   code and security automatically. Local is practice, push is publish.

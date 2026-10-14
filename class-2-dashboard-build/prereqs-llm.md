@@ -192,7 +192,7 @@ This is the project you'll build your dashboard in for class — so set it up no
 
 - 1. Make a new empty folder for your dashboard (e.g. my-dashboard ) — save it next to your Class 1 website folder so they live together.
 
-- 2. Open that folder in a new VS Code window (File → New Window, then open the folder), then open Claude Code in it.
+- 2. In the Claude app's Code tab, start a new session ( ⌘N / Ctrl+N ) and select that folder.
 
 - 3. Paste this message to Claude, exactly:
 
@@ -205,7 +205,7 @@ Expect Claude to pause twice and ask you to click something in your browser — 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The setup that matters: this is the SAME project folder they'll build the dashboard in during class, so it should be created deliberately — a new empty folder, ideally next to their Class 1 website folder, opened in its own VS Code window. A student who pastes the setup prompt into the wrong folder (or their Class 1 project) will get tangled later. If they're confused about "which folder," walk them to making a fresh one for the dashboard. Then the paste prompt pulls the GA4 kit and runs it. Expect Claude to pause twice for browser clicks — that's normal (next slide details them).
+The setup that matters: this is the SAME project folder they'll build the dashboard in during class, so it should be created deliberately — a new empty folder, ideally next to their Class 1 website folder, opened in its own new session in the Claude app's Code tab. A student who pastes the setup prompt into the wrong folder (or their Class 1 project) will get tangled later. If they're confused about "which folder," walk them to making a fresh one for the dashboard. Then the paste prompt pulls the GA4 kit and runs it. Expect Claude to pause twice for browser clicks — that's normal (next slide details them).
 
 ## Slide 8 · Step 2 · The two clicks you'll make
 

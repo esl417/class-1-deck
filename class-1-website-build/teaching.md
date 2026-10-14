@@ -21,11 +21,11 @@ How to reinforce it when they slip: if a student is over-specifying mechanics, g
 
 Two habits, and the student should understand *why* each one matters, not just do it.
 
-**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check `/model`.
+**Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model menu next to the Send button.
 
 **Start fresh between tasks.** A new session for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
 
-One trap to warn about: **`/clear` is not "new session."** `/clear` wipes their history. The starburst (✳) opens a fresh session while keeping their history intact. If a student says they lost their work or history, check whether they hit `/clear` expecting a clean slate.
+How to start fresh: **+ New session** (⌘N / Ctrl+N). The old session stays in the sidebar, so nothing is lost.
 
 ## Git words
 
@@ -70,7 +70,7 @@ This is the student's **first encounter with a slash command / skill**, so this 
 
 What Impeccable specifically is: Claude writes the code; Impeccable is the skill that makes the result look designed rather than generically AI-generated. Without it, pages have that flat template look; with it, they have real craft. That's the whole value proposition, and it's worth the student understanding it so they actually *use* the iteration commands later instead of settling for the first rough pass.
 
-The friction to expect: the slide says "you already installed this in the prereqs." Two things go wrong. (1) A student who skipped the prereqs won't have it — there's a prompt on the slide to check-and-install; that's fine to run for them, it's setup. (2) A student who installed it but hasn't restarted VS Code since won't have the skill loaded — if `/impeccable` commands aren't recognized, the fix is almost always "restart VS Code." Check that before assuming anything is broken.
+The friction to expect: the slide says "you already installed this in the prereqs." Two things go wrong. (1) A student who skipped the prereqs won't have it — there's a prompt on the slide to check-and-install; that's fine to run for them, it's setup. (2) A student who installed it but hasn't restarted the Claude app since won't have the skill loaded — if `/impeccable` commands aren't recognized, the fix is almost always "quit and reopen the Claude app." Check that before assuming anything is broken.
 
 ## How to review
 
@@ -111,7 +111,7 @@ Teach the judgment, not a script: run a command, then *review* (outside-in, from
 
 The single most transferable skill in the whole class lives on this slide: **describe what you see and what you expected, and let Claude diagnose.** Non-technical students freeze when something breaks because they think they need to know the technical cause. They don't. Teach them the move is always the same — narrate the symptom ("the page is blank," "the preview won't update") and Claude figures out the rest.
 
-Reassure them that breakage is *normal*, not a sign they're failing. The specific reflexes worth reinforcing: blank page → ask what's wrong; want to see the site → ask Claude to "launch a local server and open it in my web browser" (the *open in my browser* part matters, so it opens full-size instead of cramped inside VS Code); broke something → "revert to the last commit." But the meta-skill — describe, don't diagnose — matters more than memorizing any single fix.
+Reassure them that breakage is *normal*, not a sign they're failing. The specific reflexes worth reinforcing: blank page → ask what's wrong; want to see the site → ask Claude to "launch a local server and open it in my web browser" (the *open in my browser* part matters, so it opens full-size instead of in the small panel inside the Claude app); broke something → "revert to the last commit." But the meta-skill — describe, don't diagnose — matters more than memorizing any single fix.
 
 ## Troubleshooting cheat sheet
 

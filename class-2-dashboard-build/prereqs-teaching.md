@@ -33,7 +33,7 @@ Teach what this grants, because non-technical students worry they'll break somet
 
 ## Step 2 · Start your dashboard project
 
-The setup that matters: this is the SAME project folder they'll build the dashboard in during class, so it should be created deliberately — a new empty folder, ideally next to their Class 1 website folder, opened in its own VS Code window. A student who pastes the setup prompt into the wrong folder (or their Class 1 project) will get tangled later. If they're confused about "which folder," walk them to making a fresh one for the dashboard. Then the paste prompt pulls the GA4 kit and runs it. Expect Claude to pause twice for browser clicks — that's normal (next slide details them).
+The setup that matters: this is the SAME project folder they'll build the dashboard in during class, so it should be created deliberately — a new empty folder, ideally next to their Class 1 website folder, opened in its own new session in the Claude app's Code tab. A student who pastes the setup prompt into the wrong folder (or their Class 1 project) will get tangled later. If they're confused about "which folder," walk them to making a fresh one for the dashboard. Then the paste prompt pulls the GA4 kit and runs it. Expect Claude to pause twice for browser clicks — that's normal (next slide details them).
 
 ## Step 2 · The two clicks you'll make
 

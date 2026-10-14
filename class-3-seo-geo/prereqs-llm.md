@@ -264,7 +264,7 @@ _This is the whole step_
 
 ## Open your website project and paste this.
 
-This happens in your website project from Class 1 — the folder your site lives in. That's where we'll build in class. Open it in VS Code, open Claude Code, and paste:
+This happens in your website project from Class 1 — the folder your site lives in. That's where we'll build in class. Open it in the Claude app's Code tab and paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Grab the Cloudflare setup kit from https://github.com/esl417/class-materials (the files in class-3-seo-geo/cloudflare-student-kit) into this project, then read CLOUDFLARE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.

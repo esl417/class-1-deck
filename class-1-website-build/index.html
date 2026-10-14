@@ -584,7 +584,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🧰</span>
-    <p><strong>Not set up yet?</strong> Open the <strong>prereqs deck</strong> (<span class="mono">prereqs.html</span>) and run through it first — VS Code + Claude Code, the tool installs and logins, your review agents, and your GitHub + Vercel accounts.</p>
+    <p><strong>Not set up yet?</strong> Open the <strong>prereqs deck</strong> (<span class="mono">prereqs.html</span>) and run through it first — Claude's desktop app, the tool installs and logins, your review agents, and your GitHub + Vercel accounts.</p>
   </div>
 </section>
 
@@ -638,11 +638,11 @@
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">Model · Use Opus for coding</div>
-      <p>Opus is the strongest model for building. Type <code>/model</code> and pick <strong>Opus</strong>, or use the picker at the bottom of the Claude panel. If your answers feel weak, check you're on Opus.</p>
+      <p>Opus is the strongest model for building. Pick <strong>Opus</strong> from the model menu next to the Send button. If your answers feel weak, check you're on Opus.</p>
     </div>
     <div class="card">
       <div class="eyebrow">Sessions · Start fresh between tasks</div>
-      <p>When you finish one thing and move to the next, click the <code>✳</code> starburst to open a new session. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat. (Avoid <code>/clear</code> — it wipes your history.)</p>
+      <p>When you finish one thing and move to the next, click <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>) to start fresh. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.</p>
     </div>
   </div>
   <p class="small-note">Rule of thumb: one focused task per session. Locked the aesthetic? New session. Moving from layout to copy? New session. A short, on-topic conversation always beats a giant one.</p>
@@ -669,11 +669,11 @@
   <div class="slide-num" data-label="Create your repo"></div>
   <div class="eyebrow">Connect the three</div>
   <h2>Create your repo — and wire it to GitHub and Vercel.</h2>
-  <p>The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude in the VS Code terminal:</p>
+  <p>The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude:</p>
   <div class="prompt-box">Create a GitHub repo for this project and connect it to my Vercel. Make sure they're synced and a push will deploy.</div>
   <h3 style="margin-top: 30px; color: #0c6f67;">Verification checklist</h3>
   <ul>
-    <li class="check"><code>git status</code> works in the VS Code terminal</li>
+    <li class="check">Claude can run <code>git status</code> in your project</li>
     <li class="check">Your project shows up at <span class="mono">github.com/yourname</span></li>
     <li class="check">Your project shows up in Vercel with a <span class="mono">*.vercel.app</span> URL</li>
   </ul>
@@ -716,7 +716,7 @@
     <li>Without Impeccable: generic AI-looking pages.</li>
     <li>With Impeccable: distinctive, polished, professional craft.</li>
     <li><strong>You already installed this in the prereqs</strong> — it's ready to go. Nothing to do now.</li>
-    <li><strong>Restart VS Code</strong> if you haven't since setup, so the skill loads before you use it.</li>
+    <li><strong>Quit and reopen the Claude app</strong> if you haven't since setup, so the skill loads before you use it.</li>
   </ul>
   <p style="margin-top: 18px;">Skipped the prereqs, or not sure it's there? Paste this and Claude sorts it out:</p>
   <div class="prompt-box" style="margin-top: 12px;">Check whether Impeccable is installed globally, and if it isn't, install it globally from impeccable.style using npx. If it asks "project or global?", choose global.</div>
@@ -737,7 +737,7 @@
     <li>Sites you love (URLs)</li>
     <li>Brand colors and fonts if you have them</li>
   </ul>
-  <p style="margin-top: 24px;"><strong>Logo tip:</strong> drop your logo file into the root of the project tree <em>before</em> running — it gets picked up automatically.</p>
+  <p style="margin-top: 24px;"><strong>Logo tip:</strong> drop your logo file into your project folder (in Finder or File Explorer) <em>before</em> running — it gets picked up automatically.</p>
   <p class="small-note" style="margin-top: 18px;">At the end of <code>/impeccable init</code>, it offers to run <code>/impeccable document</code> — <strong>say yes.</strong> It writes two files every command reads first: <strong>PRODUCT.md</strong> (who, what, why) and <strong>DESIGN.md</strong> (colors, type, components).</p>
 </section>
 
@@ -749,7 +749,7 @@
   <p style="margin-bottom: 14px;">After every <code>/impeccable</code> pass, fight the urge to fix small things first. Lock each layer before moving down — otherwise you'll polish a button that's about to get deleted anyway.</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 14px; background: rgba(15,138,128,0.07); border: 1px solid rgba(15,138,128,0.22); border-radius: 10px; padding: 12px 18px; margin-bottom: 22px; max-width: 100%;">
     <span class="label" style="margin-right: 0; flex: 0 0 auto;">TIP</span>
-    <p style="margin: 0; max-width: none; color: var(--body); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.4; white-space: nowrap;">Once a layer feels done, click the <code>✳</code> starburst to open a new session. A clean slate gives better results and uses less of your plan.</p>
+    <p style="margin: 0; max-width: none; color: var(--body); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.4; white-space: nowrap;">Once a layer feels done, click <strong>+ New session</strong> to start fresh. A clean slate gives better results and uses less of your plan.</p>
   </div>
   <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 1100px; margin: 0 auto; position: relative;">
     <div style="position: absolute; left: -30px; top: 10px; bottom: 10px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
@@ -817,7 +817,7 @@
   <h2>Things will break. That's normal.</h2>
   <ul>
     <li>Page blank? Ask Claude: <em>"the page is blank, what's wrong?"</em></li>
-    <li>Want to preview your site locally? Ask Claude: <em>"launch a local server and open it in my web browser"</em> — that last part matters, so it opens full-size in Chrome/Safari instead of a cramped panel inside VS Code.</li>
+    <li>Want to preview your site locally? Ask Claude: <em>"launch a local server and open it in my web browser"</em> — that last part matters, so it opens full-size in Chrome/Safari instead of the small preview panel inside the Claude app.</li>
     <li>Preview won't update? Refresh the browser, then ask Claude to restart the server.</li>
     <li>Something broke and you want to undo? Ask Claude: <em>"revert to the last commit."</em></li>
   </ul>

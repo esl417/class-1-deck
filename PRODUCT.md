@@ -15,7 +15,7 @@ The job: walk away having actually built and deployed a real website on a real U
 
 ## Product Purpose
 
-A series of teaching decks (starting with "Class 1: How to Build a Website") that take a complete beginner from never having opened VS Code to a live, deployed website by the end of a single class. Each deck is a self-contained single-file HTML presentation: keyboard-navigable, projector-friendly, and readable both up close and from across a room.
+A series of teaching decks (starting with "Class 1: How to Build a Website") that take a complete beginner from never having opened a developer tool to a live, deployed website by the end of a single class. Each deck is a self-contained single-file HTML presentation: keyboard-navigable, projector-friendly, and readable both up close and from across a room.
 
 The deck is dual-purpose by design: it must work as a standalone written guide someone can self-serve through, AND as presenter scaffolding for a live walkthrough with strategic "build this with me now" moments. Success is a beginner who finishes unintimidated, with a deployed site, and the confidence to keep building.
 
