@@ -107,7 +107,7 @@ _A fallback so nobody's blocked_
 
 ## No analytics data? Build with sample data instead.
 
-If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your Supabase connection is set up , paste this into Claude Code:
+If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your Supabase connection is set up , paste this into your dashboard project's chat in the Code tab:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself.
@@ -313,7 +313,7 @@ _Part 2 begins — and it's the fun part_
 
 ## New session. Run /impeccable init . Now you design.
 
-Start clean : open a fresh Claude session and run /impeccable init to lay down the dashboard's design foundation — exactly like the website in Class 1.
+Start clean : click + New session ( ⌘N ), choose Local → Select folder , pick your my-dashboard folder, and run /impeccable init to lay down the dashboard's design foundation — exactly like the website in Class 1.
 
 _Why init now_
 
@@ -339,7 +339,7 @@ This grows into your whole-business cockpit. Today it's a GA4 panel — but like
 
 Two things to reinforce. (1) Start CLEAN — a brand-new Claude session before running `/impeccable init` for the dashboard. The pipeline work is done; a fresh session gives sharper results (same session-hygiene lesson from Class 1). (2) `/impeccable init` here does the same job as in Class 1 — lays down PRODUCT.md and DESIGN.md — but the framing is different: this is a PRIVATE, internal dashboard only they see. No brand to match, no one to impress. Encourage them to actually enjoy it — pick a whole aesthetic (they'll look at it daily). Same teach-don't-perform rule as Class 1's Design brief: don't run init's interview for them; help them describe the vibe, then let the command do its thing. Plant the seed that this dashboard grows into their whole-business cockpit over the coming classes.
 
-LIKELY GOTCHA — Impeccable not installed in this project. This is a new project folder (the dashboard), so if `/impeccable init` isn't recognized or the student says Impeccable "isn't installed," the almost-certain cause is that in Class 1 it got installed at the PROJECT level instead of globally — so it doesn't carry over to this new dashboard project. The fix is to install it GLOBALLY this time so it works everywhere from now on. Point Claude to install it globally from impeccable.style using npx — and when it asks "project or global?", choose GLOBAL (the whole point is that a global install follows them into every future project, so this never happens again). Fallback download options are at impeccable.style/#downloads. After installing, they may need to restart Claude Code for the skill to load. Don't debug it as if the command is broken — it's a scope/install issue, and global reinstall is the fix.
+LIKELY GOTCHA — Impeccable not installed in this project. This is a new project folder (the dashboard), so if `/impeccable init` isn't recognized or the student says Impeccable "isn't installed," the almost-certain cause is that in Class 1 it got installed at the PROJECT level instead of globally — so it doesn't carry over to this new dashboard project. The fix is to install it GLOBALLY this time so it works everywhere from now on. Point Claude to install it globally from impeccable.style using npx — and when it asks "project or global?", choose GLOBAL (the whole point is that a global install follows them into every future project, so this never happens again). Fallback download options are at impeccable.style/#downloads. After installing, they may need to quit and reopen the Claude app (⌘Q), then reopen the chat from the list on the left, for the skill to load. Don't debug it as if the command is broken — it's a scope/install issue, and global reinstall is the fix.
 
 ## Slide 12 · Design around your decisions
 

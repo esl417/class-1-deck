@@ -784,37 +784,14 @@
   .heads-up p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); max-width: none; }
   .heads-up strong { color: var(--accent-deep); }
 
-  /* ---- Inline UI screenshot inside a card (how-to reference) ---- */
-  /* Height-capped, not width-driven: the shot is a wide 2:1 crop, so sizing it
-     by width blows past the slide's vertical budget and pushes it below the
-     fold. Cap the height and let width follow the aspect ratio. */
-  .ui-shot {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    max-height: 300px;
-    margin: 12px auto 0;
-    border-radius: 9px;
-    border: 1px solid var(--hair);
-    box-shadow: 0 1px 2px rgba(20,18,12,0.05), 0 10px 26px -18px rgba(20,18,12,0.4);
-  }
-
-  /* Plan-mode slide: two text cards + the UI shot. Was an inline
-     grid-template-columns, which no media query could override. */
+  /* Plan-mode slide: two text cards side by side. */
   .plan-mode-grid {
     display: grid;
-    grid-template-columns: 0.9fr 0.9fr 1.35fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(16px, 2vw, 28px);
-    align-items: center;
+    align-items: stretch;
     margin-top: 4px;
   }
-  /* Below this the third column is too narrow to read the shot in: drop to two
-     cards side by side with the shot spanning underneath. */
-  @media (max-width: 1100px) {
-    .plan-mode-grid { grid-template-columns: 1fr 1fr; }
-    .plan-mode-grid .ui-shot { grid-column: 1 / -1; }
-  }
-
   /* keep the slide column readable on smaller laptop widths */
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
@@ -954,17 +931,17 @@
   <div class="slide-num" data-label="Do it yourself"></div>
   <div class="eyebrow">A free SEO toolkit — for after class</div>
   <h2>Have Claude <em>audit</em> your SEO for you.</h2>
-  <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.</p>
+  <p>You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude's <strong>Code</strong> tab — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.</p>
   <div class="grid-2">
     <div class="card">
       <div class="eyebrow">Step 1 · Install it (one time)</div>
-      <p>Don't fuss with commands — hand Claude the link and let it install. In Claude Code, paste:</p>
+      <p>Don't fuss with commands — hand Claude the link and let it install. In the Claude app's <strong>Code</strong> tab, in your website project, paste:</p>
       <div class="prompt-box" style="margin:8px 0 0;">Install this SEO plugin for Claude Code from github.com/AgriciDaniel/claude-seo — set it up for me and tell me if you need me to restart.</div>
-      <p style="margin-top:10px;">Restart Claude Code when it asks, so the tools switch on — the same restart move from the prereqs.</p>
+      <p style="margin-top:10px;">When Claude asks, fully quit the Claude app (⌘Q) and reopen it, then click this chat in the <strong>list of past chats on the left</strong> — the same restart move from the prereqs.</p>
     </div>
     <div class="card">
       <div class="eyebrow">Step 2 · Run these on your site today</div>
-      <p>Open Claude Code in your website project and run them one at a time (swap in your domain):</p>
+      <p>Back in that chat, run them one at a time (swap in your domain):</p>
       <ul>
         <li><code>/seo audit yourdomain.com</code> — the big one: full-site health + fix list.</li>
         <li><code>/seo content yourdomain.com</code> — your EEAT / content score.</li>
@@ -1103,13 +1080,12 @@
   <div class="plan-mode-grid">
     <div class="card">
       <div class="eyebrow">How to turn it on</div>
-      <p>Press <strong>Shift+Tab</strong> to cycle the modes and stop on <strong>Plan mode</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
+      <p>In the Code tab, click the <strong>mode selector</strong> next to the Send button and pick <strong>Plan</strong>. Describe what you want — Claude proposes, you approve or push back.</p>
     </div>
     <div class="card">
       <div class="eyebrow">Why it's worth it</div>
       <p>Build on the fly and Claude <strong>guesses at each step</strong> — more mistakes, more time lost debugging. Plan first and it reasons about the whole job up front, so you catch a wrong turn while it's still words on a screen.</p>
     </div>
-    <img class="ui-shot" src="plan-mode.png" style="margin-top:0; align-self:center;" alt="The Claude Code modes menu with Plan mode highlighted by a red arrow; 'Shift + Tab to switch' shown top-right.">
   </div>
   <div class="heads-up" style="margin-top: 12px;">
     <span class="heads-up-mark">📖</span>
@@ -1149,7 +1125,7 @@
   <div class="slide-num" data-label="Plan the build"></div>
   <div class="eyebrow">One prompt plans the whole build — you review it</div>
   <h2>Plan the whole build with <em>one</em> prompt.</h2>
-  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In your <strong>website project</strong>, switch to plan mode (<strong>Shift+Tab</strong>) and paste:</p>
+  <p>Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In the Claude app's <strong>Code</strong> tab, start a <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>), choose <strong>Local → Select folder</strong>, pick your <strong>website project</strong> folder, then pick <strong>Plan</strong> in the mode selector next to Send, and paste:</p>
   <div class="prompt-box">I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-geo folder and follow the directions there. Make a plan and show it to me before building anything.</div>
   <div class="card" style="margin-top:6px;">
     <div class="eyebrow">✋ Before you say "go" — the plan should cover four stages</div>
@@ -1283,7 +1259,7 @@
   <div class="slide-num" data-label="Run the toolkit again"></div>
   <div class="eyebrow">Same SEO toolkit — now on your live bot surface</div>
   <h2>Now that it's live, <em>re-run</em> the SEO toolkit.</h2>
-  <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? <strong>Run it again</strong> now that the GEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):</p>
+  <p>Remember the free SEO toolkit from earlier (<code>github.com/AgriciDaniel/claude-seo</code>)? <strong>Run it again</strong> now that the GEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In the Claude app's <strong>Code</strong> tab, in your website project, run these one at a time (swap in your domain):</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Run these now — they measure the bot surface</div>
@@ -1347,7 +1323,7 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">💡</span>
-    <p><strong>While you're in there — set once, works forever.</strong> Tell Claude to <em>also</em> connect Search Console and DataForSEO to your <code>/seo</code> commands. Right now those commands guess about your site from the outside; once they're connected, they read your actual Google data every time you run them. Same commands, real numbers. (Then <strong>restart Claude Code</strong> so the connection loads.)</p>
+    <p><strong>While you're in there — set once, works forever.</strong> Tell Claude to <em>also</em> connect Search Console and DataForSEO to your <code>/seo</code> commands. Right now those commands guess about your site from the outside; once they're connected, they read your actual Google data every time you run them. Same commands, real numbers. (Then <strong>fully quit and reopen the Claude app</strong> so the connection loads, and pick the chat back up from the list on the left.)</p>
   </div>
 </section>
 

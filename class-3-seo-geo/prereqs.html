@@ -565,6 +565,11 @@
     .slide { padding: 40px 28px var(--nav-safe); }
     .grid-2 { grid-template-columns: 1fr; }
   }
+  /* Short laptop windows (720p): shrink slide content a notch so dense slides clear the nav. */
+  @media (max-height: 760px) and (min-width: 861px) {
+    .slide.active > *:not(.slide-num) { zoom: 0.88; }
+    .slide.tall.active > *:not(.slide-num) { zoom: 0.8; }
+  }
 </style>
 
 </head>
@@ -671,7 +676,7 @@
 </section>
 
 <!-- 5. PATH A — ADD DOMAIN + FLIP NAMESERVERS -->
-<section class="slide dense">
+<section class="slide dense tall">
   <div class="slide-num" data-label="Step 1 · Path A"></div>
   <div class="eyebrow">Path A · You own your domain</div>
   <h2>Add your domain, then flip its <em>nameservers</em>.</h2>
@@ -708,7 +713,7 @@
     <li><strong>2.</strong> Search for the name you want and buy it — about <strong>$10–12/year</strong> (Cloudflare sells at cost, no markup).</li>
     <li><strong>3.</strong> That's it for Cloudflare. Because you bought it <em>here</em>, there are no nameservers to flip and nothing to wait on — it's active immediately.</li>
   </ul>
-  <p style="margin-top:14px;">Then connect it to your website. Open your <strong>website project</strong> in Claude Code and paste:</p>
+  <p style="margin-top:14px;">Then connect it to your website. In the Claude app's <strong>Code</strong> tab, start a <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>), choose <strong>Local → Select folder</strong>, and pick your <strong>website project</strong> folder. Then paste:</p>
   <div class="prompt-box">I just bought the domain yourdomain.com on Cloudflare. My site is deployed on Vercel. Connect the domain to my Vercel site so my site loads at the new address, confirm it's working, and walk me through any clicks you need from me.</div>
   <p class="small-note">Path B students are usually completely done with Step 1 in about 15 minutes — no waiting.</p>
 </section>
@@ -741,7 +746,7 @@
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">What you do</div>
-      <p>Almost nothing. Paste <strong>one message</strong> into Claude Code, restart the app once when Claude asks, and click <strong>Allow</strong> once in your browser. Claude does all the technical setup itself.</p>
+      <p>Almost nothing. Paste <strong>one message</strong> into the Claude app's <strong>Code</strong> tab, restart the app once when Claude asks, and click <strong>Allow</strong> once in your browser. Claude does all the technical setup itself.</p>
     </div>
     <div class="card">
       <div class="eyebrow">What it grants</div>
@@ -756,7 +761,7 @@
   <div class="slide-num" data-label="Step 2 · The one message to paste"></div>
   <div class="eyebrow">This is the whole step</div>
   <h2>Open your website project and paste this.</h2>
-  <p>This happens in your <strong>website project from Class 1</strong> — the folder your site lives in. That's where we'll build in class. Open it in the Claude app's <strong>Code</strong> tab and paste:</p>
+  <p>This happens in your <strong>website project from Class 1</strong> — the folder your site lives in. That's where we'll build in class. In the Claude app's <strong>Code</strong> tab, start a <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>), choose <strong>Local → Select folder</strong>, and pick your <strong>website project</strong> folder. Then paste:</p>
   <div class="prompt-box">Grab the Cloudflare setup kit from https://github.com/esl417/class-materials (the files in class-3-seo-geo/cloudflare-student-kit) into this project, then read CLOUDFLARE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.</div>
   <div class="heads-up">
     <span class="heads-up-mark">✋</span>
@@ -772,7 +777,7 @@
   <div class="grid-2">
     <div class="card">
       <div class="eyebrow">🔁 Pause 1 · Restart the Claude app</div>
-      <p>New tools only switch on after a restart. When Claude asks, <strong>fully quit the Claude app and reopen it</strong> (on a Mac, ⌘Q) — then click the chat you were just in from the <strong>list of past chats on the left</strong>, and say <strong>"continue the Cloudflare setup."</strong></p>
+      <p>New tools only switch on after a restart. When Claude asks, <strong>fully quit the Claude app and reopen it</strong> (on a Mac, ⌘Q) — then click the <strong>Code</strong> tab and the chat you were just in from the <strong>list on the left</strong>, and say <strong>"continue the Cloudflare setup."</strong></p>
     </div>
     <div class="card">
       <div class="eyebrow">🙋 Pause 2 · Sign in to Cloudflare</div>
@@ -811,7 +816,7 @@
   <div class="prompt-box">That didn't work — here's what happened: [paste the message, or describe what you see on screen]. What's going on, and can you fix it?</div>
   <div class="card" style="margin-top:14px;">
     <div class="eyebrow">The one known gotcha · Site breaks right after the switch</div>
-    <p>If your site starts looping or shows a security error right after moving to Cloudflare, it's almost always one setting. Paste this into Claude Code:</p>
+    <p>If your site starts looping or shows a security error right after moving to Cloudflare, it's almost always one setting. Paste this into the Claude app's <strong>Code</strong> tab (in your website project):</p>
     <div class="prompt-box" style="margin-bottom:0;">My site stopped loading right after I moved my domain to Cloudflare — it redirects in a loop / shows an SSL error. Check my Cloudflare SSL/TLS mode (it likely needs to be Full (strict)) and walk me through fixing it.</div>
   </div>
   <div class="done-strip" style="background: rgba(15,138,128,0.07); border-color: rgba(15,138,128,0.3);">

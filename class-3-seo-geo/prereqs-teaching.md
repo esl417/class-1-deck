@@ -3,7 +3,7 @@
 Per-slide notes for the bot view of the Class 3 PREREQS deck. `##` = slide label. Private.
 Recovery-focused: the student is moving their domain to Cloudflare and arming Claude with
 Cloudflare access. Two known landmines: the post-move SSL redirect loop (fix: Full (strict)),
-and the Claude Code restart-and-resume during setup. Read the real error, fix the real cause.
+and the Claude app restart-and-resume during setup. Read the real error, fix the real cause.
 
 ## Step 1 · The domain move
 
@@ -45,7 +45,7 @@ Setup: this happens in their WEBSITE project from Class 1 (the folder their site
 
 ## Step 2 · The two pauses
 
-The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat: click it in the list of past chats on the left side of the Claude app, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming from the list of past chats — that's the fix, and it's the deck's main stuck-point.
+The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat: click the Code tab, then the chat in the list of past chats on the left side of the Claude app, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming from the list of past chats — that's the fix, and it's the deck's main stuck-point.
 
 ## You're all set
 
@@ -53,4 +53,4 @@ Recap — reinforce what "ready" means: domain Active on Cloudflare with the sit
 
 ## If something breaks
 
-The troubleshooter habit plus THE known gotcha for this class. General move: describe the symptom to Claude, don't hunt. But this deck has one specific high-frequency failure worth leading with: if the site loops or shows an SSL error right after moving to Cloudflare, it's almost always the SSL/TLS mode — it likely needs to be Full (strict). The slide even has a ready prompt for exactly this. So if a student reports "my site broke right after the domain move," go straight to checking Cloudflare's SSL/TLS mode before anything else. Other likely causes if consulted: the restart/resume sequence (resume via history icon), or a still-Pending domain (just wait). Honor the last line — a couple of tries and still stuck, email Eric rather than lose the evening.
+The troubleshooter habit plus THE known gotcha for this class. General move: describe the symptom to Claude, don't hunt. But this deck has one specific high-frequency failure worth leading with: if the site loops or shows an SSL error right after moving to Cloudflare, it's almost always the SSL/TLS mode — it likely needs to be Full (strict). The slide even has a ready prompt for exactly this. So if a student reports "my site broke right after the domain move," go straight to checking Cloudflare's SSL/TLS mode before anything else. Other likely causes if consulted: the restart/resume sequence (resume from the past-chats list in the Code tab), or a still-Pending domain (just wait). Honor the last line — a couple of tries and still stuck, email Eric rather than lose the evening.

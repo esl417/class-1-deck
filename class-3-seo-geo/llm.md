@@ -181,20 +181,20 @@ _A free SEO toolkit — for after class_
 
 ## Have Claude audit your SEO for you.
 
-You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude Code — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.
+You don't have to eyeball any of this. There's a free, open-source SEO toolkit that plugs into Claude's Code tab — 25 checkers and 18 specialist agents that crawl your site in parallel and hand back a prioritized, plain-English fix list. This is exactly what I ran on my own site; it was genuinely worth it.
 
 _Step 1 · Install it (one time)_
 
-Don't fuss with commands — hand Claude the link and let it install. In Claude Code, paste:
+Don't fuss with commands — hand Claude the link and let it install. In the Claude app's Code tab, in your website project, paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Install this SEO plugin for Claude Code from github.com/AgriciDaniel/claude-seo — set it up for me and tell me if you need me to restart.
 
-Restart Claude Code when it asks, so the tools switch on — the same restart move from the prereqs.
+When Claude asks, fully quit the Claude app (⌘Q) and reopen it, then click this chat in the list of past chats on the left — the same restart move from the prereqs.
 
 _Step 2 · Run these on your site today_
 
-Open Claude Code in your website project and run them one at a time (swap in your domain):
+Back in that chat, run them one at a time (swap in your domain):
 
 - /seo audit yourdomain.com — the big one: full-site health + fix list.
 
@@ -210,7 +210,7 @@ The best part: it doesn't just grade you — Claude can fix what it finds. Run a
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Teach them to USE the free SEO toolkit (github.com/AgriciDaniel/claude-seo), not to eyeball SEO by hand. It plugs into Claude Code — ~25 checkers + specialist agents that crawl in parallel and return a prioritized plain-English fix list. Two-step: install it once (hand Claude the GitHub link, restart when asked — the same restart move from prereqs), then run `/seo audit`, `/seo content`, `/seo backlinks` on their domain. The genuinely valuable part to emphasize: it doesn't just GRADE — Claude can FIX what it finds. After an audit, "work through these fixes with me, highest-impact first." Note two commands (`/seo geo`, `/seo schema`) measure the AI surface, so they come AFTER today's build. If the `/seo` commands aren't recognized, they skipped the restart.
+Teach them to USE the free SEO toolkit (github.com/AgriciDaniel/claude-seo), not to eyeball SEO by hand. It plugs into the Claude app's Code tab — ~25 checkers + specialist agents that crawl in parallel and return a prioritized plain-English fix list. Two-step: install it once (hand Claude the GitHub link, restart when asked — the same restart move from prereqs), then run `/seo audit`, `/seo content`, `/seo backlinks` on their domain. The genuinely valuable part to emphasize: it doesn't just GRADE — Claude can FIX what it finds. After an audit, "work through these fixes with me, highest-impact first." Note two commands (`/seo geo`, `/seo schema`) measure the AI surface, so they come AFTER today's build. If the `/seo` commands aren't recognized, they skipped the restart.
 
 ## Slide 7 · The core idea
 
@@ -314,7 +314,7 @@ Now you know what we're building. For a job this size, don't let Claude charge s
 
 _How to turn it on_
 
-Press Shift+Tab to cycle the modes and stop on Plan mode . Describe what you want — Claude proposes, you approve or push back.
+In the Code tab, click the mode selector next to the Send button and pick Plan . Describe what you want — Claude proposes, you approve or push back.
 
 _Why it's worth it_
 
@@ -326,7 +326,7 @@ Plans come out technical by default — make Claude write them in plain English.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-First introduction of plan mode — teach the habit, it recurs in Class 4. For a job this size, don't let Claude charge in. Shift+Tab cycles modes; stop on Plan mode; describe the goal; Claude proposes a full plan you approve BEFORE any file changes. Why it's worth it: building on the fly means Claude guesses at each step (more mistakes, more debugging); planning first catches a wrong turn while it's still words on a screen. The critical add-on for a non-technical student: plans come out technical by default — tell them to add "explain it like I'm not technical" to the request, or set it once in CLAUDE.md, so they can actually judge the plan before approving. A plan they can't read is a plan they can't sanity-check.
+First introduction of plan mode — teach the habit, it recurs in Class 4. For a job this size, don't let Claude charge in. Click the mode selector next to the Send button in the Code tab and pick Plan; describe the goal; Claude proposes a full plan you approve BEFORE any file changes. Why it's worth it: building on the fly means Claude guesses at each step (more mistakes, more debugging); planning first catches a wrong turn while it's still words on a screen. The critical add-on for a non-technical student: plans come out technical by default — tell them to add "explain it like I'm not technical" to the request, or set it once in CLAUDE.md, so they can actually judge the plan before approving. A plan they can't read is a plan they can't sanity-check.
 
 ## Slide 11 · Reference documents
 
@@ -364,7 +364,7 @@ _One prompt plans the whole build — you review it_
 
 ## Plan the whole build with one prompt.
 
-Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In your website project , switch to plan mode ( Shift+Tab ) and paste:
+Here's plan mode doing real work. Instead of feeding Claude the build one step at a time, you describe the whole job once and it hands back a plan covering everything. In the Claude app's Code tab, start a + New session ( ⌘N / Ctrl+N ), choose Local → Select folder , pick your website project folder, then pick Plan in the mode selector next to Send, and paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > I want to set up the dual-web setup for my site — a separate bot version of my pages for AI crawlers, and a Cloudflare Worker that routes AI to the bot pages while humans and Google get my normal site. I'm not technical, so keep the plan in plain English. Use the class materials at github.com/esl417/class-materials in the class-3-seo-geo folder and follow the directions there. Make a plan and show it to me before building anything.
@@ -543,7 +543,7 @@ _Same SEO toolkit — now on your live bot surface_
 
 ## Now that it's live, re-run the SEO toolkit.
 
-Remember the free SEO toolkit from earlier ( github.com/AgriciDaniel/claude-seo )? Run it again now that the GEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In Claude Code, run these one at a time (swap in your domain):
+Remember the free SEO toolkit from earlier ( github.com/AgriciDaniel/claude-seo )? Run it again now that the GEO build is live — you ran it on your normal site before, and some of its checks only mean something once the bot surface exists. In the Claude app's Code tab, in your website project, run these one at a time (swap in your domain):
 
 _Run these now — they measure the bot surface_
 
@@ -621,7 +621,7 @@ The part that's yours : deciding what to track and what a good or bad reading lo
 
  💡
 
-While you're in there — set once, works forever. Tell Claude to also connect Search Console and DataForSEO to your /seo commands. Right now those commands guess about your site from the outside; once they're connected, they read your actual Google data every time you run them. Same commands, real numbers. (Then restart Claude Code so the connection loads.)
+While you're in there — set once, works forever. Tell Claude to also connect Search Console and DataForSEO to your /seo commands. Right now those commands guess about your site from the outside; once they're connected, they read your actual Google data every time you run them. Same commands, real numbers. (Then fully quit and reopen the Claude app so the connection loads, and pick the chat back up from the list on the left.)
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -639,7 +639,7 @@ Just do this part for them — it's pure plumbing, and quick. Two practical note
 
 Verify each with one real call rather than assuming setup worked — list the Search Console properties, run a live query, make one DataForSEO lookup. A silent auth failure and "young site with no data yet" look identical otherwise. If the numbers come back tiny (a few impressions, zero clicks), say so out loud — that's normal for a new site, not a broken setup.
 
-Two things worth mentioning as you go: MCP tools load at session start, so DataForSEO isn't live until they restart Claude Code (the commands work immediately, the data tools don't). And once both are connected, have them add a line to CLAUDE.md so Claude reaches for these sources on every `/seo` run without being asked — the permanent-instruction pattern from Class 1, and what makes this genuinely set-and-forget.
+Two things worth mentioning as you go: MCP tools load at session start, so DataForSEO isn't live until they fully quit and reopen the Claude app, then resume the same chat from the past-chats list (the commands work immediately, the data tools don't). And once both are connected, have them add a line to CLAUDE.md so Claude reaches for these sources on every `/seo` run without being asked — the permanent-instruction pattern from Class 1, and what makes this genuinely set-and-forget.
 
 ## Slide 21 · You shipped it
 

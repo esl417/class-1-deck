@@ -6,8 +6,9 @@ Kept private — never served on the human deck. The student is on the Advanced 
 built in Claude Managed Agents in Classes 1 and 2 but may never have used Claude Code, a
 terminal, or GitHub. Class 3 installs OpenClaw with Claude Code in Claude's desktop app, so
 this setup covers the desktop app, git, Node.js, GitHub, and the ant CLI only (no Vercel, no
-Impeccable). If they already did the website course setup, they only need the install
-prompt (for the ant CLI), the login prompt, and the Terminal check.
+Impeccable). If they already did the website course setup (before the course moved to the desktop app), they need
+the Claude desktop app and Project folder slides, then the install prompt (for the ant CLI),
+the login prompt, and the Terminal check.
 
 These notes are **recovery-focused**, not concept-focused. A student reading prereqs is
 setting up for the first time; when they consult you, it's usually because an install,
@@ -20,7 +21,7 @@ Nothing technical here — it's a morale slide ("this part is a drag, you only d
 
 ## Overview
 
-Two tools, not three: Claude Code (in Claude's desktop app) and GitHub. Vercel is not part of Class 3 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the website course prereqs, most of it is installed: they run the install prompt (it adds only the missing ant CLI), the login prompt, and the Terminal check, then they're done.
+Two tools, not three: Claude Code (in Claude's desktop app) and GitHub. Vercel is not part of Class 3 (hosting in the cloud is explained at the end of class, with nothing to set up now). If the student already completed the website course prereqs, most of it is installed, but they set it up before the course moved to the desktop app: they do the Claude desktop app and Project folder slides, then the install prompt (it adds only the missing ant CLI), the login prompt, and the Terminal check. Agents, CLAUDE.md and permissions carry over.
 
 ## Claude desktop app
 
@@ -82,7 +83,7 @@ The habit to reinforce, which recurs all through the class: restart-first, then 
 
 This installs a permissions kit that pre-approves safe everyday commands so Claude stops asking for permission constantly. The prompt pulls it from the class-materials repo and installs it GLOBALLY (~/.claude/settings.json), not into the project.
 
-Two things to get right if a student has trouble: (1) it must go in the GLOBAL settings so it works in every project — if they only see it working in one project, check where it landed; (2) it takes effect in NEW sessions, so if nothing seems different, restart Claude Code once. Reassure them that risky actions (deleting files, deploying, publishing) still ask for approval on purpose — this doesn't remove their safety net, just the noise.
+Two things to get right if a student has trouble: (1) it must go in the GLOBAL settings so it works in every project — if they only see it working in one project, check where it landed; (2) it takes effect in NEW sessions, so if nothing seems different, quit and reopen the Claude app once. Reassure them that risky actions (deleting files, deploying, publishing) still ask for approval on purpose — this doesn't remove their safety net, just the noise.
 
 ## Agents
 

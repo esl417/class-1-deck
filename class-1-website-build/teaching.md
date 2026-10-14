@@ -23,7 +23,7 @@ Two habits, and the student should understand *why* each one matters, not just d
 
 **Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model menu next to the Send button.
 
-**Start fresh between tasks.** A new session for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
+**Start fresh between tasks.** A new session (+ New session, with the project folder still selected) for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
 
 How to start fresh: **+ New session** (⌘N / Ctrl+N). The old session stays in the sidebar, so nothing is lost.
 

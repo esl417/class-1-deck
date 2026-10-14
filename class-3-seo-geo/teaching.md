@@ -15,7 +15,7 @@ SEO is mostly its own discipline and out of scope, but teach the 80/20 if asked:
 
 ## Do it yourself
 
-Teach them to USE the free SEO toolkit (github.com/AgriciDaniel/claude-seo), not to eyeball SEO by hand. It plugs into Claude Code — ~25 checkers + specialist agents that crawl in parallel and return a prioritized plain-English fix list. Two-step: install it once (hand Claude the GitHub link, restart when asked — the same restart move from prereqs), then run `/seo audit`, `/seo content`, `/seo backlinks` on their domain. The genuinely valuable part to emphasize: it doesn't just GRADE — Claude can FIX what it finds. After an audit, "work through these fixes with me, highest-impact first." Note two commands (`/seo geo`, `/seo schema`) measure the AI surface, so they come AFTER today's build. If the `/seo` commands aren't recognized, they skipped the restart.
+Teach them to USE the free SEO toolkit (github.com/AgriciDaniel/claude-seo), not to eyeball SEO by hand. It plugs into the Claude app's Code tab — ~25 checkers + specialist agents that crawl in parallel and return a prioritized plain-English fix list. Two-step: install it once (hand Claude the GitHub link, restart when asked — the same restart move from prereqs), then run `/seo audit`, `/seo content`, `/seo backlinks` on their domain. The genuinely valuable part to emphasize: it doesn't just GRADE — Claude can FIX what it finds. After an audit, "work through these fixes with me, highest-impact first." Note two commands (`/seo geo`, `/seo schema`) measure the AI surface, so they come AFTER today's build. If the `/seo` commands aren't recognized, they skipped the restart.
 
 ## The core idea
 
@@ -31,7 +31,7 @@ This is load-bearing for safety — treat a question here as high-priority. Show
 
 ## Plan mode
 
-First introduction of plan mode — teach the habit, it recurs in Class 4. For a job this size, don't let Claude charge in. Shift+Tab cycles modes; stop on Plan mode; describe the goal; Claude proposes a full plan you approve BEFORE any file changes. Why it's worth it: building on the fly means Claude guesses at each step (more mistakes, more debugging); planning first catches a wrong turn while it's still words on a screen. The critical add-on for a non-technical student: plans come out technical by default — tell them to add "explain it like I'm not technical" to the request, or set it once in CLAUDE.md, so they can actually judge the plan before approving. A plan they can't read is a plan they can't sanity-check.
+First introduction of plan mode — teach the habit, it recurs in Class 4. For a job this size, don't let Claude charge in. Click the mode selector next to the Send button in the Code tab and pick Plan; describe the goal; Claude proposes a full plan you approve BEFORE any file changes. Why it's worth it: building on the fly means Claude guesses at each step (more mistakes, more debugging); planning first catches a wrong turn while it's still words on a screen. The critical add-on for a non-technical student: plans come out technical by default — tell them to add "explain it like I'm not technical" to the request, or set it once in CLAUDE.md, so they can actually judge the plan before approving. A plan they can't read is a plan they can't sanity-check.
 
 ## Reference documents
 
@@ -98,7 +98,7 @@ Just do this part for them — it's pure plumbing, and quick. Two practical note
 
 Verify each with one real call rather than assuming setup worked — list the Search Console properties, run a live query, make one DataForSEO lookup. A silent auth failure and "young site with no data yet" look identical otherwise. If the numbers come back tiny (a few impressions, zero clicks), say so out loud — that's normal for a new site, not a broken setup.
 
-Two things worth mentioning as you go: MCP tools load at session start, so DataForSEO isn't live until they restart Claude Code (the commands work immediately, the data tools don't). And once both are connected, have them add a line to CLAUDE.md so Claude reaches for these sources on every `/seo` run without being asked — the permanent-instruction pattern from Class 1, and what makes this genuinely set-and-forget.
+Two things worth mentioning as you go: MCP tools load at session start, so DataForSEO isn't live until they fully quit and reopen the Claude app, then resume the same chat from the past-chats list (the commands work immediately, the data tools don't). And once both are connected, have them add a line to CLAUDE.md so Claude reaches for these sources on every `/seo` run without being asked — the permanent-instruction pattern from Class 1, and what makes this genuinely set-and-forget.
 
 ## You shipped it
 

@@ -75,7 +75,7 @@ _Class 3 · Your own agent_
 
 You own the code. Rebuild the agent in OpenClaw: your own tools, any model, events that wake it up.
 
-Claude Code
+Claude Code, in the Claude app
 
  🧱
 

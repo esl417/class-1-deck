@@ -681,6 +681,11 @@
     .slide { padding: 40px 28px var(--nav-safe); }
     .grid-2 { grid-template-columns: 1fr; }
   }
+  /* Short laptop windows (720p): shrink slide content a notch so dense slides clear the nav. */
+  @media (max-height: 760px) and (min-width: 861px) {
+    .slide.active > *:not(.slide-num) { zoom: 0.88; }
+    .slide.tall.active > *:not(.slide-num) { zoom: 0.8; }
+  }
 </style>
 
 </head>
@@ -752,7 +757,7 @@
   <div class="slide-num" data-label="No real data yet?"></div>
   <div class="eyebrow">A fallback so nobody's blocked</div>
   <h2>No analytics data? Build with <em>sample data</em> instead.</h2>
-  <p>If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your <strong>Supabase connection is set up</strong>, paste this into Claude Code:</p>
+  <p>If your Google tag wasn't installed in time — or your analytics is still empty — you can build the entire dashboard today on realistic practice data. Once your <strong>Supabase connection is set up</strong>, paste this into your dashboard project's chat in the Code tab:</p>
   <div class="prompt-box">Grab the GA4 dummy-data kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/ga4-dummy-kit) into this project, then read DUMMY_DATA_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle it all yourself.</div>
   <p class="small-note" style="margin-top: 10px;">Claude fills your database with <strong>~90 days of practice data</strong>, shaped exactly like real Google Analytics — so your dashboard won't change when you swap in your real numbers later.</p>
   <div class="heads-up" style="margin-top: 14px;">
@@ -898,7 +903,7 @@
 </section>
 
 <!-- 8. BUILD + TEST THE INGESTION -->
-<section class="slide dense">
+<section class="slide dense tall">
   <div class="slide-num" data-label="Build &amp; test the pipeline"></div>
   <div class="eyebrow">The first real build of the day</div>
   <h2>Build the pipeline — then <em>prove</em> it works.</h2>
@@ -930,7 +935,7 @@
   <div class="slide-num" data-label="A fresh start"></div>
   <div class="eyebrow">Part 2 begins — and it's the fun part</div>
   <h2>New session. Run <code>/impeccable init</code>. Now you design.</h2>
-  <p>Start <strong>clean</strong>: open a <strong>fresh Claude session</strong> and run <code>/impeccable init</code> to lay down the dashboard's design foundation — exactly like the website in Class 1.</p>
+  <p>Start <strong>clean</strong>: click <strong>+ New session</strong> (<code>⌘N</code>), choose <strong>Local → Select folder</strong>, pick your <strong>my-dashboard</strong> folder, and run <code>/impeccable init</code> to lay down the dashboard's design foundation — exactly like the website in Class 1.</p>
   <div class="grid-2" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">Why init now</div>

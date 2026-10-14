@@ -75,7 +75,7 @@ _Class 3 · Today · Your own agent_
 
 You own the code. The same chain: the brief as plain Python, the agent in OpenClaw, where you can message it.
 
-Claude Code
+Claude Code, in the Claude app
 
  🧱
 
@@ -356,8 +356,8 @@ The model, channels, schedules and permissions live outside the folder, in ~/.op
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The agent is a folder of plain-text files, which is why the Claude app's Code tab: they can see and edit the agent
-directly. Injected into every call (per the current docs): AGENTS.md (operating rules; the
+The agent is a folder of plain-text files, which is why it's built in a project folder: Claude Code edits the files, and the student
+can ask to see any of them. Injected into every call (per the current docs): AGENTS.md (operating rules; the
 biggest default file, about 8,000 characters of group-chat etiquette, emoji reactions, voice and
 platform formatting most agents don't need), SOUL.md (personality), USER.md (about them),
 IDENTITY.md (name, vibe), MEMORY.md (curated long-term memory, main session only, not in group
@@ -629,14 +629,14 @@ _Before Step 1 · in the Claude app_
 
 ## Install OpenClaw, with your project folder as its home.
 
-First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then make a folder called morning-agent , open it in the Claude app's Code tab, and paste this into Claude Code:
+First, in the Claude Console, create a new API key just for this agent , with a spend limit. Then, in the Claude app's Code tab, start a + New session , choose Local → Select folder , open your morning-agent folder (create it with New Folder if you haven't), and paste this:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file for me in the Claude app where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.
+> Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open the file it goes in for me in my computer's text editor (TextEdit on a Mac, Notepad on Windows) so I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app (the Terminal button at the top of this session, or Ctrl+`) and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.
 
 _⌨️ You run onboarding yourself_
 
-In a new terminal in the Claude app. Your key goes in the file Claude opens for you, never into the chat . First screens: read the security notice and say yes, choose QuickStart , and name the agent carefully (the name sticks).
+In a new terminal in the Claude app: click Terminal at the top of your session, or press Ctrl+` . It opens in your project folder. Your key goes in the file Claude opens for you, never into the chat . First screens: read the security notice and say yes, choose QuickStart , and name the agent carefully (the name sticks).
 
 _🧭 The screens that matter_
 
@@ -644,11 +644,11 @@ How it signs in to your model, your chat app, and the extras to skip. The next t
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Before Step 1. They make a folder (morning-agent), open it in the Claude app's Code tab, and have Claude Code
+Before Step 1. They open the morning-agent folder in a new Code-tab session (Local → Select folder), and have Claude Code
 install OpenClaw with the official installer (macOS/Linux: `curl -fsSL
 https://openclaw.ai/install.sh | bash`; Windows: the install.ps1 script; it handles Node) and
 make the folder a private GitHub repo with `.env` in `.gitignore` before any commit. They run
-`openclaw onboard --install-daemon` themselves in a terminal in the Claude app, because it's interactive
+`openclaw onboard --classic --workspace "$PWD"` themselves in a terminal in the Claude app (Terminal button or Ctrl+`), because it's interactive
 and the model key goes in there, not in a chat. Choices: ask first rather than full access; their
 provider and model; this folder as the workspace (if onboarding doesn't offer it, Claude can set
 OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
@@ -691,7 +691,7 @@ A key from the provider's developer console. Pay per use, with a spend cap you s
 
 _💻 CLI login · untested_
 
-Reuses your Claude Code login, so it runs on your subscription. It failed in our test run . Even when it works, it's computer-only, eats into your plan's limits, and the provider can block it.
+Borrows a logged-in Claude Code command-line tool, which this class doesn't install, so it won't work here. It also failed in our test run . Even when it works, it's computer-only, eats into your plan's limits, and the provider can block it.
 
 _🚫 Setup-token · never_
 
@@ -713,7 +713,7 @@ in Classes 1 and 2). Pay-as-you-go, with spend limits at the provider; works loc
 server. This is what the class teaches: the only option with clear policy and a spend cap, which
 the whole cost thread depends on. OpenClaw's own docs call API-key auth "preferable for shared
 automation or predictable production spend."
-CLI login: OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
+CLI login (the class no longer installs the `claude` CLI, so this option fails unless a student installed it themselves): OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
 `claude -p`) as a subprocess under the user's login; it doesn't read or forward the token
 (docs.openclaw.ai/gateway/cli-backends). It only works on the machine where that CLI is logged in,
 so it can't go to Render. Anthropic allows an end user signing in to the unmodified Claude Code
@@ -747,7 +747,7 @@ in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gate
 runtime) is not loaded into the terminal, so the test fails with "secret reference was not
 materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
-Mac), which the student pastes the key into in the Claude app's file view, then a new terminal. Before handing over,
+Mac), which Claude opens in the OS text editor (`open -e ~/.zshrc` on a Mac; Notepad on Windows) for the student to paste into, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
 and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
 (confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new terminal in the Claude app,
@@ -855,7 +855,7 @@ _Rebuild from what works, not a description_
 Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste this, replacing the highlighted parts with your own:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
 
 _📂 The export is your blueprint_
 
@@ -924,7 +924,7 @@ Tell Claude Code: "Set my main model to [model] and add [model] as a fallback." 
 
 _🔑 The .env file_
 
-Step 2 created it, and every key you add later goes there too. Open .env in the Claude app's file view, paste each key yourself , and save. Your scripts read keys from it; Claude never sees them in the chat.
+Step 2 created it, and every key you add later goes there too. Ask Claude to open .env in your text editor, paste each key yourself , and save. Your scripts read keys from it; Claude never sees them in the chat.
 
  ✅
 
@@ -935,7 +935,7 @@ Check before every commit: ask Claude "Is anything secret about to be committed?
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
 `.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
-by the student in the Claude app's file view. Scripts read from it; Claude never sees the keys in chat. The habit
+by the student in their text editor (Claude opens .env there for them). Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Slide 23 · Step 4 · The brief, in Python
@@ -1011,8 +1011,8 @@ computer's own scheduler (on a Mac, Claude sets up a launchd job, which also run
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
 "Handle my morning.", reading today's brief from briefs/ and saving the handoff, dated, to their
-Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere; a file in the VS
-Code project would be unreachable from a phone. The brief can stay local because it's an
+Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere; a file in the project
+folder on the laptop would be unreachable from a phone. The brief can stay local because it's an
 intermediate file only the agent reads; the handoff is the deliverable. It's also sent in the chat
 app connected during onboarding. Claude then lists the next few run times for each, which catches schedule
 typos before a morning is missed (Class 1's cron lesson: `* 7 * * 1-5` runs every minute of the

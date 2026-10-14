@@ -422,7 +422,7 @@
   /* prerequisites slides: extra-tight rhythm so cards fit a 720p projector */
   #prereq h2, #homebrew h2 { margin-bottom: 12px; }
   #prereq p, #homebrew p { margin-bottom: 9px; }
-  #prereq .prompt-box { font-size: 14px; padding: 12px 18px; margin: 8px 0; }
+  #prereq .prompt-box { font-size: 14px; padding: 12px 18px; margin-top: 8px; margin-bottom: 8px; }
   #prereq .card { padding: 18px 22px; }
   #prereq .card ul li { margin-bottom: 7px; line-height: 1.35; }
   #homebrew .numbered li { margin-bottom: 9px; line-height: 1.4; }
@@ -461,6 +461,10 @@
   @media (max-width: 760px) {
     .slide { padding: 40px 28px var(--nav-safe); }
     .grid-2 { grid-template-columns: 1fr; }
+  }
+  /* Short laptop windows (720p): shrink slide content a notch so dense slides clear the nav. */
+  @media (max-height: 760px) and (min-width: 861px) {
+    .slide.active > *:not(.slide-num) { zoom: 0.88; }
   }
 </style>
 </head>
@@ -594,7 +598,7 @@
     <div class="card">
       <div class="eyebrow">Your only job</div>
       <ul>
-        <li><strong>Type your Mac password when it asks</strong> — this is the one thing Claude can't do for you. The screen stays blank as you type (no dots, no stars) — that's normal. Type it and hit Enter.</li>
+        <li><strong>Type your Mac password where Claude tells you</strong> (usually the terminal in the Claude app) — this is the one thing Claude can't do for you. The screen stays blank as you type (no dots, no stars) — that's normal. Type it and hit Enter.</li>
         <li><strong>Scrolling terminal text = an install working, not an error.</strong> You never need to read it — Claude does.</li>
         <li><strong>Answer when Claude asks</strong> — say yes, and let it run. Downloads take 10–20 minutes.</li>
         <li><strong>If something fails</strong>, paste the error back: <em>"this failed — fix it and continue."</em></li>
@@ -667,7 +671,7 @@
   <ul>
     <li><strong>Quit and reopen the Claude app first</strong> (on a Mac, press ⌘Q; closing the window isn't enough). Freshly installed tools only show up after a restart — this alone fixes most problems.</li>
     <li><strong>"command not found" right after installing ≠ broken install.</strong> Claude just hasn't reloaded. Quit and reopen the Claude app, then ask Claude to check again.</li>
-    <li><strong>Red text when the terminal opens?</strong> Don't read it — copy it and paste it to Claude: <em>"my terminal shows this when it opens — fix it."</em></li>
+    <li><strong>Red text or an error</strong> (in Claude's reply or the app's terminal)? Don't read it — copy it and paste it to Claude: <em>"I'm seeing this error — fix it."</em></li>
   </ul>
 </section>
 
@@ -680,7 +684,7 @@
   <div class="prompt-box">Grab the permissions kit from https://github.com/esl417/class-materials (the files in claude-permissions-kit), then read PERMISSIONS_SETUP_FOR_CLAUDE.md and do what it says for me. Install it globally — in my ~/.claude/settings.json, not this project's settings — so it works in every project. I'm not technical — handle it yourself and tell me when it's done.</div>
   <ul>
     <li><strong>Risky things still ask</strong> — deleting files, publishing to the internet, deploying. That's on purpose: those prompts are your safety net.</li>
-    <li><strong>Takes effect in new sessions</strong> — if nothing seems to change, restart Claude Code once.</li>
+    <li><strong>Takes effect in new sessions</strong> — if nothing seems to change, quit and reopen the Claude app (⌘Q on a Mac).</li>
   </ul>
 </section>
 
@@ -702,7 +706,7 @@
   <h2>Steps</h2>
   <ul>
     <li>Open the <a href="agents.html" target="_blank" style="color:#0c6f67; text-decoration:underline; font-weight:600;">agent prompts handout</a> and click <strong>Copy</strong> on the first agent.</li>
-    <li><strong>Paste it into the Claude chat and press enter.</strong> The message already tells Claude to create the agent and install it globally.</li>
+    <li><strong>Paste it into the Code tab (not Chat) and press enter.</strong> The message already tells Claude to create the agent and install it globally.</li>
     <li>Let Claude finish. It writes the agent into your global <code>~/.claude/agents/</code> folder, so it works in <strong>every</strong> project.</li>
     <li>Do the same for the second agent.</li>
     <li>To check both landed, ask Claude: <span class="pill">list my global agents</span></li>

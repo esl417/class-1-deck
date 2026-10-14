@@ -545,6 +545,10 @@
     .slide { padding: 40px 28px var(--nav-safe); }
     .grid-2 { grid-template-columns: 1fr; }
   }
+  /* Short laptop windows (720p): shrink slide content a notch so dense slides clear the nav. */
+  @media (max-height: 760px) and (min-width: 861px) {
+    .slide.active > *:not(.slide-num) { zoom: 0.88; }
+  }
 </style>
 </head>
 <body>
@@ -635,6 +639,7 @@
   <div class="slide-num" data-label="Working with Claude"></div>
   <div class="eyebrow">Two habits that make every session better</div>
   <h2>Use Opus, and start fresh often.</h2>
+  <p>Everything today happens in the Claude app's <strong>Code</strong> tab, with your project folder open. Check its name shows under the prompt box. If it doesn't, choose <strong>Local → Select folder</strong> and pick it.</p>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">Model · Use Opus for coding</div>
@@ -642,7 +647,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">Sessions · Start fresh between tasks</div>
-      <p>When you finish one thing and move to the next, click <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>) to start fresh. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.</p>
+      <p>When you finish one thing and move to the next, click <strong>+ New session</strong> (<code>⌘N</code> / <code>Ctrl+N</code>) and check your project folder is still selected. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.</p>
     </div>
   </div>
   <p class="small-note">Rule of thumb: one focused task per session. Locked the aesthetic? New session. Moving from layout to copy? New session. A short, on-topic conversation always beats a giant one.</p>
@@ -669,11 +674,11 @@
   <div class="slide-num" data-label="Create your repo"></div>
   <div class="eyebrow">Connect the three</div>
   <h2>Create your repo — and wire it to GitHub and Vercel.</h2>
-  <p>The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude:</p>
+  <p>The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. In the Code tab, with your project folder open, ask Claude:</p>
   <div class="prompt-box">Create a GitHub repo for this project and connect it to my Vercel. Make sure they're synced and a push will deploy.</div>
   <h3 style="margin-top: 30px; color: #0c6f67;">Verification checklist</h3>
   <ul>
-    <li class="check">Claude can run <code>git status</code> in your project</li>
+    <li class="check">Ask Claude to run <code>git status</code> — it answers without an error</li>
     <li class="check">Your project shows up at <span class="mono">github.com/yourname</span></li>
     <li class="check">Your project shows up in Vercel with a <span class="mono">*.vercel.app</span> URL</li>
   </ul>
@@ -747,7 +752,7 @@
   <div class="eyebrow">Big picture down to small</div>
   <h2>Review and iterate from the outside in.</h2>
   <p style="margin-bottom: 14px;">After every <code>/impeccable</code> pass, fight the urge to fix small things first. Lock each layer before moving down — otherwise you'll polish a button that's about to get deleted anyway.</p>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 14px; background: rgba(15,138,128,0.07); border: 1px solid rgba(15,138,128,0.22); border-radius: 10px; padding: 12px 18px; margin-bottom: 22px; max-width: 100%;">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 14px; background: rgba(15,138,128,0.07); border: 1px solid rgba(15,138,128,0.22); border-radius: 10px; padding: 12px 18px; margin-bottom: 22px;">
     <span class="label" style="margin-right: 0; flex: 0 0 auto;">TIP</span>
     <p style="margin: 0; max-width: none; color: var(--body); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.4; white-space: nowrap;">Once a layer feels done, click <strong>+ New session</strong> to start fresh. A clean slate gives better results and uses less of your plan.</p>
   </div>

@@ -110,7 +110,7 @@ _Pick the path that matches your site_
 
 _A · You built your site in Class 1_
 
-Your site is code you control, so just ask Claude. Open the project in Claude Code and say:
+Your site is code you control, so just ask Claude. In the Claude app's Code tab, open your website project (click its chat in the list on the left, or + New session → Local → Select folder and pick your website folder) and say:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Install this Google tag on every page of the site, right after the opening <head> tag, then commit and deploy. Here's my Measurement ID: G-XXXXXXXXXX
@@ -168,7 +168,7 @@ The tag is collecting data — but it's locked inside Google. To build a dashboa
 
 _What you do_
 
-Almost nothing. You paste one message into Claude Code and follow two short browser prompts. Claude does all the technical setup itself.
+Almost nothing. You paste one message into the Claude app's Code tab and follow two short browser prompts. Claude does all the technical setup itself.
 
 _What it grants_
 
@@ -190,9 +190,9 @@ _This is the whole step_
 
 This is the project you'll build your dashboard in for class — so set it up now and connect your data inside it.
 
-- 1. Make a new empty folder for your dashboard (e.g. my-dashboard ) — save it next to your Class 1 website folder so they live together.
+- 1. In the Claude app's Code tab, click + New session ( ⌘N / Ctrl+N ).
 
-- 2. In the Claude app's Code tab, start a new session ( ⌘N / Ctrl+N ) and select that folder.
+- 2. Choose Local → Select folder , go to the folder that holds your Class 1 website folder, click New Folder , name it my-dashboard , and open it.
 
 - 3. Paste this message to Claude, exactly:
 
@@ -291,18 +291,18 @@ _Same idea as the analytics step_
 
 ## Let Claude build inside your database.
 
-Back in your dashboard project in Claude Code (the same folder as before), paste this:
+In the Claude app's Code tab, go back to your dashboard project chat (in the list on the left), and paste this:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Grab the Supabase setup kit from https://github.com/esl417/class-materials (the files in class-2-dashboard/supabase-student-kit) into this project, then read SUPABASE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.
 
  ⚠️
 
-Read the next slide before you paste this. Unlike the analytics setup, this one makes you restart Claude Code partway through — and that's exactly where people get stuck. The next slide shows you how to pick up right where you left off.
+Read the next slide before you paste this. Unlike the analytics setup, this one makes you quit and reopen the Claude app partway through — and that's exactly where people get stuck. The next slide shows you how to pick up right where you left off.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes Claude Code RESTART partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
+Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes the student quit and reopen the Claude app partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
 
 ## Slide 12 · Step 3 · The restart everyone trips on
 
@@ -318,9 +318,9 @@ _↩ Reopen the same chat_
 
 After reopening, look at the list of past chats on the left . Click the chat you were just in, then type "continue the Supabase setup."
 
-_Not sure which chat it was?_
+_Don't see your chat?_
 
-It's the one at or near the top of the list : your most recent chats come first.
+Click the Code tab at the top of the window first. Your chat is at or near the top of the list — newest chats come first.
 
  ✋
 
@@ -332,7 +332,7 @@ Then one last thing Claude will walk you through: type /mcp in the message box, 
 
 THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after the Claude app fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen the Claude app (⌘Q on a Mac), click the chat they were just in from the list of past chats on the left, and type "continue the Supabase setup." They must NOT start a brand-new chat.
 
-One more gotcha: the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
+Two sub-gotchas: (1) if their chat isn't in the list after reopening, they're on the wrong tab — have them click Code at the top; (2) the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
 
 ## Slide 13 · You're all set
 

@@ -204,7 +204,7 @@ All free and standard — safe to say yes to each.
 
 _Your only job_
 
-- Type your Mac password when it asks — this is the one thing Claude can't do for you. The screen stays blank as you type (no dots, no stars) — that's normal. Type it and hit Enter.
+- Type your Mac password where Claude tells you (usually the terminal in the Claude app) — this is the one thing Claude can't do for you. The screen stays blank as you type (no dots, no stars) — that's normal. Type it and hit Enter.
 
 - Scrolling terminal text = an install working, not an error. You never need to read it — Claude does.
 
@@ -332,7 +332,7 @@ Claude runs everything through your computer's terminal. If its configuration is
 
 - "command not found" right after installing ≠ broken install. Claude just hasn't reloaded. Quit and reopen the Claude app, then ask Claude to check again.
 
-- Red text when the terminal opens? Don't read it — copy it and paste it to Claude: "my terminal shows this when it opens — fix it."
+- Red text or an error (in Claude's reply or the app's terminal)? Don't read it — copy it and paste it to Claude: "I'm seeing this error — fix it."
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -359,13 +359,13 @@ Claude asks your permission before running commands. That's a good safety featur
 
 - Risky things still ask — deleting files, publishing to the internet, deploying. That's on purpose: those prompts are your safety net.
 
-- Takes effect in new sessions — if nothing seems to change, restart Claude Code once.
+- Takes effect in new sessions — if nothing seems to change, quit and reopen the Claude app (⌘Q on a Mac).
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 This installs a permissions kit that pre-approves safe everyday commands so Claude stops asking for permission constantly. The prompt pulls it from the class-materials repo and installs it GLOBALLY (~/.claude/settings.json), not into the project.
 
-Two things to get right if a student has trouble: (1) it must go in the GLOBAL settings so it works in every project — if they only see it working in one project, check where it landed; (2) it takes effect in NEW sessions, so if nothing seems different, restart Claude Code once. Reassure them that risky actions (deleting files, deploying, publishing) still ask for approval on purpose — this doesn't remove their safety net, just the noise.
+Two things to get right if a student has trouble: (1) it must go in the GLOBAL settings so it works in every project — if they only see it working in one project, check where it landed; (2) it takes effect in NEW sessions, so if nothing seems different, quit and reopen the Claude app once. Reassure them that risky actions (deleting files, deploying, publishing) still ask for approval on purpose — this doesn't remove their safety net, just the noise.
 
 ## Slide 14 · Agents
 
@@ -399,7 +399,7 @@ _Specialist Claudes_
 
 - Open the agent prompts handout and click Copy on the first agent.
 
-- Paste it into the Claude chat and press enter. The message already tells Claude to create the agent and install it globally.
+- Paste it into the Code tab (not Chat) and press enter. The message already tells Claude to create the agent and install it globally.
 
 - Let Claude finish. It writes the agent into your global ~/.claude/agents/ folder, so it works in every project.
 

@@ -112,8 +112,8 @@ and webhooks, which Managed Agents couldn't do.
 
 ## The workspace
 
-The agent is a folder of plain-text files, which is why the Claude app's Code tab: they can see and edit the agent
-directly. Injected into every call (per the current docs): AGENTS.md (operating rules; the
+The agent is a folder of plain-text files, which is why it's built in a project folder: Claude Code edits the files, and the student
+can ask to see any of them. Injected into every call (per the current docs): AGENTS.md (operating rules; the
 biggest default file, about 8,000 characters of group-chat etiquette, emoji reactions, voice and
 platform formatting most agents don't need), SOUL.md (personality), USER.md (about them),
 IDENTITY.md (name, vibe), MEMORY.md (curated long-term memory, main session only, not in group
@@ -203,11 +203,11 @@ too.
 
 ## Install
 
-Before Step 1. They make a folder (morning-agent), open it in the Claude app's Code tab, and have Claude Code
+Before Step 1. They open the morning-agent folder in a new Code-tab session (Local → Select folder), and have Claude Code
 install OpenClaw with the official installer (macOS/Linux: `curl -fsSL
 https://openclaw.ai/install.sh | bash`; Windows: the install.ps1 script; it handles Node) and
 make the folder a private GitHub repo with `.env` in `.gitignore` before any commit. They run
-`openclaw onboard --install-daemon` themselves in a terminal in the Claude app, because it's interactive
+`openclaw onboard --classic --workspace "$PWD"` themselves in a terminal in the Claude app (Terminal button or Ctrl+`), because it's interactive
 and the model key goes in there, not in a chat. Choices: ask first rather than full access; their
 provider and model; this folder as the workspace (if onboarding doesn't offer it, Claude can set
 OPENCLAW_WORKSPACE_DIR); skip the suggested ClawHub skills and plugins and the memory import
@@ -244,7 +244,7 @@ in Classes 1 and 2). Pay-as-you-go, with spend limits at the provider; works loc
 server. This is what the class teaches: the only option with clear policy and a spend cap, which
 the whole cost thread depends on. OpenClaw's own docs call API-key auth "preferable for shared
 automation or predictable production spend."
-CLI login: OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
+CLI login (the class no longer installs the `claude` CLI, so this option fails unless a student installed it themselves): OpenClaw runs the provider's own installed CLI (for Anthropic, the `claude` binary, as
 `claude -p`) as a subprocess under the user's login; it doesn't read or forward the token
 (docs.openclaw.ai/gateway/cli-backends). It only works on the machine where that CLI is logged in,
 so it can't go to Render. Anthropic allows an end user signing in to the unmodified Claude Code
@@ -279,7 +279,7 @@ in the terminal it runs in. A key saved only in ~/.openclaw/.env (which the gate
 runtime) is not loaded into the terminal, so the test fails with "secret reference was not
 materialized by the active runtime" (SecretSurfaceUnavailableError). So the key must be in a
 file the terminal loads: an `export ANTHROPIC_API_KEY=` line in the shell profile (~/.zshrc on a
-Mac), which the student pastes the key into in the Claude app's file view, then a new terminal. Before handing over,
+Mac), which Claude opens in the OS text editor (`open -e ~/.zshrc` on a Mac; Notepad on Windows) for the student to paste into, then a new terminal. Before handing over,
 Claude verifies a new terminal sees the variable without printing it (e.g. check it's non-empty
 and report its length), then points the student to the onboarding command, which is written into the prompt itself. The command that picks up the key
 (confirmed in Eric's test, OpenClaw 2026.9.7): from the project folder in a new terminal in the Claude app,
@@ -390,7 +390,7 @@ an existing file, so the handoff is saved as a new dated file, which matches Ste
 Main model plus a fallback via Claude Code. The main model makes this agent's judgment calls, so
 not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper model later.
 `.env`: created in Step 2 (and confirmed in `.gitignore`); every later key goes there too, pasted
-by the student in the Claude app's file view. Scripts read from it; Claude never sees the keys in chat. The habit
+by the student in their text editor (Claude opens .env there for them). Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
 ## Step 4 · The brief, in Python
@@ -416,8 +416,8 @@ computer's own scheduler (on a Mac, Claude sets up a launchd job, which also run
 when the Mac wakes; cron works too), logging to logs/brief.log so a failed run is visible. 7:30:
 an OpenClaw automation (`openclaw automations`) in an isolated session on the main model,
 "Handle my morning.", reading today's brief from briefs/ and saving the handoff, dated, to their
-Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere; a file in the VS
-Code project would be unreachable from a phone. The brief can stay local because it's an
+Drive or Dropbox folder (connected in Step 2) so they can open it from anywhere; a file in the project
+folder on the laptop would be unreachable from a phone. The brief can stay local because it's an
 intermediate file only the agent reads; the handoff is the deliverable. It's also sent in the chat
 app connected during onboarding. Claude then lists the next few run times for each, which catches schedule
 typos before a morning is missed (Class 1's cron lesson: `* 7 * * 1-5` runs every minute of the

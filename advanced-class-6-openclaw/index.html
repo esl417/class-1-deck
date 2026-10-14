@@ -788,7 +788,7 @@
     <div class="card card-hero">
       <div class="eyebrow">Class 3 · Today · Your own agent</div>
       <p><strong>You own the code.</strong> The same chain: the brief as plain Python, the agent in OpenClaw, where you can message it.</p>
-      <p><em>Claude Code</em></p>
+      <p><em>Claude Code, in the Claude app</em></p>
     </div>
   </div>
   <div class="heads-up">
@@ -1170,12 +1170,12 @@
   <div class="slide-num" data-label="Install"></div>
   <div class="eyebrow">Before Step 1 · in the Claude app</div>
   <h2>Install OpenClaw, with your project folder as its home.</h2>
-  <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then make a folder called <strong>morning-agent</strong>, open it in the Claude app's Code tab, and paste this into Claude Code:</p>
-  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open a file for me in the Claude app where I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app in this folder and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.</div>
+  <p>First, in the Claude Console, create a <strong>new API key just for this agent</strong>, with a spend limit. Then, in the Claude app's <strong>Code</strong> tab, start a <strong>+ New session</strong>, choose <strong>Local → Select folder</strong>, open your <strong>morning-agent</strong> folder (create it with <strong>New Folder</strong> if you haven't), and paste this:</p>
+  <div class="prompt-box">Install OpenClaw with the official installer from docs.openclaw.ai. Before anything else, make this folder a private GitHub repo with a .gitignore that keeps out .env and the agent's memory files. Next, set up my Anthropic API key as an environment variable: open the file it goes in for me in my computer's text editor (TextEdit on a Mac, Notepad on Windows) so I paste the key myself, never in this chat, and make sure the terminal I'll run onboarding in can see it. Check that it works without showing me the key. Then tell me to open a new terminal in the Claude app (the Terminal button at the top of this session, or Ctrl+`) and run: openclaw onboard --classic --workspace "$PWD". When I tell you it's done, check OpenClaw's health, fix anything risky, then commit and push. Keep your answers short.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">⌨️ You run onboarding yourself</div>
-      <p>In a new terminal in the Claude app. Your key goes in the file Claude opens for you, <strong>never into the chat</strong>. First screens: read the security notice and say yes, choose <strong>QuickStart</strong>, and name the agent carefully (the name sticks).</p>
+      <p>In a new terminal in the Claude app: click <strong>Terminal</strong> at the top of your session, or press <strong>Ctrl+`</strong>. It opens in your project folder. Your key goes in the file Claude opens for you, <strong>never into the chat</strong>. First screens: read the security notice and say yes, choose <strong>QuickStart</strong>, and name the agent carefully (the name sticks).</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧭 The screens that matter</div>
@@ -1197,7 +1197,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">💻 CLI login · untested</div>
-      <p>Reuses your Claude Code login, so it runs on your subscription. It <strong>failed in our test run</strong>. Even when it works, it's computer-only, eats into your plan's limits, and the provider can block it.</p>
+      <p>Borrows a logged-in Claude Code command-line tool, which this class doesn't install, so it won't work here. It also <strong>failed in our test run</strong>. Even when it works, it's computer-only, eats into your plan's limits, and the provider can block it.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🚫 Setup-token · never</div>
@@ -1244,7 +1244,7 @@
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 1 and 2 agents as files.</h2>
   <p>Both links of your chain come over. Download <strong>handoff-log.md</strong> from your briefing folder into this folder. Then paste this, replacing the <span class="ph">highlighted</span> parts with your own:</p>
-  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first and confirm it's in .gitignore). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.</div>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1269,7 +1269,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔑 The .env file</div>
-      <p>Step 2 created it, and every key you add later goes there too. Open .env in the Claude app's file view, <strong>paste each key yourself</strong>, and save. Your scripts read keys from it; Claude never sees them in the chat.</p>
+      <p>Step 2 created it, and every key you add later goes there too. Ask Claude to open .env in your text editor, <strong>paste each key yourself</strong>, and save. Your scripts read keys from it; Claude never sees them in the chat.</p>
     </div>
   </div>
   <div class="heads-up">

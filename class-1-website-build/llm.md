@@ -135,13 +135,15 @@ _Two habits that make every session better_
 
 ## Use Opus, and start fresh often.
 
+Everything today happens in the Claude app's Code tab, with your project folder open. Check its name shows under the prompt box. If it doesn't, choose Local → Select folder and pick it.
+
 _Model · Use Opus for coding_
 
 Opus is the strongest model for building. Pick Opus from the model menu next to the Send button. If your answers feel weak, check you're on Opus.
 
 _Sessions · Start fresh between tasks_
 
-When you finish one thing and move to the next, click + New session ( ⌘N / Ctrl+N ) to start fresh. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.
+When you finish one thing and move to the next, click + New session ( ⌘N / Ctrl+N ) and check your project folder is still selected. A clean slate gives sharper results — and uses less of your plan than a long, cluttered chat.
 
 Rule of thumb: one focused task per session. Locked the aesthetic? New session. Moving from layout to copy? New session. A short, on-topic conversation always beats a giant one.
 
@@ -151,7 +153,7 @@ Two habits, and the student should understand *why* each one matters, not just d
 
 **Use Opus.** It's the strongest model for building. If a student complains the results feel weak or the answers are off, the first thing to check is whether they're on Opus — a surprising amount of "Claude isn't good at this" turns out to be a weaker model selected. Teach them to check the model menu next to the Send button.
 
-**Start fresh between tasks.** A new session for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
+**Start fresh between tasks.** A new session (+ New session, with the project folder still selected) for each focused task gives sharper results and uses less of their plan than one sprawling chat. Teach the boundary: finished the aesthetic and moving to copy? New session. The instinct to keep everything in one long conversation is natural and wrong — a short, on-topic session beats a giant cluttered one.
 
 How to start fresh: **+ New session** (⌘N / Ctrl+N). The old session stays in the sidebar, so nothing is lost.
 
@@ -193,14 +195,14 @@ _Connect the three_
 
 ## Create your repo — and wire it to GitHub and Vercel.
 
-The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. Ask Claude:
+The prereqs logged you into everything, but your project isn't connected to anything yet — without this step, Claude won't know where to push. In the Code tab, with your project folder open, ask Claude:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Create a GitHub repo for this project and connect it to my Vercel. Make sure they're synced and a push will deploy.
 
 ### Verification checklist
 
-- Claude can run git status in your project
+- Ask Claude to run git status — it answers without an error
 
 - Your project shows up at github.com/yourname
 

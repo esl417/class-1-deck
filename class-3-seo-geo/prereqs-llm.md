@@ -197,7 +197,7 @@ _Path B · No domain yet_
 
 - 3. That's it for Cloudflare. Because you bought it here , there are no nameservers to flip and nothing to wait on — it's active immediately.
 
-Then connect it to your website. Open your website project in Claude Code and paste:
+Then connect it to your website. In the Claude app's Code tab, start a + New session ( ⌘N / Ctrl+N ), choose Local → Select folder , and pick your website project folder. Then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > I just bought the domain yourdomain.com on Cloudflare. My site is deployed on Vercel. Connect the domain to my Vercel site so my site loads at the new address, confirm it's working, and walk me through any clicks you need from me.
@@ -244,7 +244,7 @@ In class, you won't type a single Cloudflare command — Claude will . For that 
 
 _What you do_
 
-Almost nothing. Paste one message into Claude Code, restart the app once when Claude asks, and click Allow once in your browser. Claude does all the technical setup itself.
+Almost nothing. Paste one message into the Claude app's Code tab, restart the app once when Claude asks, and click Allow once in your browser. Claude does all the technical setup itself.
 
 _What it grants_
 
@@ -264,7 +264,7 @@ _This is the whole step_
 
 ## Open your website project and paste this.
 
-This happens in your website project from Class 1 — the folder your site lives in. That's where we'll build in class. Open it in the Claude app's Code tab and paste:
+This happens in your website project from Class 1 — the folder your site lives in. That's where we'll build in class. In the Claude app's Code tab, start a + New session ( ⌘N / Ctrl+N ), choose Local → Select folder , and pick your website project folder. Then paste:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Grab the Cloudflare setup kit from https://github.com/esl417/class-materials (the files in class-3-seo-geo/cloudflare-student-kit) into this project, then read CLOUDFLARE_SETUP_FOR_CLAUDE.md and do everything in it for me. I'm not technical — handle all the setup yourself, and stop to tell me whenever you need me to click something in my browser.
@@ -287,7 +287,7 @@ _The only moments Claude needs you_
 
 _🔁 Pause 1 · Restart the Claude app_
 
-New tools only switch on after a restart. When Claude asks, fully quit the Claude app and reopen it (on a Mac, ⌘Q) — then click the chat you were just in from the list of past chats on the left , and say "continue the Cloudflare setup."
+New tools only switch on after a restart. When Claude asks, fully quit the Claude app and reopen it (on a Mac, ⌘Q) — then click the Code tab and the chat you were just in from the list on the left , and say "continue the Cloudflare setup."
 
 _🙋 Pause 2 · Sign in to Cloudflare_
 
@@ -299,7 +299,7 @@ Done when Claude confirms it's logged in — it runs a check that prints your ac
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat: click it in the list of past chats on the left side of the Claude app, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming from the list of past chats — that's the fix, and it's the deck's main stuck-point.
+The two human moments, and the restart is the one that trips people (same as Class 2's Supabase step). Pause 1 — RESTART: new tools only switch on after a full quit-and-reopen; then they MUST return to the same chat: click the Code tab, then the chat in the list of past chats on the left side of the Claude app, and say "continue the Cloudflare setup." NOT a new chat. Pause 2 — sign in to Cloudflare in the browser and click Allow (logs the terminal into their account). Done when Claude confirms it's logged in (it prints their account name) and the domain shows Active. If a student says "Claude lost its place after restarting," walk them through resuming from the list of past chats — that's the fix, and it's the deck's main stuck-point.
 
 ## Slide 12 · You're all set
 
@@ -340,7 +340,7 @@ Same habit as always: when something doesn't work, you don't go hunting for the 
 
 _The one known gotcha · Site breaks right after the switch_
 
-If your site starts looping or shows a security error right after moving to Cloudflare, it's almost always one setting. Paste this into Claude Code:
+If your site starts looping or shows a security error right after moving to Cloudflare, it's almost always one setting. Paste this into the Claude app's Code tab (in your website project):
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > My site stopped loading right after I moved my domain to Cloudflare — it redirects in a loop / shows an SSL error. Check my Cloudflare SSL/TLS mode (it likely needs to be Full (strict)) and walk me through fixing it.
@@ -351,4 +351,4 @@ Still stuck after asking Claude a couple of times? Don't lose your evening over 
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The troubleshooter habit plus THE known gotcha for this class. General move: describe the symptom to Claude, don't hunt. But this deck has one specific high-frequency failure worth leading with: if the site loops or shows an SSL error right after moving to Cloudflare, it's almost always the SSL/TLS mode — it likely needs to be Full (strict). The slide even has a ready prompt for exactly this. So if a student reports "my site broke right after the domain move," go straight to checking Cloudflare's SSL/TLS mode before anything else. Other likely causes if consulted: the restart/resume sequence (resume via history icon), or a still-Pending domain (just wait). Honor the last line — a couple of tries and still stuck, email Eric rather than lose the evening.
+The troubleshooter habit plus THE known gotcha for this class. General move: describe the symptom to Claude, don't hunt. But this deck has one specific high-frequency failure worth leading with: if the site loops or shows an SSL error right after moving to Cloudflare, it's almost always the SSL/TLS mode — it likely needs to be Full (strict). The slide even has a ready prompt for exactly this. So if a student reports "my site broke right after the domain move," go straight to checking Cloudflare's SSL/TLS mode before anything else. Other likely causes if consulted: the restart/resume sequence (resume from the past-chats list in the Code tab), or a still-Pending domain (just wait). Honor the last line — a couple of tries and still stuck, email Eric rather than lose the evening.

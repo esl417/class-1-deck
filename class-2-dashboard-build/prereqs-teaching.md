@@ -49,13 +49,13 @@ Mechanical walkthrough. The one thing worth catching: step 4 sets a database pas
 
 ## Step 3 · Connect Claude to your database
 
-Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes Claude Code RESTART partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
+Same shape as the analytics connect, but with the deck's biggest trap looming: this step makes the student quit and reopen the Claude app partway through, and that's where people get stuck. The slide explicitly says read the NEXT slide before pasting the prompt. If a student is about to run this, make sure they know the restart is coming and how to resume — don't let them paste blindly and then panic when Claude "forgets" everything after the restart.
 
 ## Step 3 · The restart everyone trips on
 
 THIS is the single most important recovery note in the Class 2 prereqs. The Supabase tools only switch on after the Claude app fully restarts — and after restarting, the student must return to the SAME conversation, or Claude forgets what it was doing. The move: fully quit and reopen the Claude app (⌘Q on a Mac), click the chat they were just in from the list of past chats on the left, and type "continue the Supabase setup." They must NOT start a brand-new chat.
 
-One more gotcha: the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
+Two sub-gotchas: (1) if their chat isn't in the list after reopening, they're on the wrong tab — have them click Code at the top; (2) the final piece is authentication — type /mcp, pick supabase, choose Authenticate, then in the browser sign in, PICK THEIR PROJECT, and Authorize. If a student says "Claude lost its place" or "Supabase still isn't working after I restarted," walk them through exactly this: resume via history, then /mcp authenticate. This is the #1 stuck-point of the whole deck.
 
 ## If something breaks
 
