@@ -824,27 +824,8 @@
   </div>
   <div class="heads-up">
     <span class="heads-up-mark">🐍</span>
-    <p><strong>In Class 3, a fourth kind: your own Python scripts.</strong> In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you: next slide.</p>
+    <p><strong>In Class 3, a fourth kind: your own Python scripts.</strong> In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you.</p>
   </div>
-</section>
-
-<!-- 5. CUSTOM TOOLS: THE LIMIT -->
-<section class="slide dense">
-  <div class="slide-num" data-label="Custom tools"></div>
-  <div class="eyebrow">Where Managed Agents stops</div>
-  <h2>Custom tools need your code running <em>somewhere</em>.</h2>
-  <p>In Create agent, <strong>Add custom tool</strong> asks for three things: a name, a description of when to call it, and an input schema. There's no box for the code.</p>
-  <div class="grid-2" style="margin-top: 4px;">
-    <div class="card">
-      <div class="eyebrow">⏸️ What happens when it's called</div>
-      <p>The run pauses and waits for <strong>your own application</strong> to run the code and send back the result. In a scheduled run, nothing answers, so it waits.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">🔓 Where that changes</div>
-      <p>In <strong>Class 3</strong> you get a place where your own code runs, and a script becomes a real tool your agent can call.</p>
-    </div>
-  </div>
-  <p class="small-note">Every surface has limits. Knowing where this one stops is how you'll know when a job needs the next one.</p>
 </section>
 
 <!-- 6. COST -->
@@ -968,7 +949,7 @@
       <p><strong>Send</strong>, anything that <strong>deletes</strong>, and any action the deliverable doesn't need. A tool that's off can't be called, whatever an email says.</p>
     </div>
   </div>
-  <p class="small-note">Logins work as in Class 1: each new MCP server asks for a credential, and plain Connect is usually enough. For an app with no MCP server, its API token goes in the vault.</p>
+  <p class="small-note">Logins work as in Class 1: each new MCP server asks for a credential, and plain Connect is usually enough. For an app with no MCP server, its API token goes in the vault. <strong>Skip Add custom tool:</strong> it needs your own code running somewhere, and a scheduled run would wait for it forever.</p>
 </section>
 
 <!-- 10. STEP 3 — SKILLS + MULTIAGENT -->
@@ -987,7 +968,7 @@
       <p>A second model it can consult on hard calls, billed at that model's rates against the same cap.</p>
     </div>
   </div>
-  <p class="small-note">Subagents aren't the chain from slide 8: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click <strong>Create agent</strong>.</p>
+  <p class="small-note">Subagents aren't the chain from slide 7: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click <strong>Create agent</strong>.</p>
 </section>
 
 <!-- 11b. HOW IT REMEMBERS -->

@@ -89,8 +89,7 @@ Title: "An agent that works your brief before you read it."
 deployment keeps running at 7:00; the agent is a separate part at 7:30; never pause Class 4).
 
 **Mental model:** **Tools** (built-in, MCP servers, API calls; Python scripts as tools arrive in
-Class 6); **Custom tools** need your code running somewhere (name/description/schema only; the run
-waits for your own app, which the Console can't host); **Cost** (agents cost more, two parts two
+Class 6); **Cost** (agents cost more, two parts two
 bills, subagents multiply); **The chain** diagram (brief agent/automation → brief → action agent →
 handoff → hypothetical wrap-up; one job per agent; strictly an automation handing off to an
 agent); **The deliverable** (dictate the deliverable, not the steps).
@@ -98,7 +97,7 @@ agent); **The deliverable** (dictate the deliverable, not the steps).
 **Build in Create agent:** Step 1 General (system prompt template that points to handoff-log.md
 for memory and directions, names the folder, dictates the three-section deliverable and limits;
 stronger model here); Step 2 Tools (always allow what the deliverable needs; send and delete
-turned off); Step 3 Skills and Multiagent left empty on purpose (subagents ≠ the chain). **How it
+turned off; skip Add custom tool: no place for code, so a scheduled run would wait); Step 3 Skills and Multiagent left empty on purpose (subagents ≠ the chain). **How it
 remembers:** handoff-log.md in the briefing folder (no memory store; the first run creates it;
 the system prompt is the student's, the log is the agent's). Step 4 test run (start a session
 with the briefing's vault, "Handle my morning.", act-then-verify); Step 5 second deployment

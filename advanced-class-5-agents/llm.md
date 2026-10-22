@@ -165,37 +165,13 @@ Any service with an API, called with a token from your vault. For apps with no M
 
  🐍
 
-In Class 3, a fourth kind: your own Python scripts. In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you: next slide.
+In Class 3, a fourth kind: your own Python scripts. In OpenClaw you can write a script and hand it to the agent as a tool. Managed Agents can't run that for you.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-Keep the terms clean: tools are what the agent uses to act; a skill is not a tool (it's packaged instructions the agent loads, here the Class 1 briefing steps). An automation calls the same things in the same order; an agent picks the tool each item needs. In Managed Agents, tools come three ways: built-in tools (the agent toolset: bash, read, write, edit, glob, grep, web_search, web_fetch; web search costs $10 per 1,000 searches), MCP servers (their apps, now including actions like creating drafts, events and tasks), and API calls (any service with an API, called from the shell or web fetch with a token stored in the vault as a secret; the real key is swapped in as the request leaves, so the agent never sees it; used for apps with no MCP server). The fourth kind arrives in Class 3: their own Python scripts, handed to an OpenClaw agent as tools. Managed Agents can't run a custom tool's code for them, which is the next slide.
+Keep the terms clean: tools are what the agent uses to act; a skill is not a tool (it's packaged instructions the agent loads, here the Class 1 briefing steps). An automation calls the same things in the same order; an agent picks the tool each item needs. In Managed Agents, tools come three ways: built-in tools (the agent toolset: bash, read, write, edit, glob, grep, web_search, web_fetch; web search costs $10 per 1,000 searches), MCP servers (their apps, now including actions like creating drafts, events and tasks), and API calls (any service with an API, called from the shell or web fetch with a token stored in the vault as a secret; the real key is swapped in as the request leaves, so the agent never sees it; used for apps with no MCP server). The fourth kind arrives in Class 3: their own Python scripts, handed to an OpenClaw agent as tools. Managed Agents can't run a custom tool's code for them, and the Step 2 slide tells them to skip Add custom tool.
 
-## Slide 6 · Custom tools
-
-**What the student sees on this slide:**
-
-_Where Managed Agents stops_
-
-## Custom tools need your code running somewhere .
-
-In Create agent, Add custom tool asks for three things: a name, a description of when to call it, and an input schema. There's no box for the code.
-
-_⏸️ What happens when it's called_
-
-The run pauses and waits for your own application to run the code and send back the result. In a scheduled run, nothing answers, so it waits.
-
-_🔓 Where that changes_
-
-In Class 3 you get a place where your own code runs, and a script becomes a real tool your agent can call.
-
-Every surface has limits. Knowing where this one stops is how you'll know when a job needs the next one.
-
-**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
-
-Show the surface's limit on purpose. Add custom tool asks for a name, a description (what it does and when to call it) and an input schema, with no place for code. When the agent calls a custom tool, the session emits the call and pauses (idle, requires action) until the user's own application runs the code and sends back the result. Nothing in the Console runs that code, so in a scheduled run the session would wait indefinitely. (Self-hosted sandboxes can serve custom tools, but that's beyond this class.) Class 3 is where they get a place their own code runs and a script becomes a real tool. Don't have them add a custom tool today.
-
-## Slide 7 · Cost control
+## Slide 6 · Cost control
 
 **What the student sees on this slide:**
 
@@ -225,7 +201,7 @@ Your monthly limit and prepaid credits from Class 1 still hold. And if a Cowork 
 
 The Class 2 cost beat. Agents cost more than automations because they choose their own steps: more tool calls, retries, web searches, and possibly subagents (each its own thread, billed against the same session budget, at its own model's rates; advisor consultations too). Controls: a per-run budget on the agent's deployment (set in Step 5, a little above the test run's cost), and leaving Multiagent empty for now. The brief and the agent are separate deployments with separate caps and separate costs in Sessions, which makes it easy to see which part costs what. The Class 1 workspace monthly limit and prepaid credits with auto-reload off still hold. The simplicity reminder: Cowork runs on the Claude subscription with no usage bill, so if a Cowork project can do the job, that's the better home.
 
-## Slide 8 · The chain
+## Slide 7 · The chain
 
 **What the student sees on this slide:**
 
@@ -270,7 +246,7 @@ The rule: one job per agent. This example is simple enough to run as one agent, 
 
 Generalize the two-part design into a chain: small agents run one after another, each writing a file the next picks up (daisy chained). The brief (Class 1) and the acting agent (Class 2) are the first two links. What Managed Agents gives each link: its own model (and effort), so the brief can run on a cheaper model than the agent that acts, which is a direct cost control; low overhead, since each link loads only its own instructions and tools rather than one big agent carrying everything; traceability, since each link has its own sessions, cost and cap, so a broken link is found and fixed on its own; and extensibility, since a new job is one more link with its own deployment. The third box on the slide (a wrap-up agent reading the week's handoffs) is hypothetical, an illustration only; the class doesn't build it. The generalizable rule: each agent gets one job (one persona). This example is simple enough that the brief and the actions could be combined into one agent, and a student may point that out; the reason to split is greater cost control (a cheaper model and its own cap for the brief) plus the traceability above. Be precise about terms: the first link has dictated steps, so it's an automation (it happens to run as a Managed Agents agent object); today's chain is an automation handing off to an agent, not an agent handing to an agent. Contrast with subagents (Multiagent in the form): those run inside one session under one shared budget; a chain is separate deployments, each managed on its own. Ordering matters: schedule each link after the one it depends on, with slack for the up-to-9-minute start jitter, and have each link say so clearly when its input file is missing.
 
-## Slide 9 · The deliverable
+## Slide 8 · The deliverable
 
 **What the student sees on this slide:**
 
@@ -300,7 +276,7 @@ Limits still apply: it drafts, you send, and it leaves alone anything you name. 
 
 The core design idea, framed as Eric wants it: an automation gets its steps dictated; an agent gets its DELIVERABLE (the outcome) dictated and works out the steps. They can't write a step for every email, so they specify exactly what the finished handoff must look like: Taken care of (each item done and checked, e.g. the draft is really in Gmail and the task really on the list, each with a link), Needs your action (only what needs their judgment, each with options already prepared), FYI (what changed and what it skipped, one line each). The sharper the definition of done, the better the agent performs. Limits still apply but are secondary: it drafts and never sends, and it leaves alone the kinds of items they name. Safety: the agent reads untrusted input (email from anyone), and an email can contain instructions aimed at it (prompt injection); a clear deliverable plus send and delete tools turned off keep it on task, and "if unsure, put it under Needs your action" is the default. Push for concrete wording ("a scheduling request is done when a reply proposing two times is drafted"), not vague ("handle important emails").
 
-## Slide 10 · Step 1 · General
+## Slide 9 · Step 1 · General
 
 **What the student sees on this slide:**
 
@@ -319,7 +295,7 @@ Model: this link makes the judgment calls, so it gets the stronger model in your
 
 Managed Agents → Agents → Create agent. The form is the syllabus; walk it top to bottom. General: name, model and effort, description (optional), system prompt. The template covers who they are and what matters (carry over the Class 1 system prompt's rules), the morning routine (find today's brief in their Drive or Dropbox folder and work every item; if there's no brief, say so at the top of the handoff), the deliverable (the three-section handoff with a definition of done for each section, saved to Drive or Dropbox, dated), the limits (draft never send, leave alone the kinds they name, and "if unsure, put it under Needs your action," since nobody is there to ask at 7am), and, first in the prompt, the pointer to its memory: its memory and standing directions live in handoff-log.md in the morning-briefing folder where the Class 1 briefs are saved (use that folder rather than a new one); create it there if it doesn't exist yet (it won't when the agent is first created, so the first run makes it); read it first in every session and follow it; write corrections and lessons there; add today's entry last. Without that line a new session doesn't know the log exists. The Console's sessions are the student's record of every run (for debugging), not something the agent reads. Model: this link makes the judgment calls, so it gets the stronger model in the chain; a Sonnet model at low effort is plenty, raising effort only if its calls are weak (higher effort costs more per run). Tie back to the chain slide: the Class 1 brief agent only sorts, so they can move it to a lighter model for a direct saving.
 
-## Slide 11 · Step 2 · Tools
+## Slide 10 · Step 2 · Tools
 
 **What the student sees on this slide:**
 
@@ -337,13 +313,13 @@ _🚫 Turned off_
 
 Send , anything that deletes , and any action the deliverable doesn't need. A tool that's off can't be called, whatever an email says.
 
-Logins work as in Class 1: each new MCP server asks for a credential, and plain Connect is usually enough. For an app with no MCP server, its API token goes in the vault.
+Logins work as in Class 1: each new MCP server asks for a credential, and plain Connect is usually enough. For an app with no MCP server, its API token goes in the vault. Skip Add custom tool: it needs your own code running somewhere, and a scheduled run would wait for it forever.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The built-in toolset is present by default with its permission policy shown (Auto in the form); per-tool permissions are under Tool permissions. Add an MCP server for each app it reads or acts in, including the Drive or Dropbox folder where the brief lands (reuse Class 1's, plus ones for actions like drafts and tasks). Permission policies: always allow, always ask, auto; there's no "never" policy, so turning a tool off (disabling it) is the lock. For an unattended agent: always allow for the built-in tools, the reading tools, and the actions the deliverable needs (create draft, create task, save the handoff); turn off send, anything that deletes, and any action the deliverable doesn't need. Auto can still pause for approval, so don't rely on it unattended. New MCP servers prompt for a credential as in Class 1 (leave the optional fields empty, acknowledge, Connect). Keep "leave alone" in the system prompt, not in permissions: it's about kinds of items, and permissions are per action.
+The built-in toolset is present by default with its permission policy shown (Auto in the form); per-tool permissions are under Tool permissions. Add an MCP server for each app it reads or acts in, including the Drive or Dropbox folder where the brief lands (reuse Class 1's, plus ones for actions like drafts and tasks). Permission policies: always allow, always ask, auto; there's no "never" policy, so turning a tool off (disabling it) is the lock. For an unattended agent: always allow for the built-in tools, the reading tools, and the actions the deliverable needs (create draft, create task, save the handoff); turn off send, anything that deletes, and any action the deliverable doesn't need. Auto can still pause for approval, so don't rely on it unattended. New MCP servers prompt for a credential as in Class 1 (leave the optional fields empty, acknowledge, Connect). Keep "leave alone" in the system prompt, not in permissions: it's about kinds of items, and permissions are per action. Skip Add custom tool. It asks for a name, a description and an input schema, with no place for code. When the agent calls one, the session pauses until the user's own application runs the code and sends back the result. Nothing in the Console runs that code, so a scheduled run would wait indefinitely. Class 3 is where a script becomes a real tool.
 
-## Slide 12 · Step 3 · Skills and multiagent
+## Slide 11 · Step 3 · Skills and multiagent
 
 **What the student sees on this slide:**
 
@@ -361,13 +337,13 @@ _🧑‍⚖️ Multiagent: advisor_
 
 A second model it can consult on hard calls, billed at that model's rates against the same cap.
 
-Subagents aren't the chain from slide 8: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click Create agent .
+Subagents aren't the chain from slide 7: they run inside this agent's run and share its cap, while each link in a chain has its own. Get one agent working before you give it a team, then click Create agent .
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
-The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 1 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Distinguish them from the chain on slide 8: subagents run inside one session under one shared budget, while each link in a chain is its own deployment with its own model, cap and sessions. Then Create agent.
+The last two sections of the form, both left empty on purpose. Skills: the morning-briefing skill stays attached to the Class 1 agent; this agent only needs the file the brief produces. That boundary is the separation of duties: the brief can change without editing this agent. (A skill is packaged instructions, not a tool; they could add one later, e.g. how they write replies, but not today.) Multiagent has two options: subagents (other agents it can delegate to, each its own thread, sharing the session budget) and an advisor (a second model it can consult, billed at that model's rates against the same budget). Introduce both, leave them empty, and note they're a stretch for later. Distinguish them from the chain on slide 7: subagents run inside one session under one shared budget, while each link in a chain is its own deployment with its own model, cap and sessions. Then Create agent.
 
-## Slide 13 · How it remembers
+## Slide 12 · How it remembers
 
 **What the student sees on this slide:**
 
@@ -393,7 +369,7 @@ The system prompt is yours; the log is its own. Correct it in a session and it w
 
 Observed in Eric's own build: the agent has no memory between sessions and can't change its own system prompt or description, so when told to remember something it creates handoff-log.md in the briefing folder in Drive (or Dropbox) and writes there. That file is its memory. Two parts: standing notes it has learned (the folder and its ID so it can find it directly, how briefs are named, e.g. morning-briefing-YYYY-MM-DD.md, the deliverable format, limits like draft-never-send, and any correction the student gives), and a dated entry per run (what it did, what's still waiting, e.g. "no brief yet for today"). The catch the agent itself points out: a new session only finds the log if the system prompt names the folder and says to read handoff-log.md first and follow it for memories and directions; that's the first line of the Step 1 template, so make sure the folder name is filled in. The division to teach, same as the Beginner track: the system prompt is the student's (only they edit it); the log is the agent's own (it writes it, they can read, edit and delete entries). Encourage a periodic skim: memory nobody reviews drifts, and because the agent reads email from strangers, a prompt injection could try to write into the log. No memory store resource is needed.
 
-## Slide 14 · Step 4 · Test run
+## Slide 13 · Step 4 · Test run
 
 **What the student sees on this slide:**
 
@@ -415,7 +391,7 @@ Make sure today's brief is in your folder (if not, click Run now on the Class 1 
 
 How to test: start a session with this agent, choose the same credential vault as the morning briefing (that's where the app logins live; without it the MCP tools can't authenticate), start the session, and send "Handle my morning." A debugging loop, as in Class 1. Give it "Handle my morning." Today's brief must be in the folder first (if not, Run now on the Class 1 deployment). Four checks: its choices (found today's brief, then chose a different tool per item: the agent deciding its steps); act-then-verify (the draft is really in Gmail, the task really on the list; a tool call saying "created" isn't proof); the deliverable (Needs your action holds only what needs them; fix the deliverable in the system prompt, not the handoff); cost (compare to a Class 1 run, times 22 weekdays). Tools still on always ask will pause the test for approval; that's fine while they watch, but set them in Step 2 before scheduling.
 
-## Slide 15 · Step 5 · Schedule it
+## Slide 14 · Step 5 · Schedule it
 
 **What the student sees on this slide:**
 
@@ -441,7 +417,7 @@ Click Run now once, and read the session. It's the first run with nobody approvi
 
 Leave the Class 1 deployment running as it is; this is a second deployment. Fields: the new agent, Class 1's environment and vault, `30 7 * * 1-5` in their time zone (after the 7:00 brief; scheduled runs can start up to 9 minutes late, so if the brief sometimes lands late, move the agent later, not earlier), the prompt "Handle my morning." (a goal, not steps), and a per-run budget a little above the test run's cost. At the cap a run pauses rather than being killed. Then Run now once and read the session: it's the first run with nobody to approve anything, so it proves the permissions hold. If it stalls, look for a tool call waiting on approval. Confirm the current form fields in the Console.
 
-## Slide 16 · Reach it remotely
+## Slide 15 · Reach it remotely
 
 **What the student sees on this slide:**
 
@@ -471,7 +447,7 @@ In Managed Agents, build agents you don't need to message. Give each one a clear
 
 Be honest about the surface: Managed Agents has no messaging channel. Webhooks only go outward (session status notifications) and the agent is only an MCP client, so nothing in Slack or on a phone can start a session without code; every official way in is the Console, the API or the ant CLI. Three ways to reach agents remotely, in order of simplicity. (1) A Cowork project: the Claude app on the phone reaches it natively, which fits the use-the-simplest-setup principle; if a Cowork project can do the job, run it there. (2) The Slack workaround for Managed Agents: a small, cheap agent on its own deployment (for example every 30 minutes during work hours) reads a #requests channel through the Slack MCP server, handles new requests and replies in the thread. It works without code but isn't documented as a pattern; every check is billed even when the channel is empty, replies lag by up to the interval plus up to 9 minutes of start jitter, and it's one more link in the chain with its own model and cap. Don't build it in class. (3) Class 3: an OpenClaw agent connects to Slack or Telegram directly, so they message it and it answers. The lesson to land, specific to Managed Agents: since you can't message it from outside, design each Managed Agents agent so you don't need to contact it ad hoc, with a clear deliverable and a schedule (like the 7:30 handoff); a clear deliverable on a schedule beats an agent you have to chase. At their desk they can still start a session with this agent (same vault as the briefing) and give it a job phrased as an outcome ("Prep me for the 2pm: one page, open questions first"). Other routes exist but don't suit this audience: Anthropic's Vercel Chat SDK template (a one-click deploy behind a Slack bot), generic HTTP steps in Zapier or Make, and an unofficial community MCP bridge; Claude Tag (Claude in Slack, Team and Enterprise) is a separate product that can't run a Managed Agent.
 
-## Slide 17 · Tune what reaches you
+## Slide 16 · Tune what reaches you
 
 **What the student sees on this slide:**
 
@@ -495,7 +471,7 @@ Surprised by something it did? Open that run's session and read why. Then fix th
 
 The first week is calibration, and the fix is always the deliverable in the system prompt, not the handoff itself. Too much reaching them: things they'd handle the same way every time; say that kind of item belongs in Taken care of and what done looks like. Too little: it handled something they wanted to see; say that kind of item belongs in Needs your action, and why. When something surprises them, open that run's session and read why before changing anything, then fix the cause: the deliverable, a tool permission, or an entry in its log file.
 
-## Slide 18 · Homework
+## Slide 17 · Homework
 
 **What the student sees on this slide:**
 
@@ -519,7 +495,7 @@ The calls are yours: what counts as done, and what always comes to you. Claude c
 
 Two things before Class 3. A week of starting every morning with the handoff and sharpening the deliverable; the arrival test is that they send its drafts with barely a change. And the Class 3 prerequisites (Claude's desktop app, GitHub and the ant CLI installed and logged in; about an hour; the Class 3 prereqs page at /advanced-class-6-openclaw/prereqs.html), because Class 3 starts building immediately. Help fully with mechanics; what counts as done, and what always comes to them, is their call.
 
-## Slide 19 · You shipped it
+## Slide 18 · You shipped it
 
 **What the student sees on this slide:**
 
