@@ -92,7 +92,9 @@ deployment keeps running at 7:00; the agent is a separate part at 7:30; never pa
 Class 6); **Cost** (agents cost more, two parts two
 bills, subagents multiply); **The chain** diagram (brief agent/automation → brief → action agent →
 handoff → hypothetical wrap-up; one job per agent; strictly an automation handing off to an
-agent); **The deliverable** (dictate the deliverable, not the steps).
+agent); **The deliverable** (dictate the deliverable, not the steps); **Memory** (every session starts
+blank; a memory store the agent organizes; the system prompt is the student's, the memory is the
+agent's; directions only from the student).
 
 **Build in Create agent:** Step 1 General (name, stronger model here, a one-line placeholder system
 prompt); Step 2 Tools (always allow what the deliverable needs; send and delete
