@@ -837,7 +837,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⏱️ A budget on the deployment</div>
-      <p>Set a per-run cap in Step 6, and compare a run's cost to Class 1's in the session.</p>
+      <p>Set a per-run cap in Step 7, and compare a run's cost to Class 1's in the session.</p>
     </div>
     <div class="card">
       <div class="eyebrow">🧾 Two parts, two bills</div>
@@ -927,9 +927,8 @@
 <section class="slide dense">
   <div class="slide-num" data-label="Step 1 · General"></div>
   <div class="eyebrow">Create agent, top to bottom</div>
-  <h2>Step 1: Name it, pick the model, dictate its <em>deliverable</em>.</h2>
-  <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, a description, and the system prompt. Start the system prompt from this and fill in the brackets:</p>
-  <div class="prompt-box">You run my mornings. Use your memory store: read it before you start, follow its directions, and save there what I correct or teach you, plus a short note on each run.<br><br>I'm [role] at [company]. What matters to me: [who and what gets priority; reuse the rules from your brief].<br><br>Each morning, find today's brief in my morning-briefing folder in [Drive / Dropbox] and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action.</div>
+  <h2>Step 1: Name it and pick the <em>model</em>.</h2>
+  <p>Managed Agents → <strong>Agents</strong> → <strong>Create agent</strong>. Fill in <strong>General</strong>: a name, the model and effort, and a description. For the system prompt, type just <em>"You run my mornings."</em> for now. You'll write the full one in Step 5, once its memory exists.</p>
   <p class="small-note">Model: this link makes the judgment calls, so it gets the stronger model in your chain. A Sonnet model at low effort is plenty; raise effort only if its calls are weak. Your brief agent only sorts, so it can drop to a lighter model.</p>
 </section>
 
@@ -984,11 +983,21 @@
   </div>
 </section>
 
-<!-- 12. STEP 5 — TEST RUN -->
+<!-- 11b. STEP 5 — SYSTEM PROMPT -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 5 · Test run"></div>
+  <div class="slide-num" data-label="Step 5 · System prompt"></div>
+  <div class="eyebrow">Where you dictate the deliverable</div>
+  <h2>Step 5: Write the system prompt that dictates its <em>deliverable</em>.</h2>
+  <p>Open your agent, edit its system prompt, and replace the placeholder with this. Fill in the brackets:</p>
+  <div class="prompt-box">You run my mornings. Use your memory store: read it before you start, follow its directions, and save there what I correct or teach you, plus a short note on each run.<br><br>I'm [role] at [company]. What matters to me: [who and what gets priority; reuse the rules from your brief].<br><br>Each morning, find today's brief in my morning-briefing folder in [Drive / Dropbox] and work through every item. If there's no brief today, say so at the top of the handoff.<br><br>The deliverable: a handoff saved to that folder, dated, in three sections. Taken care of: each item done and checked, with a link. Needs your action: only what needs my judgment, with options prepared. FYI: what changed and what you skipped, one line each.<br><br>Limits: draft replies, never send. Leave alone: [kinds of items]. If unsure, put it under Needs your action.</div>
+  <p class="small-note">The first line points it to the memory store you just made. The deliverable is the part you'll keep sharpening: every fix in the first week happens here, not in the handoff.</p>
+</section>
+
+<!-- 12. STEP 6 — TEST RUN -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Step 6 · Test run"></div>
   <div class="eyebrow">Run it, read it, fix it</div>
-  <h2>Step 5: Test-run it and check it really acted.</h2>
+  <h2>Step 6: Test-run it and check it really acted.</h2>
   <p>Make sure today's brief is in your folder (if not, click Run now on the Class 1 deployment). Then <strong>start a session</strong> with this agent, pick <strong>the same vault as your morning briefing</strong>, attach <strong>your memory store</strong> (it can't be added once the session starts), start it, and send <em>"Handle my morning."</em> Watch it, change the config where something's off, and run it again.</p>
   <ul class="numbered">
     <li><strong>1.</strong> Read its choices → it found today's brief, then picked a different tool for each item. That's the agent deciding its own steps.</li>
@@ -999,11 +1008,11 @@
   </ul>
 </section>
 
-<!-- 13. STEP 6 — SCHEDULE -->
+<!-- 13. STEP 7 — SCHEDULE -->
 <section class="slide dense">
-  <div class="slide-num" data-label="Step 6 · Schedule it"></div>
+  <div class="slide-num" data-label="Step 7 · Schedule it"></div>
   <div class="eyebrow">The timer wakes it; the agent decides the rest</div>
-  <h2>Step 6: Deploy the agent at 7:30, after the brief.</h2>
+  <h2>Step 7: Deploy the agent at 7:30, after the brief.</h2>
   <p>Managed Agents → <strong>Deployments</strong>. Leave the Class 1 deployment as it is, and create a second one:</p>
   <div class="card" style="margin-top: 4px;">
     <ul>
