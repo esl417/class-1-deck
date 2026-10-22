@@ -96,13 +96,13 @@ agent); **The deliverable** (dictate the deliverable, not the steps); **Memory**
 blank; a memory store the agent organizes; the system prompt is the student's, the memory is the
 agent's; directions only from the student).
 
-**Build in Create agent:** Step 1 General (name, stronger model here, a one-line placeholder system
-prompt); Step 2 Tools (always allow what the deliverable needs; send and delete
+**Build in Create agent:** Step 1 General (system prompt template with one line on the memory store,
+names the folder, dictates the three-section deliverable and limits;
+stronger model here); Step 2 Tools (always allow what the deliverable needs; send and delete
 turned off; skip Add custom tool: no place for code, so a scheduled run would wait); Step 3 Skills and Multiagent left empty on purpose (subagents ≠ the chain). Step 4
 Memory store (Create memory store; the description is a paste-in how-to: small files by topic,
 save directions only from the student; the system prompt is the student's, the memory is the
-agent's; versioned). Step 5 System prompt (edit the agent: the template with one line on the
-memory store, names the folder, dictates the three-section deliverable and limits). Step 6 test run (start a session with the briefing's vault and the memory store, "Handle my morning.", act-then-verify); Step 7 second deployment
+agent's; versioned). Step 5 test run (start a session with the briefing's vault and the memory store, "Handle my morning.", act-then-verify); Step 6 second deployment
 `30 7 * * 1-5`, prompt "Handle my morning.", budget, Run now.
 
 **Reach it remotely:** Managed Agents has no messaging channel. Three ways: a Cowork project (the
