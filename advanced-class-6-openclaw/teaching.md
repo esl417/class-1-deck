@@ -106,8 +106,8 @@ permission policies → tool allow and deny lists plus exec approvals; MCP serve
 the same MCP servers and API calls, plus plugins and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
 Class 1); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
-deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
-Control UI and terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
+deployment → automations (schedules) and the heartbeat; sessions → sessions and logs, which
+Claude Code reads in the terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
 and webhooks, which Managed Agents couldn't do.
 
 ## The workspace
@@ -127,7 +127,9 @@ in ~/.openclaw/credentials; that folder stays out of GitHub.
 
 The Gateway is the always-on background program (port 18789, bound to loopback so only their
 own machine reaches it, token auth on by default). It serves the Control UI (`openclaw
-dashboard`). Channels: Telegram and WebChat ship with it; Slack, WhatsApp, Discord, Signal,
+dashboard`), a browser window into the running Gateway, not a second program. It's optional,
+offered as "a screen like the Managed Agents Console": Claude Code builds, tests and debugs
+everything in this class from the terminal. Channels: Telegram and WebChat ship with it; Slack, WhatsApp, Discord, Signal,
 Teams and more are official plugins. Pairing: a stranger who messages the bot gets an 8-character
 code that expires in an hour, and nothing happens until the owner approves it (`openclaw pairing
 approve telegram <CODE>`). The consequence to land: no Gateway, no agent; if the laptop sleeps
@@ -325,8 +327,11 @@ it won't.
 ## Step 1 · Clean it out
 
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
-rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
-shows each file's and skill's size. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
+rides on every call. Measure first: the Step 1 prompt has Claude Code send the agent a test
+message and read that call's tokens from `openclaw sessions --json` (totalTokens), then repeat
+after the cleanup. Sending `/context detail` through `openclaw agent -m` doesn't work (tested
+2026-10-28 on 2026.9.7: the agent got it as plain text and it cost a model call); the per-file
+breakdown is only in a chat channel or the Control UI. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
 this agent's job. In Eric's fresh 2026.9.7 run, onboarding created only AGENTS.md, IDENTITY.md, SOUL.md and USER.md
 (no BOOTSTRAP.md or TOOLS.md), and the Install prompt's health check had already switched off the
 skills the security audit flagged, so the prompt names no specific files and Step 1 finishes the
@@ -426,7 +431,7 @@ or they get two briefs and double drafts. Heartbeat stays off; when wanted, a sh
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 2: an automation handing off to an agent. Then the tool test: they message "Rerun my
-brief." and check the agent called the morning_briefing tool (visible in the session transcript)
+brief." and check the agent called the morning_briefing tool (Claude Code can see it in `openclaw sessions tail`)
 rather than fetching the sources itself, and that a fresh brief came back.
 
 ## Webhooks
@@ -499,7 +504,12 @@ hosted, both run with the laptop closed and webhooks become possible.
 No Sessions page does this for them. First check: is the Gateway running (`openclaw gateway
 status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
 Then `openclaw status` (channels, sessions, usage), `openclaw
-doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
+doctor` (and `--fix`), `openclaw logs --follow`, and `openclaw sessions tail` (each run's tool calls, model and
+outcome, with tool inputs redacted). If a student needs to read the actual conversation, word
+for word, walk them through the Control UI: in a new terminal in the Claude app, run `openclaw
+dashboard`; it opens the Control UI in their browser already signed in (the link is one-time and
+short-lived; `openclaw dashboard --no-open` prints it instead). Their sessions are listed in
+the left sidebar; clicking one opens its full transcript in the chat pane. The
 move from the website course prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
 come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate

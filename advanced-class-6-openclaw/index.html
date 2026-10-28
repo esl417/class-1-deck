@@ -959,7 +959,7 @@
     <div class="map-row"><div class="map-from"><strong>Environment</strong> (the sandbox)</div><div class="map-arrow">→</div><div class="map-to"><strong>Your computer.</strong> A sandbox is optional and off by default</div></div>
     <div class="map-row"><div class="map-from"><strong>Credential vault</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>OpenClaw's credentials</strong> for the model, <strong>.env</strong> for your scripts</div></div>
     <div class="map-row"><div class="map-from"><strong>Deployment</strong> (schedule)</div><div class="map-arrow">→</div><div class="map-to"><strong>Automations</strong> (schedules) and the <strong>heartbeat</strong></div></div>
-    <div class="map-row"><div class="map-from"><strong>Sessions</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>Sessions and logs,</strong> in the Control UI and the terminal</div></div>
+    <div class="map-row"><div class="map-from"><strong>Sessions</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>Sessions and logs,</strong> which Claude Code reads in the terminal</div></div>
     <div class="map-row"><div class="map-from"><strong>Memory store</strong></div><div class="map-arrow">→</div><div class="map-to"><strong>MEMORY.md</strong> and daily notes in <strong>memory/</strong></div></div>
     <div class="map-row"><div class="map-from">Not possible</div><div class="map-arrow">→</div><div class="map-to"><strong>Channels</strong> (chat apps) and <strong>webhooks</strong>: new today</div></div>
   </div>
@@ -994,7 +994,7 @@
   <div class="grid-2 cols-3" style="margin-top: 4px;">
     <div class="card">
       <div class="eyebrow">⚙️ The Gateway</div>
-      <p>Runs in the background on your computer. Only your own machine can reach it, and it serves the <strong>Control UI</strong>, a dashboard you open by running <code>openclaw dashboard</code> in a new terminal in the Claude app.</p>
+      <p>A program that runs in the background on your computer, all the time. It's what answers your messages and runs your schedules. Only your own machine can reach it.</p>
     </div>
     <div class="card">
       <div class="eyebrow">💬 Channels</div>
@@ -1005,6 +1005,7 @@
       <p>Anyone can find a bot. When a stranger messages it, they get a code, and nothing happens until <strong>you approve</strong> it.</p>
     </div>
   </div>
+  <p class="small-note">🪟 <strong>Want a screen like the Managed Agents Console?</strong> Run <code>openclaw dashboard</code> in a new terminal in the Claude app. It opens the Control UI in your browser, where you can chat with your agent and browse past sessions. It's optional: Claude Code does everything in this class without it.</p>
   <div class="heads-up">
     <span class="heads-up-mark">😴</span>
     <p><strong>No Gateway, no agent.</strong> If your laptop is asleep at 7:30, the 7:30 run doesn't happen. That's what hosting it in the cloud solves, at the end of class.</p>
@@ -1230,11 +1231,11 @@
   <div class="slide-num" data-label="Step 1 · Clean it out"></div>
   <div class="eyebrow">The control Managed Agents never gave you</div>
   <h2>Step 1: Clean it out before it costs you on every call.</h2>
-  <p>Open a new terminal in the Claude app and run <code>openclaw dashboard</code>: the Control UI opens in your browser. In its chat, send <code>/context detail</code>: it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:</p>
-  <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.</div>
+  <p>Paste this into Claude Code. It measures what one message costs before and after the cleanup:</p>
+  <div class="prompt-box">Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. First, send my agent a short test message and tell me how many tokens that one call used. Then: 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push. 6) Send the same test message again and show me the token count before and after.</div>
   <div class="heads-up">
     <span class="heads-up-mark">📉</span>
-    <p><strong>Send <code>/context detail</code> in the Control UI chat again and compare.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>
+    <p><strong>Claude Code shows you the before and after.</strong> That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.</p>
   </div>
 </section>
 
@@ -1244,7 +1245,7 @@
   <div class="eyebrow">Rebuild from what works, not a description</div>
   <h2>Step 2: Pull in your Class 1 and 2 agents as files.</h2>
   <p>Both links of your chain come over, with your agent's memory. Paste this, replacing the <span class="ph">highlighted</span> parts with your own:</p>
-  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Also download every memory in its memory store, <span class="ph">[the store's name]</span>, into the export folder, and keep those memory files out of git. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; what it learned, from its memory store, goes in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.</div>
+  <div class="prompt-box">Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, <span class="ph">[its name]</span>, with its skill, and my action agent, <span class="ph">[its name]</span>, which acts on each morning's brief. Also download every memory in its memory store, <span class="ph">[the store's name]</span>, into the export folder, and keep those memory files out of git. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; what it learned, from its memory store, goes in MEMORY.md. Here its memory is MEMORY.md and the daily notes in memory/, so point any instructions about its memory there. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">
       <div class="eyebrow">📂 The export is your blueprint</div>
@@ -1252,7 +1253,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">🔌 Logins don't come across</div>
-      <p>Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: <strong>Claude Code walks you through it.</strong> A "Google hasn't verified this app" warning is expected: it's your own app.</p>
+      <p>Your vault stays in the Console, so each app is connected again here. <strong>Claude Code walks you through</strong> any one-time setup, like a Google client. A "Google hasn't verified this app" warning is expected: it's your own app.</p>
     </div>
   </div>
 </section>
@@ -1385,7 +1386,7 @@
     </div>
     <div class="card">
       <div class="eyebrow">📜 What happened</div>
-      <p>In a new terminal in the Claude app, <code>openclaw logs --follow</code> streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.</p>
+      <p>Ask Claude Code what happened. It reads the log (<code>openclaw logs</code>) and each run's steps (<code>openclaw sessions tail</code>), like Sessions in the Console.</p>
     </div>
   </div>
   <div class="heads-up">

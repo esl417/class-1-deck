@@ -161,7 +161,7 @@ private; keys never in a chat; update).
   in a separate step.
 
 **Build (five steps):**
-1. **Clean it out** (measure with `/context detail` in the Control UI before and after): strip
+1. **Clean it out** (Claude Code measures one test message's tokens before and after): strip
    boilerplate from the workspace files (keep the red lines and memory rule), turn off every
    skill (bundled or from other tools on the computer), turn off every tool except read/write/edit
    of its own files (shell and web search off), heartbeat off, commit and push.

@@ -315,7 +315,7 @@ _You already know these parts_
  Environment (the sandbox) → Your computer. A sandbox is optional and off by default
  Credential vault → OpenClaw's credentials for the model, .env for your scripts
  Deployment (schedule) → Automations (schedules) and the heartbeat
- Sessions → Sessions and logs, in the Control UI and the terminal
+ Sessions → Sessions and logs, which Claude Code reads in the terminal
  Memory store → MEMORY.md and daily notes in memory/
  Not possible → Channels (chat apps) and webhooks : new today
 
@@ -327,8 +327,8 @@ permission policies → tool allow and deny lists plus exec approvals; MCP serve
 the same MCP servers and API calls, plus plugins and their own scripts; skills → skills (a folder with SKILL.md, the same idea as
 Class 1); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
-deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
-Control UI and terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
+deployment → automations (schedules) and the heartbeat; sessions → sessions and logs, which
+Claude Code reads in the terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
 and webhooks, which Managed Agents couldn't do.
 
 ## Slide 9 · The workspace
@@ -377,7 +377,7 @@ _The engine room_
 
 _⚙️ The Gateway_
 
-Runs in the background on your computer. Only your own machine can reach it, and it serves the Control UI , a dashboard you open by running openclaw dashboard in a new terminal in the Claude app.
+A program that runs in the background on your computer, all the time. It's what answers your messages and runs your schedules. Only your own machine can reach it.
 
 _💬 Channels_
 
@@ -387,6 +387,8 @@ _🔐 Pairing_
 
 Anyone can find a bot. When a stranger messages it, they get a code, and nothing happens until you approve it.
 
+🪟 Want a screen like the Managed Agents Console? Run openclaw dashboard in a new terminal in the Claude app. It opens the Control UI in your browser, where you can chat with your agent and browse past sessions. It's optional: Claude Code does everything in this class without it.
+
  😴
 
 No Gateway, no agent. If your laptop is asleep at 7:30, the 7:30 run doesn't happen. That's what hosting it in the cloud solves, at the end of class.
@@ -395,7 +397,9 @@ No Gateway, no agent. If your laptop is asleep at 7:30, the 7:30 run doesn't hap
 
 The Gateway is the always-on background program (port 18789, bound to loopback so only their
 own machine reaches it, token auth on by default). It serves the Control UI (`openclaw
-dashboard`). Channels: Telegram and WebChat ship with it; Slack, WhatsApp, Discord, Signal,
+dashboard`), a browser window into the running Gateway, not a second program. It's optional,
+offered as "a screen like the Managed Agents Console": Claude Code builds, tests and debugs
+everything in this class from the terminal. Channels: Telegram and WebChat ship with it; Slack, WhatsApp, Discord, Signal,
 Teams and more are official plugins. Pairing: a stranger who messages the bot gets an 8-character
 code that expires in an hour, and nothing happens until the owner approves it (`openclaw pairing
 approve telegram <CODE>`). The consequence to land: no Gateway, no agent; if the laptop sleeps
@@ -817,20 +821,23 @@ _The control Managed Agents never gave you_
 
 ## Step 1: Clean it out before it costs you on every call.
 
-Open a new terminal in the Claude app and run openclaw dashboard : the Control UI opens in your browser. In its chat, send /context detail : it shows what every file and skill costs per call. Note the total. Then paste this into Claude Code:
+Paste this into Claude Code. It measures what one message costs before and after the cleanup:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push.
+> Clean out my fresh OpenClaw install so I can build from a clean slate. Show me each change before you make it. First, send my agent a short test message and tell me how many tokens that one call used. Then: 1) Strip every default example and boilerplate from the workspace files: group chats, emoji reactions, voice, platform formatting, heartbeat check-ins, sample notes. Keep only the red lines and the rule to write memories to files. 2) Turn off every skill it loaded, whether bundled or picked up from other tools on this computer. 3) Turn off every tool except reading, writing and editing its own files, including the shell and web search. Later steps add tools as the agent needs them. 4) Turn the heartbeat off. 5) Restart the gateway, check it's healthy, then commit and push. 6) Send the same test message again and show me the token count before and after.
 
  📉
 
-Send /context detail in the Control UI chat again and compare. That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.
+Claude Code shows you the before and after. That difference is saved on every message, every schedule and every check-in, for as long as the agent runs.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
 Eric's rule: the first thing after installing is cleaning it out, because whatever's loaded
-rides on every call. Measure first: `/context list` or `/context detail` in the Control UI chat
-shows each file's and skill's size. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
+rides on every call. Measure first: the Step 1 prompt has Claude Code send the agent a test
+message and read that call's tokens from `openclaw sessions --json` (totalTokens), then repeat
+after the cleanup. Sending `/context detail` through `openclaw agent -m` doesn't work (tested
+2026-10-28 on 2026.9.7: the agent got it as plain text and it cost a model call); the per-file
+breakdown is only in a chat channel or the Control UI. It's a baseline cleanout, not tailored to any job: the goal is a clean slate, and Step 2 adds
 this agent's job. In Eric's fresh 2026.9.7 run, onboarding created only AGENTS.md, IDENTITY.md, SOUL.md and USER.md
 (no BOOTSTRAP.md or TOOLS.md), and the Install prompt's health check had already switched off the
 skills the security audit flagged, so the prompt names no specific files and Step 1 finishes the
@@ -855,7 +862,7 @@ _Rebuild from what works, not a description_
 Both links of your chain come over, with your agent's memory. Paste this, replacing the highlighted parts with your own:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Also download every memory in its memory store, [the store's name] , into the export folder, and keep those memory files out of git. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; what it learned, from its memory store, goes in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Also download every memory in its memory store, [the store's name] , into the export folder, and keep those memory files out of git. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; what it learned, from its memory store, goes in MEMORY.md. Here its memory is MEMORY.md and the daily notes in memory/, so point any instructions about its memory there. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
 
 _📂 The export is your blueprint_
 
@@ -863,7 +870,7 @@ Models, system prompts, tools, and the briefing skill. Commit it: it's the recor
 
 _🔌 Logins don't come across_
 
-Your vault stays in the Console, so each app gets connected again here. Some need a one-time setup, like a Google client for Gmail, Calendar and Drive: Claude Code walks you through it. A "Google hasn't verified this app" warning is expected: it's your own app.
+Your vault stays in the Console, so each app is connected again here. Claude Code walks you through any one-time setup, like a Google client. A "Google hasn't verified this app" warning is expected: it's your own app.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
 
@@ -1021,7 +1028,7 @@ or they get two briefs and double drafts. Heartbeat stays off; when wanted, a sh
 isolated light session and activeHours keep each wake to a few thousand tokens. The laptop must
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 2: an automation handing off to an agent. Then the tool test: they message "Rerun my
-brief." and check the agent called the morning_briefing tool (visible in the session transcript)
+brief." and check the agent called the morning_briefing tool (Claude Code can see it in `openclaw sessions tail`)
 rather than fetching the sources itself, and that a fresh brief came back.
 
 ## Slide 25 · Webhooks
@@ -1153,7 +1160,7 @@ Run these in a new terminal in the Claude app. First check: is it running? openc
 
 _📜 What happened_
 
-In a new terminal in the Claude app, openclaw logs --follow streams the log. The Control UI keeps each session's transcript, like Sessions in the Console.
+Ask Claude Code what happened. It reads the log ( openclaw logs ) and each run's steps ( openclaw sessions tail ), like Sessions in the Console.
 
  🔍
 
@@ -1164,7 +1171,12 @@ Describe the symptom and let Claude Code dig: "My 7:30 run didn't come. Check Op
 No Sessions page does this for them. First check: is the Gateway running (`openclaw gateway
 status`)? Config changes only take effect after a Gateway restart (`openclaw gateway restart`).
 Then `openclaw status` (channels, sessions, usage), `openclaw
-doctor` (and `--fix`), `openclaw logs --follow`, and the Control UI's session transcripts. The
+doctor` (and `--fix`), `openclaw logs --follow`, and `openclaw sessions tail` (each run's tool calls, model and
+outcome, with tool inputs redacted). If a student needs to read the actual conversation, word
+for word, walk them through the Control UI: in a new terminal in the Claude app, run `openclaw
+dashboard`; it opens the Control UI in their browser already signed in (the link is one-time and
+short-lived; `openclaw dashboard --no-open` prints it instead). Their sessions are listed in
+the left sidebar; clicking one opens its full transcript in the chat pane. The
 move from the website course prereqs: describe the symptom and let Claude Code dig ("My 7:30 run didn't
 come. Check OpenClaw's status and logs and tell me why."), then fix the cause on a branch. Common
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
