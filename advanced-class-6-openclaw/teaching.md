@@ -218,6 +218,16 @@ repo is private and .env never leaves the computer because .gitignore excludes i
 Install prompt before the first commit). Personal outputs (briefs/, logs/, memory/) are kept out
 too.
 
+## Branching
+
+The concept slide; Step 4 is the hands-on. Simplified after FlutterFlow's branching docs
+(docs.flutterflow.io/collaboration/branching): one plain sentence (a branch is a separate copy
+of the project, so they can build without disrupting what runs), a picture of main with a branch
+splitting off and rejoining, and one concrete example, Step 4's brief rebuild. The order: branch,
+build and test, their approval, merge into main, push. main keeps running the whole time. Merge
+conflicts, permissions and closing branches are left out: they work alone and Claude Code runs
+the git commands. Once hosted, the host runs main on GitHub, so merge plus push is a deploy.
+
 ## Install
 
 Before Step 1. They open the morning-agent folder in a new Code-tab session (Local → Select folder), and have Claude Code

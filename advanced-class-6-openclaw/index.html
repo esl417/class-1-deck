@@ -693,6 +693,14 @@
   .chain-hand { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 clamp(6px, 0.8vw, 12px); }
   .chain-file { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); background: rgba(15,138,128,0.08); border: 1px solid rgba(15,138,128,0.3); border-radius: 8px; padding: 5px 9px; white-space: nowrap; }
   .chain-arrow { width: 44px; height: 14px; display: block; }
+  .branch-diagram { display: block; width: 100%; max-width: var(--col); height: auto; margin: 6px 0 4px; }
+  .branch-diagram .line { fill: none; stroke-width: 4; stroke-linecap: round; }
+  .branch-diagram .main-line { stroke: var(--accent-deep); }
+  .branch-diagram .branch-line { stroke: var(--accent); stroke-dasharray: 2 9; }
+  .branch-diagram .dot { fill: var(--surface); stroke: var(--accent-deep); stroke-width: 3.5; }
+  .branch-diagram .lbl { font-family: var(--sans); font-size: 19px; fill: var(--body); }
+  .branch-diagram .lbl-strong { font-family: var(--sans); font-size: 19px; font-weight: 700; fill: var(--accent-ink); }
+  .branch-diagram .lbl-code { font-family: var(--mono); font-size: 18px; fill: var(--accent-ink); }
   .chain-arrow path { stroke: var(--accent); stroke-width: 2; fill: none; vector-effect: non-scaling-stroke; }
   .chain-arrow path.head { fill: var(--accent); stroke: none; }
   .chain-perks { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; max-width: var(--col); }
@@ -1189,6 +1197,37 @@
   <p class="small-note">Your repo is private, and .env never leaves your computer: .gitignore tells git to skip it.</p>
 </section>
 
+<!-- BRANCHING -->
+<section class="slide dense">
+  <div class="slide-num" data-label="Branching"></div>
+  <div class="eyebrow">How you change it without breaking it</div>
+  <h2>A branch lets you build something new without touching what runs.</h2>
+  <p>A <strong>branch</strong> is a separate copy of your project. You build and test there while <strong>main</strong>, the version that runs, keeps working.</p>
+  <svg class="branch-diagram" viewBox="0 0 1180 190" role="img" aria-label="main runs as a line from left to right. A branch called brief-automation splits off below it, where you build and test, then rejoins main with a merge after your approval. main keeps running the whole time.">
+    <path class="line main-line" d="M30 50 H1120" />
+    <path class="head" d="M1150 50 L1124 39 L1124 61 z" fill="var(--accent-deep)" />
+    <path class="line branch-line" d="M150 50 C 230 50, 230 130, 310 130 H 870 C 950 130, 950 50, 1030 50" />
+    <circle class="dot" cx="150" cy="50" r="10" />
+    <circle class="dot" cx="1030" cy="50" r="10" />
+    <text class="lbl-strong" x="30" y="30">main</text>
+    <text class="lbl" x="1150" y="30" text-anchor="end">keeps running</text>
+    <text class="lbl" x="30" y="166">branch off</text>
+    <text class="lbl-code" x="590" y="118" text-anchor="middle">brief-automation</text>
+    <text class="lbl" x="590" y="166" text-anchor="middle">build and test here</text>
+    <text class="lbl" x="1150" y="166" text-anchor="end">merge, after your yes</text>
+  </svg>
+  <div class="card">
+    <div class="eyebrow">🧪 In Step 4</div>
+    <p>Claude Code makes a branch called brief-automation, builds the new brief script there and runs a test. Your agent on main keeps working the whole time. You read the test brief. Only when it's right do you say <em>"Approved, merge it into main and push,"</em> and the new script joins main.</p>
+  </div>
+  <div class="heads-up">
+    <span class="heads-up-mark">💬</span>
+    <p><strong>Ask in plain English:</strong> <em>"Create a branch called brief-automation."</em> <em>"Show me what changed on this branch."</em> <em>"Approved, merge it into main and push."</em></p>
+  </div>
+  <p class="small-note">Once a cloud host runs your agent, it runs main on GitHub, so merging and pushing is how a change goes live.</p>
+</section>
+
+
 <!-- INSTALL -->
 <section class="slide dense">
   <div class="slide-num" data-label="Install"></div>
@@ -1307,7 +1346,7 @@
   <div class="slide-num" data-label="Step 4 · The brief, in Python"></div>
   <div class="eyebrow">Branching, hands-on · your approval gates main</div>
   <h2>Step 4: Rebuild the brief in Python; you approve the merge.</h2>
-  <p><strong>How branching works:</strong> <strong>main</strong> is the version that runs. A <strong>branch</strong> is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you <strong>merge</strong>: the branch's changes join main. Paste this, filling in the <span class="ph">highlighted</span> part:</p>
+  <p>You'll use branching for real here. Paste this, filling in the <span class="ph">highlighted</span> part:</p>
   <div class="prompt-box">Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to <span class="ph">[a cheap model, e.g. Haiku]</span> for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.</div>
   <div class="grid-2" style="margin-top: 8px;">
     <div class="card">

@@ -662,7 +662,44 @@ repo is private and .env never leaves the computer because .gitignore excludes i
 Install prompt before the first commit). Personal outputs (briefs/, logs/, memory/) are kept out
 too.
 
-## Slide 18 · Install
+## Slide 18 · Branching
+
+**What the student sees on this slide:**
+
+_How you change it without breaking it_
+
+## A branch lets you build something new without touching what runs.
+
+A branch is a separate copy of your project. You build and test there while main , the version that runs, keeps working.
+
+main
+ keeps running
+ branch off
+ brief-automation
+ build and test here
+ merge, after your yes
+
+_🧪 In Step 4_
+
+ Claude Code makes a branch called brief-automation, builds the new brief script there and runs a test. Your agent on main keeps working the whole time. You read the test brief. Only when it's right do you say "Approved, merge it into main and push," and the new script joins main.
+
+ 💬
+
+Ask in plain English: "Create a branch called brief-automation." "Show me what changed on this branch." "Approved, merge it into main and push."
+
+Once a cloud host runs your agent, it runs main on GitHub, so merging and pushing is how a change goes live.
+
+**Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
+
+The concept slide; Step 4 is the hands-on. Simplified after FlutterFlow's branching docs
+(docs.flutterflow.io/collaboration/branching): one plain sentence (a branch is a separate copy
+of the project, so they can build without disrupting what runs), a picture of main with a branch
+splitting off and rejoining, and one concrete example, Step 4's brief rebuild. The order: branch,
+build and test, their approval, merge into main, push. main keeps running the whole time. Merge
+conflicts, permissions and closing branches are left out: they work alone and Claude Code runs
+the git commands. Once hosted, the host runs main on GitHub, so merge plus push is a deploy.
+
+## Slide 19 · Install
 
 **What the student sees on this slide:**
 
@@ -716,7 +753,7 @@ MEMORY.md and memory/ stay out via .gitignore because the agent writes them. Nam
 carefully at the first onboarding question: the name shows up in paths and sessions (renaming is
 possible but fiddly).
 
-## Slide 19 · How it signs in
+## Slide 20 · How it signs in
 
 **What the student sees on this slide:**
 
@@ -803,7 +840,7 @@ docs, any plaintext credential the agent can reach is readable via its file or s
 why the real protection is the key itself: a new key just for this agent, with a spend limit in
 the Claude Console, revocable on its own if it leaks.
 
-## Slide 20 · Finish onboarding
+## Slide 21 · Finish onboarding
 
 **What the student sees on this slide:**
 
@@ -850,7 +887,7 @@ select it). Step 1 turns bundled skills off anyway. If an older OpenClaw config 
 machine, the wizard asks whether to move existing agents to the new workspace; on a fresh install
 it won't.
 
-## Slide 21 · Step 1 · Clean it out
+## Slide 22 · Step 1 · Clean it out
 
 **What the student sees on this slide:**
 
@@ -888,7 +925,7 @@ later; heartbeat off (`every: "0m"`). Skills from other tools: OpenClaw also loa
 Restart the Gateway, run `openclaw doctor`, measure again. The difference is saved on every
 message, schedule and check-in. Confirm exact config keys against docs.openclaw.ai.
 
-## Slide 22 · Step 2 · Bring in your agents
+## Slide 23 · Step 2 · Bring in your agents
 
 **What the student sees on this slide:**
 
@@ -954,7 +991,7 @@ weekly. Other things that still end a token: 6 months unused, changing the Googl
 Gmail scopes), revoking access, or more than 100 tokens for one client; and Drive's MCP server can't edit
 an existing file, so the handoff is saved as a new dated file, which matches Step 5.
 
-## Slide 23 · Step 3 · Model and keys
+## Slide 24 · Step 3 · Model and keys
 
 **What the student sees on this slide:**
 
@@ -982,7 +1019,7 @@ not the cheapest; routine jobs (heartbeat, simple automations) can get a cheaper
 by the student in their text editor (Claude opens .env there for them). Scripts read from it; Claude never sees the keys in chat. The habit
 before every commit: ask Claude whether anything secret is about to be committed.
 
-## Slide 24 · Step 4 · The brief, in Python
+## Slide 25 · Step 4 · The brief, in Python
 
 **What the student sees on this slide:**
 
@@ -990,7 +1027,7 @@ _Branching, hands-on · your approval gates main_
 
 ## Step 4: Rebuild the brief in Python; you approve the merge.
 
-How branching works: main is the version that runs. A branch is a copy you build and test on, so a broken change never touches what's running. When the test is right and you approve, you merge : the branch's changes join main. Paste this, filling in the highlighted part:
+You'll use branching for real here. Paste this, filling in the highlighted part:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
 > Create a branch called brief-automation. Rebuild my morning brief as a standalone Python script, scripts/brief.py, using the briefing agent and its skill in export/ as the spec. Don't involve OpenClaw. It pulls each source through its API with keys from .env, does all the counting, dates and formatting, makes one call to [a cheap model, e.g. Haiku] for the one judgment (what needs me today), and saves the brief to briefs/, dated. If a source fails, the brief says so. Then register it as a tool my OpenClaw agent can call, named morning_briefing, and check the agent can call it. Run it once, show me today's brief, and review the code. Don't merge until I approve the brief.
@@ -1023,7 +1060,7 @@ even on a quiet day. Claude runs it once, shows today's brief, and reviews the c
 easiest first; Google's APIs need an OAuth client, so Claude may suggest starting with one source
 and adding the rest as homework. The model key for the judgment call also lives in `.env`. Name tools for what they do, so the model picks the right one: morning_briefing, not a vague verb. The same script is also the agent's custom tool, which is how tooling is taught, and it is registered as a TOOL, not a skill (a skill only describes how to work; a tool is something the model can call, with a name, description and inputs). The slide's prompt just says "register it as a tool my OpenClaw agent can call"; how to do it is here, for Claude to carry out, not for the student to learn. Route: Claude writes a tiny local MCP server in Python (the official `mcp` SDK, FastMCP) exposing one tool, morning_briefing, which runs scripts/brief.py and returns the brief; it's added with `openclaw mcp add brief --command python3 --arg <server file> --cwd <repo>` and checked with `openclaw mcp doctor brief --probe` (docs.openclaw.ai/tools/mcp). Same script, two triggers: the scheduler at 7:00 with no agent involved, and the agent calling morning_briefing on request (midday, "Rerun my brief"), so the dictated work stays deterministic and cheap instead of the agent redoing it. Unverified until the dry run: exactly how the MCP tool's name appears to the model (check the probe output), and that the tool profile in use allows MCP tools (`coding` and `messaging` do; `full` does; a sandbox needs `bundle-mcp` in tools.sandbox.tools). Alternative: a plugin with `api.registerTool` plus an openclaw.plugin.json manifest, which needs TypeScript.
 
-## Slide 25 · Step 5 · Schedule the chain
+## Slide 26 · Step 5 · Schedule the chain
 
 **What the student sees on this slide:**
 
@@ -1068,7 +1105,7 @@ Class 2: an automation handing off to an agent. Then the tool test: they message
 brief." and check the agent called the morning_briefing tool (Claude Code can see it in `openclaw sessions tail`)
 rather than fetching the sources itself, and that a fresh brief came back.
 
-## Slide 26 · Webhooks
+## Slide 27 · Webhooks
 
 **What the student sees on this slide:**
 
@@ -1103,7 +1140,7 @@ and getting summarized with its dates flagged, anything Zapier or Make can see. 
 address the internet can reach, and a laptop on loopback isn't one, so webhooks come with cloud
 hosting; the token is a key and goes in `.env`. Stretch homework once hosted.
 
-## Slide 27 · To the cloud
+## Slide 28 · To the cloud
 
 **What the student sees on this slide:**
 
@@ -1199,7 +1236,7 @@ the web service. A Render disk attaches to one service only, so the cron job can
 agent's /data: in the cloud the brief goes to Drive or Dropbox and the agent reads it there. Once
 hosted, both run with the laptop closed and webhooks become possible.
 
-## Slide 28 · When it breaks
+## Slide 29 · When it breaks
 
 **What the student sees on this slide:**
 
@@ -1235,7 +1272,7 @@ come. Check OpenClaw's status and logs and tell me why."), then fix the cause on
 causes: laptop asleep, Gateway not running after a restart, a model key out of credit or rate
 limited, a config typo `doctor` catches, a tool call waiting on an approval.
 
-## Slide 29 · Homework
+## Slide 30 · Homework
 
 **What the student sees on this slide:**
 
@@ -1268,7 +1305,7 @@ Then decide: move it to Render, or go back to the Managed Agents chain if that d
 right under the simplest-setup rule. Help fully with mechanics; what it may do, which model, and
 whether it's worth owning are their calls.
 
-## Slide 30 · You shipped it
+## Slide 31 · You shipped it
 
 **What the student sees on this slide:**
 
