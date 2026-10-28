@@ -316,7 +316,7 @@ _You already know these parts_
  Credential vault → OpenClaw's credentials for the model, .env for your scripts
  Deployment (schedule) → Automations (schedules) and the heartbeat
  Sessions → Sessions and logs, in the Control UI and the terminal
- handoff-log.md → MEMORY.md and daily notes in memory/
+ Memory store → MEMORY.md and daily notes in memory/
  Not possible → Channels (chat apps) and webhooks : new today
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
@@ -328,7 +328,7 @@ the same MCP servers and API calls, plus plugins and their own scripts; skills �
 Class 1); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
 deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
-Control UI and terminal; handoff-log.md → MEMORY.md plus daily notes in memory/. New: channels
+Control UI and terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
 and webhooks, which Managed Agents couldn't do.
 
 ## Slide 9 · The workspace
@@ -852,10 +852,10 @@ _Rebuild from what works, not a description_
 
 ## Step 2: Pull in your Class 1 and 2 agents as files.
 
-Both links of your chain come over. Download handoff-log.md from your briefing folder into this folder. Then paste this, replacing the highlighted parts with your own:
+Both links of your chain come over, with your agent's memory. Paste this, replacing the highlighted parts with your own:
 
 [PROMPT — the exact text the student would paste; you can run or adapt this for their project]
-> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; the standing notes from handoff-log.md go in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
+> Use the ant CLI to download two agents from my Claude Console into an export folder: my morning-briefing agent, [its name] , with its skill, and my action agent, [its name] , which acts on each morning's brief. Also download every memory in its memory store, [the store's name] , into the export folder, and keep those memory files out of git. Rebuild the action agent for OpenClaw: who I am goes in USER.md; its job, the three-section handoff it owes me and its limits go in AGENTS.md; its tone goes in SOUL.md; what it learned, from its memory store, goes in MEMORY.md. Keep every file short. Don't rebuild the briefing agent: it's the spec for a Python script we'll write later. Then get every app the two agents used working here: connect the same MCP servers, and for each API walk me through getting its key so I paste it into .env myself (create .env first, confirm it's in .gitignore, then open it for me in my computer's text editor). Test each one by having the agent use it, and turn on any tool it needs. If an app needs a Google sign-in, set the Google app's publishing status to In production, not Testing, so the sign-in doesn't expire every 7 days.
 
 _📂 The export is your blueprint_
 
@@ -869,14 +869,14 @@ Your vault stays in the Console, so each app gets connected again here. Some nee
 
 Prompts in this deck are pasted into Claude Code, which has no idea what "Class 1" or "Class 2"
 means, so they name the agents by role and Console name (the morning-briefing agent, the action
-agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. They download
-handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
+agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. The agent's memory
+store comes over too. Claude uses the ant CLI (logged in
 during prereqs) to pull the Class 1 briefing agent and its skill (`ant beta:agents retrieve`, and
 `ant beta:skills:versions download` for the skill's files) and the Class 2 agent into
-export/; the Console's Export as code is the other route. A Raw agent definition holds
+export/, plus the memory store's files (`ant beta:memory-stores list` to find the store's ID, then `ant beta:memory-stores:memories list --memory-store-id <id> --view full --max-items -1`, which returns each memory's path and content; Claude writes each to export/ under its path and adds that folder to .gitignore, since memories hold personal details, like MEMORY.md); verified 2026-10-28 with ant 1.37.0; the Console's Export as code is the other route. A Raw agent definition holds
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
 download. Translate the Class 2 agent now: who they are → USER.md; the job, the three-section
-deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
+deliverable and limits → AGENTS.md; tone → SOUL.md; what it learned (the memory store's directions, people and what's waiting) → MEMORY.md; old dated run notes can stay in the export.
 Keep files short (overhead). The brief waits for Step 4; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
 correct; each app is reconnected one at a time. Then Claude gets every app the two agents used
@@ -887,7 +887,7 @@ MCP server or key-based API: a trusted plugin, skill or script.
 
 From Eric's run (2026-09-30): the export landed in export/ (both agent files, the briefing skill,
 which lived inside the agent's instructions rather than as a separate skill, and a copy of
-handoff-log.md). MEMORY.md is gitignored. The agent's apps were Google-hosted MCP servers (Gmail,
+handoff-log.md, the memory file Class 2 used then; Class 2 now uses a memory store, which Step 2's prompt downloads instead). MEMORY.md is gitignored. The agent's apps were Google-hosted MCP servers (Gmail,
 Calendar, Drive); a security review in that run found the agent could have edited the connection
 script and .env, so Claude moved the script out of the workspace and scoped each app down (Gmail
 read and draft, no send/trash/labels; Calendar read only; Drive read and create). Google's MCP

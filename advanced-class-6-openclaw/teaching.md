@@ -3,7 +3,7 @@
 Per-slide notes for the bot view. `##` = slide label. Private. Teach the skill, don't
 perform the build. The student finished Advanced Classes 1 and 2 in Claude Managed Agents: a
 7:00 brief automation saving to Drive or Dropbox, and a 7:30 agent that acts on it and writes a
-handoff (Taken care of / Needs your action / FYI), with its memory in handoff-log.md. They did
+handoff (Taken care of / Needs your action / FYI), with its memory in a Managed Agents memory store. They did
 the Class 3 prereqs (Claude's desktop app, git, Node, GitHub CLI, ant CLI, logged in). Today
 they compare Cowork, Managed Agents and OpenClaw, learn OpenClaw's parts, then install it,
 clean it out, and rebuild the whole chain in a project folder that is a private GitHub repo: the
@@ -107,7 +107,7 @@ the same MCP servers and API calls, plus plugins and their own scripts; skills �
 Class 1); environment → their computer (sandboxing is optional, off by default, Docker-based);
 credential vault → OpenClaw's credential store for model keys, `.env` for script keys;
 deployment → automations (schedules) and the heartbeat; sessions → sessions and logs in the
-Control UI and terminal; handoff-log.md → MEMORY.md plus daily notes in memory/. New: channels
+Control UI and terminal; memory store → MEMORY.md plus daily notes in memory/. New: channels
 and webhooks, which Managed Agents couldn't do.
 
 ## The workspace
@@ -344,14 +344,14 @@ message, schedule and check-in. Confirm exact config keys against docs.openclaw.
 
 Prompts in this deck are pasted into Claude Code, which has no idea what "Class 1" or "Class 2"
 means, so they name the agents by role and Console name (the morning-briefing agent, the action
-agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. They download
-handoff-log.md from the briefing folder into the project. Claude uses the ant CLI (logged in
+agent) instead of by class number. Rebuild from what works, not a description; both links of the chain come over. The agent's memory
+store comes over too. Claude uses the ant CLI (logged in
 during prereqs) to pull the Class 1 briefing agent and its skill (`ant beta:agents retrieve`, and
 `ant beta:skills:versions download` for the skill's files) and the Class 2 agent into
-export/; the Console's Export as code is the other route. A Raw agent definition holds
+export/, plus the memory store's files (`ant beta:memory-stores list` to find the store's ID, then `ant beta:memory-stores:memories list --memory-store-id <id> --view full --max-items -1`, which returns each memory's path and content; Claude writes each to export/ under its path and adds that folder to .gitignore, since memories hold personal details, like MEMORY.md); verified 2026-10-28 with ant 1.37.0; the Console's Export as code is the other route. A Raw agent definition holds
 model, system prompt, tools and MCP servers; skills appear only as IDs, hence the separate skill
 download. Translate the Class 2 agent now: who they are → USER.md; the job, the three-section
-deliverable and limits → AGENTS.md; tone → SOUL.md; handoff-log.md's standing notes → MEMORY.md.
+deliverable and limits → AGENTS.md; tone → SOUL.md; what it learned (the memory store's directions, people and what's waiting) → MEMORY.md; old dated run notes can stay in the export.
 Keep files short (overhead). The brief waits for Step 4; the exported briefing skill is only its
 spec and does not go into the agent's skills/ (it would add overhead to every agent call). Vault credentials never export, which is
 correct; each app is reconnected one at a time. Then Claude gets every app the two agents used
@@ -363,7 +363,7 @@ MCP server or key-based API: a trusted plugin, skill or script.
 
 From Eric's run (2026-09-30): the export landed in export/ (both agent files, the briefing skill,
 which lived inside the agent's instructions rather than as a separate skill, and a copy of
-handoff-log.md). MEMORY.md is gitignored. The agent's apps were Google-hosted MCP servers (Gmail,
+handoff-log.md, the memory file Class 2 used then; Class 2 now uses a memory store, which Step 2's prompt downloads instead). MEMORY.md is gitignored. The agent's apps were Google-hosted MCP servers (Gmail,
 Calendar, Drive); a security review in that run found the agent could have edited the connection
 script and .env, so Claude moved the script out of the workspace and scoped each app down (Gmail
 read and draft, no send/trash/labels; Calendar read only; Drive read and create). Google's MCP
