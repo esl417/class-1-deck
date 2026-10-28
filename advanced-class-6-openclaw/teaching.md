@@ -179,7 +179,22 @@ they or Claude Code have read. Whoever can reach the Gateway controls the agent,
 the setup. Keys live in `.env` or OpenClaw's credential store, never in a chat, the agent's
 files, or GitHub. Updates: security fixes ship often (CVE-2026-25253, fixed in January 2026,
 let one malicious link take over an install via the Control UI). Class 2 rules carry over: it
-drafts, they send, and anything it reads from strangers can try to give it orders.
+drafts, they send. The bottom note hands off to the next slide.
+
+## Prompt injection
+
+Open with the point that this is not an OpenClaw problem: every agent that reads outside content
+can be steered by it, including their Class 2 Managed Agent, Cowork, and Claude Code itself
+reading a web page. It's a property of language models. OpenClaw raises the stakes three ways:
+its defaults (the full tool set, shell included), its reach (anyone can message a chat bot), and
+no platform sandbox (in Managed Agents, Anthropic runs the sandbox; here the limits are only what
+they set). The defense is what the agent is allowed to do, not how clever its instructions are:
+Step 2 leaves Gmail read and draft only, Calendar read only, and Step 1 keeps the shell and web
+access off, so a fooled agent has no way to send data out. Drive can create files, but only in
+their own Drive. Three ways data could still leak, which they watch for: a draft addressed to the
+attacker (it only goes out if they send it, so they check who it's to); a tool added later, such
+as web fetch or send, which gives an injected instruction somewhere to go; and webhooks (the
+homework), which feed outside content straight to the agent and get the same draft-only rule.
 
 ## Git words
 
@@ -488,6 +503,18 @@ Redeploys and secrets. Every commit to main redeploys, which is why branch, test
 matters: main is what runs. Env var changes: Render offers "Save, rebuild, and deploy", "Save and
 deploy", or "Save only" (not used until the next deploy); a plain restart doesn't pick changes up.
 Anything written outside /data is wiped on the next deploy.
+
+Security changes on Render. Locally the Gateway is reachable only from their own machine; on
+Render it's a public web service at https://<service>.onrender.com, and the gateway token is the
+only lock on the whole agent. The checklist Claude Code works through with them: the token is the
+master key (Render's Blueprint generates a long random one; never post the URL with the token in
+it; if it leaks, change OPENCLAW_GATEWAY_TOKEN in Render's environment settings and redeploy). Run
+`openclaw security audit` in Render's Shell after the first deploy and after any config change.
+Updates no longer just happen: the Dockerfile pins an OpenClaw release, so security fixes arrive
+only when they move the pin to a newer release, on a branch with a review like any other change;
+check for a new release monthly. Pairing doesn't carry over, so they pair the chat app again and
+strangers still get a code first. The repo stays private, and only the model key and gateway
+token live in Render's environment settings.
 
 Class-day trap: one bot, one agent. OpenClaw's Telegram channel uses long polling by default, and
 Telegram allows only one way of receiving updates per bot, so a local Gateway and a Render Gateway
