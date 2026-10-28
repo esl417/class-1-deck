@@ -744,12 +744,12 @@ bind: doctor lists it as a warning, but it's the safe default. No command owner 
 channel is connected; connecting one in onboarding (or `openclaw channels add`) sets it, so the
 student can run admin commands from chat. Informational, leave alone: "N skills unusable" (missing
 tools or keys; Step 1 turns bundled skills off anyway, and `openclaw doctor --fix` would hide them),
-Codex or other tools' assets found, heap/desktop/GitHub token/speech notes. No backup yet: run
-`openclaw backup create` once the setup works (homework). Workspace: onboarding writes AGENTS.md,
+Codex or other tools' assets found, heap/desktop/GitHub token/speech notes. Backup: not OpenClaw's
+(see the memory backup note under Step 5). Workspace: onboarding writes AGENTS.md,
 IDENTITY.md, SOUL.md and USER.md into the folder; the --workspace setting lands on the agent itself
 (agents.defaults.workspace stays empty, which is fine). Commit the instruction files (the repo is
 private, and hosting later deploys from it; USER.md holds personal context, so look it over first);
-MEMORY.md and memory/ stay out via .gitignore because the agent writes them. Name the agent
+MEMORY.md and memory/ stay out via .gitignore: the agent rewrites them every day, outside the branch-test-approve flow, so they don't belong in the reviewed history (and a later deploy from the repo would overwrite live memory). Name the agent
 carefully at the first onboarding question: the name shows up in paths and sessions (renaming is
 possible but fiddly).
 
@@ -1083,6 +1083,10 @@ _🧰 Test the tool_
 
 Message your agent "Rerun my brief." It should call its morning_briefing tool, not redo the steps, and send back a fresh brief.
 
+ 💾
+
+Its memory lives on this computer, not in git. Your computer's normal backup protects it; everything else is on GitHub. Want an extra copy? Ask Claude Code for a script that copies its memory to your Drive or Dropbox once a week.
+
 Same chain as Class 2: an automation handing off to an agent. The automation is plain Python; OpenClaw is for the steps after the brief exists.
 
 **Teaching this slide (context the student cannot see — use it to teach, don't just recite):**
@@ -1103,7 +1107,7 @@ isolated light session and activeHours keep each wake to a few thousand tokens. 
 be awake (or wake) for 7:00 and the Gateway running for 7:30 until it's hosted. Same shape as
 Class 2: an automation handing off to an agent. Then the tool test: they message "Rerun my
 brief." and check the agent called the morning_briefing tool (Claude Code can see it in `openclaw sessions tail`)
-rather than fetching the sources itself, and that a fresh brief came back.
+rather than fetching the sources itself, and that a fresh brief came back. Memory backup, Eric's call: no new mechanism in class. Memory lives on the computer, not in git, so the computer's normal backup (Time Machine, iCloud) protects it; everything else is on GitHub. Students talk to the agent through the chat app day to day and rarely commit, so committing memory wouldn't back it up anyway, and OpenClaw's own backup is ruled out (it defeats owning the pieces; `backup enable` also skips workspace files, and `backup create` bundles credentials). Losing memory isn't fatal: the job, deliverable and limits are in the committed AGENTS.md, SOUL.md and USER.md; memory is only what it learned on top. Optional, if a student asks: Claude Code writes a small script that copies MEMORY.md and memory/ to their Drive or Dropbox folder once a week, scheduled with the same computer scheduler as brief.py. If they move to Render, memory lives on the server and backup becomes part of that decision.
 
 ## Slide 27 · Webhooks
 
