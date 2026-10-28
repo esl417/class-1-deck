@@ -208,11 +208,11 @@ branch into main. They never type git commands: they ask Claude Code by name.
 
 ## Saving and pushing
 
-Three stages. Their computer: edit and commit (snapshots only they have). Push: to GitHub, a
-private backup with full history (lose the laptop, lose nothing). Merge into main: only approved
-changes; main is the version that runs, and when they host it (Render), every merge to main
-redeploys. Unlike the website course there's no live website, so a push here is a backup, not a publish; the
-"publish" moment is the merge to main once a host watches main. Plain-English asks: "Commit and push
+Two stages. Their computer: edit and commit (snapshots only they have). Push: to GitHub, a
+private backup with full history (lose the laptop, lose nothing). Branch and merge are left out
+on purpose: merge isn't a step after push, and main lives both on their computer and on GitHub.
+Branching gets its own slide next. Unlike the website course there's no live website, so a push
+here is a backup, not a publish. Plain-English asks: "Commit and push
 this.", "What changed since my last commit?", "Something broke: go back to the last commit." The
 repo is private and .env never leaves the computer because .gitignore excludes it (set up in the
 Install prompt before the first commit). Personal outputs (briefs/, logs/, memory/) are kept out
